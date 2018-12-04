@@ -1,0 +1,38 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{color,colortbl}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage{tabularx}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\pagestyle{fancy}
+\lhead{\includegraphics[scale=0.08]{images/logo.png}}
+
+\definecolor{LightBlue}{rgb}{0,0,0.5}
+\definecolor{Gray}{gray}{0.8}
+\definecolor{LightGray}{gray}{0.9}
+
+\usepackage{lipsum}
+\begin{document}
+	\input{frontpage/frontpage.tex}
+
+	\tableofcontents
+	\newpage
+	\section*{\centering Registro delle modifiche}
+	\begin{tabularx}{\textwidth}{ c | c | c | c | X }
+		\rowcolor{LightBlue}
+		\color{white}\bfseries Versione & \color{white}\bfseries Data & \color{white}\bfseries Autore & \color{white}\bfseries Ruolo & \multicolumn{1}{c}{\color{white}\bfseries Descrizione}\\[0.25cm]
+	\end{tabularx}
+
+	\newpage	
+	
+
+\end{document}

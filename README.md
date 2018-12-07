@@ -7,4 +7,4 @@ Componenti del gruppo
 * Marcato Enrico
 * Peagno Eleonora
 * Peron Giovanni
-* Pettenuzzi Gianmarco
+* Pettenuzzo Gianmarco

@@ -1,0 +1,408 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{color,colortbl}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage{tabularx}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{enumerate}
+
+\pagestyle{fancy}
+\lhead{\includegraphics[scale=0.08]{images/logo.png}}
+\definecolor{LightBlue}{rgb}{0,0,0.5}
+\definecolor{Gray}{gray}{0.8}
+\definecolor{LightGray}{gray}{0.9}
+
+\usepackage{lipsum}
+\usepackage{verbatim}
+\begin{comment}
+----------------------------- Copia da QUI ------------------------------------
+\end{comment}
+
+\setcounter{tocdepth}{4}
+\setcounter{secnumdepth}{4}
+
+
+
+\begin{document}
+	\input{frontpage/frontpage.tex}
+
+	
+	\newpage
+	\section*{\centering Registro delle modifiche}
+	\begin{tabularx}{\textwidth}{ c | c | c | c | X }
+		\rowcolor{LightBlue}
+		\color{white}\bfseries Versione & \color{white}\bfseries Data & \color{white}\bfseries Autore & \color{white}\bfseries Ruolo & \multicolumn{1}{c}{\color{white}\bfseries Descrizione}\\[0.25cm]
+		0.0.1 & 05/12/2018 & Giovanni Bergo & Redattore & \centering Stesura sezione 2
+	\end{tabularx}
+
+	\newpage	
+
+	\renewcommand  \contentsname {\Large Indice} 
+	
+	\tableofcontents
+		
+	
+	\newpage
+	\section{Processi di Supporto}
+	
+	\subsection{Documentazione}\label{c}
+	In questa sezione esamineremo dettagliatamente i processi utilizzati per stesura, verifica e mantenimento di tutta la documentazione prodotta dal gruppo Ottobit.
+	Lo scopo è quello di fornire una descrizione accurata di tutte le norme, convenzioni e vincoli rispettati per ottenere documentazione efficace, coerente e formale.
+	\subsubsection{Implementazione}
+	
+	\paragraph{Template}
+	
+	\paragraph{Ciclo di vita}
+		\noindent \\Tutti i documenti si troveranno in tre diverse fasi:
+	\begin{enumerate}
+	\item \textbf{Elaborazione:} in questa fase il documento viene creato e modificato dai Redattori, aggiornando ogni volta la versione del documento. 
+	\item \textbf{Verifica:} una volta terminato il lavoro di elaborazione, il documento verrà assegnato ai Verificatori che procederanno al controllo di correttezza. Se il documento sarà valutato non corretto, verrà riassegnato ai Redattori.
+	\item \textbf{Approvazione:} una volta che il documento sarà giudicato corretto nella fase di verifica, sarà assegnato al Responsabile di Progetto che procederà l'approvazione e il rilascio del documento.
+	\end{enumerate}
+	
+	\subsubsection{Struttura}
+	
+	\paragraph{Frontespizio} 
+	\noindent \\La prima pagina di ogni documento dovrà seguire questa struttura:
+	\begin{itemize}
+	\item \textbf{Logo}
+	\item \textbf{Nome Documento}
+	\item \textbf{Nome Progetto - Gruppo}
+	\item \textbf{Informazioni sul documento} composto da:
+	\begin{itemize}
+		\item  Versione del documento 
+		\item Nome Redattore/i
+		\item Nome Verificatore
+		\item  Nome Responsabile
+		\item  Uso
+		\item Destinatari
+	\end{itemize}
+	\end{itemize}
+
+	\paragraph{Registro delle modifiche}
+	 	\noindent \\
+	 	Nella pagina seguente alla prima deve essere presente una tabella riassuntiva della cronologia delle versioni del documento, fatta eccezione per i verbali. Nella tabella, ad ogni modifica, devono essere presenti le seguenti informazioni:
+	
+	\begin{itemize}
+	    \item \textbf{Numero Versione}
+		\item \textbf{Data modifica}
+		\item \textbf{Autore della modifica}
+		\item \textbf{Ruolo Autore}
+		\item \textbf{Breve descrizione}
+	\end{itemize}
+	
+	\paragraph{Indice}
+	\noindent \\L'indice del documento inizia nelle pagine successive a quelle del Registro delle modifiche, ogni sezione e sottosezione sarà etichettata con un numero progressivo a partire dal numero 1, e permetterà il collegamento ipertestuale direttamente alla pagina corrispondente. Inoltre saranno presenti altri due elenchi:
+	
+	\begin{itemize}
+	\item \textbf{Tabella:} elenco delle eventuali tabelle presenti presenti nel documento, escluse il Registro delle modifiche;
+	\item  \textbf{Immagini:} elenco delle eventuali immagini presenti nel documento. 
+	\end{itemize}
+	
+	\paragraph{Contenuto}
+	\noindent \\ 
+	Il resto del documento sarà dedicato al contenuto del documento stesso, ogni pagina seguente avrà la seguente codifica:
+	\begin{itemize}
+		\item \textbf{Intestazione}
+		\begin{itemize}
+			\item Logo del gruppo a sinistra;
+			\item Sezione corrente a destra
+		\end{itemize}
+	
+	\item \textbf{Piè di pagina} 
+	\begin{itemize}
+	\item Nome del documento a sinistra;
+	\item Pagina corrente a destra
+	\end{itemize}
+\end{itemize}
+	\newpage
+	
+	\subsubsection{Design}
+	
+	\paragraph{Stile del testo}
+	
+	\noindent   
+	\begin{itemize}
+		\item \textbf{Grassetto:} va utilizzato nei titoli, elenchi puntati ed intestazione tabelle;
+		\item \textbf{Citazioni:} scritte in corsivo, numerate riferite a piè di pagina (esempio: \textit{"citazione"} \textsuperscript{n} );
+		\item \textbf{Collegamenti:} scritti in blu e sottolineati;
+		\item \textbf{Maiuscolo:} utilizzato per acronimi;
+		\item \textbf{Codici:} struttura \LaTeX\ (package Listings) con carattere Teletype;
+		\item \textbf{Ruoli di progetto:} la prima lettera maiuscola;
+		\item \textbf{Nomi propri:} ogni nome proprio di persona deve essere scritto nella forma Nome Cognome;
+		\item \textbf{Nomi dei documenti:} la prima lettera maiuscola;
+		\item \textbf{Riferimenti a sezioni:} i riferimenti interni al documento devono riportare il numero della sezione, preceduto dal simbolo di paragrafo (esempio: \S\ \hyperref[c]{3.1.1} ).
+		
+	\end{itemize}
+
+
+	\paragraph{Elenchi}
+	\begin{itemize}
+	\item \textbf{Elenchi puntati:} Gli elementi vengono rappresentati da un pallino nel primo livello, un trattino nel secondo livello, e un asterisco nel terzo livello; 
+	\item \textbf{Elenchi numerati:} Gli elementi vengono numerati partendo dal numero 1.
+	\end{itemize}
+
+	\paragraph{Formati comuni}
+	\noindent \\ 
+	Orari e date varranno rappresentate secondo quanto definito dallo standard ISO 8601. 
+
+	\begin{itemize}
+	\item \textbf{Orario:} 
+	\begin{center}
+		HH:MM
+	\end{center}
+	\begin{itemize}
+		\item \textbf{HH:} rappresenta le ore da 00 a 23;
+		\item \textbf{MM:} rappresenta i minuti da 00 a 59.
+	\end{itemize} 
+
+	\item \textbf{Date:}
+	\begin{center}
+		AAAA-MM-GG
+	\end{center}
+	\begin{itemize}
+	\item \textbf{AAAA:} rappresenta l'anno;
+	\item \textbf{MM:} rappresenta il mese da 01 a 12;
+	\item \textbf{GG:} rappresenta il giorno da 01 a 31.
+	\end{itemize}
+
+	\end{itemize}
+	
+	\paragraph{Tabelle}	
+\noindent \\		
+	Ogni tabella dovrà essere rappresentata:
+	\begin{itemize}
+	\item \textbf{Numero:} indice progressivo a partire da 1 che individui la tabella univocamente;
+	\item \textbf{Titolo:} breve descrizione che riassuma il contenuto della tabella.
+	\end{itemize}
+L'intestazione delle tabelle sarà scritta in grassetto. La colorazione rispetterà i colori del logo e pone attenzione ai contrasti in lettura.
+
+	
+	
+	\paragraph{Figure}
+\noindent \\	
+	Ogni figura dovrà essere rappresentata:
+	\begin{itemize}
+		\item \textbf{Numero:} indice progressivo a partire da 1 che individui la figura univocamente;
+		\item \textbf{Titolo:} breve descrizione che riassuma il contenuto della figura.
+	\end{itemize}
+	
+	\subsubsection{Suddivisione dei documenti}
+	\paragraph{Documenti formali}
+	\noindent \\ Un documento è definito formale dopo l’approvazione da parte del Responsabile di Progetto e quindi deve aver superato con esito positivo la fase di verifica. Questi documenti sono destinati alla distribuzione esterna al gruppo.
+	
+	\paragraph{Documenti informali}
+	\noindent \\ Tutti i documenti sono da considerarsi informali finché non vengono approvati dal Responsabile di Progetto. L’utilizzo di tali documenti è da considerarsi interno e quindi esclusivo del team.
+	
+	\paragraph{Verbali}
+	\noindent \\ I verbali sono documenti redatti in occasione di incontri interni al gruppo o con enti esterni. Ogni verbale contiene:
+	
+	\begin{itemize}
+	\item \textbf{Informazione sulla riunione:} specificano il luogo, la data, l'ora dell’incontro, tutti i partecipanti e il Segretario;
+	\item \textbf{Ordine del giorno:} sono riportati i punti relativi all’ordine del giorno;
+	\item \textbf{Resoconto:} descrizione di quanto discusso durante l'incontro del team.
+	\end{itemize}
+	
+	\paragraph{Glossario}
+\noindent \\ Documento unico ad uso esterno, consiste di un elenco di definizioni, in ordine lessicografico, di tutte le parole che possono creare ambiguità o necessitanti descrizione precisa. Tutti i termini presenti nel glossario sono marcati con un "*" ogni prima volta che compaiono in un documento (esempio: Glossario*).
+
+	\subsubsection{Strumenti}
+	
+	\paragraph{\LaTeX}
+	\noindent \\ Per la produzione della documentazione si è fatto uso del formato \LaTeX\ perché permette un migliore stile di codifica.\\
+	Per la produzione di codice \LaTeX\ è stato utilizzato TexStudio.
+	
+	\subsubsection{Mantenimento}
+	
+	\paragraph{Versionamento}
+\noindent \\ Ogni documento o componente del codice , eccetto i verbali, soggetto a versionamento è versionata tramite lo strumento GitLab, ed organizzata mediante la metodologia GitFlow.\\
+La definizione di una versione avviene seguendo questa forma:
+\begin{center}
+	X . Y . Z
+\end{center}
+
+\begin{itemize}
+	\item \textbf{X:} numero di approvazioni al documento;
+	\item \textbf{Y:} numero di verifiche al documento. Si azzera ad ogni incremento di X;
+	\item \textbf{Z:} numero di modifiche al documento. Si azzera ad ogni incremento di Y o X;
+\end{itemize}
+
+\paragraph{Nomenclatura}
+
+\begin{itemize}
+\item \textbf{Verbali:} I verbali dovranno rispettare la seguente norma di nomenclatura per una facile individuazione e riferimento:
+\begin{center}
+	Verbale-X
+\end{center}
+
+\begin{itemize}
+	\item X rappresenta la data del verbale.
+\end{itemize}
+
+\item \textbf{Altri documenti:} La denominazione di ciascun documento seguirà la seguente codifica:
+\begin{center}
+	NomeDocumento\_vX.Y.Z
+\end{center}
+
+\begin{itemize}
+	\item vX.Y.Z rappresenta la versione del documento secondo le regole enunciate precedentemente.
+\end{itemize}
+
+\end{itemize}
+
+\newpage
+
+\subsection{Verifica}
+
+\subsubsection{Scopo}
+Il processo di verifica è finalizzato al controllo di eventuali errori presenti nella fase di elaborazione, per garantire una sviluppo efficace ed efficiente.
+
+\subsubsection{Descrizione}
+Il processo si divide nei seguenti momenti:
+\begin{itemize}
+	\item  \textbf{Controllo:} attraverso questa fase si ottiene un'analisi approfondita del codice sorgente e della sua corretta esecuzione. Si suddivide in:
+	\begin{itemize}
+	\item Analisi statica: è un metodo in grado di rilevare problemi all'interno dei documenti e del codice sorgente. Permette due diverse tecniche:
+	\begin{itemize}
+	\item  Walkthrough: è una tecnica che permette di fare verifica senza richiedere esecuzione (ad esempio i documenti non hanno bisogno di eseguire test, diversamente da programmi). È una tecnica molto costosa che esegue una lettura approfondita;
+	\item Ispection: è una tecnica che permette di fare verifica come Walkthrough, ma esegue una lettura mirata e meno costosa.
+	\end{itemize}
+	\item Analisi dinamica: è un processo che prevede l'analisi del software attraverso l'esecuzione di alcuni test. Per ottenere tale risultato è necessario che per ogni test vengano rispettati i seguenti riferimenti:
+	\begin{itemize}
+		\item Ambiente:  si tratta dei sistemi hardware e software utilizzati nel corso del test;
+		\item Stato iniziale: lo stato di partenza del prodotto al momento del test;
+		\item Input: l’input inserito;
+		\item Output: l’output atteso;
+		\item Avvisi: un eventuale insieme di istruzioni riguardanti l’esecuzione del test e i suoi risultati.
+	\end{itemize}
+		
+\end{itemize}
+
+	\item  \textbf{Test:} in questa fase vengono definiti i test eseguiti sul software:
+	\begin{itemize}
+		\item Test di unità: verifica dell'aggregato di codice più piccolo scritto dal programmatore;
+		\item Test di integrazione: l'unità appena testata viene confrontata con un'unità già funzionante, in modo da ottenere una porzione di codice corretta sempre più ampia;
+		\item Test di sistema: una volta completato il prodotto si verifica che tutti i requisiti siano stati soddisfatti;
+		\item Test di regressione: in seguito ad un cambiamento si devono eseguire nuovamente tutti i test precedenti, in modo da verificare la validità delle modifiche effettuate;
+		\item Test di accettazione: una volta verificato il software creato viene svolto il collaudo con il richiedente; se superato, il prodotto verrà approvato e rilasciato.
+	\end{itemize}
+\end{itemize}
+
+\subsubsection{Strumenti}
+\paragraph{Verifica ortografica}
+\noindent \\
+La verifica ortografica è effettuata tramite TexStudio, attraverso il quale gli errori ortografici vengono sottolineati in rosso, permettendo un controllo rapido ed efficiente.
+\paragraph{Validazione W3C}
+\noindent \\
+Riguardo la validazione dei file nel formato CSS e HTML vengono utilizzati gli strumenti messi a disposizione da W3C.
+\paragraph{Validazione JavaScript}
+\noindent \\
+SonarQube
+\\
+Jest
+\\
+???
+\newpage
+\section{Processi organizzativi}
+
+\subsection{Gestione di Progetto}
+La gestione di un progetto è effettuata dal Responsabile di Progetto e i temi trattati sono:
+\begin{itemize}
+\item \textbf{Gestione qualità;}
+\item \textbf{Pianificazione di progetto;}
+\item \textbf{Allocazione delle risorse;}
+\item \textbf{Stima dei costi di progetto.}
+\end{itemize}
+
+\subsubsection{Descrizione Piano di Progetto}
+
+Gli obbiettivi del Piano di Progetto sono:
+
+\begin{enumerate}
+\item Organizzare le attività con efficienza per risultati efficaci;
+\item Facilitare la misurazione dell'avanzamento fissando milestone nel tempo.
+\end{enumerate}
+
+La struttura generale del Piano di Progetto è la seguente:
+\begin{itemize}
+\item \textbf{Introduzione;}
+\item \textbf{Analisi dei rischi;}
+\item \textbf{Modello di sviluppo;}
+\item \textbf{Pianificazione;}
+\item \textbf{Preventivo;}
+\item \textbf{Consuntivo e preventivo a finire;}
+\item \textbf{Organigramma.}
+\end{itemize}
+
+\subsubsection{Procedure}
+
+L’organizzazione della pianificazione avviene tramite questa procedura.
+
+\begin{enumerate}
+	\item \textbf{Scelte modello di sviluppo:} descrivono come i processi si relazionino rispetto agli stati di ciclo di vita. Un particolare modello aiuta a pianificare, organizzare, eseguire e controllare lo svolgimento delle attività necessarie al ciclo di vita. È dunque uno strumento organizzativo di supporto;
+	\item \textbf{Identificazione delle attività:} è opportuno organizzare le attività sulla base dei requisiti da soddisfare;
+	\item \textbf{Pianificazione delle attività:} le attività devono essere pianificate affinché vengano minimizzate sia la probabilità di incidenza dei rischi che l'impatto che essi comportano;
+	\item \textbf{Individuazione dei rischi e loro analisi:} si considerano tutti i possibili rischi che possono sorgere a causa di fattori interni e fattori esterni. Ad ognuno si deve associare una probabilità di incidenza ed una stima di influenza sulla corretta esecuzione del processo;
+	\item \textbf{Preventivo e stima dei costi:} si esegue una stima delle risorse da assegnare a ciascuna attività, assegnando a ciascuna di esse un valore secondo la quantità di lavoro necessaria per portarla a termine.
+\end{enumerate}
+
+\subsubsection{Analisi dei rischi}
+
+Il Responsabile di Progetto ha il compito di rilevare i rischi indicati nel Piano di Progetto. Nel caso ne vengano individuati di nuovi, dovrà aggiungerli nell'analisi dei rischi. La procedura da seguire nella gestione dei rischi è la seguente:
+\begin{itemize}
+	\item individuare problemi non calcolati e monitorare rischi già rilevati;
+	\item registrare riscontri previsti e aggiungere nuovi rischi individuati nel Piano di Progetto;
+	\item ridefinire, se necessario, le strategie di progetto.
+\end{itemize}
+
+
+
+\noindent \\
+ Ogni rischio viene classificato e viene associato a un codice. Tale codice è così composto:
+\begin{center}
+	\textbf{[Tipo][ID]}
+\end{center}
+dove [Tipo] è una lettera e [ID] un numero identificativo.\\
+
+\paragraph{Tipi di rischio} 
+\noindent \\
+ Esamineremo quattro principali tipologie di rischi:
+
+\begin{itemize}
+	\item Rischi correlati al gruppo OttoBit, a cui viene associata la lettera \textbf{G}
+	\item Rischi correlati alle tecnologie e ai mezzi tecnologici, a cui viene associata la lettera \textbf{T}
+	\item Rischi correlati all'organizzazione del lavoro, a cui viene associata la lettera \textbf{O}
+	\item Rischi correlati ai requisiti, a cui viene associata la lettera \textbf{R}
+\end{itemize}
+
+\subsubsection{Ruoli di Progetto}
+
+\begin{itemize}
+\item \textbf{Analista:} conosce il dominio del problema, si occupa di capire il problema, definendo e derivando requisiti espliciti ed impliciti;
+\item \textbf{Progettista:} effettua lo studio di fattibilità del prodotto, costruisce l’architettura con ottica di efficienza ed efficacia a partire dal lavoro dell’analista;
+\item \textbf{Programmatore:} implementa sulle specifiche fornite dal progettista, operando con ottica di manutenibilità del codice;
+\item \textbf{Verificatore:} Presente durante tutta l’attività del progetto, si occupa di valutare mediante comparazione di metriche a soglie di accettabilità la conformità dei prodotti i requisiti funzionali e di qualità;
+\item \textbf{Responsabile:} gestisce le risorse umane, i rischi, l pianificazione, il controllo, il coordinamento e le relazioni esterne, rappresentando il progetto presso il committente;
+\item \textbf{Amministratore:} ruolo di supporto, fornisce gli strumenti necessari l processo di sviluppo, le infrastrutture di supporto, il versionamento e le configurazioni del codice e della documentazione. Risolve problemi legati ll gestione dei processi.
+\end{itemize}
+\newpage
+
+\subsection{Strumenti}
+
+\subsubsection{Slack}
+Slack è uno strumento di collaborazione che permette la comunicazione in tempo reale tra i membri di uno stesso team di lavoro. Mette a disposizione di quest’ultimo uno spazio di lavoro (workspace), dov'è possibile comunicare organizzando conversazioni attraverso diversi canali tematici differenti, definibili dal gruppo stesso.
+Slack inoltre fornisce la possibilità di associare applicazioni al workspace.
+
+\subsubsection{GitLab}
+È un software di controllo versione in cui gli sviluppatori possono caricare il proprio codice e gestire le modifiche alle varie versioni in contemporanea al lavoro di più persone. In GitLab è possibile lavorare parallelamente con altre persone sullo stesso progetto senza generare conflitti, caricare il proprio lavoro nel repository remoto (operazione di push) e poter unire alla fine le modifiche di tutti in un unico progetto (operazione di merge). È possibile fare delle merge request per il proprietario del repository, oltre al tracciamento degli issue, la possibilità di scrivere commenti e allegare documenti.
+
+
+\end{document}

@@ -40,7 +40,7 @@
 	\begin{tabularx}{\textwidth}{ c | c | c | c | X }
 		\rowcolor{LightBlue}
 		\color{white}\bfseries Versione & \color{white}\bfseries Data & \color{white}\bfseries Autore & \color{white}\bfseries Ruolo & \multicolumn{1}{c}{\color{white}\bfseries Descrizione}\\[0.25cm]
-		0.0.1 & 05/12/2018 & Giovanni Bergo & Redattore & \centering Stesura sezione 2
+		0.0.1 & 05/12/2018 & Giovanni Bergo & Redattore & \centering Stesura sezione 2 & 		0.0.2 & 2018-12-13 & Enrico Marcato & Amministratore & \centering Stesura Progettazione
 	\end{tabularx}
 
 	\newpage	
@@ -48,7 +48,36 @@
 	\renewcommand  \contentsname {\Large Indice} 
 	
 	\tableofcontents
-		
+	\newpage	
+	\section{Processo di Sviluppo}
+	\subsection{Progettazione}
+	L'attività di Progettazione consiste nel ricercare una soluzione che soddisfa tutti gli stakeholder. Essa avrà inizio quando obiettivi, vincoli e requisiti del prodotto finale saranno solidi e chiari. Le norme protranno subire variazioni in seguito alla successiva revisione. Spetta ai progettisti il compito di definire l'architettura logica del prodotto, dando così coerenza e consistenza al progetto. Per definirsi una buona architettura dovrà rispettare le seguenti proprietà:
+	\begin{itemize}
+	\item Capacità di \textbf{soddisfare i requisti} definiti nel documento Analisi dei Requisiti. L'architettura dovrà anche essere in grado di adattarsi facilmente e permettere modifiche a costo contenuto nel caso in cui i requisiti dovessero variare in corso d'opera;
+	\item Di facile \textbf{comprensibilità}, dagli stakeholders, al responsabile, ai verificatori;
+	\item Organizzata e \textbf{suddivisa in moduli} di complessità trattabile, così da rendere la codifica di ogni parte eseguibile da un singolo individuo;
+	\item \textbf{Rispettare l'information hiding} fornendo dove possibile interfacce per l'utilizzo del modulo implementato nascondendo i dettagli implementativi;
+	\item \textbf{Basso accoppiamento}, le distinte parti hanno una scarsa dipendenza una dalle altre, limitano i cambiamenti esterni causati da modifiche interne;
+	\item \textbf{Robustezza}, l'architettura deve tener conto delle situazioni anomale che possono essere causate dall'utente o dall'ambiente utilizzato;
+	\item \textbf{Affidabilità}, quando svolge un compito, questo deve essere svolto efficientemente;
+	\item \textbf{Sicurezza}, in caso di malfunzionamenti o di intrusioni esterne i dati e le funzioni non devono essere vulnerabili.
+	\end{itemize}	
+	\subsubsection{Diagrammi UML} Saranno implementati, secondo lo standard UML 2.0, i diagrammi per rendere chiare le scelte progettuali adottate. Saranno forniti:
+	\begin{itemize}
+	\item Diagrammi delle classi;
+	\item Diagrammi di sequenza;
+	\item Diagrammi di attività;
+	\item Diagrammi di package.
+	\end{itemize}
+	\subsubsection{Design Patterns} Compito dei progettisti è adottare le opportune soluzioni progettuali a problemi ricorrenti, consentendo ai programmatori una certa libertà d'uso. I vantaggi di tali soluzioni dovranno essere motivati spiegandone la struttura e il funzionamento.
+	
+	\subsection{Codifica}
+	L'attività di codifica inizierà quando la progettazione sarà terminata. Pertanto
+	le norme sottostanti potranno subire variazioni in seguito alla successiva revisione.
+	\subsubsection{Ambiente di codifica}
+	Da definire.
+	\subsubsection{Convenzioni di codifica}
+	Da definire.
 	
 	\newpage
 	\section{Processi di Supporto}

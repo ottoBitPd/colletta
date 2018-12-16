@@ -11,21 +11,30 @@
 \usepackage[hidelinks]{hyperref}
 \usepackage{fancyhdr}
 \usepackage{tabularx}
-\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=3cm]{geometry}
 \usepackage{enumerate}
+\usepackage{lastpage}
 
 \pagestyle{fancy}
+\fancyhf{}
 \lhead{\includegraphics[scale=0.08]{images/logo.png}}
+
+\renewcommand {\footrulewidth}{0.2mm}
+\lfoot {Norme di Progetto}
+\rfoot{Pagina \thepage\ di \pageref{LastPage}}
+
 \definecolor{LightBlue}{rgb}{0,0,0.5}
 \definecolor{Gray}{gray}{0.8}
 \definecolor{LightGray}{gray}{0.9}
 
 
+
+
 \usepackage{lipsum}
 \usepackage{verbatim}
-\begin{comment}
------------------------------ Copia da QUI ------------------------------------
-\end{comment}
+
+%----------------------------- Copia da QUI ------------------------------------
+
 
 \setcounter{tocdepth}{4}
 \setcounter{secnumdepth}{4}
@@ -41,7 +50,10 @@
 	\begin{tabularx}{\textwidth}{ c | c | c | c | X }
 		\rowcolor{LightBlue}
 		\color{white}\bfseries Versione & \color{white}\bfseries Data & \color{white}\bfseries Autore & \color{white}\bfseries Ruolo & \multicolumn{1}{c}{\color{white}\bfseries Descrizione}\\[0.25cm]
-		0.0.1 & 05/12/2018 & Giovanni Bergo & Redattore & \centering Stesura sezione 2
+0.0.1 & 05/12/2018 & Giovanni Bergo Gianmarco Pettenuzzo & Redattore & \centering Stesura sezione 2 
+	
+		
+	
 	\end{tabularx}
 
 	\newpage	
@@ -49,7 +61,140 @@
 	\renewcommand  \contentsname {\Large Indice} 
 	
 	\tableofcontents
-		
+	\newpage
+	
+	\section{Introduzione}
+	\subsection{Scopo del documento}
+	Lo scopo di questo documento è formalizzare uno standard per la stesura dei documenti durante tutto il percorso di sviluppo del progetto didattico. Ogni componente del gruppo è tenuto a farne riferimento così da poter ottenere dei documenti omogenei tra loro e, di conseguenza, più facili da verificare. 
+	Tutte le regole qui descritte sono state elaborate dall'intero gruppo, il quale deve approvare eventuali modifiche, aggiunte o rimozioni. 
+	\subsection{Scopo del prodotto}
+	Lo scopo del prodotto è creare una piattaforma collaborativa di raccolta dati su cui sia possibile predisporre e/o svolgere esercizi di analisi grammaticale (troppo specifico?). La raccolta vorrebbe avere il fine di fornire a sviluppatori e ricercatori dati sufficienti per applicare metodi di apprendimento automatico. Nello specifico si vorrebbe poter insegnare ad un elaboratore a svolgere gli stessi esercizi proposti agli utenti, divenendo una sorta di correttore automatico.  
+	Le componenti principali del prodotto saranno quindi:
+	\begin{itemize}
+		\item un'interfaccia web, su cui verranno predisposti e svolti gli esercizi;
+		\item un servizio esistente di database;
+		\item il servizio esistente open-source per il pos-tagging.
+	\end{itemize}
+	
+	\subsection{Riferimenti}
+	Segue l'elenco dei riferimenti utilizzati dal gruppo:
+	\subsubsection{Riferimenti normativi}
+	\begin{itemize}
+		\item ISO/IEC 12207 \\
+		\url https://it.wikipedia.org/wiki/ISO\_12207
+		\item ISO/IEC 15504 \\
+		\url https://en.wikipedia.org/wiki/ISO/IEC\_15504
+		\item ISO/IEC 9126 \\
+		\url https://it.wikipedia.org/wiki/ISO/IEC\_9126
+	\end{itemize}	
+	
+	\subsubsection{Riferimenti informativi}
+	\begin{itemize}
+		\item Slide del corso "Ingegneria del software" - Processi di sviluppo, ciclo di vita \\
+		\url https://www.math.unipd.it/~tullio/IS-1/2018/Dispense/L03.pdf
+		\url https://www.math.unipd.it/~tullio/IS-1/2018/Dispense/L05.pdf
+		\item Capitolato 2 \\
+		\url https://www.math.unipd.it/~tullio/IS-1/2018/Progetto/C2.pdf
+		\item Wikipedia/GitLab \\
+		\url https://it.wikipedia.org/wiki/GitLab
+	\end{itemize}					
+	\newpage
+	
+	\section{Processi primari}
+	\subsection{Ricerca sulle tecnologie} 
+	Questa fase consiste nella ricerca di informazioni su software, librerie e tutte le tecnologie che sono state ritenute utili per una o più fasi di sviluppo del progetto. Le tecnologie analizzate  sono quelle suggerite dalla proponente e quelle ritenute utili sulla base delle esperienze personali dei membri del gruppo. La scelta delle tecnologie adeguate 
+	
+	
+	\subsection{Normazione}
+	Uno dei compiti dell'amministratore di progetto, è quello di stilare la lista delle regole che tutti i componenti del gruppo dovranno seguire nella stesura dei documenti e nello svolgimento delle attività assegnate a ciascuno. Con l'avanzamento dello sviluppo del progetto (meglio prodotto?) tali regole potrebbero subire delle variazioni e/o delle aggiunte poiché, durante lo sviluppo stesso, si potranno acquisire nuove conoscenze o incontrare difficoltà tali da portare alla rielaborazione delle succitate regole. Si potrebbe anche decidere di utilizzare uno strumento diverso da quelli preventivati e, anche per questo, andranno stabilite regole specifiche.\\
+	\textbf{Prodotto dell'attività}: Norme di progetto vx.y.z
+	
+	\subsection{Studio di fattibilità}
+	Nella prima fase dello sviluppo del progetto, agli analisti \`e richiesto di approfondire i requisiti di ogni capitolato proposto dai committenti cos\`i da capirne l'entità e decidere se accettare o meno il contratto. Nello specifico, per ogni capitolato si vuole conoscere:
+	\begin{itemize}
+		\item il contesto di utilizzo e lo scopo del prodotto da realizzare;
+		\item le tecnologie di cui è richiesto l'utilizzo per lo svolgimento del progetto;
+		\item l'interesse ed il gradimento del gruppo verso l'obiettivo finale del capitolato.
+	\end{itemize}
+	\textbf{Prodotto dell'attività}: Studio di fattibilità vx.y.z
+	
+	\subsection{Analisi dei requisiti}
+	\textbf{TODO}
+	
+	\subsubsection{Denominazione dei requisiti}
+	Si vuole associare un identificatore univoco per ogni requisito individuato durante l'analisi dei requisiti. Si \`e deciso di utilizzare il seguente formato:
+	\begin{center}
+		R[Priorità][Tipo][Codice]
+\end{center}
+dove:
+\begin{itemize}
+\item il campo “\textbf{Priorità}” può assumere uno dei seguenti valori:
+\begin{itemize}
+	\item \textbf{O}: indica un requisito obbligatorio, irrinunciabile per il committente;
+	\item \textbf{D}: indica un requisito desiderabile ma non strettamente necessario;
+	\item \textbf{P}: indica un requisito opzionale, che potrebbe venir soddisfatto o meno senza che il prodotto risulti mancante di funzionalità essenziali.
+\end{itemize}
+\item il campo “\textbf{Tipo}” può assumere uno dei seguenti valori:
+\begin{itemize}
+	\item \textbf{F}: definisce un requisito funzionale, ovvero un requisito che indica quale deve essere la reazione del software in specifici casi (ad esempio con  un determinato input);
+	\item \textbf{Q}: definisce un requisito di qualità, ovvero un requisito votato a garantire efficienza, efficacia e qualità al prodotto;
+	\item \textbf{V}: definisce un requisito di vincolo, ovvero un requisito imposto dalla proponente del capitolato;
+	\item \textbf{R}: definisce un requisito prestazionale, ovvero un requisito relativo alle prestazioni di sistema.
+\end{itemize}
+\item il campo “\textbf{Codice}” assumerà un valore numerico intero positivo, univoco ed incrementale.
+\end{itemize}
+
+\subsubsection{Casi d'uso}
+Ad ogni caso d'uso saranno associate le seguenti informazioni:
+\begin{itemize}
+\item il codice del requisito che lo interessa UC-[Codice];
+\item un nome (univoco);
+\item le pre-condizioni e le post-condizioni relative allo specifico caso d'uso;
+\item gli attori coinvolti, sia primari che secondari;
+\item lo scenario principale che il caso d'uso vorrebbe modellare;
+\item le eventuali estensioni dello scenario principale.
+\end{itemize}
+
+\paragraph{Gerarchie dei casi d'uso} 
+\noindent \\
+ Gli identificatori numerici assegnati a casi d'uso saranno organizzati gerarchicamente come descritto di seguito. Posto UC-X codice di un caso d'uso, allora UC-X.Y è figlio di UC-X ed esiste fra i due una relazione tra quelle elencate:
+\begin{itemize}
+\item UC-X.Y descrive nel dettaglio una delle funzionalita di UC-X;
+\item UC-X.Y descrive una estensione (o scenario alternativo) dello scenario descritto in UC-X; 
+\item UC-X. Y descrive una estensione dello scenario principale di due o più figli di UC-X.
+\end{itemize}
+\newpage
+	
+	\section{Processo di Sviluppo}
+	\subsection{Progettazione}
+	L'attività di Progettazione consiste nel ricercare una soluzione che soddisfa tutti gli stakeholder. Essa avrà inizio quando obiettivi, vincoli e requisiti del prodotto finale saranno solidi e chiari. Le norme protranno subire variazioni in seguito alla successiva revisione. Spetta ai progettisti il compito di definire l'architettura logica del prodotto, dando così coerenza e consistenza al progetto. Per definirsi una buona architettura dovrà rispettare le seguenti proprietà:
+	\begin{itemize}
+		\item Capacità di \textbf{soddisfare i requisti} definiti nel documento Analisi dei Requisiti. L'architettura dovrà anche essere in grado di adattarsi facilmente e permettere modifiche a costo contenuto nel caso in cui i requisiti dovessero variare in corso d'opera;
+		\item Di facile \textbf{comprensibilità}, dagli stakeholders, al responsabile, ai verificatori;
+		\item Organizzata e \textbf{suddivisa in moduli} di complessità trattabile, così da rendere la codifica di ogni parte eseguibile da un singolo individuo;
+		\item \textbf{Rispettare l'information hiding} fornendo dove possibile interfacce per l'utilizzo del modulo implementato nascondendo i dettagli implementativi;
+		\item \textbf{Basso accoppiamento}, le distinte parti hanno una scarsa dipendenza una dalle altre, limitano i cambiamenti esterni causati da modifiche interne;
+		\item \textbf{Robustezza}, l'architettura deve tener conto delle situazioni anomale che possono essere causate dall'utente o dall'ambiente utilizzato;
+		\item \textbf{Affidabilità}, quando svolge un compito, questo deve essere svolto efficientemente;
+		\item \textbf{Sicurezza}, in caso di malfunzionamenti o di intrusioni esterne i dati e le funzioni non devono essere vulnerabili.
+	\end{itemize}	
+	\subsubsection{Diagrammi UML} Saranno implementati, secondo lo standard UML 2.0, i diagrammi per rendere chiare le scelte progettuali adottate. Saranno forniti:
+	\begin{itemize}
+		\item Diagrammi delle classi;
+		\item Diagrammi di sequenza;
+		\item Diagrammi di attività;
+		\item Diagrammi di package.
+	\end{itemize}
+	\subsubsection{Design Patterns} Compito dei progettisti è adottare le opportune soluzioni progettuali a problemi ricorrenti, consentendo ai programmatori una certa libertà d'uso. I vantaggi di tali soluzioni dovranno essere motivati spiegandone la struttura e il funzionamento.
+	
+	\subsection{Codifica}
+	L'attività di codifica inizierà quando la progettazione sarà terminata. Pertanto
+	le norme sottostanti potranno subire variazioni in seguito alla successiva revisione.
+	\subsubsection{Ambiente di codifica}
+	Da definire.
+	
+	\subsubsection{Convenzioni di codifica}
+	Da definire.
 	
 	\newpage
 	\section{Processi di Supporto}
@@ -60,7 +205,17 @@
 	\subsubsection{Implementazione}
 	
 	\paragraph{Template}
-	
+	\noindent \\ 
+	Si è voluto creare un file template.tex, con l'obbiettivo di uniformare l'impaginazione dei documenti. 
+	Nello specifico:
+	\begin{itemize}
+		\item{creazione della prima pagina e relative informazioni sul documento;}
+		\item{implementazione del Registro delle modifiche;}
+		\item{formazione dell'indice;}
+		\item {codifica dell'intestazione e del piè di pagina}
+		
+	\end{itemize}
+
 	\paragraph{Ciclo di vita}
 		\noindent \\Tutti i documenti si troveranno in tre diverse fasi:
 	\begin{enumerate}
@@ -124,7 +279,6 @@
 	\item Pagina corrente a destra
 	\end{itemize}
 \end{itemize}
-	\newpage
 	
 	\subsubsection{Design}
 	

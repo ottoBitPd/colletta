@@ -1,0 +1,582 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{color,colortbl}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage{tabularx}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=3cm]{geometry}
+\usepackage{enumerate}
+\usepackage{lastpage}
+
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\includegraphics[scale=0.08]{images/logo.png}}
+
+\renewcommand {\footrulewidth}{0.2mm}
+\lfoot {Norme di Progetto}
+\rfoot{Pagina \thepage\ di \pageref{LastPage}}
+
+\definecolor{LightBlue}{rgb}{0,0,0.5}
+\definecolor{Gray}{gray}{0.8}
+\definecolor{LightGray}{gray}{0.9}
+
+
+
+
+\usepackage{lipsum}
+\usepackage{verbatim}
+
+%----------------------------- Copia da QUI ------------------------------------
+
+
+\setcounter{tocdepth}{4}
+\setcounter{secnumdepth}{4}
+%-------------VERIFICA--16/12---------------------------------------------------
+\begin{comment}
+- Indicatore numero pagine a piè di pagina non corretto
+- Indice non presente
+- Gulpease misurato= 67 -> accettabile ma se possibile migliorarlo
+- La sezione “scopo del documento” dice che questo documento serve a formalizzare uno standard per i documenti. Aggiungere che formalizza anche altre cose dato che dopo  nelle sezioni successive si parla anche di codifica e quindi di cose che non centrano con la documentazione
+- Compilare il diario delle modifiche
+- Sezione 2.1 incompleta.. l’ultima frase non è stata conclusa
+- Sezione 4.1.3.5 Più che titolo Una figura dovrebbe avere una  didascalia sotto con scritto: Figura x e una breve descrizione
+- 4.2.4.1 Aggiungere correttore texmaker
+- 5.1.4 Lo studio di fattibilità viene redatto dall’analista non dal progettista.
+- Nella prima parte ci sono delle parentesi ogni tanto dove chi l’ha scritta aveva una dubbio su quale termine usare…risolvere i dubbi
+
+\end{comment}
+
+
+\begin{document}
+	\input{frontpage/frontpage.tex}
+
+	
+	\newpage
+	\section*{\centering Registro delle modifiche}
+	\begin{tabularx}{\textwidth}{ c | c | c | c | X }
+		\rowcolor{LightBlue}
+		\color{white}\bfseries Versione & \color{white}\bfseries Data & \color{white}\bfseries Autore & \color{white}\bfseries Ruolo & \multicolumn{1}{c}{\color{white}\bfseries Descrizione}\\[0.25cm]
+0.0.1 & 05/12/2018 & Giovanni Bergo Gianmarco Pettenuzzo & Redattore & Stesura sezione 2 \\ \hline
+0.0.1 & 05/12/2018 & Michele Bortone & Verificatore & Verifica documento 
+
+	
+		
+	
+	\end{tabularx}
+
+	\newpage	
+
+	\renewcommand  \contentsname {\Large Indice} 
+	
+	\tableofcontents
+	\newpage
+	
+	\section{Introduzione}
+	\subsection{Scopo del documento}
+	Lo scopo di questo documento è formalizzare uno standard per la stesura dei documenti durante tutto il percorso di sviluppo del progetto didattico. Ogni componente del gruppo è tenuto a farne riferimento così da poter ottenere dei documenti omogenei tra loro e, di conseguenza, più facili da verificare. 
+	Tutte le regole qui descritte sono state elaborate dall'intero gruppo, il quale deve approvare eventuali modifiche, aggiunte o rimozioni. 
+	\subsection{Scopo del prodotto}
+	Lo scopo del prodotto è creare una piattaforma collaborativa di raccolta dati su cui sia possibile predisporre e/o svolgere esercizi di analisi grammaticale. La raccolta vorrebbe avere il fine di fornire a sviluppatori e ricercatori dati sufficienti per applicare metodi di apprendimento automatico. Nello specifico si vorrebbe poter insegnare ad un elaboratore a svolgere gli stessi esercizi proposti agli utenti, divenendo una sorta di correttore automatico.  
+	Le componenti principali del prodotto saranno quindi:
+	\begin{itemize}
+		\item un' interfaccia web, su cui verranno predisposti e svolti gli esercizi;
+		\item un servizio esistente di database;
+		\item il servizio esistente open-source per il pos-tagging.
+	\end{itemize}
+	
+	\subsection{Riferimenti}
+	Segue l'elenco dei riferimenti utilizzati dal gruppo:
+	\subsubsection{Riferimenti normativi}
+	\begin{itemize}
+		\item ISO/IEC 12207 \\
+		\url https://it.wikipedia.org/wiki/ISO\_12207
+		\item ISO/IEC 15504 \\
+		\url https://en.wikipedia.org/wiki/ISO/IEC\_15504
+		\item ISO/IEC 9126 \\
+		\url https://it.wikipedia.org/wiki/ISO/IEC\_9126
+	\end{itemize}	
+	
+	\subsubsection{Riferimenti informativi}
+	\begin{itemize}
+		\item Slide del corso "Ingegneria del software" - Processi di sviluppo, ciclo di vita \\
+		\url https://www.math.unipd.it/~tullio/IS-1/2018/Dispense/L03.pdf
+		\url https://www.math.unipd.it/~tullio/IS-1/2018/Dispense/L05.pdf
+		\item Capitolato 2 \\
+		\url https://www.math.unipd.it/~tullio/IS-1/2018/Progetto/C2.pdf
+		\item Wikipedia/GitLab \\
+		\url https://it.wikipedia.org/wiki/GitLab
+	\end{itemize}					
+	\newpage
+	
+	\section{Processi primari}
+	\subsection{Ricerca sulle tecnologie} 
+	Questa fase consiste nella ricerca di informazioni su software, librerie e tutte le tecnologie che sono state ritenute utili per una o più fasi di sviluppo del progetto. Le tecnologie analizzate  sono quelle suggerite dalla proponente e quelle ritenute utili sulla base delle esperienze personali dei membri del gruppo. La scelta delle tecnologie adeguate 
+	
+	
+	\subsection{Normazione}
+	Uno dei compiti dell'amministratore di progetto, è quello di stilare la lista delle regole che tutti i componenti del gruppo dovranno seguire nella stesura dei documenti e nello svolgimento delle attività assegnate a ciascuno. Con l'avanzamento dello sviluppo del progetto (meglio prodotto?) tali regole potrebbero subire delle variazioni e/o delle aggiunte poiché, durante lo sviluppo stesso, si potranno acquisire nuove conoscenze o incontrare difficoltà tali da portare alla rielaborazione delle succitate regole. Si potrebbe anche decidere di utilizzare uno strumento diverso da quelli preventivati e, anche per questo, andranno stabilite regole specifiche.\\
+	\textbf{Prodotto dell'attività}: Norme di progetto vx.y.z
+	
+	\subsection{Studio di fattibilità}
+	Nella prima fase dello sviluppo del progetto, agli analisti \`e richiesto di approfondire i requisiti di ogni capitolato proposto dai committenti cos\`i da capirne l'entità e decidere se accettare o meno il contratto. Nello specifico, per ogni capitolato si vuole conoscere:
+	\begin{itemize}
+		\item il contesto di utilizzo e lo scopo del prodotto da realizzare;
+		\item le tecnologie di cui è richiesto l'utilizzo per lo svolgimento del progetto;
+		\item l'interesse ed il gradimento del gruppo verso l'obiettivo finale del capitolato.
+	\end{itemize}
+	\textbf{Prodotto dell'attività}: Studio di fattibilità vx.y.z
+	
+	\subsection{Analisi dei requisiti}
+	\textbf{TODO}
+	
+	\subsubsection{Denominazione dei requisiti}
+	Si vuole associare un identificatore univoco per ogni requisito individuato durante l'analisi dei requisiti. Si \`e deciso di utilizzare il seguente formato:
+	\begin{center}
+		R[Priorità][Tipo][Codice]
+\end{center}
+dove:
+\begin{itemize}
+\item il campo “\textbf{Priorità}” può assumere uno dei seguenti valori:
+\begin{itemize}
+	\item \textbf{O}: indica un requisito obbligatorio, irrinunciabile per il committente;
+	\item \textbf{D}: indica un requisito desiderabile ma non strettamente necessario;
+	\item \textbf{P}: indica un requisito opzionale, che potrebbe venir soddisfatto o meno senza che il prodotto risulti mancante di funzionalità essenziali.
+\end{itemize}
+\item il campo “\textbf{Tipo}” può assumere uno dei seguenti valori:
+\begin{itemize}
+	\item \textbf{F}: definisce un requisito funzionale, ovvero un requisito che indica quale deve essere la reazione del software in specifici casi (ad esempio con  un determinato input);
+	\item \textbf{Q}: definisce un requisito di qualità, ovvero un requisito votato a garantire efficienza, efficacia e qualità al prodotto;
+	\item \textbf{V}: definisce un requisito di vincolo, ovvero un requisito imposto dalla proponente del capitolato;
+	\item \textbf{R}: definisce un requisito prestazionale, ovvero un requisito relativo alle prestazioni di sistema.
+\end{itemize}
+\item il campo “\textbf{Codice}” assumerà un valore numerico intero positivo, univoco ed incrementale.
+\end{itemize}
+
+\subsubsection{Casi d'uso}
+Ad ogni caso d'uso saranno associate le seguenti informazioni:
+\begin{itemize}
+\item il codice del requisito che lo interessa UC-[Codice];
+\item un nome (univoco);
+\item le pre-condizioni e le post-condizioni relative allo specifico caso d'uso;
+\item gli attori coinvolti, sia primari che secondari;
+\item lo scenario principale che il caso d'uso vorrebbe modellare;
+\item le eventuali estensioni dello scenario principale.
+\end{itemize}
+
+\paragraph{Gerarchie dei casi d'uso} 
+\noindent \\
+ Gli identificatori numerici assegnati a casi d'uso saranno organizzati gerarchicamente come descritto di seguito. Posto UC-X codice di un caso d'uso, allora UC-X.Y è figlio di UC-X ed esiste fra i due una relazione tra quelle elencate:
+\begin{itemize}
+\item UC-X.Y descrive nel dettaglio una delle funzionalita di UC-X;
+\item UC-X.Y descrive una estensione (o scenario alternativo) dello scenario descritto in UC-X; 
+\item UC-X.Y descrive una estensione dello scenario principale di due o più figli di UC-X.
+\end{itemize}
+\newpage
+	
+	\section{Processo di Sviluppo}
+	\subsection{Progettazione}
+	L'attività di Progettazione consiste nel ricercare una soluzione che soddisfi tutti gli stakeholder. Essa avrà inizio quando obiettivi, vincoli e requisiti del prodotto finale saranno solidi e chiari. Le norme protranno subire variazioni in seguito alla successiva revisione. Spetta ai progettisti il compito di definire l'architettura logica del prodotto, dando così coerenza e consistenza al progetto. Per definirsi una buona architettura dovrà rispettare le seguenti proprietà:
+	\begin{itemize}
+		\item Capacità di \textbf{soddisfare i requisti} definiti nel documento Analisi dei Requisiti. L'architettura dovrà anche essere in grado di adattarsi facilmente e permettere modifiche a costo contenuto nel caso in cui i requisiti dovessero variare in corso d'opera;
+		\item Di facile \textbf{comprensibilità}, dagli stakeholders, al responsabile, ai verificatori;
+		\item Organizzata e \textbf{suddivisa in moduli} di complessità trattabile, così da rendere la codifica di ogni parte eseguibile da un singolo individuo;
+		\item \textbf{Rispettare l'information hiding} fornendo dove possibile interfacce per l'utilizzo del modulo implementato nascondendo i dettagli implementativi;
+		\item \textbf{Basso accoppiamento}, le distinte parti hanno una scarsa dipendenza una dalle altre, limitano i cambiamenti esterni causati da modifiche interne;
+		\item \textbf{Robustezza}, l'architettura deve tener conto delle situazioni anomale che possono essere causate dall'utente o dall'ambiente utilizzato;
+		\item \textbf{Affidabilità}, quando svolge un compito, questo deve essere svolto efficientemente;
+		\item \textbf{Sicurezza}, in caso di malfunzionamenti o di intrusioni esterne i dati e le funzioni non devono essere vulnerabili.
+	\end{itemize}	
+	\subsubsection{Diagrammi UML} Saranno implementati, secondo lo standard UML 2.0, i diagrammi per rendere chiare le scelte progettuali adottate. Saranno forniti:
+	\begin{itemize}
+		\item Diagrammi delle classi;
+		\item Diagrammi di sequenza;
+		\item Diagrammi di attività;
+		\item Diagrammi di package.
+	\end{itemize}
+	\subsubsection{Design Patterns} Compito dei progettisti è adottare le opportune soluzioni progettuali a problemi ricorrenti, consentendo ai programmatori una certa libertà d'uso. I vantaggi di tali soluzioni dovranno essere motivati spiegandone la struttura e il funzionamento.
+	
+	\subsection{Codifica}
+	L'attività di codifica inizierà quando la progettazione sarà terminata. Pertanto
+	le norme sottostanti potranno subire variazioni in seguito alla successiva revisione.
+	\subsubsection{Ambiente di codifica}
+	Da definire.
+	
+	\subsubsection{Convenzioni di codifica}
+	Da definire.
+	
+	\newpage
+	\section{Processi di Supporto}
+	
+	\subsection{Documentazione}\label{c}
+	In questa sezione esamineremo dettagliatamente i processi utilizzati per stesura, verifica e mantenimento di tutta la documentazione prodotta dal gruppo Ottobit.
+	Lo scopo è quello di fornire una descrizione accurata di tutte le norme, convenzioni e vincoli rispettati per ottenere documentazione efficace, coerente e formale.
+	\subsubsection{Implementazione}
+	
+	\paragraph{Template}
+	\noindent \\ 
+	Si è voluto creare un file template.tex, con l'obbiettivo di uniformare l'impaginazione dei documenti. 
+	Nello specifico:
+	\begin{itemize}
+		\item{creazione della prima pagina e relative informazioni sul documento;}
+		\item{implementazione del Registro delle modifiche;}
+		\item{formazione dell'indice;}
+		\item {codifica dell'intestazione e del piè di pagina.}
+		
+	\end{itemize}
+
+	\paragraph{Ciclo di vita}
+		\noindent \\Tutti i documenti si troveranno in tre diverse fasi:
+	\begin{enumerate}
+	\item \textbf{Elaborazione:} in questa fase il documento viene creato e modificato dai Redattori, aggiornando ogni volta la versione del documento. 
+	\item \textbf{Verifica:} una volta terminato il lavoro di elaborazione, il documento verrà assegnato ai Verificatori che procederanno al controllo di correttezza. Se il documento sarà valutato non corretto, verrà riassegnato ai Redattori.
+	\item \textbf{Approvazione:} una volta che il documento sarà giudicato corretto nella fase di verifica, sarà assegnato al Responsabile di Progetto che procederà l'approvazione e il rilascio del documento.
+	\end{enumerate}
+	
+	\subsubsection{Struttura}
+	
+	\paragraph{Frontespizio} 
+	\noindent \\La prima pagina di ogni documento dovrà seguire questa struttura:
+	\begin{itemize}
+	\item \textbf{Logo}
+	\item \textbf{Nome Documento}
+	\item \textbf{Nome Progetto - Gruppo}
+	\item \textbf{Informazioni sul documento} composto da:
+	\begin{itemize}
+		\item  Versione del documento 
+		\item Nome Redattore/i
+		\item Nome Verificatore
+		\item  Nome Responsabile
+		\item  Uso
+		\item Destinatari
+	\end{itemize}
+	\end{itemize}
+
+	\paragraph{Registro delle modifiche}
+	 	\noindent \\
+	 	Nella pagina seguente alla prima deve essere presente una tabella riassuntiva della cronologia delle versioni del documento, fatta eccezione per i verbali. Nella tabella, ad ogni modifica, devono essere presenti le seguenti informazioni:
+	
+	\begin{itemize}
+	    \item \textbf{Numero Versione}
+		\item \textbf{Data modifica}
+		\item \textbf{Autore della modifica}
+		\item \textbf{Ruolo Autore}
+		\item \textbf{Breve descrizione}
+	\end{itemize}
+	
+	\paragraph{Indice}
+	\noindent \\L'indice del documento inizia nelle pagine successive a quelle del Registro delle modifiche, ogni sezione e sottosezione sarà etichettata con un numero progressivo a partire dal numero 1, e permetterà il collegamento ipertestuale direttamente alla pagina corrispondente. Inoltre saranno presenti altri due elenchi:
+	
+	\begin{itemize}
+	\item \textbf{Tabella:} elenco delle eventuali tabelle presenti presenti nel documento, escluse il Registro delle modifiche;
+	\item  \textbf{Immagini:} elenco delle eventuali immagini presenti nel documento. 
+	\end{itemize}
+	
+	\paragraph{Contenuto}
+	\noindent \\ 
+	Il resto del documento sarà dedicato al contenuto del documento stesso, ogni pagina seguente avrà la seguente codifica:
+	\begin{itemize}
+		\item \textbf{Intestazione}
+		\begin{itemize}
+			\item Logo del gruppo a sinistra;
+			\item Sezione corrente a destra
+		\end{itemize}
+	
+	\item \textbf{Piè di pagina} 
+	\begin{itemize}
+	\item Nome del documento a sinistra;
+	\item Pagina corrente a destra
+	\end{itemize}
+\end{itemize}
+	
+	\subsubsection{Design}
+	
+	\paragraph{Stile del testo}
+	
+	\noindent   
+	\begin{itemize}
+		\item \textbf{Grassetto:} va utilizzato nei titoli, elenchi puntati ed intestazione tabelle;
+		\item \textbf{Corsivo:} riferimenti a documenti interni o esterni;
+		\item \textbf{Citazioni:} scritte in corsivo, numerate riferite a piè di pagina (esempio: \textit{"citazione"} \textsuperscript{n} );
+		\item \textbf{Collegamenti:} scritti in blu e sottolineati;
+		\item \textbf{Maiuscolo:} utilizzato per acronimi;
+		\item \textbf{Codici:} struttura \LaTeX\ (package Listings) con carattere Teletype;
+		\item \textbf{Ruoli di progetto:} la prima lettera maiuscola;
+		\item \textbf{Nomi propri:} ogni nome proprio di persona deve essere scritto nella forma Nome Cognome;
+		\item \textbf{Nomi dei documenti:} la prima lettera maiuscola;
+		\item \textbf{Riferimenti a sezioni:} i riferimenti interni al documento devono riportare il numero della sezione, preceduto dal simbolo di paragrafo (esempio: \S\ \hyperref[c]{3.1.1} ).
+		
+	\end{itemize}
+
+
+	\paragraph{Elenchi}
+	\begin{itemize}
+	\item \textbf{Elenchi puntati:} Gli elementi vengono rappresentati da un pallino nel primo livello, un trattino nel secondo livello, e un asterisco nel terzo livello; 
+	\item \textbf{Elenchi numerati:} Gli elementi vengono numerati partendo dal numero 1.
+	\end{itemize}
+
+	\paragraph{Formati comuni}
+	\noindent \\ 
+	Orari e date varranno rappresentate secondo quanto definito dallo standard ISO 8601. 
+
+	\begin{itemize}
+	\item \textbf{Orario:} 
+	\begin{center}
+		HH:MM
+	\end{center}
+	\begin{itemize}
+		\item \textbf{HH:} rappresenta le ore da 00 a 23;
+		\item \textbf{MM:} rappresenta i minuti da 00 a 59.
+	\end{itemize} 
+
+	\item \textbf{Date:}
+	\begin{center}
+		AAAA-MM-GG
+	\end{center}
+	\begin{itemize}
+	\item \textbf{AAAA:} rappresenta l'anno;
+	\item \textbf{MM:} rappresenta il mese da 01 a 12;
+	\item \textbf{GG:} rappresenta il giorno da 01 a 31.
+	\end{itemize}
+
+	\end{itemize}
+	
+	\paragraph{Tabelle}	
+\noindent \\		
+	Ogni tabella dovrà essere rappresentata:
+	\begin{itemize}
+	\item \textbf{Numero:} indice progressivo a partire da 1 che individui la tabella univocamente;
+	\item \textbf{Titolo:} breve descrizione che riassuma il contenuto della tabella.
+	\end{itemize}
+L'intestazione delle tabelle sarà scritta in grassetto. La colorazione rispetterà i colori del logo e pone attenzione ai contrasti in lettura.
+
+	
+	
+	\paragraph{Figure}
+\noindent \\	
+	Ogni figura dovrà essere rappresentata:
+	\begin{itemize}
+		\item \textbf{Numero:} indice progressivo a partire da 1 che individui la figura univocamente;
+		\item \textbf{Titolo:} breve descrizione che riassuma il contenuto della figura.
+	\end{itemize}
+	
+	\subsubsection{Suddivisione dei documenti}
+	\paragraph{Documenti formali}
+	\noindent \\ Un documento è definito formale dopo l’approvazione da parte del Responsabile di Progetto e quindi deve aver superato con esito positivo la fase di verifica. Questi documenti sono destinati alla distribuzione esterna al gruppo.
+	
+	\paragraph{Documenti informali}
+	\noindent \\ Tutti i documenti sono da considerarsi informali finché non vengono approvati dal Responsabile di Progetto. L’utilizzo di tali documenti è da considerarsi interno e quindi esclusivo del team.
+	
+	\paragraph{Verbali}
+	\noindent \\ I verbali sono documenti redatti in occasione di incontri interni al gruppo o con enti esterni. Ogni verbale contiene:
+	
+	\begin{itemize}
+	\item \textbf{Informazione sulla riunione:} specificano il luogo, la data, l'ora dell’incontro, tutti i partecipanti e il Segretario;
+	\item \textbf{Ordine del giorno:} sono riportati i punti relativi all’ordine del giorno;
+	\item \textbf{Resoconto:} descrizione di quanto discusso durante l'incontro del team.
+	\end{itemize}
+	
+	\paragraph{Glossario}
+\noindent \\ Documento unico ad uso esterno, consiste di un elenco di definizioni, in ordine lessicografico, di tutte le parole che possono creare ambiguità o necessitanti descrizione precisa. Tutti i termini presenti nel glossario sono marcati con un "*" ogni prima volta che compaiono in un documento (esempio: Glossario*).
+
+	\subsubsection{Strumenti}
+	
+	\paragraph{\LaTeX}
+	\noindent \\ Per la produzione della documentazione si è fatto uso del formato \LaTeX\ perché permette un migliore stile di codifica.\\
+	Per la produzione di codice \LaTeX\ è stato utilizzato TexStudio o TexMaker.
+	
+	\subsubsection{Mantenimento}
+	
+	\paragraph{Versionamento}
+\noindent \\ Ogni documento o componente del codice , eccetto i verbali, soggetto a versionamento è versionata tramite lo strumento GitLab, ed organizzata mediante la metodologia GitFlow.\\
+La definizione di una versione avviene seguendo questa forma:
+\begin{center}
+	X . Y . Z
+\end{center}
+
+\begin{itemize}
+	\item \textbf{X:} numero di approvazioni al documento;
+	\item \textbf{Y:} numero di verifiche al documento. Si azzera ad ogni incremento di X;
+	\item \textbf{Z:} numero di modifiche al documento. Si azzera ad ogni incremento di Y o X;
+\end{itemize}
+
+\paragraph{Nomenclatura}
+
+\begin{itemize}
+\item \textbf{Verbali:} I verbali dovranno rispettare la seguente norma di nomenclatura per una facile individuazione e riferimento:
+\begin{center}
+	Verbale-X
+\end{center}
+
+\begin{itemize}
+	\item X rappresenta la data del verbale.
+\end{itemize}
+
+\item \textbf{Altri documenti:} La denominazione di ciascun documento seguirà la seguente codifica:
+\begin{center}
+	NomeDocumento\_vX.Y.Z
+\end{center}
+
+\begin{itemize}
+	\item vX.Y.Z rappresenta la versione del documento secondo le regole enunciate precedentemente.
+\end{itemize}
+
+\end{itemize}
+
+\newpage
+
+\subsection{Verifica}
+
+\subsubsection{Scopo}
+Il processo di verifica è finalizzato al controllo di eventuali errori presenti nella fase di elaborazione, per garantire una sviluppo efficace ed efficiente.
+
+\subsubsection{Descrizione}
+Il processo si divide nei seguenti momenti:
+\begin{itemize}
+	\item  \textbf{Controllo:} attraverso questa fase si ottiene un'analisi approfondita del codice sorgente e della sua corretta esecuzione. Si suddivide in:
+	\begin{itemize}
+	\item Analisi statica: è un metodo in grado di rilevare problemi all'interno dei documenti e del codice sorgente. Permette due diverse tecniche:
+	\begin{itemize}
+	\item  Walkthrough: è una tecnica che permette di fare verifica senza richiedere esecuzione (ad esempio i documenti non hanno bisogno di eseguire test, diversamente da programmi). È una tecnica molto costosa che esegue una lettura approfondita;
+	\item Ispection: è una tecnica che permette di fare verifica come Walkthrough, ma esegue una lettura mirata e meno costosa.
+	\end{itemize}
+	\item Analisi dinamica: è un processo che prevede l'analisi del software attraverso l'esecuzione di alcuni test. Per ottenere tale risultato è necessario che per ogni test vengano rispettati i seguenti riferimenti:
+	\begin{itemize}
+		\item Ambiente:  si tratta dei sistemi hardware e software utilizzati nel corso del test;
+		\item Stato iniziale: lo stato di partenza del prodotto al momento del test;
+		\item Input: l’input inserito;
+		\item Output: l’output atteso;
+		\item Avvisi: un eventuale insieme di istruzioni riguardanti l’esecuzione del test e i suoi risultati.
+	\end{itemize}
+		
+\end{itemize}
+
+	\item  \textbf{Test:} in questa fase vengono definiti i test eseguiti sul software:
+	\begin{itemize}
+		\item Test di unità: verifica dell'aggregato di codice più piccolo scritto dal programmatore;
+		\item Test di integrazione: l'unità appena testata viene confrontata con un'unità già funzionante, in modo da ottenere una porzione di codice corretta sempre più ampia;
+		\item Test di sistema: una volta completato il prodotto si verifica che tutti i requisiti siano stati soddisfatti;
+		\item Test di regressione: in seguito ad un cambiamento si devono eseguire nuovamente tutti i test precedenti, in modo da verificare la validità delle modifiche effettuate;
+		\item Test di accettazione: una volta verificato il software creato viene svolto il collaudo con il richiedente; se superato, il prodotto verrà approvato e rilasciato.
+	\end{itemize}
+\end{itemize}
+
+\subsubsection{Metriche}
+\paragraph{Gulpease}
+\noindent \\ 
+L'indice Gulpease è un indice di leggibilità di un testo tarato sulla lingua italiana. Rispetto ad altri ha il vantaggio di utilizzare la lunghezza delle parole in lettere anziché in sillabe, semplificandone il calcolo automatico. Permette di misurare la complessità dello stile di un documento. L'indice di Gulpease considera due variabili linguistiche: la lunghezza della parola e la lunghezza della frase rispetto al numero delle lettere. La formula per il suo calcolo è:
+\begin{center}
+	$89\ +\ \frac{300\ *\ (numero\ delle\ frasi)\ -\ 10\ *\ (numero\ delle\ lettere)}{numero\ delle\ parole}$
+\end{center}
+I risultati sono compresi tra 0 e 100, dove il valore 100 indica la leggibilità più alta e 0 la leggibilità più bassa. Il verificatore si assicurerà che l'indice risultante sarà compreso tra 50 e 100.
+
+
+\subsubsection{Strumenti}
+\paragraph{Verifica ortografica}
+\noindent \\
+La verifica ortografica è effettuata tramite TexStudio, attraverso il quale gli errori ortografici vengono sottolineati in rosso, permettendo un controllo rapido ed efficiente.
+
+
+\newpage
+\section{Processi organizzativi}
+
+\subsection{Gestione di Progetto}
+La gestione di un progetto è effettuata dal Responsabile di Progetto e i temi trattati sono:
+\begin{itemize}
+\item \textbf{Gestione qualità;}
+\item \textbf{Pianificazione di progetto;}
+\item \textbf{Allocazione delle risorse;}
+\item \textbf{Stima dei costi di progetto.}
+\end{itemize}
+
+\subsubsection{Descrizione \textit{Piano di Progetto}}
+
+Gli obbiettivi del \textit{Piano di Progetto} sono:
+
+\begin{enumerate}
+\item Organizzare le attività con efficienza per risultati efficaci;
+\item Facilitare la misurazione dell'avanzamento fissando milestone nel tempo.
+\end{enumerate}
+
+La struttura generale del \textit{Piano di Progetto} è la seguente:
+\begin{itemize}
+\item \textbf{Introduzione;}
+\item \textbf{Analisi dei rischi;}
+\item \textbf{Modello di sviluppo;}
+\item \textbf{Pianificazione;}
+\item \textbf{Preventivo;}
+\item \textbf{Consuntivo e preventivo a finire;}
+\item \textbf{Organigramma.}
+\end{itemize}
+
+\subsubsection{Procedure}
+
+L’organizzazione della pianificazione avviene tramite questa procedura.
+
+\begin{enumerate}
+	\item \textbf{Scelte modello di sviluppo:} descrivono come i processi si relazionino rispetto agli stati di ciclo di vita. Un particolare modello aiuta a pianificare, organizzare, eseguire e controllare lo svolgimento delle attività necessarie al ciclo di vita. È dunque uno strumento organizzativo di supporto;
+	\item \textbf{Identificazione delle attività:} è opportuno organizzare le attività sulla base dei requisiti da soddisfare;
+	\item \textbf{Pianificazione delle attività:} le attività devono essere pianificate affinché vengano minimizzate sia la probabilità di incidenza dei rischi che l'impatto che essi comportano;
+	\item \textbf{Individuazione dei rischi e loro analisi:} si considerano tutti i possibili rischi che possono sorgere a causa di fattori interni e fattori esterni. Ad ognuno si deve associare una probabilità di incidenza ed una stima di influenza sulla corretta esecuzione del processo;
+	\item \textbf{Preventivo e stima dei costi:} si esegue una stima delle risorse da assegnare a ciascuna attività, assegnando a ciascuna di esse un valore secondo la quantità di lavoro necessaria per portarla a termine.
+\end{enumerate}
+
+\subsubsection{Analisi dei rischi}
+
+Il Responsabile di Progetto ha il compito di rilevare i rischi indicati nel \textit{Piano di Progetto}. Nel caso ne vengano individuati di nuovi, dovrà aggiungerli nell'analisi dei rischi. La procedura da seguire nella gestione dei rischi è la seguente:
+\begin{itemize}
+	\item individuare problemi non calcolati e monitorare rischi già rilevati;
+	\item registrare riscontri previsti e aggiungere nuovi rischi individuati nel \textit{Piano di Progetto};
+	\item ridefinire, se necessario, le strategie di progetto.
+\end{itemize}
+
+
+
+\noindent \\
+ Ogni rischio viene classificato e viene associato a un codice. Tale codice è così composto:
+\begin{center}
+	\textbf{[Tipo][ID]}
+\end{center}
+dove [Tipo] è una lettera e [ID] un numero identificativo.\\
+
+\paragraph{Tipi di rischio} 
+\noindent \\
+ Esamineremo quattro principali tipologie di rischi:
+
+\begin{itemize}
+	\item Rischi correlati al gruppo OttoBit, a cui viene associata la lettera \textbf{G}
+	\item Rischi correlati alle tecnologie e ai mezzi tecnologici, a cui viene associata la lettera \textbf{T}
+	\item Rischi correlati all'organizzazione del lavoro, a cui viene associata la lettera \textbf{O}
+	\item Rischi correlati ai requisiti, a cui viene associata la lettera \textbf{R}
+\end{itemize}
+
+\subsubsection{Ruoli di Progetto}
+
+\begin{itemize}
+\item \textbf{Analista:} conosce il dominio del problema, si occupa di capire il problema, definendo e derivando requisiti espliciti ed impliciti;
+\item \textbf{Progettista:} effettua lo \textit{studio di fattibilità} del prodotto, costruisce l’architettura con ottica di efficienza ed efficacia a partire dal lavoro dell’analista;
+\item \textbf{Programmatore:} implementa sulle specifiche fornite dal progettista, operando con ottica di manutenibilità del codice;
+\item \textbf{Verificatore:} Presente durante tutta l’attività del progetto, si occupa di valutare mediante comparazione di metriche a soglie di accettabilità la conformità dei prodotti i requisiti funzionali e di qualità;
+\item \textbf{Responsabile:} gestisce le risorse umane, i rischi, l pianificazione, il controllo, il coordinamento e le relazioni esterne, rappresentando il progetto presso il committente;
+\item \textbf{Amministratore:} ruolo di supporto, fornisce gli strumenti necessari l processo di sviluppo, le infrastrutture di supporto, il versionamento e le configurazioni del codice e della documentazione. Risolve problemi legati ll gestione dei processi.
+\end{itemize}
+\newpage
+
+\subsection{Strumenti}
+
+\subsubsection{Slack}
+Slack è uno strumento di collaborazione che permette la comunicazione in tempo reale tra i membri di uno stesso team di lavoro. Mette a disposizione di quest’ultimo uno spazio di lavoro (workspace), dov'è possibile comunicare organizzando conversazioni attraverso diversi canali tematici differenti, definibili dal gruppo stesso.
+Slack inoltre fornisce la possibilità di associare applicazioni al workspace.
+
+\subsubsection{GitLab}
+È un software di controllo versione in cui gli sviluppatori possono caricare il proprio codice e gestire le modifiche alle varie versioni in contemporanea al lavoro di più persone. In GitLab è possibile lavorare parallelamente con altre persone sullo stesso progetto senza generare conflitti, caricare il proprio lavoro nel repository remoto (operazione di push) e poter unire alla fine le modifiche di tutti in un unico progetto (operazione di merge). È possibile fare delle merge request per il proprietario del repository, oltre al tracciamento degli issue, la possibilità di scrivere commenti e allegare documenti.
+
+
+\end{document}

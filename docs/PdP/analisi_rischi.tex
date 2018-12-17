@@ -1,4 +1,5 @@
 La seguente analisi dei rischi ha lo scopo di identificarli, indicare il loro grado di rischio, indicare i modi di rilevamento e un piano per il loro contenimento.
+%forse metterei un \\ dopo Classificazione e dopo Tipi di rischio
 \paragraph{Classificazione} Ogni rischio viene classificato e viene associato a un codice. Tale codice è così composto:
 	\begin{center}
 		\textbf{[Tipo][ID]}
@@ -28,7 +29,7 @@ I seguenti rischi sono stati ordinati in base al loro grado in ordine decrescent
 & & & Pericolo: alto\\[1cm]
 		\rowcolor{LightGray}
 		\multirow{1}{2.5cm}{Piano di contenimento:}
-		&	\multicolumn{3}{p{12.5cm}}{I compiti e le attività con difficoltà maggiore saranno assegnati o a più membri o a quelli più esperienti}\\[0.5cm]
+		&	\multicolumn{3}{p{12.5cm}}{I compiti e le attività con difficoltà maggiore saranno assegnati o a più membri o a quelli più esperti}\\[0.5cm]
 		
 		\hline
 		\multirow{2}{2.5cm}{O01\\Superamento dei costi} 
@@ -43,7 +44,8 @@ I seguenti rischi sono stati ordinati in base al loro grado in ordine decrescent
 		\hline
 		\multirow{2}{2.5cm}{R01\\ Mancata comprensione dei requisiti} 
 		& \multirow{2}{5cm}{I requisiti potrebbero essere male interpretati, causando la creazione di un prodotto non soddisfacente per la proponente} 
-		&  \multirow{2}{4.5cm}{Bisognerà collaborare il più possibile con la proponente al fine di chiarire il più possibile i requisiti da concordare} &
+		&  \multirow{2}{4.5cm}{%Ho levato "il più possibile" per ripetizione Giovanni Peron
+		Bisognerà collaborare con la proponente al fine di chiarire il più possibile i requisiti da concordare} &
 		  Probabilità: medio-alta \\ 
 & & & Pericolo: alto \\[1cm]
 		\rowcolor{LightGray}
@@ -53,7 +55,8 @@ I seguenti rischi sono stati ordinati in base al loro grado in ordine decrescent
 		\hline
 		\multirow{2}{2.5cm}{T01\\Tecnologie da applicare}
 		& \multirow{2}{5cm}{Il progetto richiede l'uso di tecnologie innovative non note ai membri del gruppo. I tempi di formazione e apprendimento potrebbero causare rallentamenti e, quindi, sforamenti dei tempi} 
-		&  \multirow{2}{4.5cm}{Il Responsabile dovrà controllare che i membri si siano sufficientemente preparati al compito che sono chiamati a svolgere} &
+		&  \multirow{2}{4.5cm}{%FIXME ripetizione che che, riformulare la frase tipo: ... preparati al compito da svolgere. Giovanni Peron
+		Il Responsabile dovrà controllare che i membri si siano sufficientemente preparati al compito che sono chiamati a svolgere} &
 		  Probabilità: medio-alta \\ 
 & & & Pericolo: medio-alto \\[2cm]
 		\rowcolor{LightGray}
@@ -82,14 +85,14 @@ I seguenti rischi sono stati ordinati in base al loro grado in ordine decrescent
 
 		\hline
 		\multirow{2}{2.5cm}{T02\\Problemi software}
-		& \multirow{2}{5cm}{Il gruppo usa piattaforme e tecnologie appartenenti a terzi. \`E possibile che tali servizi non siano sempre disponibili o che presenti malfunzionamenti. Ciò potrebbe causare perdita di dati o di tempo.} 
+		& \multirow{2}{5cm}{Il gruppo usa piattaforme e tecnologie appartenenti a terzi. \`E possibile che tali servizi non siano sempre disponibili o che presentino malfunzionamenti. Ciò potrebbe causare perdita di dati o di tempo.} 
 		& \multirow{2}{4.5cm}{La causa è esterna e non è possibile un rilevamento preventivo} &
 		  Probabilità: bassa \\ 
 & & & Pericolo: medio \\[2.5cm]
 		\rowcolor{LightGray}
 		\multirow{1}{2.5cm}{Piano di contenimento:} 
 		& \multicolumn{3}{p{12.5cm}}{Verrà effettuato ogni settimana il backup dei file presenti su tali piattaforme e applicazioni}\\[0.5cm]
-		
+		%FIXME T02 già scritto sopra forse ora intendevi T03 dopo la parola causando non vedo più niente problema latex?
 		\hline
 		\multirow{2}{2.5cm}{T02\\Problemi hardware}
 		& \multirow{2}{5cm}{I computer usati per lo sviluppo sono i PC dei membri del gruppo e potrebbero incorrere in guasti o malfunzionamenti più o meno gravi, causando perdita di dati o di tempo.} 

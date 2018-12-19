@@ -24,7 +24,16 @@ I risultati del lavoro del gruppo devono essere disponibili a chiunque si occupi
 Il verificatore avrà a disposizione diversi strumenti per ottimizzare il processo di verifica e di valutazione. 
 
 \subsection{Tecniche di verifica}
-Per eseguire la verifica e la validazione potranno essere utilizzate tecniche di analisi statica o dinamica. Le prime sono le tecniche che si concentrano sullo studio della documentazione e del codice per accertarsi della presenza delle proprietà desiderate, l'assenza di difetti, e della conformità alle regole.A differenza di quelle statiche le tecniche di analisi dinamica richiedono l'esecuzione del codice e la verifica viene effettuata tramite prove del prodotto.
+Per eseguire la verifica e la validazione potranno essere utilizzate tecniche di analisi statica o dinamica. Le prime sono le tecniche che si concentrano sullo studio della documentazione e del codice per accertarsi della presenza delle proprietà desiderate, l'assenza di difetti, e della conformità alle regole.A differenza di quelle statiche le tecniche di analisi dinamica richiedono l'esecuzione del codice e la verifica viene effettuata tramite prove del prodotto.\\
+L'applicazione pratica delle tecniche di seguito presentate viene trattata nelle \textit{Norme di progetto}.
 \subsubsection{Analisi statica}
-Per la verifica della documentazione dovranno essere analizzate la correttezza grammaticale e ortografica, la correttezza degli argomenti trattati, la struttura del documento. Verrano utilizzati a questo scopo i correttori ortografici presenti negli editor latex. Inoltre verrà calcolato l'indice di Gullpease per ogni documento redatto, grazie al quale sarà possibile valutare la complessità sintattica del documento.
+Per la verifica della documentazione dovranno essere analizzate la correttezza grammaticale e ortografica, la correttezza degli argomenti trattati, la struttura del documento. Verrano utilizzati a questo scopo i correttori ortografici presenti negli editor latex. Inoltre verrà calcolato l'indice di Gullpease per ogni documento redatto, grazie al quale sarà possibile valutare la complessità sintattica del documento.\\
+Per verificare il codice dell'applicazione che verrà creata sarà necessario analizzare diversi aspetti:
+\begin{itemize}
+\item Analisi del flusso di controllo: è necessaria per assicurarsi che il codice esegua nella sequenza desiderata e che esso sia ben strutturato. Non devono esistere parti di codice irraggiungibili o interminabili.
+\item Analisi del flusso dei dati: controlla che non vengano utilizzate variabili senza che queste non siano state prima inizializzate. Non devono esistere variabili inutilizzate. 
+\item Analisi del flusso di informazione: consiste nell'identificare le dipendenze tra informazioni passate in input e quelle prodotte in output dall’esecuzione di una unità di codice. Per assicurarsi che vengano rispettate le dipendenze previste e che non ci siano side effects indesiderati.
+\end{itemize}
+Questi tre aspetti potranno essere valutati grazie ad opportune misurazioni sulla complessità ciclomatica, numero di classi e coesione tra esse, complessità di flusso di inormazioni.
 \subsubsection{Analisi dinamica}
+I componenti software che comporrano il prodotto dovranno essere verificati attraverso diversi tipi di test, con lo scopo di garantire il corretto funzionamento dell'intero prodotto software.

@@ -8,14 +8,22 @@
 \usepackage{graphicx}
 \usepackage{multirow}
 \usepackage{color,colortbl}
-\usepackage[hidelinks]{hyperref}
+\usepackage{hyperref}
+\hypersetup{colorlinks,urlcolor=blue,linkcolor=black}
 \usepackage{fancyhdr}
 \usepackage{tabularx}
+\usepackage{enumitem}
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
 
 
 \pagestyle{fancy}
+\fancyhf{}
 \lhead{\includegraphics[scale=0.08]{images/logo.png}}
+
+\renewcommand {\footrulewidth}{0.2mm}
+\lfoot {Norme di Progetto}
+\rfoot{Pagina \thepage\ di \pageref{LastPage}}
+
 
 \usepackage{appendix}
 \usepackage{longtable}
@@ -23,6 +31,11 @@
 \definecolor{LightBlue}{rgb}{0,0,0.5}
 \definecolor{Gray}{gray}{0.8}
 \definecolor{LightGray}{gray}{0.9}
+
+
+\setcounter{tocdepth}{4}
+\setcounter{secnumdepth}{4}
+
 
 \begin{document}
 	\input{frontpage/frontpage.tex}

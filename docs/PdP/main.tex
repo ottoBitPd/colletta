@@ -1,0 +1,69 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{color,colortbl}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage{tabularx}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+
+\pagestyle{fancy}
+\lhead{\includegraphics[scale=0.08]{images/logo.png}}
+
+\usepackage{appendix}
+\usepackage{longtable}
+
+\definecolor{LightBlue}{rgb}{0,0,0.5}
+\definecolor{Gray}{gray}{0.8}
+\definecolor{LightGray}{gray}{0.9}
+
+\begin{document}
+	\input{frontpage/frontpage.tex}
+	
+	\newpage
+	\section*{\centering Registro delle modifiche}
+	\begin{tabularx}{\textwidth}{ c | c | c | c | X }
+		\rowcolor{LightBlue}
+		\color{white}\bfseries Versione & \color{white}\bfseries Data & \color{white}\bfseries Autore & \color{white}\bfseries Ruolo & \multicolumn{1}{c}{\color{white}\bfseries Descrizione}\\[0.25cm]
+		0.2.0 & 2018-12-18 & Giovanni Peron & Verificatore & Documento approvato\\
+		0.1.1 & 2018-12-18 & Benedetto Cosentino & Responsabile & Correzione degli errori riscontrati durante la verifica\\
+		0.1.0 & 2018-12-15 & Giovanni Peron & Verificatore & Aggiunti commenti FIXME nel documento.\\
+		0.0.3 & 2018-12-15 & Benedetto Cosentino & Responsabile & Aggiunta della pianificazione dell'analisi dei requisiti\\
+		0.0.2 & 2018-12-14 & Benedetto Cosentino & Responsabile & Aggiunta del modello di sviluppo e migliorie alle sezioni precedenti\\
+		0.0.1 & 2018-12-12 & Benedetto Cosentino & Responsabile & Creazione dello scheletro e aggiunta dell'introduzione e dell'analisi dei rischi\\
+	\end{tabularx}
+	\newpage
+	\tableofcontents
+	\newpage	
+	\section{Introduzione}
+		\input{intro.tex}	
+		\newpage	
+	
+	\section{Analisi dei rischi}
+		\input{analisi_rischi.tex}
+		\newpage	
+
+	\section{Modello di sviluppo}
+		\input{modello.tex}
+		\newpage	
+
+	\section{Pianificazione}
+		\input{pianificazione.tex}
+		
+	\section{Preventivo}
+%		\input{preventivo.tex}
+		
+	\section{Consuntivo e preventivo a finire}
+%		\input{consuntivo.tex}
+
+	\appendix
+	\section{Organigramma}
+%		\input{appendiceA.tex}
+\end{document}

@@ -21,7 +21,7 @@
 \lhead{\includegraphics[scale=0.08]{images/logo.png}}
 
 \renewcommand {\footrulewidth}{0.2mm}
-\lfoot {Norme di Progetto}
+\lfoot {Norme di }
 \rfoot{Pagina \thepage\ di \pageref{LastPage}}
 
 
@@ -45,12 +45,7 @@
 	\begin{tabularx}{\textwidth}{ c | c | c | c | X }
 		\rowcolor{LightBlue}
 		\color{white}\bfseries Versione & \color{white}\bfseries Data & \color{white}\bfseries Autore & \color{white}\bfseries Ruolo & \multicolumn{1}{c}{\color{white}\bfseries Descrizione}\\[0.25cm]
-		0.2.0 & 2018-12-18 & Giovanni Peron & Verificatore & Documento approvato\\
-		0.1.1 & 2018-12-18 & Benedetto Cosentino & Responsabile & Correzione degli errori riscontrati durante la verifica\\
-		0.1.0 & 2018-12-15 & Giovanni Peron & Verificatore & Aggiunti commenti FIXME nel documento.\\
-		0.0.3 & 2018-12-15 & Benedetto Cosentino & Responsabile & Aggiunta della pianificazione dell'analisi dei requisiti\\
-		0.0.2 & 2018-12-14 & Benedetto Cosentino & Responsabile & Aggiunta del modello di sviluppo e migliorie alle sezioni precedenti\\
-		0.0.1 & 2018-12-12 & Benedetto Cosentino & Responsabile & Creazione dello scheletro e aggiunta dell'introduzione e dell'analisi dei rischi\\
+		0.0.1 & 2018-12-24 & Giovanni Peron & Responsabile & Creazione documento\\
 	\end{tabularx}
 	\newpage
 	\tableofcontents
@@ -58,25 +53,20 @@
 	\section{Introduzione}
 		\input{intro.tex}	
 		\newpage	
-	
-	\section{Analisi dei rischi}
-		\input{analisi_rischi.tex}
+	%struttura provvisoria
+	%sezione provvisoria
+	\section{Descrizione generale}
+		\input{cap2.tex}
 		\newpage	
 
-	\section{Modello di sviluppo}
-		\input{modello.tex}
+	\section{Casi d'uso}
+		\input{casi1.tex}
+		\input{casi2.tex}
+		\input{casi3.tex}
+		%e tutti i file che servirranno
 		\newpage	
-
-	\section{Pianificazione}
-		\input{pianificazione.tex}
+	%sezione provvisoria
+	\section{Requisiti}
+		\input{cap4.tex}
 		
-	\section{Preventivo}
-%		\input{preventivo.tex}
-		
-	\section{Consuntivo e preventivo a finire}
-%		\input{consuntivo.tex}
-
-	\appendix
-	\section{Organigramma}
-%		\input{appendiceA.tex}
 \end{document}

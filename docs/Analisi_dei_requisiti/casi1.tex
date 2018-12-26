@@ -144,10 +144,20 @@ Infine l'esercizio potrà essere salvato.
 \end{figure}
 \begin{itemize}
 		\item \textbf{Attori: } Insegnante
-		\item \textbf{Descrizione scenario: } 
-		\item \textbf{Precondizione: }
+		\item \textbf{Descrizione scenario: }L'utente si è loggato come insegnante e ha scelto la creazione di una verifica. Questa operazione consente all'insegnante di ricercare degli esercizi e selezionarli per creare una verifica da stampare e somministrare agli allievi in classe.
+		\item \textbf{Precondizione: L'utente si è loggato come insegnante e ha scelto la creazione di una verifica. }
 		\item \textbf{Flusso degli eventi: }
-		\item \textbf{Postcondizione: }
+		\begin{itemize}
+		\item UC-2.1 Impostazione filtri di ricerca esercizi
+		\item UC-2.2 Visualizzazione esercizi filtrati in ordine casuale
+		\item UC-2.3 Selezione esercizi
+		\item UC-2.4 Visualizzazione verifica
+		\end{itemize}
+		\item \textbf{Estensioni: }
+		\begin{itemize}
+		\item UC-2.2.1 Nel caso in cui i filtri impostati limitino la ricerca a tal punto da non avere esercizi compatibili, verrà mostrato un messaggio d'errore. 
+		\end{itemize} 
+		\item \textbf{Postcondizione: }L'utente arriva ad uno stato in cui può visualizzare, scaricare o stampare un documento da somministrare agli alunni in classe.
 \end{itemize}
 \newpage
 \subsubsection{UC-2.1 Impostazione filtri di ricerca esercizi}
@@ -157,11 +167,66 @@ Infine l'esercizio potrà essere salvato.
 	\includegraphics[scale=0.7]{images/UC-2_1.png}
 	\caption{UC-2.1 Impostazione filtri di ricerca esercizi}
 \end{figure}
-
+AGGIUNGERE ESTENSIONI PER ERRORI NEL CASO IN CUI I FILTRI SIANO IMPOSTATI CON VALORI NON VALIDI.
+\begin{itemize}
+		\item \textbf{Attori: } Insegnante
+		\item \textbf{Descrizione scenario: }L'utente ha scelto la creazione di una verifica. Deve ora scegliere che filtri impostare per ottenere gli esercizi che desidera inserire nella verifica. Sono stati previsti dei filtri per scegliere esercizi in base al livello di difficoltà, agli argomenti dell'esercizio o anche in base all'insegnante autore degli esercizi.
+		\item \textbf{Precondizione: }L'utente ha scelto la creazione di una verifica e vuole scegliere degli esercizi da inserire in essa impostando dei filtri.
+		\item \textbf{Flusso degli eventi: }L'utente può impostare i filtri:
+		\begin{itemize}
+		\item livello di difficoltà UC-2.1.1, 
+		\item filtro argomenti esercizio UC-2.1.2
+		\item filtro insegnante autore UC-2.1.3
+		\end{itemize}	
+		nell'ordine che preferisce.	
+		\item \textbf{Postcondizione: }I filtri sono stati impostati con i valori desiderati dall'utente.
+\end{itemize}
 \subsubsection{UC-2.1.1 Filtro livello di difficoltà}
+\begin{itemize}
+		\item \textbf{Attori: } Insegnante
+		\item \textbf{Descrizione scenario: }L'utente sta impostando i filtri per ricercare gli esercizi da inserire nella verifica, ha scelto di impostare il filtro livello difficoltà per ottenere gli esercizi che desidera inserire nella verifica.
+		\item \textbf{Precondizione: }L'utente ha scelto di impostare il filtro livello difficoltà per ricercare gli esercizi che inserirà nella verifica..
+		\item \textbf{Postcondizione: }L'utente ha selezionato un range di valori per impostare il livello di difficoltà degli esercizi che desidera inserire nella verifica.
+\end{itemize}
 \subsubsection{UC-2.1.2 Filtro argomenti esercizio}
+\begin{itemize}
+		\item \textbf{Attori: } Insegnante
+		\item \textbf{Descrizione scenario: }L'utente sta impostando i filtri per ricercare gli esercizi da inserire nella verifica, ha scelto di impostare il filtro riguardante gli argomenti trattati dall'esercizio per ottenere gli esercizi che desidera inserire nella verifica.
+		\item \textbf{Precondizione: }L'utente ha scelto di impostare il filtro argomenti esercizio per ricercare gli esercizi che inserirà nella verifica.
+		\item \textbf{Postcondizione: }L'utente ha selezionato un gli argomenti che verrano trattati dagli esercizi che desidera inserire nella verifica.
+\end{itemize}
 \subsubsection{UC-2.1.3 Filtro insegnante autore}
-\subsubsection{UC-2.1.4 Nessun esercizio compatibile con i filtri}
-\subsubsection{UC-2.2 Estrazione casuale dagli esercizi filtrati}
+\begin{itemize}
+		\item \textbf{Attori: } Insegnante
+		\item \textbf{Descrizione scenario: }L'utente sta impostando i filtri per ricercare gli esercizi da inserire nella verifica, ha scelto di impostare il filtro riguardante l'autore degli esercizi che desidera inserire nella verifica.
+		\item \textbf{Precondizione: }L'utente ha scelto di impostare il filtro insegnante autore per ricercare gli esercizi che inserirà nella verifica.
+		\item \textbf{Postcondizione: }L'utente ha compilato il campo con il nome dell'insegnante autore degli esercizi che sta cercando.
+\end{itemize}
+\subsubsection{UC-2.2 Visualizzazione esercizi filtrati in ordine casuale}
+\begin{itemize}
+		\item \textbf{Attori: } Insegnante
+		\item \textbf{Descrizione scenario: }L'utente ha scelto la creazione di una verifica ed ha impostato i filtri per la ricerca degli esercizi che desidera inserire nella verifica. Se i filtri sono stati settati correttamente l'utente potrà visualizzare gli esercizi risultato della ricerca, altrimenti verrà visualizzato un messaggio d'errore che chiederà all'utente di modificare i valori impostati nei filtri di ricerca.
+		\item \textbf{Precondizione: }L'utente ha scelto la creazione di una verifica ed ha impostato i filtri per la ricerca degli esercizi che desidera inserire nella verifica.
+		\item \textbf{Postcondizione: }Se i filtri sono stati impostati correttamente l'utente visualizza il risultato della ricerca effettuata in base a i filtri.
+\end{itemize}
+\subsubsection{UC-2.2.1 Nessun esercizio compatibile con i filtri}
+\begin{itemize}
+		\item \textbf{Attori: } Insegnante
+		\item \textbf{Descrizione scenario: }L'utente ha scelto la creazione di una verifica ed ha impostato i filtri per la ricerca degli esercizi che desidera inserire nella verifica. I filtri non sono stati impostati correttamente, percui verrà visualizzato un messaggio d'errore.
+		\item \textbf{Precondizione: }L'utente ha impostato i filtri per la ricerca, ma questi limitano la ricerca a tal punto da non essere compatibili con nessun esercizio pubblicato nella piattaforma.
+		\item \textbf{Postcondizione: }L'utente visualizza un messaggio d'errore che lo invita a modificare i valori impostati nei filtri di ricerca.
+\end{itemize}
 \subsubsection{UC-2.3 Selezione esercizi}
-\subsubsection{UC-2.4 Stampa verifica}
+\begin{itemize}
+		\item \textbf{Attori: } Insegnante
+		\item \textbf{Descrizione scenario: }L'utente ha ottenuto una serie di esercizi compatibili con quelli che desiderava inserire nella verifica. Ora è nel suo interesse selezionare un sottoinsieme tra questi esercizi e inserire questo sottoinsieme nella verifica.
+		\item \textbf{Precondizione: }L'utente ha ottenuto una serie di esercizi compatibili con quelli che desiderava inserire nella verifica.
+		\item \textbf{Postcondizione: }L'utente ha selezionato gli esercizi che desidera inserire nella verifica.
+\end{itemize}
+\subsubsection{UC-2.4 Visualizzazione verifica (possibile download o stampa)}
+\begin{itemize}
+		\item \textbf{Attori: } Insegnante
+		\item \textbf{Descrizione scenario: }L'utente ha selezionato un sottoinsieme di esercizi da inserire nella verifica.
+		\item \textbf{Precondizione: }L'utente ha ottenuto una serie di esercizi compatibili con quelli che desiderava inserire nella verifica.
+		\item \textbf{Postcondizione: }L'utente può visualizzare il documento risultato del processo di creazione della verifica e può scaricarlo o stamparlo.
+\end{itemize}

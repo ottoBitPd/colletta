@@ -1,244 +1,299 @@
 \subsubsection{UC-3 Assegnazione di esercizi ad una o più classi}
 	\begin{itemize}
 		\item \textbf{Attori: } Insegnante
-		\item \textbf{Descrizione scenario: } L'utente accede al sito con l'intenzione di assegnare una serie di esercizi da svolgere agli alunni iscritti a determinate classi. Si troverà di fronte ad una schermata dove potrà filtrare gli esercizi presenti nel database secondo diversi criteri, selezionando poi quelli che preferisce. Avrà quindi modo di assegnarli ad una o più delle sue classi. 
 		\item \textbf{Precondizione: } L'utente si è loggato come insegnante e vuole assegnare degli esercizi ad una o più classi di suoi alunni. 
-		\item \textbf{Flusso degli eventi: }
-		\begin{itemize}
-		\item UC-3.1 Impostazione filtri di ricerca esercizi
-		\item UC-3.2 Visualizzazione esercizi filtrati in ordine casuale
-		\item UC-3.3 Selezione esercizi
-		\item UC-3.3.1 Pubblicazione della soluzione
-		\item UC-3.4 Assegnazione alle classi
-		\end{itemize}
-		\item \textbf{Estensioni: }
-		\begin{itemize}
-		\item UC-3.2.1 Nel caso in cui i filtri impostati limitino la ricerca a tal punto da non avere esercizi compatibili, verrà mostrato un messaggio d'errore. 
-		\end{itemize} 
 		\item \textbf{Postcondizione: } Gli esercizi selezionati dall'insegnante verranno aggiunti alla lista degli esercizi assegnati a determinate classi dello stesso insegnante.
+		\item \textbf{Scenario principale: } 
+		\begin{enumerate}
+			\item L'utente accede al sito con l'intenzione di assegnare una serie di esercizi da svolgere agli alunni iscritti a determinate classi. 
+			\item L'utente si trova di fronte ad una schermata dove può filtrare gli esercizi presenti nel database secondo diversi criteri.
+			\item L'utente seleziona gli esercizi che preferisce.
+			\item L'utente assegna gli esercizi ad una o più delle sue classi. 
+		\end{enumerate} 
+		\item \textbf{Estensioni: }
+		- UC-3.2.1 Nel caso in cui i filtri impostati limitino la ricerca a tal punto da non avere esercizi compatibili, verrà mostrato un messaggio d'errore. 
 	\end{itemize}
 \subsubsection{UC-3.1 Impostazione filtri di ricerca esercizi}
 
 AGGIUNGERE ESTENSIONI PER ERRORI NEL CASO IN CUI I FILTRI SIANO IMPOSTATI CON VALORI NON VALIDI.
 \begin{itemize}
 		\item \textbf{Attori: } Insegnante
-		\item \textbf{Descrizione scenario: }L'utente ha scelto la di assegnare degli esercizi ad una classe. Deve ora scegliere che filtri impostare per ottenere gli esercizi che desidera assegnare. Sono stati previsti dei filtri per scegliere esercizi in base al livello di difficoltà, agli argomenti dell'esercizio o anche in base all'insegnante autore degli esercizi.
-		\item \textbf{Precondizione: }L'utente ha scelto di assegnare ad una classe degli esercizi e vuole scegliergli impostando dei filtri.
-		\item \textbf{Flusso degli eventi: }L'utente può impostare i filtri:
-		\begin{itemize}
-		\item livello di difficoltà UC-3.1.1, 
-		\item filtro argomenti esercizio UC-3.1.2
-		\item filtro insegnante autore UC-3.1.3
-		\end{itemize}	
-		nell'ordine che preferisce.	
+		\item \textbf{Precondizione: }L'utente ha scelto di assegnare ad una classe degli esercizi e vuole scegliergli impostando dei filtri.	
 		\item \textbf{Postcondizione: }I filtri sono stati impostati con i valori desiderati dall'utente.
+		\item \textbf{Scenario principale: }
+		\begin{enumerate}
+			\item L'utente ha scelto di assegnare degli esercizi ad una classe. 				\item L'utente sceglie tra i filtri disponibili per ottenere gli esercizi che desidera assegnare ad una classe.
+		\end{enumerate}
 \end{itemize}
 \subsubsection{UC-3.1.1 Filtro livello di difficoltà}
 \begin{itemize}
 		\item \textbf{Attori: } Insegnante
-		\item \textbf{Descrizione scenario: }L'utente sta impostando i filtri per ricercare gli esercizi, ha scelto di impostare il filtro livello difficoltà per ottenere gli esercizi che desidera assegnare ad una classe.
+		
 		\item \textbf{Precondizione: }L'utente ha scelto di impostare il filtro livello difficoltà per ricercare gli esercizi che assegnare ad una classe.
 		\item \textbf{Postcondizione: }L'utente ha selezionato un range di valori per impostare il livello di difficoltà degli esercizi che desidera assegnare ad una classe.
+		\item \textbf{Scenario principale: }
+		\begin{enumerate}
+			\item L'utente ha scelto di impostare il filtro livello difficoltà per ottenere gli esercizi che desidera assegnare ad una classe.
+		\end{enumerate}
 \end{itemize}
 \subsubsection{UC-3.1.2 Filtro argomenti esercizio}
 \begin{itemize}
 		\item \textbf{Attori: } Insegnante
-		\item \textbf{Descrizione scenario: }L'utente sta impostando i filtri per ricercare gli esercizi da assegnare ad una classe., ha scelto di impostare il filtro riguardante gli argomenti trattati dall'esercizio per ottenere gli esercizi.
 		\item \textbf{Precondizione: }L'utente ha scelto di impostare il filtro argomenti esercizio per ricercare gli esercizi che assegnerà ad una classe.
 		\item \textbf{Postcondizione: }L'utente ha selezionato un gli argomenti che verrano trattati dagli esercizi che desidera assegnare ad una classe.
 \end{itemize}
+		\item \textbf{Scenario principale: }
+		\begin{enumerate}
+			\item L'utente ha scelto di impostare il filtro per argomento trattato per ottenere gli esercizi che desidera assegnare ad una classe.
+		\end{enumerate}
 \subsubsection{UC-3.1.3 Filtro insegnante autore}
 \begin{itemize}
 		\item \textbf{Attori: } Insegnante
-		\item \textbf{Descrizione scenario: }L'utente sta impostando i filtri per ricercare gli esercizi da assegnare ad una classe, ha scelto di impostare il filtro riguardante l'autore degli esercizi.
 		\item \textbf{Precondizione: }L'utente ha scelto di impostare il filtro insegnante autore per ricercare gli esercizi che assegnerà alla classe selezionata.
 		\item \textbf{Postcondizione: }L'utente ha compilato il campo con il nome dell'insegnante autore degli esercizi che sta cercando.
+		\item \textbf{Scenario principale: }
+		\begin{enumerate}
+			\item L'utente ha scelto di impostare il filtro per insegnante autore dell'esercizio per ottenere gli esercizi che desidera assegnare ad una classe.
+		\end{enumerate}
 \end{itemize}
 \subsubsection{UC-3.2 Visualizzazione esercizi filtrati in ordine casuale}
 \begin{itemize}
 		\item \textbf{Attori: }Insegnante
-		\item \textbf{Descrizione scenario: }L'utente ha scelto di assegnare degli esercizi ad una classe ed ha impostato i filtri per la ricerca degli esercizi. Se i filtri sono stati settati correttamente l'utente potrà visualizzare gli esercizi risultato della ricerca, altrimenti verrà visualizzato un messaggio d'errore che chiederà all'utente di modificare i valori impostati nei filtri di ricerca.
 		\item \textbf{Precondizione: }L'utente ha scelto di assegnare degli esercizi ad una classe ed ha impostato i filtri per la ricerca degli esercizi.
-		\item \textbf{Postcondizione: }Se i filtri sono stati impostati correttamente l'utente visualizza il risultato della ricerca effettuata in base a i filtri.
+		\item \textbf{Postcondizione: }Se i filtri sono stati impostati correttamente l'utente visualizza il risultato della ricerca effettuata in base ai filtri.
+		\item \textbf{Scenario principale: }
+		\begin{enumerate}
+			\item L'utente ha scelto di visualizzare una serie di esercizi casuali dal database.
+		\end{enumerate}
 \end{itemize}
 \subsubsection{UC-3.2.1 Nessun esercizio compatibile con i filtri}
 \begin{itemize}
 		\item \textbf{Attori: } Insegnante
-		\item \textbf{Descrizione scenario: }L'utente ha scelto di assegnare degli esercizi ad una classe ed ha impostato i filtri per la ricerca. I filtri non sono stati impostati correttamente, per cui verrà visualizzato un messaggio d'errore.
 		\item \textbf{Precondizione: }L'utente ha impostato i filtri per la ricerca, ma questi limitano la ricerca a tal punto da non essere compatibili con nessun esercizio pubblicato nella piattaforma.
 		\item \textbf{Postcondizione: }L'utente visualizza un messaggio d'errore che lo invita a modificare i valori impostati nei filtri di ricerca.
+		\item \textbf{Scenario principale: }
+		\begin{enumerate}
+		\item L'utente ha scelto di assegnare degli esercizi ad una classe ed ha impostato i filtri per la ricerca.
+		\item I filtri non sono stati impostati correttamente.
+		\item Viene visualizzato un messaggio d'errore.
+		\end{enumerate} I filtri non sono stati impostati correttamente, per cui verrà visualizzato un messaggio d'errore.
 \end{itemize}
 \subsubsection{UC-3.3 Selezione esercizi}
 \begin{itemize}
 		\item \textbf{Attori: } Insegnante
-		\item \textbf{Descrizione scenario: }L'utente ha ottenuto una serie di esercizi compatibili con quelli che desiderava assegnare ad una classe. Ora è nel suo interesse selezionare un sottoinsieme tra questi esercizi e assegnarli ad una classe.
 		\item \textbf{Precondizione: }L'utente ha ottenuto una serie di esercizi compatibili con quelli che desiderava assegnare ad una classe.
 		\item \textbf{Postcondizione: }L'utente ha selezionato gli esercizi che desidera assegnare ad una classe.
+		\item \textbf{Scenario principale: }
+		\begin{enumerate}
+			\item L'utente ha ottenuto una serie di esercizi compatibili con quelli che desiderava assegnare ad una classe. 
+			\item L'utente seleziona un sottoinsieme degli esercizi proposti.
+			\item L'utente assegna gli esercizi alla classe.
+		\end{enumerate}
 \end{itemize}
 \subsection{UC-3.3.1 Pubblicazione della soluzione degli esercizi}
 \begin{itemize}
 	\item \textbf{Attori:} Insegnante
-	\item \textbf{Descrizione scenario:} L'insegnante ha selezionato gli esercizi che vuole assegnare ad una classe tra quelli proposti dal sistema (eventulmente filtrati secondo le preferenze dell'insegnante stesso). Può decidere se rendere pubblica agli studenti la soluzione dell'esercizio o meno.
 	\item \textbf{Precondizione:} L'insegnante ha selezionato gli esercizi che vuole assegnare ad una o più delle sue classi.
 	\item \textbf{Postcondizione:} Gli esercizi vengono assegnati alla/e classe/i selezionata/e con soluzione visualizzabile (pubblica) o meno.
+	\item \textbf{Scenario principale:} 
+	\begin{enumerate}
+		\item L'insegnante ha selezionato gli esercizi che vuole assegnare ad una classe tra quelli proposti dal sistema (eventulmente filtrati secondo le preferenze dell'insegnante stesso).
+		\item L'insegnante decide se rendere pubblica agli studenti la soluzione dell'esercizio o meno.
+	\end{enumerate}
 \end{itemize}
 
 \subsection{UC-3.4 Assegnazione alle classi}
 \begin{itemize}
 		\item \textbf{Attori: }Insegnante
-		\item \textbf{Descrizione scenario: }Una volta selezionati gli esercizi tra quelli presentati dal sistema, l'insegnante li assegna ad una o più classi.
 		\item \textbf{Precondizione: }L'utente ha ottenuto una serie di esercizi compatibili con quelli che desiderava assegnare alla classe.
 		\item \textbf{Postcondizione: }La lista degli esercizi delle classi -una o più- selezionate dall'insegnante viene aggiornata inserendo quelli scelti.
 \end{itemize}
+		\item \textbf{Scenario principale: }
+		\begin{enumerate}
+			\item Una volta selezionati gli esercizi tra quelli presentati dal sistema, l'insegnante li assegna ad una o più classi.
+		\end{enumerate} 
 	%\iffalse
 \subsubsection{UC-4 Gestione di una classe}
 \begin{itemize}
 		\item \textbf{Attori: } Insegnante
-		\item \textbf{Descrizione scenario: } L'utente può decidere di accedere ad una classe di cui è il creatore. A questa potrà variare il nome, aggiungere o rimuovere dei membri (alunni), aggiungere o rimuovere degli esercizi.
 		\item \textbf{Precondizione: }  L'utente deve essere loggato come insegnante ed essere il creatore della classe. 
-		\item \textbf{Flusso degli eventi: }
-		\begin{itemize}
-		\item UC-4.1 Selezionare la classe di interesse tra le proprie
-		\item UC-4.1.1 Visualizzare gli alunni appartenenti alla classe
-		\item UC-4.1.1.1 Aggiungere alunni alla classe 
-		\item UC-4.1.1.1.1 Accettare la candidatura di un utente
-		\item UC-4.1.1.1.2 Invitare un utente ad aderire alla classe
-		\item UC-4.1.1.2 Rimuovere un alunno dalla classe
-		\item UC-4.1.2 Visualizzare gli esercizi assegnati alla classe
-		\item UC-4.1.2.1 Aggiungere un esercizio
-		\item UC-4.1.2.2 Rimuovere un esercizio
-		\item UC-4.1.2.3 Pubblicare la soluzione di un esercizio
-		\item UC-4.1.2.4 Rimuovere la soluzione di un esercizio
-		\item UC-4.2 Rinominare una classe
-		\item UC-4.3 Eliminare una classe
-		\end{itemize}
 		\item \textbf{Postcondizione: } Il sistema salverà tutte le modifiche apportate. 
+		\item \textbf{Scenario principale: } 
+		\begin{enumerate}
+			\item L'utente decide di accedere ad una classe di cui è il creatore.
+			\item L'utente può variare il nome, aggiungere o rimuovere dei membri (alunni), aggiungere o rimuovere degli esercizi alla classe selzionata.
+		\end{enumerate}
 	\end{itemize}
 	
 
 \subsubsection{UC-4.1 Selezionare la classe di interesse tra le proprie}
 	\begin{itemize}
 		\item \textbf{Attori: } Insegnante
-		\item \textbf{Descrizione scenario: } L'utente potrà selezionare una tra le classi di cui è il creatore volendo apportare a questa delle modifiche.
 		\item \textbf{Precondizione: } L'utente deve essere loggato come insegnante ed essere il creatore della classe. 
 		\item \textbf{Postcondizione: } L'utente avrà accesso ad un pannello gestionale da cui potrà selezionare diverse azioni da svolgere.
+		\item \textbf{Scenario principale: } 
+		\begin{enumerate}
+			\item L'utente seleziona una tra le classi di cui è il creatore volendo apportare a questa delle modifiche.
+		\end{enumerate}
 	\end{itemize}
 \subsubsection{UC-4.1.1 Visualizzare gli alunni appartenenti alla classe}
 \begin{itemize}
 		\item \textbf{Attori: } Insegnante
-		\item \textbf{Descrizione scenario: } L'utente vuole visualizzare gli alunni iscritti alla classe selezionata al passaggio precedente, magari per stamparne l'elenco.
 		\item \textbf{Precondizione: }  L'insegnante ha selezionato una classe tra le proprie.
 		\item \textbf{Postcondizione: } L'insegnante visualizza la lista degli alunni iscritti alla propria classe.
+		\item \textbf{Scenario principale: } 
+		\begin{enumerate}
+			\item L'utente vuole visualizzare gli alunni iscritti alla classe selezionata al passaggio precedente, magari per stamparne l'elenco
+		\end{enumerate}.
 	\end{itemize}
 \subsubsection{UC-4.1.1.1 Aggiungere alunni alla classe}
 \begin{itemize}
 		\item \textbf{Attori: } Insegnante
-		\item \textbf{Descrizione scenario: } L'insegnante vuole aggiungere un alunno alla sua classe, in modo che questo abbia accesso agli esercizi assegnati a quest'ultima.
 		\item \textbf{Precondizione: } L'insegnante ha selezionato una delle sue classi.
 		\item \textbf{Postcondizione: } L'elenco degli alunni appartenenti alla classe viene aggiornato; gli utenti aggiunti alla lista hanno ora accesso alla classe.
+		\item \textbf{Scenario principale: } 
+		\begin{enumerate}
+			\item L'insegnante vuole aggiungere un alunno alla sua classe, in modo che questo abbia accesso agli esercizi assegnati a quest'ultima.
+		\end{enumerate}
 	\end{itemize}
 \subsubsection{UC-4.1.1.1.1 Accettare/rifiutare la candidatura di un utente}
 \begin{itemize}
 		\item \textbf{Attori: } Insegnante
-		\item \textbf{Descrizione scenario: } Un alunno invia una richiesta ad un insegnante per poter essere inserito in una particolare classe. L'insegnante potrà accettare o meno la candidatura.
 		\item \textbf{Precondizione: } L'alunno ha inviato la propria candidatura, l'insegnante ha selezionato la classe per cui il primo ha fatto richiesta.
 		\item \textbf{Postcondizione: } In caso di approvazione, la lista degli alunni appartenenti alla classe viene aggiornata includendo il nuovo utente. in caso contrario, la richiesta viene eliminata e la lista non viene aggiornata.
+		\item \textbf{Scenario principale: } 
+		\begin{enumerate}
+			\item Un alunno invia una richiesta ad un insegnante per poter essere inserito in una particolare classe.
+			\item L'insegnante potrà accettare o meno la candidatura.
+		\end{enumerate} 
 	\end{itemize}
 \subsubsection{UC-4.1.1.1.2 Invitare un utente ad aderire alla classe}
 \begin{itemize}
 		\item \textbf{Attori: } Insegnante
-		\item \textbf{Descrizione scenario: } Un insegnante può voler invitare un utente alunno ad unisrsi alla propria classe.
 		\item \textbf{Precondizione: }  L'insegnante deve aver acceduto alla gestione della classe in cui vuole invitare l'alunno e conoscerne il nome del profilo. 
 		\item \textbf{Postcondizione: } L'alunno riceve una richiesta ad unirsi alla classe dell'insegnante.
+		\item \textbf{Scenario principale: } 
+		\begin{enumerate}
+			\item L'insegnante può voler invitare un utente alunno ad unirsi alla propria classe.
+		\end{enumerate} 
 	\end{itemize}
 \subsubsection{UC-4.1.1.2 Rimuovere un alunno dalla classe}
 \begin{itemize}
 		\item \textbf{Attori: } Insegnante
-		\item \textbf{Descrizione scenario: } Un insegnante può voler rimuover un alunno dall'elenco di quelli che appartengono ad una stessa classe evi hanno, quindi, accesso.
 		\item \textbf{Precondizione: }  L'insegnante ha selezionato la classe da cui vuole rimuovere l'alunno.
 		\item \textbf{Postcondizione: } La lista degli alunni appartenenti alla classe viene aggiornata rimuovendo l'alunno selezionato.
+		\item \textbf{Scenario principale: } 
+		\begin{enumerate}
+			\item Un insegnante vuole rimuovere un alunno dall'elenco di quelli che appartengono ad una stessa classe e vi hanno, quindi, accesso.
+		\end{enumerate}
 	\end{itemize}
 \subsubsection{UC-4.1.2 Visualizzare gli esercizi assegnati alla classe}
 \begin{itemize}
 		\item \textbf{Attori: } Insegnante
-		\item \textbf{Descrizione scenario: } L'insegnante può voler visualizzare la lista degli esercizi assegnati ad una determinata classe. Nello specifico a quella selezionata in precedenza.
 		\item \textbf{Precondizione: }  L'insegnante deve essere il creatore della classe.
-		\item \textbf{Postcondizione: } L'insegnante visualizza la lista degli esercizi assegnati alla classe selezionata. 
+		\item \textbf{Postcondizione: } L'insegnante visualizza la lista degli esercizi assegnati alla classe selezionata.
+		\item \textbf{Scenario principale: } 
+		\begin{enumerate}
+			\item L'insegnante vuole visualizzare la lista degli esercizi assegnati ad una determinata classe. 
+		\end{enumerate}
 	\end{itemize}
 \subsubsection{UC-4.1.2.1 Aggiungere un esercizio}
 Vedi UC-3
 \subsubsection{UC-4.1.2.2 Rimuovere un esercizio}
 \begin{itemize}
 		\item \textbf{Attori: } Insegnante
-		\item \textbf{Descrizione scenario: } L'insegnante può voler rimuovere un esercizio da quelli assegnati in precedenza ad una classe.
 		\item \textbf{Precondizione: }  L'insegnante deve aver assegnato almeno un esercizio alla classe interessata.
 		\item \textbf{Postcondizione: } L'esercizio selezionato viene rimosso dalla lista degli esercizi assegnati alla classe. 
+		\item \textbf{Scenario principale: } 
+		\begin{enumerate}
+			\item L'insegnante vuole rimuovere un esercizio da quelli assegnati in precedenza ad una classe.
+		\end{enumerate}
 	\end{itemize}
 \subsubsection{UC-4.1.2.3 Pubblicare la soluzione di un esercizio}
 \begin{itemize}
 		\item \textbf{Attori: } Insegnante
-		\item \textbf{Descrizione scenario: } L'utente insegnante potrebbe voler dare la possibilità di visualizzare la soluzione di un esercizio agli alunni iscritti alla classe cui è stato assegnato l'esercizio.
 		\item \textbf{Precondizione: }  La soluzione dell'esercizio deve essere privata.
 		\item \textbf{Postcondizione: } La soluzione dell'esercizio selezionato può ora essere visualizzata dagli alunni.
+		\item \textbf{Scenario principale: } 
+		\begin{enumerate}
+			\item L'utente insegnante vuole dare la possibilità di visualizzare la soluzione di un esercizio agli alunni iscritti alla classe cui è stato assegnato l'esercizio.
+		\end{enumerate}
 	\end{itemize}
 \subsubsection{UC-4.1.2.4 Rimuovere la soluzione di un esercizio}
 \begin{itemize}
 		\item \textbf{Attori: } Insegnante
-		\item \textbf{Descrizione scenario: } L'utente insegnante potrebbe voler rimuovere la possibilità di visualizzare la soluzione di un esercizio agli alunni iscritti alla classe cui è stato assegnato l'esercizio.
 		\item \textbf{Precondizione: }  La soluzione dell'esercizio deve essere pubblica.
 		\item \textbf{Postcondizione: } La soluzione dell'esercizio selezionato non può più essere visualizzata dagli alunni.
+		\item \textbf{Scenario principale: } 
+		\begin{enumerate}
+			\item L'utente insegnante vuole rimuovere la possibilità di visualizzare la soluzione di un esercizio agli alunni iscritti alla classe cui è stato assegnato l'esercizio.
+		\end{enumerate}
 	\end{itemize}
 \subsection{UC-4.2 Rinominare una classe}
 \begin{itemize}
 	\item \textbf{Attori:} Insegnante
-	\item \textbf{Descrizione scenario:} L'insegnante può voler rinominare una delle proprie classi.
 	\item \textbf{Precondizione:} L'insegnante deve essere il creatore della classe e deve averla selezionata dalla lista delle proprie classi.
 	\item \textbf{Postcondizione:} Il sistema salva il nuovo nome della classe sovrascrivendolo a quello precedente.
+	\item \textbf{Scenario principale:} 
+	\begin{enumerate}
+			\item L'insegnante vuole rinominare una delle proprie classi.
+		\end{enumerate}
 \end{itemize}
 \subsubsection{UC-4.3 Eliminare una classe}
 \begin{itemize}
 		\item \textbf{Attori: } Insegnante
-		\item \textbf{Descrizione scenario: } Un insegnate può decidere di eliminare una delle sue classi. 
 		\item \textbf{Precondizione: }  L'insegnate deve essere il creatore della classe e deve averla selezionata dalla lista delle proprie.
 		\item \textbf{Postcondizione: } La classe viene eliminata dalla lista delle classi dell'insegnante e dal sistema.
+		\item \textbf{Scenario principale: } 
+		\begin{enumerate}
+			\item Un insegnate decide di eliminare una delle sue classi. 
+		\end{enumerate}
 	\end{itemize}
 
 \subsection{UC-5 Creazione di una classe}
 \begin{itemize}
 	\item \textbf{Attori:} Insegnante
-	\item \textbf{Descrizione scenario:} L'utente insegnante può voler creare una classe per raccogliere un gruppo di utenti alunni ed assegnare loro dei particolari esercizi.
 	\item \textbf{Precondizione:} L'utente deve essere loggato come insegnate.
-	\item \textbf{Flusso degli eventi:}
-	\begin{itemize}
-		\item UC-5.1 Inserire il nome della classe
-		\item UC-5.2 Generare il link della classe
-		\item UC-5.3 Aggiungere alunni alla classe
-		\item UC-5.4 Salvare la classe
-	\end{itemize}
+	\item \textbf{Postcondizione:} Il sistema salva la nuova classe e la aggiunge alla lista delle classi dell'insegnante che l'ha creata.
+	\item \textbf{Scenario principale:} 
+	\begin{enumerate}
+			\item L'utente insegnante vuole raccogliere un gruppo di utenti alunni. Può assegnare loro dei particolari esercizi.
+		\end{enumerate}
 	\item \textbf{Estensioni:}
 	-UC-5.1.1 Nel caso il nome selezionato per la classe sia uguale a quello di un'altra classe creata dallo stesso insegnante, viene generato un messaggio di errore.
-	\item \textbf{Postcondizione:} Il sistema salva la nuova classe e la aggiunge alla lista delle classi dell'insegnante che l'ha creata.
 \end{itemize}
 \subsection{UC-5.1 Inserire il nome della classe}
 \begin{itemize}
 	\item \textbf{Attori:} Insegnante
-	\item \textbf{Descrizione scenario:} L'utente deve, per poter creare una classe, scegliere ed inserire il nome della stessa.
 	\item \textbf{Precondizione:} L'utente deve essere loggato come insegnante ed aver scelto di creare una nuova classe.
 	\item \textbf{Postcondizione:} Il sistema salva il nome della classe.
+	\item \textbf{Scenario principale:} 
+	\begin{enumerate}
+			\item L'utente sceglie il nome della classe e lo inserisce.
+		\end{enumerate}
 \end{itemize}
 \subsection{UC-5.2 Generare il link della classe}
 \begin{itemize}
-	\item \textbf{Descrizione scenario:} L'insegnante può decidere di generare un link alla classe da fornire agli alunni che, tramite questo, potranno iscriversi alla classe.
+	\item \textbf{Attori:} Insegnante
 	\item \textbf{Precondizione:} L'utente deve aver scelto di creare una classe ed averne inserito almeno il nome.
 	\item \textbf{Postcondizione:} L'utente è in possesso di un link che rimanda alla classe creata.
+	\item \textbf{Scenario principale:} 
+	\begin{enumerate}
+			\item L'insegnante genera un link alla classe da fornire agli alunni.
+			\item Gli alunni, tramite questo, potranno iscriversi alla classe.
+		\end{enumerate}
 \end{itemize}
 \subsection{UC-5.3 Aggiungere alunni alla classe}
 Vedi UC-4.1.1.1 e sottosezioni.
 \subsection{UC-5.4 Salvare una classe}
 \begin{itemize}
 	\item \textbf{Attori:} Insegnante
-	\item \textbf{Descrizione scenario:} Alla fine della creazione, l'insegnante deve salvare la classe nel sistema così da renderla disponibile agli utenti.
 	\item \textbf{Precondizione:} L'insegnante deve aver completato i passaggi precedenti della fase di creazione.
 	\item \textbf{Postcondizione:} Il sistema salva la classe nella lista delle classi dell'insegnante creatore.
+	\item \textbf{Scenario principale:} 
+	\begin{enumerate}
+			\item L'insegnante salva la classe. 
+			\item Il sistema registra la classe.
+		\end{enumerate} 
 \end{itemize}
 %\fi

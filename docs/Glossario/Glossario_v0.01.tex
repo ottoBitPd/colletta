@@ -1,0 +1,135 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{color,colortbl}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage{tabularx}
+\usepackage{csquotes}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=3cm]{geometry}
+\usepackage{longtable}
+\usepackage{lastpage}
+\usepackage{hyperref}
+\hypersetup{colorlinks,urlcolor=blue,linkcolor=black}
+\usepackage[nottoc]{tocbibind}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\includegraphics[scale=0.08]{images/logo.png}}
+
+\definecolor{LightBlue}{rgb}{0,0,0.5}
+\definecolor{Gray}{gray}{0.8}
+\definecolor{LightGray}{gray}{0.9}
+
+\renewcommand {\footrulewidth}{0.2mm}
+\lfoot {Glossario}
+\rfoot{Pagina \thepage\ di \pageref{LastPage}}
+
+\usepackage{lipsum}
+\begin{document}
+	\input{frontpage/frontpage.tex}
+	\newpage
+	\section*{\centering Registro delle modifiche}
+	\begin{tabularx}{\textwidth}{ c | c | c | c | X }
+		\rowcolor{LightBlue}
+		\color{white}\bfseries Versione & \color{white}\bfseries Data & \color{white}\bfseries Autore & \color{white}\bfseries Ruolo & \multicolumn{1}{c}{\color{white}\bfseries Descrizione}\\[0.25cm]
+		0.0.1 & 2018-12-28 & Giovanni Peron & ruolo & Creazione documento e \newline inserimento termini del PdQ \\ \hline
+	
+	\end{tabularx}
+	\newpage
+	\setcounter{secnumdepth}{0}
+	\tableofcontents
+	\newpage
+	%prova per un glossario, intanto ho diviso le parole così, si potrebbe pensare poi di fare un singolo file.tex per ogni parola nel quale inserire la section della parola. Nel frattempo ho messo direttamente in questo le varie section e ognuno può inserirle rispettando l'ordine alfabetico.
+	\section{A}
+	\addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
+	\subsection{Analisi dinamica}
+		L'Analisi dinamica è l'analisi del software applicata quando questo è in esecuzione, permette una valutazione di un sistema software o di un suo componente basato sull’osservazione del suo comportamento in esecuzione.
+	
+	\subsection{Analisi statica}
+L'Analisi statica è l'analisi del software e della documentazione relativa ad esso, attuata senza eseguire codice, è l'opposto dell'analisi dinamica.
+	\addtocontents{toc}{\protect\setcounter{tocdepth}{1}}
+	\section{B}
+	\addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
+	\subsection{Branch}
+	Un branch (ramo) in Git è un semplice puntatore ad un commit. Il branch di default in Git è denominato master. Quando viene creato il commit iniziale, viene creato anche un ramo master che punta all'ultimo commit fatto. Ogni volta che viene fatto un commit il puntatore si sposterà automaticamente. Quando si crea un nuovo branch in realtà si sta creando un nuovo puntatore all'ultimo commit.
+	\addtocontents{toc}{\protect\setcounter{tocdepth}{1}}
+	\section{C}
+	\addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
+	\subsection{Capability (capacità) dei processi}
+	definizione
+	\subsection{Commit}
+	Un commit in git è un salvataggio di un'istantanea dello stato di tutti i file portati nell area di stage tramite il comando git add. Ogni commit è identificato da un hash SHA-1.
+	\addtocontents{toc}{\protect\setcounter{tocdepth}{1}}
+	\section{G}
+	\addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
+	\subsection{GitLab}
+	GitLab è un gestore web di repository Git che include strumenti per il tracciamento dello issues e per la Continuos Integration e il Continuos Delivery.
+	\addtocontents{toc}{\protect\setcounter{tocdepth}{1}}
+	\section{I}
+	\addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
+	\subsection{Indice di Gulpease}
+	L'Indice Gulpease è un indice di leggibilità di un testo in lingua italiana. Utilizzando la lunghezza delle parole in lettere è possibile il calcolarlo in automatico.
+	L'indice può variare tra 0 e 10. Un risultato inferiore a 80 implica una difficoltà di lettura a livello di licenza elementare, inferiore a 60 implica una difficoltà di lettura a livello di licenza media, inferiore a 40 implica una difficoltà di lettura a livello di diploma superiore.
+	\subsection{ISO/IEC 15504 (SPICE)}
+	Lo standard ISO/IEC 15504, comunemente chiamato SPICE (acronimo di Software Process Impro-
+vement and Capability Determination), viene utilizzato per eseguire una valutazione concreta della
+qualità dei processi, inoltre permette la misurazione della capability dei processi, ovvero la maturità
+di un processo l’abilità con cui esso raggiunge l’obiettivo.
+	\subsection{ISO/IEC 9126}
+	definizione
+	\subsection{Issue}
+	Le issues sono un sistema per tenere traccia delle attività da gestire in un progetto. Permettono al team di condividere e discutere nuove idee per il progetto o per risolvere problemi relativi ad esso. Una volta creata un issue questa può essere assegnata ad uno o più membri del team, in questo modo il lavoro svolto per soddisfarla può essere tracciato dall'inizio fino al completamento della issue.
+	\addtocontents{toc}{\protect\setcounter{tocdepth}{1}}
+	\section{L}
+	\addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
+	\subsection{Latex}
+	\LaTeX è un linguaggio di markup utilizzato per la composizione di testi, che permette di ottenere risultati professionali. \LaTeX è un software gratuito e multipiattaforma.
+	\addtocontents{toc}{\protect\setcounter{tocdepth}{1}}
+	\section{P}
+	\addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
+	\subsection{Processo}
+	insieme di attività correlate e coese che trasformano ingressi (bisogni), in uscite (prodotti), secondo regole date, consumando risorse nel farlo.
+	\subsection{Prodotto}
+	definizione
+	\subsection{Progetto}
+	insieme di attività e compiti che devono raggiungere determinati
+obiettivi con specifiche fissate; hanno date d’inizio e di fine fissate; possono
+contare su limitate disponibilità di risorse (persone, tempo, denaro, strumenti); consumano risorse nel loro svolgersi.
+	\addtocontents{toc}{\protect\setcounter{tocdepth}{1}}
+	\section{Q}
+	\addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
+	\subsection{Qualità}
+	In generale, la qualità indica una misura delle caratteristiche o
+delle proprietà di un’entità (una persona, un prodotto, un processo, un pro-
+getto) in confronto a quanto ci si attende da tale entità, per un determinato
+impiego.
+	\subsection{Qualità di processo}
+	definizione
+	\subsection{Qualità di prodotto}
+	definizione
+	\addtocontents{toc}{\protect\setcounter{tocdepth}{1}}
+	\section{R}
+	\addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
+	\subsection{Repository}
+	La repository è la struttura dati dove git salva le informazioni. Una repository oltre directories e tutti i files del progetto git, contiene una sottodirectory .git la quale ospita tutti i file necessary per la struttura della repository Git.
+	\subsection{Risorse}
+	definizione
+\addtocontents{toc}{\protect\setcounter{tocdepth}{1}}
+	\section{S}
+	\addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
+	\subsection{Slack}
+	definizione
+	\section{V}
+	\addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
+	\subsection{Valutazione}
+	il processo tramite cui, secondo regole definite, simboli o numeri sono assegnati ad attributi di un’entità
+	\subsection{Verifica}
+	esaminare, qualcosa per accertarne l’autenticità, l’esattezza o il buon funzionamento.
+\end{document}

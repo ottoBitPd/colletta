@@ -1,102 +1,99 @@
-
-	\subsubsection{UC-X Autenticazione}
-		\begin{itemize}
-			\item Attori: Attore generico;
-			\item Precondizione: l'utente si trova nella vista principale dell'applicazione;
-			\item Postcondizione: l'utente ha eseguito l'accesso con il ruolo di allievo o insegnante.
-			\item Scenario principale:
-				\begin{enumerate}
-					\item l'utente accede all'area di autenticazione;
-					\item l'utente inserisce la propria email e password;
-				\end{enumerate}
-				\item Estensioni:
-				\begin{itemize}
-					\item UC-X Nel caso in cui l'utente tenti l'inserimento di campi non validi vedrà comparire messaggi d'errore.
-				\end{itemize}
-		\end{itemize}
-		
-	\subsubsection{UC-X Modifica profilo}
-		\begin{itemize}
-			\item Attori: Insegnante, allievo;
-			\item Precondizione: l'utente si trova nella vista principale dell'applicazione;
-			\item Postcondizione: l'utente ha modificato i propri dati personali.
-			\item Scenario principale:
-				\begin{enumerate}
-					\item l'utente accede all'area del proprio profilo;
-					\item l'utente modifica username, password, scuola, città;
-				\end{enumerate}
-				\item Estensioni:
-				\begin{itemize}
-					\item UC-X Nel caso in cui l'utente tenti l'inserimento di campi non validi vedrà comparire messaggi d'errore.
-				\end{itemize}
-		\end{itemize}
-		
-	\subsubsection{UC-X Conferma richiesta insegnante}
-		\begin{itemize}
-			\item Attori: Amministratore;
-			\item Precondizione: l'amministratore si trova nella vista principale dell'applicazione;
-			\item Postcondizione: l'amministratore ha confermato l'utente richiedente il ruolo di insegnante.
-			\item Scenario principale:
-				\begin{enumerate}
-					\item l'amministratore visualizza la lista degli utenti che richiedono il ruolo di insegnante;
-					\item l'amministrazione selezione l'utente da confermare;
-				\end{enumerate}
-		\end{itemize}
-					
-	\subsubsection{UC-X Rifiuto richiesta insegnante}
-		\begin{itemize}
-			\item Attori: Amministratore;
-			\item Precondizione: l'amministratore si trova nella vista principale dell'applicazione;
-			\item Postcondizione: l'amministratore ha rifiutato l'utente richiedente il ruolo di insegnante.
-			\item Scenario principale:
-				\begin{enumerate}
-					\item l'amministratore visualizza la lista degli utenti che richiedono il ruolo di insegnante;
-					\item l'amministrazione selezione l'utente da rifiutare;
-				\end{enumerate}
-		\end{itemize}
-					
-					
-					
 \subsection{Attore Allievo}
-	\subsubsection{UC-X Ricerca esercizi disponibili}
+	\subsubsection{UC-1 Ricerca esercizi disponibili}
 		\begin{itemize}
-			\item Attori: allievo, insegnante;
-			\item Precondizione: l'utente si trova nella vista principale dell'applicazione;
-			\item Postcondizione: l'utente ottiene una lista degli esercizi filtrati.
+			\item Attori: Allievo;
+			\item Precondizione: l'allievo si trova nella vista principale dell'applicazione;
+			\item Postcondizione: l'allievo ottiene una lista degli esercizi filtrati.
 			\item Scenario principale:
 				\begin{enumerate}
-					\item l'utente accede all'area dedicata alla ricerca degli esercizi;
-					\item l'utente può filtrare l'esercizio in base al suo nome;
-					\item l'utente può filtrare l'esercizio in base alla frase;
-					\item l'utente può filtrare l'esercizio in base all'autore;
-					\item l'utente può filtrare l'esercizio in base agli argomenti trattati;
+					\item l'allievo accede all'area dedicata alla ricerca degli esercizi;
+					\item l'allievo seleziona i filtri.
 				\end{enumerate}
 			\item Estensioni:
 				\begin{itemize}
-					\item UC-X Nel caso in cui l'utente tenti l'inserimento di campi non validi vedrà comparire messaggi d'errore.
+					\item UC-1.1 Nel caso in cui nessun risultato sia stato trovato;
+					\item UC-2 Nel caso in cui si voglia aggiungere un esercizio;
+					\item UC-3 Nel caso in cui si voglia eseguire un esercizio.
 				\end{itemize}
 		\end{itemize}
-
-	\subsubsection{UC-X Esecuzione esercizio}
+	\subsubsection{UC-1.1 Nessun risultato trovato}
 		\begin{itemize}
-			\item Attori: Allievo
-			\item Precondizione: l'allievo ha selezionato un esercizio da eseguire;
-			\item Postcondizione: l'allievo ha terminato i quesiti proposti dell'esercizio.
+			\item Attori: Allievo;
+			\item Precondizione: l'allievo si trova nella ricerca degli esercizi;
+			\item Postcondizione: l'allievo ottiene un messaggio di errore.
 			\item Scenario principale:
 				\begin{enumerate}
-					\item l'allievo sceglie la classe grammaticale per ogni parola presentata.
+					\item l'allievo seleziona i filtri;
+					\item non sono presenti esercizi disponibili per i filtri selezionati.
+				\end{enumerate}
+		\end{itemize}
+	\subsubsection{UC-2 Aggiunta esercizio}
+		\begin{itemize}
+			\item Attori: Allievo
+			\item Precondizione: l'allievo si trova nella ricerca degli esercizi;
+			\item Postcondizione: l'allievo ottiene tra gli esercizi disponibili l'esercizio appena aggiunto.
+			\item Scenario principale:
+				\begin{enumerate}
+					\item l'allievo scrive nella barra una frase.
+				\end{enumerate}
+			\item Estensioni:
+				\begin{itemize}
+					\item UC-2.1 Nel caso in cui la frase sia già presente nel database;
+					\item UC-2.2 Nel caso in cui la frase non contenga almeno due parole.
+				\end{itemize}
+		\end{itemize}
+	\subsubsection{UC-2.1 Frase già esistente}
+		\begin{itemize}
+			\item Attori: Allievo
+			\item Precondizione: l'allievo si trova nell'aggiunta di un nuovo esercizio;
+			\item Postcondizione: l'allievo ottiene un messaggio di errore.
+			\item Scenario principale:
+				\begin{enumerate}
+					\item l'allievo scrive nella barra una frase;
+					\item la frase inserita è già presente.
+				\end{enumerate}
+		\end{itemize}
+	\subsubsection{UC-2.2 Frase troppo corta}
+		\begin{itemize}
+			\item Attori: Allievo
+			\item Precondizione: l'allievo si trova nell'aggiunta di un nuovo esercizio;
+			\item Postcondizione: l'allievo ottiene un messaggio di errore.
+			\item Scenario principale:
+				\begin{enumerate}
+					\item l'allievo scrive nella barra una frase;
+					\item la frase inserita deve contenere almeno due parole.
+				\end{enumerate}
+		\end{itemize}
+	\subsubsection{UC-3 Esecuzione esercizio}
+		\begin{itemize}
+			\item Attori: Allievo
+			\item Precondizione: l'allievo si trova nella ricerca degli esercizi;
+			\item Postcondizione: l'allievo dispone dei quesiti dell'esercizio.
+			\item Scenario principale:
+				\begin{enumerate}
+					\item l'allievo sceglie la classe grammaticale dal menu a tendina per ogni parola.
 				\end{enumerate}
 			\item Estensioni: 
 				\begin{itemize}
-					\item UC-X Nel caso in cui l'utente tenti l'inserimento di campi non validi vedrà comparire messaggi d'errore.
+					\item UC-3.1 Nel caso in cui tutti i campi non fossero completati;
 				\end{itemize}
 			\item Inclusioni:
 				\begin{itemize}
-					\item UC-X Nel caso in cui l'esercizio sia terminato;
+					\item UC-4 Nel caso in cui tutti i campi fossero completati;
 				\end{itemize}
 			\end{itemize}
-
-	\subsubsection{UC-X Valutazione esercizio}
+	\subsubsection{UC-2.2 Campi non completi}
+		\begin{itemize}
+			\item Attori: Allievo
+			\item Precondizione: l'allievo si trova nell'esecuzione di un esercizio;
+			\item Postcondizione: l'allievo ottiene un messaggio di errore.
+			\item Scenario principale:
+				\begin{enumerate}
+					\item l'allievo completa alcuni e non tutti i campi richiesti dall'esercizio;
+					\item tutti i campi devono essere completati.
+				\end{enumerate}
+		\end{itemize}
+	\subsubsection{UC-4 Valutazione esercizio}
 	\begin{itemize}
 			\item Attori: Allievo
 			\item Precondizione: L'allievo ha completato l'esecuzione dell'esercizio;
@@ -106,8 +103,7 @@
 					\item l'allievo al termine dell'esecuzione dell'esercizio riceve la valutazione.
 				\end{enumerate}
 			\end{itemize}
-			
-	\subsubsection{UC-X Visualizzazione progressi}
+	\subsubsection{UC-5 Visualizzazione progressi}
 	\begin{itemize}
 			\item Attori: Allievo
 			\item Precondizione: L'allievo si trova nella vista principale dell'applicazione;
@@ -117,3 +113,13 @@
 					\item l'allievo prima e/o dopo l'esecuzione di uno o più esercizi può visualizzare i progressi raggiunti.
 				\end{enumerate}
 			\end{itemize}
+	\subsubsection{UC-6 Modifica profilo personale}
+	\begin{itemize}
+			\item Attori: Allievo
+			\item Precondizione: L'allievo si trova nella vista principale dell'applicazione;
+			\item Postcondizione: L'allievo ha modificato i dati riguardanti il profilo personale.
+			\item Scenario principale:
+				\begin{enumerate}
+					\item l'allievo modifica i campi di interesse.
+				\end{enumerate}
+	\end{itemize}

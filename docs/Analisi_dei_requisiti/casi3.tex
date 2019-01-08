@@ -1,6 +1,6 @@
 \subsection{Attore Sviluppatore}
 
-	\subsubsection{UC-X0 Ricerca dei dati delle annotazioni}
+	\subsubsection{UC-15 Ricerca dei dati delle annotazioni}
 		\begin{itemize}
 			\item Attori: Sviluppatore
 			\item Precondizione: Lo sviluppatore si trova nella vista principale dell'applicazione
@@ -9,18 +9,18 @@
 				\begin{enumerate}
 					\item lo sviluppatore accede all'area dei dati;
 					\item lo sviluppatore scrive nella barra di ricerca una sottostringa della frase cercata (possibilmente nulla);
-					\item (UC-X2) lo sviluppatore seleziona i filtri da usare nella ricerca (possibilmente nessuno).
+					\item (UC-15.1) lo sviluppatore seleziona i filtri da usare nella ricerca (possibilmente nessuno).
 				\end{enumerate}
 			\item Estensioni:
 				\begin{itemize}
-					\item Se non viene trovato un risultato, viene visualizzato un messaggio di avviso
+					\item 3.a Se non viene trovato un risultato, viene visualizzato un messaggio di avviso (UC-7)
 				\end{itemize}
 		\end{itemize}
 
-	\subsubsection{UC-X1 Visualizzazione dei dati di una annotazione di una frase}
+	\subsubsection{UC-16 Visualizzazione dei dati di una annotazione di una frase}
 		\begin{itemize}
 			\item Attori: Sviluppatore
-			\item Precondizione: Lo sviluppatore si trova nell'area dati e ha a disposizioni i risultati della ricerca delle annotazioni
+			\item Precondizione: Lo sviluppatore si trova nell'area dati e ha a disposizione i risultati della ricerca delle annotazioni
 			\item Postcondizione: Lo sviluppatore legge i dati di una annotazione di una frase
 			\item Scenario principale:
 				\begin{enumerate}
@@ -28,53 +28,53 @@
 				\end{enumerate}
 		\end{itemize}
 	
-	\subsubsection{UC-X1/2 Visualizzazione storico}
+	\subsubsection{UC-17 Visualizzazione storico}
 		\begin{itemize}
 			\item Attori: Sviluppatore
-			\item Precondizione: Lo sviluppatore si trova nell'area dati e ha a disposizione i risultati della ricerca delle annotazioni
-			\item Postcondizione: Lo sviluppatore ottiene lo storico delle annotazioni ottenuta nella ricerca precedente
+			\item Precondizione: Lo sviluppatore si trova nell'area dati e ha a disposizione i risultati della ricerca delle annotazioni.
+			\item Postcondizione: Lo sviluppatore ottiene lo storico delle annotazioni ottenuta nella ricerca precedente.
 			\item Scenario principale:
 			\begin{enumerate}
 				\item lo sviluppatore seleziona l'opzione "vedi storico"
 			\end{enumerate}
 		\end{itemize}
 	
-	\subsubsection{UC-X2 Filtraggio dei dati}	
+	\subsubsection{UC-15.1 Filtraggio dei dati}	
 		\begin{itemize}
 			\item Attori: Sviluppatore
 			\item Precondizione: Lo sviluppatore si trova nell'area dati e ha scritto nella barra di ricerca una sottostringa della frase cercata
 			\item Postcondizione: Lo sviluppatore ottiene una lista di frasi in base al filtro selezionato
 			\item Scenario principale:
 				\begin{enumerate}
-					\item lo sviluppatore seleziona il filtro;
+					\item lo sviluppatore seleziona il filtro su base temporale (UC-15.1.1);
+					\item lo sviluppatore seleziona il filtro in base agli utenti (UC-15.1.2);
 					\item lo sviluppatore indica dei parametri per restringere la ricerca;
 					\item lo sviluppatore esegue la ricerca.
-				\end{enumerate}
+				\end{enumerate}	
 			\item Estensioni:
 				\begin{itemize}
-					\item Se non viene trovato un risultato, viene visualizzato un messaggio di avviso
-				\end{itemize}				
+					\item 4.a Se i parametri inseriti dall'utente non sono coerenti viene mostrato un messaggio di errore (UC-5).
+				\end{itemize}		
 		\end{itemize}
 	
 	
-	\subsubsection{UC-X3 Filtraggio dei dati su base temporale}	
+	\subsubsection{UC-15.1.1 Filtraggio dei dati su base temporale}	
 		\begin{itemize}
 			\item Attori: Sviluppatore
-			\item Precondizione: Lo sviluppatore si trova nell'area dati e ha scritto nella barra di ricerca una sottostringa della frase cercata
-			\item Postcondizione: Lo sviluppatore ottiene una lista di frasi in base al range temporale indicato
+			\item Precondizione: Lo sviluppatore si trova nell'area dati e ha scritto nella barra di ricerca una sottostringa della frase cercata.
+			\item Postcondizione: Lo sviluppatore ottiene una lista di frasi in base al range temporale indicato.
 			\item Scenario principale:
 				\begin{enumerate}
 					\item lo sviluppatore seleziona il filtro;
 					\item lo sviluppatore indica due date che definiscono un intervallo di tempo per restringere la ricerca;
-					\item lo sviluppatore esegue la ricerca.
 				\end{enumerate}
 		\end{itemize}	
 	
-	\subsubsection{UC-X4 Filtraggio dei dati in base agli utenti}	
+	\subsubsection{UC-15.1.2 Filtraggio dei dati in base agli utenti}	
 		\begin{itemize}
 			\item Attori: Sviluppatore
-			\item Precondizione: Lo sviluppatore si trova nell'area dati e ha scritto nella barra di ricerca una sottostringa della frase cercata
-			\item Postcondizione: Lo sviluppatore ottiene una lista di frasi in base agli utenti scelti
+			\item Precondizione: Lo sviluppatore si trova nell'area dati e ha scritto nella barra di ricerca una sottostringa della frase cercata.
+			\item Postcondizione: Lo sviluppatore ottiene una lista di frasi in base agli utenti scelti.
 			\item Scenario principale:
 				\begin{enumerate}
 					\item lo sviluppatore seleziona il filtro (inclusione o esclusione di un utente);
@@ -83,23 +83,23 @@
 				\end{enumerate}
 		\end{itemize}	
 	
-	\subsubsection{UC-X5 Ordinamento dei risultati}
+	\subsubsection{UC-16 Ordinamento dei risultati}
 		\begin{itemize}
 			\item Attori: Sviluppatore
-			\item Precondizione: Lo sviluppatore si trova nell'area dati con i risultati della ricerca effettuata
-			\item Postcondizione: Lo sviluppatore ottiene la lista precedente ordinata in base alle scelte effettuate
+			\item Precondizione: Lo sviluppatore si trova nell'area dati con i risultati della ricerca effettuata.
+			\item Postcondizione: Lo sviluppatore ottiene la lista precedente ordinata in base alle scelte effettuate.
 			\item Scenario principale:
 				\begin{enumerate}
-					\item lo sviluppatore sceglie il parametro secondo il quale ordinare i risultati (frase, frequenza, ultima correzione, utente)
-					\item lo sviluppatore richiede l'ordinamento scelto
+					\item lo sviluppatore sceglie il parametro secondo il quale ordinare i risultati (frase, frequenza, ultima correzione, utente);
+					\item lo sviluppatore richiede l'ordinamento scelto.
 				\end{enumerate}
 		\end{itemize} 
 	
-	\subsubsection{UC-X6 Download dei dati raccolti}
+	\subsubsection{UC-17 Download dei dati raccolti}
 		\begin{itemize}
 			\item Attori: Sviluppatore
-			\item Precondizione: Lo sviluppatore si trova nell'area dati con i risultati della ricerca effettuata
-			\item Postcondizione: Lo sviluppatore ottiene un file con i dati dei risultati precedentemente trovati
+			\item Precondizione: Lo sviluppatore si trova nell'area dati con i risultati della ricerca effettuata.
+			\item Postcondizione: Lo sviluppatore ottiene un file con i dati dei risultati precedentemente trovati.
 			\item Scenario principale:
 				\begin{enumerate}
 					\item lo sviluppatore richiede il download dei dati;
@@ -108,29 +108,29 @@
 				\end{enumerate}
 			\item Estensioni:
 				\begin{itemize}
-					\item se il path indicato è inesistente, viene visualizzato un messaggio di errore
+					\item 2.a se il path indicato è inesistente, viene visualizzato un messaggio di errore (UC-5).
 				\end{itemize}
 		\end{itemize} 
 
 	% Cosa si intende esattamente con modello?
 		
-	\subsubsection{UC-X7 Visualizzazione di un modello}
+	\subsubsection{UC-18 Visualizzazione di un modello}
 		\begin{itemize}
 			\item Attori: Sviluppatore
-			\item Precondizione: Lo sviluppatore si trova nella vista principale dell'applicazione
-			\item Postcondizione: Lo sviluppatore ottiene le informazioni di un modello
+			\item Precondizione: Lo sviluppatore si trova nella vista principale dell'applicazione.
+			\item Postcondizione: Lo sviluppatore ottiene le informazioni di un modello.
 			\item Scenario principale:
 			\begin{enumerate}
-				\item lo sviluppatore accede all'area modelli
-				\item lo sviluppatore seleziona un modello
+				\item lo sviluppatore accede all'area modelli;
+				\item lo sviluppatore seleziona un modello.
 			\end{enumerate}
 	\end{itemize}
 	
-	\subsubsection{UC-X8 Download di un modello}
+	\subsubsection{UC-19 Download di un modello}
 		\begin{itemize}
 			\item Attori: Sviluppatore
-			\item Precondizione: Lo sviluppatore si trova nella vista con le informazioni del modello selezionato
-			\item Postcondizione: Lo sviluppatore ottiene un file con il modello
+			\item Precondizione: Lo sviluppatore si trova nella vista con le informazioni del modello selezionato.
+			\item Postcondizione: Lo sviluppatore ottiene un file con il modello.
 			\item Scenario principale:
 			\begin{enumerate}
 					\item lo sviluppatore richiede il download del modello;
@@ -139,24 +139,24 @@
 				\end{enumerate}
 			\item Estensioni:
 				\begin{itemize}
-					\item se il path indicato è inesistente, viene visualizzato un messaggio di errore
+					\item 2.a se il path indicato è inesistente, viene visualizzato un messaggio di errore (UC-5).
 				\end{itemize}
 		\end{itemize}
 		
-	\subsubsection{UC-X9 Creazione di un modello}
+	\subsubsection{UC-20 Creazione di un modello}
 		\begin{itemize}
 			\item Attori: Sviluppatore
-			\item Precondizione: Lo sviluppatore si trova nella vista principale dell'applicazione
-			\item Postcondizione: Lo sviluppatore aggiunge un modello alla piattaforma
+			\item Precondizione: Lo sviluppatore si trova nella vista principale dell'applicazione.
+			\item Postcondizione: Lo sviluppatore aggiunge un modello alla piattaforma.
 			\item Scenario principale:
 			\begin{enumerate}
-				\item lo sviluppatore accede all'area modelli
-				\item lo sviluppatore seleziona la funzione di aggiunta di un modello
-				\item lo sviluppatore inserisce i dati per la creazione del modello
-				\item lo sviluppatore completa la creazione
+				\item lo sviluppatore accede all'area modelli;
+				\item lo sviluppatore seleziona la funzione di aggiunta di un modello;
+				\item lo sviluppatore inserisce i dati per la creazione del modello;
+				\item lo sviluppatore completa la creazione.
 			\end{enumerate}
 			\item Estensioni:
 				\begin{itemize}
-					\item se uno dei dati inseriti non è coerente, allora viene visualizzato un messaggio di errore
+					\item 4.a se uno dei dati inseriti non è coerente, allora viene visualizzato un messaggio di errore (UC-5).
 				\end{itemize}
 		\end{itemize}

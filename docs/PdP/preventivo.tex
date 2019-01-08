@@ -1,5 +1,21 @@
+In questa sezione, vengono riportati il preventivo per ogni periodo del progetto e i dati utili a ricavarlo. Il preventivo definisce il budget e quindi il costo totale del progetto. Per ogni periodo sono presenti: un prospetto orario che indica le ore preventivate per ciascun membro e per ciascun ruolo, una tabella dei costi per membro e una tabella dei costi per ruolo.\\
+Per indicare i ruoli, sono state impiegate le seguenti abbreviazioni:
+\begin{itemize}
+	\item RES: responsabile;
+	\item AMM: amministratore;
+	\item AN: analista;
+	\item PRO: progettista;
+	\item DEV: programmatore;
+	\item VER: verificatore.
+\end{itemize}
+
+\newpage
 \subsection{Avvio e analisi dei requisiti}
+	Le ore di questo periodo vanno considerate come investimento e non rientrano nelle ore da rendicontare per il preventivo.
 	\subsubsection{Ore preventivate}
+		La seguente tabella indica le ore di lavoro per ciascun membro e per ciascun ruolo:
+		\begin{table}[h]
+		\centering
 		\begin{tabular}{| l | c c c c c c | c |}
 			\rowcolor{LightBlue}
 			& \multicolumn{7}{c}{\textbf{\color{white}Numero di ore}}	\\
@@ -14,15 +30,21 @@
 			& \textbf{\color{white}VER}
 			& \textbf{\color{white}Totali}\\
 	
-			Bergo & - & 9 & 17 & - & - & 4 & 30\\
-			Bortone & - & 7 & 15	& - & - & 5 & 27\\
-			Cosentino & 22 & - & 19 & - & - & 8 & 49\\
-			Marcato & 7 & 10 & 17 & - & - & 4 & 38\\
-			Peagno & 4 & 7 & 18 & - & - & 2 & 31\\
-			Peron & - & 8 & 25 & - & - & 2 & 35\\
-			Pettenuzzo & - & 9 & 11 & - & - & 6 & 30\\ \hline
+			Bergo 				& - & 9 & 17 & - & - & 4 & 30\\
+			Bortone 			& - & 7 & 15	& - & - & 5 & 27\\
+			Cosentino 		& 22 & - & 19 & - & - & 8 & 49\\
+			Marcato 			& 7 & 10 & 17 & - & - & 4 & 38\\
+			Peagno 			& 4 & 7 & 18 & - & - & 2 & 31\\
+			Peron 				& - & 8 & 25 & - & - & 2 & 35\\ \hline
+			Pettenuzzo 	& - & 9 & 11 & - & - & 6 & 26\\ \hline
 		\end{tabular}
+		\caption{Ore di lavoro per membro/ruolo del periodo di avvio e analisi dei requisiti}
+		\end{table}
+		
 	\subsubsection{Costo}
+		Le seguenti tabelle indicano i costi in base ai membri e in base ai ruoli:
+		\begin{table}[h]
+		\centering		
 		\begin{tabular}{| l | l |}
 			\rowcolor{LightBlue}
 			\textbf{\color{white}Membro}
@@ -37,11 +59,33 @@
 			Pettenuzzo & 545€\\ \hline
 			\textbf{Totale} & 5505€\\ \hline
 		\end{tabular}
+		\caption{Costo di ciascun membro nel periodo di avvio e analisi dei requisiti}
+		\end{table}
 		
-		
-\subsection{Realizzazione}
+		\begin{table}[h]
+		\centering		
+		\begin{tabular}{| l | l |}
+			\rowcolor{LightBlue}
+			\textbf{\color{white}Ruolo}
+			& \textbf{\color{white}Costo}\\
+			
+			Responsabile 		& 990€\\
+			Amministratore 	& 1000€\\
+			Analista 				& 3050€\\			
+			Progettista 			& 0€\\
+			Programmatore 		& 0€\\
+			Verificatore 		& 465€\\ \hline
+			\textbf{Totale} 	& 5505€\\ \hline
+		\end{tabular}
+		\caption{Costo di ciascun ruolo nel periodo di avvio e analisi dei requisiti}
+		\end{table}
 
+\newpage
+\subsection{Progettazione}
 	\subsubsection{Ore preventivate}
+		La seguente tabella indica le ore di lavoro per ciascun membro e per ciascun ruolo:
+		\begin{table}[h]
+		\centering
 		\begin{tabular}{| l | c c c c c c | c |}
 			\rowcolor{LightBlue}
 			& \multicolumn{7}{c}{\textbf{\color{white}Numero di ore}}	\\
@@ -56,27 +100,296 @@
 			& \textbf{\color{white}VER}
 			& \textbf{\color{white}Totali}\\
 
-			Bergo      & 8 & - & - & - & 33 & 4 & 45\\
-			Bortone    & - & - & - & - & 15 & 5 & 20\\
-			Cosentino  & 4 & - & - & - & 23 & 4 & 31\\
-			Marcato    & - & - & - & - & 30 & 5 & 35\\
-			Peagno     & 4 & - & - & 5 & 23 & - & 32\\
-			Peron      & - & - & - & 5 & 10 & 2 & 17\\
-			Pettenuzzo & 4 & - & - & - & 20 & 6 & 30\\ \hline
+			Bergo      & 5 & - & - & 35 & - & 2 & 42 \\
+			Bortone    & - & 5 & - & 40 & - & 10 & 55 \\
+			Cosentino  & - & - & - & 45 & - & - & 45 \\
+			Marcato    & 5 & - & - & 15 & - & 10 & 30 \\
+			Peagno     & - & - & 5 & 10 & - & 10 & 25 \\
+			Peron      & 5 & - & - & 40 & - & 2 & 47 \\
+			Pettenuzzo & - & - & 5 & 30 & - & 2 & 37 \\ \hline
 		\end{tabular}
+		\caption{Ore di lavoro per membro/ruolo del periodo di progettazione}
+		\end{table}		
 		
 	\subsubsection{Costo}
+		Le seguenti tabelle indicano i costi in base ai membri e in base ai ruoli:	
+		\begin{table}[h]
+		\centering
 		\begin{tabular}{| l | l |}
 			\rowcolor{LightBlue}
 			\textbf{\color{white}Membro}
 			& \textbf{\color{white}Costo}\\
 			
-			Bergo & 795€\\
-			Bortone & 300€\\
-			Cosentino & 485€\\
-			Marcato & 525€\\
-			Peagno & 575€\\
-			Peron & 290€\\
-			Pettenuzzo & 510€\\ \hline
-			\textbf{Totale} & 3480€\\ \hline
-		\end{tabular}	
+			Bergo				& 950€\\
+			Bortone			& 1130€\\
+			Cosentino		& 990€\\
+			Marcato			& 630€\\
+			Peagno				& 495€\\
+			Peron				& 1060€\\
+			Pettenuzzo		& 815€\\ \hline
+			\textbf{Totale} & 6070€\\ \hline
+		\end{tabular}
+		\caption{Costo di ciascun membro nel periodo di progettazione}
+		\end{table}
+		
+		\begin{table}[h]
+		\centering
+		\begin{tabular}{| l | l |}
+			\rowcolor{LightBlue}
+			\textbf{\color{white}Ruolo}
+			& \textbf{\color{white}Costo}\\
+			
+			Responsabile 		& 450€\\
+			Amministratore 	& 100€\\
+			Analista 				& 250€\\			
+			Progettista 			& 4730€\\
+			Programmatore 		& 0€\\
+			Verificatore 		& 540€\\ \hline
+			\textbf{Totale} 	& 6070€\\ \hline
+		\end{tabular}		
+		\caption{Costo di ciascun ruolo nel periodo di progettazione}
+		\end{table}
+		
+\newpage
+\subsection{Realizzazione}
+	\subsubsection{Ore preventivate}
+		La seguente tabella indica le ore di lavoro per ciascun membro e per ciascun ruolo:
+		\begin{table}[h]
+		\centering
+		\begin{tabular}{| l | c c c c c c | c |}
+			\rowcolor{LightBlue}
+			& \multicolumn{7}{c}{\textbf{\color{white}Numero di ore}}	\\
+
+			\rowcolor{LightBlue}
+			\textbf{\color{white}Membro}
+			& \textbf{\color{white}RES}
+			& \textbf{\color{white}AMM}
+			& \textbf{\color{white}AN}
+			& \textbf{\color{white}PRO}
+			& \textbf{\color{white}DEV}
+			& \textbf{\color{white}VER}
+			& \textbf{\color{white}Totali}\\
+
+			Bergo      & 10 & - & - & 15 & 20 & 5 & 50 \\
+			Bortone    & - & - & - & 5 & 35 & 3 & 43  \\
+			Cosentino  & - & 5 & - & 15 & 15 & 5 & 40 \\
+			Marcato    & - & - & - & 5 & 45 & 2 & 52 \\
+			Peagno     & 5 & - & - & 20 & 20 & - & 45 \\
+			Peron      & - & - & - & 5 & 15 & 3 & 23 \\
+			Pettenuzzo & 5 & - & - & - & 30 & 8 & 43 \\ \hline
+		\end{tabular}
+		\caption{Ore di lavoro per membro/ruolo del periodo di realizzazione}
+		\end{table}
+		
+	\subsubsection{Costo}
+		Le seguenti tabelle indicano i costi in base ai membri e in base ai ruoli:
+		\begin{table}[h]
+		\centering
+		\begin{tabular}{| l | l |}
+			\rowcolor{LightBlue}
+			\textbf{\color{white}Membro}
+			& \textbf{\color{white}Costo}\\
+			
+			Bergo & 1005€\\
+			Bortone & 680€\\
+			Cosentino & 730€\\
+			Marcato & 815€\\
+			Peagno & 890€\\
+			Peron & 380€\\
+			Pettenuzzo & 720€\\ \hline
+			\textbf{Totale} & 5220€\\ \hline
+		\end{tabular}
+		\caption{Costo di ciascun membro nel periodo di realizzazione}
+		\end{table}
+		
+		\begin{table}[h]
+		\centering
+		\begin{tabular}{| l | l |}
+			\rowcolor{LightBlue}
+			\textbf{\color{white}Ruolo}
+			& \textbf{\color{white}Costo}\\
+			
+			Responsabile 		& 600€\\
+			Amministratore 	& 100€\\
+			Analista 				& 0€\\			
+			Progettista 			& 1430€\\
+			Programmatore 		& 2700€\\
+			Verificatore 		& 390€\\ \hline
+			\textbf{Totale} 	& 5220€\\ \hline
+		\end{tabular}
+		\caption{Costo di ciascun ruolo nel periodo di realizzazione}
+		\end{table}
+		
+\newpage
+\subsection{Validazione}
+	\subsubsection{Ore preventivate}
+		La seguente tabella indica le ore di lavoro per ciascun membro e per ciascun ruolo:
+		\begin{table}[h]
+		\centering
+		\begin{tabular}{| l | c c c c c c | c |}
+			\rowcolor{LightBlue}
+			& \multicolumn{7}{c}{\textbf{\color{white}Numero di ore}}	\\
+	
+			\rowcolor{LightBlue}
+			\textbf{\color{white}Membro}
+			& \textbf{\color{white}RES}
+			& \textbf{\color{white}AMM}
+			& \textbf{\color{white}AN}
+			& \textbf{\color{white}PRO}
+			& \textbf{\color{white}DEV}
+			& \textbf{\color{white}VER}
+			& \textbf{\color{white}Totali}\\
+
+			Bergo      & - & - & - & - & - & 7 & 7  \\
+			Bortone    & - & - & - & - & - & 7 & 7  \\
+			Cosentino  & - & - & - & 10 & - & 2 & 12\\
+			Marcato    & 5 & - & - & - & - & 15 & 20\\
+			Peagno     & - & - & - & - & - & 25 & 25\\
+			Peron      & 5 & 5 & - & 10 & - & - & 20\\
+			Pettenuzzo & 5 & - & - & 5 & - & 10 & 20\\ \hline
+		\end{tabular}
+		\caption{Ore di lavoro per membro/ruolo del periodo di validazione}
+		\end{table}
+		
+	\subsubsection{Costo}
+		Le seguenti tabelle indicano i costi in base ai membri e in base ai ruoli:
+		\begin{table}[h]
+		\centering
+		\begin{tabular}{| l | l |}
+			\rowcolor{LightBlue}
+			\textbf{\color{white}Membro}
+			& \textbf{\color{white}Costo}\\
+			
+			Bergo				& 105€\\
+			Bortone			& 105€\\
+			Cosentino		& 250€\\
+			Marcato			& 375€\\
+			Peagno				& 375€\\
+			Peron				& 470€\\
+			Pettenuzzo		& 410€\\ \hline
+			\textbf{Totale} & 2090€\\ \hline
+		\end{tabular}
+		\caption{Costo di ciascun membro nel periodo di validazione}
+		\end{table}
+		
+		\begin{table}[h]
+		\centering
+		\begin{tabular}{| l | l |}
+			\rowcolor{LightBlue}
+			\textbf{\color{white}Ruolo}
+			& \textbf{\color{white}Costo}\\
+			
+			Responsabile 		& 450€\\
+			Amministratore 	& 100€\\
+			Analista 				& 0€\\			
+			Progettista 			& 550€\\
+			Programmatore 		& 0€\\
+			Verificatore 		& 990€\\ \hline
+			\textbf{Totale} 	& 2090€\\ \hline
+		\end{tabular}		
+		\caption{Costo di ciascun ruolo nel periodo di validazione}
+		\end{table}
+
+\newpage
+\subsection{Riepilogo}
+	\subsubsection{Ore totali}
+		La seguente tabella indica le ore di lavoro per ciascun membro e per ciascun ruolo. Tra parentesi vengono indicate le ore da escludere dal rendiconto finale.
+		\begin{table}[h]
+		\centering
+		\begin{tabular}{| l | c c c c c c | c |}
+			\rowcolor{LightBlue}
+			& \multicolumn{7}{c}{\textbf{\color{white}Numero di ore}}	\\
+	
+			\rowcolor{LightBlue}
+			\textbf{\color{white}Membro}
+			& \textbf{\color{white}RES}
+			& \textbf{\color{white}AMM}
+			& \textbf{\color{white}AN}
+			& \textbf{\color{white}PRO}
+			& \textbf{\color{white}DEV}
+			& \textbf{\color{white}VER}
+			& \textbf{\color{white}Totali}\\
+	
+			Bergo 				& 15 		& 9 (9)		& 17 (17)		& 50 & 20 & 18 (4)	& 129 (30)\\
+			Bortone 			& - 	 		& 12 (7)		& 15	 (15)		& 45 & 35 & 25 (5)	& 132 (27)\\
+			Cosentino 		& 22(22)& 5	  			& 19 (19)		& 70 & 15 & 15 (8)	& 146 (49)\\
+			Marcato 			& 17 (7)& 10 (10)	& 17 (17)		& 20 & 45 & 31 (4)	& 140 (38)\\
+			Peagno 			& 9 (4)	& 7 (7)		& 23 (18)		& 30 & 20 & 37 (2)	& 126 (31)\\
+			Peron 				& 10 		& 13 (8)		& 25 (25)		& 55 & 15 & 7  (2)	& 125 (35)\\
+			Pettenuzzo 	& 10 		& 9 (9) 		& 16 (11)		& 35 & 30 & 26 (6)	& 126 (26)\\ \hline
+		\end{tabular}
+		\caption{Ore di lavoro per membro/ruolo di tutto il progetto}
+		\end{table}
+	
+	\subsubsection{Ore rendicontate}
+		La seguente tabella indica le ore di lavoro per ciascun membro e per ciascun ruolo che rientrano nel calcolo del rendiconto.
+		\begin{table}[h]
+		\centering
+		\begin{tabular}{| l | c c c c c c | c |}
+			\rowcolor{LightBlue}
+			& \multicolumn{7}{c}{\textbf{\color{white}Numero di ore}}	\\
+	
+			\rowcolor{LightBlue}
+			\textbf{\color{white}Membro}
+			& \textbf{\color{white}RES}
+			& \textbf{\color{white}AMM}
+			& \textbf{\color{white}AN}
+			& \textbf{\color{white}PRO}
+			& \textbf{\color{white}DEV}
+			& \textbf{\color{white}VER}
+			& \textbf{\color{white}Totali}\\
+	
+			Bergo 				& 15 & - & - & 50 & 20 & 14 & 99 \\
+			Bortone 			& -  & 5 & - & 45 & 35 & 20 & 105\\
+			Cosentino 		& -  & 5 & - & 70 & 15 & 7  & 97 \\
+			Marcato 			& 10 & - & - & 20 & 45 & 27 & 102\\
+			Peagno 			& 5  & - & 5 & 30 & 20 & 35 & 95 \\
+			Peron 				& 10 & 5 & - & 55 & 15 & 5  & 90 \\
+			Pettenuzzo 	& 10 & - & 5 & 35 & 30 & 20 & 100\\ \hline
+		\end{tabular}
+		\caption{Ore di lavoro per membro/ruolo di tutto il progetto}
+		\end{table}
+	
+	\subsubsection{Costo totale}
+		Le seguenti tabelle indicano i costi in base ai membri e in base ai ruoli. Tra parentesi vengono indicati i costi da considerare come investimento e da non rendicontare.
+		\begin{table}[h]
+		\centering
+		\begin{tabular}{| l | l | l |}
+			\rowcolor{LightBlue}
+			\textbf{\color{white}Membro}
+			& \textbf{\color{white}Costo con investimento}
+			& \textbf{\color{white}Costo preventivato}\\
+			
+			Bergo				& 2725€ (665€)  & 2060€\\
+			Bortone			& 2505€ (590€)  & 1915€\\
+			Cosentino		& 3225€ (1255€) & 1970€\\
+			Marcato			& 2715€ (895€)  & 1820€\\
+			Peagno				& 2500€ (740€)  & 1760€\\
+			Peron				& 2725€ (815€)  & 1910€\\
+			Pettenuzzo		& 2490€ (545€)  & 1945€\\ \hline
+			\textbf{Totale} & 18885€ (5505€) & 13380€\\ \hline
+		\end{tabular}
+		\caption{Costo di ciascun membro nel periodo di validazione}
+		\end{table}
+		
+		\begin{table}[h]
+		\centering
+		\begin{tabular}{| l | l | l |}
+			\rowcolor{LightBlue}
+			\textbf{\color{white}Ruolo}
+			& \textbf{\color{white}Costo con investimento}
+			& \textbf{\color{white}Costo preventivato}\\
+			
+			Responsabile 		& 2490€ (990€) & 1500€\\
+			Amministratore 	& 1300€ (1000€) & 300€\\
+			Analista 				& 3300€ (3050€) & 250€\\			
+			Progettista 			& 6710€ (0€) & 6710€\\
+			Programmatore 		& 2700€ (0€) & 2700€\\
+			Verificatore 		& 2385€ (465€) & 1920€\\ \hline
+			\textbf{Totale} 	& 18885€ (5505€) & 13380€\\ \hline
+		\end{tabular}		
+		\caption{Costo di ciascun ruolo nel periodo di validazione}
+		\end{table}
+		
+		\paragraph{Conclusioni\\}
+		Il costo totale del progetto con un investimento di 5505€ è pari a \textbf{18885€}. Conseguentemente, il costo preventivato è \textbf{13380€}.

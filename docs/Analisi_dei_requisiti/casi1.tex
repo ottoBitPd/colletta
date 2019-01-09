@@ -1,9 +1,26 @@
+In questa sezione verranno indicati ed analizzati tutti i casi d'uso individuati dal gruppo. Ogni caso d'uso verrà indicato con un codice univoco secondo le regole descritte nel documento \textit{Norme di progetto} e riportate di seguito. 
+\subsection{Denominazione dei casi d'uso}
+Ad ogni caso d'uso saranno associate le seguenti informazioni:
+\begin{itemize}
+\item il codice del requisito che lo interessa UC-[Codice];
+\item un nome (univoco);
+\item le pre-condizioni e le post-condizioni relative allo specifico caso d'uso;
+\item gli attori coinvolti, sia primari che secondari;
+\item lo scenario principale che il caso d'uso vorrebbe modellare;
+\item le eventuali estensioni dello scenario principale.
+\end{itemize}
+
+\subsubsection{Gerarchie dei casi d'uso} 
+\noindent \\
+ Gli identificatori numerici assegnati a casi d'uso saranno organizzati gerarchicamente come descritto di seguito. Posto UC-X codice di un caso d'uso, allora UC-X.Y è figlio di UC-X ed esiste fra i due una relazione tra quelle elencate:
+\begin{itemize}
+\item UC-X.Y descrive nel dettaglio una delle funzionalita di UC-X;
+\item UC-X.Y descrive una estensione (o scenario alternativo) dello scenario descritto in UC-X; 
+\item UC-X.Y descrive una estensione dello scenario principale di due o più figli di UC-X.
+\end{itemize}
+
+\subsection{Elenco dei casi d'uso}
 \subsubsection{UC-1 Registrazione}
-		\begin{figure}[h]
-			\centering
-			\includegraphics[scale=0.7]{images/UC-1.png}
-			\caption{UC-1 Registrazione}
-		\end{figure}			
 \begin{itemize}
 		\item \textbf{Attori: }Utente non registrato
 		\item \textbf{Precondizione: }L'utente si trova nella vista di registrazione dell'applicazione.
@@ -39,11 +56,6 @@
 		\end{itemize}
 		
 	\subsubsection{UC-3 Modifica profilo}
-		\begin{figure}[h]
-			\centering
-			\includegraphics[scale=0.7]{images/UC-3.png}
-			\caption{UC-3 Modifica profilo e UC-6 Ricerca esercizi}
-		\end{figure}
 		\begin{itemize}
 			\item Attori: insegnante, allievo;
 			\item Precondizione: l'utente si trova nella vista di modifica dei dati del proprio profilo;
@@ -58,6 +70,7 @@
 					\item 2.a nel caso in cui l'utente tenti l'inserimento di campi non validi vedrà comparire messaggi d'errore (UC-5).
 				\end{itemize}
 		\end{itemize}
+		
 \subsubsection{UC-4 Verifica richiesta insegnante}
 		\begin{itemize}
 			\item Attori: amministratore;
@@ -79,7 +92,7 @@
 		\begin{enumerate}
 		\item L'utente ha provato a inserire dei campi non validi.
 		\item All'utente viene mostrato un messaggio d'errore che invita a ricontrollare i campi non validi.
-		\end{enumerate}
+		\end{enumerate}.
 \end{itemize}
 \subsubsection{UC-6 Ricerca esercizi}
 		\begin{itemize}
@@ -124,26 +137,9 @@
 		\end{enumerate}
 \end{itemize}
 
-\subsubsection{UC-8 Eliminazione di un utente}
-	\begin{itemize}
-			\item Attori: amministratore;
-			\item Precondizione: l'amministratore si trova nella vista di amministrazione dell'applicazione;
-			\item Postcondizione: l'amministratore ha eliminato l'utente desiderato.
-			\item Scenario principale:
-				\begin{enumerate}
-					\item l'amministratore indica l'utente da eliminare;
-					\item l'amministratore conferma l'eliminazione dell'utente selezionato.
-				\end{enumerate}
-		\end{itemize}
 	
 \subsubsection{UC-9 Modifica soluzione}
-\begin{figure}[h]
-			\centering
-			\includegraphics[scale=0.7]{images/UC-9.png}
-			\caption{UC-9 Modifica soluzione, UC-10 Visualizzazione esercizi inseriti, UC-11 Eliminare una soluzione di un esercizio}
-		\end{figure}
 \begin{itemize}
-
 \item \textbf{Attori: }Insegnante
 \item \textbf{Precondizione: }L'insegnante ha selezionato un esercizio di cui ha fornito una soluzione.
 \item \textbf{Postcondizione: }La soluzione inserita è stata modificata.
@@ -179,11 +175,11 @@
 	\end{itemize}
 
 \subsubsection{UC-12 Inserimento esercizio}
-\begin{figure}[h]
-			\centering
-			\includegraphics[scale=0.7]{images/UC-9.png}
-			\caption{UC-12 Inserimento esercizio}
-		\end{figure}
+\begin{figure}[htbp]
+	\centering
+	%inserire immagine diagramma
+	\caption{UC-1 Inserimento esercizio}
+\end{figure}
 	\begin{itemize}
 		\item \textbf{Attori: }Insegnante
 		\item \textbf{Precondizione: }L'insegnante è nella vista di inserimento di un nuovo esercizio.
@@ -203,6 +199,11 @@
 	\end{itemize}
 
 \subsubsection{UC-12.1 Inserimento di una soluzione}
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[scale=0.7]{images/UC-1_3.png}
+	\caption{UC-1.3 Inserimento soluzione}
+\end{figure}
 \begin{itemize}
 \item \textbf{Attori: }Insegnante
 \item \textbf{Precondizione: }L'insegnante è nella vista di inserimento di un nuovo esercizio.
@@ -220,28 +221,16 @@
 \begin{itemize}
 \item \textbf{Attori: }Insegnante
 
-\item \textbf{Precondizione: }L'insegnante sta inserendo un esercizio, gli viene richiesta la compilazione di una lista di argomenti presenti nell'esercizio.
-\item \textbf{Postcondizione: }L'insegnante ha selazionato gli argomenti trattati nell'esercizio.
+\item \textbf{Precondizione: L'insegnante sta inserendo un esercizio, gli viene richiesta la compilazione di una lista di argomenti presenti nell'esercizio}
+\item \textbf{Postcondizione: L'insegnante ha selazionato gli argomenti trattati nell'esercizio.}
 \item \textbf{Scenario principale: }
 		\begin{enumerate}
 		\item L'insegnante sta inserendo un esercizio. 
 		\item L'insegnante seleziona gli argomenti che vengono toccati nell'esercizio. 
 		\end{enumerate}
-\end{itemize}
+\end{itemize}				
 
-\newpage
-
-
-					
-					
-					
-\subsection{Attore Allievo}
 	\subsubsection{UC-13 Svolgimento esercizio}
-	\begin{figure}[h]
-			\centering
-			\includegraphics[scale=0.7]{images/UC-13.png}
-			\caption{UC-13 Svolgimento esercizio, UC-14 Visualizzazione progressi}
-	\end{figure}	
 	\begin{itemize}
 	\item Attori: Allievo
 			\item Precondizione:  L'allievo visualizza la lista degli esercizi ricercati.
@@ -256,18 +245,13 @@
 	\end{itemize}
 			
 	\subsubsection{UC-13.1 Selezione esercizio}
-	\begin{figure}[h]
-			\centering
-			\includegraphics[scale=0.7]{images/UC-13_1.png}
-			\caption{UC-13.1 Selezione esercizio, UC-13.2 Compilazione dei dati, UC-13.3 Valutazione esercizio}
-	\end{figure}
 	\begin{itemize}
 			\item Attori: Allievo
 			\item Precondizione: L'allievo visualizza la lista degli esercizi ricercati.
 			\item Postcondizione: L'allievo visualizza la vista per l'esecuzione dell'esercizio.
 			\item Scenario principale:
 				\begin{enumerate}
-					\item l'allievo indica (scrivendola o selezionandola) la frase da svolgere.
+					\item l'allievo seleziona la frase da svolgere.
 					\item l'allievo seleziona il correttore dell'esercizio(insegnante o algoritmo automatico).
 					\item l'allievo conferma la selezione.
 				\end{enumerate}
@@ -312,5 +296,3 @@
 					\item l'allievo visualizza il numero di esercizi svolti.
 				\end{enumerate}
 	\end{itemize}
-			
-

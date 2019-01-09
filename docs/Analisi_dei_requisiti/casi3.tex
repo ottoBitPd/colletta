@@ -4,6 +4,7 @@
 		\begin{figure}[h]
 			\centering
 			\includegraphics[scale=0.7]{images/UC-15.png}
+			\caption{UC-15 Ricerca dei dati delle annotazioni}
 		\end{figure}			
 	
 		\begin{itemize}
@@ -22,36 +23,13 @@
 				\end{itemize}
 		\end{itemize}
 
-	\subsubsection{UC-16 Visualizzazione dei dati di una annotazione di una frase}
-		\begin{itemize}
-			\item Attori: Sviluppatore
-			\item Precondizione: Lo sviluppatore si trova nell'area dati e ha a disposizione i risultati della ricerca delle annotazioni
-			\item Postcondizione: Lo sviluppatore legge i dati di una annotazione di una frase
-			\item Scenario principale:
-				\begin{enumerate}
-					\item lo sviluppatore sceglie una annotazione.
-				\end{enumerate}
-		\end{itemize}
-	
-	\subsubsection{UC-17 Visualizzazione storico}
-		\begin{figure}[h]
-			\centering
-			\includegraphics[scale=0.7]{images/UC-17.png}
-		\end{figure}	
-		\begin{itemize}
-			\item Attori: Sviluppatore
-			\item Precondizione: Lo sviluppatore si trova nell'area dati e ha a disposizione i risultati della ricerca delle annotazioni.
-			\item Postcondizione: Lo sviluppatore ottiene lo storico delle annotazioni ottenuta nella ricerca precedente.
-			\item Scenario principale:
-			\begin{enumerate}
-				\item lo sviluppatore seleziona l'opzione "vedi storico"
-			\end{enumerate}
-		\end{itemize}
+
 	
 	\subsubsection{UC-15.1 Filtraggio dei dati}	
 		\begin{figure}[h]
 			\centering
 			\includegraphics[scale=0.7]{images/UC-15_1.png}
+			\caption{UC-15.1 Filtraggio dei dati}
 		\end{figure}	
 		\begin{itemize}
 			\item Attori: Sviluppatore
@@ -75,6 +53,7 @@
 		\begin{figure}[h]
 			\centering
 			\includegraphics[scale=0.7]{images/UC-15_1_1.png}
+			\caption{UC-15.1.1 Filtraggio dei dati su base temporale e UC-15.1.2 Filtraggio dei dati in base agli utenti}
 		\end{figure}			
 		\begin{itemize}
 			\item Attori: Sviluppatore
@@ -99,8 +78,34 @@
 					\item lo sviluppatore esegue la ricerca.
 				\end{enumerate}
 		\end{itemize}	
+	\subsubsection{UC-16 Visualizzazione dei dati di una annotazione di una frase}
+		\begin{itemize}
+			\item Attori: Sviluppatore
+			\item Precondizione: Lo sviluppatore si trova nell'area dati e ha a disposizione i risultati della ricerca delle annotazioni
+			\item Postcondizione: Lo sviluppatore legge i dati di una annotazione di una frase
+			\item Scenario principale:
+				\begin{enumerate}
+					\item lo sviluppatore sceglie una annotazione.
+				\end{enumerate}
+		\end{itemize}
 	
-	\subsubsection{UC-16 Ordinamento dei risultati}
+	\subsubsection{UC-17 Visualizzazione storico}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[scale=0.7]{images/UC-17.png}
+			\caption{UC-17 Visualizzazione storico}
+		\end{figure}	
+		\begin{itemize}
+			\item Attori: Sviluppatore
+			\item Precondizione: Lo sviluppatore si trova nell'area dati e ha a disposizione i risultati della ricerca delle annotazioni.
+			\item Postcondizione: Lo sviluppatore ottiene lo storico delle annotazioni ottenuta nella ricerca precedente.
+			\item Scenario principale:
+			\begin{enumerate}
+				\item lo sviluppatore seleziona l'opzione "vedi storico"
+			\end{enumerate}
+		\end{itemize}
+		
+	\subsubsection{UC-18 Ordinamento dei risultati}
 		\begin{itemize}
 			\item Attori: Sviluppatore
 			\item Precondizione: Lo sviluppatore si trova nell'area dati con i risultati della ricerca effettuata.
@@ -112,7 +117,7 @@
 				\end{enumerate}
 		\end{itemize} 
 	
-	\subsubsection{UC-17 Download dei dati raccolti}
+	\subsubsection{UC-19 Download dei dati raccolti}
 		\begin{itemize}
 			\item Attori: Sviluppatore
 			\item Precondizione: Lo sviluppatore si trova nell'area dati con i risultati della ricerca effettuata.
@@ -131,7 +136,7 @@
 
 	% Cosa si intende esattamente con modello?
 		
-	\subsubsection{UC-18 Visualizzazione di un modello}
+	\subsubsection{UC-20 Visualizzazione di un modello}
 		\begin{itemize}
 			\item Attori: Sviluppatore
 			\item Precondizione: Lo sviluppatore si trova nella vista principale dell'applicazione.
@@ -143,10 +148,11 @@
 			\end{enumerate}
 	\end{itemize}
 	
-	\subsubsection{UC-19 Download di un modello}
+	\subsubsection{UC-21 Download di un modello}
 		\begin{figure}[h]
 			\centering
-			\includegraphics[scale=0.7]{images/UC-19.png}
+			\includegraphics[scale=0.7]{images/UC-21.png}
+			\caption{UC-21 Download di un modello}
 		\end{figure}			
 		\begin{itemize}
 			\item Attori: Sviluppatore
@@ -164,10 +170,11 @@
 				\end{itemize}
 		\end{itemize}
 		
-	\subsubsection{UC-20 Creazione di un modello}
+	\subsubsection{UC-22 Creazione di un modello}
 		\begin{figure}[h]
 			\centering
-			\includegraphics[scale=0.7]{images/UC-20.png}
+			\includegraphics[scale=0.7]{images/UC-22.png}
+				\caption{UC-22 Creazione di un modello}
 		\end{figure}			
 		\begin{itemize}
 			\item Attori: Sviluppatore
@@ -184,4 +191,15 @@
 				\begin{itemize}
 					\item 4.a se uno dei dati inseriti non è coerente, allora viene visualizzato un messaggio di errore (UC-5).
 				\end{itemize}
+		\end{itemize}
+	\subsubsection{UC-23 Eliminazione di un esercizio}
+			\begin{itemize}
+			\item Attori: amministratore;
+			\item Precondizione: l'amministratore si trova nella vista di amministrazione dell'applicazione;
+			\item Postcondizione: l'amministratore ha eliminato l'esercizio desiderato.
+			\item Scenario principale:
+				\begin{enumerate}
+					\item l'amministratore indica l'esercizio da eliminare;
+					\item l'amministratore conferma l'eliminazione dell'esercizio selezionato.
+				\end{enumerate}
 		\end{itemize}

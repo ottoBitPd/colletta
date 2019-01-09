@@ -135,144 +135,174 @@ Nella tabella seguente vengono riportati i risultati delle verifiche eseguite su
 	\caption{Resoconto attività di verifica}
 \end{longtable}
 \subsubsection{Piano dei test}
-\paragraph{Test di Sistema}
-\begin{longtable}{|p{2cm}|p{2cm}|p{6.25cm}|p{4cm}|}		
+\paragraph{Test di sistema}\textcolor{white}{4}
+{\renewcommand{\arraystretch}{2}%
+\begin{longtable}{|>{\centering\arraybackslash}m{1.6cm}|>{\centering\arraybackslash}m{1.7cm}|m{6.41cm}|>{\centering\arraybackslash}m{3.1cm}|}		
 	\rowcolor{LightBlue}
 		\textbf{\textcolor{white}{Codice\newline test}}
 		& \textbf{\textcolor{white}{Codice\newline requisito}}
-		& \textbf{\textcolor{white}{Descrizione}} 
-		& \textbf{\textcolor{white}{Stato}} \\
+		& \multicolumn{1}{|c|}{\textbf{\textcolor{white}{ Descrizione}}}
+		& \textbf{\textcolor{white}{Stato}}\\
 
 		\hline
 		\rowcolor{LightGray}
 		TS-RO1
 		& ROF1 
-		& Verifica che l'utente si registra alla piattaforma creando un account personale. 
+		& Verifica che l'utente riesca a registrarsi alla piattaforma creando un account personale. 
 		& non implementato\\ \hline
 		\rowcolor{white}
 		TS-RO2
 		& ROF2 
-		& Verifica che l'utente esegue l'accesso alla piattaforma utilizzando le sue credenziali. 
+		& Verifica che l'utente possa eseguire l'accesso alla piattaforma utilizzando le sue credenziali.
 		& non implementato\\ \hline
 		\rowcolor{LightGray}
+		TS-RD1
 		& RDF1 
-		& Verifica che l'utente modifica i dati del proprio profilo personale. 
+		& Verifica che l'utente possa modificare i dati del proprio profilo personale.
 		& non implementato\\ \hline
 		\rowcolor{white}
+		TS-RD2
 		& RDF2 
-		& Verifica che l'amministratore verifica le credenziali di un utente che richiede la registrazione come insegnante 
+		& Verifica che l'amministratore possa verificare le credenziali di un utente che richiede la registrazione come insegnante. 
 		& non implementato\\ \hline
 		\rowcolor{LightGray}
+		TS-RD3
 		& RDF3 
-		& Verifica che l'utente viene avvisato in caso di errore nell'inserimento dei dati richiesti. 
+		& Verifica che l'utente venga avvisato in caso di errore nell'inserimento dei dati richiesti.
 		& non implementato\\ \hline
-		\rowcolor{LightGray}
+		\rowcolor{white}
+		TS-RO3		
 		& ROF3 
-		& Verifica che l'insegnante e l'allievo devono poter ricercare degli esercizi sulla piattaforma. 
+		& Verifica che l'insegnante e l'allievo possano ricercare degli esercizi sulla piattaforma.
 		& non implementato\\ \hline
 		\rowcolor{LightGray}
+		TS-RP1		
 		& RPF1 
-		& Verifica che durante la ricerca, l'utente ha la possibilità di impostare dei filtri per raffinarla. 			
+		& Verifica che durante la ricerca, l'utente abbia la possibilità di impostare dei filtri per raffinarla. 		
 		& non implementato\\ \hline
-		\rowcolor{LightGray}
+		\rowcolor{white}
+		TS-RD4		
 		& RDF4 
-		& Verifica che dopo una ricerca, l'utente viene avvisato con un messaggio se il sistema non ha trovato nessun risultato che corrisponde ai criteri selezionati. 
+		& Verifica che dopo una ricerca, l'utente venga avvisato con un messaggio nel caso in cui il sistema non abbia trovato nessun risultato corrispondente ai criteri selezionati.
 		& non implementato\\ \hline
 		\rowcolor{LightGray}
+		TS-RP2		
 		& RPF2 
-		& Verifica che l'amministratore può eliminare un utente iscritto alla piattaforma. 
+		& Verifica che l'amministratore possa eliminare un utente iscritto alla piattaforma.
 		& non implementato\\ \hline
-		\rowcolor{LightGray}
+		\rowcolor{white}
+		TS-RP3		
 		& RPF3 
-		& Verifica che l'insegnante può modificare una soluzione di un esercizio da lui fornita. 
+		& Verifica che l'insegnante possa modificare una soluzione di un esercizio da lui fornita
 		& non implementato\\ \hline
 		\rowcolor{LightGray}
+		TS-RD5		
 		& RDF5 
-		& Verifica che l'insegnante, accedendo alla sua area del profilo, può visualizzare la lista degli esercizi da lui creati. 
+		& Verifica che l'insegnante, accedendo alla sua area del profilo, possa visualizzare la lista degli esercizi da lui creati. 
 		& non implementato\\ \hline
-		\rowcolor{LightGray}
+		\rowcolor{white}
+		TS-RP4		
 		& RPF4 
-		& Verifica che l'insegnante può eliminare una soluzione di un esercizio da lui fornita. 
+		& Verifica che l'insegnante possa eliminare una soluzione di un esercizio da lui fornita. 
 		& non implementato\\ \hline
 		\rowcolor{LightGray}
+		TS-RP5		
 		& RPF5 
-		& Verifica che l'insegnante indica gli argomenti trattati nell'esercizio che sta creando. 
+		& Verifica che l'insegnante possa indicare gli argomenti trattati nell'esercizio in fase di creazione.
 		& non implementato\\ \hline
-		\rowcolor{LightGray}
+		\rowcolor{white}
+		TS-RO4		
 		& ROF4 
-		& Verifica che l'allievo deve poter inserire una frase da svolgere o selezionare un esercizio da quelli disponibili sul sistema. 
+		& Verifica che l'allievo possa inserire una frase da svolgere o selezionare un esercizio da quelli disponibili sul sistema.
 		& non implementato\\ \hline
 		\rowcolor{LightGray}
+		TS-RO5		
 		& ROF5 
-		& Verifica che l'allievo deve poter compilare i campi relativi alle parole della frase al fine di completare l'esercizio selezionato. 
+		& Verifica che l'allievo possa compilare i campi relativi alle parole della frase al fine di completare l'esercizio selezionato.
 		& non implementato\\ \hline
-		\rowcolor{LightGray}
+		\rowcolor{white}
+		TS-RD6		
 		& RDF6 
-		& Verifica che lo sviluppatore deve poter ricercare le annotazioni di una particolare frase. 
+		& Verifica che lo sviluppatore possa ricercare le annotazioni di una particolare frase.
 		& non implementato\\ \hline
 		\rowcolor{LightGray}
+		TS-RP6		
 		& RPF6 
-		& Verifica che lo sviluppatore può ordinare la lista dei risultati ottenuti dalla ricerca tramite determinati parametri. 
+		& Verifica che lo sviluppatore possa ordinare la lista dei risultati ottenuti dalla ricerca tramite determinati parametri. 
 		& non implementato\\ \hline
-		\rowcolor{LightGray}
+		\rowcolor{white}
+		TS-RP7		
 		& RPF7 
-		& Verifica che l'amministratore deve poter eliminare uno qualsiasi degli esercizi inseriti nel sistema. 
+		& Verifica che l'amministratore possa eliminare uno qualsiasi degli esercizi inseriti nel sistema.
 		& non implementato\\ \hline
 		\rowcolor{LightGray}
+		TS-RO6		
 		& ROF6 
-		& Verifica che l'insegnante può inserire un esercizio nel sistema; deve indicarne una soluzione. 
+		& Verifica che l'insegnante possa inserire un esercizio nel sistema, indicando una soluzione per esso. 
 		& non implementato\\ \hline
-		\rowcolor{LightGray}
+		\rowcolor{white}
+		TS-RO7		
 		& ROF7 
-		& Verifica che l'insegnante deve inserire la soluzione dell'esercizio che sta creando; può renderla pubblica o privata. 
+		& Verifica che l'insegnante possa inserire la soluzione dell'esercizio che sta creando; può renderla pubblica o privata. 
 		& non implementato\\ \hline
 		\rowcolor{LightGray}
+		TS-RO8		
 		& ROF8 
-		& Verifica che l'allievo deve poter svolgere un esercizio da lui indicato e visualizzare la propria valutazione a riguardo. 
+		& Verifica che l'allievo possa svolgere un esercizio da lui indicato e visualizzarne la relativa valutazione. 
 		& non implementato\\ \hline
-		\rowcolor{LightGray}
+		\rowcolor{white}
+		TS-RD7		
 		& RDF7 
-		& Verifica che l'allievo, accedendo al proprio profilo, potrà visualizzare dei dati relativi ai propri progressi. 
+		& Verifica che l'allievo, accedendo al proprio profilo, possa visualizzare dei dati relativi ai propri progressi. 
 		& non implementato\\ \hline
 		\rowcolor{LightGray}
+		TS-RD8		
 		& RDF8 
-		& Verifica che lo sviluppatore deve poter filtrare i dati trovati durante la ricerca ottenendo una lista di esercizi. 
+		& Verifica che lo sviluppatore possa filtrare i dati trovati durante la ricerca ottenendo una lista di esercizi. 
 		& non implementato\\ \hline
-		\rowcolor{LightGray}
+		\rowcolor{white}
+		TS-RD9
 		& RDF9 
-		& Verifica che lo sviluppatore imposta un filtro temporale per la ricerca degli esercizi 
+		& Verifica che lo sviluppatore possa impostare un filtro temporale per la ricerca degli esercizi.
 		& non implementato\\ \hline
 		\rowcolor{LightGray}
+		TS-RD10		
 		& RDF10 
-		& Verifica che lo sviluppatore deve poter includere o escludere dalla ricerca uno o più utenti. 
+		& Verifica che lo sviluppatore possa includere o escludere dalla ricerca uno o più utenti. 
 		& non implementato\\ \hline 
-		\rowcolor{LightGray}
+		\rowcolor{white}
+		TS-RP8		
 		& RPF8 
-		& Verifica che lo sviluppatore deve poter visualizzare i dati relativi ad una particolare annotazione. 		
+		& Verifica che lo sviluppatore possa visualizzare i dati relativi ad una particolare annotazione. 		
 		& non implementato\\ \hline
-		\rowcolor{LightGray}\rowcolor{LightGray}
-		& RPF9 
-		& Verifica che lo sviluppatore deve poter visualizzare lo storico delle annotazioni. 
-		&  non implementato\\ \hline
 		\rowcolor{LightGray}
+		TS-RP9		
+		& RPF9 
+		& Verifica che lo sviluppatore possa visualizzare lo storico delle annotazioni. 
+		&  non implementato\\ \hline
+		\rowcolor{white}
+		TS-RO9
 		& ROF9 
 		& Verifica che lo sviluppatore deve poter scaricare un file contenente i dati relativi agli esercizi ottenuti con la ricerca.
 		& non implementato\\ \hline
 		\rowcolor{LightGray}
+		TS-RP10		
 		& RPF10 
 		& Verifica che lo sviluppatore può visualizzare le informazioni relative ad uno dei modelli disponibili. 
 		& non implementato\\ \hline
-		\rowcolor{LightGray}
+		\rowcolor{white}
+		TS-RP11		
 		& RPF11 
 		& Verifica che lo sviluppatore deve poter scaricare le informazioni riguardanti un modello. 
-		& non implementato\\\hline\hline
+		& non implementato\\ \hline
 		\rowcolor{LightGray}
+		TS-RP12		
 		& RPF12 
 		& Verifica che lo sviluppatore deve poter creare un modello tramite la piattaforma. 
 		& non implementato\\ \hline	
 		
 		\caption{Test di sistema}
-\end{longtable}
+\end{longtable}}
 \subsection{Processi}
 \subsubsection{Studio di fattibilità}
 %non riesco a fare la tabella proprio come vorrei, macherebbe un multirow credo sul grado

@@ -188,6 +188,28 @@ Ad ogni caso d'uso saranno associate le seguenti informazioni:
 \item UC-X.Y descrive una estensione (o scenario alternativo) dello scenario descritto in UC-X; 
 \item UC-X.Y descrive una estensione dello scenario principale di due o più figli di UC-X.
 \end{itemize}
+\subsection{Pianificazione della qualità}
+\subsubsection{Denominazione test}
+Volendo associare un identificatore univoco per ogni test menzionato. Si \`e deciso di utilizzare il seguente formato:
+	\begin{center}
+		T[Tipo]-[Priorità][Codice]
+\end{center}
+dove:
+\begin{itemize}
+\item il campo “\textbf{Priorità}” può assumere uno dei seguenti valori:
+\begin{itemize}
+	\item \textbf{O}: indica un test per verificare un requisito obbligatorio, irrinunciabile per il committente;
+	\item \textbf{D}: indica un test per verificare un requisito desiderabile ma non strettamente necessario;
+	\item \textbf{P}: indica un test per verificare un requisito opzionale, che potrebbe venir soddisfatto o meno senza che il prodotto risulti mancante di funzionalità essenziali.
+\end{itemize}
+\item il campo “\textbf{Tipo}” può assumere uno dei seguenti valori:
+\begin{itemize}
+	\item \textbf{S}: definisce un test di sistema, ovvero un test per la verifica del comportamento dell'intero sistema;
+	\item \textbf{I}: definisce un test di integrazione, ovvero un test per verificare la corretta integrazione tra più componenti del sistema;
+	\item \textbf{U}: definisce un test di unità, ovvero un test per la verifica del più piccolo componente del sistema;
+\end{itemize}
+\item il campo “\textbf{Codice}” assumerà un valore numerico intero positivo, univoco ed incrementale.
+\end{itemize}
 \newpage
 	
 	\section{Processo di Sviluppo}

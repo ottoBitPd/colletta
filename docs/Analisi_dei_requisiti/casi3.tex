@@ -4,6 +4,7 @@
 		\begin{figure}[h]
 			\centering
 			\includegraphics[scale=0.7]{images/UC-15.png}
+			\caption{UC-15 Ricerca dei dati delle annotazioni}
 		\end{figure}			
 	
 		\begin{itemize}
@@ -37,6 +38,7 @@
 		\begin{figure}[h]
 			\centering
 			\includegraphics[scale=0.7]{images/UC-17.png}
+			\caption{UC-17 Visualizzazione storico}
 		\end{figure}	
 		\begin{itemize}
 			\item Attori: Sviluppatore
@@ -52,6 +54,7 @@
 		\begin{figure}[h]
 			\centering
 			\includegraphics[scale=0.7]{images/UC-15_1.png}
+			\caption{UC-15.1 Filtraggio dei dati}
 		\end{figure}	
 		\begin{itemize}
 			\item Attori: Sviluppatore
@@ -75,6 +78,7 @@
 		\begin{figure}[h]
 			\centering
 			\includegraphics[scale=0.7]{images/UC-15_1_1.png}
+			\caption{UC-15.1.1 Filtraggio dei dati su base temporale e UC-15.1.2 Filtraggio dei dati in base agli utenti}
 		\end{figure}			
 		\begin{itemize}
 			\item Attori: Sviluppatore
@@ -147,6 +151,7 @@
 		\begin{figure}[h]
 			\centering
 			\includegraphics[scale=0.7]{images/UC-19.png}
+			\caption{UC-19 Download di un modello}
 		\end{figure}			
 		\begin{itemize}
 			\item Attori: Sviluppatore
@@ -168,6 +173,7 @@
 		\begin{figure}[h]
 			\centering
 			\includegraphics[scale=0.7]{images/UC-20.png}
+				\caption{UC-20 Creazione di un modello}
 		\end{figure}			
 		\begin{itemize}
 			\item Attori: Sviluppatore
@@ -184,4 +190,15 @@
 				\begin{itemize}
 					\item 4.a se uno dei dati inseriti non è coerente, allora viene visualizzato un messaggio di errore (UC-5).
 				\end{itemize}
+		\end{itemize}
+	\subsubsection{UC-21 Eliminazione di un esercizio}
+			\begin{itemize}
+			\item Attori: amministratore;
+			\item Precondizione: l'amministratore si trova nella vista di amministrazione dell'applicazione;
+			\item Postcondizione: l'amministratore ha eliminato l'esercizio desiderato.
+			\item Scenario principale:
+				\begin{enumerate}
+					\item l'amministratore indica l'esercizio da eliminare;
+					\item l'amministratore conferma l'eliminazione dell'esercizio selezionato.
+				\end{enumerate}
 		\end{itemize}

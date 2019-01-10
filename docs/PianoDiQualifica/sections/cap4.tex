@@ -135,7 +135,7 @@ Nella tabella seguente vengono riportati i risultati delle verifiche eseguite su
 	\caption{Resoconto attività di verifica}
 \end{longtable}
 \subsubsection{Piano dei test}
-\paragraph{Test di sistema}\textcolor{white}{4}
+\paragraph{Test di sistema}\textcolor{white}{.}
 {\renewcommand{\arraystretch}{2}%
 \begin{longtable}{|>{\centering\arraybackslash}m{1.6cm}|>{\centering\arraybackslash}m{1.7cm}|m{6.41cm}|>{\centering\arraybackslash}m{3.1cm}|}		
 	\rowcolor{LightBlue}
@@ -306,7 +306,8 @@ Nella tabella seguente vengono riportati i risultati delle verifiche eseguite su
 \subsection{Processi}
 \subsubsection{Studio di fattibilità}
 %non riesco a fare la tabella proprio come vorrei, macherebbe un multirow credo sul grado
-\begin{longtable}{|p{3.125cm}|p{3.125cm}|p{3.125cm}|p{3.125cm}|p{1.5cm}|}
+{\renewcommand{\arraystretch}{1.5}%
+\begin{longtable}{|p{3.125cm}|p{3.125cm}|p{3.125cm}|p{3.125cm}|>{\centering\arraybackslash}m{2cm}|}
 	\rowcolor{LightBlue}
 	\multicolumn{4}{p{13.825cm}}{\centering\textbf{\textcolor{white}{Attributi}}}
 		& \textbf{\textcolor{white}{Grado}}\\
@@ -319,6 +320,7 @@ Nella tabella seguente vengono riportati i risultati delle verifiche eseguite su
 		& \\
 
 		\hline
+		\iffalse
 		\rowcolor{LightGray}
 		 Process optimization
 		& Process deployment
@@ -331,11 +333,24 @@ Nella tabella seguente vengono riportati i risultati delle verifiche eseguite su
 		\newline Work product management
 		\newline Process definition
 		& Livello 2\\[0.5cm]
+		\fi
+		
+		\rowcolor{LightGray}
+		Process optimization & Process deployment & &Process Performance & Livello 2 Managed\\
+		\rowcolor{white}
+		& Process measurement & & Process management & \\
+		\rowcolor{LightGray}
+		& Process control & & Work product management & \\
+		\rowcolor{white}
+		& Process innovation & & Process definition & \\ 
+		
 		\caption{Processi di avvio}
 \end{longtable}
+}
 [*] Guardando la lista dei 6 livelli nell'appendice A\\(0 - Incompleted, 1 - Performed, 2 - Managed, 3 - Estabilished, 4 - Predictable, 5 - Optimizing)\\ in base agli attributi F totalmente implementati sarà possibile scegliere uno tra questi 6 livelli di qualità del processo.
 \subsubsection{Norme di progetto}
-\begin{longtable}{|p{3.125cm}|p{3.125cm}|p{3.125cm}|p{3.125cm}|p{1.5cm}|}
+{\renewcommand{\arraystretch}{1.5}%
+\begin{longtable}{|p{3.125cm}|p{3.125cm}|p{3.125cm}|p{3.125cm}|>{\centering\arraybackslash}m{2cm}|}
 	\rowcolor{LightBlue}
 	\multicolumn{4}{p{13.825cm}}{\centering\textbf{\textcolor{white}{Attributi}}}
 		& \textbf{\textcolor{white}{Grado}}\\
@@ -348,6 +363,7 @@ Nella tabella seguente vengono riportati i risultati delle verifiche eseguite su
 		& \\
 
 		\hline
+		\iffalse
 		\rowcolor{LightGray}
 		Process optimization
 		& Process innovation
@@ -358,12 +374,27 @@ Nella tabella seguente vengono riportati i risultati delle verifiche eseguite su
 		\newline Work product management
 		\newline Process definition
 		\newline Process deployment
-		& Livello 3\\[0.5cm]
+		& Livello 3\newline Estabilished\\[0.5cm]
+		\fi
+		
+		\rowcolor{LightGray}
+		Process optimization & Process innovation & Process measurement & Process performance & Livello 3\newline Estabilished \\
+		\rowcolor{white}
+		& & Process control & Process management & \\
+		\rowcolor{LightGray}
+		& & &  Work product management & \\
+		\rowcolor{white}
+		& & & Process definition & \\
+		\rowcolor{LightGray}
+		& & & Process deployment & \\
+		
 		\caption{Processi di analisi di sistema}
 \end{longtable}
+}
 [*] Guardando la lista dei 6 livelli nell'appendice A\\(0 - Incompleted, 1 - Performed, 2 - Managed, 3 - Estabilished, 4 - Predictable, 5 - Optimizing)\\ in base agli attributi F totalmente implementati sarà possibile scegliere uno tra questi 6 livelli di qualità del processo.
 \subsubsection{Pianificazione progetto}
-\begin{longtable}{|p{3.125cm}|p{3.125cm}|p{3.125cm}|p{3.125cm}|p{1.5cm}|}
+{\renewcommand{\arraystretch}{1.5}%
+	\begin{longtable}{|p{3.125cm}|p{3.125cm}|p{3.125cm}|p{3.125cm}|>{\centering\arraybackslash}m{2cm}|}
 	\rowcolor{LightBlue}
 	\multicolumn{4}{p{13.825cm}}{\centering\textbf{\textcolor{white}{Attributi}}}
 		& \textbf{\textcolor{white}{Grado}}\\
@@ -374,8 +405,8 @@ Nella tabella seguente vengono riportati i risultati delle verifiche eseguite su
 		& \textbf{\textcolor{white}{L\newline largely\newline implemented}} 
 		& \textbf{\textcolor{white}{F\newline fully\newline implemented}} 
 		& \\
-
 		\hline
+		\iffalse
 		\rowcolor{LightGray}
 		Process optimization
 		& Process innovation
@@ -384,11 +415,26 @@ Nella tabella seguente vengono riportati i risultati delle verifiche eseguite su
 Process definition\newline  Process deployment\newline  Process measurement
 		&  Livello 3 %\newline Estabilished
 		\\[0.5cm]
+		\fi
+		\rowcolor{LightGray}
+		Process optimization & Process innovation & Process control & Process performance & Livello 3\newline Estabilished \\
+		\rowcolor{white}
+		&&& Performance management& \\
+		\rowcolor{LightGray}
+		&&& Work product management& \\
+		\rowcolor{white}
+		&&& Process definition & \\
+		\rowcolor{LightGray}
+		&&& Process deployment & \\
+		\rowcolor{white}
+		&&& Process measurement	& \\
+
 		\caption{Processi di analisi software e progettazione}
 \end{longtable}
-
+}
 \subsubsection{Pianificazione qualifica}
-\begin{longtable}{|p{3.125cm}|p{3.125cm}|p{3.125cm}|p{3.125cm}|p{1.5cm}|}
+{\renewcommand{\arraystretch}{1.5}%
+	\begin{longtable}{|p{3.125cm}|p{3.125cm}|p{3.125cm}|p{3.125cm}|>{\centering\arraybackslash}m{2cm}|}
 	\rowcolor{LightBlue}
 	\multicolumn{4}{p{13.825cm}}{\centering\textbf{\textcolor{white}{Attributi}}}
 		& \textbf{\textcolor{white}{Grado}}\\
@@ -398,20 +444,26 @@ Process definition\newline  Process deployment\newline  Process measurement
 		& \textbf{\textcolor{white}{P\newline partial\newline implemented}}
 		& \textbf{\textcolor{white}{L\newline largely\newline implemented}} 
 		& \textbf{\textcolor{white}{F\newline fully\newline implemented}} 
-		& \\
-
-		\hline
+		& \\ \hline
 		\rowcolor{LightGray}
-		Lista attributi non implementati
-		& Lista attributi \newline parzialmente implementati
-		& Lista attributi in gran parte \newline implementati
-		& Lista attributi \newline totalmente \newline implementati
-		& Livello 0\newline vedi[*]\\[0.5cm]
+		attributo 1.1 & attributo 1.2 & attributo 1.3 & attributo 1.4 & Livello\\
+		\rowcolor{white}
+		attributo 2.1 & attributo 2.2 & attributo 2.3 & attributo 2.4 & \\
+		\rowcolor{LightGray}
+		attributo 3.1 & attributo 3.2 & attributo 3.3 & attributo 3.4 & \\
+		\rowcolor{white}
+		attributo 4.1 & attributo 4.2 & attributo 4.3 & attributo 4.4 & \\
+		\rowcolor{LightGray}
+		attributo 5.1 & attributo 5.2 & attributo 5.3 & attributo 5.4 & \\
+		\rowcolor{white}
+		attributo 6.1 & attributo 6.2 & attributo 6.3 & attributo 6.4 & \\
 		\caption{Processi di realizzazione}
 \end{longtable}
+}
 [*] Guardando la lista dei 6 livelli nell'appendice A\\(0 - Incompleted, 1 - Performed, 2 - Managed, 3 - Estabilished, 4 - Predictable, 5 - Optimizing)\\ in base agli attributi F totalmente implementati sarà possibile scegliere uno tra questi 6 livelli di qualità del processo.
 \subsubsection{Analisi dei requisiti}
-\begin{longtable}{|p{3.125cm}|p{3.125cm}|p{3.125cm}|p{3.125cm}|p{1.5cm}|}
+{\renewcommand{\arraystretch}{1.5}%
+	\begin{longtable}{|p{3.125cm}|p{3.125cm}|p{3.125cm}|p{3.125cm}|>{\centering\arraybackslash}m{2cm}|}
 	\rowcolor{LightBlue}
 	\multicolumn{4}{p{13.825cm}}{\centering\textbf{\textcolor{white}{Attributi}}}
 		& \textbf{\textcolor{white}{Grado}}\\
@@ -421,16 +473,22 @@ Process definition\newline  Process deployment\newline  Process measurement
 		& \textbf{\textcolor{white}{P\newline partial\newline implemented}}
 		& \textbf{\textcolor{white}{L\newline largely\newline implemented}} 
 		& \textbf{\textcolor{white}{F\newline fully\newline implemented}} 
-		& \\
-
-		\hline
+		& \\ \hline
+		
 		\rowcolor{LightGray}
-		Lista attributi non implementati
-		& Lista attributi \newline parzialmente implementati
-		& Lista attributi in gran parte \newline implementati
-		& Lista attributi \newline totalmente \newline implementati
-		& Livello 0\newline vedi[*]\\[0.5cm]
+		attributo 1.1 & attributo 1.2 & attributo 1.3 & attributo 1.4 & Livello\\
+		\rowcolor{white}
+		attributo 2.1 & attributo 2.2 & attributo 2.3 & attributo 2.4 & \\
+		\rowcolor{LightGray}
+		attributo 3.1 & attributo 3.2 & attributo 3.3 & attributo 3.4 & \\
+		\rowcolor{white}
+		attributo 4.1 & attributo 4.2 & attributo 4.3 & attributo 4.4 & \\
+		\rowcolor{LightGray}
+		attributo 5.1 & attributo 5.2 & attributo 5.3 & attributo 5.4 & \\
+		\rowcolor{white}
+		attributo 6.1 & attributo 6.2 & attributo 6.3 & attributo 6.4 & \\
 		\caption{Processi di validazione}
 \end{longtable}
+}
 [*] Guardando la lista dei 6 livelli nell'appendice A\\(0 - Incompleted, 1 - Performed, 2 - Managed, 3 - Estabilished, 4 - Predictable, 5 - Optimizing)\\ in base agli attributi F totalmente implementati sarà possibile scegliere uno tra questi 6 livelli di qualità del processo.
 

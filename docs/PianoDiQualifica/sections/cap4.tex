@@ -2,7 +2,8 @@
 \subsection{Prodotto}
 \subsubsection{Documentazione}
 Nella tabella seguente vengono riportati i risultati delle verifiche eseguite sui documenti. Il resoconto contiene le verifiche sia dei documenti esterni, cioè utili al committente, sia interni, utili invece al team Ottobit.\\
-\begin{longtable}{p{3cm} p{4cm} p{5cm} p{2cm}}
+{\renewcommand{\arraystretch}{1.5}%
+\begin{longtable}{>{\centering\arraybackslash}m{3cm} >{\centering\arraybackslash}m{4cm} >{\centering\arraybackslash}m{5cm} >{\centering\arraybackslash}m{2cm}}
 	\rowcolor{LightBlue}
 		  \textbf{\textcolor{white}{Data}}
 		& \textbf{\textcolor{white}{Autore}}
@@ -134,6 +135,7 @@ Nella tabella seguente vengono riportati i risultati delle verifiche eseguite su
 	}\\\hline
 	\caption{Resoconto attività di verifica}
 \end{longtable}
+}
 \subsubsection{Piano dei test}
 \paragraph{Test di sistema}\textcolor{white}{.}
 {\renewcommand{\arraystretch}{2}%

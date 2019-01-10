@@ -37,17 +37,28 @@ Per verificare il codice dell'applicazione che verrà creata sarà necessario an
 Questi tre aspetti potranno essere valutati grazie ad opportune misurazioni sulla complessità ciclomatica, numero di classi e coesione tra esse, complessità di flusso di informazioni.
 \newpage
 \subsubsection{Analisi dinamica}
-L’analisi dinamica è il processo di valutazione* di un sistema software o di un suo componente, basato sull’osservazione del suo comportamento in esecuzione.
-I componenti software che insieme formano il prodotto dovranno essere verificati attraverso diversi tipi di test, con lo scopo di garantire il corretto funzionamento dell'intero prodotto software.
+L'analisi dinamica è il processo di valutazione* di un sistema software o di un suo componente, basato sull'osservazione del suo comportamento in esecuzione.
+I componenti software che insieme formano il prodotto dovranno essere verificati attraverso diversi tipi di test, con lo scopo di garantire il corretto funzionamento dell'intero prodotto.
 I test effettuati devono essere:
 \begin{itemize}
 \item misurabili e oggettivi;
 \item ripetibili nel tempo, anche dopo una modifica al sistema;
 \item eseguiti in una quantità sufficiente da provare la qualità del prodotto.
 \end{itemize} 
-Per la gestione dei test, il team ha deciso di seguire il V-Model* che descrive la relazione tra ogni fase del ciclo di vita dello sviluppo del software e la sua fase di testing.
+Per la redazione dei test, il team ha deciso di seguire il V-Model* che descrive la relazione tra ogni fase del ciclo di vita dello sviluppo del software e la sua fase di testing.
 \begin{figure}[htbp]
 		\centering
 		\includegraphics[scale=0.5]{images/vmodel.png}
 		\caption{Rappresentazione del V-Model}
-	\end{figure}
+	
+\end{figure}
+\newline
+Come descritto dal V-Model, i test vengono specificati e creati con l'avanzare del ciclo di vita del progetto, quindi verranno aggiunti all'interno di questo documento in maniera incrementale.
+Le tipologie di test prese in considerazione sono:
+
+\begin{itemize}
+\item \textbf{Test di unità:} Consiste nella verifica di ogni singola unità del prodotto software. Per unità si intende la più piccola quantità di software che conviene verificare singolarmente.
+\item \textbf{Test di integrazione:} Consiste nella verifica dell'insieme di due o più unità.
+\item \textbf{Test di sistema:} Consiste nella verifica del sistema nel suo complesso, in modo da accertare la copertura dei requisiti.
+\item \textbf{Test di regressione:} Consiste nell'eseguire nuovamente i test di unità e di integrazione su componenti software che hanno subito delle modifiche, in modo da controllare che i cambiamenti apportati non abbiano pregiudicato il funzionamento.
+\end{itemize}

@@ -42,7 +42,8 @@ Ad ogni caso d'uso saranno associate le seguenti informazioni:
 		\item \textbf{Estensioni: }
 		\begin{itemize}
 			\item 5.a Nel caso in cui l'utente tenti l'inserimento di campi non validi vedrà comparire dei messaggi d'errore (UC-5).
-			\item 5.b un utente che si è registrato come insegnante deve attendere la conferma dela registrazione dell'amministratore (UC-4).
+			\item 5.b Un utente che si è registrato come insegnante deve attendere la conferma dela registrazione dell'amministratore (UC-4).
+			\item 5.c Un utente che invia la domanda di registrazione deve confermare o annullare l'operazione (UC-32).
 		\end{itemize}
 	\end{itemize}
 \subsubsection{UC-2 Autenticazione}
@@ -58,6 +59,7 @@ Ad ogni caso d'uso saranno associate le seguenti informazioni:
 				\item Estensioni:
 				\begin{itemize}
 					\item 2.a Nel caso in cui l'utente tenti l'inserimento di campi non validi vedrà comparire messaggi d'errore (UC-5).
+					\item 2.b Un utente che invia la domanda di identificazione deve confermare o annullare l'operazione (UC-32)
 				\end{itemize}
 		\end{itemize}
 		
@@ -79,7 +81,8 @@ Ad ogni caso d'uso saranno associate le seguenti informazioni:
 				\end{enumerate}
 				\item Estensioni:
 				\begin{itemize}
-					\item 2.a nel caso in cui l'utente tenti l'inserimento di campi non validi vedrà comparire messaggi d'errore (UC-5).
+					\item 2.a Nel caso in cui l'utente tenti l'inserimento di campi non validi vedrà comparire messaggi d'errore (UC-5).
+					\item 2.b Un utente che invia la domanda di modifica deve confermare o annullare l'operazione (UC-32).
 				\end{itemize}
 		\end{itemize}
 		
@@ -93,6 +96,10 @@ Ad ogni caso d'uso saranno associate le seguenti informazioni:
 					\item l'amministratore visualizza la lista degli utenti che richiedono il ruolo di insegnante;
 					\item l'amministratore acceta o rifiuta l'utente selezionato.
 				\end{enumerate}
+			\item Estensioni:
+			\begin{itemize}
+				\item 2.a L'amministratore che verifica la richiesta di insegnante deve confermare o annullare l'operazione (UC-32).
+			\end{itemize}
 		\end{itemize}
 
 \subsubsection{UC-5 Errore campi non validi o mancanti}
@@ -159,6 +166,10 @@ Ad ogni caso d'uso saranno associate le seguenti informazioni:
 		\item l'amministratore indica l'utente da eliminare;
 		\item l'amministratore conferma l'eliminazione dell'utente selezionato.
 	\end{enumerate}
+\item Estensioni:
+\begin{itemize}
+	\item 2.a L'amministratore deve confermare o annullare l'operazione di eliminazione utente (UC-32).
+\end{itemize}
 \end{itemize}
 
 	
@@ -179,6 +190,10 @@ Ad ogni caso d'uso saranno associate le seguenti informazioni:
 		\item L'insegnante modifica i campi che ritiene errati.
 		\item L'insegnante conferma la modifica.
 		\end{enumerate}
+	\item Estensioni:
+	\begin{itemize}
+	\item 3.a L'insegnante che modifica la soluzione di un esercizio deve confermare o annullare l'operazione (UC-32)
+	\end{itemize}
 \end{itemize}
 
 \subsubsection{UC-10 Visualizzazione esercizi inseriti}
@@ -200,8 +215,12 @@ Ad ogni caso d'uso saranno associate le seguenti informazioni:
 		\item \textbf{Scenario principale: }
 		\begin{enumerate}
 		\item L'utente sceglie una soluziona da eliminare.
-		\item La soluzione scelta viene eliminata.
+		\item L'insegnante conferma l'eliminazione
 		\end{enumerate}
+	\item Estensioni:
+	\begin{itemize}
+	\item 2.a L'insegnante che elimina la soluzione di un esercizio puo' confermare o annullare l'operazione (UC-32).
+	\end{itemize}
 	\end{itemize}
 
 \subsubsection{UC-12 Inserimento esercizio}
@@ -223,8 +242,9 @@ Ad ogni caso d'uso saranno associate le seguenti informazioni:
 		\item L'insegnante inserisce gli argomenti UC-12.2;
 		\item L'insegnante conferma l'inserimento.
 		\end{enumerate}
-		\item \textbf{Estensioni: }
+		\item Estensioni: 
 		\begin{itemize}
+			\item 5.a Un insegnante che inserisce un esercizio deve confermare o annullare l'operazione (UC-32).
 		\item 6.a Nel caso in cui i campi compilati presentino errori verrà mostrato un messaggio d'errore (UC-5).
 		\end{itemize}
 	\end{itemize}
@@ -241,14 +261,18 @@ Ad ogni caso d'uso saranno associate le seguenti informazioni:
 		\item L'insegnante seleziona lo stato della soluzione inserita, pubblica o privata;
 		\item L'insegnante conferma la soluzione.
 		\end{enumerate}	
+	\item Estensioni:
+	\begin{itemize}
+	\item 4.a Un insegnante che inserisce una soluzione deve confermare o annullare l'operazione (UC-32).
+	\end{itemize}
 \end{itemize}
 
 \subsubsection{UC-12.2 Inserimento argomenti}
 \begin{itemize}
 \item \textbf{Attori: }Insegnante
 
-\item \textbf{Precondizione: L'insegnante sta inserendo un esercizio, gli viene richiesta la compilazione di una lista di argomenti presenti nell'esercizio}
-\item \textbf{Postcondizione: L'insegnante ha selazionato gli argomenti trattati nell'esercizio.}
+\item \textbf{Precondizione:} L'insegnante sta inserendo un esercizio, gli viene richiesta la compilazione di una lista di argomenti presenti nell'esercizio
+\item \textbf{Postcondizione:} L'insegnante ha selazionato gli argomenti trattati nell'esercizio.
 \item \textbf{Scenario principale: }
 		\begin{enumerate}
 		\item L'insegnante sta inserendo un esercizio. 
@@ -274,6 +298,10 @@ Ad ogni caso d'uso saranno associate le seguenti informazioni:
 				\item l'allievo conferma i dati inseriti.
 				\item l'allievo visualizza la valutazione (UC-13.3).
 			\end{enumerate}
+		\item Estensioni:
+		\begin{itemize}
+			\item 3.a Un allievo che invia i dati per lo svolgimento dell'esercizio deve confermare o annullare l'operazione (UC-32).
+		\end{itemize}
 	\end{itemize}
 			
 	\subsubsection{UC-13.1 Selezione esercizio}
@@ -292,6 +320,10 @@ Ad ogni caso d'uso saranno associate le seguenti informazioni:
 					\item l'allievo seleziona il correttore dell'esercizio(insegnante o algoritmo automatico).
 					\item l'allievo conferma la selezione.
 				\end{enumerate}
+			\item Estensioni:
+			\begin{itemize}
+		\item 3.a Un allievo che indica l'esercizio e il correttore  deve confermare o annullare l'operazione (UC-32).
+			\end{itemize}
 			\end{itemize}
 
 	\subsubsection{UC-13.2 Compilazione dei campi}
@@ -306,6 +338,7 @@ Ad ogni caso d'uso saranno associate le seguenti informazioni:
 				\end{enumerate}
 			\item Estensioni: 
 				\begin{itemize}
+					\item 2.a Un allievo dopo la compilazione dei campi deve confermare o annullare l'operazione (UC-32).
 					\item UC-5 Nel caso in cui l'utente tenti l'inserimento di campi non validi vedrà comparire messaggi d'errore.
 				\end{itemize}
 		\end{itemize}

@@ -9,6 +9,23 @@ Nella tabella seguente vengono riportati i risultati delle verifiche eseguite su
 		& \textbf{\textcolor{white}{Autore}}
 		& \textbf{\textcolor{white}{Documento}} 
 		& \textbf{\textcolor{white}{Versione}}\\
+		2019-01-11
+		& Giovanni Bergo
+		& \textit{Piano di qualifica}
+		& 0.2.0\\
+		\rowcolor{LightGray}
+		\multicolumn{4}{p{15.25cm}}{\textbf{Descrizione:} 
+			Documento conforme e senza particolari errori da evidenziare.
+		}\\
+		\rowcolor{LightGray}
+		\multicolumn{4}{p{15.25cm}}{
+			\textbf{Indice di Gullpease:} 72
+		}\\
+		\rowcolor{LightGray}
+		\multicolumn{4}{p{15.25cm}}{
+			\textbf{Esito:} Accettato
+		}\\
+		\hline
 		2018-12-28
 		& Giovanni Bergo
 		& \textit{Piano di qualifica}
@@ -30,7 +47,7 @@ Nella tabella seguente vengono riportati i risultati delle verifiche eseguite su
 		
 		2018-12-26
 		& Michele Bortone
-		& \textit{Norme di Progetto}
+		& \textit{Norme di progetto}
 		& 0.2.0\\
 	\rowcolor{LightGray}
 	\multicolumn{4}{p{15.25cm}}{\textbf{Descrizione:} 
@@ -133,6 +150,7 @@ Nella tabella seguente vengono riportati i risultati delle verifiche eseguite su
 	\multicolumn{4}{p{15.25cm}}{
 	\textbf{Esito:} Non accettato
 	}\\\hline
+	
 	\caption{Resoconto attività di verifica}
 \end{longtable}
 }
@@ -353,12 +371,15 @@ Di seguito riportiamo una tabella contenente i test di sistema che intendiamo im
 \end{longtable}}
 \subsection{Processi}
 \subsubsection{Studio di fattibilità}
-%non riesco a fare la tabella proprio come vorrei, macherebbe un multirow credo sul grado
-{\renewcommand{\arraystretch}{1.5}%
+
+
+\renewcommand{\arraystretch}{1.5}%
 \begin{longtable}{|p{3.125cm}|p{3.125cm}|p{3.125cm}|p{3.125cm}|>{\centering\arraybackslash}m{2cm}|}
 	\rowcolor{LightBlue}
 	\multicolumn{4}{p{13.825cm}}{\centering\textbf{\textcolor{white}{Attributi}}}
-		& \textbf{\textcolor{white}{Grado}}\\
+		& 
+			\textbf{\textcolor{white}{Grado}}
+	 \\
 		
 	\rowcolor{LightBlue}
 		\textbf{\textcolor{white}{N \newline not\newline implemented}}
@@ -369,17 +390,17 @@ Di seguito riportiamo una tabella contenente i test di sistema che intendiamo im
 
 		
 		\rowcolor{LightGray}
-		Process optimization & Process deployment & &Process Performance & Livello 2 Managed\\
+		Process\newline optimization & Process deployment & &Process Performance & Livello 2 Managed\\
 		\rowcolor{white}
-		& Process measurement & & Process management & \\
+		& Process\newline measurement & & Process management & \\
 		\rowcolor{LightGray}
-		& Process control & & Work product management & \\
+		& Process control & & Work product\newline management & \\
 		\rowcolor{white}
 		& Process innovation & & Process definition & \\ \hline
 		
 		\caption{Processi di avvio}
 \end{longtable}
-}
+
 
 \subsubsection{Norme di progetto}
 {\renewcommand{\arraystretch}{1.5}%
@@ -400,7 +421,7 @@ Di seguito riportiamo una tabella contenente i test di sistema che intendiamo im
 		\rowcolor{white}
 		& & Process control & Process management & \\
 		\rowcolor{LightGray}
-		& & &  Work product management & \\
+		& & &  Work product\newline management & \\
 		\rowcolor{white}
 		& & & Process definition & \\
 		\rowcolor{LightGray}
@@ -425,17 +446,17 @@ Di seguito riportiamo una tabella contenente i test di sistema che intendiamo im
 		& \\
 		\hline
 		\rowcolor{LightGray}
-		Process optimization & Process innovation & Process control & Process performance & Livello 3\newline Established \\
+		Process\newline optimization & Process innovation & Process control & Process performance & Livello 3\newline Established \\
 		\rowcolor{white}
-		&&& Performance management& \\
+		&&& Performance\newline management& \\
 		\rowcolor{LightGray}
-		&&& Work product management& \\
+		&&& Work product\newline management& \\
 		\rowcolor{white}
 		&&& Process definition & \\
 		\rowcolor{LightGray}
 		&&& Process deployment & \\
 		\rowcolor{white}
-		&&& Process measurement	& \\ \hline
+		&&& Process\newline measurement	& \\ \hline
 
 		\caption{Processi di analisi software e progettazione}
 \end{longtable}
@@ -454,17 +475,17 @@ Di seguito riportiamo una tabella contenente i test di sistema che intendiamo im
 		& \textbf{\textcolor{white}{F\newline fully\newline implemented}} 
 		& \\ \hline
 		\rowcolor{LightGray}
-		Process optimization & Process innovation & Process control & Processo performance & Livello 3 \newline Established\\
+		Process\newline optimization & Process innovation & Process control & Processo performance & Livello 3 \newline Established\\
 		\rowcolor{white}
-		 &  &  & Performance management & \\
+		 &  &  & Performance\newline management & \\
 		\rowcolor{LightGray}
-		 &  &  & Work Product management & \\
+		 &  &  & Work Product\newline management & \\
 		\rowcolor{white}
 		 &  &  & Process definition & \\
 		\rowcolor{LightGray}
 		 &  &  & Process deployment & \\
 		\rowcolor{white}
-		 &  &  & Process measurement & \\ \hline
+		 &  &  & Process\newline measurement & \\ \hline
 		\caption{Processi di realizzazione}
 \end{longtable}
 }
@@ -484,17 +505,17 @@ Di seguito riportiamo una tabella contenente i test di sistema che intendiamo im
 		& \\ \hline
 		
 		\rowcolor{LightGray}
-		Process optimization & Process innovation & Process control & Processo performance & Livello 3 \newline Established\\
+		Process\newline optimization & Process innovation & Process control & Processo performance & Livello 3 \newline Established\\
 		\rowcolor{white}
-		&  &  & Performance management & \\
+		&  &  & Performance\newline management & \\
 		\rowcolor{LightGray}
-		&  &  & Work Product management & \\
+		&  &  & Work Product\newline management & \\
 		\rowcolor{white}
 		&  &  & Process definition & \\
 		\rowcolor{LightGray}
 		&  &  & Process deployment & \\
 		\rowcolor{white}
-		&  &  & Process measurement & \\ \hline
+		&  &  & Process\newline measurement & \\ \hline
 		\caption{Processi di validazione}
 \end{longtable}
 }

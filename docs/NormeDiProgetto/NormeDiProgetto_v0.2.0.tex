@@ -79,7 +79,7 @@
 	
 	\section{Introduzione}
 	\subsection{Scopo del documento}
-	Lo scopo delle Norme di Progetto è formalizzare uno standard per la stesura dei documenti durante tutto il percorso del progetto didattico. Inoltre, si vuole normare il processo di sviluppo delle attività svolte al suo interno. 
+	Lo scopo delle \textit{Norme di progetto} è formalizzare uno standard per la stesura dei documenti durante tutto il percorso del progetto didattico. Inoltre, si vuole normare il processo di sviluppo delle attività svolte al suo interno. 
 	\\Ogni componente del gruppo è tenuto a farne riferimento così da poter ottenere dei documenti omogenei tra loro e, di conseguenza, più facili da verificare. 
 	Tutte le regole qui descritte sono state elaborate dall'intero gruppo, il quale deve approvare eventuali modifiche, aggiunte o rimozioni.
 	\subsection{Scopo del prodotto}
@@ -123,8 +123,8 @@
 	
 	
 	\subsection{Normazione}
-	Uno dei compiti dell'Amministratore di progetto, è quello di stilare la lista delle regole che tutti i componenti del gruppo dovranno seguire nella stesura dei documenti e nello svolgimento delle attività assegnate a ciascuno. Con l'avanzamento dello sviluppo del progetto tali regole potrebbero subire delle variazioni e/o delle aggiunte poiché, durante lo sviluppo stesso, si potranno acquisire nuove conoscenze o incontrare difficoltà tali da portare alla rielaborazione delle succitate regole. Si potrebbe anche decidere di utilizzare uno strumento diverso da quelli preventivati e, anche per questo, andranno stabilite regole specifiche.\\
-	\textbf{Prodotto dell'attività}: \textit{NormeDiProgetto}
+	Uno dei compiti dell'Amministratore di progetto, è quello di stilare la lista delle regole che tutti i componenti del gruppo dovranno seguire nella stesura dei documenti e nello svolgimento delle attività assegnate a ciascuno. Con l'avanzamento dello sviluppo del progetto, tali regole potrebbero subire delle variazioni e/o delle aggiunte poiché, durante lo sviluppo stesso, si potranno acquisire nuove conoscenze o incontrare difficoltà tali da portare alla rielaborazione delle succitate regole. Si potrebbe anche decidere di utilizzare uno strumento diverso da quelli preventivati e, anche per questo, andranno stabilite regole specifiche.\\
+	\textbf{Prodotto dell'attività}: \textit{Norme di progetto}
 	
 	\subsection{Studio di fattibilità}
 	Nella prima fase dello sviluppo del progetto, agli Analisti è richiesto di approfondire i requisiti di ogni capitolato proposto dai committenti così da capirne l'entità e decidere se accettare o meno il contratto. Nello specifico, per ogni capitolato si vuole conoscere:
@@ -133,7 +133,7 @@
 		\item le tecnologie di cui è richiesto l'utilizzo per lo svolgimento del progetto;
 		\item l'interesse ed il gradimento del gruppo verso l'obiettivo finale del capitolato.
 	\end{itemize}
-	\textbf{Prodotto dell'attività}: \textit{StudioDiFattibilità}
+	\textbf{Prodotto dell'attività}: \textit{Studio di fattibilità}
 	
 	\subsection{Analisi dei requisiti}
 	Gli Analisti dovranno definire l'insieme delle funzionalità che il prodotto finale dovrà presentare basandosi sulle informazioni rinvenute nei documenti relativi al capitolato d'appalto scelto. L'obbiettivo è quello di ottenere una versione condivisa con il cliente del prodotto atteso.\\
@@ -142,12 +142,13 @@
 	\begin{itemize}
 		\item \textbf{Introduzione;}
 		\item \textbf{Descrizione prodotto;}
+		\item \textbf{Tecniche di apprendimento automatico;}
 		\item \textbf{Casi d'uso;}
 		\item \textbf{Requisiti;}
 		\item \textbf{Tracciamento.}
 	\end{itemize}
 
-	\textbf{Prodotto dell'attività:} \textit{AnalisiDeiRequisiti}
+	\textbf{Prodotto dell'attività:} \textit{Analisi dei requisiti}
 	
 	\subsubsection{Denominazione dei requisiti}
 	Si vuole associare un identificatore univoco per ogni requisito individuato durante l'analisi dei requisiti. Si \`e deciso di utilizzare il seguente formato:
@@ -193,9 +194,9 @@ Ad ogni caso d'uso saranno associate le seguenti informazioni:
 \end{itemize}
 \subsection{Pianificazione della qualità}
 \subsubsection{Denominazione test}
-Volendo associare un identificatore univoco per ogni test menzionato. Si \`e deciso di utilizzare il seguente formato:
+Volendo associare un identificatore univoco per ogni test menzionato, si \`e deciso di utilizzare il seguente formato:
 	\begin{center}
-		T[Tipo]-[Priorità][Codice]
+		T[Tipo]-R[Priorità][Codice]
 \end{center}
 dove:
 \begin{itemize}
@@ -217,12 +218,12 @@ dove:
 	
 	\section{Processo di Sviluppo}
 	\subsection{Progettazione}
-	L'attività di Progettazione consiste nel ricercare una soluzione che soddisfi tutti gli stakeholder. Essa avrà inizio quando obiettivi, vincoli e requisiti del prodotto finale saranno solidi e chiari. Le norme subiranno variazioni e verranno prodotte in modo incrementale. Spetta ai Progettisti il compito di definire l'architettura logica del prodotto, dando così coerenza e consistenza al progetto. Per definirsi una buona architettura dovrà rispettare le seguenti proprietà:
+	L'attività di progettazione consiste nel ricercare una soluzione che soddisfi tutti gli stakeholder$^*$. Essa avrà inizio quando obiettivi, vincoli e requisiti del prodotto finale saranno solidi e chiari. Le norme subiranno variazioni e verranno prodotte in modo incrementale. Spetta ai Progettisti il compito di definire l'architettura logica del prodotto, dando così coerenza e consistenza al progetto. Per definirsi una buona architettura dovrà rispettare le seguenti proprietà:
 	\begin{itemize}
-		\item Capacità di \textbf{soddisfare i requisti} definiti nel documento Analisi dei Requisiti. L'architettura dovrà anche essere in grado di adattarsi facilmente e permettere modifiche a costo contenuto nel caso in cui i requisiti dovessero variare in corso d'opera;
+		\item Capacità di \textbf{soddisfare i requisti} definiti nel documento \textit{Analisi dei requisiti}. L'architettura dovrà anche essere in grado di adattarsi facilmente e permettere modifiche a costo contenuto nel caso in cui i requisiti dovessero variare in corso d'opera;
 		\item Di facile \textbf{comprensibilità}, dagli stakeholders, al Responsabile, ai Verificatori;
 		\item Organizzata e \textbf{suddivisa in moduli} di complessità trattabile, così da rendere la codifica di ogni parte eseguibile da un singolo individuo;
-		\item \textbf{Rispettare l'information hiding} fornendo dove possibile interfacce per l'utilizzo del modulo implementato nascondendo i dettagli implementativi;
+		\item \textbf{Rispettare l'information hiding}, fornendo dove possibile interfacce per l'utilizzo del modulo implementato nascondendo i dettagli implementativi;
 		\item \textbf{Basso accoppiamento}, le distinte parti hanno una scarsa dipendenza una dalle altre, limitano i cambiamenti esterni causati da modifiche interne;
 		\item \textbf{Robustezza}, l'architettura deve tener conto delle situazioni anomale che possono essere causate dall'utente o dall'ambiente utilizzato;
 		\item \textbf{Affidabilità}, quando svolge un compito, questo deve essere svolto efficientemente;
@@ -256,7 +257,7 @@ dove:
 	Nello specifico:
 	\begin{itemize}
 		\item{creazione della prima pagina e relative informazioni sul documento;}
-		\item{implementazione del Registro delle modifiche;}
+		\item{implementazione del registro delle modifiche;}
 		\item{formazione dell'indice;}
 		\item {codifica dell'intestazione e del piè di pagina.}
 		
@@ -267,7 +268,7 @@ dove:
 	\begin{enumerate}
 	\item \textbf{Elaborazione:} in questa fase il documento viene creato e modificato dai Redattori, aggiornando ogni volta la versione del documento. 
 	\item \textbf{Verifica:} una volta terminato il lavoro di elaborazione, il documento verrà assegnato ai Verificatori che procederanno al controllo di correttezza. Se il documento sarà valutato non corretto, verrà riassegnato ai Redattori.
-	\item \textbf{Approvazione:} una volta che il documento sarà giudicato corretto nella fase di verifica, sarà assegnato al Responsabile di Progetto che procederà l'approvazione e il rilascio del documento.
+	\item \textbf{Approvazione:} una volta che il documento sarà giudicato corretto nella fase di verifica, sarà assegnato al Responsabile di progetto che procederà l'approvazione e il rilascio del documento.
 	\end{enumerate}
 	
 	\subsubsection{Struttura}
@@ -291,7 +292,8 @@ dove:
 
 	\paragraph{Registro delle modifiche}
 	 	\noindent \\
-	 	Nella pagina seguente alla prima deve essere presente una tabella riassuntiva della cronologia delle versioni del documento, fatta eccezione per i verbali. Nella tabella, ad ogni modifica, devono essere presenti le seguenti informazioni:
+	 	Nella pagina seguente alla prima, deve essere presente una tabella riassuntiva della cronologia delle versioni del documento; anno eccezione i verbali, che non la presentano. \\
+Nella tabella, ad ogni modifica, devono essere presenti le seguenti informazioni:
 	
 	\begin{itemize}
 	    \item \textbf{Numero Versione}
@@ -302,11 +304,11 @@ dove:
 	\end{itemize}
 	
 	\paragraph{Indice}
-	\noindent \\L'indice del documento inizia nelle pagine successive a quelle del Registro delle modifiche, ogni sezione e sottosezione sarà etichettata con un numero progressivo a partire dal numero 1, e permetterà il collegamento ipertestuale direttamente alla pagina corrispondente. Inoltre saranno presenti altri due elenchi:
+	\noindent \\L'indice del documento inizia nelle pagine successive a quelle del registro delle modifiche, ogni sezione e sottosezione sarà etichettata con un numero progressivo a partire dal numero 1 e permetterà il collegamento ipertestuale direttamente alla pagina corrispondente. Inoltre saranno presenti altri due elenchi:
 	
 	\begin{itemize}
-	\item \textbf{Tabella:} elenco delle eventuali tabelle presenti presenti nel documento, escluse il Registro delle modifiche;
-	\item  \textbf{Immagini:} elenco delle eventuali immagini presenti nel documento. 
+	\item \textbf{Indice delle tabelle:} elenco delle eventuali tabelle presenti presenti nel documento, escluse il registro delle modifiche;
+	\item  \textbf{Indice delle figure:} elenco delle eventuali immagini presenti nel documento. 
 	\end{itemize}
 	
 	\paragraph{Contenuto}
@@ -316,13 +318,13 @@ dove:
 		\item \textbf{Intestazione}
 		\begin{itemize}
 			\item Logo del gruppo a sinistra;
-			\item Sezione corrente a destra
+			\item Sezione corrente a destra.
 		\end{itemize}
 	
 	\item \textbf{Piè di pagina} 
 	\begin{itemize}
 	\item Nome del documento a sinistra;
-	\item Pagina corrente a destra
+	\item Pagina corrente a destra.
 	\end{itemize}
 \end{itemize}
 	
@@ -348,8 +350,8 @@ dove:
 
 	\paragraph{Elenchi}
 	\begin{itemize}
-	\item \textbf{Elenchi puntati:} Gli elementi vengono rappresentati da un pallino nel primo livello, un trattino nel secondo livello, e un asterisco nel terzo livello; 
-	\item \textbf{Elenchi numerati:} Gli elementi vengono numerati partendo dal numero 1.
+	\item \textbf{Elenchi puntati:} gli elementi vengono rappresentati da un pallino nel primo livello, un trattino nel secondo livello, e un asterisco nel terzo livello; 
+	\item \textbf{Elenchi numerati:} gli elementi vengono numerati partendo dal numero 1.
 	\end{itemize}
 
 	\paragraph{Formati comuni}
@@ -380,7 +382,7 @@ dove:
 	
 	\paragraph{Tabelle}	
 \noindent \\		
-	Ogni tabella dovrà essere rappresentata:
+	Ogni tabella dovrà avere:
 	\begin{itemize}
 	\item \textbf{Numero:} indice progressivo a partire da 1 che individui la tabella univocamente;
 	\item \textbf{Titolo:} breve descrizione che riassuma il contenuto della tabella.
@@ -391,7 +393,7 @@ L'intestazione delle tabelle sarà scritta in grassetto. La colorazione rispette
 	
 	\paragraph{Figure}
 \noindent \\	
-	Ogni figura dovrà essere rappresentata:
+	Ogni figura dovrà avere:
 	\begin{itemize}
 		\item \textbf{Numero:} indice progressivo a partire da 1 che individui la figura univocamente;
 		\item \textbf{Didascalia:} breve descrizione che riassuma il contenuto della figura.
@@ -399,10 +401,10 @@ L'intestazione delle tabelle sarà scritta in grassetto. La colorazione rispette
 	
 	\subsubsection{Suddivisione dei documenti}
 	\paragraph{Documenti formali}
-	\noindent \\ Un documento è definito formale dopo l’approvazione da parte del Responsabile di Progetto e quindi deve aver superato con esito positivo la fase di verifica. Questi documenti sono destinati alla distribuzione esterna al gruppo.
+	\noindent \\ Un documento è definito formale dopo l’approvazione da parte del Responsabile di progetto e quindi deve aver superato con esito positivo la fase di verifica. Questi documenti sono destinati alla distribuzione esterna al gruppo.
 	
 	\paragraph{Documenti informali}
-	\noindent \\ Tutti i documenti sono da considerarsi informali finché non vengono approvati dal Responsabile di Progetto. L’utilizzo di tali documenti è da considerarsi interno e quindi esclusivo del team.
+	\noindent \\ Tutti i documenti sono da considerarsi informali finché non vengono approvati dal Responsabile di progetto. L’utilizzo di tali documenti è da considerarsi interno e quindi esclusivo del team.
 	
 	\paragraph{Verbali}
 	\noindent \\ I verbali sono documenti redatti in occasione di incontri interni al gruppo o con enti esterni. Ogni verbale contiene:
@@ -425,7 +427,7 @@ L'intestazione delle tabelle sarà scritta in grassetto. La colorazione rispette
 	\subsubsection{Mantenimento}
 	
 	\paragraph{Versionamento}
-\noindent \\ Ogni documento o componente del codice , eccetto i verbali, soggetto a versionamento è versionata tramite lo strumento GitLab, ed organizzata mediante la metodologia GitFlow.\\
+\noindent \\ Ogni documento o componente del codice, eccetto i verbali, soggetto a versionamento, è versionato tramite lo strumento GitLab ed organizzato mediante la metodologia GitFlow.\\
 La definizione di una versione avviene seguendo questa forma:
 \begin{center}
 	X . Y . Z
@@ -465,7 +467,7 @@ La definizione di una versione avviene seguendo questa forma:
 \subsection{Verifica}
 
 \subsubsection{Scopo}
-Il processo di verifica è finalizzato al controllo di eventuali errori presenti nella fase di elaborazione, per garantire una sviluppo efficace ed efficiente.
+Il processo di verifica è finalizzato al controllo di eventuali errori nati nella fase di elaborazione, per garantire uno sviluppo efficace ed efficiente.
 
 
 
@@ -489,7 +491,7 @@ La verifica ortografica è effettuata tramite Texmaker, attraverso il quale gli 
 \section{Processi organizzativi}
 
 \subsection{Gestione di Progetto}
-La gestione di un progetto è effettuata dal Responsabile di Progetto e i temi trattati sono:
+La gestione di un progetto è effettuata dal Responsabile di progetto e i temi trattati sono:
 \begin{itemize}
 \item \textbf{Gestione qualità;}
 \item \textbf{Pianificazione di progetto;}
@@ -497,16 +499,16 @@ La gestione di un progetto è effettuata dal Responsabile di Progetto e i temi t
 \item \textbf{Stima dei costi di progetto.}
 \end{itemize}
 
-\subsubsection{Descrizione Piano di Progetto}
+\subsubsection{Descrizione Piano di progetto}
 
-Gli obbiettivi del Piano di Progetto sono:
+Gli obbiettivi del \textit{Piano di progetto} sono:
 
 \begin{enumerate}
 \item Organizzare le attività con efficienza per risultati efficaci;
 \item Facilitare la misurazione dell'avanzamento fissando milestone nel tempo.
 \end{enumerate}
 
-La struttura generale del Piano di Progetto è la seguente:
+La struttura generale del \textit{Piano di progetto} è la seguente:
 \begin{itemize}
 \item \textbf{Introduzione;}
 \item \textbf{Analisi dei rischi;}
@@ -531,10 +533,10 @@ L’organizzazione della pianificazione avviene tramite questa procedura.
 
 \subsubsection{Analisi dei rischi}
 
-Il Responsabile di Progetto ha il compito di rilevare i rischi indicati nel Piano di Progetto. Nel caso ne vengano individuati di nuovi, dovrà aggiungerli nell'analisi dei rischi. La procedura da seguire nella gestione dei rischi è la seguente:
+Il Responsabile di progetto ha il compito di rilevare i rischi indicati nel \textit{Piano di progetto}. Nel caso ne vengano individuati di nuovi, dovrà aggiungerli nell'analisi dei rischi. La procedura da seguire nella gestione dei rischi è la seguente:
 \begin{itemize}
 	\item individuare problemi non calcolati e monitorare rischi già rilevati;
-	\item registrare riscontri previsti e aggiungere nuovi rischi individuati nel Piano di Progetto;
+	\item registrare riscontri previsti e aggiungere nuovi rischi individuati nel \textit{Piano di progetto};
 	\item ridefinire, se necessario, le strategie di progetto.
 \end{itemize}
 

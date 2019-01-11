@@ -14,7 +14,7 @@
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
 
 \pagestyle{fancy}
-\lhead{\includegraphics[scale=0.08]{images/logo.png}}
+\lhead{\includegraphics[scale=0.07]{images/logo.png}}
 
 \definecolor{LightBlue}{rgb}{0,0,0.5}
 \definecolor{Gray}{gray}{0.8}
@@ -29,14 +29,14 @@
 	\begin{tabularx}{\textwidth}{ c | c | X | c | X }
 		\rowcolor{LightBlue}
 		\color{white}\bfseries Versione & \color{white}\bfseries Data & \multicolumn{1}{c}{\color{white}\bfseries Autore} & \color{white}\bfseries Ruolo & \multicolumn{1}{c}{\color{white}\bfseries Descrizione}\\[0.25cm]
-		
+		1.0.0 & 2018-12-14 & Benedetto Cosentino & Responsabile & Approvazione documento\\ \hline
 		0.1.0 & 2018-12-10 & Michele Bortone & Verificatore & Prima verifica del documento\\ \hline
-		0.0.6 & 2018-12-07 & Eleonora Peagno & Analista & Stesura sezione Capitolato C5\\ \hline
-		0.0.5 & 2018-12-06 & Benedetto Cosentino & Analista & Stesura sezione Capitolato C2\\ \hline
-		0.0.4 & 2018-12-06 & Enrico Marcato\newline Benedetto Cosentino & Analista & Stesura sezione Capitolato C2\\ \hline
-		0.0.3 & 2018-12-06 & Giovanni Bergo & Analista & Stesura sezione Capitolato C1\\ \hline
-		0.0.2 & 2018-12-05 & Gianmarco Pettenuzzo & Analista & Stesura sezione Capitolato C4\\ \hline
-		0.0.1 & 2018-12-05 & Giovanni Peron & Analista & Stesura sezioni Capitolati C3 e C6\\ \hline
+		0.0.6 & 2018-12-07 & Eleonora Peagno & Analista & Stesura sezione capitolato C5\\ \hline
+		0.0.5 & 2018-12-06 & Benedetto Cosentino & Analista & Stesura sezione capitolato C2\\ \hline
+		0.0.4 & 2018-12-06 & Enrico Marcato\newline Benedetto Cosentino & Analista & Stesura sezione capitolato C2\\ \hline
+		0.0.3 & 2018-12-06 & Giovanni Bergo & Analista & Stesura sezione capitolato C1\\ \hline
+		0.0.2 & 2018-12-05 & Gianmarco Pettenuzzo & Analista & Stesura sezione capitolato C4\\ \hline
+		0.0.1 & 2018-12-05 & Giovanni Peron & Analista & Stesura sezioni capitolati C3 e C6\\ \hline
 		
 		
 		0.1.1 & 2018-12-07 & Eleonora Peagno & Analista & Stesura della parte introduttiva\\ \hline
@@ -68,7 +68,7 @@ Con ciò si vorrebbe giustificare la scelta del gruppo di sviluppare il capitola
 	\section{Capitolato C1}
 	\subsection{Descrizione generale}
 	Il primo capitolato prevede la creazione di un sistema distribuito per la gestione automatizzata e personalizzabile, da parte del destinatario, delle segnalazioni di diverse interfacce. Tutto questo realizzato attraverso un pattern di tipo Publisher/Subscriber. \\
-	Il progetto Butterfly deve essere in grado di interfacciarsi con diversi strumenti, recuperando ed intercettando le segnalazioni e provvedendo a riportarle nella forma desiderata dall'utilizzatore finale. Deve accentrare e standardizzare queste segnalazioni per essere il più flessibile possibile.\\
+	Il progetto$^*$ Butterfly deve essere in grado di interfacciarsi con diversi strumenti, recuperando ed intercettando le segnalazioni e provvedendo a riportarle nella forma desiderata dall'utilizzatore finale. Deve accentrare e standardizzare queste segnalazioni per essere il più flessibile possibile.\\
 	\'E composto da 4 componenti:
 	\begin{itemize}
 		\item \textbf{Producers}: hanno il compito di recuperare le segnalazioni e pubblicarle, sotto forma di messaggi, all'interno dei Topic adeguati;
@@ -91,7 +91,7 @@ Con ciò si vorrebbe giustificare la scelta del gruppo di sviluppare il capitola
 	\newpage
 	\section{Capitolato C2: capitolato scelto}
 	\subsection{Descrizione generale}
-	Si chiede di realizzare una piattaforma nella quale degli studenti possano svolgere esercizi grammaticali non necessariamente complessi. La piattaforma deve permettere agli insegnanti l'inserimento di esercizi con la corrispondente soluzione. L'obiettivo è raccogliere i dati generati dai risultati e disporli in modo che un elaboratore, attraverso tecniche di apprendimento automatico, possa svolgere altri esercizi della stessa tipologia. Gli esercizi riguardano l'analisi grammaticale, altre proposte necessitano di un confronto con la proponente. I dati devono essere accessibili e scaricabili dagli sviluppatori, che hanno l'interesse di conoscerne anche lo storico. È necessario tener traccia delle varie correzioni degli insegnanti e il registro delle modifiche deve essere ricostruibile a partire dai primi dati immagazzinati. Gli utenti con l'utilizzo della piattaforma contribuiscono implicitamente all'obiettivo finale della raccolta dati. La proponente, Mivoq, è un'azienda che si occupa di sintesi vocale allo scopo di fornire ad ogni singolo utente la propria voce digitale. Per questo motivo hanno realizzato un sistema di apprendimento automatico supervisionato (HunPos) che riceve in input una lista di stringhe e produce in output una lista di etichette che codificano informazioni di tipo grammaticale.
+	Si chiede di realizzare una piattaforma nella quale degli studenti possano svolgere esercizi grammaticali non necessariamente complessi. La piattaforma deve permettere agli insegnanti l'inserimento di esercizi con la corrispondente soluzione. L'obiettivo è raccogliere i dati generati dai risultati e disporli in modo che un elaboratore, attraverso tecniche di apprendimento automatico$^*$, possa svolgere altri esercizi della stessa tipologia. Gli esercizi riguardano l'analisi grammaticale, altre proposte necessitano di un confronto con la proponente. I dati devono essere accessibili e scaricabili dagli sviluppatori, che hanno l'interesse di conoscerne anche lo storico. È necessario tener traccia delle varie correzioni degli insegnanti e il registro delle modifiche deve essere ricostruibile a partire dai primi dati immagazzinati. Gli utenti con l'utilizzo della piattaforma contribuiscono implicitamente all'obiettivo finale della raccolta dati. La proponente, Mivoq, è un'azienda che si occupa di sintesi vocale allo scopo di fornire ad ogni singolo utente la propria voce digitale. Per questo motivo hanno realizzato un sistema di apprendimento automatico supervisionato (HunPos) che riceve in input una lista di stringhe e produce in output una lista di etichette che codificano informazioni di tipo grammaticale.
 	\subsection{Tecnologie impiegate}
 	Il capitolato C2 lascia molta libertà al fornitore riguardo alle tecnologie impiegate. La proponente richiede che l'applicazione da sviluppare usi:
 	\begin{itemize}
@@ -109,7 +109,7 @@ Con ciò si vorrebbe giustificare la scelta del gruppo di sviluppare il capitola
 			\item monetizzazione: permettono di guadagnare sul progetto utilizzando advertising.
 		\end{itemize}	 
 	
-		Firebase rende più semplice l'hosting della propria applicazione web e di un database. In particolare, gli strumenti di sviluppo di Firebase semplificano molto l'installazione e la manutenzione della base di dati. Firebase memorizza i dati usando JSON e Node.js. Risulta quindi necessario maturare una certa conoscenza del linguaggio JavaScript.
+		Firebase rende più semplice l'hosting della propria applicazione web e di un database$^*$. In particolare, gli strumenti di sviluppo di Firebase semplificano molto l'installazione e la manutenzione della base di dati. Firebase memorizza i dati usando JSON e Node.js. Risulta quindi necessario maturare una certa conoscenza del linguaggio JavaScript.
 	Firebase è orientato fortemente verso il mondo mobile e permette il testing di applicazioni sia per Android che per iOS.
 	
 	\subsubsection{Apprendimento automatico}

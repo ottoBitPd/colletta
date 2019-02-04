@@ -1,0 +1,93 @@
+In questa sezione viene assegnato un codice ad ogni requisito al fine di facilitarne l'identificazione. L'assegnazione avverrà secondo le condizioni stabilite dal gruppo nel documento \textit{Norme di progetto}, riportate in seguito. 
+\subsection{Denominazione dei requisiti}
+Si vuole associare un identificatore univoco per ogni requisito individuato durante l'analisi dei requisiti. Si \`e deciso di utilizzare il seguente formato:
+  \begin{center}
+    R[Priorità][Tipo][Codice]
+	\end{center}
+dove:
+	\begin{itemize}
+	\item il campo “\textbf{Priorità}” può assumere uno dei seguenti 	valori:
+		\begin{itemize}
+  		\item \textbf{O}: indica un requisito obbligatorio, irrinunciabile per il committente;
+		\item \textbf{D}: indica un requisito desiderabile ma non strettamente necessario;
+		\item \textbf{P}: indica un requisito opzionale, che potrebbe venir soddisfatto o meno senza che il prodotto risulti mancante di funzionalità essenziali.
+		\end{itemize}
+	\item il campo “\textbf{Tipo}” può assumere uno dei seguenti valori:
+		\begin{itemize}
+  		\item \textbf{F}: definisce un requisito funzionale, ovvero un requisito che indica quale deve essere la reazione del software in specifici casi (ad esempio con  un determinato input);
+		\item \textbf{Q}: definisce un requisito di qualità$^*$, ovvero un requisito votato a garantire efficienza, efficacia e qualità al prodotto;
+		\item \textbf{V}: definisce un requisito di vincolo, ovvero un requisito imposto dalla proponente del capitolato;
+		\item \textbf{R}: definisce un requisito prestazionale, ovvero un requisito relativo alle prestazioni di sistema.
+		\end{itemize}
+	\item il campo “\textbf{Codice}” assumerà un valore numerico intero positivo, univoco ed incrementale.
+	\end{itemize}
+	
+\subsection{Requisiti funzionali}
+\begin{tabularx}{\textwidth}{| c | p{10cm} | X |}
+		\rowcolor{LightBlue}
+		\color{white}\bfseries Requisito & \color{white}\bfseries Descrizione & \color{white}\bfseries Fonti\\[0.25cm]
+		ROF1 & L'utente si registra alla piattaforma creando un account personale. & UC-1 \newline Interno\\
+		ROF2 & L'utente esegue l'accesso alla piattaforma utilizzando le sue credenziali. & UC-2 \newline Interno\\
+		RDF1 & L'utente modifica i dati del proprio profilo personale. & UC-3 \newline Interno\\
+		RDF2 & L'amministratore verifica le credenziali di un utente che richiede la registrazione come insegnante. & UC-4 \newline Interno\\
+		RDF3 & L'utente viene avvisato in caso di errore nell'inserimento dei dati richiesti. & UC-5 \newline Interno\\
+		ROF3 & L'insegnante e l'allievo devono poter ricercare degli esercizi sulla piattaforma. & UC-6 \newline Capitolato\\
+		RPF1 & Durante la ricerca, l'utente ha la possibilità di impostare dei filtri per raffinarla. & UC-6.1 \newline Interno\\
+		RDF4 & Dopo una ricerca, l'utente viene avvisato con un messaggio se il sistema non ha trovato nessun risultato che corrisponde ai criteri selezionati. & UC-7 \newline Interno\\
+		RPF2 & L'amministratore può eliminare un utente iscritto alla piattaforma. & UC-8 \newline Interno\\
+		RPF3 & L'insegnante può modificare una soluzione di un esercizio da lui fornita. & UC-9 \newline Capitolato\\
+		RDF5 & L'insegnante, accedendo alla sua area del profilo, può visualizzare la lista degli esercizi da lui creati. & UC-10 \newline Interno\\
+		RPF4 & L'insegnante può eliminare una soluzione di un esercizio da lui fornita. & UC-11 \newline Interno\\
+		RPF5 & L'insegnante indica gli argomenti trattati nell'esercizio che sta creando. & UC-12.2 \newline Interno\\
+		ROF4 & L'allievo deve poter inserire una frase da svolgere o selezionare un esercizio da quelli disponibili sul sistema. & UC-13.1 \newline Capitolato\\
+		ROF5 & L'allievo deve poter compilare i campi relativi alle parole della frase al fine di completare l'esercizio selezionato. & UC-13.2 \newline Capitolato\\
+		RDF6 & Lo sviluppatore deve poter ricercare le annotazioni di una particolare frase. & UC-15 \newline Capitolato\\
+		RPF6 & Lo sviluppatore può ordinare la lista dei risultati ottenuti dalla ricerca tramite determinati parametri. & UC-18 \newline Interno\\
+		RPF7 & L'amministratore deve poter eliminare uno qualsiasi degli esercizi inseriti nel sistema. & UC-23 \newline Interno\\
+		ROF6 & L'insegnante può inserire un esercizio nel sistema; deve indicarne una soluzione. & UC-12 \newline Capitolato\\
+		ROF7 & L'insegnante deve inserire la soluzione dell'esercizio che sta creando; può renderla pubblica o privata. & UC-12.1 \newline Capitolato\\
+		ROF8 & L'allievo deve poter svolgere un esercizio da lui indicato e visualizzare la propria valutazione a riguardo. & UC-13 \newline UC-13.3 \newline Capitolato\\
+		RDF7 & L'allievo, accedendo al proprio profilo, potrà visualizzare dei dati relativi ai propri progressi. & UC-14 \newline Capitolato\\
+		RDF8 & Lo sviluppatore deve poter filtrare i dati trovati durante la ricerca ottenendo una lista di esercizi. & UC-15.1 \newline Capitolato\\
+		RDF9 & Lo sviluppatore imposta un filtro temporale per la ricerca degli esercizi & UC-15.1.1 \newline Interno\\
+		RDF10 &  Lo sviluppatore deve poter includere o escludere dalla ricerca uno o più utenti. & UC-15.1.2 \newline Capitolato\\
+		RPF8 & Lo sviluppatore deve poter visualizzare i dati relativi ad una particolare annotazione. & UC-16 \newline Capitolato\\
+		RPF9 & Lo sviluppatore deve poter visualizzare lo storico delle annotazioni. & UC-17 \newline Capitolato\\
+		ROF9 & Lo sviluppatore deve poter scaricare un file contenente i dati relativi agli esercizi ottenuti con la ricerca. & UC-19 \newline Capitolato\\
+		RPF10 & Lo sviluppatore può visualizzare le informazioni relative ad uno dei modelli disponibili. & UC-20 \newline Interno\\
+		RPF11 & Lo sviluppatore deve poter scaricare le informazioni riguardanti un modello. & UC-21 \newline Capitolato\\
+		RPF12 & Lo sviluppatore deve poter creare un modello tramite la piattaforma. & UC-22 \newline Capitolato\\ 
+		ROF10 & L'insegnante deve poter creare una nuova classe. & UC-24 \newline Interno\\
+		ROF11 & L'insegnante deve poter eliminare una classe dal sistema. & UC-25 \newline Interno\\
+		ROF12 & L'insegnante deve poter aggiungere degli alunni ad una classe. & UC-26 \newline Interno\\
+		ROF13 & L'insegnante deve poter aggiungere degli esercizi a quelli assegnati ad una classe. & UC-27 \newline Interno\\
+		RPF13 & L'insegnante potrebbe voler visualizzare i progressi degli alunni di una propria classe. & UC-28 \newline Interno\\
+		ROF14 & L'insegnante deve poter eliminare un alunno dalla lista di quelli iscritti ad una delle proprie classi. & UC-29 \newline Interno\\
+		ROF15 & L'insegnante deve poter visualizzare la lista degli alunni iscritti ad una delle sue classi. & UC-30 \newline Interno\\
+		ROF16 & L'utente deve poter visualizzare la lista delle proprie classi. & UC-31 \newline Interno\\
+		RDF11 & L'utente deve poter confermare le operazioni. & UC-32 \newline Interno\\
+		\hline
+		\caption{Tabella dei requisiti funzionali}
+\end{tabularx}
+
+\subsection{Requisiti di vincolo}
+\begin{longtable}{| c | p{10cm} | c |}
+		\rowcolor{LightBlue}
+		\color{white}\bfseries Requisito & \color{white}\bfseries Descrizione & \color{white}\bfseries Fonti\\[0.25cm]
+		ROV1 & Utilizzo di un software di apprendimento automatico, in particolare di pos-tagging$^*$, per lo svolgimenti degli esercizi. & Capitolato \\
+		RDV1 & Utilizzo di un servizio esistente di immagazzinamento dati. & Capitolato \\
+		ROV2 & I dati dovranno essere immagazzinati opportunamente e dovranno essere facilmente esportabili in uno o più formati leggibili dal computer. & Capitolato \\
+		RDV2 & Il prodotto dovrà essere facilmente manutenibile, estensibile e portabile. & Capitolato \\
+		RPV1 & Dovrebbe essere consentita la raccolta di dati in più lingue. & Capitolato \\ \hline
+		\caption{Tabella dei requisiti di vincolo}
+\end{longtable}
+
+\subsection{Requisiti di qualità}
+\begin{longtable}{| c | p{10cm} | c |}
+		\rowcolor{LightBlue}
+		\color{white}\bfseries Requisito & \color{white}\bfseries Descrizione & \color{white}\bfseries Fonti\\[0.25cm]
+		ROQ1 & Il gruppo deve fornire un'analisi dei requisiti come documentazione dell'applicazione alla proponente. & Capitolato \\
+		ROQ2 & Il gruppo deve fornire una descrizione tecnica del prodotto alla proponente. & Capitolato \\ 
+		RDQ1 & I commenti, i nomi delle funzioni e delle variabili del codice dovrebbero essere esplicativi ed in lingua inglese. & Capitolato \\ \hline
+		\caption{Tabella dei requisiti di qualità}
+\end{longtable}

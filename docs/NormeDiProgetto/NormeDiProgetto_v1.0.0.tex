@@ -52,6 +52,7 @@
 		\rowcolor{LightBlue}
 		\color{white}\bfseries Versione & \color{white}\bfseries Data & \multicolumn{1}{c}{\color{white}\bfseries Autore}
 		 & \color{white}\bfseries Ruolo & \multicolumn{1}{c}{\color{white}\bfseries Descrizione}\\[0.25cm]
+		 1.0.1 & 2019-02-04 & Michele Bortone & Amministratore & Correzioni al documento \\ \hline
 		 1.0.0 & 2019-01-11 & Benedetto Cosentino & Responsabile & Approvazione documento \\ \hline
 		 0.2.0 & 2018-12-27 & Michele Bortone & Verificatore & Verifica documento \\ \hline
 		0.1.2 & 2018-12-20 & Giovanni Bergo \newline Gianmarco Pettenuzzo & Amministratore & Aggiornamento Norme di progetto \\ \hline
@@ -79,9 +80,11 @@
 	
 	\section{Introduzione}
 	\subsection{Scopo del documento}
-	Lo scopo delle \textit{Norme di progetto} è formalizzare uno standard per la stesura dei documenti durante tutto il percorso del progetto$^*$ didattico. Inoltre, si vuole normare il processo di sviluppo delle attività svolte al suo interno. 
-	\\Ogni componente del gruppo è tenuto a farne riferimento così da poter ottenere dei documenti omogenei tra loro e, di conseguenza, più facili da verificare. 
+	Lo scopo di questo documento è formalizzare il way of working$^*$ adottato dal team durante tutto il percorso del progetto$^*$ didattico. 
+	\\Ogni componente del gruppo è tenuto a farne riferimento così da poter ottenere dei configuration item$^*$ omogenei tra loro e, di conseguenza, più facili da verificare. 
 	Tutte le regole qui descritte sono state elaborate dall'intero gruppo, il quale deve approvare eventuali modifiche, aggiunte o rimozioni.
+	\\\\
+	Il documento Norme di progetto v2.0.0 è un documento incrementale e quindi subirà modifiche durante lo sviluppo del prodotto richiesto. In particolare al documento verranno aggiunte incrementalmente le norme per le attività più imminenti.
 	\subsection{Scopo del prodotto}
 	Lo scopo del prodotto è creare una piattaforma collaborativa di raccolta dati su cui sia possibile predisporre e/o svolgere esercizi di analisi grammaticale. La raccolta vorrebbe avere il fine di fornire a sviluppatori e ricercatori dati sufficienti per applicare metodi di apprendimento automatico$^*$. Nello specifico si vorrebbe poter insegnare ad un elaboratore a svolgere gli stessi esercizi proposti agli utenti, divenendo una sorta di correttore automatico.  
 	Le componenti principali del prodotto saranno quindi:
@@ -118,15 +121,14 @@
 	\newpage
 	
 	\section{Processi primari}
-	\subsection{Ricerca sulle tecnologie} 
-	Questa fase consiste nella ricerca di informazioni su software, librerie e tutte le tecnologie che sono state ritenute utili per una o più fasi di sviluppo del progetto. Le tecnologie analizzate  sono quelle suggerite dalla proponente e quelle ritenute utili sulla base delle esperienze personali dei membri del gruppo. 
 	
-	
+	\iffalse
 	\subsection{Normazione}
 	Uno dei compiti dell'Amministratore di progetto, è quello di stilare la lista delle regole che tutti i componenti del gruppo dovranno seguire nella stesura dei documenti e nello svolgimento delle attività assegnate a ciascuno. Con l'avanzamento dello sviluppo del progetto, tali regole potrebbero subire delle variazioni e/o delle aggiunte poiché, durante lo sviluppo stesso, si potranno acquisire nuove conoscenze o incontrare difficoltà tali da portare alla rielaborazione delle succitate regole. Si potrebbe anche decidere di utilizzare uno strumento diverso da quelli preventivati e, anche per questo, andranno stabilite regole specifiche.\\
 	\textbf{Prodotto dell'attività}: \textit{Norme di progetto}
-	
-	\subsection{Studio di fattibilità}
+	\fi
+	\subsection{Fornitura}
+	\subsubsection{Studio di fattibilità}
 	Nella prima fase dello sviluppo del progetto, agli Analisti è richiesto di approfondire i requisiti di ogni capitolato proposto dai committenti così da capirne l'entità e decidere se accettare o meno il contratto. Nello specifico, per ogni capitolato si vuole conoscere:
 	\begin{itemize}
 		\item il contesto di utilizzo e lo scopo del prodotto da realizzare;
@@ -135,111 +137,106 @@
 	\end{itemize}
 	\textbf{Prodotto dell'attività}: \textit{Studio di fattibilità}
 	
-	\subsection{Analisi dei requisiti}
+
+
+	
+	\subsection{Sviluppo}
+	\subsubsection{Analisi dei requisiti}
 	Gli Analisti dovranno definire l'insieme delle funzionalità che il prodotto finale dovrà presentare basandosi sulle informazioni rinvenute nei documenti relativi al capitolato d'appalto scelto. L'obbiettivo è quello di ottenere una versione condivisa con il cliente del prodotto atteso.\\
-Lo sviluppo del documento prevede i seguenti punti:	
+	Lo sviluppo del documento prevede i seguenti punti:	
 	\begin{itemize}
 		\item \textbf{Introduzione;}
 		\item \textbf{Descrizione prodotto;}
-		\item \textbf{Tecniche di apprendimento automatico;}
 		\item \textbf{Casi d'uso$^*$;}
 		\item \textbf{Requisiti;}
 		\item \textbf{Tracciamento.}
 	\end{itemize}
-
-	\textbf{Prodotto dell'attività:} \textit{Analisi dei requisiti}
 	
-	\subsubsection{Denominazione dei requisiti}
-	Si vuole associare un identificatore univoco per ogni requisito individuato durante l'analisi dei requisiti. Si \`e deciso di utilizzare il seguente formato:
+	\textbf{Prodotto dell'attività:} \textit{Analisi dei requisiti}
+	\paragraph{Diagrammi UML dei casi d'uso}
+	\noindent \\ I casi d'uso verranno rappresentati tramite diagrammi seguendo le regole di UML 2.0, al fine di individuare i requisiti.
+	\paragraph{Denominazione dei requisiti}
+	\noindent \\ Si vuole associare un identificatore univoco per ogni requisito individuato durante l'analisi dei requisiti. Si \`e deciso di utilizzare il seguente formato:
 	\begin{center}
 		R[Priorità][Tipo][Codice]
-\end{center}
-dove:
-\begin{itemize}
-\item il campo “\textbf{Priorità}” può assumere uno dei seguenti valori:
-\begin{itemize}
-	\item \textbf{O}: indica un requisito obbligatorio, irrinunciabile per il committente;
-	\item \textbf{D}: indica un requisito desiderabile ma non strettamente necessario;
-	\item \textbf{P}: indica un requisito opzionale, che potrebbe venir soddisfatto o meno senza che il prodotto risulti mancante di funzionalità essenziali.
-\end{itemize}
-\item il campo “\textbf{Tipo}” può assumere uno dei seguenti valori:
-\begin{itemize}
-	\item \textbf{F}: definisce un requisito funzionale, ovvero un requisito che indica quale deve essere la reazione del software in specifici casi (ad esempio con  un determinato input);
-	\item \textbf{Q}: definisce un requisito di qualità$^*$, ovvero un requisito votato a garantire efficienza, efficacia e qualità al prodotto;
-	\item \textbf{V}: definisce un requisito di vincolo, ovvero un requisito imposto dalla proponente del capitolato;
-	\item \textbf{R}: definisce un requisito prestazionale, ovvero un requisito relativo alle prestazioni di sistema.
-\end{itemize}
-\item il campo “\textbf{Codice}” assumerà un valore numerico intero positivo, univoco ed incrementale.
-\end{itemize}
-
-\subsubsection{Casi d'uso}
-Ad ogni caso d'uso saranno associate le seguenti informazioni:
-\begin{itemize}
-\item il codice del requisito che lo interessa UC-[Codice];
-\item un nome (univoco);
-\item le pre-condizioni e le post-condizioni relative allo specifico caso d'uso;
-\item gli attori coinvolti, sia primari che secondari;
-\item lo scenario principale che il caso d'uso vorrebbe modellare;
-\item le eventuali estensioni dello scenario principale.
-\end{itemize}
-
-\paragraph{Gerarchie dei casi d'uso} 
-\noindent \\
- Gli identificatori numerici assegnati a casi d'uso saranno organizzati gerarchicamente come descritto di seguito. Posto UC-X codice di un caso d'uso, allora UC-X.Y è figlio di UC-X ed esiste fra i due una relazione tra quelle elencate:
-\begin{itemize}
-\item UC-X.Y descrive nel dettaglio una delle funzionalita di UC-X;
-\item UC-X.Y descrive una estensione (o scenario alternativo) dello scenario descritto in UC-X; 
-\item UC-X.Y descrive una estensione dello scenario principale di due o più figli di UC-X.
-\end{itemize}
-\subsection{Pianificazione della qualità}
-\subsubsection{Denominazione test}
-Volendo associare un identificatore univoco per ogni test menzionato, si \`e deciso di utilizzare il seguente formato:
-	\begin{center}
-		T[Tipo]-R[Priorità][Codice]
-\end{center}
-dove:
-\begin{itemize}
-\item il campo “\textbf{Priorità}” può assumere uno dei seguenti valori:
-\begin{itemize}
-	\item \textbf{O}: indica un test per verificare un requisito obbligatorio, irrinunciabile per il committente;
-	\item \textbf{D}: indica un test per verificare un requisito desiderabile ma non strettamente necessario;
-	\item \textbf{P}: indica un test per verificare un requisito opzionale, che potrebbe venir soddisfatto o meno senza che il prodotto risulti mancante di funzionalità essenziali.
-\end{itemize}
-\item il campo “\textbf{Tipo}” può assumere uno dei seguenti valori:
-\begin{itemize}
-	\item \textbf{S}: definisce un test di sistema, ovvero un test per la verifica$^*$ del comportamento dell'intero sistema;
-	\item \textbf{I}: definisce un test di integrazione, ovvero un test per verificare la corretta integrazione tra più componenti del sistema;
-	\item \textbf{U}: definisce un test di unità, ovvero un test per la verifica del più piccolo componente del sistema;
-\end{itemize}
-\item il campo “\textbf{Codice}” assumerà un valore numerico intero positivo, univoco ed incrementale.
-\end{itemize}
-\newpage
-	
-	\section{Processo di Sviluppo}
-	\subsection{Progettazione}
-	L'attività di progettazione consiste nel ricercare una soluzione che soddisfi tutti gli stakeholder$^*$. Essa avrà inizio quando obiettivi, vincoli e requisiti del prodotto finale saranno solidi e chiari. Le norme subiranno variazioni e verranno prodotte in modo incrementale. Spetta ai Progettisti il compito di definire l'architettura logica del prodotto, dando così coerenza e consistenza al progetto. Per definirsi una buona architettura dovrà rispettare le seguenti proprietà:
+	\end{center}
+	dove:
 	\begin{itemize}
-		\item Capacità di \textbf{soddisfare i requisti} definiti nel documento \textit{Analisi dei requisiti}. L'architettura dovrà anche essere in grado di adattarsi facilmente e permettere modifiche a costo contenuto nel caso in cui i requisiti dovessero variare in corso d'opera;
-		\item Di facile \textbf{comprensibilità}, dagli stakeholders, al Responsabile, ai Verificatori;
-		\item Organizzata e \textbf{suddivisa in moduli} di complessità trattabile, così da rendere la codifica di ogni parte eseguibile da un singolo individuo;
+		\item il campo “\textbf{Priorità}” può assumere uno dei seguenti valori:
+		\begin{itemize}
+			\item \textbf{O}: indica un requisito obbligatorio, irrinunciabile per il committente;
+			\item \textbf{D}: indica un requisito desiderabile ma non strettamente necessario;
+			\item \textbf{P}: indica un requisito opzionale, che potrebbe venir soddisfatto o meno senza che il prodotto risulti mancante di funzionalità essenziali.
+		\end{itemize}
+		\item il campo “\textbf{Tipo}” può assumere uno dei seguenti valori:
+		\begin{itemize}
+			\item \textbf{F}: definisce un requisito funzionale, ovvero un requisito che indica quale deve essere la reazione del software in specifici casi (ad esempio con  un determinato input);
+			\item \textbf{Q}: definisce un requisito di qualità$^*$, ovvero un requisito votato a garantire efficienza, efficacia e qualità al prodotto;
+			\item \textbf{V}: definisce un requisito di vincolo, ovvero un requisito imposto dalla proponente del capitolato;
+			\item \textbf{R}: definisce un requisito prestazionale, ovvero un requisito relativo alle prestazioni di sistema.
+		\end{itemize}
+		\item il campo “\textbf{Codice}” assumerà un valore numerico intero positivo, univoco ed incrementale.
+	\end{itemize}
+	
+	\paragraph{Casi d'uso}
+	\noindent \\Ad ogni caso d'uso saranno associate le seguenti informazioni:
+	\begin{itemize}
+		\item il codice del requisito che lo interessa UC-[Codice];
+		\item un nome (univoco);
+		\item le pre-condizioni e le post-condizioni relative allo specifico caso d'uso;
+		\item gli attori coinvolti, sia primari che secondari;
+		\item lo scenario principale che il caso d'uso vorrebbe modellare;
+		\item le eventuali estensioni dello scenario principale.
+	\end{itemize}
+	\subparagraph{Gerarchie dei casi d'uso} 
+	 Gli identificatori numerici assegnati a casi d'uso saranno organizzati gerarchicamente come descritto di seguito. Posto UC-X codice di un caso d'uso, allora UC-X.Y è figlio di UC-X ed esiste fra i due una relazione tra quelle elencate:
+	\begin{itemize}
+		\item UC-X.Y descrive nel dettaglio una delle funzionalita di UC-X;
+		\item UC-X.Y descrive una estensione (o scenario alternativo) dello scenario descritto in UC-X; 
+		\item UC-X.Y descrive una estensione dello scenario principale di due o più figli di UC-X.
+	\end{itemize}
+	\subsubsection{Progettazione}
+	L'attività di progettazione consiste nel ricercare una soluzione che soddisfi i requisiti concordati con gli stakeholder$^*$. Essa avrà inizio quando obiettivi, vincoli e requisiti del prodotto finale saranno solidi e chiari. Spetta ai Progettisti il compito di definire l'architettura del prodotto, dando così coerenza e consistenza al progetto. Per definirsi una buona architettura dovrà rispettare le seguenti proprietà:
+	\begin{itemize}
+		\item Capacità di \textbf{soddisfare i requisiti} definiti nel documento \textit{Analisi dei requisiti v2.0.0}. L'architettura dovrà anche essere in grado di adattarsi facilmente e permettere modifiche a costo contenuto nel caso in cui i requisiti dovessero variare in corso d'opera;
+		\item Di facile \textbf{comprensibilità}, per gli stakeholders, per il Responsabile e per i Verificatori;
+		\item \textbf{Organizzata e suddivisa in moduli} di complessità trattabile, così da rendere la codifica di ogni parte eseguibile da un singolo individuo;
 		\item \textbf{Rispettare l'information hiding}, fornendo dove possibile interfacce per l'utilizzo del modulo implementato nascondendo i dettagli implementativi;
-		\item \textbf{Basso accoppiamento}, le distinte parti hanno una scarsa dipendenza una dalle altre, limitano i cambiamenti esterni causati da modifiche interne;
+		\item \textbf{Basso accoppiamento}, le distinte parti hanno una scarsa dipendenza l'una dalle altre, limitano i cambiamenti esterni causati da modifiche interne;
 		\item \textbf{Robustezza}, l'architettura deve tener conto delle situazioni anomale che possono essere causate dall'utente o dall'ambiente utilizzato;
 		\item \textbf{Affidabilità}, quando svolge un compito, questo deve essere svolto efficientemente;
 		\item \textbf{Sicurezza}, in caso di malfunzionamenti o di intrusioni esterne i dati e le funzioni non devono essere vulnerabili.
 	\end{itemize}	
-	\subsubsection{Diagrammi UML} Saranno implementati, secondo lo standard UML 2.0, i diagrammi per rendere chiare le scelte progettuali adottate. Saranno forniti:
+	\paragraph{Diagrammi UML} Saranno implementati, secondo lo standard UML 2.0, i diagrammi per rendere chiare le scelte progettuali adottate. Saranno forniti:
 	\begin{itemize}
 		\item Diagrammi delle classi;
 		\item Diagrammi di sequenza;
 		\item Diagrammi di attività;
 		\item Diagrammi di package.
 	\end{itemize}
-	\subsubsection{Design Patterns} Compito dei Progettisti è adottare le opportune soluzioni progettuali a problemi ricorrenti, consentendo ai Programmatori una certa libertà d'uso. I vantaggi di tali soluzioni dovranno essere motivati spiegandone la struttura e il funzionamento.
+	\paragraph{Design Patterns} 
+	\noindent \\Compito dei Progettisti è adottare un design pattern opportuno al problema posto dal progetto. Ciò consente ai Programmatori di seguire delle linee guida consolidate nell'implementazione delle componenti previste dal progettista. I vantaggi di tali soluzioni dovranno essere motivati spiegandone la struttura e il funzionamento.
+	\subsubsection{Strumenti}
+	\paragraph{Astah}
+	\noindent \\È un programma per la modellazione di diagrammi UML che verrà utilizzato dal gruppo per la creazione di tutti i diagrammi necessari.
 	
-	\subsection{Codifica}
-	L'attività di codifica inizierà quando la progettazione sarà terminata. Pertanto
-	le norme sottostanti potranno subire variazioni in seguito alla successiva revisione.
+	\subsubsection{Codifica}
+	L'attività di codifica inizierà quando la progettazione sarà terminata. Pertanto le norme sottostanti potranno subire variazioni in seguito alla successiva revisione.
+	
+	\paragraph{Scopo}
+	\noindent \\ La codifica è l'attività che permette l'effettiva realizzazione del prodotto.
+	\paragraph{Linguaggi di codifica utilizzati:}
+	\begin{itemize}
+		\item Javascript: Node.js per la parte backend e React per la parte dinamica del frontend
+		\item HTML e CSS: per la struttura e la presentazione del frontend
+	\end{itemize}
+
+\paragraph{Commenti al codice}
+\noindent \\ I commenti al codice, i nomi delle funzioni e delle variabili dovranno essere esplicativi ed in lingua inglese.
+I commenti devono permettere la comprensione del codice, non
+devono quindi descrivere la sintassi del linguaggio di programmazione in uso, ma piuttosto descrivere lo scopo di tutti quei blocchi di codice la
+cui comprensione non sia già resa immediata da una corretta scelta della nomenclatura.
+	
 
 	
 	\newpage
@@ -341,7 +338,7 @@ Nella tabella, ad ogni modifica, devono essere presenti le seguenti informazioni
 		\item \textbf{Codici:} struttura \LaTeX\ $^*$ (package Listings) con carattere Teletype;
 		\item \textbf{Ruoli di progetto:} la prima lettera maiuscola;
 		\item \textbf{Nomi propri:} ogni nome proprio di persona deve essere scritto nella forma Nome Cognome;
-		\item \textbf{Nomi dei documenti:} la prima lettera maiuscola;
+		\item \textbf{Riferimenti a documenti:} la prima lettera maiuscola con il riferimento alla versione nel formato vX.X.X (esempio: Norme di progetto v1.0.0);
 		\item \textbf{Riferimenti a sezioni:} i riferimenti interni al documento devono riportare il numero della sezione, preceduto dal simbolo di paragrafo (esempio: \S\ {3.1.1} ).
 		
 	\end{itemize}
@@ -485,8 +482,34 @@ I risultati sono compresi tra 0 e 100, dove il valore 100 indica la leggibilità
 \noindent \\
 La verifica ortografica è effettuata tramite Texmaker, attraverso il quale gli errori ortografici vengono sottolineati in rosso, permettendo un controllo rapido ed efficiente.
 
+\subsection{Validazione}
+\subsubsection{Denominazione test}
+Volendo associare un identificatore univoco per ogni test menzionato, si \`e deciso di utilizzare il seguente formato:
+\begin{center}
+	T[Tipo][Priorità][Codice]
+\end{center}
+dove:
+\begin{itemize}
+	\item il campo “\textbf{Priorità}” può assumere uno dei seguenti valori, nel caso in cui il test sia di sistema o validazione:
+	\begin{itemize}
+		
+	\item \textbf{O}: indica un test per verificare un requisito obbligatorio, irrinunciabile per il committente;
+	\item \textbf{D}: indica un test per verificare un requisito desiderabile ma non strettamente necessario;
+	\item \textbf{P}: indica un test per verificare un requisito opzionale, che potrebbe venir soddisfatto o meno senza che il prodotto risulti mancante di funzionalità essenziali.
+	\end{itemize}
+Altrimenti nel caso il test sia di integrazione o unità il campo priorità sarà omesso.
+\\
+	\item il campo “\textbf{Tipo}” può assumere uno dei seguenti valori:
+	\begin{itemize}
+		\item \textbf{S}: definisce un test di sistema, ovvero un test per la verifica$^*$ del comportamento dell'intero sistema;
+		\item \textbf{V}: definisce un test di validazione, ovvero un test per la verifica$^*$ dei casi d'uso e dei requisiti concordati con il cliente;
+		\item \textbf{I}: definisce un test di integrazione, ovvero un test per verificare la corretta integrazione tra più componenti del sistema;
+		\item \textbf{U}: definisce un test di unità, ovvero un test per la verifica del più piccolo componente del sistema;
+	\end{itemize}
+	\item il campo “\textbf{Codice}” assumerà un valore numerico intero positivo, univoco ed incrementale.
+\end{itemize}
 
-\newpage
+
 \section{Processi organizzativi}
 
 \subsection{Gestione di Progetto}
@@ -565,14 +588,21 @@ I ruoli di progetto sono definiti secondo le definizioni date dal professore Var
 
 \newpage
 
-\subsection{Strumenti}
+\subsubsection{Strumenti}
 
-\subsubsection{Slack (app)}
+\paragraph{Slack (app)}
 Slack (app)$^*$ è uno strumento di collaborazione che permette la comunicazione in tempo reale tra i membri di uno stesso team di lavoro. Mette a disposizione di quest’ultimo uno spazio di lavoro (workspace), dov'è possibile comunicare organizzando conversazioni attraverso diversi canali tematici differenti, definibili dal gruppo stesso.
 Slack inoltre fornisce la possibilità di associare applicazioni al workspace.
 
-\subsubsection{GitLab}
+\paragraph{GitLab}
 È un software di controllo versione in cui gli sviluppatori possono caricare il proprio codice e gestire le modifiche alle varie versioni in contemporanea al lavoro di più persone.
 Il Responsabile di progetto crea una issue$^*$ per ogni attività e le assegna ai componenti del gruppo. Il soggetto designato aprirà un nuovo branch$^*$ identificato con il codice issue.
 Una volta finito lo stato di elaborazione (Doing), la issue passa allo stato di verifica. Se il Verificatore la considera idonea, la issue viene chiusa (Closed) e approvata dal Responsabile di progetto, altrimenti ritorna nello stato di elaborazione (Doing) in attese di aggiornamenti.
+
+\subsection{Gestione della Qualità}
+\subsubsection{Pianificazione della qualità}
+
+
+\subsection{Ricerca sulle tecnologie} 
+Questa attività consiste nella ricerca di informazioni su software, librerie e tutte le tecnologie che sono state ritenute utili per una o più fasi di sviluppo del progetto. Le tecnologie analizzate  sono quelle suggerite dalla proponente e quelle ritenute utili sulla base delle esperienze personali dei membri del gruppo. 
 \end{document}

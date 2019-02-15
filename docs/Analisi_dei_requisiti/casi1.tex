@@ -44,7 +44,6 @@ La categoria "utente ignoto" comprende gli utenti non registrati o non autentica
 		\begin{itemize}
 			\item 5.a Nel caso in cui l'utente tenti l'inserimento di campi non validi vedrà comparire dei messaggi d'errore (UC-5).
 			\item 5.b Un utente che si è registrato come insegnante deve attendere la conferma dela registrazione del moderatore (UC-4).
-			\item 5.c Un utente che invia la domanda di registrazione deve confermare o annullare l'operazione (UC-32).
 		\end{itemize}
 	\end{itemize}
 \subsubsection{UC-2 Autenticazione}
@@ -59,16 +58,26 @@ La categoria "utente ignoto" comprende gli utenti non registrati o non autentica
 				\end{enumerate}
 				\item \textbf{Estensioni:}
 				\begin{itemize}
-					\item 2.a Nel caso in cui l'utente tenti l'inserimento di campi non validi vedrà comparire messaggi d'errore (UC-5).
-					\item 2.b Un utente che invia la domanda di identificazione deve confermare o annullare l'operazione (UC-32).
+					\item 2.a Nel caso in cui l'utente tenti l'inserimento di campi non validi vedrà comparire messaggi d'errore (UC-34).
 				\end{itemize}
+		\end{itemize}
+		
+\subsubsection{UC-34 Visualizzazione errore di autenticazione}
+		\begin{itemize}
+			\item \textbf{Attori:} Utente non autenticato
+			\item \textbf{Precondizione:} L'utente ha provato ad autenticarsi
+			\item \textbf{Postcondizione:} L'utente torna alla vista di accesso alla piattaforma
+			\item \textbf{Scenario principale:}
+			\begin{enumerate}
+				\item L'utente visualizza un messaggio di errore per l'autenticazione
+			\end{enumerate}
 		\end{itemize}
 		
 \subsection{Elenco dei casi d'uso - Utente: utente registrato}	
 La categoria "utente registrato" comprende gli utenti registrati con i ruoli di allievo o insegnante.	
 \subsubsection{UC-3 Modifica profilo}
 		\begin{itemize}
-			\item \textbf{Attori:} Utente registrato. 
+			\item \textbf{Attori:} Utente registrato.
 			\item \textbf{Precondizione:} L'utente si trova nella vista di modifica dei dati del proprio profilo.
 			\item \textbf{Postcondizione:} L'utente ha modificato i propri dati personali.
 			\item \textbf{Scenario principale:}
@@ -78,15 +87,17 @@ La categoria "utente registrato" comprende gli utenti registrati con i ruoli di 
 				\end{enumerate}
 				\item \textbf{Estensioni:}
 				\begin{itemize}
-					\item 2.a Nel caso in cui l'utente tenti l'inserimento di campi non validi vedrà comparire messaggi d'errore (UC-5).
-					\item 2.b Un utente che invia la domanda di modifica deve confermare o annullare l'operazione (UC-32).
+					\item 2.a Nel caso in cui l'utente tenti l'inserimento di campi non validi vedrà comparire messaggi d'errore (UC-35).
 				\end{itemize}
 		\end{itemize}
 		\begin{figure}[htbp]
 		\centering
 		\includegraphics[scale=0.7]{images/UC-3.png}
-		\caption{UC-3 Modifica profilo e UC-6 Ricerca esercizi}
+		\caption{UC-3 Modifica profilo}
 	\end{figure}
+	
+\subsubsection{UC-35 Visualizzazione errore di modifica del profilo}	
+	
 	
 \subsubsection{UC-6 Ricerca esercizi}
 		\begin{itemize}
@@ -97,14 +108,9 @@ La categoria "utente registrato" comprende gli utenti registrati con i ruoli di 
 				\begin{enumerate}
 					\item L'utente accede all'area dedicata alla ricerca degli esercizi.
 					\item L'utente scrive la frase nella barra di ricerca.
-					\item L'utente seleziona i filtri UC-6.1.
+					\item L'utente seleziona i filtri (UC-6.1).
 					\item L'utente avvia la ricerca.
 				\end{enumerate}
-			\item \textbf{Estensioni:}
-				\begin{itemize}
-					\item 2.a Nel caso in cui l'utente tenti l'inserimento di campi non validi vedrà comparire messaggi d'errore (UC-5).
-					\item 3.a Se non c'è nessun risultato viene visualizzato un messaggio: ``nessun risultato trovato" (UC-7).
-				\end{itemize}
 		\end{itemize}
 
 \subsubsection{UC-31 Visualizza lista delle classi}		
@@ -132,34 +138,6 @@ La categoria "utente registrato" comprende gli utenti registrati con i ruoli di 
 				\end{enumerate}
 
 \end{itemize}
-	
-\subsection{Elenco dei casi d'uso - Utente: utente generico}
-La categoria "utente generico" comprende tutti i possibili attori del sistema.
-\subsubsection{UC-5 Errore campi non validi o mancanti}
-\begin{itemize}
-\item \textbf{Attori:} Utente generico. 
-\item \textbf{Precondizione:} L'utente ha inserito dei campi non validi.
-\item \textbf{Postcondizione:} Il sistema mostra un messaggio d'errore per spronare l'utente a ricontrollare i campi non validi.
-\item \textbf{Scenario principale:}
-		\begin{enumerate}
-		\item L'utente ha provato a inserire dei campi non validi.
-		\item All'utente viene mostrato un messaggio d'errore che invita a ricontrollare i campi non validi.
-		\end{enumerate}
-\end{itemize}
-
-\subsubsection{UC-32 Conferma operazione}		
-\begin{itemize}
-	\item \textbf{Attori:} Utente.
-	\item \textbf{Precondizione:} L'utente ha inviato una richiesta di completamento dell'operazione.
-	\item \textbf{Postcondizione:} L'operazione viene annullata o confermata.
-	\item \textbf{Scenario principale:}
-	\begin{enumerate}
-		\item L'utente visualizza un messaggio per la conferma dell'operazione.
-		\item L'utente seleziona l'opzione "Annulla" per annullare l'operazione.
-		\item L'utente seleziona l'opzione "Conferma" per accettare l'operazione.
-	\end{enumerate}		
-\end{itemize}
-
 
 \subsection{Elenco dei casi d'uso - Utente: moderatore}	
 \subsubsection{UC-4 Verifica richiesta insegnante}
@@ -172,10 +150,6 @@ La categoria "utente generico" comprende tutti i possibili attori del sistema.
 					\item Il moderatore visualizza la lista degli utenti che richiedono il ruolo di insegnante.
 					\item Il moderatore accetta o rifiuta l'utente selezionato.
 				\end{enumerate}
-			\item \textbf{Estensioni:}
-			\begin{itemize}
-				\item 2.a Il moderatore che verifica la richiesta di insegnante deve confermare o annullare l'operazione (UC-32).
-			\end{itemize}
 		\end{itemize}
 		
 \subsubsection{UC-23 Eliminazione di un esercizio}
@@ -188,10 +162,6 @@ La categoria "utente generico" comprende tutti i possibili attori del sistema.
 					\item Il moderatore indica l'esercizio da eliminare.
 					\item Il moderatore conferma l'eliminazione dell'esercizio selezionato.
 				\end{enumerate}
-			\item \textbf{Estensioni:}
-			\begin{itemize}
-			\item 2.a Il moderatore conferma o annulla l'operazione (UC-32).
-			\end{itemize}
 		\end{itemize}
 
 
@@ -205,23 +175,6 @@ La categoria "utente generico" comprende tutti i possibili attori del sistema.
 		\item Il moderatore indica l'utente da eliminare.
 		\item Il moderatore conferma l'eliminazione dell'utente selezionato.
 	\end{enumerate}
-\item \textbf{Estensioni:}
-\begin{itemize}
-	\item 2.a Il moderatore deve confermare o annullare l'operazione di eliminazione utente (UC-32).
-\end{itemize}
-\end{itemize}
-
-
-\subsubsection{UC-7 Visualizzazione messaggio ``nessun risultato trovato"}
-\begin{itemize}
-		\item \textbf{Attori:} Insegnante, allievo, sviluppatore.
-		
-		\item \textbf{Precondizione:} L'utente ha avviato la ricerca. 
-		\item \textbf{Postcondizione:} L'utente visualizza un messaggio: "nessun risultato trovato".
-		\item \textbf{Scenario principale: }
-		\begin{enumerate}
-			\item Viene mostrato un messaggio: ``nessun risultato trovato".
-		\end{enumerate}
 \end{itemize}
 
 \subsection{Elenco dei casi d'uso - Utente: insegnante}		
@@ -236,16 +189,7 @@ La categoria "utente generico" comprende tutti i possibili attori del sistema.
 		\item L'insegnante modifica i campi che ritiene errati.
 		\item L'insegnante conferma la modifica.
 		\end{enumerate}
-	\item \textbf{Estensioni:}
-	\begin{itemize}
-	\item 3.a L'insegnante che modifica la soluzione di un esercizio deve confermare o annullare l'operazione (UC-32).
-	\end{itemize}
 \end{itemize}
-\begin{figure}[h]
-	\centering
-	\includegraphics[scale=0.7]{images/UC-9.png}
-	\caption{UC-9 Modifica soluzione, UC-10 Visualizzazione esercizi inseriti, UC-11 Eliminare una soluzione di un esercizio}
-\end{figure}
 
 \subsubsection{UC-10 Visualizzazione esercizi inseriti}
 \begin{itemize}
@@ -268,11 +212,7 @@ La categoria "utente generico" comprende tutti i possibili attori del sistema.
 		\item L'utente sceglie una soluziona da eliminare.
 		\item L'insegnante conferma l'eliminazione.
 		\end{enumerate}
-	\item Estensioni:
-	\begin{itemize}
-	\item 2.a L'insegnante che elimina la soluzione di un esercizio puo' confermare o annullare l'operazione (UC-32).
-	\end{itemize}
-	\end{itemize}
+\end{itemize}
 
 \subsubsection{UC-12 Inserimento esercizio}
 	\begin{itemize}
@@ -289,7 +229,6 @@ La categoria "utente generico" comprende tutti i possibili attori del sistema.
 		\end{enumerate}
 		\item \textbf{Estensioni:} 
 		\begin{itemize}
-			\item 5.a Un insegnante che inserisce un esercizio deve confermare o annullare l'operazione (UC-32).
 		\item 6.a Nel caso in cui i campi compilati presentino errori verrà mostrato un messaggio d'errore (UC-5).
 		\end{itemize}
 	\end{itemize}
@@ -311,10 +250,6 @@ La categoria "utente generico" comprende tutti i possibili attori del sistema.
 		\item L'insegnante seleziona lo stato della soluzione inserita, pubblica o privata.
 		\item L'insegnante conferma la soluzione.
 		\end{enumerate}	
-	\item \textbf{Estensioni:}
-	\begin{itemize}
-	\item 4.a Un insegnante che inserisce una soluzione deve confermare o annullare l'operazione (UC-32).
-	\end{itemize}
 \end{itemize}
 
 \subsubsection{UC-12.2 Inserimento argomenti}
@@ -343,11 +278,6 @@ La categoria "utente generico" comprende tutti i possibili attori del sistema.
 		\item L'insegnante assegna una descrizione alla classe.
 		\item L'insegnante conferma la creazione.
 	\end{enumerate}
-\item \textbf{Estensioni:}
-\begin{itemize}
-\item 4.a L'insegnante deve confermare o annullare l'operazione di creazione classe (UC-32).
-\end{itemize}
-
 \end{itemize}
 
 \subsubsection{UC-25 Eliminare una classe}
@@ -360,10 +290,6 @@ La categoria "utente generico" comprende tutti i possibili attori del sistema.
 		\item l'insegnante clicca sul pulsante di eliminazione della classe.
 		\item l'insegnante conferma l'eliminazione.
 	\end{enumerate}
-\item \textbf{Estensioni:}
-\begin{itemize}
-	\item 2.a L'insegnante deve confermare o annullare l'operazione di eliminare una classe (UC-32).
-\end{itemize}
 \end{itemize}
 
 \subsubsection{UC-26 Inserimento Alunni}
@@ -377,10 +303,6 @@ La categoria "utente generico" comprende tutti i possibili attori del sistema.
 		\item L'insegnante indica gli studenti da aggiungere.
 		\item L'insegnante conferma l'inserimento.
 	\end{enumerate}
-	\item \textbf{Estensioni:}
-\begin{itemize}
-	\item 3.a L'insegnante deve confermare o annullare l'operazione di inserimento. alunni (UC-32).
-\end{itemize}
 \end{itemize}
 
 \subsubsection{UC-27 Assegnazione Esercizi}
@@ -394,10 +316,6 @@ La categoria "utente generico" comprende tutti i possibili attori del sistema.
 		\item L'insegnante assegna esercizi alla classe.
 		\item L'insegnante conferma l'inserimento.
 	\end{enumerate}
-\item \textbf{Estensioni:}
-\begin{itemize}
-	\item 3.a L'insegnante deve confermare o annullare l'operazione di assegnazione esercizi (UC-32).
-\end{itemize}
 \end{itemize}
 
 
@@ -423,10 +341,6 @@ La categoria "utente generico" comprende tutti i possibili attori del sistema.
 		\item L'insegnante seleziona l'allievo da rimuovere dalla classe.
 		\item L'insegnante conferma l'eliminazione.
 	\end{enumerate}	
-\item \textbf{Estensioni:}
-\begin{itemize}
-	\item 2.a L'insegnante deve confermare o annullare l'operazione di eliminare un alunno dalla classe (UC-32).
-\end{itemize}	
 \end{itemize}
 
 \subsubsection{UC-30 Visualizza lista degli alunni iscritti nella classe}		
@@ -455,16 +369,7 @@ La categoria "utente generico" comprende tutti i possibili attori del sistema.
 				\item l'allievo conferma i dati inseriti.
 				\item l'allievo visualizza la valutazione (UC-13.3).
 			\end{enumerate}
-		\item \textbf{Estensioni:}
-		\begin{itemize}
-			\item 3.a Un allievo che invia i dati per lo svolgimento dell'esercizio deve confermare o annullare l'operazione (UC-32).
-		\end{itemize}
 	\end{itemize}
-	\begin{figure}[h]
-		\centering
-		\includegraphics[scale=0.7]{images/UC-13.png}
-		\caption{UC-13 Svolgimento esercizio, UC-14 Visualizzazione progressi}
-	\end{figure}	
 			
 	\subsubsection{UC-13.1 Selezione esercizio}
 	\begin{itemize}
@@ -472,20 +377,16 @@ La categoria "utente generico" comprende tutti i possibili attori del sistema.
 			\item \textbf{Precondizione:} L'allievo visualizza la lista degli esercizi ricercati.
 			\item \textbf{Postcondizione:} L'allievo visualizza la vista per l'esecuzione dell'esercizio.
 			\item \textbf{Scenario principale:}
-				\begin{enumerate}
+			\begin{enumerate}
 					\item l'allievo seleziona la frase da svolgere.
 					\item l'allievo seleziona il correttore dell'esercizio(insegnante o algoritmo automatico).
 					\item l'allievo conferma la selezione.
-				\end{enumerate}
-			\item \textbf{Estensioni:}
-			\begin{itemize}
-		\item 3.a Un allievo che indica l'esercizio e il correttore  deve confermare o annullare l'operazione (UC-32).
-			\end{itemize}
-			\end{itemize}
+			\end{enumerate}
+	\end{itemize}
 			\begin{figure}[h]
 		\centering
 		\includegraphics[scale=0.7]{images/UC-13_1.png}
-		\caption{UC-13.1 Selezione esercizio, UC-13.2 Compilazione dei dati, UC-13.3 Valutazione esercizio}
+		\caption{UC-13 Svolgimento esercizio}
 	\end{figure}
 
 	\subsubsection{UC-13.2 Compilazione dei campi}
@@ -500,12 +401,11 @@ La categoria "utente generico" comprende tutti i possibili attori del sistema.
 				\end{enumerate}
 			\item \textbf{Estensioni:} 
 				\begin{itemize}
-					\item 2.a Un allievo dopo la compilazione dei campi deve confermare o annullare l'operazione (UC-32).
-					\item 2.b Nel caso in cui l'utente tenti l'inserimento di campi non validi vedrà comparire messaggi d'errore (UC-5).
+					\item 2.a Nel caso in cui l'utente tenti l'inserimento di campi non validi vedrà comparire messaggi d'errore (UC-5).
 				\end{itemize}
 		\end{itemize}
 
-	\subsubsection{UC-13.3 Valutazione esercizio}
+	\subsubsection{UC-13.3 Visualizzazione della valutazione dell'esercizio}
 	\begin{itemize}
 			\item \textbf{Attori:} Allievo.
 			\item \textbf{Precondizione:} L'allievo ha completato l'esecuzione dell'esercizio.

@@ -19,23 +19,23 @@ Gli identificatori numerici assegnati a casi d'uso saranno organizzati gerarchic
 \item UC-X.Y descrive una estensione dello scenario principale di due o più figli di UC-X.
 \end{itemize}
 
-\subsection{Elenco dei casi d'uso - Utente: utente ignoto}
-La categoria "utente ignoto" comprende gli utenti non registrati o non autenticati nel sistema.
-\subsubsection{UC-1 Registrazione}
+\subsection{Elenco dei casi d'uso - Utente: utente non registrato}
+
+\subsubsection{UC-1 Registrazione Allievo}
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.7]{images/UC-1.png}
-	\caption{UC-1 Registrazione}
+	\caption{UC-1 Registrazione Allievo}
 \end{figure}	
 
 \begin{itemize}
 		\item \textbf{Attori: }Utente non registrato.
 		\item \textbf{Precondizione: }L'utente si trova nella vista di registrazione dell'applicazione.
-		\item \textbf{Postcondizione: }L'utente è registrato o come allievo o come insegnante.
+		\item \textbf{Postcondizione: }L'utente è registrato come allievo.
 		\item \textbf{Scenario principale: }
 		\begin{enumerate}
 		\item L'utente ha scelto di registrarsi al sistema, quindi di creare un nuovo profilo. 
-		\item L'utente dovrà scegliere la tipologia di utente, insegnante/allievo. 
+		\item L'utente seleziona la tipologia allievo. 
 		\item L'utente inserirà nome, cognome, username, email e password.
 		\item L'utente fornirà il nome della scuola a cui appartiene e la città.
 		\item L'utente conferma la registrazione.
@@ -43,9 +43,58 @@ La categoria "utente ignoto" comprende gli utenti non registrati o non autentica
 		\item \textbf{Estensioni: }
 		\begin{itemize}
 			\item 5.a Nel caso in cui l'utente tenti l'inserimento di campi non validi vedrà comparire dei messaggi d'errore (UC-5).
-			\item 5.b Un utente che si è registrato come insegnante deve attendere la conferma dela registrazione del moderatore (UC-4).
 		\end{itemize}
+\end{itemize}
+
+\subsubsection{UC-33 Registrazione Insegnante}
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.7]{images/UC-1.png}
+	\caption{UC-33 Registrazione Insegnante}
+\end{figure}	
+
+\begin{itemize}
+	\item \textbf{Attori: }Utente non registrato.
+	\item \textbf{Precondizione: }L'utente si trova nella vista di registrazione dell'applicazione.
+	\item \textbf{Postcondizione: }L'utente è in attesa di conferma.
+	\item \textbf{Scenario principale: }
+	\begin{enumerate}
+		\item L'utente ha scelto di registrarsi al sistema, quindi di creare un nuovo profilo. 
+		\item L'utente seleziona la tipologia insegnante. 
+		\item L'utente inserirà nome, cognome, username, email e password.
+		\item L'utente fornirà il nome della scuola a cui appartiene e la città.
+		\item L'utente conferma la registrazione.
+	\end{enumerate}
+	\item \textbf{Estensioni: }
+	\begin{itemize}
+		\item 5.a Nel caso in cui l'utente tenti l'inserimento di campi non validi vedrà comparire dei messaggi d'errore (UC-5).
 	\end{itemize}
+\end{itemize}
+
+\subsubsection{UC-5 Visualizzazione errore di registrazione}
+\begin{itemize}
+	\item \textbf{Attori:} Utente non registrato
+	\item \textbf{Precondizione:} L'utente ha confermato la richiesta di registrazione con campi non validi o nulli
+	\item \textbf{Postcondizione:} L'utente torna alla vista di registrazione
+	\item  \textbf{Scenario principale: }
+	\begin{enumerate}
+		\item Visualizza un messaggio di errore "Registrazione non avvenuta: campi non validi"
+	\end{enumerate}
+\end{itemize}
+
+\subsubsection{UC-36 Notifica richiesta insegnante}
+   \begin{itemize}
+   \item \textbf{Attori:} Utente non registrato
+   \item \textbf{Precondizione:} L'utente ha inviato la richiesta di registrazione come insegnante.
+   \item \textbf{Postcondizione:} L'utente riceve la conferma di registrazione come insegnante. 
+   \item \textbf{Scenario principale:}
+    \begin{enumerate}
+     \item L'utente riceve una notifica della conferma via e-mail.
+    \end{enumerate}
+  \end{itemize}
+
+\subsection{Elenco dei casi d'uso - Utente: Utente non autenticato}
+
 \subsubsection{UC-2 Autenticazione}
 		\begin{itemize}
 			\item \textbf{Attori:} Utente non autenticato.
@@ -53,7 +102,7 @@ La categoria "utente ignoto" comprende gli utenti non registrati o non autentica
 			\item \textbf{Postcondizione:} L'utente ha eseguito l'accesso con il proprio ruolo.
 			\item \textbf{Scenario principale:}
 				\begin{enumerate}
-					\item L'utente inserisce la propria email e password.
+					\item L'utente inserisce la propria username e password.
 					\item L'utente conferma l'accesso.
 				\end{enumerate}
 				\item \textbf{Estensioni:}
@@ -69,7 +118,7 @@ La categoria "utente ignoto" comprende gli utenti non registrati o non autentica
 			\item \textbf{Postcondizione:} L'utente torna alla vista di accesso alla piattaforma
 			\item \textbf{Scenario principale:}
 			\begin{enumerate}
-				\item L'utente visualizza un messaggio di errore per l'autenticazione
+				\item L'utente visualizza un messaggio di errore "Impossibile effettuare l'accesso: username o password errati"
 			\end{enumerate}
 		\end{itemize}
 		
@@ -91,17 +140,25 @@ La categoria "utente registrato" comprende gli utenti registrati con i ruoli di 
 				\end{itemize}
 		\end{itemize}
 		\begin{figure}[htbp]
-		\centering
-		\includegraphics[scale=0.7]{images/UC-3.png}
-		\caption{UC-3 Modifica profilo}
-	\end{figure}
+			\centering
+			\includegraphics[scale=0.7]{images/UC-3.png}
+			\caption{UC-3 Modifica profilo}
+		\end{figure}
 	
 \subsubsection{UC-35 Visualizzazione errore di modifica del profilo}	
-	
+	\begin{itemize}
+		\item \textbf{Attori:} Utente registrato
+		\item \textbf{Precondizione:} L'utente ha inserito dei campi non validi o nulli nella modifica del proprio profilo
+		\item \textbf{Postcondizione:} L'utente torna alla vista del proprio profilo
+		\item \textbf{Scenario principale:}
+		\begin{enumerate}
+			\item L'utente visualizza un messaggio di errore "Modifica del profilo non avvenuta: campi non validi o nulli"
+		\end{enumerate}
+	\end{itemize}
 	
 \subsubsection{UC-6 Ricerca esercizi}
 		\begin{itemize}
-			\item\textbf{ Attori:} Utente registrato..
+			\item\textbf{ Attori:} Utente registrato
 			\item \textbf{Precondizione:} L'utente si trova nella vista principale dell'applicazione.
 			\item \textbf{Postcondizione:} L'utente ottiene una lista degli esercizi filtrati.
 			\item \textbf{Scenario principale:}
@@ -113,6 +170,55 @@ La categoria "utente registrato" comprende gli utenti registrati con i ruoli di 
 				\end{enumerate}
 		\end{itemize}
 
+\subsubsection{UC-6.1 Filtraggio esercizi }
+\begin{itemize}
+\item \textbf{Attori:} Utente registrato.
+			\item \textbf{Precondizione:} L'utente si trova nella vista di ricerca degli esercizi dell'applicazione.
+			\item \textbf{Postcondizione:} L'utente ha selezionato i filtri per la ricerca.
+			\item \textbf{Scenario principale:}
+				\begin{enumerate}
+					\item L'utente può selezionare gli autori degli esercizi desiderati (UC-6.1.1)
+					\item L'utente può selezionare il livello di difficoltà degli esercizi (UC-6.1.2).
+					\item L'utente può selezionare gli argomenti degli esercizi (UC-6.1.3).
+				\end{enumerate}
+\end{itemize}
+
+\subsubsection{UC-6.1.1 Filtraggio in base agli autori}
+	\begin{itemize}
+		\item \textbf{Attori:} Utente registrato
+		\item \textbf{Precondizione: } L'utente si trova nella vista di ricerca degli esercizi dell'applicazione
+		\item \textbf{Postcondizione: } L'utente ha indicato gli autori nel filtro di ricerca 
+		\item \textbf{Scenario principale:}
+		\begin{enumerate}
+			\item L'utente visualizza la lista degli autori
+			\item L'utente seleziona gli autori di cui vuole vedere gli esercizi			
+		\end{enumerate}
+	\end{itemize}
+
+\subsubsection{UC-6.1.2 Filtraggio in base alla difficoltà}
+	\begin{itemize}
+		\item \textbf{Attori:} Utente registrato
+		\item \textbf{Precondizione: } L'utente si trova nella vista di ricerca degli esercizi dell'applicazione
+		\item \textbf{Postcondizione: } L'utente ha indicato la difficoltà nel filtro di ricerca 
+		\item \textbf{Scenario principale:}
+		\begin{enumerate}
+			\item L'utente visualizza i livelli possibili di difficoltà (da 1 a 5)
+			\item L'utente indica il livello di difficoltà degli esercizi cercati
+		\end{enumerate}
+	\end{itemize}
+
+\subsubsection{UC-6.1.3 Filtraggio in base agli argomenti}
+	\begin{itemize}
+		\item \textbf{Attori:} Utente registrato
+		\item \textbf{Precondizione: } L'utente si trova nella vista di ricerca degli esercizi dell'applicazione
+		\item \textbf{Postcondizione: } L'utente ha indicato gli autori nel filtro di ricerca 
+		\item \textbf{Scenario principale:}
+		\begin{enumerate}
+			\item L'utente visualizza la lista degli argomenti (pronomi, verbi, aggettivi, articoli, avverbi, ecc..)
+			\item L'utente seleziona gli argomenti di cui vuole vedere gli esercizi
+		\end{enumerate}
+	\end{itemize}
+
 \subsubsection{UC-31 Visualizza lista delle classi}		
 \begin{itemize}
 	\item \textbf{Attori:} Utente registrato.
@@ -122,21 +228,6 @@ La categoria "utente registrato" comprende gli utenti registrati con i ruoli di 
 	\begin{enumerate}
 		\item L'utente seleziona l'opzione "vedi classi".
 	\end{enumerate}		
-\end{itemize}
-
-		
-\subsubsection{UC-6.1 Filtraggio esercizi }
-\begin{itemize}
-\item \textbf{Attori:} Utente registrato.
-			\item \textbf{Precondizione:} L'utente si trova nella vista di ricerca degli esercizi dell'applicazione.
-			\item \textbf{Postcondizione:} L'utente ha selezionato i filtri per la ricerca.
-			\item \textbf{Scenario principale:}
-				\begin{enumerate}
-					\item L'utente può selezionare l'autore degli esercizi desiderati.
-					\item L'utente può selezionare il livello di difficoltà degli esercizi.
-					\item L'utente può selezionare gli argomenti degli esercizi.
-				\end{enumerate}
-
 \end{itemize}
 
 \subsection{Elenco dei casi d'uso - Utente: moderatore}	
@@ -163,7 +254,6 @@ La categoria "utente registrato" comprende gli utenti registrati con i ruoli di 
 					\item Il moderatore conferma l'eliminazione dell'esercizio selezionato.
 				\end{enumerate}
 		\end{itemize}
-
 
 \subsubsection{UC-8 Eliminazione di un utente}
 \begin{itemize}
@@ -205,11 +295,11 @@ La categoria "utente registrato" comprende gli utenti registrati con i ruoli di 
 \subsubsection{UC-11 Eliminare una soluzione di un esercizio}
 \begin{itemize}
 \item \textbf{Attori: }Insegnante.
-		\item \textbf{Precondizione: }L'insegnate ha selezionato la soluzione da eliminare.
+		\item \textbf{Precondizione: }L'insegnante ha selezionato la soluzione da eliminare.
 		\item \textbf{Postcondizione: }La soluzione selezionata viene eliminata. 
 		\item \textbf{Scenario principale: }
 		\begin{enumerate}
-		\item L'utente sceglie una soluziona da eliminare.
+		\item L'insegnante sceglie una soluzione da eliminare.
 		\item L'insegnante conferma l'eliminazione.
 		\end{enumerate}
 \end{itemize}
@@ -223,20 +313,20 @@ La categoria "utente registrato" comprende gli utenti registrati con i ruoli di 
 		\begin{enumerate} 
 		\item L'insegnante inserisce la frase.
 		\item L'insegnante inserisce la soluzione UC-12.1.
-		\item L'insegnante inserisce la difficoltà.
 		\item L'insegnante inserisce gli argomenti UC-12.2.
+		\item L'insegnante inserisce la difficoltà. UC-12.3
 		\item L'insegnante conferma l'inserimento.
 		\end{enumerate}
 		\item \textbf{Estensioni:} 
 		\begin{itemize}
-		\item 6.a Nel caso in cui i campi compilati presentino errori verrà mostrato un messaggio d'errore (UC-5).
+		\item 1.a Nel caso in cui la frase inserita sia nulla, viene visualizzato un errore (UC-37).
 		\end{itemize}
 	\end{itemize}
 	\begin{figure}[h]
-	\centering
-	\includegraphics[scale=0.7]{images/UC-12.png}
-	\caption{UC-12 Inserimento esercizio}
-\end{figure}
+		\centering
+		\includegraphics[scale=0.7]{images/UC-12.png}
+		\caption{UC-12 Inserimento esercizio}
+	\end{figure}
 
 \subsubsection{UC-12.1 Inserimento di una soluzione}
 \begin{itemize}
@@ -246,7 +336,7 @@ La categoria "utente registrato" comprende gli utenti registrati con i ruoli di 
 \item \textbf{Scenario principale: }
 		\begin{enumerate} 
 		\item L'insegnante visualizza i campi proposti dal generatore automatico. 
-		\item L'insegnante può modificare i campi che ritiene errati.
+		\item L'insegnante può modificare le classi grammaticali assegnate dal generatore automatico che ritiene errate.
 		\item L'insegnante seleziona lo stato della soluzione inserita, pubblica o privata.
 		\item L'insegnante conferma la soluzione.
 		\end{enumerate}	
@@ -257,16 +347,38 @@ La categoria "utente registrato" comprende gli utenti registrati con i ruoli di 
 \item \textbf{Attori: }Insegnante.
 
 \item \textbf{Precondizione:} L'insegnante sta inserendo un esercizio, gli viene richiesta la compilazione di una lista di argomenti presenti nell'esercizio.
-\item \textbf{Postcondizione:} L'insegnante ha selazionato gli argomenti trattati nell'esercizio.
+\item \textbf{Postcondizione:} L'insegnante ha selezionato gli argomenti trattati nell'esercizio.
 \item \textbf{Scenario principale: }
 		\begin{enumerate}
-		\item L'insegnante sta inserendo un esercizio. 
+		\item L'insegnante visualizza la lista degli argomenti
 		\item L'insegnante seleziona gli argomenti che vengono toccati nell'esercizio. 
 		\end{enumerate}
 \end{itemize}				
 
-\subsubsection{UC-24 Creazione classe}
+\subsubsection{UC-12.3 Inserimento della difficoltà}
+\begin{itemize}
+	\item \textbf{Attori: }Insegnante
+	\item \textbf{Precondizione:} L'insegnante è nella vista di inserimento di un nuovo esercizio.
+	\item \textbf{Postcondizione:} L'insegnante ha indicato il livello di difficoltà
+	\item \textbf{Scenario principale:}
+	\begin{enumerate}
+		\item L'insegnante visualizza i livelli possibili di difficoltà (da 1 a 5)
+		\item L'insegnante indica il livello di difficoltà dell'esercizio da inserire
+	\end{enumerate}
+\end{itemize}
 
+\subsubsection{UC-37 Visualizzazione messaggio di errore: frase vuota}
+\begin{itemize}
+	\item \textbf{Attori:} Insegnante
+	\item \textbf{Precondizione:} L'insegnante è nella vista di inserimento di un nuovo esercizio e ha inserito una frase vuota.
+	\item \textbf{Postcondizione:} L'insegnante torna alla vista di inserimento dell'esercizio.
+	\item \textbf{Scenario principale:}
+	\begin{enumerate}
+		\item L'insegnante visualizza un messaggio di errore "La frase inserita è vuota"
+	\end{enumerate}
+\end{itemize}
+
+\subsubsection{UC-24 Creazione classe}
 \begin{itemize}
 	\item \textbf{Attori:} Insegnante.
 	\item \textbf{Precondizione:} L'insegnante si trova nella vista principale dell'applicazione.
@@ -292,7 +404,7 @@ La categoria "utente registrato" comprende gli utenti registrati con i ruoli di 
 	\end{enumerate}
 \end{itemize}
 
-\subsubsection{UC-26 Inserimento Alunni}
+\subsubsection{UC-26 Inserimento alunni}
 \begin{itemize}
 	\item \textbf{Attori:} Insegnante.
 	\item \textbf{Precondizione:} L'insegnante si trova nella vista di gestione di una propria classe.
@@ -300,25 +412,47 @@ La categoria "utente registrato" comprende gli utenti registrati con i ruoli di 
 	\item \textbf{Scenario principale:}
 	\begin{enumerate}
 		\item L'insegnante seleziona l'opzione di aggiunta.
-		\item L'insegnante indica gli studenti da aggiungere.
+		\item L'insegnante indica gli studenti da aggiungere (UC-26.1).
 		\item L'insegnante conferma l'inserimento.
 	\end{enumerate}
 \end{itemize}
 
-\subsubsection{UC-27 Assegnazione Esercizi}
+\subsubsection{UC-26.1 Selezione alunni}
 \begin{itemize}
-	\item \textbf{Attori:} Insegnante.
-	\item \textbf{Precondizione:} L'insegnante si trova nella vista di gestione di una propria classe.
-	\item \textbf{Postcondizione:} L'insegnante assegna esercizi alla classe.
+	\item \textbf{Attori:} Insegnante
+	\item \textbf{Precondizione:} l'insegnante si trova nella vista di aggiunta degli alunni a una classe
+	\item \textbf{Postcondizione:} l'insegnante ha indicato gli alunni da inserire nella classe
 	\item \textbf{Scenario principale:}
 	\begin{enumerate}
-		\item L'insegnante seleziona la classe.
-		\item L'insegnante assegna esercizi alla classe.
-		\item L'insegnante conferma l'inserimento.
+		\item l'insegnante visualizza la lista di tutti gli alunni
+		\item l'insegnante ricerca gli alunni da inserire (UC-26.1.1)		
+		\item l'insegnante seleziona gli alunni da inserire
 	\end{enumerate}
 \end{itemize}
 
+\subsubsection{UC-26.1.1 Ricerca alunno}
+\begin{itemize}
+	\item \textbf{Attori:} Insegnante
+	\item \textbf{Precondizione:} l'insegnante visualizza la lista degli alunni
+	\item \textbf{Postcondizione:} l'insegnante visualizza l'username dell'alunno cercato
+	\item \textbf{Scenario principale:}
+	\begin{enumerate}
+		\item l'insegnante scrive l'username, o di una sua parte, di un alunno
+	\end{enumerate}
+\end{itemize}
 
+\subsubsection{UC-27 Assegnazione esercizi}
+\begin{itemize}
+	\item \textbf{Attori:} Insegnante.
+	\item \textbf{Precondizione:} Visualizza una lista di esercizi da una ricerca eseguita
+	\item \textbf{Postcondizione:} L'insegnante ha assegnato esercizi alla classe.
+	\item \textbf{Scenario principale:}
+	\begin{enumerate}
+		\item l'insegnante seleziona degli esercizi in lista da assegnare.
+		\item l'insegnante indica la classe a cui assegnarli
+		\item l'insegnante conferma l'assegnazione
+	\end{enumerate}
+\end{itemize}
 
 \subsubsection{UC-28 Visualizzare i progressi di un alunno della classe}
 \begin{itemize}
@@ -327,7 +461,8 @@ La categoria "utente registrato" comprende gli utenti registrati con i ruoli di 
 	\item \textbf{Postcondizione:} L'insegnante visualizza i progressi relativi allo studente selezionato.
 	\item \textbf{Scenario principale:}
 	\begin{enumerate}
-		\item L'insegnante seleziona uno studente. 
+		\item L'insegnante seleziona uno studente.
+		\item l'insegnante visualizza i grafici che riportano la media totale, la media per tipologia di esercizi e lo sviluppo della media nel tempo
 	\end{enumerate}
 \end{itemize}
 

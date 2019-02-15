@@ -19,7 +19,8 @@ Gli identificatori numerici assegnati a casi d'uso saranno organizzati gerarchic
 \item UC-X.Y descrive una estensione dello scenario principale di due o più figli di UC-X.
 \end{itemize}
 
-\subsection{Elenco dei casi d'uso}
+\subsection{Elenco dei casi d'uso - Utente: utente ignoto}
+La categoria "utente ignoto" comprende gli utenti non registrati o non autenticati nel sistema.
 \subsubsection{UC-1 Registrazione}
 \begin{figure}[h]
 	\centering
@@ -63,11 +64,11 @@ Gli identificatori numerici assegnati a casi d'uso saranno organizzati gerarchic
 				\end{itemize}
 		\end{itemize}
 		
-	\subsubsection{UC-3 Modifica profilo}
-	
-	
+\subsection{Elenco dei casi d'uso - Utente: utente registrato}	
+La categoria "utente registrato" comprende gli utenti registrati con i ruoli di allievo o insegnante.	
+\subsubsection{UC-3 Modifica profilo}
 		\begin{itemize}
-			\item \textbf{Attori:} Insegnante, allievo.
+			\item \textbf{Attori:} Utente registrato. 
 			\item \textbf{Precondizione:} L'utente si trova nella vista di modifica dei dati del proprio profilo.
 			\item \textbf{Postcondizione:} L'utente ha modificato i propri dati personali.
 			\item \textbf{Scenario principale:}
@@ -86,37 +87,10 @@ Gli identificatori numerici assegnati a casi d'uso saranno organizzati gerarchic
 		\includegraphics[scale=0.7]{images/UC-3.png}
 		\caption{UC-3 Modifica profilo e UC-6 Ricerca esercizi}
 	\end{figure}
-		
-\subsubsection{UC-4 Verifica richiesta insegnante}
-		\begin{itemize}
-			\item \textbf{Attori:} Moderatore.
-			\item \textbf{Precondizione:} Il moderatore si trova nella vista di amministrazione dell'applicazione.
-			\item \textbf{Postcondizione:} Il moderatore ha confermato l'utente richiedente il ruolo di insegnante.
-			\item \textbf{Scenario principale:}
-				\begin{enumerate}
-					\item Il moderatore visualizza la lista degli utenti che richiedono il ruolo di insegnante.
-					\item Il moderatore accetta o rifiuta l'utente selezionato.
-				\end{enumerate}
-			\item \textbf{Estensioni:}
-			\begin{itemize}
-				\item 2.a Il moderatore che verifica la richiesta di insegnante deve confermare o annullare l'operazione (UC-32).
-			\end{itemize}
-		\end{itemize}
-
-\subsubsection{UC-5 Errore campi non validi o mancanti}
-\begin{itemize}
-\item \textbf{Attori:} Utente. 
-\item \textbf{Precondizione:} L'utente ha inserito dei campi non validi.
-\item \textbf{Postcondizione:} Il sistema mostra un messaggio d'errore per spronare l'utente a ricontrollare i campi non validi.
-\item \textbf{Scenario principale:}
-		\begin{enumerate}
-		\item L'utente ha provato a inserire dei campi non validi.
-		\item All'utente viene mostrato un messaggio d'errore che invita a ricontrollare i campi non validi.
-		\end{enumerate}
-\end{itemize}
+	
 \subsubsection{UC-6 Ricerca esercizi}
 		\begin{itemize}
-			\item\textbf{ Attori:} Allievo, insegnante.
+			\item\textbf{ Attori:} Utente registrato..
 			\item \textbf{Precondizione:} L'utente si trova nella vista principale dell'applicazione.
 			\item \textbf{Postcondizione:} L'utente ottiene una lista degli esercizi filtrati.
 			\item \textbf{Scenario principale:}
@@ -132,9 +106,22 @@ Gli identificatori numerici assegnati a casi d'uso saranno organizzati gerarchic
 					\item 3.a Se non c'è nessun risultato viene visualizzato un messaggio: ``nessun risultato trovato" (UC-7).
 				\end{itemize}
 		\end{itemize}
+
+\subsubsection{UC-31 Visualizza lista delle classi}		
+\begin{itemize}
+	\item \textbf{Attori:} Utente registrato.
+	\item \textbf{Precondizione:} L'utente si trova nella vista principale del proprio profilo.
+	\item \textbf{Postcondizione:} L'utente visualizza le classi che lo riguardano.
+	\item \textbf{Scenario principale:}
+	\begin{enumerate}
+		\item L'utente seleziona l'opzione "vedi classi".
+	\end{enumerate}		
+\end{itemize}
+
+		
 \subsubsection{UC-6.1 Filtraggio esercizi }
 \begin{itemize}
-\item \textbf{Attori:} Allievo, insegnante.
+\item \textbf{Attori:} Utente registrato.
 			\item \textbf{Precondizione:} L'utente si trova nella vista di ricerca degli esercizi dell'applicazione.
 			\item \textbf{Postcondizione:} L'utente ha selezionato i filtri per la ricerca.
 			\item \textbf{Scenario principale:}
@@ -145,17 +132,68 @@ Gli identificatori numerici assegnati a casi d'uso saranno organizzati gerarchic
 				\end{enumerate}
 
 \end{itemize}
-\subsubsection{UC-7 Visualizzazione messaggio ``nessun risultato trovato"}
+	
+\subsection{Elenco dei casi d'uso - Utente: utente generico}
+La categoria "utente generico" comprende tutti i possibili attori del sistema.
+\subsubsection{UC-5 Errore campi non validi o mancanti}
 \begin{itemize}
-		\item \textbf{Attori:} Insegnante, allievo, sviluppatore.
-		
-		\item \textbf{Precondizione:} L'utente ha avviato la ricerca. 
-		\item \textbf{Postcondizione:} L'utente visualizza un messaggio: ``nessun risultato trovato".
-		\item \textbf{Scenario principale: }
+\item \textbf{Attori:} Utente generico. 
+\item \textbf{Precondizione:} L'utente ha inserito dei campi non validi.
+\item \textbf{Postcondizione:} Il sistema mostra un messaggio d'errore per spronare l'utente a ricontrollare i campi non validi.
+\item \textbf{Scenario principale:}
 		\begin{enumerate}
-			\item Viene mostrato un messaggio: ``nessun risultato trovato".
+		\item L'utente ha provato a inserire dei campi non validi.
+		\item All'utente viene mostrato un messaggio d'errore che invita a ricontrollare i campi non validi.
 		\end{enumerate}
 \end{itemize}
+
+\subsubsection{UC-32 Conferma operazione}		
+\begin{itemize}
+	\item \textbf{Attori:} Utente.
+	\item \textbf{Precondizione:} L'utente ha inviato una richiesta di completamento dell'operazione.
+	\item \textbf{Postcondizione:} L'operazione viene annullata o confermata.
+	\item \textbf{Scenario principale:}
+	\begin{enumerate}
+		\item L'utente visualizza un messaggio per la conferma dell'operazione.
+		\item L'utente seleziona l'opzione "Annulla" per annullare l'operazione.
+		\item L'utente seleziona l'opzione "Conferma" per accettare l'operazione.
+	\end{enumerate}		
+\end{itemize}
+
+
+\subsection{Elenco dei casi d'uso - Utente: moderatore}	
+\subsubsection{UC-4 Verifica richiesta insegnante}
+		\begin{itemize}
+			\item \textbf{Attori:} Moderatore.
+			\item \textbf{Precondizione:} Il moderatore si trova nella vista di amministrazione dell'applicazione.
+			\item \textbf{Postcondizione:} Il moderatore ha confermato l'utente richiedente il ruolo di insegnante.
+			\item \textbf{Scenario principale:}
+				\begin{enumerate}
+					\item Il moderatore visualizza la lista degli utenti che richiedono il ruolo di insegnante.
+					\item Il moderatore accetta o rifiuta l'utente selezionato.
+				\end{enumerate}
+			\item \textbf{Estensioni:}
+			\begin{itemize}
+				\item 2.a Il moderatore che verifica la richiesta di insegnante deve confermare o annullare l'operazione (UC-32).
+			\end{itemize}
+		\end{itemize}
+		
+\subsubsection{UC-23 Eliminazione di un esercizio}
+			\begin{itemize}
+			\item \textbf{Attori:} Moderatore.
+			\item \textbf{Precondizione:} Il moderatore si trova nella vista di amministrazione dell'applicazione.
+			\item \textbf{Postcondizione:} Il moderatore ha eliminato l'esercizio desiderato.
+			\item \textbf{Scenario principale:}
+				\begin{enumerate}
+					\item Il moderatore indica l'esercizio da eliminare.
+					\item Il moderatore conferma l'eliminazione dell'esercizio selezionato.
+				\end{enumerate}
+			\item \textbf{Estensioni:}
+			\begin{itemize}
+			\item 2.a Il moderatore conferma o annulla l'operazione (UC-32).
+			\end{itemize}
+		\end{itemize}
+
 
 \subsubsection{UC-8 Eliminazione di un utente}
 \begin{itemize}
@@ -173,7 +211,20 @@ Gli identificatori numerici assegnati a casi d'uso saranno organizzati gerarchic
 \end{itemize}
 \end{itemize}
 
-	
+
+\subsubsection{UC-7 Visualizzazione messaggio ``nessun risultato trovato"}
+\begin{itemize}
+		\item \textbf{Attori:} Insegnante, allievo, sviluppatore.
+		
+		\item \textbf{Precondizione:} L'utente ha avviato la ricerca. 
+		\item \textbf{Postcondizione:} L'utente visualizza un messaggio: "nessun risultato trovato".
+		\item \textbf{Scenario principale: }
+		\begin{enumerate}
+			\item Viene mostrato un messaggio: ``nessun risultato trovato".
+		\end{enumerate}
+\end{itemize}
+
+\subsection{Elenco dei casi d'uso - Utente: insegnante}		
 \subsubsection{UC-9 Modifica soluzione}
 \begin{itemize}
 \item \textbf{Attori:} Insegnante.
@@ -279,6 +330,119 @@ Gli identificatori numerici assegnati a casi d'uso saranno organizzati gerarchic
 		\end{enumerate}
 \end{itemize}				
 
+\subsubsection{UC-24 Creazione classe}
+
+\begin{itemize}
+	\item \textbf{Attori:} Insegnante.
+	\item \textbf{Precondizione:} L'insegnante si trova nella vista principale dell'applicazione.
+	\item \textbf{Postcondizione:} L'insegnante si trova nella vista di gestione della classe creata.
+	\item \textbf{Scenario principale:}
+	\begin{enumerate}
+		\item L'insegnante selezione l'opzione "aggiungi classe".
+		\item L'insegnante assegna un nome alla classe.
+		\item L'insegnante assegna una descrizione alla classe.
+		\item L'insegnante conferma la creazione.
+	\end{enumerate}
+\item \textbf{Estensioni:}
+\begin{itemize}
+\item 4.a L'insegnante deve confermare o annullare l'operazione di creazione classe (UC-32).
+\end{itemize}
+
+\end{itemize}
+
+\subsubsection{UC-25 Eliminare una classe}
+\begin{itemize}
+	\item \textbf{Attori:} Insegnante.
+	\item \textbf{Precondizione:} L'insegnante si trova nella vista di gestione di una propria classe.
+	\item \textbf{Postcondizione:} L'insegnante elimina la classe dal sistema.
+	\item \textbf{Scenario principale:}
+	\begin{enumerate}
+		\item l'insegnante clicca sul pulsante di eliminazione della classe.
+		\item l'insegnante conferma l'eliminazione.
+	\end{enumerate}
+\item \textbf{Estensioni:}
+\begin{itemize}
+	\item 2.a L'insegnante deve confermare o annullare l'operazione di eliminare una classe (UC-32).
+\end{itemize}
+\end{itemize}
+
+\subsubsection{UC-26 Inserimento Alunni}
+\begin{itemize}
+	\item \textbf{Attori:} Insegnante.
+	\item \textbf{Precondizione:} L'insegnante si trova nella vista di gestione di una propria classe.
+	\item \textbf{Postcondizione:} L'insegnante visualizza gli alunni inseriti.
+	\item \textbf{Scenario principale:}
+	\begin{enumerate}
+		\item L'insegnante seleziona l'opzione di aggiunta.
+		\item L'insegnante indica gli studenti da aggiungere.
+		\item L'insegnante conferma l'inserimento.
+	\end{enumerate}
+	\item \textbf{Estensioni:}
+\begin{itemize}
+	\item 3.a L'insegnante deve confermare o annullare l'operazione di inserimento. alunni (UC-32).
+\end{itemize}
+\end{itemize}
+
+\subsubsection{UC-27 Assegnazione Esercizi}
+\begin{itemize}
+	\item \textbf{Attori:} Insegnante.
+	\item \textbf{Precondizione:} L'insegnante si trova nella vista di gestione di una propria classe.
+	\item \textbf{Postcondizione:} L'insegnante assegna esercizi alla classe.
+	\item \textbf{Scenario principale:}
+	\begin{enumerate}
+		\item L'insegnante seleziona la classe.
+		\item L'insegnante assegna esercizi alla classe.
+		\item L'insegnante conferma l'inserimento.
+	\end{enumerate}
+\item \textbf{Estensioni:}
+\begin{itemize}
+	\item 3.a L'insegnante deve confermare o annullare l'operazione di assegnazione esercizi (UC-32).
+\end{itemize}
+\end{itemize}
+
+
+
+\subsubsection{UC-28 Visualizzare i progressi di un alunno della classe}
+\begin{itemize}
+	\item \textbf{Attori:} Insegnante.
+	\item \textbf{Precondizione}: L'insegnante visualizza l'elenco degli alunni iscritti alla classe.
+	\item \textbf{Postcondizione:} L'insegnante visualizza i progressi relativi allo studente selezionato.
+	\item \textbf{Scenario principale:}
+	\begin{enumerate}
+		\item L'insegnante seleziona uno studente. 
+	\end{enumerate}
+\end{itemize}
+
+\subsubsection{UC-29 Elimina alunno dalla classe}		
+\begin{itemize}
+	\item \textbf{Attori:} Insegnante.
+	\item \textbf{Precondizione:} L'insegnante visualizza la lista degli alunni della classe.
+	\item \textbf{Postcondizione:} L'insegnante ha rimosso l'allievo dalla classe.
+	\item \textbf{Scenario principale:}
+	\begin{enumerate}
+		\item L'insegnante seleziona l'allievo da rimuovere dalla classe.
+		\item L'insegnante conferma l'eliminazione.
+	\end{enumerate}	
+\item \textbf{Estensioni:}
+\begin{itemize}
+	\item 2.a L'insegnante deve confermare o annullare l'operazione di eliminare un alunno dalla classe (UC-32).
+\end{itemize}	
+\end{itemize}
+
+\subsubsection{UC-30 Visualizza lista degli alunni iscritti nella classe}		
+\begin{itemize}
+	\item \textbf{Attori:} Insegnante.
+	\item \textbf{Precondizione:} L'insegnante si trova nella vista di gestione di una propria classe.
+	\item \textbf{Postcondizione:} L'insegnante visualizza l'elenco degli alunni iscritti.
+	\item \textbf{Scenario principale:}
+	\begin{enumerate}
+		\item L'insegnante seleziona la classe.
+		\item L'insegnante seleziona l'opzione "vedi alunni".
+	\end{enumerate}		
+\end{itemize}
+
+
+\subsection{Elenco dei casi d'uso - Utente: allievo}	
 	\subsubsection{UC-13 Svolgimento esercizio}
 	\begin{itemize}
 	\item \textbf{Attori:} Allievo.

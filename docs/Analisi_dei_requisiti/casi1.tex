@@ -21,21 +21,22 @@ Gli identificatori numerici assegnati a casi d'uso saranno organizzati gerarchic
 
 \subsection{Elenco dei casi d'uso - Utente: utente ignoto}
 La categoria "utente ignoto" comprende gli utenti non registrati o non autenticati nel sistema.
-\subsubsection{UC-1 Registrazione}
+
+\subsubsection{UC-1 Registrazione Allievo}
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.7]{images/UC-1.png}
-	\caption{UC-1 Registrazione}
+	\caption{UC-1 Registrazione Allievo}
 \end{figure}	
 
 \begin{itemize}
 		\item \textbf{Attori: }Utente non registrato.
 		\item \textbf{Precondizione: }L'utente si trova nella vista di registrazione dell'applicazione.
-		\item \textbf{Postcondizione: }L'utente è registrato o come allievo o come insegnante.
+		\item \textbf{Postcondizione: }L'utente è registrato come allievo.
 		\item \textbf{Scenario principale: }
 		\begin{enumerate}
 		\item L'utente ha scelto di registrarsi al sistema, quindi di creare un nuovo profilo. 
-		\item L'utente dovrà scegliere la tipologia di utente, insegnante/allievo. 
+		\item L'utente seleziona la tipologia allievo. 
 		\item L'utente inserirà nome, cognome, username, email e password.
 		\item L'utente fornirà il nome della scuola a cui appartiene e la città.
 		\item L'utente conferma la registrazione.
@@ -43,10 +44,35 @@ La categoria "utente ignoto" comprende gli utenti non registrati o non autentica
 		\item \textbf{Estensioni: }
 		\begin{itemize}
 			\item 5.a Nel caso in cui l'utente tenti l'inserimento di campi non validi vedrà comparire dei messaggi d'errore (UC-5).
-			\item 5.b Un utente che si è registrato come insegnante deve attendere la conferma dela registrazione del moderatore (UC-4).
-			\item 5.c Un utente che invia la domanda di registrazione deve confermare o annullare l'operazione (UC-32).
 		\end{itemize}
 	\end{itemize}
+
+\subsubsection{UC-33 Registrazione Insegnante}
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.7]{images/UC-1.png}
+	\caption{UC-33 Registrazione Insegnante}
+\end{figure}	
+
+\begin{itemize}
+	\item \textbf{Attori: }Utente non registrato.
+	\item \textbf{Precondizione: }L'utente si trova nella vista di registrazione dell'applicazione.
+	\item \textbf{Postcondizione: }L'utente è registrato insegnante.
+	\item \textbf{Scenario principale: }
+	\begin{enumerate}
+		\item L'utente ha scelto di registrarsi al sistema, quindi di creare un nuovo profilo. 
+		\item L'utente dovrà seleziona la tipologia insegnante. 
+		\item L'utente inserirà nome, cognome, username, email e password.
+		\item L'utente fornirà il nome della scuola a cui appartiene e la città.
+		\item L'utente conferma la registrazione.
+	\end{enumerate}
+	\item \textbf{Estensioni: }
+	\begin{itemize}
+		\item 5.a Nel caso in cui l'utente tenti l'inserimento di campi non validi vedrà comparire dei messaggi d'errore (UC-5).
+
+	\end{itemize}
+\end{itemize}
+
 \subsubsection{UC-2 Autenticazione}
 		\begin{itemize}
 			\item \textbf{Attori:} Utente non autenticato.
@@ -79,7 +105,7 @@ La categoria "utente registrato" comprende gli utenti registrati con i ruoli di 
 				\item \textbf{Estensioni:}
 				\begin{itemize}
 					\item 2.a Nel caso in cui l'utente tenti l'inserimento di campi non validi vedrà comparire messaggi d'errore (UC-5).
-					\item 2.b Un utente che invia la domanda di modifica deve confermare o annullare l'operazione (UC-32).
+			
 				\end{itemize}
 		\end{itemize}
 		\begin{figure}[htbp]
@@ -172,10 +198,7 @@ La categoria "utente generico" comprende tutti i possibili attori del sistema.
 					\item Il moderatore visualizza la lista degli utenti che richiedono il ruolo di insegnante.
 					\item Il moderatore accetta o rifiuta l'utente selezionato.
 				\end{enumerate}
-			\item \textbf{Estensioni:}
-			\begin{itemize}
-				\item 2.a Il moderatore che verifica la richiesta di insegnante deve confermare o annullare l'operazione (UC-32).
-			\end{itemize}
+			
 		\end{itemize}
 		
 \subsubsection{UC-23 Eliminazione di un esercizio}

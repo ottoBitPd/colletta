@@ -46,7 +46,7 @@
 				\end{itemize}		
 		\end{itemize}
 			
-	\subsubsection{UC-41 Visualizzazione messaggio di errore: data non valida}
+	\subsubsection{UC-41 Visualizzazione errore di data non valida}
 		\begin{itemize}					
 			\item \textbf{Attori:} Sviluppatore.
 			\item \textbf{Precondizione:} Lo sviluppatore ha indicato un intervallo di tempo non valido.
@@ -56,13 +56,7 @@
 					\item Lo sviluppatore visualizza un messaggio di errore "L'intervallo di tempo indicato non è valido".
 				\end{enumerate}	
 		\end{itemize}					
-	
-		\begin{figure}[h]
-			\centering
-			\includegraphics[scale=0.7]{images/UC-15_1_1.png}
-			\caption{UC-15.1.1 Filtraggio dei dati su base temporale e UC-15.1.2 Filtraggio dei dati in base agli utenti}
-		\end{figure}	
-				
+						
 	\subsubsection{UC-15.1.2 Filtraggio dei dati in base agli utenti}	
 		\begin{itemize}
 			\item \textbf{Attori:} Sviluppatore.
@@ -126,8 +120,13 @@
 					\item 2.a Se il path indicato è inesistente, viene visualizzato un messaggio di errore (UC-42).
 				\end{itemize}
 		\end{itemize}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[scale=0.7]{images/UC-19.png}
+			\caption{UC-19 Download dei dati raccolti}
+		\end{figure}	
 
-	\subsubsection{UC-42 Visualizzazione messaggio di errore: path inesistente}
+	\subsubsection{UC-42 Visualizzazione errore di path inesistente}
 		\begin{itemize}					
 			\item \textbf{Attori:} Sviluppatore.
 			\item \textbf{Precondizione:} Lo sviluppatore ha indicato un path non esistente.
@@ -136,14 +135,8 @@
 				\begin{enumerate}
 					\item Lo sviluppatore visualizza un messaggio di errore "Path inesistente".
 				\end{enumerate}	
-		\end{itemize}					
-
-		\begin{figure}[h]
-			\centering
-			\includegraphics[scale=0.7]{images/UC-19.png}
-			\caption{UC-19 Download dei dati raccolti}
-		\end{figure}	
-		
+		\end{itemize}				
+				
 	\subsubsection{UC-20 Download di un dataset}
 		\begin{itemize}
 			\item \textbf{Attori:} Sviluppatore.
@@ -176,13 +169,7 @@
 				\begin{itemize}
 					\item 2.a Se il path indicato è inesistente, viene visualizzato un messaggio di errore (UC-42).
 				\end{itemize}
-		\end{itemize}
-		
-		\begin{figure}[h]
-			\centering
-			\includegraphics[scale=0.7]{images/UC-21.png}
-			\caption{UC-21 Download di un modello}
-		\end{figure}		
+		\end{itemize}	
 		
 	\subsubsection{UC-22 Creazione di un modello}		
 		\begin{itemize}
@@ -207,8 +194,27 @@
 				\caption{UC-22 Creazione di un modello}
 		\end{figure}	
 	
-	\subsubsection{UC-43 Visualizzazione errore: formato del dataset errato}	
+	\subsubsection{UC-43 Visualizzazione errore di formato del dataset errato}	
+	\begin{itemize}					
+			\item \textbf{Attori:} Sviluppatore.
+			\item \textbf{Precondizione:} Lo sviluppatore ha fornito un formato dataset non corretto.
+			\item \textbf{Postcondizione:} Lo sviluppatore torna all'area dati.
+			\item \textbf{Scenario principale:}
+				\begin{enumerate}
+					\item Lo sviluppatore visualizza un messaggio di errore "Formato dataset non corretto".
+				\end{enumerate}	
+		\end{itemize}		
 	
 	\subsubsection{UC-44 Cambio modello}
-	
+	\begin{itemize}					
+			\item \textbf{Attori:} Sviluppatore.
+			\item \textbf{Precondizione:} Lo sviluppatore si trova nell'area dati.
+			\item \textbf{Postcondizione:} Lo sviluppatore ha cambiato il modello utilizzato dal softwere di apprendimento automatico.
+			\item \textbf{Scenario principale:}
+				\begin{enumerate}
+				\item Lo sviluppatore seleziona la funzione di cambio modello.
+				\item Lo sviluppatore seleziona il modello che vuole utilizzare da una lista di modelli caricati o creati precedentemente.
+				\item Lo sviluppatore conferma le modifiche. 
+				\end{enumerate}	
+		\end{itemize}		
 	

@@ -16,6 +16,7 @@
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=3cm]{geometry}
 \usepackage{ltablex}
 \usepackage{lastpage}
+\usepackage{titlesec}
 
 \pagestyle{fancy}
 \fancyhf{}
@@ -37,6 +38,9 @@
 \setcounter{tocdepth}{4}
 \setcounter{secnumdepth}{4}
 
+\titlespacing*{\subsubsection}{0pt}{8ex plus 1ex minus .2ex}{2.3ex plus .2ex}
+
+{\def\arraystretch{2}\tabcolsep=10pt
 
 \begin{document}
 	\input{frontpage/frontpage.tex}

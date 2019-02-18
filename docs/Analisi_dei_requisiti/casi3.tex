@@ -1,4 +1,6 @@
-\subsection{Elenco dei casi d'uso - Utente: sviluppatore}	\subsubsection{UC-15 Ricerca dei dati delle annotazioni}	
+\subsection{Elenco dei casi d'uso - Utente: sviluppatore}	
+
+\subsubsection{UC-15 Ricerca dei dati delle annotazioni}
 		\begin{itemize}
 			\item \textbf{Attori:} Sviluppatore.
 			\item \textbf{Precondizione:} Lo sviluppatore si trova nella vista principale dell'applicazione.
@@ -6,8 +8,9 @@
 			\item \textbf{Scenario principale:}
 				\begin{enumerate}
 					\item Lo sviluppatore accede all'area dei dati.
-					\item Lo sviluppatore scrive nella barra di ricerca una sottostringa della frase cercata (possibilmente nulla).
-					\item (UC-15.1) lo sviluppatore seleziona i filtri da usare nella ricerca (possibilmente nessuno).
+					\item Lo sviluppatore scrive nella barra di ricerca una sottostringa della frase cercata.
+					\item lo sviluppatore seleziona i filtri da usare nella ricerca (UC-15.1).
+					\item lo sviluppatore conferma la ricerca
 				\end{enumerate}
 		\end{itemize}
 	
@@ -15,19 +18,13 @@
 		\begin{itemize}
 			\item \textbf{Attori:} Sviluppatore.
 			\item \textbf{Precondizione:} Lo sviluppatore si trova nell'area dati e ha scritto nella barra di ricerca una sottostringa della frase cercata.
-			\item \textbf{Postcondizione:} Lo sviluppatore ottiene una lista di frasi in base al filtro selezionato.
+			\item \textbf{Postcondizione:} Lo sviluppatore ha indicato i filtri da applicare alla ricerca.
 			\item \textbf{Scenario principale:}
 				\begin{enumerate}
 					\item Lo sviluppatore seleziona il filtro su base temporale (UC-15.1.1).
 					\item Lo sviluppatore seleziona il filtro in base agli utenti (UC-15.1.2).
-					\item Lo sviluppatore indica dei parametri per restringere la ricerca.
-					\item Lo sviluppatore esegue la ricerca.
-				\end{enumerate}	
-			\item \textbf{Estensioni:}
-				\begin{itemize}
-					\item 4.a Se i parametri inseriti dall'utente non sono coerenti viene mostrato un messaggio di errore (UC-5).
-				\end{itemize}		
-		\end{itemize}
+				\end{enumerate}
+			\end{itemize}
 	\begin{figure}[h]
 			\centering
 			\includegraphics[scale=0.7]{images/UC-15_1.png}
@@ -35,18 +32,32 @@
 		\end{figure}	
 	
 	\subsubsection{UC-15.1.1 Filtraggio dei dati su base temporale}	
-		
 		\begin{itemize}
 			\item \textbf{Attori:} Sviluppatore.
 			\item \textbf{Precondizione:} Lo sviluppatore si trova nell'area dati e ha scritto nella barra di ricerca una sottostringa della frase cercata.
-			\item \textbf{Postcondizione:} Lo sviluppatore ottiene una lista di frasi in base al range temporale indicato.
+			\item \textbf{Postcondizione:} Lo sviluppatore ha indicato il filtro su base temporale della ricerca.
 			\item \textbf{Scenario principale:}
 				\begin{enumerate}
-					\item Lo sviluppatore seleziona il filtro.
 					\item Lo sviluppatore indica due date che definiscono un intervallo di tempo per restringere la ricerca.
 				\end{enumerate}
-		\end{itemize}	
-	\begin{figure}[h]
+			\item \textbf{Estensioni:}
+				\begin{itemize}
+					\item 4.a Se i parametri inseriti dall'utente non sono coerenti viene mostrato un messaggio di errore (UC-41).
+				\end{itemize}		
+		\end{itemize}
+			
+	\subsubsection{UC-41 Visualizzazione messaggio di errore: data non valida}
+		\begin{itemize}					
+			\item \textbf{Attori:} Sviluppatore.
+			\item \textbf{Precondizione:} Lo sviluppatore ha indicato un intervallo di tempo non valido.
+			\item \textbf{Postcondizione:} Lo sviluppatore torna all'area dati.
+			\item \textbf{Scenario principale:}
+				\begin{enumerate}
+					\item Lo sviluppatore visualizza un messaggio di errore "L'intervallo di tempo indicato non è valido".
+				\end{enumerate}	
+		\end{itemize}					
+	
+		\begin{figure}[h]
 			\centering
 			\includegraphics[scale=0.7]{images/UC-15_1_1.png}
 			\caption{UC-15.1.1 Filtraggio dei dati su base temporale e UC-15.1.2 Filtraggio dei dati in base agli utenti}
@@ -56,14 +67,14 @@
 		\begin{itemize}
 			\item \textbf{Attori:} Sviluppatore.
 			\item \textbf{Precondizione:} Lo sviluppatore si trova nell'area dati e ha scritto nella barra di ricerca una sottostringa della frase cercata.
-			\item \textbf{Postcondizione:} Lo sviluppatore ottiene una lista di frasi in base agli utenti scelti.
+			\item \textbf{Postcondizione:} Lo sviluppatore ha indicato il filtro in base agli utenti.
 			\item \textbf{Scenario principale:}
 				\begin{enumerate}
-					\item Lo sviluppatore seleziona il filtro (inclusione o esclusione di un utente).
-					\item Lo sviluppatore indica l'utente (o la lista di utenti).
-					\item Lo sviluppatore esegue la ricerca.
+					\item Lo sviluppatore indica l'inclusione o l'esclusione di un utente.
+					\item Lo sviluppatore indica gli utenti da includere o escludere.
 				\end{enumerate}
-		\end{itemize}	
+		\end{itemize}
+		
 	\subsubsection{UC-16 Visualizzazione dei dati di una annotazione di una frase}
 		\begin{itemize}
 			\item \textbf{Attori:} Sviluppatore.
@@ -71,7 +82,8 @@
 			\item \textbf{Postcondizione:} Lo sviluppatore legge i dati di una annotazione di una frase.
 			\item \textbf{Scenario principale:}
 				\begin{enumerate}
-					\item Lo sviluppatore sceglie una annotazione.
+					\item Lo sviluppatore seleziona una annotazione.
+					\item Lo sviluppatore visualizza data, utente e soluzione proposta
 				\end{enumerate}
 		\end{itemize}
 	
@@ -79,17 +91,12 @@
 		\begin{itemize}
 			\item \textbf{Attori:} Sviluppatore.
 			\item \textbf{Precondizione:} Lo sviluppatore si trova nell'area dati e ha a disposizione i risultati della ricerca delle annotazioni.
-			\item \textbf{Postcondizione:} Lo sviluppatore ottiene lo storico delle annotazioni ottenuta nella ricerca precedente.
+			\item \textbf{Postcondizione:} Lo sviluppatore visualizza lo storico delle annotazioni ottenute dalla ricerca precedente.
 			\item \textbf{Scenario principale:}
 			\begin{enumerate}
 				\item Lo sviluppatore seleziona l'opzione "vedi storico".
 			\end{enumerate}
-		\end{itemize}
-\begin{figure}[h]
-			\centering
-			\includegraphics[scale=0.7]{images/UC-17.png}
-			\caption{UC-17 Visualizzazione storico}
-		\end{figure}		
+		\end{itemize}	
 		
 	\subsubsection{UC-18 Ordinamento dei risultati}
 		\begin{itemize}
@@ -98,8 +105,8 @@
 			\item \textbf{Postcondizione:} Lo sviluppatore ottiene la lista precedente ordinata in base alle scelte effettuate.
 			\item \textbf{Scenario principale:}
 				\begin{enumerate}
-					\item Lo sviluppatore sceglie il parametro secondo il quale ordinare i risultati (frase, frequenza, ultima correzione, utente).
-					\item Lo sviluppatore richiede l'ordinamento scelto.
+					\item Lo sviluppatore sceglie il parametro secondo il quale ordinare i risultati (alfabetico, frequenza, ultima correzione, utente).
+					\item Lo sviluppatore conferma l'ordinamento scelto.
 				\end{enumerate}
 		\end{itemize} 
 	
@@ -107,7 +114,7 @@
 		\begin{itemize}
 			\item \textbf{Attori:} Sviluppatore.
 			\item \textbf{Precondizione:} Lo sviluppatore si trova nell'area dati con i risultati della ricerca effettuata.
-			\item \textbf{Postcondizione:} Lo sviluppatore ottiene un file con i dati dei risultati precedentemente trovati.
+			\item \textbf{Postcondizione:} Lo sviluppatore ottiene un file \texttt{.txt} con i dati dei risultati precedentemente trovati.
 			\item \textbf{Scenario principale:}
 				\begin{enumerate}
 					\item Lo sviluppatore richiede il download dei dati.
@@ -116,29 +123,49 @@
 				\end{enumerate}
 			\item \textbf{Estensioni:}
 				\begin{itemize}
-					\item 2.a Se il path indicato è inesistente, viene visualizzato un messaggio di errore (UC-5).
+					\item 2.a Se il path indicato è inesistente, viene visualizzato un messaggio di errore (UC-42).
 				\end{itemize}
-		\end{itemize} 
+		\end{itemize}
 
+	\subsubsection{UC-42 Visualizzazione messaggio di errore: path inesistente}
+		\begin{itemize}					
+			\item \textbf{Attori:} Sviluppatore.
+			\item \textbf{Precondizione:} Lo sviluppatore ha indicato un path non esistente.
+			\item \textbf{Postcondizione:} Lo sviluppatore torna all'area dati.
+			\item \textbf{Scenario principale:}
+				\begin{enumerate}
+					\item Lo sviluppatore visualizza un messaggio di errore "Path inesistente".
+				\end{enumerate}	
+		\end{itemize}					
 
+		\begin{figure}[h]
+			\centering
+			\includegraphics[scale=0.7]{images/UC-19.png}
+			\caption{UC-19 Download dei dati raccolti}
+		\end{figure}	
 		
-	\subsubsection{UC-20 Visualizzazione di un modello}
+	\subsubsection{UC-20 Download di un dataset}
 		\begin{itemize}
 			\item \textbf{Attori:} Sviluppatore.
-			\item \textbf{Precondizione:} Lo sviluppatore si trova nella vista principale dell'applicazione.
-			\item \textbf{Postcondizione:} Lo sviluppatore ottiene le informazioni di un modello.
+			\item \textbf{Precondizione:} Lo sviluppatore si trova nell'area dati con i risultati della ricerca effettuata.
+			\item \textbf{Postcondizione:} Lo sviluppatore ottiene il dataset in un file \texttt{.txt}.
 			\item \textbf{Scenario principale:}
 			\begin{enumerate}
-				\item Lo sviluppatore accede all'area modelli.
-				\item Lo sviluppatore seleziona un modello.
+				\item Lo sviluppatore richiede il download del dataset, contenente l'input della fase di train del software di apprendimento automatico.
+				\item Lo sviluppatore decide il path in cui il file viene salvato.
+				\item Lo sviluppatore esegue il salvataggio.
 			\end{enumerate}
-	\end{itemize}
+			\item \textbf{Estensioni:}
+				\begin{itemize}
+					\item 2.a Se il path indicato è inesistente, viene visualizzato un messaggio di errore (UC-42).
+				\end{itemize}
+		\end{itemize}
 	
 	\subsubsection{UC-21 Download di un modello}
-			\begin{itemize}
+		\begin{itemize}
 			\item \textbf{Attori:} Sviluppatore.
 			\item \textbf{Precondizione:} Lo sviluppatore si trova nella vista con le informazioni del modello selezionato.
-			\item \textbf{Postcondizione:} Lo sviluppatore ottiene un file con il modello.
+			\item \textbf{Postcondizione:} Lo sviluppatore ottiene un file binario con il modello.
 			\item \textbf{Scenario principale:}
 			\begin{enumerate}
 					\item Lo sviluppatore richiede il download del modello.
@@ -147,10 +174,11 @@
 				\end{enumerate}
 			\item \textbf{Estensioni:}
 				\begin{itemize}
-					\item 2.a Se il path indicato è inesistente, viene visualizzato un messaggio di errore (UC-5).
+					\item 2.a Se il path indicato è inesistente, viene visualizzato un messaggio di errore (UC-42).
 				\end{itemize}
 		\end{itemize}
-\begin{figure}[h]
+		
+		\begin{figure}[h]
 			\centering
 			\includegraphics[scale=0.7]{images/UC-21.png}
 			\caption{UC-21 Download di un modello}
@@ -159,18 +187,17 @@
 	\subsubsection{UC-22 Creazione di un modello}		
 		\begin{itemize}
 			\item \textbf{Attori:} Sviluppatore.
-			\item \textbf{Precondizione:} Lo sviluppatore si trova nella vista principale dell'applicazione.
+			\item \textbf{Precondizione:} Lo sviluppatore si trova nell'area dati.
 			\item \textbf{Postcondizione:} Lo sviluppatore aggiunge un modello alla piattaforma.
 			\item \textbf{Scenario principale:}
 			\begin{enumerate}
-				\item Lo sviluppatore accede all'area modelli.
 				\item Lo sviluppatore seleziona la funzione di aggiunta di un modello.
-				\item Lo sviluppatore inserisce i dati per la creazione del modello.
-				\item Lo sviluppatore completa la creazione.
+				\item Lo sviluppatore inserisce il file che contiene un dataset.
+				\item Lo sviluppatore conferma la creazione.
 			\end{enumerate}
 			\item \textbf{Estensioni:}
 				\begin{itemize}
-					\item 4.a Se uno dei dati inseriti non è coerente, allora viene visualizzato un messaggio di errore (UC-5).
+					\item 4.a Se il dataset fornito ha un formato errato, viene visualizzato un messaggio di errore (UC-43).
 				\end{itemize}
 		\end{itemize}
 		
@@ -179,4 +206,9 @@
 			\includegraphics[scale=0.7]{images/UC-22.png}
 				\caption{UC-22 Creazione di un modello}
 		\end{figure}	
+	
+	\subsubsection{UC-43 Visualizzazione errore: formato del dataset errato}	
+	
+	\subsubsection{UC-44 Cambio modello}
+	
 	

@@ -417,15 +417,15 @@ La categoria "utente registrato" comprende gli utenti registrati con i ruoli di 
 	\end{enumerate}
 \end{itemize}
 
-\subsubsection{UC-26.1 Selezione alunni}
+\subsubsection{UC-26.1 Selezione alunni per l'inserimento}
 \begin{itemize}
 	\item \textbf{Attori:} Insegnante
 	\item \textbf{Precondizione:} l'insegnante si trova nella vista di aggiunta degli alunni a una classe
 	\item \textbf{Postcondizione:} l'insegnante ha indicato gli alunni da inserire nella classe
 	\item \textbf{Scenario principale:}
 	\begin{enumerate}
-		\item l'insegnante visualizza la lista di tutti gli alunni
-		\item l'insegnante ricerca gli alunni da inserire (UC-26.1.1)		
+		\item l'insegnante visualizza la lista di tutti gli alunni presenti sulla piattaforma
+		\item l'insegnante ricerca gli alunni da inserire (UC-26.1.1)	
 		\item l'insegnante seleziona gli alunni da inserire
 	\end{enumerate}
 \end{itemize}
@@ -433,11 +433,11 @@ La categoria "utente registrato" comprende gli utenti registrati con i ruoli di 
 \subsubsection{UC-26.1.1 Ricerca alunno}
 \begin{itemize}
 	\item \textbf{Attori:} Insegnante
-	\item \textbf{Precondizione:} l'insegnante visualizza la lista degli alunni
+	\item \textbf{Precondizione:} l'insegnante visualizza la lista di tutti gli alunni presenti sulla piattaforma
 	\item \textbf{Postcondizione:} l'insegnante visualizza l'username dell'alunno cercato
 	\item \textbf{Scenario principale:}
 	\begin{enumerate}
-		\item l'insegnante scrive l'username, o di una sua parte, di un alunno
+		\item l'insegnante scrive l'username, o una sua parte, di un alunno
 	\end{enumerate}
 \end{itemize}
 
@@ -454,6 +454,17 @@ La categoria "utente registrato" comprende gli utenti registrati con i ruoli di 
 	\end{enumerate}
 \end{itemize}
 
+\subsubsection{UC-30 Visualizza lista degli alunni iscritti nella classe}		
+\begin{itemize}
+	\item \textbf{Attori:} Insegnante.
+	\item \textbf{Precondizione:} L'insegnante si trova nella vista di gestione di una propria classe.
+	\item \textbf{Postcondizione:} L'insegnante visualizza l'elenco degli alunni iscritti.
+	\item \textbf{Scenario principale:}
+	\begin{enumerate}
+		\item L'insegnante seleziona l'opzione "vedi alunni".
+	\end{enumerate}		
+\end{itemize}
+
 \subsubsection{UC-28 Visualizzare i progressi di un alunno della classe}
 \begin{itemize}
 	\item \textbf{Attori:} Insegnante.
@@ -461,7 +472,7 @@ La categoria "utente registrato" comprende gli utenti registrati con i ruoli di 
 	\item \textbf{Postcondizione:} L'insegnante visualizza i progressi relativi allo studente selezionato.
 	\item \textbf{Scenario principale:}
 	\begin{enumerate}
-		\item L'insegnante seleziona uno studente.
+		\item l'insegnante seleziona lo studente trovato
 		\item l'insegnante visualizza i grafici che riportano la media totale, la media per tipologia di esercizi e lo sviluppo della media nel tempo
 	\end{enumerate}
 \end{itemize}
@@ -478,35 +489,22 @@ La categoria "utente registrato" comprende gli utenti registrati con i ruoli di 
 	\end{enumerate}	
 \end{itemize}
 
-\subsubsection{UC-30 Visualizza lista degli alunni iscritti nella classe}		
-\begin{itemize}
-	\item \textbf{Attori:} Insegnante.
-	\item \textbf{Precondizione:} L'insegnante si trova nella vista di gestione di una propria classe.
-	\item \textbf{Postcondizione:} L'insegnante visualizza l'elenco degli alunni iscritti.
-	\item \textbf{Scenario principale:}
-	\begin{enumerate}
-		\item L'insegnante seleziona la classe.
-		\item L'insegnante seleziona l'opzione "vedi alunni".
-	\end{enumerate}		
-\end{itemize}
 
+\subsection{Elenco dei casi d'uso - Utente: allievo}
 
-\subsection{Elenco dei casi d'uso - Utente: allievo}	
-	\subsubsection{UC-13 Svolgimento esercizio}
+	\subsubsection{UC-39 Inserimento di una frase da svolgere}
 	\begin{itemize}
-	\item \textbf{Attori:} Allievo.
-			\item \textbf{Precondizione:}  L'allievo visualizza la lista degli esercizi ricercati.
-			\item \textbf{Postcondizione:} L'allievo visualizza la valutazione dell'esercizio.
-			\item \textbf{Scenario principale:}
-			\begin{enumerate}
-				\item l'allievo seleziona l'esercizio da svolgere (UC-13.1).
-				\item l'allievo compila i campi (UC-13.2).
-				\item l'allievo conferma i dati inseriti.
-				\item l'allievo visualizza la valutazione (UC-13.3).
-			\end{enumerate}
+		\item \textbf{Attori:} Allievo
+		\item \textbf{Precondizione:} L'allievo visualizza la vista principale dell'applicazione.
+		\item \textbf{Postcondizione:} L'allievo visualizza la vista per l'esecuzione dell'esercizio.
+		\item \textbf{Scenario principale:}
+		\begin{enumerate}
+			\item l'allievo scrive la frase da svolgere come esercizio
+			\item l'allievo conferma la frase scelta
+		\end{enumerate}
 	\end{itemize}
-			
-	\subsubsection{UC-13.1 Selezione esercizio}
+
+	\subsubsection{UC-40 Selezione esercizio}
 	\begin{itemize}
 			\item \textbf{Attori:} Allievo.
 			\item \textbf{Precondizione:} L'allievo visualizza la lista degli esercizi ricercati.
@@ -514,17 +512,30 @@ La categoria "utente registrato" comprende gli utenti registrati con i ruoli di 
 			\item \textbf{Scenario principale:}
 			\begin{enumerate}
 					\item l'allievo seleziona la frase da svolgere.
-					\item l'allievo seleziona il correttore dell'esercizio(insegnante o algoritmo automatico).
 					\item l'allievo conferma la selezione.
 			\end{enumerate}
 	\end{itemize}
+
+	\subsubsection{UC-13 Svolgimento esercizio}
+	\begin{itemize}
+			\item \textbf{Attori:} Allievo.
+			\item \textbf{Precondizione:}  L'allievo visualizza la vista per l'esecuzione dell'esercizio.
+			\item \textbf{Postcondizione:} L'allievo visualizza la valutazione dell'esercizio.
+			\item \textbf{Scenario principale:}
+			\begin{enumerate}
+				\item l'allievo compila i campi (UC-13.1).
+				\item l'allievo conferma i dati inseriti.
+				\item l'allievo visualizza la valutazione (UC-13.2).
+			\end{enumerate}
+	\end{itemize}
+			
 			\begin{figure}[h]
 		\centering
 		\includegraphics[scale=0.7]{images/UC-13_1.png}
 		\caption{UC-13 Svolgimento esercizio}
 	\end{figure}
 
-	\subsubsection{UC-13.2 Compilazione dei campi}
+	\subsubsection{UC-13.1 Compilazione dei campi}
 		\begin{itemize}
 			\item \textbf{Attori:} Allievo.
 			\item \textbf{Precondizione:} L'allievo ha selezionato un esercizio da eseguire.
@@ -534,22 +545,19 @@ La categoria "utente registrato" comprende gli utenti registrati con i ruoli di 
 					\item L'allievo sceglie la classe grammaticale per ogni parola presentata.
 					\item L'allievo conferma la soluzione dell'esercizio.
 				\end{enumerate}
-			\item \textbf{Estensioni:} 
-				\begin{itemize}
-					\item 2.a Nel caso in cui l'utente tenti l'inserimento di campi non validi vedrà comparire messaggi d'errore (UC-5).
-				\end{itemize}
 		\end{itemize}
 
-	\subsubsection{UC-13.3 Visualizzazione della valutazione dell'esercizio}
+	\subsubsection{UC-13.2 Visualizzazione della valutazione dell'esercizio}
 	\begin{itemize}
 			\item \textbf{Attori:} Allievo.
 			\item \textbf{Precondizione:} L'allievo ha completato l'esecuzione dell'esercizio.
 			\item \textbf{Postcondizione:} L'allievo visualizza la valutazione dell'esercizio.
 			\item \textbf{Scenario principale:}
 				\begin{enumerate}
-					\item L'allievo al termine dell'esecuzione dell'esercizio riceve la valutazione.
+					\item l'allievo seleziona il correttore dell'esercizio(insegnante o algoritmo automatico).
+					\item L'allievo visualizza la valutazione in base al correttore scelto.
 				\end{enumerate}
-			\end{itemize}
+			\end{itemize}				
 			
 	\subsubsection{UC-14 Visualizzazione progressi}
 	\begin{itemize}
@@ -558,8 +566,6 @@ La categoria "utente registrato" comprende gli utenti registrati con i ruoli di 
 			\item \textbf{Postcondizione:} L'allievo visualizza i progressi svolti fino a quel momento.
 			\item \textbf{Scenario principale:}
 				\begin{enumerate}
-					\item L'allievo visualizza la media delle valutazioni ricevute.
-					\item L'allievo visualizza i grafici riguardanti i propri progressi.
-					\item L'allievo visualizza il numero di esercizi svolti.
+					\item L'allievo visualizza la media delle valutazioni ricevute, la media per tipologia di esercizi e lo sviluppo della media nel tempo
 				\end{enumerate}
 	\end{itemize}

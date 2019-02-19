@@ -15,4 +15,3 @@ var server = c.start(app).listen(8080, function () {
     var port = "8080";
     console.log("Example app listening at http://%s:%s", host, port)
 })
-server.listen(8080);

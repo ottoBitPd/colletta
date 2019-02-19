@@ -11,6 +11,10 @@ $("#general*i*").change(function(){
             $("#nome*i*").hide();
             $("#verbo*i*").hide();
             $("#altro*i*").hide();
+            $("#tempo*i*").hide();
+            $("#genere*i*").show();
+            $("#numero*i*").show();
+            $("#persona*i*").hide();
             break;
         case 'B':
             $("#aggettivo*i*").hide();
@@ -23,6 +27,10 @@ $("#general*i*").change(function(){
             $("#nome*i*").hide();
             $("#verbo*i*").hide();
             $("#altro*i*").hide();
+            $("#tempo*i*").hide();
+            $("#genere*i*").show();
+            $("#numero*i*").show();
+            $("#persona*i*").hide();
             break;
         case 'C':
             $("#aggettivo*i*").hide();
@@ -35,6 +43,10 @@ $("#general*i*").change(function(){
             $("#nome*i*").hide();
             $("#verbo*i*").hide();
             $("#altro*i*").hide();
+            $("#tempo*i*").hide();
+            $("#genere*i*").show();
+            $("#numero*i*").show();
+            $("#persona*i*").hide();
             break;
         case 'E':
             $("#aggettivo*i*").hide();
@@ -47,6 +59,10 @@ $("#general*i*").change(function(){
             $("#nome*i*").hide();
             $("#verbo*i*").hide();
             $("#altro*i*").hide();
+            $("#tempo*i*").hide();
+            $("#genere*i*").show();
+            $("#numero*i*").show();
+            $("#persona*i*").hide();
             break;
         case 'F':
             $("#aggettivo*i*").hide();
@@ -59,6 +75,10 @@ $("#general*i*").change(function(){
             $("#nome*i*").hide();
             $("#verbo*i*").hide();
             $("#altro*i*").hide();
+            $("#tempo*i*").hide();
+            $("#genere*i*").show();
+            $("#numero*i*").show();
+            $("#persona*i*").hide();
             break;
         case 'I':
             $("#aggettivo*i*").hide();
@@ -72,6 +92,10 @@ $("#general*i*").change(function(){
             $("#nome*i*").hide();
             $("#verbo*i*").hide();
             $("#altro*i*").hide();
+            $("#tempo*i*").hide();
+            $("#genere*i*").show();
+            $("#numero*i*").show();
+            $("#persona*i*").hide();
             break;
         case 'N':
             $("#aggettivo*i*").hide();
@@ -85,6 +109,10 @@ $("#general*i*").change(function(){
             $("#nome*i*").hide();
             $("#verbo*i*").hide();
             $("#altro*i*").hide();
+            $("#tempo*i*").hide();
+            $("#genere*i*").show();
+            $("#numero*i*").show();
+            $("#persona*i*").hide();
             break;
         case 'P':
             $("#aggettivo*i*").hide();
@@ -97,6 +125,10 @@ $("#general*i*").change(function(){
             $("#nome*i*").hide();
             $("#verbo*i*").hide();
             $("#altro*i*").hide();
+            $("#tempo*i*").hide();
+            $("#genere*i*").show();
+            $("#numero*i*").show();
+            $("#persona*i*").hide();
             break;
         case 'R':
             $("#aggettivo*i*").hide();
@@ -109,6 +141,10 @@ $("#general*i*").change(function(){
             $("#nome*i*").hide();
             $("#verbo*i*").hide();
             $("#altro*i*").hide();
+            $("#tempo*i*").hide();
+            $("#genere*i*").show();
+            $("#numero*i*").show();
+            $("#persona*i*").hide();
             break;
         case 'S':
             $("#articolo*i*").hide();
@@ -122,6 +158,10 @@ $("#general*i*").change(function(){
             $("#nome*i*").show();
             $("#verbo*i*").hide();
             $("#altro*i*").hide();
+            $("#tempo*i*").hide();
+            $("#genere*i*").show();
+            $("#numero*i*").show();
+            $("#persona*i*").hide();
             break;
         case 'T':
             $("#aggettivo*i*").hide();
@@ -135,6 +175,10 @@ $("#general*i*").change(function(){
             $("#predeterminante").show();
             $("#verbo*i*").hide();
             $("#altro*i*").hide();
+            $("#tempo*i*").hide();
+            $("#genere*i*").show();
+            $("#numero*i*").show();
+            $("#persona*i*").hide();
             break;
         case 'V':
             $("#aggettivo*i*").hide();
@@ -147,6 +191,11 @@ $("#general*i*").change(function(){
             $("#nome*i*").hide();
             $("#verbo*i*").show();
             $("#altro*i*").hide();
+            $("#tempo*i*").show();
+            $("#genere*i*").hide();
+            $("#persona*i*").show();
+            $("#numero*i*").show();
+
             break;
         case 'X':
             $("#aggettivo*i*").hide();
@@ -159,8 +208,12 @@ $("#general*i*").change(function(){
             $("#nome*i*").hide();
             $("#verbo*i*").hide();
             $("#altro*i*").show();
+            $("#tempo*i*").hide();
+            $("#genere*i*").show();
+            $("#numero*i*").show();
+            $("#persona*i*").hide();
             break;
-        default:
+        case '-':
             $("#aggettivo*i*").hide();
             $("#avverbio*i*").hide();
             $("#congiunzione*i*").hide();
@@ -171,6 +224,10 @@ $("#general*i*").change(function(){
             $("#nome*i*").hide();
             $("#verbo*i*").hide();
             $("#altro*i*").hide();
+            $("#tempo*i*").hide();
+            $("#genere*i*").hide();
+            $("#numero*i*").hide();
+            $("#persona*i*").hide();
             break;
     }
 });

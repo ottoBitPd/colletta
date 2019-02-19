@@ -15,6 +15,7 @@ class Controller {
         this.home(app);
         this.demo(app);
         this.salvafrase(app);
+        this.savecorrection(app);
         return app;
     }
 
@@ -51,10 +52,53 @@ class Controller {
             //response.send(this.v.getSalvafrase(sentence));
         });
     }
+    savecorrection(app){
+        app.post('/savecorrection', (request, response) => {
+            const util = require('util');
+            var wordsnumber = request.body.wordsnumber;
+            var sentence = request.body.sentence;
+            var post = request.body;
+            //var html="wordsnumber: "+wordsnumber+"<br/>";
+            //html="sentence: "+sentence+"<br/>";
+            //html += util.inspect(request.body, {depth: null}) +"<br/><br/>>";
+            var j=0, c=0;
+            var tags = [];
+            tags.length = wordsnumber;
+            var actualTag="";
+            for(var i in request.body) {
+                //perchè in request.body c'è anche sentence e wordsnumber ma a me servono solo le chiavi per i tags
+                if(i !== 'sentence' && i !== 'wordsnumber'){
+                    if (request.body[i] !== '-') {//se è stato settato qualcosa
+                        //questi tag non esistono o devono essere settati sulla seconda tendina
+                        if(request.body[i]=='A' || (request.body[i]=='B' && i=='general') || (request.body[i]=='E' && i=='general') || (request.body[i]=='S' && i=='general') || (request.body[i]=='V' && i=='general')) {
+                            actualTag += "";
+                        }
+                        else{
+                            actualTag += request.body[i];
+                        }
+                    }
+
+                    j++;
+                    if (j == 14) {
+                        j = 0;
+                        tags[c]= actualTag;
+                        c++
+                        actualTag = "";
+                    }
+                }
+            }
+            /*html+="<br/>";
+            for(var x=0; x<tags.length; x++){
+                html+=tags[x] +" | ";
+            }*/
+            //response.send(html);
+            //RIMANE DA SCRIVERE L'ARRAY TAGS RELAZIONATO ALL'ARRAY WORDS NEL DB
+        });
+    }
     test(app){
         app.get('/test', (request, response) => {
             //response.send(this.v.getTest());
-            response.send("pagina per testare codice");
+            response.send(this.v.getSalvafrase("Ciao come va"));
         });
     }
     extractTags(pathSolution){

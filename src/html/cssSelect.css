@@ -5,7 +5,12 @@
 #punteggiatura*i*,
 #pronome*i*,
 #articolo*i*,
-#nome*i*
+#nome*i*,
+#tempo*i*,
+#verbo*i*,
+#genere*i*,
+#numero*i*,
+#persona*i*
 {
     display: none;
 }

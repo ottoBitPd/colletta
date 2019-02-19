@@ -15,12 +15,14 @@ class View{
         return this.fs.readFileSync('./html/demo.html').toString();
     }
 
-    getSalvafrase(sent){
+    getSalvafrase(sentence){
         var data =  this.fs.readFileSync('./html/esercizio.html').toString();
-        var words = sent.split(" ");
+        var words = sentence.split(" ");
         data=data.replace(/\*table\*/g, this.buildForm(words));
         data=data.replace(/\*script\*/g, this.buildScript(words));
         data=data.replace(/\*css\*/g, this.buildCss(words));
+        data=data.replace(/\*wordsnumber\*/g, words.length);
+        data=data.replace(/\*sentence\*/g, sentence);
         return data;
     }
     buildForm(words){

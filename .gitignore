@@ -1,7 +1,3 @@
-hunpos-tag
-hunpos-train
-hunpos-tag.exe
-hunpos-train.exe
 # Created by https://www.gitignore.io/api/latex
 # Edit at https://www.gitignore.io/?templates=latex
 
@@ -299,5 +295,12 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+
+#hunpos
+italian_model
+hunpos-tag
+hunpos-train
+input.txt
+output.txt
 
 # End of https://www.gitignore.io/api/macos

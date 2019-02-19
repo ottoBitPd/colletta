@@ -21,7 +21,7 @@ dove:
 		\end{itemize}
 	\item il campo “\textbf{Codice}” assumerà un valore numerico intero positivo, univoco ed incrementale.
 	\end{itemize}
-	
+\newpage
 \subsection{Requisiti funzionali}
 \begin{tabularx}{\textwidth}{| c | p{10cm} | X |}
 		\rowcolor{LightBlue}
@@ -88,10 +88,12 @@ dove:
 \begin{longtable}{| c | p{10cm} | c |}
 		\rowcolor{LightBlue}
 		\color{white}\bfseries Requisito & \color{white}\bfseries Descrizione & \color{white}\bfseries Fonti\\[0.25cm]
-		ROV1 & Utilizzo di un software di apprendimento automatico, in particolare di pos-tagging$^*$, per lo svolgimenti degli esercizi. & Capitolato \\
-		RDV1 & Utilizzo di un servizio esistente di immagazzinamento dati. & Capitolato \\
-		ROV2 & I dati dovranno essere immagazzinati opportunamente e dovranno essere facilmente esportabili in uno o più formati leggibili dal computer. & Capitolato \\
-		RDV2 & Il prodotto dovrà essere facilmente manutenibile, estensibile e portabile. & Capitolato \\
+		ROV1 & Utilizzo di un software di apprendimento automatico, in particolare di pos-tagging$^*$, per lo svolgimenti degli esercizi, quale Hunpos. & Capitolato \\
+		RDV1 & Utilizzo di un servizio esistente di immagazzinamento dati, quale Google Firebase. & Capitolato \\
+		ROV2 & I dati dovranno essere immagazzinati opportunamente e dovranno essere esportabili in uno o più formati. & Capitolato \\
+		RDV2 & Il prodotto dovrà essere mantenibile, per dare la possibilità di apportare modifiche o evoluzioni. & Capitolato \\
+		RDV3 & Il prodotto dovrà essere estensibile, per dare la possibilità di aggiungere nuove funzioni. & Capitolato \\
+		RDV4 & Il prodotto dovrà essere  portabile, per dare la possibilità di funzionare in ambienti diversi da quello di sviluppo. & Capitolato \\
 		RPV1 & Dovrebbe essere consentita la raccolta di dati in più lingue. & Capitolato \\ \hline
 		\caption{Tabella dei requisiti di vincolo}
 \end{longtable}
@@ -102,6 +104,11 @@ dove:
 		\color{white}\bfseries Requisito & \color{white}\bfseries Descrizione & \color{white}\bfseries Fonti\\[0.25cm]
 		ROQ1 & Il gruppo deve fornire un'analisi dei requisiti come documentazione dell'applicazione alla proponente. & Capitolato \\
 		ROQ2 & Il gruppo deve fornire una descrizione tecnica del prodotto alla proponente. & Capitolato \\ 
-		RDQ1 & I commenti, i nomi delle funzioni e delle variabili del codice dovrebbero essere esplicativi ed in lingua inglese. & Capitolato \\ \hline
+		RDQ1 & I commenti, i nomi delle funzioni e delle variabili del codice dovrebbero essere esplicativi ed in lingua inglese. & Capitolato \\ 
+		ROQ3 & L’interfaccia web deve essere sviluppata utilizzando HTML5, CSS3 e JavaScript(React) & Interno\\
+		ROQ4 & L'implementazione del database deve essere sviluppata utilizzando JavaScript(NodeJS) & Interno\\
+		ROQ5 & La parte backend del Softwere deve essere sviluppata utilizzando JavaScript(NodeJS) & Interno\\
+		\hline
 		\caption{Tabella dei requisiti di qualità}
 \end{longtable}
+\newpage

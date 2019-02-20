@@ -15,21 +15,22 @@ class View{
         return this.fs.readFileSync('./html/demo.html').toString();
     }
 
-    getSalvafrase(sentence){
+    getSalvafrase(sentence,key,hunposIta){
         var data =  this.fs.readFileSync('./html/esercizio.html').toString();
         var words = sentence.split(" ");
-        data=data.replace(/\*table\*/g, this.buildForm(words));
+        data=data.replace(/\*table\*/g, this.buildForm(words,hunposIta));
         data=data.replace(/\*script\*/g, this.buildScript(words));
         data=data.replace(/\*css\*/g, this.buildCss(words));
         data=data.replace(/\*wordsnumber\*/g, words.length);
         data=data.replace(/\*sentence\*/g, sentence);
+        data=data.replace(/\*key\*/g, key);
         return data;
     }
-    buildForm(words){
+    buildForm(words,hunposIta){
 
         var table="";
         for(var i=0;i < words.length;i++){
-            table += "<tr><td>" + words[i] + "</td><td>*hunpos" + i + "*</td><td>"+this.getInputAnalisi(i)+"</td></tr>\n";
+            table += "<tr><td>" + words[i] + "</td><td>"+hunposIta[i]+"</td><td>"+this.getInputAnalisi(i)+"</td></tr>\n";
         }
         //console.log("table: \n"+table);
         return table;

@@ -21,11 +21,22 @@ La proponente ha imposto i seguenti vincoli sull'implementazione del prodotto:
 \end{itemize}
 
 \subsection{Tipologie di utenti}
-L'applicazione richiesta prevede l'individuazione di tre categorie di utenti, differenti per obiettivi:
+Gli utenti sono suddivisibili in tre principali categorie: 
 \begin{itemize}
-	\item \textbf{Insegnanti:} hanno interesse a preparare in modo semplice e rapido degli esercizi per i propri allievi;
-	\item \textbf{Allievi:} hanno interesse a svolgere degli esercizi ed avere nell'immediato la correzione;
-	\item \textbf{Sviluppatori:} hanno interesse a raccogliere dati dalla piattaforma per migliorarne l'automatizzazione;
-	\item 
-\textbf{Moderatori:} hanno il compito di gestire la piattaforma di raccolta dati e hanno la possibilità di gestire esercizi, soluzioni e utenti.
+	\item \textbf{Moderatore:} si occupa di verificare che le persone rispettino il codice di comportamento della piattaforma e della gestione degli esercizi presenti in essa;
+	\item \textbf{Sviluppatore:} è interessato alla consultazione dei dati raccolti, magari applicando filtri o visualizzando lo storico delle annotazioni;
+	\item \textbf{Utente generico:} è la tipologia di utente più comune che è interessato alla ricerca e allo svolgimento di esercizi sulla piattaforma.
+\end{itemize}
+
+Quest'ultima categoria è suddivisibile ulteriormente in:
+\begin{itemize}
+	\item \textbf{Utente non registrato:} è l'utente che non ha ancora delle credenziali di accesso alla piattaforma;
+	\item \textbf{Utente non autenticato:} è l'utente che ha delle credenziali, ma non ha ancora effettuato l'accesso;
+	\item \textbf{Utente registrato:} è l'utente che ha le credenziali e ha effettuato l'accesso.
+\end{itemize}
+
+L'utente registrato individua due sottocategorie:
+\begin{itemize}
+	\item \textbf{Allievo:} gli allievi possono iscriversi alle classi, gestire tali iscrizioni e visualizzarne i dati. // RIVEDERE
+	\item \textbf{Insegnante:} gli insegnanti possono inserire soluzioni degli esercizi, gestire le proprie classi e visualizzare il rendimento dei propri alunni.
 \end{itemize}

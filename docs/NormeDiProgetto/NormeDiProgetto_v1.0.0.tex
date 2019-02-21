@@ -52,6 +52,7 @@
 		\rowcolor{LightBlue}
 		\color{white}\bfseries Versione & \color{white}\bfseries Data & \multicolumn{1}{c}{\color{white}\bfseries Autore}
 		& \color{white}\bfseries Ruolo & \multicolumn{1}{c}{\color{white}\bfseries Descrizione}\\[0.25cm]
+		1.0.3 & 2019-02-21 & Eleonora Peagno & Amministratore & Aggiunta metriche di processo \\ \hline
 		1.0.2 & 2019-02-18 & Giovanni Bergo & Amministratore & Correzioni al documento \\ \hline
 		1.0.1 & 2019-02-04 & Michele Bortone & Amministratore & Correzioni al documento \\ \hline
 		1.0.0 & 2019-01-11 & Benedetto Cosentino & Responsabile & Approvazione documento \\ \hline
@@ -498,6 +499,22 @@
 	\end{itemize}
 	
 	\paragraph{Metriche per i processi}
+	\begin{itemize}
+	 \item \textbf{MPC1 - ISO/IEC 15504 (SPICE)}: lo standard ISO/IEC 15504 è lo standard di riferimento per valutare oggettivamente la qualità dei processi software al fine di migliorarli e permette di misurare indipendentemente ogni processo tramite degli attributi, studiando il range di risultati che si ottengono eseguendolo. 
+	 \item \textbf{MPC2 - Requirement Stability Index (RSI)}: indica la percentuale dei requisiti rimasti invariati nel tempo. Un valore elevato di tale metrica indica un’attività di analisi attenta e corretta. Viene calcolata tramite la seguente formula:
+	 \begin{center}
+		$RSI[\%] =\ 1\ -\ \frac{(numero\ requisiti\ aggiunti)\ +\ (numero\ requisiti\ tolti)\ +\ (numero\ requisiti\ modificati)}{numero\ requisiti\ totali\ iniziali}$
+	\end{center}
+	\item \textbf{MPC3 - Violazione dello stile di codifica}: indica il numero di violazioni allo stile di codifica rispetto quanto normato nella sezione BOH. Un risultato elevato indica poca cura da parte dei programmatori che rende il codice poco affidabile. 
+	\item \textbf{MPC4 - Test di integrazione implementati}: indica il rapporto tra i test di integrazione effettivamente implementati e quelli totali preventivati. Un valore elevato di tale metrica indica un livello soddisfacente di test sviluppati per le interazioni tra le varie componenti del sistema. Per calcolare questo dato, si usa la seguente formula: 
+	\begin{center}
+		$TII[\%]=\frac{numero\ test\ integrazione\ implementati}{numero\ test\ integrazione\ totali}$
+	\end{center}
+	\item \textbf{MPC5 - Test di sistema implementati}: indica il rapporto tra i test di sistema effettivamente implementati e quelli totali preventivati. Un valore elevato di tale metrica indica un buon livello di funzionalità del sistema. Per calcolare questo dato, di usa la seguente formula:
+	\begin{center}
+		$TII[\%]=\frac{numero\ test\ sistema\ implementati}{numero\ test\ sistema\ totali}$
+	\end{center}
+	\end{itemize}
 	
 	
 	\paragraph{Gulpease}

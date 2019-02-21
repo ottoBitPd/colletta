@@ -472,9 +472,34 @@
 	\subsubsection{Scopo}
 	Il processo di verifica è finalizzato al controllo di eventuali errori nati nella fase di elaborazione, per garantire uno sviluppo efficace ed efficiente.
 	
+	\subsubsection{Aspettative}
+	Ciò che ci si aspetta dalla corretta implementazione di tale processo è:
+	\begin{itemize}
+		\item individuazione di una valida procedura di verifica da utilizzare;
+		\item definizione di criteri di verifica del prodotto;
+		\item definizione di un sistema di catalogazione degli errori e difetti del prodotto che dovranno essere corretti.
+	\end{itemize}	
 	
 	
 	\subsubsection{Metriche}
+	Al fine di garantire un determinato livello di qualità, i verificatori hanno stabilito delle metriche finalizzate ad ottenere gli obiettivi descritti  nel documento \textit{Piano di qualifica v2.0.0}. Tali metriche devono rispettare la seguente notazione: 
+	\begin{center}
+		M[Ambito][Codice identificativo]
+	\end{center}
+	Dove:
+	\begin{itemize}
+		\item \textbf{Ambito:} definisce se la metrica si riferisce a processi, un prodotto documento oppure un prodotto software:
+		\begin{itemize}
+			\item \textbf{PC:} indica una metrica per il processo;
+			\item \textbf{PD:} indica una metrica per il documento;
+			\item \textbf{PS:} indica una metrica per il software.
+		\end{itemize}
+		\item \textbf{Codice identificativo:} è un codice numerico univoco, formato da un intero incrementale che parte da 1.
+	\end{itemize}
+	
+	\paragraph{Metriche per i processi}
+	
+	
 	\paragraph{Gulpease}
 	\noindent \\ 
 	L'indice Gulpease$^*$ è un indice di leggibilità di un testo tarato sulla lingua italiana. Rispetto ad altri ha il vantaggio di utilizzare la lunghezza delle parole in lettere anziché in sillabe, semplificandone il calcolo automatico. Permette di misurare la complessità dello stile di un documento. L'indice di Gulpease considera due variabili linguistiche: la lunghezza della parola e la lunghezza della frase rispetto al numero delle lettere. La formula per il suo calcolo è:

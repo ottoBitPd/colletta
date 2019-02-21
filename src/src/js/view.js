@@ -3,10 +3,6 @@ class View{
         this.fs = require('fs');
     }
 
-    /*getTest(){
-
-    }*/
-
     getHome(){
         return this.fs.readFileSync('./html/benvenuto.html').toString();
     }
@@ -15,8 +11,8 @@ class View{
         return this.fs.readFileSync('./html/demo.html').toString();
     }
 
-    getSalvafrase(sentence,key,hunposIta){
-        var data =  this.fs.readFileSync('./html/esercizio.html').toString();
+    getExercise(sentence,key,hunposIta){
+        var data =  this.fs.readFileSync('./html/exercise.html').toString();
         var words = sentence.split(" ");
         data=data.replace(/\*table\*/g, this.buildForm(words,hunposIta));
         data=data.replace(/\*script\*/g, this.buildScript(words));
@@ -27,12 +23,10 @@ class View{
         return data;
     }
     buildForm(words,hunposIta){
-
         var table="";
         for(var i=0;i < words.length;i++){
             table += "<tr><td>" + words[i] + "</td><td>"+hunposIta[i]+"</td><td>"+this.getInputAnalisi(i)+"</td></tr>\n";
         }
-        //console.log("table: \n"+table);
         return table;
     }
 

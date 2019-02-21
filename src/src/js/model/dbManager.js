@@ -16,13 +16,13 @@ class DbManager{
         });
         return firebase.database();
     }
-    writeSent(child,sent){
+    writeSentence(sentence){
         let num=0;
-        this.database.ref('data/frasi').on("value", snap => {num=snap.numChildren();});
+        this.database.ref('data/sentences').on("value", snap => {num=snap.numChildren();});
         var equal=false;
         for(var i=0;i<num;i++){
-            this.database.ref('data/frasi/'+i).on("value", snap => {
-                if(sent===snap.val().frase){
+            this.database.ref('data/sentences/'+i).on("value", snap => {
+                if(sentence===snap.val().sentence){
                     //esiste già la frase ritorno la sua chiave
                     equal=true;
                 }
@@ -31,28 +31,20 @@ class DbManager{
                 return i;
         }
         //se non esiste
-        this.database.ref('data').child(child).child(this.counter).set({frase: sent});
+        this.database.ref('data/sentences/'+this.counter).set({sentence: sentence});
         this.counter++;
         return this.counter-1;
     }
-    test(){
-        let k=0;
-        const util = require('util');
-        this.database.ref('data/frasi/'+key+'/soluzioni').on("value", snap => {
-            k = "numchildren: "+snap.numChildren();
-        });
-        console.log("conta: "+k);
-        return k;
-    }
-    writeSol(words, tags, sentence, key){
-        console.log("words: "+words+" tags: "+tags+" sentence: "+sentence+" key: "+key);
+
+    writeSolution(words, tagsCorrection, sentence, key){
+        console.log("words: "+words+" tags: "+tagsCorrection+" sentence: "+sentence+" key: "+key);
         let c=0;
-        this.database.ref('data/frasi/'+key+'/soluzioni').once("value", snap => {c=snap.numChildren();});
+        this.database.ref('data/sentences/'+key+'/solutions').once("value", snap => {c=snap.numChildren();});
         console.log("c: "+c);
         for(var i=0;i<words.length;i++){
-            console.log("parola: "+words[i]+", tag: "+tags[i]);
-            console.log("inserisco parola: "+words[i]+", tag: "+tags[i]+"in data/frasi/"+key+"/soluzioni/"+c+"/"+i);
-            this.database.ref('data/frasi/'+key+'/soluzioni').child(c).child(i).set({"word":words[i],"tag":tags[i]});
+            //console.log("parola: "+words[i]+", tag: "+tags[i]);
+            //console.log("inserisco parola: "+words[i]+", tag: "+tags[i]+"in data/sentences/"+key+"/solutions/"+c+"/"+i);
+            this.database.ref('data/sentences/'+key+'/solutions').child(c).child(i).set({"word":words[i],"tag":tagsCorrection[i]});
 
         }
     }

@@ -52,7 +52,7 @@
 		\rowcolor{LightBlue}
 		\color{white}\bfseries Versione & \color{white}\bfseries Data & \multicolumn{1}{c}{\color{white}\bfseries Autore}
 		& \color{white}\bfseries Ruolo & \multicolumn{1}{c}{\color{white}\bfseries Descrizione}\\[0.25cm]
-		1.0.5 & 2019-02-22 & Eleonora Peagno & Amministratore & Aggiunta sezione "assicurazione qualità" \\ \hline
+		1.0.5 & 2019-02-22 & Eleonora Peagno & Amministratore & Aggiunta sezione "assicurazione qualità", incremento metriche \\ \hline
 		1.0.4 & 2019-02-22 & Enrico Marcato & Amministratore & Aggiunta metriche software \\ \hline
 		1.0.3 & 2019-02-21 & Eleonora Peagno & Amministratore & Aggiunta normazione di e metriche di processo \\ \hline
 		1.0.2 & 2019-02-18 & Giovanni Bergo & Amministratore & Correzioni al documento \\ \hline
@@ -494,7 +494,7 @@ Le attività riguardanti l'attività di assicurazione della qualità che vengono
 	\item \textbf{Process definition:} è una misura del grado con cui uno standard di processo è mantenuto (utilizzato) a supporto dell'implementazione del processo. Gli elementi fondamentali dello standard da utilizzare sono descritti e la sequenza di operazioni richieste dallo standard è definita. Le competenze, i ruoli, le infrastrutture e l'ambiente di lavoro per realizzare il processo fanno parte dello standard. I metodi di monitoraggio del processo sono definiti.
 	\item \textbf{Process deployment:} è una misura del grado con il quale lo standard di processo viene effettivamente distribuito come un processo definito in grado di raggiungere i propri obiettivi. Le responsabilità e i ruoli per utilizzare lo standard sono assegnati e comunicati, le risorse, le infrastrutture e l'ambiente di lavoro, necessarie per l'applicazione dello standard, sono disponibili allocate e utilizzate. Vengono raccolti e analizzati dati per dimostrare l'adeguatezza e l'efficacia del processo.
 	\item \textbf{Process measurement:} è una misura del grado con il quale i risultati delle misurazioni sono utilizzati per garantire il raggiungimento degli obiettivi del processo. Vengono definiti degli obiettivi di qualità basati sulle misurazioni. I risultati delle misurazioni sono raccolti analizzati e documentati per verificare che gli obiettivi di qualità siano rispettati.
-	\item \textbf{Process control:} è una misura del grado con il quale il processo è quantitativamente gestito per produrre un processo che sia stabile, abile e previdibile entro limiti definiti. Analisi e tecniche di controllo vengono applicate. Sono stabiliti dei limiti di variazione per i risultati delle misurazioni. Vengono intraprese delle azioni correttive se necessario. 
+	\item \textbf{Process control:} è una misura del grado con il quale il processo è quantitativamente gestito per produrre un processo che sia stabile, abile e prevedibile entro limiti definiti. Analisi e tecniche di controllo vengono applicate. Sono stabiliti dei limiti di variazione per i risultati delle misurazioni. Vengono intraprese delle azioni correttive se necessario. 
 	\item \textbf{Process innovation:} è una misura del grado con il quale vengono identificate delle modifiche al processo attraverso l'analisi di cause comuni di variazione delle performance, e dalla ricerca di approcci innovativi alla definizione e all'implementazione del processo. Vengono definiti degli obiettivi di miglioramento. Vengono analizzati dei dati per identificare le cause comuni di variazione delle performance del processo e sucessivamente per identificare delle best-practice*.
 	\item \textbf{Process optimization:} è una misura del grado con il quale delle modifiche alla definizione, gestione e alle prestazioni del processo si traducono in un impatto che porta a raggiungere rilevanti miglioramenti al processo. L'impatto dei cambiamenti proposti viene valutato rispetto agli obiettivi definiti dal processo e dallo standard di processo.
 	\end{itemize}
@@ -541,7 +541,6 @@ La seguente immagine riporta le attività previste a tale scopo e ne segue una b
 	Questa attività ha lo scopo di assicurare che i prodotti rispettino le caratteristiche di qualità concordate con il committente. La qualità di prodotto non deve essere assicurata al solo completamento del prodotto ma anche durante tutto il suo periodo di sviluppo. \\
 	Al fine di assicurare la qualità del software, ai verificatori è assegnato il compito di controllare che il sistema di testing e verifica rispettino i parametri descritti nel \textit{Piano di qualifica v2.0.0} e nelle \textit{Norme di progetto v2.0.0} e di controllare che il versionamento avvenga secondo le specifiche riportate nelle \textit{Norme di progetto} e che i relativi strumenti vengano utilizzati correttamente. Tali controlli vanno eseguiti al rilascio di ogni nova versione dei documenti citati e ogni volta che viene effettuata una modifica nella configurazione del sistema.\\
 	Nel caso uno di questi fattori non venga rispettato, il verificatore è tenuto ad avvisare il Responsabile del progetto, così che si possa porre un tempestivo rimedio ad ogni problematica. Il verificatore non ha le competenze per intervenire in prima persona e non deve farlo, il suo compito è di segnalare i problemi.
-	
 	
 	\subsection{Verifica}
 	
@@ -593,7 +592,7 @@ La seguente immagine riporta le attività previste a tale scopo e ne segue una b
 	\begin{center}
 		$TUI[\%]=\frac{numero\ test\ unita\ implementati}{numero\ test\ unita\ totali}$
 	\end{center}
-	\item \textbf{MPC4 - Test di accettazione implementati}: indica il rapporto tra i test di accettazione effettivamente implementati e quelli totali preventivati. Un valore elevato di tale metrica indica un livello soddisfacente di test sviluppati per le interazioni tra le varie componenti del sistema. Per calcolare questo dato, si usa la seguente formula: 
+	\item \textbf{MPC7 - Test di accettazione implementati}: indica il rapporto tra i test di accettazione effettivamente implementati e quelli totali preventivati. Un valore elevato di tale metrica indica un livello soddisfacente di test sviluppati per le interazioni tra le varie componenti del sistema. Per calcolare questo dato, si usa la seguente formula: 
 	\begin{center}
 		$TAI[\%]=\frac{numero\ test\ accettazione\ implementati}{numero\ test\ accettazione\ totali}$
 	\end{center}
@@ -613,11 +612,11 @@ La seguente immagine riporta le attività previste a tale scopo e ne segue una b
 	
 	\paragraph{Metriche per i prodotti: software} 
 	\begin{itemize}
-		\item \textbf{MPS1 Percentuale di superamento test}: il numero indicato deve corrispondere al 100\%. Al termine dell'attività di verifica tutti i test eseguiti devono essere superati.
-	    \item \textbf{MPS2 Numero di parametri per metodo}: Il numero di parametri non deve essere elevato, la conseguenza è una scarsa manutenibilità del codice.
-	    \item \textbf{MPS3 Numero di attributi per classe}: Il numero di attributi non deve essere elevato, il suggerimento è di scomporre la classe in più classi per mantenere una manutenibilità del codice discreta.
-	    \item \textbf{MPS4 Numero di metodi per classe}: Il numero di metodi per classe non deve essere elevato, il suggerimento è di scomporre la classe in più classi per mantenere una manutenibilità del codice discreta.
-	    \item \textbf{MPS5 Complessità ciclomatica media}: Per dare una valutazione alla complessità del codice si utilizza questa metrica basata sulla struttura del grafo. Il valore generato dalla seguente formula se dovesse essere troppo elevato indica un'eccessiva complessità del codice.
+		\item \textbf{MPS1 - Percentuale di superamento test}: il numero indicato deve corrispondere al 100\%. Al termine dell'attività di verifica tutti i test eseguiti devono essere superati.
+	    \item \textbf{MPS2 - Numero di parametri per metodo}: il numero di parametri non deve essere elevato, la conseguenza è una scarsa manutenibilità del codice.
+	    \item \textbf{MPS3 - Numero di attributi per classe}: il numero di attributi non deve essere elevato, il suggerimento è di scomporre la classe in più classi per mantenere una manutenibilità del codice discreta.
+	    \item \textbf{MPS4 - Numero di metodi per classe}: il numero di metodi per classe non deve essere elevato, il suggerimento è di scomporre la classe in più classi per mantenere una manutenibilità del codice discreta.
+	    \item \textbf{MPS5 - Complessità ciclomatica media}: per dare una valutazione alla complessità del codice si utilizza questa metrica basata sulla struttura del grafo. Il valore generato dalla seguente formula se dovesse essere troppo elevato indica un'eccessiva complessità del codice.
 	
     	v(G) = L – N +2*P
     	\begin{itemize}
@@ -625,8 +624,36 @@ La seguente immagine riporta le attività previste a tale scopo e ne segue una b
     	    \item E: rappresenta il numero di archi;
     	    \item P: rappresenta il numero di componenti connesse.
     	\end{itemize}
+		\item \textbf{MPS6 - Implementazione dei requisiti obbligatori}: permette di verificare in ogni istante la percentuale di requisiti obbligatori soddisfati; viene calcolata con la seguente formula: 
+		\begin{center}
+		$\frac{numero\ requisiti\ obbligatori\ implementati}{numero\ requisiti\ obbligatori\ totali}$
+	\end{center}
+		\item \textbf{MPS7 - Implementazione dei requisiti desiderabili}: permette di verificare in ogni istante la percentuale di requisiti desiderabili soddisfati; viene calcolata con la seguente formula: 
+		\begin{center}
+		$\frac{numero\ requisiti\ desiderabili\ implementati}{numero\ requisiti\ desiderabili\ totali}$
+	\end{center}
+		\item \textbf{MPS8 - Copertura dei test sul codice}: indica la percentuale di istruzioni che vengono eseguite durante i test rispetto il totale. Maggiore è la percentuale testata, maggiore è la possibilità che eventuali errori siano individuati e risolti; si calcola con la seguente formula:
+		\begin{center}
+		$\frac{numero\ istruzioni\ eseguite}{numero\ istruzioni\ totali}$
+	\end{center}
+	
 	\end{itemize}
 	
+	\subsubsection{Analisi}
+	\paragraph{Analisi statica}
+	TODO Sonarqube e sonarcloud
+	
+	\paragraph{Analisi dinamica}
+	L'analisi dinamica è una tecnica di analisi del prodotto software che ne richiede l'esecuzione. Viene eseguita ogni qualvolta che si è terminata una parte di prodotto tramite dei test di unità, volti a verificare il corretto funzionamento del prodotto e a permettere l'identificazione di anomalie. \\
+	I test devono essere ripetibili e deterministici, ovssia date le stesse precondizioni e lo stesso input, l'output deve essere sempre lo stesso. Per ogni test devono dunque essere definiti i seguenti parametri:
+	\begin{itemize}
+		\item \textbf{Ambiente}: il sistema hardware e software sul quale viene eseguito il test di prodotto;
+		\item \textbf{Stato iniziale}: lo stato iniziale dal quale il test viene eseguito;
+		\item \textbf{Input}: l'input che viene inserito;
+		\item \textbf{Output}: l'output atteso;
+		\item \textbf{Istruzioni aggiuntive}: ulteriori informazioni utili quali istruzioni di esecuzione dei test, per l'interpretazione dell'output, ecc. 
+	\end{itemize}
+		
 	\subsubsection{Strumenti}
 	\paragraph{Verifica ortografica}
 	\noindent \\

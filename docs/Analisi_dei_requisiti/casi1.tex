@@ -1,4 +1,5 @@
 In questa sezione verranno elencati ed analizzati tutti i casi d'uso$^*$ individuati dal gruppo. Ogni caso d'uso verrà identificato da un codice univoco secondo le regole descritte nel documento \textit{Norme di progetto} e riportate di seguito. 
+
 \subsection{Denominazione dei casi d'uso}
 Ad ogni caso d'uso saranno associate le seguenti informazioni:
 \begin{itemize}
@@ -11,7 +12,6 @@ Ad ogni caso d'uso saranno associate le seguenti informazioni:
 \end{itemize}
 
 \subsubsection{Gerarchie dei casi d'uso} 
-
 Gli identificatori numerici assegnati a casi d'uso saranno organizzati gerarchicamente. Posto UC-X codice di un caso d'uso, allora UC-X.Y è figlio di UC-X ed esiste fra i due una relazione tra quelle elencate:
 \begin{itemize}
 \item UC-X.Y descrive nel dettaglio una delle funzionalità di UC-X;
@@ -20,49 +20,7 @@ Gli identificatori numerici assegnati a casi d'uso saranno organizzati gerarchic
 \end{itemize}
 
 \subsection{Elenco dei casi d'uso - Utente generico}
-	\subsubsection{UC-13 Svolgimento esercizio}
-	\begin{itemize}
-			\item \textbf{Attori:} Utente generico.
-			\item \textbf{Precondizione:}  L'utente visualizza la vista per l'esecuzione dell'esercizio.
-			\item \textbf{Postcondizione:} L'utente visualizza la valutazione dell'esercizio.
-			\item \textbf{Scenario principale:}
-			\begin{enumerate}
-				\item l'utente compila i campi (UC-13.1).
-				\item l'utente conferma i dati inseriti.
-				\item l'utente visualizza la valutazione (UC-13.2).
-			\end{enumerate}
-	\end{itemize}
-			
-			\begin{figure}[h]
-		\centering
-		\includegraphics[scale=0.7]{images/UC-13.png}
-		\caption{UC-13 Svolgimento esercizio}
-	\end{figure}
 
-	\subsubsection{UC-13.1 Compilazione dei campi}
-		\begin{itemize}
-			\item \textbf{Attori:} Utente generico.
-			\item \textbf{Precondizione:} L'utente ha selezionato un esercizio da eseguire.
-			\item \textbf{Postcondizione:} L'utente ha compilato i campi proposti dall'esercizio.
-			\item \textbf{Scenario principale:}
-				\begin{enumerate}
-					\item l'utente sceglie la classe grammaticale per ogni parola presentata
-					\item l'utente conferma la soluzione dell'esercizio
-				\end{enumerate}
-		\end{itemize}
-
-	\subsubsection{UC-13.2 Visualizzazione della valutazione dell'esercizio}
-	\begin{itemize}
-			\item \textbf{Attori:} Utente generico.
-			\item \textbf{Precondizione:} L'utente ha completato l'esecuzione dell'esercizio.
-			\item \textbf{Postcondizione:} L'allievo visualizza la valutazione dell'esercizio.
-			\item \textbf{Scenario principale:}
-				\begin{enumerate}
-					\item l'allievo seleziona il correttore dell'esercizio (insegnante o algoritmo automatico)
-					\item l'allievo visualizza la valutazione (da 1 a 10) in base al correttore scelto
-				\end{enumerate}
-	\end{itemize}				
-			
 	\subsubsection{UC-39 Inserimento di una frase da svolgere}
 	\begin{itemize}
 		\item \textbf{Attori:} Utente generico.
@@ -143,17 +101,60 @@ Gli identificatori numerici assegnati a casi d'uso saranno organizzati gerarchic
 		\end{enumerate}
 	\end{itemize}
 
-\subsubsection{UC-6.1.3 Filtraggio in base agli argomenti}
+	\subsubsection{UC-6.1.3 Filtraggio in base agli argomenti}
+		\begin{itemize}
+			\item \textbf{Attori:} Utente generico
+			\item \textbf{Precondizione: } L'utente si trova nella vista di ricerca degli esercizi dell'applicazione.
+			\item \textbf{Postcondizione: } L'utente ha indicato gli autori nel filtro di ricerca.
+			\item \textbf{Scenario principale:}
+			\begin{enumerate}
+				\item l'utente visualizza la lista degli argomenti (pronomi, verbi, aggettivi, articoli, avverbi, ecc..)
+				\item l'utente seleziona gli argomenti di cui vuole vedere gli esercizi
+			\end{enumerate}
+		\end{itemize}
+
+	\subsubsection{UC-13 Svolgimento esercizio}
+		\begin{itemize}
+			\item \textbf{Attori:} Utente generico.
+			\item \textbf{Precondizione:}  L'utente visualizza la vista per l'esecuzione dell'esercizio.
+			\item \textbf{Postcondizione:} L'utente visualizza la valutazione dell'esercizio.
+			\item \textbf{Scenario principale:}
+				\begin{enumerate}
+					\item l'utente compila i campi (UC-13.1).
+					\item l'utente conferma i dati inseriti.
+					\item l'utente visualizza la valutazione (UC-13.2).
+				\end{enumerate}
+		\end{itemize}
+			
+		\begin{figure}[h]
+			\centering
+			\includegraphics[scale=0.7]{images/UC-13.png}
+			\caption{UC-13 Svolgimento esercizio}
+		\end{figure}
+
+	\subsubsection{UC-13.1 Compilazione dei campi}
+		\begin{itemize}
+			\item \textbf{Attori:} Utente generico.
+			\item \textbf{Precondizione:} L'utente ha selezionato un esercizio da eseguire.
+			\item \textbf{Postcondizione:} L'utente ha compilato i campi proposti dall'esercizio.
+			\item \textbf{Scenario principale:}
+				\begin{enumerate}
+					\item l'utente sceglie la classe grammaticale per ogni parola presentata
+					\item l'utente conferma la soluzione dell'esercizio
+				\end{enumerate}
+		\end{itemize}
+
+	\subsubsection{UC-13.2 Visualizzazione della valutazione dell'esercizio}
 	\begin{itemize}
-		\item \textbf{Attori:} Utente generico
-		\item \textbf{Precondizione: } L'utente si trova nella vista di ricerca degli esercizi dell'applicazione.
-		\item \textbf{Postcondizione: } L'utente ha indicato gli autori nel filtro di ricerca.
-		\item \textbf{Scenario principale:}
-		\begin{enumerate}
-			\item l'utente visualizza la lista degli argomenti (pronomi, verbi, aggettivi, articoli, avverbi, ecc..)
-			\item l'utente seleziona gli argomenti di cui vuole vedere gli esercizi
-		\end{enumerate}
-	\end{itemize}
+			\item \textbf{Attori:} Utente generico.
+			\item \textbf{Precondizione:} L'utente ha completato l'esecuzione dell'esercizio.
+			\item \textbf{Postcondizione:} L'allievo visualizza la valutazione dell'esercizio.
+			\item \textbf{Scenario principale:}
+				\begin{enumerate}
+					\item l'allievo seleziona il correttore dell'esercizio (insegnante o algoritmo automatico)
+					\item l'allievo visualizza la valutazione (da 1 a 10) in base al correttore scelto
+				\end{enumerate}
+	\end{itemize}				
 
 \subsubsection{UC-46 Segnalazione abuso di un esercizio}
 	\begin{itemize}
@@ -241,8 +242,8 @@ Gli identificatori numerici assegnati a casi d'uso saranno organizzati gerarchic
     \end{enumerate}
   \end{itemize}
 
-\subsection{Elenco dei casi d'uso - Utente: Utente non autenticato}
 
+\subsection{Elenco dei casi d'uso - Utente: Utente non autenticato}
 \subsubsection{UC-2 Autenticazione}
 		\begin{itemize}
 			\item \textbf{Attori:} Utente non autenticato.
@@ -270,9 +271,8 @@ Gli identificatori numerici assegnati a casi d'uso saranno organizzati gerarchic
 			\end{enumerate}
 		\end{itemize}
 		
-\subsection{Elenco dei casi d'uso - Utente: utente registrato}	
-
--\subsubsection{UC-55 Visualizzazione profilo personale}
+\subsection{Elenco dei casi d'uso - Utente: utente registrato}
+\subsubsection{UC-55 Visualizzazione profilo personale}
 \begin{itemize}
 	\item \textbf{Attori:} Utente registrato
 	\item \textbf{Precondizione:} L'utente si trova nella vista principale dell'applicazione.
@@ -420,7 +420,6 @@ Gli identificatori numerici assegnati a casi d'uso saranno organizzati gerarchic
 \end{itemize}
 
 \subsection{Elenco dei casi d'uso - Utente: insegnante}		
-
 \subsubsection{UC-10 Visualizzazione esercizi inseriti}
 \begin{itemize}
 \item \textbf{Attori: }Insegnante.
@@ -474,17 +473,17 @@ Gli identificatori numerici assegnati a casi d'uso saranno organizzati gerarchic
 		\item \textbf{Precondizione: }L'insegnante è nella vista di inserimento di un nuovo esercizio.
 		\item \textbf{Postcondizione: }L'esercizio è stato inserito.
 		\item \textbf{Scenario principale: }
-		\begin{enumerate} 
-		\item l'insegnante inserisce la frase
-		\item l'insegnante inserisce la soluzione UC-12.1
-		\item l'insegnante inserisce gli argomenti UC-12.2
-		\item l'insegnante inserisce la difficoltà UC-12.3
-		\item l'insegnante conferma l'inserimento
-		\end{enumerate}
+			\begin{enumerate} 
+				\item l'insegnante inserisce la frase
+				\item l'insegnante inserisce la soluzione UC-12.1
+				\item l'insegnante inserisce gli argomenti UC-12.2
+				\item l'insegnante inserisce la difficoltà UC-12.3
+				\item l'insegnante conferma l'inserimento
+			\end{enumerate}
 		\item \textbf{Estensioni:} 
-		\begin{itemize}
-		\item 1.a Nel caso in cui la frase inserita sia nulla, viene visualizzato un errore (UC-37)
-		\end{itemize}
+			\begin{itemize}
+				\item 1.a Nel caso in cui la frase inserita sia nulla, viene visualizzato un errore (UC-37)
+			\end{itemize}
 	\end{itemize}
 	\begin{figure}[h]
 		\centering
@@ -677,7 +676,6 @@ Gli identificatori numerici assegnati a casi d'uso saranno organizzati gerarchic
 
 
 \subsection{Elenco dei casi d'uso - Utente: allievo}
-
 	\subsubsection{UC-14 Visualizzazione progressi}
 	\begin{itemize}
 			\item \textbf{Attori:} Allievo.
@@ -710,8 +708,7 @@ Gli identificatori numerici assegnati a casi d'uso saranno organizzati gerarchic
 				\item l'allievo seleziona l'opzione "Disiscriviti" in corrispondenza di una classe
 			\end{enumerate}
 		\end{itemize}					
-		
-		
+				
 	\subsubsection{UC-45 Visualizzazione delle informazioni della classe}
 		\begin{itemize}
 			\item \textbf{Attori:} Allievo.

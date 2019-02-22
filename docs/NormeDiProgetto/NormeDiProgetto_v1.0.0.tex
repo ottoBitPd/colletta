@@ -525,6 +525,21 @@
 	\end{center}
 	I risultati sono compresi tra 0 e 100, dove il valore 100 indica la leggibilità più alta e 0 la leggibilità più bassa. Il Verificatore si assicurerà che l'indice risultante sarà compreso tra 50 e 100.
 	
+	\paragraph{Metriche per il software}
+	\begin{itemize}
+		\item \textbf{MPS1 Percentuale di superamento test}: il numero indicato deve corrispondere al 100\%. Al termine dell'attività di verifica tutti i test eseguiti devono essere superati.
+	    \item \textbf{MPS2 Numero di parametri per metodo}: Il numero di parametri non deve essere elevato, la conseguenza è una scarsa manutenibilità del codice.
+	    \item \textbf{MPS3 Numero di attributi per classe}: Il numero di attributi non deve essere elevato, il suggerimento è di scomporre la classe in più classi per mantenere una manutenibilità del codice discreta.
+	    \item \textbf{MPS4 Numero di metodi per classe}: Il numero di metodi per classe non deve essere elevato, il suggerimento è di scomporre la classe in più classi per mantenere una manutenibilità del codice discreta.
+	    \item \textbf{MPS5 Complessità ciclomatica media}: Per dare una valutazione alla complessità del codice si utilizza questa metrica basata sulla struttura del grafo. Il valore generato dalla seguente formula se dovesse essere troppo elevato indica un'eccessiva complessità del codice.
+	
+    	v(G) = L – N +2*P
+    	\begin{itemize}
+    	    \item \textbf{N}: rappresenta il numero di nodi;
+    	    \item E: rappresenta il numero di archi;
+    	    \item P: rappresenta il numero di componenti connesse.
+    	\end{itemize}
+	\end{itemize}
 	
 	\subsubsection{Strumenti}
 	\paragraph{Verifica ortografica}

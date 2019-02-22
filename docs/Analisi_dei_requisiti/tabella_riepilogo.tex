@@ -26,8 +26,13 @@
 					RDF12 \newline
 					RDF13 \newline
 					RDF14 \newline
-					RDF15 \newline
 					RDF16 \newline
+					RDF18 \newline
+					RDF19 \newline
+					RDF20 \newline
+					RDF21 \newline
+					RDF22 \newline
+					RDF23 \newline
 					RPF1 \newline
 					RPF2 \newline
 					RPF3 \newline
@@ -46,9 +51,16 @@
 					RPF21 \newline
 					RPF22 \newline
 					RPF23 \newline
+					RPF24 \newline
+					RPF25\newline
+					RPF26 \newline
+					RPF27 \newline
 					ROV3 \newline
 					ROV4 \newline
 					ROV5 \newline
+					ROQ3 \newline
+					RDQ3 \newline
+					RPQ1 \newline
 					 \\ \hline
 					
 		\rowcolor{LightGray}
@@ -71,13 +83,11 @@
 					ROV1 \newline
 					ROV2 \newline
 					RDV1 \newline
-					RDV2 \newline
-					RDV3 \newline
-					RDV4 \newline
 					RPV1 \newline
 					ROQ1 \newline
 					ROQ2\newline
-					RDQ1\newline	
+					RDQ1\newline
+					RDQ2 \newline	
 		 \\
 		
 		UC-1 \newline UC-33 & ROF1  \\
@@ -121,6 +131,7 @@
 		UC-15.1.1 & RDF9\\
 		UC-15.1.2 & RDF10\\
 		\rowcolor{LightGray}
+		UC-15.1.2.1 & RDF18\\
 		UC-16 & RPF10\\
 		UC-17 & RPF11\\
 		\rowcolor{LightGray}
@@ -163,13 +174,27 @@
 		UC-42 & RDF13\\
 		UC-43 & RDF14\\
 		\rowcolor{LightGray}
-		UC-44 & RDF15\\
+		UC-44 & RPF27\\
 		UC-45 & RDF16\\
 		\rowcolor{LightGray}
 		UC-46 & RPF21\\
 		UC-47 & RPF22\\
 		\rowcolor{LightGray}
 		UC-48 & RPF23\\
+		UC-49 & RDF17 \\
+		\rowcolor{LightGray}
+		UC-50 & RDF19 \\
+		UC-51 & RPF24 \\
+		\rowcolor{LightGray}
+		UC-52 & RDF20 \\
+		UC-53 & RPF25 \\
+		\rowcolor{LightGray}
+		UC-54 & RDF21 \\
+		UC-55 & RDF22 \\
+		\rowcolor{LightGray}
+		UC-56 & RDF23 \\
+		UC-57 & RPF26 \\
+		\rowcolor{LightGray}
 		\hline
 		\caption{Tabella di tracciamento: fonti-requisiti}
 \end{longtable}
@@ -227,12 +252,21 @@
 		RDF11 & UC-32\\
 		\rowcolor{LightGray}
 		RDF12 & UC-41\\
-		RDF23 & UC-42\\
+		RDF13 & UC-42\\
 		\rowcolor{LightGray}
 		RDF14 & UC-43\\
-		RDF15 & UC-44\\
-		\rowcolor{LightGray}
 		RDF16 & UC-45\\
+		\rowcolor{LightGray}
+		RDF17 & UC-49 \\
+		RDF18 & UC-15.1.2.1 \\
+		\rowcolor{LightGray}
+		RDF19 & UC-50 \\
+		RDF20 & UC-52 \\
+		\rowcolor{LightGray}
+		RDF21 & UC-54 \\
+		RDF22 & UC-55 \\
+		\rowcolor{LightGray}
+		RDF23 & UC-56 \\
 		RPF1 & UC-6.1\\
 		\rowcolor{LightGray}
 		RPF2 & UC-6.1.1\\
@@ -267,7 +301,13 @@
 		\rowcolor{LightGray}
 		RPF22 & UC-47\\
 		RPF23 & UC-48\\
-		\rowcolor{LightGray}		
+		\rowcolor{LightGray}
+		RPF24 & UC-51\\
+		RPF25 & UC-53\\
+		\rowcolor{LightGray}
+		RPF26 & UC-57\\	
+		RPF27 & UC-44\\
+		\rowcolor{LightGray}
 		\hline
 		\caption{Tabella di tracciamento: requisiti-fonti}
 \end{longtable}
@@ -278,10 +318,10 @@
 \begin{tabular}{| c | c | c | c |}
 		\rowcolor{LightBlue}
 		\color{white}\bfseries Tipo del requisito & \color{white}\bfseries Obbligatori & \color{white}\bfseries Desiderabili & \color{white}\bfseries Opzionali \\[0.25cm]
-		 Funzionali & 21 & 16 & 23 \\
+		 Funzionali & 21 & 23 & 26 \\
 		 Prestazionali & 0 & 0 & 0 \\
-		 Vincolo & 5 & 4 & 1 \\
-		 Qualità & 2 & 1 & 0 \\
+		 Vincolo & 5 & 1 & 1 \\
+		 Qualità & 3 & 3 & 1 \\
 		 Totale & 28 & 21 & 24 \\ \hline
 \end{tabular}
 		\caption{Tabella di riepilogo}

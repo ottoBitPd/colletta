@@ -1,0 +1,234 @@
+\begin{filecontents*}{\jobname.mst}
+	quote '+'
+	headings_flag 1
+	heading_prefix "\\firstentry "
+	heading_suffix ""
+	delim_0 ": "
+	delim_1 ": "
+	delim_2 ": "
+	%delim_r "~--~"
+	delim_r "-"
+	%delim_0 "\\dotfill "
+	%delim_1 "\\dotfill "
+	%delim_2 "\\dotfill "
+	%delim_r "~--~"
+	suffix_2p "\\,f."
+	suffix_3p "\\,ff."
+\end{filecontents*}
+
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{color,colortbl}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage{tabularx}
+\usepackage{csquotes}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=3cm]{geometry}
+\usepackage{longtable}
+\usepackage{lastpage}
+\usepackage{hyperref}
+\hypersetup{colorlinks,urlcolor=blue,linkcolor=black}
+\usepackage[nottoc]{tocbibind}
+\usepackage{makeidx}
+\usepackage[indentunit=0.75em]{idxlayout}
+
+\makeindex
+\def\firstentry#1\item#2{\item\textbf{#2}}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\includegraphics[scale=0.07]{images/logo.png}}
+
+\definecolor{LightBlue}{rgb}{0,0,0.5}
+\definecolor{Gray}{gray}{0.8}
+\definecolor{LightGray}{gray}{0.9}
+
+\renewcommand {\footrulewidth}{0.2mm}
+\lfoot {Glossario}
+\rfoot{Pagina \thepage\ di \pageref{LastPage}}
+
+\usepackage{lipsum}
+\begin{document}
+	\input{frontpage/frontpage.tex}
+	\newpage
+	\section*{\centering Registro delle modifiche}
+	\begin{tabularx}{\textwidth}{ c | c | c | c | X }
+		\rowcolor{LightBlue}
+		\color{white}\bfseries Versione & \color{white}\bfseries Data & \color{white}\bfseries Autore & \color{white}\bfseries Ruolo & \multicolumn{1}{c}{\color{white}\bfseries Descrizione}\\[0.25cm]
+		1.0.0 & 2019-01-11 & Benedetto Cosentino & Responsabile & Approvazione documento \\ 
+		\hline
+		0.1.0 & 2019-01-10 & Enrico Marcato & Verificatore & Verifica documento \\ 
+		\hline
+		0.0.4 & 2019-01-08 & Michele Bortone & Amministratore & Inserimento termini Piano di Qualifica \\ 
+		\hline 
+		0.0.3 & 2019-01-09 & Giovanni Bergo & Amministratore & Aggiunta termini \\ 
+		\hline 
+		0.0.2 & 2019-01-07 & Giovanni Bergo & Amministratore & Inserimento termini Norme di Progetto \\ 
+		\hline 
+		0.0.1 & 2018-12-28 & Giovanni Peron & Amministratore & Creazione documento e \newline inserimento termini del PdQ \\ 
+		\hline
+	
+	\end{tabularx}
+	\newpage
+	\setcounter{secnumdepth}{0}
+	
+	
+	\printindex
+	\newpage
+	%prova per un glossario, intanto ho diviso le parole così, si potrebbe pensare poi di fare un singolo file.tex per ogni parola nel quale inserire la section della parola. Nel frattempo ho messo direttamente in questo le varie section e ognuno può inserirle rispettando l'ordine alfabetico.
+	\section{A}
+	\subsection{Analisi dinamica} 
+	\index{Analisi dinamica}
+	L'Analisi dinamica permette attraverso dei test di verificare il comportamento di un sistema software o di un suo componente durante l'esecuzione. I test possono rilevare malfunzionamenti ma non possono assicurarne l'assenza.
+	
+	\subsection{Analisi statica}
+	\index{Analisi statica}
+	L'Analisi statica è l'analisi del software e della documentazione relativa ad esso, attuata senza eseguire codice. Ha inoltre il compito di accertare la conformità a regole, assenza di difetti, presenza di proprietà desiderate.
+	
+	\subsection{Apprendimento automatico}
+	\index{Apprendimento automatico}
+	L'Apprendimento automatico rappresenta un insieme di meccanismi che permettono ad un calcolatore di migliorare nel tempo l'esecuzione di un compito. 
+	
+	\section{B}
+	\subsection{Best practice} 
+	\index{Best practice}
+	Modo di fare (Way of working) appreso con studi ed esperienze, che abbia mostrato di garantire i migliori risultati in circostanze specifiche.
+	
+	\subsection{Branch} 
+	\index{Branch}
+	Un branch (ramo) in Git è una diramazione del flusso di sviluppo principale del prodotto, nel quale gli sviluppatori lavorano in maniera isolata e indipendente. \`E possibile poi far convergere il branch con il flusso principale per unire gli sviluppi di entrambi i flussi.
+	
+	\section{C}
+	\subsection{Capability (capacità) dei processi}
+	\index{Capability}
+	Misura l'adeguatezza di un processo per gli scopi ad esso assegnati. Determina efficienza ed efficacia raggiungibile da quel preciso processo.
+	
+	\subsection{Casi d'uso}
+	\index{Caso d'uso}
+	Tecnica per descrivere senza ambiguità i requisiti, valutando come gli attori interagiscono con le funzionalità che il sistema mette a disposizione.
+		
+	\subsection{Commit}
+	\index{Commit}
+	Un commit in git è un salvataggio di un'istantanea dello stato di tutti i file portati nell' area di stage del repository tramite il comando git add.
+	
+	\subsection{Complessità ciclomatica}
+	\index{Complessità ciclomatica}
+	La complessità ciclomatica è uno standard per la misura della complessità di alcune proprietà del software.
+	\subsection{Continuous Delivery}
+	\index{Continuous Delivery}
+	La continuous delivery è un approccio in cui il software viene prodotto in brevi cicli e in modo tale che il prodotto possa essere rilasciato in ogni momento. Il rilascio viene effettuato manualmente.
+	
+	\subsection{Continuous Integration}
+	\index{Continuous Integration}
+	La continuous integration è una pratica in cui lo sviluppo del software è soggetto a versionamento. Gli sviluppatori allineano frequentemente i diversi ambienti di lavoro nell'ambiente condiviso.
+	
+	\section{D}
+	\subsection{Database}
+	\index{Database}
+	Archivio strutturato di dati memorizzati in un calcolatore interrogabili per la gestione, l'aggiornamento e l'accesso alle informazioni.
+	
+	\section{G}
+	\subsection{GitLab} 
+	\index{GitLab}
+	GitLab è un gestore web di repository Git che include strumenti per il tracciamento delle issues, per la Continuous Integration e il Continuous Delivery.
+	
+	\section{I}
+	\subsection{Indice di Gulpease}
+	\index{Indice di Gulpease}
+	L'Indice Gulpease è un indice di leggibilità di un testo in lingua italiana. Utilizzando la lunghezza delle parole in lettere è possibile calcolarlo in modo automatico. L'indice può variare tra 0 e 100. Un risultato inferiore a 80 implica una difficoltà di lettura a livello di licenza elementare, inferiore a 60 implica una difficoltà di lettura a livello di licenza media, inferiore a 40 implica una difficoltà di lettura a livello di diploma superiore.
+	
+	\subsection{ISO/IEC 12207}
+	\index{ISO/IEC 12207}
+		ISO 12207 è uno standard dell'ISO per la gestione del ciclo di vita del software. Si propone di diventare lo standard di riferimento definendo tutte le attività svolte nel processo di sviluppo e mantenimento del software.
+	\subsection{ISO/IEC 15504 (SPICE)}
+	\index{ISO/IEC 15504}
+	Lo standard ISO/IEC 15504, comunemente chiamato SPICE (acronimo di Software Process Improvement and Capability Determination), viene utilizzato per eseguire una valutazione concreta della qualità dei processi, inoltre permette la misurazione della capability dei processi, ovvero la maturità
+	di un processo l’abilità con cui esso raggiunge l’obiettivo.
+
+	\subsection{ISO 8601}
+	\index{ISO 8601}
+	Standard internazionale per la rappresentazione di date e orari.
+	
+	\subsection{ISO/IEC 9126}
+	\index{ISO/IEC 9126}
+	Standard internazionale che indica normative e linee guida preposte a descrivere un modello di qualità del software.
+	
+	\subsection{Issue}
+	\index{Issue}
+	Le issues sono un sistema per tenere traccia delle attività da gestire in un progetto. Permettono al team di condividere e discutere nuove idee per il progetto o per risolvere problemi relativi. Una volta creata un issue questa può essere assegnata ad uno o più membri del team, in questo modo il lavoro svolto per soddisfarla può essere tracciato dall'inizio fino al completamento della issue.
+	
+	\section{L}
+	\subsection{Latex} 
+	\index{Latex}
+	\LaTeX è un linguaggio di markup utilizzato per la composizione di testi, che permette di ottenere risultati professionali. \LaTeX è un software gratuito e multipiattaforma.
+
+	\section{M}
+	\subsection{Milestone} 
+	\index{Milestone}
+	La milestone indica un traguardo significativo nel tempo che può derivare da un obbligo contrattuale o da una decisione interna al gruppo.
+
+	\section{P}
+	\subsection{Processo} 
+	\index{Processo}
+	Insieme di attività correlate e coese che trasformano ingressi in uscite secondo regole date, consumando risorse nel farlo.
+
+	\subsection{Progetto} 
+	\index{Progetto}
+	Insieme di attività e compiti che devono raggiungere determinati obiettivi con specifiche fissate, hanno date d'inizio e di fine fissate, possono contare su limitate disponibilità di risorse (persone, tempo, denaro, strumenti).
+	
+	\section{Q}
+	\subsection{Qualità} 
+	\index{Qualità}
+	In generale, la qualità indica una misura delle caratteristiche o delle proprietà di un'entità (una persona, un prodotto, un processo, un progetto) in confronto a quanto ci si attende da tale entità, per un determinato impiego.
+	
+	\subsection{Qualità di processo}\index{Qualità di processo}
+	Controllare il processo per migliorarne l'economicità tramite anche l'esperienza di altri.
+	
+	\subsection{Qualità di prodotto}\index{Qualità di prodotto}
+	Insieme delle caratteristiche del prodotto che ne determinano la capacità di soddisfare esigenze espresse e implicite.
+	
+	
+	\section{R}
+	\subsection{Repository} \index{Repository}
+	La repository è la struttura dati dove git salva le informazioni. Una repository oltre directories e tutti i files del progetto git, contiene una sottodirectory .git la quale ospita tutti i file necessary per la struttura della repository Git.
+
+	\section{S}
+	\subsection{Slack (app)} 
+	\index{Slack}
+	Slack è un software che rientra nella categoria degli strumenti di collaborazione aziendale utilizzato per inviare messaggi in modo istantaneo ai membri del team.
+	
+	\subsection{Slack Time}
+	\index{Slack Time}
+	Tempo in surplus che viene assegnato ad ciascuna attività, in modo tale che se si incorra in un ritardo, questo non vada a causare ulteriori ritardi alle attività successive.
+	
+	\subsection{Stakeholder}
+	\index{Stakeholder}
+	Insieme delle persone coinvolte nel ciclo di vita del progetto.
+	
+	\section{T}
+	\subsection{Texmaker} 
+	\index{Texmaker}
+	Texmaker è un editor LaTeX gratuito, moderno e multipiattaforma che integra molti strumenti necessari per sviluppare documenti con LaTeX. 
+	
+	\section{V}
+	\subsection{V-Model} 
+	\index{V-Model}
+	Modello di sviluppo che descrive la relazione tra ogni fase del ciclo di vita dello sviluppo del software e la sua fase di testing.
+	
+	\subsection{Verifica}
+	\index{Verifica}
+	Esaminare qualcosa per accertarne l'autenticità, l'esattezza e il buon funzionamento.
+	
+	\section{W}
+	\subsection{Way of Working} 
+	\index{Way of Working}
+	Il modo di rendere sistematiche, disciplinate e quantificabili le attività di un progetto.
+	
+\end{document}

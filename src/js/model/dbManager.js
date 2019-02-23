@@ -7,14 +7,16 @@ class DbManager{
     }
 
     initDB(){
-        const firebase = require("firebase-admin");
-        const admin = require("firebase-admin");
-        const serviceAccount = require("./myproject-bd9d0-firebase-adminsdk-8ktts-3dbc739c06.json");
+        //const firebase = require("firebase-admin");
+        var admin = require("firebase-admin");
+
+        var serviceAccount = require("./colletta-3e789-firebase-adminsdk-e5uh6-e2795ef617.json");
+
         admin.initializeApp({
             credential: admin.credential.cert(serviceAccount),
-            databaseURL: "https://myproject-bd9d0.firebaseio.com"
+            databaseURL: "https://colletta-3e789.firebaseio.com"
         });
-        return firebase.database();
+        return admin.database();
     }
     writeSentence(sentence){
         let num=0;

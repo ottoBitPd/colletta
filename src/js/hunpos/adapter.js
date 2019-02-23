@@ -24,7 +24,7 @@ class Adapter {
             sentence: []
         };
         let i=0;
-        while(wordSolArray[i]!=""){
+        while(wordSolArray[i]!==""){
             var wordLab = wordSolArray[i].split("\t");
             obj.sentence.push({word: wordLab[0],label: wordLab[1]});
             i++;

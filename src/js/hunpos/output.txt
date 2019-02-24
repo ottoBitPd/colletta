@@ -1,8 +1,5 @@
-e	CC	
-poi	B	
-nell'anima	Afs	
-giù	B	
+Aronne	SP	
+giocava	Vii3s	
 in	E	
-fondo	Sms	
-all'anima	Afs	
+giardino	Sms	
 

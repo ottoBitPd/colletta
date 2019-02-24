@@ -26,7 +26,7 @@ class View{
     buildForm(words,hunposIta){
         var table="";
         for(var i=0;i < words.length;i++){
-            table += "<tr><td>" + words[i] + "</td><td>"+hunposIta[i]+"</td><td>"+this.getInputAnalisi(i)+"</td></tr>\n";
+            table += "<li class='first'>" + words[i] + "</li><li class='second'>"+hunposIta[i]+"</li><li class='third'>"+this.getInputAnalisi(i)+"</li>\n";
         }
         return table;
     }

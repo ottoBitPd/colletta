@@ -1,8 +1,20 @@
+/**
+ * Class that provides the hunpos service to the application
+ */
 class Adapter {
+    /**
+     * Adapter constructor initializes all attributes needed to Adapter object.
+     */
     constructor(){
         this.fs = require('fs');
         this.shell = require('shelljs');
     }
+
+    /**
+     * This method provide the hunpos solution for a sentence passed as parameter
+     * @param sentence - the sentence to correct
+     * @returns {json} json object containing the hunpos solution for the sentence
+     */
     getHunposSolution(sentence){
         var words = sentence.split(" ");
         for(let i = 0; i < words.length; i++) {

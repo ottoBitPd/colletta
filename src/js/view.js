@@ -26,6 +26,7 @@ class View{
         var table="";
         for(var i=0;i < words.length;i++){
             table += "<tr><td>" + words[i] + "</td><td>"+hunposIta[i]+"</td><td>"+this.getInputAnalisi(i)+"</td></tr>\n";
+            //table += "<tr><td>" + words[i] + "</td><td>"+hunposIta[i]+"</td><td>{<Word/>}</td></tr>\n";
         }
         return table;
     }

@@ -119,13 +119,13 @@ class Controller {
         var uppercase=tag.split(/[a-z0-9]+/);
         var result="";
         console.log("uppercase[0]: "+uppercase[0]);
-        if(uppercase[0]!='V' && uppercase[0]!='PE' && uppercase[0]!='PC'){
+        if(uppercase[0]!=='V' && uppercase[0]!=='PE' && uppercase[0]!=='PC'){
             for(var i in jsonContent){
-                if(i==uppercase[0]){
+                if(i===uppercase[0]){
                     result+=jsonContent[i];
                 }
                 if(lowercase[1]){
-                    if(i==lowercase[1]){
+                    if(i===lowercase[1]){
                         result+=" ";
                         result+=jsonContent[i];
                     }

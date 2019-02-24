@@ -1,5 +1,6 @@
 {
-	"AP" : "Aggettivo possessivo",
+    "A" : "Aggettivo",
+    "AP" : "Aggettivo possessivo",
 	"DD" : "Aggettivo dimostrativo",
 	"DI" : "Aggettivo indefinito",
 	"N" : "Aggettivo numerale cardinale",
@@ -7,7 +8,7 @@
 	"DQ" : "Aggettivo interrogativo",
 	"DE" : "Aggettivo esclamativo",
 	
-	"B" : "Avverbio generico",
+	"B" : "Avverbio",
 	"BN" : "Avverbio negazione",
 	
 	"CC" : "Congiunzione coordinante",
@@ -22,7 +23,7 @@
 	"FF" : "Punteggiatura fine frase",
 	
 	"PE" : "Pronome personale",
-	"PP" : "Pronome possesivo",
+	"PP" : "Pronome possessivo",
 	"PI" : "Pronome indefinito",
 	"PR" : "Pronome relativo",
 	"PD" : "Pronome dimostrativo",

@@ -1,13 +1,22 @@
+/** Class to manage database. */
 class DbManager{
+    /**
+     * DbManager constructor initializes all attributes needed to DbManager object
+     */
     constructor() {
         this.database = this.initDB();
-        this.counter=0;
-        //per tornare quante frasi ci sono
-        //this.database.ref('data/frasi').on("value", snap => {this.counter=snap.numChildren();});
+        this.sentences=0;
+        this.database.ref('data/sentences').on("value", snap => {
+            this.sentences=snap.numChildren();
+            console.log("inizio key: "+this.sentences);
+        });
     }
 
+    /**
+     * This method executes the connection with firebase database.
+     * @returns {admin.database.Database} reference to the database service.
+     */
     initDB(){
-        //const firebase = require("firebase-admin");
         var admin = require("firebase-admin");
 
         var serviceAccount = require("./colletta-3e789-firebase-adminsdk-e5uh6-e2795ef617.json");
@@ -18,45 +27,64 @@ class DbManager{
         });
         return admin.database();
     }
+
+    /**
+     * This method writes a sentence in the database.
+     * @param sentence - the sentence to write
+     * @returns {number} returns the key of the sentence written
+     */
     writeSentence(sentence){
-        let num=0;
-        this.database.ref('data/sentences').on("value", snap => {num=snap.numChildren();});
+        this.database.ref('data/sentences/'+this.sentences).set({sentence: sentence});
+        return this.sentences-1;
+    }
+
+    /**
+     * This method checks if a sentence already exists in the database.
+     * @param sentence - the sentence to check.
+     * @returns {number} the key of the sentence if sentence already exists, -1 otherwise.
+     */
+    checkIfExists(sentence){
         var equal=false;
-        for(var i=0;i<num;i++){
-            this.database.ref('data/sentences/'+i).on("value", snap => {
+        for(var sentenceKey=0;sentenceKey<this.sentences;sentenceKey++){
+            this.database.ref('data/sentences/'+sentenceKey).on("value", snap => {
                 if(sentence===snap.val().sentence){
-                    //esiste già la frase ritorno la sua chiave
                     equal=true;
                 }
             });
-            if(equal)
-                return i;
+            if(equal) {
+                return sentenceKey;
+            }
         }
-        //se non esiste
-        this.database.ref('data/sentences/'+this.counter).set({sentence: sentence});
-        this.counter++;
-        return this.counter-1;
+        return -1;
+
     }
 
-    writeSolution(words, tagsCorrection, sentence, key){
-        console.log("words: "+words+" tags: "+tagsCorrection+" sentence: "+sentence+" key: "+key);
-        let c=0;
-        this.database.ref('data/sentences/'+key+'/solutions').once("value", snap => {c=snap.numChildren();});
-        console.log("c: "+c);
-        for(var i=0;i<words.length;i++){
-            //console.log("parola: "+words[i]+", tag: "+tags[i]);
-            //console.log("inserisco parola: "+words[i]+", tag: "+tags[i]+"in data/sentences/"+key+"/solutions/"+c+"/"+i);
-            this.database.ref('data/sentences/'+key+'/solutions').child(c).child(i).set({"word":words[i],"tag":tagsCorrection[i]});
-
+    /**
+     * This method write the sentence solution on the database.
+     * The sentence solution is composed of tags coming from hunpos and from user correction,
+     * these tags are contained in finalTags parameter.
+     * @param words - array containing the sentence words
+     * @param finalTags - array containing the sentence tags
+     * @param sentence - the sentence string
+     * @param sentenceKey - key of the sentence in the database
+     */
+    writeSolution(words, finalTags, sentence, sentenceKey){
+        let solutionKey=0;
+        this.database.ref('data/sentences/'+sentenceKey+'/solutions').once("value", snap => {solutionKey=snap.numChildren();});
+        for(var wordSolutionKey=0;wordSolutionKey<words.length;wordSolutionKey++){
+            this.database.ref('data/sentences/'+sentenceKey+'/solutions').child(solutionKey).child(wordSolutionKey).set({"word":words[wordSolutionKey],"tag":finalTags[wordSolutionKey]});
         }
     }
-    readSent(child,key){
-        var ret;
-        this.database.ref("data/"+child+"/"+key).on("value", snap => {ret = snap.val().frase;});
+
+    /**
+     * This method reads a sentence from the database and returns it
+     * @param key - key of the sentence to read from the database
+     * @returns {string} the sentence read
+     */
+    readSentence(key){
+        var ret="";
+        this.database.ref("data/sentences/"+key).on("value", snap => {ret = snap.val().sentence;});
         return ret;
-    }
-    getCounter(){
-        return this.counter;
     }
 }
 

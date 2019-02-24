@@ -1,7 +1,10 @@
-
+/**
+ * Class that represents the controller of all information
+ * flows between view and model of the application and the hunpos component.
+ **/
 class Controller {
     /**
-     * @constructor
+     * Controller constructor initializes all attributes needed to Controller object.
      */
     constructor(){
         var View = require('./view.js');
@@ -14,9 +17,9 @@ class Controller {
     }
 
     /**
-     * method start invokes methods to manage application pages
-     * @param app - is a reference to
-     * @returns {*} app modificata
+     * This method invokes all the methods needed to manage application pages.
+     * @param app - the express application
+     * @returns {*} reference to the express app
      */
     start(app){
         this.home(app);
@@ -26,64 +29,114 @@ class Controller {
         return app;
     }
 
+    /**
+     * The home method provides the app homepage, received from the View.
+     * @param app - the express application
+     */
     home(app){
         app.get('/', (request, response) => {
             response.send(this.v.getHome());
         });
     }
-
+    /**
+     * The demo method provides the page where the demo starts, asking user to insert a sentence.
+     * @param app - the express application
+     */
     demo(app){
         app.get('/demo', (request, response) => {
             response.send(this.v.getDemo());
         });
     }
 
+    /**
+     * The exercise method provides the page where the user can see the hunpos solution
+     * and correcting it if needed.
+     * @param app - the express application
+     */
     exercise(app){
         app.post('/exercise', (request, response) => {
-            //creo un nuovo esercizio
+            //creation of an exercise
             var Exercise = require('./model/exercise.js');
             var objExercise = new Exercise(request.body.sentence);
-            //inserisco la frase del nuovo esercizio nel db
-            objExercise.setKey(this.db.writeSentence(objExercise.getSentence()));
-            //invia frase ad hunpos per corregerla
-            var objSolution = this.ad.getHunposSolution(objExercise.getSentence());
-            const util = require('util');
-            console.log(util.inspect(objSolution,{depth:null}));
-            //dalla risposta di hunpos calcola i tags, ovvero la soluzione dell'esercizio
-            var tags = objExercise.extractTags(objSolution);
-            //traforma i tags in italiano
-            var hunposIta = this.convertToIta(tags);
+            //checking if the exercise sentence already exists in the database
+            var key= this.db.checkIfExists(objExercise.getSentence());
+            if(key>=0)
+                objExercise.setKey(key);
+            else
+                objExercise.setKey(this.db.writeSentence(objExercise.getSentence()));
+            //sending the sentence to hunpos which will provide a solution
+            var hunposSolution = this.ad.getHunposSolution(objExercise.getSentence());
+            //creation of the array containing tags provided from hunpos solution
+            var hunposTags = objExercise.extractTags(hunposSolution);
+            //converting tags to italian
+            var hunposIta = this.tagsToIta(hunposTags);
 
-            response.send(this.v.getExercise(objExercise.getSentence(),objExercise.getKey(),hunposIta));
+            response.send(this.v.getExercise(objExercise.getSentence(),objExercise.getKey(),hunposIta,hunposTags));
         });
     }
 
+    /**
+     * This method manage all information about the exercise performed by user,
+     * saves them on the database, finally redirects the user to the demo page
+     * so he can trains with another sentence.
+     * @param app - the express application
+     */
     saveExercise(app){
         app.post('/saveExercise', (request, response) => {
 
             var wordsnumber = request.body.wordsnumber;
             var sentence = request.body.sentence;
             var key = request.body.key;
-            var tagsCorrection = this.convertToTags(wordsnumber,request.body);
+            var hunposTags = JSON.parse(request.body.hunposTags);
+            var tagsCorrection = this.correctionToTags(wordsnumber,request.body);
 
-
-            //RIMANE DA SCRIVERE L'ARRAY TAGS RELAZIONATO ALL'ARRAY WORDS NEL DB
-            this.db.writeSolution(sentence.split(" "), tagsCorrection, sentence, key);
-            response.send("esercizio inviato");
+            //preparo un array di tags fondendo correzioni e soluzione di hunpos
+            var finalTags = this.correctsHunpos(hunposTags,tagsCorrection);
+            //salvo nel database la soluzione con eventuali correzioni
+            this.db.writeSolution(sentence.split(" "), finalTags, sentence, key);
+            response.redirect('/demo');
         });
     }
 
-    convertToTags(wordsnumber, dataCorrection){
-        var j=0, c=0;//j contatore per l'indice delle tendine, c contatore parola della frase
+    /**
+     * This method merges the hunpos's solution and the user's solution.
+     * If the user lets some correction field unsetted means that the hunpos solution,
+     * for that word, was correct.
+     * @param hunposTags - array that contains the solution tags provided by hunpos
+     * @param tagsCorrection - array that contains the solution tags provided by user
+     * @returns {Array} a string array containing the tags of the final solution.
+     */
+    correctsHunpos(hunposTags,tagsCorrection){
+        var finalTags=[];
+        for(var i in hunposTags){
+            if(tagsCorrection[i]==="")
+                finalTags[i]=hunposTags[i];
+            else if(tagsCorrection[i]!==hunposTags[i])
+                finalTags[i]=tagsCorrection[i];
+            else
+                finalTags[i]=hunposTags[i];
+        }
+        return finalTags;
+    }
+
+    /**
+     * This method converts the italian solution, set by the user,
+     * to the tags understandable for hunpos.
+     * @param wordsnumber - the number of the words in the sentence
+     * @param dataCorrection - a json object containing all the corrections suggested by the user
+     * @returns {Array} an array containing the tags of the solution suggested by the user
+     */
+    correctionToTags(wordsnumber, dataCorrection){
+        var optionsIndex=0, wordIndex=0;//optionsIndex counter for options of the first select input field
         var tagsCorrection = [];
         tagsCorrection.length = wordsnumber;
         var actualTag="";
         for(var i in dataCorrection) {
-            //perchè in dataCorrection c'è anche sentence e wordsnumber ma a me servono solo le chiavi per i tags
-            if(i !== 'sentence' && i !== 'wordsnumber' && i!=='key'){
+            //avoiding the hidden input field received with the others data correction
+            if(i !== 'sentence' && i !== 'wordsnumber' && i!=='key' && i!=='hunposTags'){
                 if (dataCorrection[i] !== '-') {//se è stato settato qualcosa
-                    //questi tag non esistono o devono essere settati sulla seconda tendina
-                    if(dataCorrection[i]==='A' || (dataCorrection[i]==='B' && i===('general'+c)) || (dataCorrection[i]==='E' && i===('general'+c)) || (dataCorrection[i]==='S' && i===('general'+c)) || (dataCorrection[i]==='V' && i===('general'+c))) {
+                    //invalid tags or tags that must be set in the second input field
+                    if(dataCorrection[i]==='A' || (dataCorrection[i]==='B' && i===('general'+ wordIndex)) || (dataCorrection[i]==='E' && i===('general'+ wordIndex)) || (dataCorrection[i]==='S' && i===('general'+ wordIndex)) || (dataCorrection[i]==='V' && i===('general'+ wordIndex))) {
                         actualTag += "";
                     }
                     else{
@@ -91,11 +144,11 @@ class Controller {
                     }
                 }
 
-                j++;
-                if (j == 14) {
-                    j = 0;
-                    tagsCorrection[c]= actualTag;
-                    c++
+                optionsIndex++;
+                if (optionsIndex == 14) {
+                    optionsIndex = 0;
+                    tagsCorrection[wordIndex]= actualTag;
+                    wordIndex++
                     actualTag = "";
                 }
             }
@@ -103,22 +156,32 @@ class Controller {
         return tagsCorrection;
     }
 
-    convertToIta(tags){
+    /**
+     * Converts solution tags to italian.
+     * @param tags - array of tag coming from hunpos solution
+     * @returns {Array} an array containing the italian translation for every tag
+     */
+    tagsToIta(tags){
         var hunposIta = [];
         for(var i=0;i<tags.length;i++){
-            hunposIta[i]=this.convertTagToIta(tags[i]);
+            hunposIta[i]=this.tagToIta(tags[i]);
         }
         return hunposIta;
     }
 
-    convertTagToIta(tag){
+    /**
+     * Converts a single tag to an italian string representing it
+     * @param tag - a string containg the tag to convert
+     * @returns {string} a string containing the italian translation of the tag
+     */
+    tagToIta(tag){
         var content = this.fs.readFileSync("./js/vocabolario2.json");
         var jsonContent = JSON.parse(content);
 
         var lowercase=tag.split(/[A-Z]{1,2}/);
         var uppercase=tag.split(/[a-z0-9]+/);
         var result="";
-        console.log("uppercase[0]: "+uppercase[0]);
+        //console.log("uppercase[0]: "+uppercase[0]);
         if(uppercase[0]!=='V' && uppercase[0]!=='PE' && uppercase[0]!=='PC'){
             for(var i in jsonContent){
                 if(i===uppercase[0]){

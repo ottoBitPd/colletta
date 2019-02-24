@@ -11,7 +11,7 @@ class View{
         return this.fs.readFileSync('./html/demo.html').toString();
     }
 
-    getExercise(sentence,key,hunposIta){
+    getExercise(sentence,key,hunposIta,hunposTags){
         var data =  this.fs.readFileSync('./html/exercise.html').toString();
         var words = sentence.split(" ");
         data=data.replace(/\*table\*/g, this.buildForm(words,hunposIta));
@@ -20,13 +20,13 @@ class View{
         data=data.replace(/\*wordsnumber\*/g, words.length);
         data=data.replace(/\*sentence\*/g, sentence);
         data=data.replace(/\*key\*/g, key);
+        data=data.replace(/\*hunposTags\*/g, JSON.stringify(hunposTags));
         return data;
     }
     buildForm(words,hunposIta){
         var table="";
         for(var i=0;i < words.length;i++){
             table += "<tr><td>" + words[i] + "</td><td>"+hunposIta[i]+"</td><td>"+this.getInputAnalisi(i)+"</td></tr>\n";
-            //table += "<tr><td>" + words[i] + "</td><td>"+hunposIta[i]+"</td><td>{<Word/>}</td></tr>\n";
         }
         return table;
     }

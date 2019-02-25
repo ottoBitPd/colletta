@@ -70,11 +70,35 @@ class Controller {
             var hunposTags = objExercise.extractTags(hunposSolution);
             //converting tags to italian
             var hunposIta = this.tagsToIta(hunposTags);
-
+            var obj = this.buildJsonObj(objExercise.getSentence(),objExercise.getKey(),hunposIta,hunposTags);
+            console.log("str:"+obj);
             response.send(this.v.getExercise(objExercise.getSentence(),objExercise.getKey(),hunposIta,hunposTags));
         });
     }
 
+    buildJsonObj(sentence,key,hunposIta,hunposTags){
+        var s="{id:1,sentence:\""+sentence+"\",id:2,key:\""+key+"\",id:3,hunposIta:[";
+        for(var i=0;i<hunposIta.length;i++){
+
+            if(i===hunposIta.length-1){
+                s+="\""+hunposIta[i]+"\"],";
+            }
+            else{
+                s+="\""+hunposIta[i]+"\",";
+            }
+        }
+        s+="id:4,hunposTags:["
+        for(var i=0;i<hunposTags.length;i++){
+
+            if(i===hunposTags.length-1){
+                s+="\""+hunposTags[i]+"\"]";
+            }
+            else{
+                s+="\""+hunposTags[i]+"\",";
+            }
+        }
+        return s+"}";
+    }
     /**
      * This method manage all information about the exercise performed by user,
      * saves them on the database, finally redirects the user to the demo page

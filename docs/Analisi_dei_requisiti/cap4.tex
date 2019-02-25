@@ -26,11 +26,12 @@ dove:
 \begin{tabularx}{\textwidth}{| c | p{10cm} | X |}
 		\rowcolor{LightBlue}
 		\color{white}\bfseries Requisito & \color{white}\bfseries Descrizione & \color{white}\bfseries Fonti\\[0.25cm]
-		ROF1 & L'utente non registrato si registra alla piattaforma creando un account personale. & UC-1 \newline UC-33 \newline Interno\\
-		ROF2 & L'utente non autenticato esegue l'accesso alla piattaforma utilizzando le sue credenziali. & UC-2 \newline Interno\\
-		RDF1 & L'utente registrato modifica i dati del proprio profilo personale. & UC-3 \newline Interno\\
+		ROF1 & L'utente non riconosciuto si registra alla piattaforma come allievo inserendo nome, cognome, username, email, password, nome della scuola e città. & UC-1 \newline Interno\\
+		ROF22 & L'utente non riconosciuto si registra alla piattaforma come insegnante inserendo nome, cognome, username, email, password, nome della scuola, città e codice INPS. & UC-33 \newline Interno\\	
+		ROF2 & L'utente non riconosciuto esegue l'accesso alla piattaforma utilizzando le sue credenziali. & UC-2 \newline Interno\\
+		RDF1 & L'utente riconosciuto modifica i dati del proprio profilo personale. & UC-3 \newline Interno\\
 		RDF2 & Il moderatore verifica le credenziali di un utente che richiede la registrazione come insegnante. & UC-4 \newline Interno\\
-		RDF3 & L'utente non registrato viene avvisato in caso di errore nell'inserimento dei dati al momento della registrazione. & UC-5 \newline Interno\\
+		RDF3 & L'utente non riconosciuto viene avvisato in caso di errore nell'inserimento dei dati al momento della registrazione. & UC-5 \newline Interno\\
 		ROF3 & L'utente deve poter ricercare degli esercizi sulla piattaforma. & UC-6 \newline Capitolato\\
 		RPF1 & Durante la ricerca, l'utente ha la possibilità di impostare dei filtri per raffinarla. & UC-6.1 \newline Interno\\
 		RPF2 & Durante la ricerca, l'utente può impostare il filtro secondo gli autori. & UC-6.1.1 \newline Interno\\
@@ -52,8 +53,8 @@ dove:
 		RDF7 & Lo sviluppatore può ottenere una lista delle annotazioni di una particolare frase. & UC-15 \newline Capitolato\\
 		RDF8 & Lo sviluppatore deve poter filtrare i dati trovati durante la ricerca ottenendo una lista di annotazioni. & UC-15.1 \newline Capitolato\\
 		RDF9 & Lo sviluppatore può impostare un filtro temporale per la ricerca delle annotazioni. & UC-15.1.1 \newline Interno\\
-		RDF10 & Lo sviluppatore deve poter includere o escludere dalla ricerca di annotazioni uno o più utenti. & UC-15.1.2 \newline Capitolato\\
-		RDF18 & Lo sviluppatore durante l'esclusione o l'inclusione di un utente deve poter cercare degli utenti & UC-15.1.2.1 \newline Interno\\		
+		RDF10 & Lo sviluppatore deve poter includere dalla ricerca di annotazioni solo uno o più utenti. & UC-15.1.2 \newline Capitolato\\
+		RDF18 & Lo sviluppatore durante l'inclusione di un utente deve poter cercare degli utenti & UC-15.1.2.1 \newline Interno\\		
 		RPF10 & Lo sviluppatore deve poter visualizzare i dati relativi ad una particolare annotazione. & UC-16 \newline Capitolato\\
 		RPF11 & Lo sviluppatore deve poter visualizzare lo storico delle annotazioni. & UC-17 \newline Capitolato\\
 		RPF12 & Lo sviluppatore può ordinare la lista dei risultati ottenuti dalla ricerca tramite determinati parametri. & UC-18 \newline Interno\\	
@@ -73,10 +74,11 @@ dove:
 		ROF15 & L'insegnante deve poter visualizzare la lista degli alunni iscritti ad una delle sue classi. & UC-30 \newline Interno\\
 		ROF16 & L'insegnante deve poter visualizzare la lista delle proprie classi. & UC-31 \newline Interno\\
 		RDF11 & L'allievo può annullare l'iscrizione ad una classe. & UC-32 \newline Interno\\
-		ROF17 & L'utente non autenticato viene avvisato in caso di errore nell'inserimento dei dati al momento dell'autenticazione. & UC-34 \newline Interno\\
-		ROF18 & L'utente registrato viene avvisato in caso di errore nella modifica delle proprie informazioni. & UC-35 \newline Interno\\
-		RPF20 & L'utente non registrato deve ricevere una e-mail per la conferma di iscrizione come insegnante. & UC-36 \newline Interno\\
+		ROF17 & L'utente non riconosciuto viene avvisato in caso di errore nell'inserimento dei dati al momento dell'autenticazione. & UC-34 \newline Interno\\
+		ROF18 & L'utente riconosciuto viene avvisato in caso di errore nella modifica delle proprie informazioni. & UC-35 \newline Interno\\
+		RPF20 & L'utente non riconosciuto deve ricevere una e-mail per la conferma di iscrizione come insegnante. & UC-36 \newline Interno\\
 		ROF19 & L'insegnante visualizzerà un messaggio di errore nel caso in cui stia inserendo una frase vuota come esercizio. & UC-37 \newline Interno\\
+		RDF24 & L'utente potrà accedere alla pagina di registrazione alla piattaforma. & UC-38 \newline Interno\\
 		ROF20 & L'utente può aggiungere una frase e svolgerla come esercizio. & UC-39 \newline Interno\\
 		ROF21 & L'utente deve poter selezionare un esercizio da svolgere tra quelli ricercati nella piattaforma. & UC-40 \newline Interno\\
 		RDF12 & Lo sviluppatore visualizzerà un messaggio di errore nel caso inserisca una data non valida durante il filtraggio di annotazioni in base temporale. & UC-41 \newline Interno\\
@@ -93,9 +95,10 @@ dove:
 		RDF20 & Il moderatore può visualizzare la lista degli utenti iscritti alla piattaforma. & UC-52 \newline Interno\\
 		RPF25 & Il moderatore può ricercare gli utenti inserendo l'username o una parte di esso. & UC-53 \newline Interno\\
 		RDF21 & L'insegnante può ricercare gli esercizi che ha inserito inserendo la frase o una parte di essa. & UC-54 \newline Interno\\
-		RDF22 & L'utente registrato può accedere alla vista del proprio profilo personale. & UC-55 \newline Interno\\
+		RDF22 & L'utente riconosciuto può accedere alla vista del proprio profilo personale. & UC-55 \newline Interno\\
 		RDF23 & Lo sviluppatore può visualizzare la lista dei modelli disponibili. & UC-56 \newline Interno\\
 		RPF26 & Lo sviluppatore può visualizzare informazioni riguardanti i modelli disponibili nella piattaforma. & UC-57 \newline Interno\\
+		RDF-25 & L'utente riconosciuto può disconnettersi dalla piattaforma. & UC-58 \newline Interno\\
 		\hline
 		\caption{Tabella dei requisiti funzionali}
 \end{tabularx}

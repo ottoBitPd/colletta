@@ -16,13 +16,16 @@
 \usepackage{enumitem}
 \usepackage{lastpage}
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=3cm]{geometry}
+\usepackage{ltablex}
+
+\usepackage{titlesec}
 
 \pagestyle{fancy}
 \fancyhf{}
 \lhead{\includegraphics[scale=0.07]{images/logo.png}}
 
 \renewcommand {\footrulewidth}{0.2mm}
-\lfoot {Norme di Progetto}
+\lfoot {Piano di Progetto}
 \rfoot{Pagina \thepage\ di \pageref{LastPage}}
 
 
@@ -37,12 +40,15 @@
 \setcounter{tocdepth}{3}
 \setcounter{secnumdepth}{3}
 
+\titlespacing*{\subsection}{0pt}{8ex plus 1ex minus .2ex}{2.3ex plus .2ex}
+\titlespacing*{\subsubsection}{0pt}{8ex plus 1ex minus .2ex}{2.3ex plus .2ex}
 
 \begin{document}
 	\input{frontpage/frontpage.tex}
-	
+	%{\def\arraystretch{2}\tabcolsep=10pt
 	\newpage
 	\section*{\centering Registro delle modifiche}
+	%{\def\arraystretch{2}\tabcolsep=10pt
 	\begin{tabularx}{\textwidth}{ c | c | c | c | X }
 		\rowcolor{LightBlue}
 		\color{white}\bfseries Versione & 
@@ -96,11 +102,11 @@
 	\section{Preventivo}
 		\input{preventivo.tex}
 		\newpage
-				
+		
 	\section{Consuntivo di periodo}
 		\input{consuntivo.tex}
 		\newpage
-		
+
 	\appendix
 	\section{Organigramma}
 		\input{appendixA.tex}

@@ -1,9 +1,11 @@
+const DatabaseManager = require("./DatabaseManager.js");
 /** Class to manage database. */
-class DbManager{
+class FirebaseAdapter extends DatabaseManager {
     /**
-     * DbManager constructor initializes all attributes needed to DbManager object
+     * FirebaseAdapter constructor initializes all attributes needed to FirebaseAdapter object
      */
     constructor() {
+        super();
         this.database = this.initDB();
         this.sentences=0;
         this.database.ref('data/sentences').on("value", snap => {
@@ -88,4 +90,4 @@ class DbManager{
     }
 }
 
-module.exports = DbManager;
+module.exports = FirebaseAdapter;

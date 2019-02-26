@@ -1,11 +1,13 @@
+const MachineLearningManager = require("./MachineLearningManager.js");
 /**
  * Class that provides the hunpos service to the application
  */
-class Adapter {
+class HunposAdapter extends MachineLearningManager{
     /**
-     * Adapter constructor initializes all attributes needed to Adapter object.
+     * HunposAdapter constructor initializes all attributes needed to HunposAdapter object.
      */
     constructor(){
+        super();
         this.fs = require('fs');
         this.shell = require('shelljs');
     }
@@ -18,7 +20,7 @@ class Adapter {
     getHunposSolution(sentence){
         var words = sentence.split(" ");
         for(let i = 0; i < words.length; i++) {
-            this.fs.appendFileSync('./js/hunpos/input.txt', words[i] + "\n", (err) => {
+            this.fs.appendFileSync('./js/controller/hunpos/input.txt', words[i] + "\n", (err) => {
                 if (err) throw err;
                 console.log('The "data to append" was appended to file!');
             });
@@ -29,9 +31,9 @@ class Adapter {
             }*/
         }
 
-        this.shell.exec('./js/hunpos/hunpos-tag ./js/hunpos/italian_model < ./js/hunpos/input.txt > ./js/hunpos/output.txt');
+        this.shell.exec('./js/controller/hunpos/hunpos-tag ./js/controller/hunpos/italian_model < ./js/controller/hunpos/input.txt > ./js/controller/hunpos/output.txt');
 
-        var wordSolArray = this.fs.readFileSync('./js/hunpos/output.txt').toString().split("\n");
+        var wordSolArray = this.fs.readFileSync('./js/controller/hunpos/output.txt').toString().split("\n");
         let obj = {
             sentence: []
         };
@@ -41,9 +43,9 @@ class Adapter {
             obj.sentence.push({word: wordLab[0],label: wordLab[1]});
             i++;
         }
-        this.fs.writeFileSync('./js/hunpos/input.txt', "");
+        this.fs.writeFileSync('./js/controller/hunpos/input.txt', "");
         return obj;
     }
 }
 
-module.exports = Adapter;
+module.exports = HunposAdapter;

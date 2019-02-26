@@ -1,20 +1,3 @@
-#aggettivo*i*,
-#avverbio*i*,
-#congiunzione*i*,
-#preposizione*i*,
-#punteggiatura*i*,
-#pronome*i*,
-#articolo*i*,
-#nome*i*,
-#tempo*i*,
-#verbo*i*,
-#genere*i*,
-#numero*i*,
-#persona*i*
-{
-    display: none;
-}
-
 *{
     margin:0;
     padding:0;
@@ -26,6 +9,49 @@ html{
     height: 100%;
     background-image: linear-gradient(#335FA8,#8B7870);
 
+}
+
+#back{
+    width:60%;
+    margin:auto;
+    margin-top:10%;
+    background-color:#181341;
+    color:white;
+    padding:2em;
+    text-align:center;
+}
+#back a{
+    display:inline-block;
+    background-color:silver;
+    padding:1em;
+    padding-left:2em;
+    padding-right:2em;
+    margin-top:1em;
+    color:black;
+    font-weight:bold;
+    text-decoration:none;
+}
+h1{
+    font-size:1.5em;
+}
+label{
+    display:block;
+    padding:1.5em;
+    font-size:1.3em;
+}
+input, select{
+    border:1px solid black;
+    padding:0.5em;
+}
+input[type="submit"]{
+    font-weight:bold;
+    margin-top:1em;
+    cursor:pointer;
+}
+#submit{
+    clear:both;
+    text-align:center;
+    width:100%;
 }
 #esercizio{
     width:85%;
@@ -73,17 +99,3 @@ li:nth-child(-n+3){
     margin:auto;
 }
 
-input, select{
-    border:1px solid black;
-    padding:0.5em;
-}
-input[type="submit"]{
-    font-weight:bold;
-    margin-top:1em;
-}
-#submit{
-    clear:both;
-    text-align:center;
-    width:100%;
-
-}

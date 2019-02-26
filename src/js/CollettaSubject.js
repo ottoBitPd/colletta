@@ -1,8 +1,6 @@
 class CollettaSubject{
     constructor(){
-        if(this.constructor === CollettaSubject){
-            throw new TypeError("Cannot construct abstract class");
-        }
+        this.observers = [];
     }
     notify(){
         throw new TypeError("Cannot call abstract method");

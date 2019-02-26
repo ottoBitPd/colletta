@@ -1,11 +1,10 @@
 const CollettaObserver = require("../CollettaObserver.js");
 const CollettaSubject = require("../CollettaSubject.js");
 class PageView extends CollettaObserver{
-    constructor(model){
+    constructor(){
         super();
-        this.model=model;
-        this.observers = [];
         this.collettaSubject= null;//dovremmo dargli un modello
+        this.fs = require('fs');
     }
     update(){
         throw new TypeError("Cannot call abstract method");

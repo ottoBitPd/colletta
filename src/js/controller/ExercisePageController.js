@@ -1,41 +1,48 @@
 const PageController = require("./PageController.js");
-class ExercisePage extends PageController{
-    constructor(view, model,app){
+class ExercisePageController extends PageController{
+    constructor(view, model, db){
         super();
         this.view=view;
         this.model=model;
-        this.app=app;
-
-        var Exercise = require('./model/exercise.js');
+        this.db=db;
+        var Exercise = require('./Exercise.js');
         this.objExercise = new Exercise();
+
+
+
+        var Adapter = require('./HunposAdapter.js');
+        this.objAd = new Adapter();
+
+        this.fs=require('fs');
+
     }
     update(app){
-        app.get('/exercise', (request, response) => {
+        app.post('/exercise', (request, response) => {
 
-            this.objExercise.setSentence(Sentence);
+            this.objExercise.setSentence(request.body.sentence);
 
-            var DbManager = require('./model/dbManager.js');
-            var objDb = new DbManager();
-
-            var Adapter = require('./hunpos/adapter.js');
-            var objAd = new Adapter();
+            console.log("sentence: "+this.objExercise.getSentence());
 
             //checking if the exercise sentence already exists in the database
-            var key= objDb.checkIfExists(this.objExercise.getSentence());
+            var key= this.db.checkIfExists(this.objExercise.getSentence());
             if(key>=0)
                 this.objExercise.setKey(key);
             else
-                this.objExercise.setKey(objDb.writeSentence(this.objExercise.getSentence()));
+                this.objExercise.setKey(this.db.writeSentence(this.objExercise.getSentence()));
             //sending the sentence to hunpos which will provide a solution
-            var hunposSolution = objAd.getHunposSolution(this.objExercise.getSentence());
+            var hunposSolution = this.objAd.getHunposSolution(this.objExercise.getSentence());
             //creation of the array containing tags provided from hunpos solution
             var hunposTags = this.objExercise.extractTags(hunposSolution);
             //converting tags to italian
             var hunposIta = this.tagsToIta(hunposTags);
             /*var obj = this.buildJsonObj(objExercise.getSentence(),objExercise.getKey(),hunposIta,hunposTags);
             console.log("str:"+obj);*/
-
-            response.send(this.getView().getPage());
+            console.log("view: "+JSON.stringify(this.view));
+            this.view.setSentence(this.objExercise.getSentence());
+            this.view.setKey(this.objExercise.getKey());
+            this.view.setHunposIta(hunposIta);
+            this.view.setHunposTags(hunposTags);
+            response.send(this.view.getPage());
         });
     }
     /**
@@ -57,7 +64,7 @@ class ExercisePage extends PageController{
      * @returns {string} a string containing the italian translation of the tag
      */
     tagToIta(tag){
-        var content = this.fs.readFileSync("./js/vocabolario2.json");
+        var content = this.fs.readFileSync("./js/controller/vocabolario2.json");
         var jsonContent = JSON.parse(content);
 
         var lowercase=tag.split(/[A-Z]{1,2}/);
@@ -87,4 +94,4 @@ class ExercisePage extends PageController{
         return result;
     }
 }
-module.exports = ExercisePage;
+module.exports = ExercisePageController;

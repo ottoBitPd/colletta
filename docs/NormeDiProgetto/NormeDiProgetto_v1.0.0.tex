@@ -484,8 +484,8 @@ L'assicurazione della qualità riguarda sia i prodotti che i processi. Al fine d
 Le attività riguardanti l'attività di assicurazione della qualità che vengono presentate di seguito, sono descritte in dettaglio nel documento \textit{Piano di qualifica v2.0.0}.
 
 	\subsubsection{Attività: assicurazione della qualità di processo}
-	Il gruppo OttoBit ha deciso di utilizzare gli standard ISO/IEC 15504 denominato SPIECE$^*$ e lo standard PDCA$^*$ di cui viene riportata di seguito la descrizione.
-	\paragraph{ISO/IEC 15504}
+	Il gruppo OttoBit ha deciso di utilizzare gli standard ISO/IEC 15504 denominato SPIECE$^*$ e lo standard PDCA$^*$ di cui viene riportata di seguito la descrizione.\\
+	\textbf{ISO/IEC 15504} \\
 	Lo standard ISO/IEC 15504, comunemente chiamato SPICE (acronimo di Software Process Improvement and Capability Determination), viene utilizzato per eseguire una valutazione concreta della qualità dei processi, inoltre permette la misurazione della capability dei processi, ovvero l'abilità con cui esso raggiunge l'obiettivo prefissato. Per eseguire queste misurazioni lo standard offre nove attributi da associare ai processi, ognuno dei quali misura un particolare aspetto della maturità del processo:
 	\begin{itemize}
 	\item \textbf{Process performance:} è una misura del grado con cui è stato raggiunto lo scopo del processo. Il completo raggiungimento di quest'attributo è dato dal fatto che il processo raggiunge gli obiettivi prefissati.
@@ -495,7 +495,7 @@ Le attività riguardanti l'attività di assicurazione della qualità che vengono
 	\item \textbf{Process deployment:} è una misura del grado con il quale lo standard di processo viene effettivamente distribuito come un processo definito in grado di raggiungere i propri obiettivi. Le responsabilità e i ruoli per utilizzare lo standard sono assegnati e comunicati, le risorse, le infrastrutture e l'ambiente di lavoro, necessarie per l'applicazione dello standard, sono disponibili allocate e utilizzate. Vengono raccolti e analizzati dati per dimostrare l'adeguatezza e l'efficacia del processo.
 	\item \textbf{Process measurement:} è una misura del grado con il quale i risultati delle misurazioni sono utilizzati per garantire il raggiungimento degli obiettivi del processo. Vengono definiti degli obiettivi di qualità basati sulle misurazioni. I risultati delle misurazioni sono raccolti analizzati e documentati per verificare che gli obiettivi di qualità siano rispettati.
 	\item \textbf{Process control:} è una misura del grado con il quale il processo è quantitativamente gestito per produrre un processo che sia stabile, abile e prevedibile entro limiti definiti. Analisi e tecniche di controllo vengono applicate. Sono stabiliti dei limiti di variazione per i risultati delle misurazioni. Vengono intraprese delle azioni correttive se necessario. 
-	\item \textbf{Process innovation:} è una misura del grado con il quale vengono identificate delle modifiche al processo attraverso l'analisi di cause comuni di variazione delle performance, e dalla ricerca di approcci innovativi alla definizione e all'implementazione del processo. Vengono definiti degli obiettivi di miglioramento. Vengono analizzati dei dati per identificare le cause comuni di variazione delle performance del processo e sucessivamente per identificare delle best-practice*.
+	\item \textbf{Process innovation:} è una misura del grado con il quale vengono identificate delle modifiche al processo attraverso l'analisi di cause comuni di variazione delle performance, e dalla ricerca di approcci innovativi alla definizione e all'implementazione del processo. Vengono definiti degli obiettivi di miglioramento. Vengono analizzati dei dati per identificare le cause comuni di variazione delle performance del processo e successivamente per identificare delle best-practice*.
 	\item \textbf{Process optimization:} è una misura del grado con il quale delle modifiche alla definizione, gestione e alle prestazioni del processo si traducono in un impatto che porta a raggiungere rilevanti miglioramenti al processo. L'impatto dei cambiamenti proposti viene valutato rispetto agli obiettivi definiti dal processo e dallo standard di processo.
 	\end{itemize}
 	A questi attributi viene assegnato uno dei seguenti quattro livelli di misura:
@@ -503,7 +503,7 @@ Le attività riguardanti l'attività di assicurazione della qualità che vengono
 	\item \textbf{N not implemented:} non ci sono segni di raggiungimento dell'attributo.
 	\item \textbf{P partial implemented:} esistono alcuni risultati dell'attributo in questione.
 	\item \textbf{L largely implemented:} ci sono significanti segni di raggiungimento dell'attributo in questione.
-	\item \textbf{F fully implemented:} viene identificato un pieno raggiungimento degli obiettvi dell'attributo
+	\item \textbf{F fully implemented:} viene identificato un pieno raggiungimento degli obiettivi dell'attributo
 	\end{itemize}
 	Infine sulla base delle valutazioni assegnate ad ogni attributo del processo, potrà essere valutato il grado complessivo di maturazione, il quale varierà sui seguenti sei valori:
 	\begin{itemize}
@@ -575,47 +575,99 @@ La seguente immagine riporta le attività previste a tale scopo e ne segue una b
 	\paragraph{Metriche per i processi}
 	\begin{itemize}
 	 \item \textbf{MPC1 - ISO/IEC 15504 (SPICE)}: lo standard ISO/IEC 15504 è lo standard di riferimento per valutare oggettivamente la qualità dei processi software al fine di migliorarli e permette di misurare indipendentemente ogni processo tramite degli attributi, studiando il range di risultati che si ottengono eseguendolo. 
+	 \begin{itemize}
+	 \item Livello di accettazione: livello 2
+	 \item Livello ottimale: livello 4 o superiore
+	 \end{itemize}
 	 \item \textbf{MPC2 - Requirement Stability Index (RSI)}: indica la percentuale dei requisiti rimasti invariati nel tempo. Un valore elevato di tale metrica indica un’attività di analisi attenta e corretta. Viene calcolata tramite la seguente formula:
 	 \begin{center}
 		$RSI[\%] =\ 1\ -\ \frac{(numero\ requisiti\ aggiunti)\ +\ (numero\ requisiti\ tolti)\ +\ (numero\ requisiti\ modificati)}{numero\ requisiti\ totali\ iniziali}$
 	\end{center}
+	\begin{itemize}
+	 \item Livello di accettazione: superiore a 0.6
+	 \item Livello ottimale: 1
+	 \end{itemize}
 	\item \textbf{MPC3 - Violazione dello stile di codifica}: indica il numero di violazioni allo stile di codifica rispetto quanto normato nella sezione BOH. Un risultato elevato indica poca cura da parte dei programmatori che rende il codice poco affidabile. 
+	\begin{itemize}
+	 \item Livello di accettazione: minore di 10
+	 \item Livello ottimale: 0
+	 \end{itemize}
 	\item \textbf{MPC4 - Test di integrazione implementati}: indica il rapporto tra i test di integrazione effettivamente implementati e quelli totali preventivati. Un valore elevato di tale metrica indica un livello soddisfacente di test sviluppati per le interazioni tra le varie componenti del sistema. Per calcolare questo dato, si usa la seguente formula: 
 	\begin{center}
 		$TII[\%]=\frac{numero\ test\ integrazione\ implementati}{numero\ test\ integrazione\ totali}$
 	\end{center}
+	\begin{itemize}
+	 \item Livello di accettazione: superiore al 90\%
+	 \item Livello ottimale: 100\%
+	 \end{itemize}
 	\item \textbf{MPC5 - Test di sistema implementati}: indica il rapporto tra i test di sistema effettivamente implementati e quelli totali preventivati. Un valore elevato di tale metrica indica un buon livello di funzionalità del sistema. Per calcolare questo dato, di usa la seguente formula:
 	\begin{center}
 		$TII[\%]=\frac{numero\ test\ sistema\ implementati}{numero\ test\ sistema\ totali}$
 	\end{center}
+	\begin{itemize}
+	 \item Livello di accettazione: superiore al 90\%
+	 \item Livello ottimale: 100\%
+	 \end{itemize}
 	\item \textbf{MPC6 - Test di unità implementati}: indica il rapporto tra i test di unità effettivamente implementati e quelli totali preventivati. Un valore elevato di tale metrica indica un livello soddisfacente di test sviluppati per le interazioni tra le varie componenti del sistema. Per calcolare questo dato, si usa la seguente formula: 
 	\begin{center}
 		$TUI[\%]=\frac{numero\ test\ unita\ implementati}{numero\ test\ unita\ totali}$
 	\end{center}
+	\begin{itemize}
+	 \item Livello di accettazione: superiore al 90\%
+	 \item Livello ottimale: 100\%
+	 \end{itemize}
 	\item \textbf{MPC7 - Test di accettazione implementati}: indica il rapporto tra i test di accettazione effettivamente implementati e quelli totali preventivati. Un valore elevato di tale metrica indica un livello soddisfacente di test sviluppati per le interazioni tra le varie componenti del sistema. Per calcolare questo dato, si usa la seguente formula: 
 	\begin{center}
 		$TAI[\%]=\frac{numero\ test\ accettazione\ implementati}{numero\ test\ accettazione\ totali}$
 	\end{center}
+	\begin{itemize}
+	 \item Livello di accettazione: superiore al 90\%
+	 \item Livello ottimale: 100\%
+	 \end{itemize}
 	\end{itemize}
 	
 	
 	\paragraph{Metriche per i prodotti: documenti} 
 	\begin{itemize}
 		\item \textbf{MPD1 - Correttezza ortografica}: su ogni documento sarà possibile individuare gli errori ortografici tramite l'editor Texmaker. Il numero di errori rilevati accettabili è pari a zero.
+		\begin{itemize}
+	 \item Livello di accettazione: 100\%
+	 \item Livello ottimale: 100\%
+	 \end{itemize}
+	 
 		\item \textbf{MPD2 - Indice di Gulpease}: l'indice Gulpease$^*$ è un indice di leggibilità di un testo tarato sulla lingua italiana. Rispetto ad altri ha il vantaggio di utilizzare la lunghezza delle parole in lettere anziché in sillabe, semplificandone il calcolo automatico. Permette di misurare la complessità dello stile di un documento. L'indice di Gulpease considera due variabili linguistiche: la lunghezza della parola e la lunghezza della frase rispetto al numero delle lettere. La formula per il suo calcolo è:
 	\begin{center}
 		$89\ +\ \frac{300\ *\ (numero\ delle\ frasi)\ -\ 10\ *\ (numero\ delle\ lettere)}{numero\ delle\ parole}$
 	\end{center}
-	I risultati sono compresi tra 0 e 100, dove il valore 100 indica la leggibilità più alta e 0 la leggibilità più bassa. Il Verificatore si assicurerà che l'indice risultante sarà compreso tra 50 e 100.
-	
+	I risultati sono compresi tra 0 e 100, dove il valore 100 indica la leggibilità più alta e 0 la leggibilità più bassa. I testi il cui indice è inferiore ad 80 sono difficili da leggere per chi ha la sola licenza elementare, inferiore a 60 per chi ha la licenza media e inferiore a 60 per chi possiede un diploma superiore.
+	\begin{itemize}
+	 \item Livello di accettazione: superiore a 40
+	 \item Livello ottimale: superiore a 60
+	 \end{itemize}	
 	\end{itemize}
 	
 	\paragraph{Metriche per i prodotti: software} 
 	\begin{itemize}
 		\item \textbf{MPS1 - Percentuale di superamento test}: il numero indicato deve corrispondere al 100\%. Al termine dell'attività di verifica tutti i test eseguiti devono essere superati.
+		\begin{itemize}
+	 \item Livello di accettazione: superiore al 85\%
+	 \item Livello ottimale: superiore al 100\%
+	 \end{itemize}
 	    \item \textbf{MPS2 - Numero di parametri per metodo}: il numero di parametri non deve essere elevato, la conseguenza è una scarsa manutenibilità del codice.
+	    \begin{itemize}
+	 \item Livello di accettazione: minore di 5
+	 \item Livello ottimale: minore di 3
+	 \end{itemize}
 	    \item \textbf{MPS3 - Numero di attributi per classe}: il numero di attributi non deve essere elevato, il suggerimento è di scomporre la classe in più classi per mantenere una manutenibilità del codice discreta.
+	    \begin{itemize}
+	 \item Livello di accettazione: minore di 10
+	 \item Livello ottimale: minore di 3
+	 \end{itemize}
 	    \item \textbf{MPS4 - Numero di metodi per classe}: il numero di metodi per classe non deve essere elevato, il suggerimento è di scomporre la classe in più classi per mantenere una manutenibilità del codice discreta.
+	      \begin{itemize}
+	 \item Livello di accettazione: minore di 15
+	 \item Livello ottimale: minore di 5
+	 \end{itemize}
 	    \item \textbf{MPS5 - Complessità ciclomatica media}: per dare una valutazione alla complessità del codice si utilizza questa metrica basata sulla struttura del grafo. Il valore generato dalla seguente formula se dovesse essere troppo elevato indica un'eccessiva complessità del codice.
 	
     	v(G) = L – N +2*P
@@ -624,18 +676,34 @@ La seguente immagine riporta le attività previste a tale scopo e ne segue una b
     	    \item E: rappresenta il numero di archi;
     	    \item P: rappresenta il numero di componenti connesse.
     	\end{itemize}
+    	  \begin{itemize}
+	 \item Livello di accettazione: minore di 10
+	 \item Livello ottimale: minore di 8
+	 \end{itemize}
 		\item \textbf{MPS6 - Implementazione dei requisiti obbligatori}: permette di verificare in ogni istante la percentuale di requisiti obbligatori soddisfati; viene calcolata con la seguente formula: 
 		\begin{center}
 		$\frac{numero\ requisiti\ obbligatori\ implementati}{numero\ requisiti\ obbligatori\ totali}$
 	\end{center}
+	\begin{itemize}
+	 \item Livello di accettazione: 100\%
+	 \item Livello ottimale: 100\%
+	 \end{itemize}
 		\item \textbf{MPS7 - Implementazione dei requisiti desiderabili}: permette di verificare in ogni istante la percentuale di requisiti desiderabili soddisfati; viene calcolata con la seguente formula: 
 		\begin{center}
 		$\frac{numero\ requisiti\ desiderabili\ implementati}{numero\ requisiti\ desiderabili\ totali}$
 	\end{center}
+	\begin{itemize}
+	 \item Livello di accettazione: superiore al 60\%
+	 \item Livello ottimale: superiore al 80\%
+	 \end{itemize}
 		\item \textbf{MPS8 - Copertura dei test sul codice}: indica la percentuale di istruzioni che vengono eseguite durante i test rispetto il totale. Maggiore è la percentuale testata, maggiore è la possibilità che eventuali errori siano individuati e risolti; si calcola con la seguente formula:
 		\begin{center}
 		$\frac{numero\ istruzioni\ eseguite}{numero\ istruzioni\ totali}$
 	\end{center}
+	\begin{itemize}
+	 \item Livello di accettazione: superiore al 50\%
+	 \item Livello ottimale: superiore al 70\%
+	 \end{itemize}
 	
 	\end{itemize}
 	

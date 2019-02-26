@@ -4,7 +4,7 @@
  **/
 class Controller {
     /**
-     * Controller constructor initializes all attributes needed to Controller object.
+     * controller constructor initializes all attributes needed to controller object.
      */
     constructor(){
         var View = require('./view.js');
@@ -70,8 +70,8 @@ class Controller {
             var hunposTags = objExercise.extractTags(hunposSolution);
             //converting tags to italian
             var hunposIta = this.tagsToIta(hunposTags);
-            var obj = this.buildJsonObj(objExercise.getSentence(),objExercise.getKey(),hunposIta,hunposTags);
-            console.log("str:"+obj);
+            /*var obj = this.buildJsonObj(objExercise.getSentence(),objExercise.getKey(),hunposIta,hunposTags);
+            console.log("str:"+obj);*/
             response.send(this.v.getExercise(objExercise.getSentence(),objExercise.getKey(),hunposIta,hunposTags));
         });
     }

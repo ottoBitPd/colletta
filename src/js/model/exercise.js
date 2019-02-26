@@ -1,6 +1,6 @@
 class Exercise {
-    constructor(sentence){
-        this.sentence=sentence;
+    constructor(){
+        this.sentence;
         this.key;
         this.tags=[];
     }
@@ -16,7 +16,9 @@ class Exercise {
     setKey(key){
         this.key=key;
     }
-
+    setSentence(sentence){
+        this.sentence=sentence;
+    }
     extractTags(objSolution){
         for(var i in objSolution.sentence){
             this.tags.push(objSolution.sentence[i].label);

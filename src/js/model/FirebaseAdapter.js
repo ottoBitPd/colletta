@@ -49,7 +49,7 @@ class FirebaseAdapter extends DatabaseManager {
         var equal=false;
         for(var sentenceKey=0;sentenceKey<this.sentences;sentenceKey++){
             this.database.ref('data/sentences/'+sentenceKey).on("value", snap => {
-                if(sentence===snap.val().sentence){
+                if(sentence.toLowerCase()===snap.val().sentence.toLowerCase()){
                     equal=true;
                 }
             });

@@ -1,11 +1,11 @@
 const PageView = require("./PageView.js");
 
 class ExercisePageView extends PageView{
-    constructor(model){
-        super(model);
+    constructor(){
+        super();
         this.sentence=null;
         this.key=null;
-        this.hunposIta=null;
+        this.hunposTranslation=null;
         this.hunposTags=null;
     }
 
@@ -17,8 +17,8 @@ class ExercisePageView extends PageView{
         this.key = value;
     }
 
-    setHunposIta(value) {
-        this.hunposIta = value;
+    setHunposTranslation(value) {
+        this.hunposTranslation = value;
     }
 
     setHunposTags(value) {
@@ -26,10 +26,10 @@ class ExercisePageView extends PageView{
     }
 
     getPage() {
-        var data =  this.fs.readFileSync('./public/exercise.html').toString();
+        var data =  this.fileSystem.readFileSync('./public/exercise.html').toString();
         var words = this.sentence.split(" ");
-        data=data.replace(/\*table\*/g, this.buildForm(words,this.hunposIta));
-        data=data.replace(/\*script\*/g, this.buildScript(words));
+        data=data.replace(/\*table\*/g, this.buildForm(words));
+        data=data.replace(/\*script\*/g, this.getScript());
         data=data.replace(/\*css\*/g, this.buildCss(words));
         data=data.replace(/\*wordsnumber\*/g, words.length);
         data=data.replace(/\*sentence\*/g, this.sentence);
@@ -38,20 +38,12 @@ class ExercisePageView extends PageView{
         return data;
     }
 
-    buildForm(words,hunposIta){
+    buildForm(words){
         var table="";
         for(var i=0;i < words.length;i++){
-            table += "<li class='first'>" + words[i] + "</li><li class='second'>"+hunposIta[i]+"</li><li class='third'>"+this.getInputAnalisi(i)+"</li>\n";
+            table += "<li class='first'>" + words[i] + "</li><li class='second'>"+this.hunposTranslation[i]+"</li><li class='third'>"+this.getSelect(i)+"</li>\n";
         }
         return table;
-    }
-
-    buildScript(words){
-        var script="";
-        for(var i=0;i < words.length;i++){
-            script += this.getScript(i);
-        }
-        return script;
     }
 
     buildCss(words){
@@ -62,19 +54,18 @@ class ExercisePageView extends PageView{
         return css;
     }
 
-    getInputAnalisi(i){
-        var input =  this.fs.readFileSync('./public/htmlSelect.html').toString();
-        return input.replace(/\*i\*/g,i);
+    getSelect(index){
+        var input =  this.fileSystem.readFileSync('./public/htmlSelect.html').toString();
+        return input.replace(/\*i\*/g,index);
     }
 
-    getScript(i){
-        var input =  this.fs.readFileSync('./public/jsSelect.js').toString();
-        return input.replace(/\*i\*/g,i);
+    getScript(){
+        return this.fileSystem.readFileSync('./public/jsSelect.js').toString();
     }
 
-    getCss(i){
-        var input =  this.fs.readFileSync('./public/cssSelect.css').toString();
-        return input.replace(/\*i\*/g,i);
+    getCss(index){
+        var input =  this.fileSystem.readFileSync('./public/cssSelect.css').toString();
+        return input.replace(/\*i\*/g,index);
     }
 }
 module.exports = ExercisePageView;

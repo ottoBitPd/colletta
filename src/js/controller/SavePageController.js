@@ -1,10 +1,8 @@
 const PageController = require("./PageController.js");
 class SavePageController extends PageController{
-    constructor(view, model, db){
-        super();
-        this.view=view;
+    constructor(view, model){
+        super(view);
         this.model=model;
-        this.db=db;
 
     }
     update(app){
@@ -18,8 +16,9 @@ class SavePageController extends PageController{
 
             //building a array merging tags coming from user corrections and hunpos solution
             var finalTags = this.correctsHunpos(hunposTags,tagsCorrection);
+            console.log("finalTags: "+finalTags);
             //saving in the database the final solution for the exercise
-            this.db.writeSolution(sentence.split(" "), finalTags, sentence, key);
+            this.model.writeSolution(sentence.split(" "), finalTags, sentence, key);
             response.send(this.view.getPage());
         });
     }

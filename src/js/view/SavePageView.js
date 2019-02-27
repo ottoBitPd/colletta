@@ -1,12 +1,12 @@
 const PageView = require("./PageView.js");
 
 class SavePageView extends PageView{
-    constructor(model){
-        super(model);
+    constructor(){
+        super();
     }
 
     getPage() {
-        return this.fs.readFileSync('./public/exerciseSaved.html').toString();
+        return this.fileSystem.readFileSync('./public/exerciseSaved.html').toString();
     }
 
 }

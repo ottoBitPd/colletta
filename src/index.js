@@ -17,16 +17,16 @@ app.use(express.static(__dirname + '/public'));
 var FirebaseAdapter = require('./js/model/FirebaseAdapter.js');
 const objDb = new FirebaseAdapter();
 
-var insertPageView = new InsertPageView(null);
-var insertPage = new InsertPageController(insertPageView, null);
+var insertPageView = new InsertPageView();
+var insertPage = new InsertPageController(insertPageView);
 insertPage.update(app);
 
-var exercisePageView = new ExercisePageView(null);
-var exercisePage = new ExercisePageController(exercisePageView, null, objDb);
+var exercisePageView = new ExercisePageView();
+var exercisePage = new ExercisePageController(exercisePageView, objDb );
 exercisePage.update(app);
 
-var savePageView = new SavePageView(null);
-var savePage = new SavePageController(savePageView, null, objDb);
+var savePageView = new SavePageView();
+var savePage = new SavePageController(savePageView, objDb);
 savePage.update(app);
 
 

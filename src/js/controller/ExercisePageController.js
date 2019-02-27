@@ -1,46 +1,40 @@
 const PageController = require("./PageController.js");
 class ExercisePageController extends PageController{
-    constructor(view, model, db){
-        super();
-        this.view=view;
+    constructor(view, model){
+        super(view);
         this.model=model;
-        this.db=db;
         var Exercise = require('./Exercise.js');
-        this.objExercise = new Exercise();
+        this.exercise = new Exercise();
 
+        var HunposAdapter = require('./HunposAdapter.js');
+        this.hunpos = new HunposAdapter();
 
-
-        var Adapter = require('./HunposAdapter.js');
-        this.objAd = new Adapter();
-
-        this.fs=require('fs');
+        this.fileSystem=require('fs');
 
     }
     update(app){
         app.post('/exercise', (request, response) => {
 
-            this.objExercise.setSentence(request.body.sentence);
+            this.exercise.setSentence(request.body.sentence);
 
-            console.log("sentence: "+this.objExercise.getSentence());
+            console.log("sentence: "+this.exercise.getSentence());
 
             //checking if the exercise sentence already exists in the database
-            var key= this.db.checkIfExists(this.objExercise.getSentence());
+            var key= this.model.checkIfExists(this.exercise.getSentence());
             if(key>=0)
-                this.objExercise.setKey(key);
+                this.exercise.setKey(key);
             else
-                this.objExercise.setKey(this.db.writeSentence(this.objExercise.getSentence()));
+                this.exercise.setKey(this.model.writeSentence(this.exercise.getSentence()));
             //sending the sentence to hunpos which will provide a solution
-            var hunposSolution = this.objAd.getHunposSolution(this.objExercise.getSentence());
+            var hunposSolution = this.hunpos.getHunposSolution(this.exercise.getSentence());
             //creation of the array containing tags provided from hunpos solution
-            var hunposTags = this.objExercise.extractTags(hunposSolution);
+            var hunposTags = this.exercise.extractTags(hunposSolution);
             //converting tags to italian
-            var hunposIta = this.tagsToIta(hunposTags);
-            /*var obj = this.buildJsonObj(objExercise.getSentence(),objExercise.getKey(),hunposIta,hunposTags);
-            console.log("str:"+obj);*/
-            console.log("view: "+JSON.stringify(this.view));
-            this.view.setSentence(this.objExercise.getSentence());
-            this.view.setKey(this.objExercise.getKey());
-            this.view.setHunposIta(hunposIta);
+            var hunposTranslation = this.translateTags(hunposTags);
+            //console.log("view: "+JSON.stringify(this.view));
+            this.view.setSentence(this.exercise.getSentence());
+            this.view.setKey(this.exercise.getKey());
+            this.view.setHunposTranslation(hunposTranslation);
             this.view.setHunposTags(hunposTags);
             response.send(this.view.getPage());
         });
@@ -50,12 +44,12 @@ class ExercisePageController extends PageController{
      * @param tags - array of tag coming from hunpos solution
      * @returns {Array} an array containing the italian translation for every tag
      */
-    tagsToIta(tags){
-        var hunposIta = [];
+    translateTags(tags){
+        var hunposTranslation = [];
         for(var i=0;i<tags.length;i++){
-            hunposIta[i]=this.tagToIta(tags[i]);
+            hunposTranslation[i]=this.translateTag(tags[i]);
         }
-        return hunposIta;
+        return hunposTranslation;
     }
 
     /**
@@ -63,8 +57,8 @@ class ExercisePageController extends PageController{
      * @param tag - a string containg the tag to convert
      * @returns {string} a string containing the italian translation of the tag
      */
-    tagToIta(tag){
-        var content = this.fs.readFileSync("./js/controller/vocabolario2.json");
+    translateTag(tag){
+        var content = this.fileSystem.readFileSync("./js/controller/vocabolario.json");
         var jsonContent = JSON.parse(content);
 
         var lowercase=tag.split(/[A-Z]{1,2}/);

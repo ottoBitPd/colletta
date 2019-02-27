@@ -1,27 +1,18 @@
-const CollettaObserver = require("../CollettaObserver.js");
-const CollettaSubject = require("../CollettaSubject.js");
-class PageView extends CollettaObserver{
+/**
+ * PageView is an abstract class that represents the view
+ * for all the application pages
+ */
+class PageView{
+    /**
+     * PageView is an abstract class and it cannot have objects
+     */
     constructor(){
-        super();
-        this.collettaSubject= null;//dovremmo dargli un modello
-        this.fs = require('fs');
+        this.fileSystem = require('fs');
     }
-    update(){
-        throw new TypeError("Cannot call abstract method");
-    }
-    attach(observer){
-        this.observers.push(observer);
-    }
-    detach(observer){
-        this.observers.splice( this.observers.indexOf(observer), 1 );
-    }
-    notify(){
-        for(var i in this.observers)
-            i.update();
-    }
-    getModel(){
-        return this.model;
-    }
+
+    /**
+     * Abstract method
+     */
     getPage(){
         throw new TypeError("Cannot call abstract method");
     }

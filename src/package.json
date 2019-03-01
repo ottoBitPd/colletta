@@ -1,0 +1,16 @@
+{
+  "scripts": {
+    "test": "mocha"
+  },
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es5",
+    "sourceMap": true
+  },
+  "exclude": [
+    "node_modules"
+  ],
+  "devDependencies": {
+    "chai": "^4.2.0"
+  }
+}

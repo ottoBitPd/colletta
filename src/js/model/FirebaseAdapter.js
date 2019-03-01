@@ -10,7 +10,7 @@ class FirebaseAdapter extends DatabaseManager {
         this.sentences=0;
         this.database.ref('data/sentences').on("value", snap => {
             this.sentences=snap.numChildren();
-            console.log("inizio key: "+this.sentences);
+            //console.log("inizio key: "+this.sentences);
         });
     }
 
@@ -39,6 +39,9 @@ class FirebaseAdapter extends DatabaseManager {
         this.database.ref('data/sentences/'+this.sentences).set({sentence: sentence});
         return this.sentences-1;
     }
+
+
+
 
     /**
      * This method checks if a sentence already exists in the database.

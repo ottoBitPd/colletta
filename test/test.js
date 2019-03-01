@@ -1,5 +1,5 @@
 
-var Exercise = require('../js/controller/Exercise.js');
+var Exercise = require('../src/js/controller/Exercise.js');
 var expect = require('chai').expect;
 
 describe('#getSentence()', function() {
@@ -13,7 +13,3 @@ describe('#getSentence()', function() {
         })
     })
 })
-
-
-
-var obj = new Excercise();

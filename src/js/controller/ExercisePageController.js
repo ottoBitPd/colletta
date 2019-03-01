@@ -1,41 +1,40 @@
 const PageController = require("./PageController.js");
-class ExercisePage extends PageController{
-    constructor(view, model,app){
-        super();
-        this.view=view;
+class ExercisePageController extends PageController{
+    constructor(view, model){
+        super(view);
         this.model=model;
-        this.app=app;
+        var Exercise = require('./Exercise.js');
+        this.exercise = new Exercise();
 
-        var Exercise = require('./model/exercise.js');
-        this.objExercise = new Exercise();
+        var HunposAdapter = require('./HunposAdapter.js');
+        this.hunpos = new HunposAdapter();
+
+        this.fileSystem=require('fs');
+
     }
     update(app){
-        app.get('/exercise', (request, response) => {
+        app.post('/exercise', (request, response) => {
 
-            this.objExercise.setSentence(Sentence);
-
-            var DbManager = require('./model/dbManager.js');
-            var objDb = new DbManager();
-
-            var Adapter = require('./hunpos/adapter.js');
-            var objAd = new Adapter();
+            this.exercise.setSentence(request.body.sentence);
 
             //checking if the exercise sentence already exists in the database
-            var key= objDb.checkIfExists(this.objExercise.getSentence());
+            var key= this.model.checkIfExists(this.exercise.getSentence());
             if(key>=0)
-                this.objExercise.setKey(key);
+                this.exercise.setKey(key);
             else
-                this.objExercise.setKey(objDb.writeSentence(this.objExercise.getSentence()));
+                this.exercise.setKey(this.model.writeSentence(this.exercise.getSentence()));
             //sending the sentence to hunpos which will provide a solution
-            var hunposSolution = objAd.getHunposSolution(this.objExercise.getSentence());
+            var hunposSolution = this.hunpos.getHunposSolution(this.exercise.getSentence());
             //creation of the array containing tags provided from hunpos solution
-            var hunposTags = this.objExercise.extractTags(hunposSolution);
+            var hunposTags = this.exercise.extractTags(hunposSolution);
             //converting tags to italian
-            var hunposIta = this.tagsToIta(hunposTags);
-            /*var obj = this.buildJsonObj(objExercise.getSentence(),objExercise.getKey(),hunposIta,hunposTags);
-            console.log("str:"+obj);*/
-
-            response.send(this.getView().getPage());
+            var hunposTranslation = this.translateTags(hunposTags);
+            //console.log("view: "+JSON.stringify(this.view));
+            this.view.setSentence(this.exercise.getSentence());
+            this.view.setKey(this.exercise.getKey());
+            this.view.setHunposTranslation(hunposTranslation);
+            this.view.setHunposTags(hunposTags);
+            response.send(this.view.getPage());
         });
     }
     /**
@@ -43,12 +42,12 @@ class ExercisePage extends PageController{
      * @param tags - array of tag coming from hunpos solution
      * @returns {Array} an array containing the italian translation for every tag
      */
-    tagsToIta(tags){
-        var hunposIta = [];
+    translateTags(tags){
+        var hunposTranslation = [];
         for(var i=0;i<tags.length;i++){
-            hunposIta[i]=this.tagToIta(tags[i]);
+            hunposTranslation[i]=this.translateTag(tags[i]);
         }
-        return hunposIta;
+        return hunposTranslation;
     }
 
     /**
@@ -56,8 +55,8 @@ class ExercisePage extends PageController{
      * @param tag - a string containg the tag to convert
      * @returns {string} a string containing the italian translation of the tag
      */
-    tagToIta(tag){
-        var content = this.fs.readFileSync("./js/vocabolario2.json");
+    translateTag(tag){
+        var content = this.fileSystem.readFileSync("./js/controller/vocabolario.json");
         var jsonContent = JSON.parse(content);
 
         var lowercase=tag.split(/[A-Z]{1,2}/);
@@ -87,4 +86,4 @@ class ExercisePage extends PageController{
         return result;
     }
 }
-module.exports = ExercisePage;
+module.exports = ExercisePageController;

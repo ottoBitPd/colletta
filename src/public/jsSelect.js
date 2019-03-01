@@ -221,7 +221,6 @@ function pronome(i){
     }
 }
 function nome(i){
-    alert("nome");
     var x = document.getElementById("nome"+i).value;
     switch(x){
         case 'S':
@@ -251,7 +250,6 @@ function verbo(i){
     }
 }
 function tempo(i){
-    alert("tempo");
     var x = document.getElementById("tempo"+i).value;
     switch(x){
         case 'f':

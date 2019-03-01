@@ -1,14 +1,22 @@
 const PageController = require("./PageController.js");
+/**
+ * InsertPageController is a class that represents the controller for the insert page
+ */
 class InsertPageController extends PageController{
-    constructor(view, model,app){
-        super();
-        this.view=view;
-        this.model=model;
-        this.app=app;
+    /**
+     * InsertPageController constructor initializes all attributes needed to InsertPageController object.
+     */
+    constructor(view){
+        super(view);
     }
+
+    /**
+     * This method provides the insert page, received from the View.
+     * @param app
+     */
     update(app){
         app.get('/insert', (request, response) => {
-            response.send(this.getView().getPage());
+            response.send(this.view.getPage());
         });
     }
 }

@@ -1,14 +1,16 @@
+const DatabaseManager = require("./DatabaseManager.js");
 /** Class to manage database. */
-class DbManager{
+class FirebaseAdapter extends DatabaseManager {
     /**
-     * DbManager constructor initializes all attributes needed to DbManager object
+     * FirebaseAdapter constructor initializes all attributes needed to FirebaseAdapter object
      */
     constructor() {
+        super();
         this.database = this.initDB();
         this.sentences=0;
         this.database.ref('data/sentences').on("value", snap => {
             this.sentences=snap.numChildren();
-            console.log("inizio key: "+this.sentences);
+            //console.log("inizio key: "+this.sentences);
         });
     }
 
@@ -38,6 +40,9 @@ class DbManager{
         return this.sentences-1;
     }
 
+
+
+
     /**
      * This method checks if a sentence already exists in the database.
      * @param sentence - the sentence to check.
@@ -47,7 +52,7 @@ class DbManager{
         var equal=false;
         for(var sentenceKey=0;sentenceKey<this.sentences;sentenceKey++){
             this.database.ref('data/sentences/'+sentenceKey).on("value", snap => {
-                if(sentence===snap.val().sentence){
+                if(sentence.toLowerCase()===snap.val().sentence.toLowerCase()){
                     equal=true;
                 }
             });
@@ -88,4 +93,4 @@ class DbManager{
     }
 }
 
-module.exports = DbManager;
+module.exports = FirebaseAdapter;

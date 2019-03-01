@@ -2,16 +2,12 @@ class Exercise {
     constructor(){
         this.sentence;
         this.key;
-        this.tags=[];
     }
     getSentence(){
         return this.sentence;
     }
     getKey(){
         return this.key;
-    }
-    getTags(){
-        return this.tags;
     }
     setKey(key){
         this.key=key;
@@ -20,10 +16,11 @@ class Exercise {
         this.sentence=sentence;
     }
     extractTags(objSolution){
+        var tags =[];
         for(var i in objSolution.sentence){
-            this.tags.push(objSolution.sentence[i].label);
+            tags.push(objSolution.sentence[i].label);
         }
-        return this.tags;
+        return tags;
     }
 }
 

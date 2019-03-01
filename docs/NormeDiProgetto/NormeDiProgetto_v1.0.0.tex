@@ -709,11 +709,17 @@ La seguente immagine riporta le attività previste a tale scopo e ne segue una b
 	
 	\subsubsection{Analisi}
 	\paragraph{Analisi statica}
-	TODO Sonarqube e sonarcloud
+	\noindent \\
+	L'analisi statica `e un metodo in grado di rilevare problemi sia all'interno dei documenti che del codice sorgente del progetto. Per facilitarne la corretta esecuzione nel corso del tempo verrà svolta attraverso due metodi:
+\begin{itemize}
+	\item\textbf{Walkthrough:} Questo metodo risulta essere il più dispendioso in termini di efficienza ma si tratta anche del più semplice da imparare, diventando così essenziale nelle prime fasi del progetto. Il  metodo  prevede  una  revisione  a  largo  spettro  parallelizzabile  in  modo  tale  da stilare una prima lista degli errori più comuni.
+	\item \textbf{Inspection:} Questo procedimento risulta molto più veloce del precedente perché, utilizzando la lista di controllo degli errori e dalle misurazioni effettuate, permette un'analisi più efficace dei punti critici, tralasciando invece le parti senza problematiche.
+	\end{itemize}
 	
 	\paragraph{Analisi dinamica}
+	\noindent \\
 	L'analisi dinamica è una tecnica di analisi del prodotto software che ne richiede l'esecuzione. Viene eseguita ogni qualvolta che si è terminata una parte di prodotto tramite dei test di unità, volti a verificare il corretto funzionamento del prodotto e a permettere l'identificazione di anomalie. \\
-	I test devono essere ripetibili e deterministici, ovssia date le stesse precondizioni e lo stesso input, l'output deve essere sempre lo stesso. Per ogni test devono dunque essere definiti i seguenti parametri:
+	I test devono essere ripetibili e deterministici, ossia date le stesse precondizioni e lo stesso input, l'output deve essere sempre lo stesso. Per ogni test devono dunque essere definiti i seguenti parametri:
 	\begin{itemize}
 		\item \textbf{Ambiente}: il sistema hardware e software sul quale viene eseguito il test di prodotto;
 		\item \textbf{Stato iniziale}: lo stato iniziale dal quale il test viene eseguito;
@@ -722,11 +728,21 @@ La seguente immagine riporta le attività previste a tale scopo e ne segue una b
 		\item \textbf{Istruzioni aggiuntive}: ulteriori informazioni utili quali istruzioni di esecuzione dei test, per l'interpretazione dell'output, ecc. 
 	\end{itemize}
 		
-	\subsubsection{Strumenti}
+	\subsubsection{Strumenti}	
 	\paragraph{Verifica ortografica}
 	\noindent \\
-	La verifica ortografica è effettuata tramite Texmaker, attraverso il quale gli errori ortografici vengono sottolineati in rosso, permettendo un controllo rapido ed efficiente.
+	la verifica ortografica è effettuata tramite Texmaker, attraverso il quale gli errori ortografici vengono sottolineati in rosso, permettendo un controllo rapido ed efficiente.
+	\paragraph{Analisi dinamica locale}
+	\noindent \\
+	Son stati scelti per la verifica \textit{Mocha} e la libreria \textit{Chai}. 
+	\paragraph{Analisi statica locale}
+	\noindent \\
+	Viene utilizzato \textit{Total Validator} per la validazione del codice HTML5 e CSS3. \\
+	Come strumento per la validazione di codice JavaScript viene utilizzato \textit{ESLint}.
+	\paragraph{Analisi statica remota}
+	\noindent \\
 	
+			
 	\subsection{Validazione}
 	\subsubsection{Denominazione test}
 	Volendo associare un identificatore univoco per ogni test menzionato, si \`e deciso di utilizzare il seguente formato:
@@ -830,31 +846,40 @@ La seguente immagine riporta le attività previste a tale scopo e ne segue una b
 	\subsubsection{Ruoli di progetto}
 	I ruoli di progetto sono definiti secondo le definizioni date dal professore Vardanega nelle slide:
 	\url{https://www.math.unipd.it/~tullio/IS-1/2018/Dispense/L06.pdf}
-	
-	\newpage
-	
 	\subsubsection{Strumenti}
 	
 	\paragraph{Slack (app)}
+	\noindent \\
 	Slack (app)$^*$ è uno strumento di collaborazione che permette la comunicazione in tempo reale tra i membri di uno stesso team di lavoro. Mette a disposizione di quest’ultimo uno spazio di lavoro (workspace), dov'è possibile comunicare organizzando conversazioni attraverso diversi canali tematici differenti, definibili dal gruppo stesso.
 	Slack inoltre fornisce la possibilità di associare applicazioni al workspace.
 	
 	\paragraph{GitLab}
+	\noindent \\
 	È un software di controllo versione in cui gli sviluppatori possono caricare il proprio codice e gestire le modifiche alle varie versioni in contemporanea al lavoro di più persone.
 	Il Responsabile di progetto crea una issue$^*$ per ogni attività e le assegna ai componenti del gruppo. Il soggetto designato aprirà un nuovo branch$^*$ identificato con il codice issue.
 	Una volta finito lo stato di elaborazione (Doing), la issue passa allo stato di verifica. Se il Verificatore la considera idonea, la issue viene chiusa (Closed) e approvata dal Responsabile di progetto, altrimenti ritorna nello stato di elaborazione (Doing) in attese di aggiornamenti.
 	
 	\subsection{Gestione della Qualità}
 	\subsubsection{Pianificazione della qualità}
-	
+	Questa attività riguarda la definizione delle strategie di verifica e validazione che il gruppo si impegnerà ad utilizzare per tutto lo svolgimento del progetto, al fine di assicurare un'esecuzione corretta di tutte le attività, individuando e correggendo tempestivamente eventuali errori riscontrati. Gli obbiettivi di qualità sono descritti nel \textit{Piano di Qualifica}.\\
+	\textbf{Prodotto dell'attività:} \textit{PianoDiQualifica\_v2.0.0}
 	
 	\subsection{Ricerca sulle tecnologie} 
 	Questa attività consiste nella ricerca di informazioni su software, librerie e tutte le tecnologie che sono state ritenute utili per una o più fasi di sviluppo del progetto. Le tecnologie analizzate  sono quelle suggerite dalla proponente e quelle ritenute utili sulla base delle esperienze personali dei membri del gruppo.
 	
 	\subsection{Formazione}
 	\subsubsection{Reperimento del materiale necessario al training}
-	La formazione del personale avviene sia per studio autonomo dei framework proposti dall’azienda o valutati dal gruppo in fase di studio di fattibilità, sia tramite siti web e relativa documentazione. In particolare si studierà l'applicazione Google Firebase, Node.js e React.js.
-	realizzazione di un proof of conceptG attraverso l’uso delle tecnologie identificate.
-\end{document}
+	La formazione del personale avviene sia per studio autonomo dei framework proposti dall’azienda o valutati dal gruppo in fase di studio di fattibilità, sia tramite siti web e relativa documentazione. In particolare si studierà le applicazioni Google Firebase, Hunpos e Node.js. Si procederà con la realizzazione di un Proof Of Concept $^*$ attraverso l’uso delle tecnologie identificate.
+\newpage
+\section{Gestione della configurazione}
+\subsection{Continuous Integration}
+Continuous integration è una pratica che si applica in contesti in cui lo sviluppo del software avviene attraverso un sistema di versioning. Consiste nell'allineamento frequente dagli ambienti di lavoro degli sviluppatori verso l'ambiente condiviso (mainline).
+\subsubsection{Strumenti}
+\paragraph{GitLab CI}
+\noindent \\
 
+
+
+
+\end{document}
 

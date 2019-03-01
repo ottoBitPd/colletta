@@ -1,6 +1,6 @@
 all_tests:
   image: node:8.15.0
-
+	stage: test
   before_script:
     - apt-get update -yq \
       && apt-get install curl gnupg -yq \
@@ -20,6 +20,7 @@ all_tests:
     
 codequality:
   image: docker:latest
+  stage: build
   variables:
     DOCKER_DRIVER: overlay
   services:

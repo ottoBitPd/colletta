@@ -1,5 +1,5 @@
 before_script:
-  - apt-get update && apt-get install nodejs && apt-get install npm
+  - apt-get update -y && apt-get install -y nodejs && apt-get install -y npm
   - npm install --save firebase-admin
   - npm install express --save
   - npm install shelljs

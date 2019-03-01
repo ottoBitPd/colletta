@@ -1,7 +1,7 @@
 image: node:8.15.0
 
 before_script:
-  - curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+  - curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
   - apt-get update -y && apt-get install -y nodejs && apt-get install -y npm
   - npm install --save firebase-admin
   - npm install express --save

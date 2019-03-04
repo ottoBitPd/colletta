@@ -488,6 +488,17 @@ Gli identificatori numerici assegnati a casi d'uso saranno organizzati gerarchic
 		\end{enumerate}
 \end{itemize}
 
+\subsubsection{UC-59 Visualizzazione area di inserimento nuovo esercizio}
+\begin{itemize}
+		\item \textbf{Attori: }Insegnante.
+		\item \textbf{Precondizione: }L'insegnante è nella vista principale dell'applicazione.
+		\item \textbf{Postcondizione: }L'insegnante è nella vista di inserimento di un nuovo esercizio.
+		\item \textbf{Scenario principale: }
+	\begin{enumerate} 
+		\item l'insegnante seleziona la voce "Inserisci esercizio"
+	\end{enumerate}
+\end{itemize}
+
 \subsubsection{UC-12 Inserimento esercizio}
 	\begin{itemize}
 		\item \textbf{Attori: }Insegnante.
@@ -734,9 +745,19 @@ Gli identificatori numerici assegnati a casi d'uso saranno organizzati gerarchic
 		\begin{itemize}
 			\item \textbf{Attori:} Allievo.
 			\item \textbf{Precondizione:} L'allievo visualizza la lista delle classi a cui appartiene.
-			\item \textbf{Postcondizione:} L'allievo visualizza le informazioni della classe indicata (allievi iscritti e media delle valutazioni).
+			\item \textbf{Postcondizione:} L'allievo visualizza le informazioni della classe indicata (allievi iscritti, media delle valutazioni ed esercizi assegnati).
 			\item \textbf{Scenario principale:}
 			\begin{enumerate}
 				\item l'allievo seleziona una classe
+			\end{enumerate}
+		\end{itemize}
+\subsubsection{UC-60 Seleziona esercizio assegnato}
+\begin{itemize}
+			\item \textbf{Attori:} Allievo.
+			\item \textbf{Precondizione:} L'allievo visualizza le informazioni della classe indicata (allievi iscritti, media delle valutazioni ed esercizi assegnati).
+			\item \textbf{Postcondizione:} L'allievo visualizza la vista per l'esecuzione dell'esercizio.
+			\item \textbf{Scenario principale:}
+			\begin{enumerate}
+				\item l'allievo seleziona un esercizio assegnato
 			\end{enumerate}
 		\end{itemize}

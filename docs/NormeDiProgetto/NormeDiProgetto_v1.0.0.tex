@@ -52,6 +52,7 @@
 		\rowcolor{LightBlue}
 		\color{white}\bfseries Versione & \color{white}\bfseries Data & \multicolumn{1}{c}{\color{white}\bfseries Autore}
 		& \color{white}\bfseries Ruolo & \multicolumn{1}{c}{\color{white}\bfseries Descrizione}\\[0.25cm]
+		1.1.0 & 2019-03-04 & Giovanni Bergo & Verificatore & Verifica documento \\ \hline
 		1.0.6 & 2019-02-25 & Gianmarco Pettenuzzo & Amministratore & Incremento strumenti di verifica, aggiunta sezione 4.5 \\ \hline
 		1.0.5 & 2019-02-22 & Eleonora Peagno & Amministratore & Aggiunta sezione "assicurazione qualità", incremento metriche \\ \hline
 		1.0.4 & 2019-02-22 & Enrico Marcato & Amministratore & Aggiunta metriche software \\ \hline
@@ -89,7 +90,7 @@
 	\\Ogni componente del gruppo è tenuto a farne riferimento così da poter ottenere dei configuration item$^*$ omogenei tra loro e, di conseguenza, più facili da verificare. 
 	Tutte le regole qui descritte sono state elaborate dall'intero gruppo, il quale deve approvare eventuali modifiche, aggiunte o rimozioni.
 	\\\\
-	Il documento Norme di progetto v2.0.0 è un documento incrementale e quindi subirà modifiche durante lo sviluppo del prodotto richiesto. In particolare al documento verranno aggiunte incrementalmente le norme per le attività più imminenti.
+	Il documento \textit{NormeDiProgetto\_v2.0.0} è un documento incrementale e quindi subirà modifiche durante lo sviluppo del prodotto richiesto. In particolare al documento verranno aggiunte incrementalmente le norme per le attività più imminenti.
 	\subsection{Scopo del prodotto}
 	Lo scopo del prodotto è creare una piattaforma collaborativa di raccolta dati su cui sia possibile predisporre e/o svolgere esercizi di analisi grammaticale. La raccolta vorrebbe avere il fine di fornire a sviluppatori e ricercatori dati sufficienti per applicare metodi di apprendimento automatico$^*$. Nello specifico si vorrebbe poter insegnare ad un elaboratore a svolgere gli stessi esercizi proposti agli utenti, divenendo una sorta di correttore automatico.  
 	Le componenti principali del prodotto saranno quindi:
@@ -200,14 +201,14 @@
 	\subparagraph{Gerarchie dei casi d'uso} 
 	Gli identificatori numerici assegnati a casi d'uso saranno organizzati gerarchicamente come descritto di seguito. Posto UC-X codice di un caso d'uso, allora UC-X.Y è figlio di UC-X ed esiste fra i due una relazione tra quelle elencate:
 	\begin{itemize}
-		\item UC-X.Y descrive nel dettaglio una delle funzionalita di UC-X;
+		\item UC-X.Y descrive nel dettaglio una delle funzionalità di UC-X;
 		\item UC-X.Y descrive una estensione (o scenario alternativo) dello scenario descritto in UC-X; 
 		\item UC-X.Y descrive una estensione dello scenario principale di due o più figli di UC-X.
 	\end{itemize}
 	\subsubsection{Progettazione}
 	L'attività di progettazione consiste nel ricercare una soluzione che soddisfi i requisiti concordati con gli stakeholder$^*$. Essa avrà inizio quando obiettivi, vincoli e requisiti del prodotto finale saranno solidi e chiari. Spetta ai Progettisti il compito di definire l'architettura del prodotto, dando così coerenza e consistenza al progetto. Per definirsi una buona architettura dovrà rispettare le seguenti proprietà:
 	\begin{itemize}
-		\item Capacità di \textbf{soddisfare i requisiti} definiti nel documento \textit{Analisi dei requisiti v2.0.0}. L'architettura dovrà anche essere in grado di adattarsi facilmente e permettere modifiche a costo contenuto nel caso in cui i requisiti dovessero variare in corso d'opera;
+		\item Capacità di \textbf{soddisfare i requisiti} definiti nel documento \textit{AnalisiDeiRequisiti\_v2.0.0}. L'architettura dovrà anche essere in grado di adattarsi facilmente e permettere modifiche a costo contenuto nel caso in cui i requisiti dovessero variare in corso d'opera;
 		\item Di facile \textbf{comprensibilità}, per gli stakeholders, per il Responsabile e per i Verificatori;
 		\item \textbf{Organizzata e suddivisa in moduli} di complessità trattabile, così da rendere la codifica di ogni parte eseguibile da un singolo individuo;
 		\item \textbf{Rispettare l'information hiding}, fornendo dove possibile interfacce per l'utilizzo del modulo implementato nascondendo i dettagli implementativi;
@@ -349,7 +350,7 @@
 		\item \textbf{Codici:} struttura \LaTeX\ $^*$ (package Listings) con carattere Teletype;
 		\item \textbf{Ruoli di progetto:} la prima lettera maiuscola;
 		\item \textbf{Nomi propri:} ogni nome proprio di persona deve essere scritto nella forma Nome Cognome;
-		\item \textbf{Riferimenti a documenti:} la prima lettera maiuscola con il riferimento alla versione nel formato vX.X.X (esempio: Norme di progetto v1.0.0);
+		\item \textbf{Riferimenti a documenti:} la prima lettera maiuscola con il riferimento alla versione nel formato vX.X.X (esempio: NormeDiProgetto\_v1.0.0);
 		\item \textbf{Riferimenti a sezioni:} i riferimenti interni al documento devono riportare il numero della sezione, preceduto dal simbolo di paragrafo (esempio: \S\ {3.1.1} ).
 		
 	\end{itemize}
@@ -481,8 +482,8 @@ Una corretta implementazione di questo processo permette di:
 		\item implementare le politiche di qualità stabilite, attraverso pianificazione, controllo e miglioramento della qualità. 
 	\end{itemize}
 	
-L'assicurazione della qualità riguarda sia i prodotti che i processi. Al fine di ottenere specifici attributi di qualità, i prodotti devono essere conformi ai requisiti definiti nell'\textit{Analisi dei requisiti v2.0.0} ed aderire al \textit{Piano di progetto v2.0.0}. Anche i processi devono essere conformi a quanto specificato in quest'ultimo documento e devono, inoltre, rispettare gli standard utilizzati per la loro implementazione. \\
-Le attività riguardanti l'attività di assicurazione della qualità che vengono presentate di seguito, sono descritte in dettaglio nel documento \textit{Piano di qualifica v2.0.0}.
+L'assicurazione della qualità riguarda sia i prodotti che i processi. Al fine di ottenere specifici attributi di qualità, i prodotti devono essere conformi ai requisiti definiti nell'\textit{AnalisiDeiRequisiti\_v2.0.0} ed aderire al \textit{PianoDiProgetto\_v2.0.0}. Anche i processi devono essere conformi a quanto specificato in quest'ultimo documento e devono, inoltre, rispettare gli standard utilizzati per la loro implementazione. \\
+Le attività riguardanti l'attività di assicurazione della qualità che vengono presentate di seguito, sono descritte in dettaglio nel documento \textit{PianoDiQualifica\_v2.0.0}.
 
 	\subsubsection{Attività: assicurazione della qualità di processo}
 	Il gruppo OttoBit ha deciso di utilizzare gli standard ISO/IEC 15504 denominato SPIECE$^*$ e lo standard PDCA$^*$ di cui viene riportata di seguito la descrizione.\\
@@ -540,7 +541,7 @@ La seguente immagine riporta le attività previste a tale scopo e ne segue una b
 	
 	\subsubsection{Attività: assicurazione della qualità di prodotto}
 	Questa attività ha lo scopo di assicurare che i prodotti rispettino le caratteristiche di qualità concordate con il committente. La qualità di prodotto non deve essere assicurata al solo completamento del prodotto ma anche durante tutto il suo periodo di sviluppo. \\
-	Al fine di assicurare la qualità del software, ai verificatori è assegnato il compito di controllare che il sistema di testing e verifica rispettino i parametri descritti nel \textit{Piano di qualifica v2.0.0} e nelle \textit{Norme di progetto v2.0.0} e di controllare che il versionamento avvenga secondo le specifiche riportate nelle \textit{Norme di progetto} e che i relativi strumenti vengano utilizzati correttamente. Tali controlli vanno eseguiti al rilascio di ogni nova versione dei documenti citati e ogni volta che viene effettuata una modifica nella configurazione del sistema.\\
+	Al fine di assicurare la qualità del software, ai verificatori è assegnato il compito di controllare che il sistema di testing e verifica rispettino i parametri descritti nel \textit{PianoDiQualifica\_v2.0.0} e nelle \textit{NormeDiProgetto\_v2.0.0} e di controllare che il versionamento avvenga secondo le specifiche riportate nelle \textit{Norme di progetto} e che i relativi strumenti vengano utilizzati correttamente. Tali controlli vanno eseguiti al rilascio di ogni nova versione dei documenti citati e ogni volta che viene effettuata una modifica nella configurazione del sistema.\\
 	Nel caso uno di questi fattori non venga rispettato, il verificatore è tenuto ad avvisare il Responsabile del progetto, così che si possa porre un tempestivo rimedio ad ogni problematica. Il verificatore non ha le competenze per intervenire in prima persona e non deve farlo, il suo compito è di segnalare i problemi.
 	
 	\subsection{Verifica}
@@ -558,7 +559,7 @@ La seguente immagine riporta le attività previste a tale scopo e ne segue una b
 	
 	
 	\subsubsection{Metriche}
-	Al fine di garantire un determinato livello di qualità, i verificatori hanno stabilito delle metriche finalizzate ad ottenere gli obiettivi descritti  nel documento \textit{Piano di qualifica v2.0.0}. Tali metriche devono rispettare la seguente notazione: 
+	Al fine di garantire un determinato livello di qualità, i verificatori hanno stabilito delle metriche finalizzate ad ottenere gli obiettivi descritti  nel documento \textit{PianoDiQualifica\_v2.0.0}. Tali metriche devono rispettare la seguente notazione: 
 	\begin{center}
 		M[Ambito][Codice identificativo]
 	\end{center}
@@ -601,7 +602,7 @@ La seguente immagine riporta le attività previste a tale scopo e ne segue una b
 	 \item Livello di accettazione: superiore al 90\%
 	 \item Livello ottimale: 100\%
 	 \end{itemize}
-	\item \textbf{MPC5 - Test di sistema implementati}: indica il rapporto tra i test di sistema effettivamente implementati e quelli totali preventivati. Un valore elevato di tale metrica indica un buon livello di funzionalità del sistema. Per calcolare questo dato, di usa la seguente formula:
+	\item \textbf{MPC5 - Test di sistema implementati}: indica il rapporto tra i test di sistema effettivamente implementati e quelli totali preventivati. Un valore elevato di tale metrica indica un buon livello di funzionalità del sistema. Per calcolare questo dato, si usa la seguente formula:
 	\begin{center}
 		$TII[\%]=\frac{numero\ test\ sistema\ implementati}{numero\ test\ sistema\ totali}$
 	\end{center}
@@ -654,7 +655,7 @@ La seguente immagine riporta le attività previste a tale scopo e ne segue una b
 	 \item Livello di accettazione: superiore al 85\%
 	 \item Livello ottimale: superiore al 100\%
 	 \end{itemize}
-	    \item \textbf{MPS2 - Numero di parametri per metodo}: il numero di parametri non deve essere elevato, la conseguenza è una scarsa manutenibilità del codice.
+	    \item \textbf{MPS2 - Numero di parametri per metodo}: il numero di parametri non deve essere elevato; la conseguenza è una scarsa manutenibilità del codice.
 	    \begin{itemize}
 	 \item Livello di accettazione: minore di 5
 	 \item Livello ottimale: minore di 3
@@ -767,25 +768,25 @@ La seguente immagine riporta le attività previste a tale scopo e ne segue una b
 	\end{center}
 	dove:
 	\begin{itemize}
-		\item il campo “\textbf{Priorità}” può assumere uno dei seguenti valori, nel caso in cui il test sia di sistema o validazione:
-		\begin{itemize}
-			
-			\item \textbf{O}: indica un test per verificare un requisito obbligatorio, irrinunciabile per il committente;
-			\item \textbf{D}: indica un test per verificare un requisito desiderabile ma non strettamente necessario;
-			\item \textbf{P}: indica un test per verificare un requisito opzionale, che potrebbe venir soddisfatto o meno senza che il prodotto risulti mancante di funzionalità essenziali.
-		\end{itemize}
-		Altrimenti nel caso il test sia di integrazione o unità il campo priorità sarà omesso.
-		\\
+		
 		\item il campo “\textbf{Tipo}” può assumere uno dei seguenti valori:
 		\begin{itemize}
 			\item \textbf{S}: definisce un test di sistema, ovvero un test per la verifica$^*$ del comportamento dell'intero sistema;
-			\item \textbf{V}: definisce un test di validazione, ovvero un test per la verifica$^*$ dei casi d'uso e dei requisiti concordati con il cliente;
+			\item \textbf{V}: definisce un test di validazione, ovvero un test per la verifica dei casi d'uso e dei requisiti concordati con il cliente;
 			\item \textbf{I}: definisce un test di integrazione, ovvero un test per verificare la corretta integrazione tra più componenti del sistema;
 			\item \textbf{U}: definisce un test di unità, ovvero un test per la verifica del più piccolo componente del sistema;
 		\end{itemize}
+	\item il campo “\textbf{Priorità}” può assumere uno dei seguenti valori, nel caso in cui il test sia di sistema o validazione:
 		\item il campo “\textbf{Codice}” assumerà un valore numerico intero positivo, univoco ed incrementale.
 	\end{itemize}
+\begin{itemize}
 	
+	\item \textbf{RO}: indica un test per verificare un requisito obbligatorio, irrinunciabile per il committente;
+	\item \textbf{RD}: indica un test per verificare un requisito desiderabile ma non strettamente necessario;
+	\item \textbf{RP}: indica un test per verificare un requisito opzionale, che potrebbe venir soddisfatto o meno senza che il prodotto risulti mancante di funzionalità essenziali.
+\end{itemize}
+Altrimenti nel caso il test sia di integrazione o unità il campo priorità sarà omesso.
+\\
 	
 	\section{Processi organizzativi}
 	

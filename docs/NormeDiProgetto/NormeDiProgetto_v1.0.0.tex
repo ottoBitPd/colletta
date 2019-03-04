@@ -15,6 +15,8 @@
 \usepackage{enumerate}
 \usepackage{lastpage}
 \usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{ltablex}
 \hypersetup{colorlinks,urlcolor=blue,linkcolor=black}
 
 \pagestyle{fancy}
@@ -29,37 +31,35 @@
 \definecolor{Gray}{gray}{0.8}
 \definecolor{LightGray}{gray}{0.9}
 
-
-
-
 \usepackage{lipsum}
 \usepackage{verbatim}
-
 
 
 \setcounter{tocdepth}{4}
 \setcounter{secnumdepth}{4}
 
-
+\titlespacing*{\subsection}{0pt}{8ex plus 1ex minus .2ex}{2.3ex plus .2ex}
+\titlespacing*{\subsubsection}{0pt}{8ex plus 1ex minus .2ex}{2.3ex plus .2ex}
 
 \begin{document}
 	\input{frontpage/frontpage.tex}
 	
-	
+	{\def\arraystretch{2}\tabcolsep=10pt
 	\newpage
 	\section*{\centering Registro delle modifiche}
-	\begin{tabularx}{\textwidth}{ c | c | X | c | X }
+	\begin{tabularx}{\textwidth}{ c | c | p{3.80cm} | c | X }
 		\rowcolor{LightBlue}
 		\color{white}\bfseries Versione & \color{white}\bfseries Data & \multicolumn{1}{c}{\color{white}\bfseries Autore}
 		& \color{white}\bfseries Ruolo & \multicolumn{1}{c}{\color{white}\bfseries Descrizione}\\[0.25cm]
+		2.0.0 & 2019-03-04 & Gianmarco Pettenuzzo & Responsabile & Approvazione per il rilascio \\ \hline
 		1.1.0 & 2019-03-04 & Giovanni Bergo & Verificatore & Verifica documento \\ \hline
-		1.0.6 & 2019-02-25 & Gianmarco Pettenuzzo & Amministratore & Incremento strumenti di verifica, aggiunta sezione 4.5 \\ \hline
+		1.0.6 & 2019-02-28 & Gianmarco Pettenuzzo & Amministratore & Incremento strumenti di verifica, aggiunta sezione 4.5 \\ \hline
 		1.0.5 & 2019-02-22 & Eleonora Peagno & Amministratore & Aggiunta sezione "assicurazione qualità", incremento metriche \\ \hline
 		1.0.4 & 2019-02-22 & Enrico Marcato & Amministratore & Aggiunta metriche software \\ \hline
 		1.0.3 & 2019-02-21 & Eleonora Peagno & Amministratore & Aggiunta normazione di e metriche di processo \\ \hline
 		1.0.2 & 2019-02-18 & Giovanni Bergo & Amministratore & Correzioni al documento \\ \hline
 		1.0.1 & 2019-02-04 & Michele Bortone & Amministratore & Correzioni al documento \\ \hline
-		1.0.0 & 2019-01-11 & Benedetto Cosentino & Responsabile & Approvazione documento \\ \hline
+		1.0.0 & 2019-01-11 & Benedetto Cosentino & Responsabile & Approvazione per il rilascio \\ \hline
 		0.2.0 & 2018-12-27 & Michele Bortone & Verificatore & Verifica documento \\ \hline
 		0.1.2 & 2018-12-20 & Giovanni Bergo \newline Gianmarco Pettenuzzo & Amministratore & Aggiornamento Norme di progetto \\ \hline
 		0.1.1 & 2018-12-20 & Eleonora Peagno & Amministratore & Aggiornamento processi primari \\ \hline
@@ -69,12 +69,7 @@
 		0.0.4 & 2018-12-11 & Eleonora Peagno & Amministratore & Introduzione \\ \hline
 		0.0.3 & 2018-12-16 & Giovanni Bergo \newline Gianmarco Pettenuzzo & Amministratore & Aggiornamento Norme di progetto \\ \hline
 		0.0.2 & 2018-12-14 & Giovanni Bergo \newline Gianmarco Pettenuzzo & Amministratore & Stesura processi \newline organizzativi \\ \hline
-		0.0.1 & 2018-12-11 & Giovanni Bergo \newline Gianmarco Pettenuzzo & Amministratore & Stesura processi di \newline supporto \\ \hline
-		
-		
-		
-		
-		
+		0.0.1 & 2018-12-11 & Giovanni Bergo \newline Gianmarco Pettenuzzo & Amministratore & Stesura processi di \newline supporto \\ \hline		
 	\end{tabularx}
 	
 	\newpage	
@@ -163,10 +158,10 @@
 	
 	\textbf{Prodotto dell'attività:} \textit{AnalisiDeiRequisiti\_v2.0.0}
 	
-	\paragraph{Diagrammi UML dei casi d'uso}
-	\noindent \\ I casi d'uso verranno rappresentati tramite diagrammi seguendo le regole di UML 2.0, al fine di individuare i requisiti.
-	\paragraph{Denominazione dei requisiti}
-	\noindent \\ Si vuole associare un identificatore univoco per ogni requisito individuato durante l'analisi dei requisiti. Si \`e deciso di utilizzare il seguente formato:
+	\paragraph{Diagrammi UML dei casi d'uso\\}
+	 I casi d'uso verranno rappresentati tramite diagrammi seguendo le regole di UML 2.0, al fine di individuare i requisiti.
+	\paragraph{Denominazione dei requisiti\\}
+	Si vuole associare un identificatore univoco per ogni requisito individuato durante l'analisi dei requisiti. Si \`e deciso di utilizzare il seguente formato:
 	\begin{center}
 		R[Priorità][Tipo][Codice]
 	\end{center}
@@ -188,8 +183,8 @@
 		\item il campo “\textbf{Codice}” assumerà un valore numerico intero positivo, univoco ed incrementale.
 	\end{itemize}
 	
-	\paragraph{Casi d'uso}
-	\noindent \\Ad ogni caso d'uso saranno associate le seguenti informazioni:
+	\paragraph{Casi d'uso\\}
+	Ad ogni caso d'uso saranno associate le seguenti informazioni:
 	\begin{itemize}
 		\item il codice del requisito che lo interessa UC-[Codice];
 		\item un nome (univoco);
@@ -217,8 +212,7 @@
 		\item \textbf{Affidabilità}, quando svolge un compito, questo deve essere svolto efficientemente;
 		\item \textbf{Sicurezza}, in caso di malfunzionamenti o di intrusioni esterne i dati e le funzioni non devono essere vulnerabili.
 	\end{itemize}	
-	\paragraph{Diagrammi UML} 
-	\noindent \\
+	\paragraph{Diagrammi UML\\} 
 	Saranno implementati, secondo lo standard UML 2.0, i diagrammi per rendere chiare le scelte progettuali adottate. Saranno forniti:
 	\begin{itemize}
 		\item Diagrammi delle classi;
@@ -226,25 +220,25 @@
 		\item Diagrammi di attività;
 		\item Diagrammi di package.
 	\end{itemize}
-	\paragraph{Design Patterns} 
-	\noindent \\Compito dei Progettisti è adottare un design pattern opportuno al problema posto dal progetto. Ciò consente ai Programmatori di seguire delle linee guida consolidate nell'implementazione delle componenti previste dal progettista. I vantaggi di tali soluzioni dovranno essere motivati spiegandone la struttura e il funzionamento.
+	\paragraph{Design Patterns\\} 
+	Compito dei Progettisti è adottare un design pattern opportuno al problema posto dal progetto. Ciò consente ai Programmatori di seguire delle linee guida consolidate nell'implementazione delle componenti previste dal progettista. I vantaggi di tali soluzioni dovranno essere motivati spiegandone la struttura e il funzionamento.
 	\subsubsection{Strumenti}
-	\paragraph{Astah}
-	\noindent \\È un programma per la modellazione di diagrammi UML che verrà utilizzato dal gruppo per la creazione di tutti i diagrammi necessari.
+	\paragraph{Astah\\}
+	È un programma per la modellazione di diagrammi UML che verrà utilizzato dal gruppo per la creazione di tutti i diagrammi necessari.
 	
 	\subsubsection{Codifica}
 	L'attività di codifica inizierà quando la progettazione sarà terminata. Pertanto le norme sottostanti potranno subire variazioni in seguito alla successiva revisione.
 	
-	\paragraph{Scopo}
-	\noindent \\ La codifica è l'attività che permette l'effettiva realizzazione del prodotto.
+	\paragraph{Scopo\\}
+	La codifica è l'attività che permette l'effettiva realizzazione del prodotto.
 	\paragraph{Linguaggi di codifica utilizzati:}
 	\begin{itemize}
 		\item Javascript: Node.js per la parte backend e React per la parte dinamica del frontend
 		\item HTML e CSS: per la struttura e la presentazione del frontend
 	\end{itemize}
 	
-	\paragraph{Commenti al codice}
-	\noindent \\ I commenti al codice, i nomi delle funzioni e delle variabili dovranno essere esplicativi ed in lingua inglese.
+	\paragraph{Commenti al codice\\}
+	I commenti al codice, i nomi delle funzioni e delle variabili dovranno essere esplicativi ed in lingua inglese.
 	I commenti devono permettere la comprensione del codice, non
 	devono quindi descrivere la sintassi del linguaggio di programmazione in uso, ma piuttosto descrivere lo scopo di tutti quei blocchi di codice la
 	cui comprensione non sia già resa immediata da una corretta scelta della nomenclatura.
@@ -259,8 +253,7 @@
 	Lo scopo è quello di fornire una descrizione accurata di tutte le norme, convenzioni e vincoli rispettati per ottenere documentazione efficace, coerente e formale.
 	\subsubsection{Implementazione}
 	
-	\paragraph{Template}
-	\noindent \\ 
+	\paragraph{Template\\}
 	Si è voluto creare un file template.tex, con l'obbiettivo di uniformare l'impaginazione dei documenti. 
 	Nello specifico:
 	\begin{itemize}
@@ -271,8 +264,8 @@
 		
 	\end{itemize}
 	
-	\paragraph{Ciclo di vita}
-	\noindent \\Tutti i documenti si troveranno in tre diverse fasi:
+	\paragraph{Ciclo di vita\\}
+	Tutti i documenti si troveranno in tre diverse fasi:
 	\begin{enumerate}
 		\item \textbf{Elaborazione:} in questa fase il documento viene creato e modificato dai Redattori, aggiornando ogni volta la versione del documento. 
 		\item \textbf{Verifica:} una volta terminato il lavoro di elaborazione, il documento verrà assegnato ai Verificatori che procederanno al controllo di correttezza. Se il documento sarà valutato non corretto, verrà riassegnato ai Redattori.
@@ -281,8 +274,8 @@
 	
 	\subsubsection{Struttura}
 	
-	\paragraph{Frontespizio} 
-	\noindent \\La prima pagina di ogni documento dovrà seguire questa struttura:
+	\paragraph{Frontespizio\\} 
+	La prima pagina di ogni documento dovrà seguire questa struttura:
 	\begin{itemize}
 		\item \textbf{Logo}
 		\item \textbf{Nome Documento}
@@ -298,8 +291,7 @@
 		\end{itemize}
 	\end{itemize}
 	
-	\paragraph{Registro delle modifiche}
-	\noindent \\
+	\paragraph{Registro delle modifiche\\}
 	Nella pagina seguente alla prima, deve essere presente una tabella riassuntiva della cronologia delle versioni del documento; anno eccezione i verbali, che non la presentano. \\
 	Nella tabella, ad ogni modifica, devono essere presenti le seguenti informazioni:
 	
@@ -311,16 +303,15 @@
 		\item \textbf{Breve descrizione}
 	\end{itemize}
 	
-	\paragraph{Indice}
-	\noindent \\L'indice del documento inizia nelle pagine successive a quelle del registro delle modifiche, ogni sezione e sottosezione sarà etichettata con un numero progressivo a partire dal numero 1 e permetterà il collegamento ipertestuale direttamente alla pagina corrispondente. Inoltre saranno presenti altri due elenchi:
+	\paragraph{Indice\\}
+	L'indice del documento inizia nelle pagine successive a quelle del registro delle modifiche, ogni sezione e sottosezione sarà etichettata con un numero progressivo a partire dal numero 1 e permetterà il collegamento ipertestuale direttamente alla pagina corrispondente. Inoltre saranno presenti altri due elenchi:
 	
 	\begin{itemize}
 		\item \textbf{Indice delle tabelle:} elenco delle eventuali tabelle presenti presenti nel documento, escluse il registro delle modifiche;
 		\item  \textbf{Indice delle figure:} elenco delle eventuali immagini presenti nel documento. 
 	\end{itemize}
 	
-	\paragraph{Contenuto}
-	\noindent \\ 
+	\paragraph{Contenuto\\}
 	Il resto del documento sarà dedicato al contenuto del documento stesso, ogni pagina seguente avrà la seguente codifica:
 	\begin{itemize}
 		\item \textbf{Intestazione}
@@ -339,8 +330,6 @@
 	\subsubsection{Design}
 	
 	\paragraph{Stile del testo}
-	
-	\noindent   
 	\begin{itemize}
 		\item \textbf{Grassetto:} va utilizzato nei titoli, elenchi puntati ed intestazione tabelle;
 		\item \textbf{Corsivo:} riferimenti a documenti interni o esterni prodotti dal team;
@@ -362,8 +351,7 @@
 		\item \textbf{Elenchi numerati:} gli elementi vengono numerati partendo dal numero 1.
 	\end{itemize}
 	
-	\paragraph{Formati comuni}
-	\noindent \\ 
+	\paragraph{Formati comuni\\}
 	Orari e date varranno rappresentate secondo quanto definito dallo standard ISO 8601$^*$. 
 	
 	\begin{itemize}
@@ -388,8 +376,7 @@
 		
 	\end{itemize}
 	
-	\paragraph{Tabelle}	
-	\noindent \\		
+	\paragraph{Tabelle\\}	
 	Ogni tabella dovrà avere:
 	\begin{itemize}
 		\item \textbf{Numero:} indice progressivo a partire da 1 che individui la tabella univocamente;
@@ -399,8 +386,7 @@
 	
 	
 	
-	\paragraph{Figure}
-	\noindent \\	
+	\paragraph{Figure\\}
 	Ogni figura dovrà avere:
 	\begin{itemize}
 		\item \textbf{Numero:} indice progressivo a partire da 1 che individui la figura univocamente;
@@ -408,14 +394,14 @@
 	\end{itemize}
 	
 	\subsubsection{Suddivisione dei documenti}
-	\paragraph{Documenti formali}
-	\noindent \\ Un documento è definito formale dopo l’approvazione da parte del Responsabile di progetto e quindi deve aver superato con esito positivo la fase di verifica. Questi documenti sono destinati alla distribuzione esterna al gruppo.
+	\paragraph{Documenti formali\\}
+	Un documento è definito formale dopo l’approvazione da parte del Responsabile di progetto e quindi deve aver superato con esito positivo la fase di verifica. Questi documenti sono destinati alla distribuzione esterna al gruppo.
 	
-	\paragraph{Documenti informali}
-	\noindent \\ Tutti i documenti sono da considerarsi informali finché non vengono approvati dal Responsabile di progetto. L’utilizzo di tali documenti è da considerarsi interno e quindi esclusivo del team.
+	\paragraph{Documenti informali\\}
+	Tutti i documenti sono da considerarsi informali finché non vengono approvati dal Responsabile di progetto. L’utilizzo di tali documenti è da considerarsi interno e quindi esclusivo del team.
 	
-	\paragraph{Verbali}
-	\noindent \\ I verbali sono documenti redatti in occasione di incontri interni al gruppo o con enti esterni. Ogni verbale contiene:
+	\paragraph{Verbali\\}
+	I verbali sono documenti redatti in occasione di incontri interni al gruppo o con enti esterni. Ogni verbale contiene:
 	
 	\begin{itemize}
 		\item \textbf{Informazione sulla riunione:} specificano il luogo, la data, l'ora dell’incontro, tutti i partecipanti e il Segretario;
@@ -423,19 +409,19 @@
 		\item \textbf{Resoconto:} descrizione di quanto discusso durante l'incontro del team.
 	\end{itemize}
 	
-	\paragraph{Glossario}
-	\noindent \\ Documento unico ad uso esterno, consiste di un elenco di definizioni, in ordine lessicografico, di tutte le parole che possono creare ambiguità o necessitanti descrizione precisa. Tutti i termini presenti nel glossario sono marcati con un "*" ogni prima volta che compaiono in un documento (esempio: Glossario$^*$).
+	\paragraph{Glossario\\}
+	Documento unico ad uso esterno, consiste di un elenco di definizioni, in ordine lessicografico, di tutte le parole che possono creare ambiguità o necessitanti descrizione precisa. Tutti i termini presenti nel glossario sono marcati con un "*" ogni prima volta che compaiono in un documento (esempio: Glossario$^*$).
 	
 	\subsubsection{Strumenti}
 	
-	\paragraph{\LaTeX}
-	\noindent \\ Per la produzione della documentazione si è fatto uso del formato \LaTeX\ perché permette un migliore stile di codifica.\\
+	\paragraph{\LaTeX\\}
+	 Per la produzione della documentazione si è fatto uso del formato \LaTeX\ perché permette un migliore stile di codifica.\\
 	Per la produzione di codice \LaTeX\ è stato utilizzato Texmaker$^*$.
 	
 	\subsubsection{Mantenimento}
 	
-	\paragraph{Versionamento}
-	\noindent \\ Ogni documento o componente del codice, eccetto i verbali, soggetto a versionamento, è versionato tramite lo strumento GitLab$^*$ ed organizzato mediante la metodologia GitFlow.\\
+	\paragraph{Versionamento\\}
+	Ogni documento o componente del codice, eccetto i verbali, soggetto a versionamento, è versionato tramite lo strumento GitLab$^*$ ed organizzato mediante la metodologia GitFlow.\\
 	La definizione di una versione avviene seguendo questa forma:
 	\begin{center}
 		X . Y . Z
@@ -721,16 +707,14 @@ La seguente immagine riporta le attività previste a tale scopo e ne segue una b
 	\end{itemize}
 	
 	\subsubsection{Analisi}
-	\paragraph{Analisi statica}
-	\noindent \\
+	\paragraph{Analisi statica\\}
 	L'analisi statica `e un metodo in grado di rilevare problemi sia all'interno dei documenti che del codice sorgente del progetto. Per facilitarne la corretta esecuzione nel corso del tempo verrà svolta attraverso due metodi:
 \begin{itemize}
 	\item\textbf{Walkthrough:} Questo metodo risulta essere il più dispendioso in termini di efficienza ma si tratta anche del più semplice da imparare, diventando così essenziale nelle prime fasi del progetto. Il  metodo  prevede  una  revisione  a  largo  spettro  parallelizzabile  in  modo  tale  da stilare una prima lista degli errori più comuni.
 	\item \textbf{Inspection:} Questo procedimento risulta molto più veloce del precedente perché, utilizzando la lista di controllo degli errori e dalle misurazioni effettuate, permette un'analisi più efficace dei punti critici, tralasciando invece le parti senza problematiche.
 	\end{itemize}
 	
-	\paragraph{Analisi dinamica}
-	\noindent \\
+	\paragraph{Analisi dinamica\\}
 	L'analisi dinamica è una tecnica di analisi del prodotto software che ne richiede l'esecuzione. Viene eseguita ogni qualvolta che si è terminata una parte di prodotto tramite dei test di unità, volti a verificare il corretto funzionamento del prodotto e a permettere l'identificazione di anomalie. \\
 	I test devono essere ripetibili e deterministici, ossia date le stesse precondizioni e lo stesso input, l'output deve essere sempre lo stesso. Per ogni test devono dunque essere definiti i seguenti parametri:
 	\begin{itemize}
@@ -742,20 +726,16 @@ La seguente immagine riporta le attività previste a tale scopo e ne segue una b
 	\end{itemize}
 		
 	\subsubsection{Strumenti}	
-	\paragraph{Verifica ortografica}
-	\noindent \\
+	\paragraph{Verifica ortografica\\}
 	la verifica ortografica è effettuata tramite Texmaker, attraverso il quale gli errori ortografici vengono sottolineati in rosso, permettendo un controllo rapido ed efficiente.
-	\paragraph{Analisi dinamica locale}
-	\noindent \\
+	\paragraph{Analisi dinamica locale\\}
 	Son stati scelti per la verifica \textit{Mocha} e la libreria \textit{Chai}. 
-	\paragraph{Analisi statica locale}
-	\noindent \\
+	\paragraph{Analisi statica locale\\}
 	Viene utilizzato \textit{Total Validator} per la validazione del codice HTML5 e CSS3. \\
 	Come strumento per la validazione dello stile del codice JavaScript viene utilizzato \textit{ESLint}. \\
 	Inoltre, si utilizzerà \textit{SonarQube} per analizzare staticamente il codice Javascript da eventuali bug.
 	
-	\paragraph{Analisi statica remota}
-	\noindent \\
+	\paragraph{Analisi statica remota\\}
 	%TODO%
 	Per il tracking di bug e vulnerabilità del codice JavaScript remoti si utilizzerà \textit{SonarCloud}.
 	
@@ -849,8 +829,7 @@ Altrimenti nel caso il test sia di integrazione o unità il campo priorità sar�
 	\end{center}
 	dove [Tipo] è una lettera e [ID] un numero identificativo.\\
 	
-	\paragraph{Tipi di rischio} 
-	\noindent \\
+	\paragraph{Tipi di rischio\\}
 	Esamineremo quattro principali tipologie di rischi:
 	
 	\begin{itemize}
@@ -865,13 +844,11 @@ Altrimenti nel caso il test sia di integrazione o unità il campo priorità sar�
 	\url{https://www.math.unipd.it/~tullio/IS-1/2018/Dispense/L06.pdf}
 	\subsubsection{Strumenti}
 	
-	\paragraph{Slack (app)}
-	\noindent \\
+	\paragraph{Slack (app)\\}
 	Slack (app)$^*$ è uno strumento di collaborazione che permette la comunicazione in tempo reale tra i membri di uno stesso team di lavoro. Mette a disposizione di quest’ultimo uno spazio di lavoro (workspace), dov'è possibile comunicare organizzando conversazioni attraverso diversi canali tematici differenti, definibili dal gruppo stesso.
 	Slack inoltre fornisce la possibilità di associare applicazioni al workspace.
 	
-	\paragraph{GitLab}
-	\noindent \\
+	\paragraph{GitLab\\}
 	È un software di controllo versione in cui gli sviluppatori possono caricare il proprio codice e gestire le modifiche alle varie versioni in contemporanea al lavoro di più persone.
 	Il Responsabile di progetto crea una issue$^*$ per ogni attività e le assegna ai componenti del gruppo. Il soggetto designato aprirà un nuovo branch$^*$ identificato con il codice issue.
 	Una volta finito lo stato di elaborazione (Doing), la issue passa allo stato di verifica. Se il Verificatore la considera idonea, la issue viene chiusa (Closed) e approvata dal Responsabile di progetto, altrimenti ritorna nello stato di elaborazione (Doing) in attese di aggiornamenti.
@@ -898,8 +875,7 @@ Con la CI è possbile:
 	\item \textbf{Evitare problemi di composizione} 
 \end{itemize}
 \subsubsection{Strumenti}
-\paragraph{GitLab CI}
-\noindent \\
+\paragraph{GitLab CI\\}
 GitLab consente la pratica di integrazione codice all'interno della repository, facendo test e build ad ogni cambiamento effettuato, automaticamente, più velocemente possibile e più volte al giorno.
 \end{document}
 

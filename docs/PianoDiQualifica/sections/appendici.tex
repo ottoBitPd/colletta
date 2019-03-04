@@ -1,16 +1,69 @@
 \appendix
 \section{Specifica dei test}
-%\subsection{Test di validazione}
-%Questo tipo di test verrà utilizzato durante l'attività di collaudo del prodotto finale così da accertare che esso soddisfi le richieste del committente. Per ogni test viene specificato il proprio codice univoco, il codice identificativo del requisito ad esso associato, la descrizione e lo stato di implementazione attuale. 
-%
-%	\begin{longtable}{|>{\centering\arraybackslash}m{1.6cm}|>{\centering\arraybackslash}m{6.41cm}|>{\centering\arraybackslash}m{3.1cm}|}		
-%		\rowcolor{LightBlue}
-%		\textbf{\textcolor{white}{Test}}
-%		& \multicolumn{1}{|c|}{\textbf{\textcolor{white}{ Descrizione}}}
-%		& \textbf{\textcolor{white}{Esito}}\\
-%		
-%		\caption{Test di validazione}
-%\end{longtable}
+\subsection{Test di validazione}
+Questo tipo di test verrà utilizzato durante l'attività di collaudo del prodotto finale così da accertare che esso soddisfi le richieste del committente. Per ogni test viene specificato il proprio codice univoco, il codice identificativo del requisito ad esso associato, la descrizione e lo stato di implementazione attuale. 
+
+	\begin{longtable}{|>{\centering\arraybackslash}m{1.6cm}|>{\centering\arraybackslash}m{6.41cm}|>{\centering\arraybackslash}m{3.1cm} | >{\centering\arraybackslash}m{2.6cm}|}		
+		\rowcolor{LightBlue}
+		\textbf{\textcolor{white}{Codice}}
+		& \multicolumn{1}{|c|}{\textbf{\textcolor{white}{ Descrizione}}}
+		& \textbf{\textcolor{white}{Esito}} & \textbf{\textcolor{white}{Requisito associato}}\\
+		TV-RO1 & L'utente non riconosciuto vuole registrarsi alla piattaforma come allievo, creando un account personale. All'utente è richiesto di:
+		\begin{itemize}
+			\item Raggiungere la pagina di registrazione;
+			\item Inserire i dati richiesti quali:
+				\begin{itemize}
+				 	\item nome;
+				 	\item cognome;
+				 	\item username;
+				 	\item email;
+				 	\item password;
+				 	\item nome della scuola di appartenenza;
+				 	\item città sede della scuola di appartenenza;
+				\end{itemize}
+			\item Confermare la registrazione.
+		\end{itemize} & Non implementato & ROF1 \\ \hline
+		\rowcolor{LightGray}
+		TV-RO2 & L'utente non riconosciuto vuole registrarsi alla piattaforma come insegnante, creando un account personale. All'utente è richiesto di:
+		\begin{itemize}
+			\item Raggiungere la pagina di registrazione;
+			\item Inserire i dati richiesti quali:
+				\begin{itemize}
+				 	\item nome;
+				 	\item cognome;
+				 	\item username;
+				 	\item email;
+				 	\item password;
+				 	\item nome della scuola di appartenenza;
+				 	\item città sede della scuola di appartenenza;
+				 	\item codice INPS;
+				\end{itemize}
+			\item Confermare la registrazione.
+		\end{itemize} & Non implementato & ROF22 \\ \hline
+		TV-RO3 & L'utente non riconosciuto vuole eseguire l'accesso alla piattaforma tramite le sue credenziali. All'utente è richiesto di: 
+		\begin{itemize}
+			\item Raggiungere la pagina di autenticazione;
+			\item Inserire il proprio username e password;
+			\item Confermare l'accesso.
+		\end{itemize}
+		& ROF2 \\ \hline
+		TV-RD1 & L'utente vuole modificare i dati del proprio profilo personale. All'utente è richiesto di:
+		\begin{itemize}
+			\item Raggiungere la pagina di modifica dei dati dal profilo;
+			\item Modificare una o più voci tra username, password, scuola e città;
+			\item Confermare la modifica.
+		\end{itemize} & RDF1 \\ \hline
+		TV-RD2 & Il  moderatore vuole verificare le credenziali di un utente che vuole registrarsi come insegnante. Al moderatore è richiesto di:
+		\begin{itemize}
+			\item Raggiungere la pagina di amministrazione della piattaforma;
+			\item Visualizzare la lista degli utenti che richiedono i  ruolo di insegnante;
+			\item Il moderatore seleziona uno degli utenti;
+			\item Il moderatore accetta o rifiuta l'utente selezionato.
+		\end{itemize} & RDF1 \\ \hline
+		
+		
+		\caption{Test di validazione}
+\end{longtable}
 
 \subsection{Test di sistema}
 Di seguito riportiamo una tabella contenente i test di sistema che intendiamo implementare per la verifica dei requisiti funzionali specificati nell'\emph{Analisi dei requisiti}. Per ogni test viene specificato il proprio codice univoco, il codice identificativo del requisito ad esso associato, la descrizione e lo stato di implementazione attuale.
@@ -235,14 +288,52 @@ Questa tipologia di test serve per verificare che le varie componenti del sistem
 		\textbf{\textcolor{white}{Test}}
 		& \multicolumn{1}{|c|}{\textbf{\textcolor{white}{ Descrizione}}}
 		& \textbf{\textcolor{white}{Esito}}\\
-		
 		\hline
 		TI1
-		& Test d’integrazione finale tra l’applicazione Front-end e l’applicazione Back-end.
+		& Test d’integrazione front-end e back-end per la corretta visualizzazione del front-end.
 		& Non implementato
 		\\ \hline
-		
-		
+		\rowcolor{LightGray}
+		TI2
+		& Test d’integrazione front-end e back-end per l'invio dei dati al front-end.
+		& Non implementato
+		\\ \hline
+		TI3
+		& Test d’integrazione front-end e back-end per la ricezione di dati dal front-end tramite POST.
+		& Non implementato
+		\\ \hline
+		\rowcolor{LightGray}
+		TI4
+		& Test d’integrazione front-end e back-end per la ricezione di dati dal front-end tramite GET.
+		& Non implementato
+		\\ \hline
+		TI5
+		& Test d’integrazione tra back-end e Humpos per il POS-Tagging.
+		& Non implementato
+		\\ \hline
+		\rowcolor{LightGray}
+		TI6
+		& Test d’integrazione tra back-end e Humpos per il training.
+		& Non implementato
+		\\ \hline	
+		TI7
+		& Test d’integrazione tra back-end e Google Firebase Realtime Database per la lettura dalla base di dati.
+		& Non implementato
+		\\ \hline	
+		\rowcolor{LightGray}
+		TI8
+		& Test d’integrazione tra back-end e Google Firebase Realtime Database per la scrittura sulla base di dati.
+		& Non implementato
+		\\ \hline	
+		TI9
+		& Test d’integrazione tra back-end e Google Firebase Realtime Database per la modifica della base di dati.
+		& Non implementato
+		\\ \hline	
+		\rowcolor{LightGray}
+		TI10
+		& Test d’integrazione tra back-end e Google Firebase Realtime Database per l'eliminazione dalla base di dati.
+		& Non implementato
+		\\ \hline	
 		\caption{Test di integrazione}
 \end{longtable}
 
@@ -256,19 +347,39 @@ Nella tabella seguente vengono riportati i risultati delle verifiche eseguite su
 		\textbf{\textcolor{white}{Documento}}
 		& \textbf{\textcolor{white}{Indice Gulpease}}
 		& \textbf{\textcolor{white}{Esito}}\\
-		\textit{Studio di fattibilità v1.0.0} & 60 & Accettato\\
+		\textit{StudioDiFattibilità\_v1.0.0} & 60 & Accettato\\
 		\hline
 		\rowcolor{LightGray}
-		\textit{Analisi dei requisiti v1.0.0} & 82 & Accettato\\
+		\textit{AnalisiDeiRequisiti\_v1.0.0} & 82 & Accettato\\
 		\hline
-		\textit{Norme di progetto v1.0.0} & 67 & Accettato\\
+		\textit{NormeDiProgetto\_v1.0.0} & 67 & Accettato\\
 		\hline
 		\rowcolor{LightGray}
-		\textit{Piano di qualifica v1.0.0} & 72 & Accettato\\
+		\textit{PianoDiQualifica\_v1.0.0} & 72 & Accettato\\
 		\hline
-		\textit{Piano di progetto v1.0.0} & 64 & Accettato\\
+		\textit{PianoDiProgetto\_v1.0.0} & 64 & Accettato\\
 		\hline
-		\caption{Resoconto attività di verifica}
+		\caption{Resoconto attività di verifica per la revisione dei requisiti}
+	\end{longtable}
+	
+	\begin{longtable}{>{\centering\arraybackslash}m{3cm} >{\centering\arraybackslash}m{4cm} >{\centering\arraybackslash}m{5cm} >{\centering\arraybackslash}m{2cm}}
+		\rowcolor{LightBlue}
+		\textbf{\textcolor{white}{Documento}}
+		& \textbf{\textcolor{white}{Indice Gulpease}}
+		& \textbf{\textcolor{white}{Esito}}\\
+		\textit{StudioDiFattibilità\_v1.0.0} & 60 & Accettato\\
+		\hline
+		\rowcolor{LightGray}
+		\textit{AnalisiDeiRequisiti\_v2.0.0} & 82 & Accettato\\
+		\hline
+		\textit{NormeDiProgetto\_v2.0.0} & 69 & Accettato\\
+		\hline
+		\rowcolor{LightGray}
+		\textit{PianoDiQualifica\_v2.0.0} & 72 & Accettato\\
+		\hline
+		\textit{PianoDiProgetto\_v2.0.0} & 64 & Accettato\\
+		\hline
+		\caption{Resoconto attività di verifica per la revisione di progettazione}
 	\end{longtable}
 
 

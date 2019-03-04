@@ -52,6 +52,7 @@
 		\rowcolor{LightBlue}
 		\color{white}\bfseries Versione & \color{white}\bfseries Data & \multicolumn{1}{c}{\color{white}\bfseries Autore}
 		& \color{white}\bfseries Ruolo & \multicolumn{1}{c}{\color{white}\bfseries Descrizione}\\[0.25cm]
+		1.0.6 & 2019-02-25 & Gianmarco Pettenuzzo & Amministratore & Incremento strumenti di verifica, aggiunta sezione 4.5 \\ \hline
 		1.0.5 & 2019-02-22 & Eleonora Peagno & Amministratore & Aggiunta sezione "assicurazione qualità", incremento metriche \\ \hline
 		1.0.4 & 2019-02-22 & Enrico Marcato & Amministratore & Aggiunta metriche software \\ \hline
 		1.0.3 & 2019-02-21 & Eleonora Peagno & Amministratore & Aggiunta normazione di e metriche di processo \\ \hline
@@ -577,7 +578,7 @@ La seguente immagine riporta le attività previste a tale scopo e ne segue una b
 	 \item \textbf{MPC1 - ISO/IEC 15504 (SPICE)}: lo standard ISO/IEC 15504 è lo standard di riferimento per valutare oggettivamente la qualità dei processi software al fine di migliorarli e permette di misurare indipendentemente ogni processo tramite degli attributi, studiando il range di risultati che si ottengono eseguendolo. 
 	 \begin{itemize}
 	 \item Livello di accettazione: livello 2
-	 \item Livello ottimale: livello 4 o superiore
+	 \item Livello ottimale: livello 6
 	 \end{itemize}
 	 \item \textbf{MPC2 - Requirement Stability Index (RSI)}: indica la percentuale dei requisiti rimasti invariati nel tempo. Un valore elevato di tale metrica indica un’attività di analisi attenta e corretta. Viene calcolata tramite la seguente formula:
 	 \begin{center}
@@ -587,7 +588,7 @@ La seguente immagine riporta le attività previste a tale scopo e ne segue una b
 	 \item Livello di accettazione: superiore a 0.6
 	 \item Livello ottimale: 1
 	 \end{itemize}
-	\item \textbf{MPC3 - Violazione dello stile di codifica}: indica il numero di violazioni allo stile di codifica rispetto quanto normato nella sezione BOH. Un risultato elevato indica poca cura da parte dei programmatori che rende il codice poco affidabile. 
+	\item \textbf{MPC3 - Violazione dello stile di codifica}: indica il numero di violazioni allo stile di codifica. Un risultato elevato indica poca cura da parte dei programmatori che rende il codice poco affidabile. 
 	\begin{itemize}
 	 \item Livello di accettazione: minore di 10
 	 \item Livello ottimale: 0
@@ -631,18 +632,18 @@ La seguente immagine riporta le attività previste a tale scopo e ne segue una b
 	\begin{itemize}
 		\item \textbf{MPD1 - Correttezza ortografica}: su ogni documento sarà possibile individuare gli errori ortografici tramite l'editor Texmaker. Il numero di errori rilevati accettabili è pari a zero.
 		\begin{itemize}
-	 \item Livello di accettazione: 100\%
-	 \item Livello ottimale: 100\%
+	 \item Livello di accettazione: 0
+	 \item Livello ottimale: 0
 	 \end{itemize}
 	 
-		\item \textbf{MPD2 - Indice di Gulpease}: l'indice Gulpease$^*$ è un indice di leggibilità di un testo tarato sulla lingua italiana. Rispetto ad altri ha il vantaggio di utilizzare la lunghezza delle parole in lettere anziché in sillabe, semplificandone il calcolo automatico. Permette di misurare la complessità dello stile di un documento. L'indice di Gulpease considera due variabili linguistiche: la lunghezza della parola e la lunghezza della frase rispetto al numero delle lettere. La formula per il suo calcolo è:
+		\item \textbf{MPD2 - Indice di Gullpease}: l'indice Gullpease$^*$ è un indice di leggibilità di un testo tarato sulla lingua italiana. Rispetto ad altri ha il vantaggio di utilizzare la lunghezza delle parole in lettere anziché in sillabe, semplificandone il calcolo automatico. Permette di misurare la complessità dello stile di un documento. L'indice di Gullpease considera due variabili linguistiche: la lunghezza della parola e la lunghezza della frase rispetto al numero delle lettere. La formula per il suo calcolo è:
 	\begin{center}
 		$89\ +\ \frac{300\ *\ (numero\ delle\ frasi)\ -\ 10\ *\ (numero\ delle\ lettere)}{numero\ delle\ parole}$
 	\end{center}
-	I risultati sono compresi tra 0 e 100, dove il valore 100 indica la leggibilità più alta e 0 la leggibilità più bassa. I testi il cui indice è inferiore ad 80 sono difficili da leggere per chi ha la sola licenza elementare, inferiore a 60 per chi ha la licenza media e inferiore a 60 per chi possiede un diploma superiore.
+	I risultati sono compresi tra 0 e 100, dove il valore 100 indica la leggibilità più alta e 0 la leggibilità più bassa. I testi il cui indice è inferiore ad 80 sono difficili da leggere per chi ha la sola licenza elementare, inferiore a 60 per chi ha la licenza media e inferiore a 40 per chi possiede un diploma superiore.
 	\begin{itemize}
 	 \item Livello di accettazione: superiore a 40
-	 \item Livello ottimale: superiore a 60
+	 \item Livello ottimale: superiore a 80
 	 \end{itemize}	
 	\end{itemize}
 	
@@ -669,8 +670,10 @@ La seguente immagine riporta le attività previste a tale scopo e ne segue una b
 	 \item Livello ottimale: minore di 5
 	 \end{itemize}
 	    \item \textbf{MPS5 - Complessità ciclomatica media}: per dare una valutazione alla complessità del codice si utilizza questa metrica basata sulla struttura del grafo. Il valore generato dalla seguente formula se dovesse essere troppo elevato indica un'eccessiva complessità del codice.
-	
-    	v(G) = L – N +2*P
+		\begin{center}
+		$v(G) = E – N + 2P$
+		\end{center}
+    	
     	\begin{itemize}
     	    \item \textbf{N}: rappresenta il numero di nodi;
     	    \item E: rappresenta il numero di archi;
@@ -694,15 +697,24 @@ La seguente immagine riporta le attività previste a tale scopo e ne segue una b
 	\end{center}
 	\begin{itemize}
 	 \item Livello di accettazione: superiore al 60\%
-	 \item Livello ottimale: superiore al 80\%
+	 \item Livello ottimale: 100\%
 	 \end{itemize}
 		\item \textbf{MPS8 - Copertura dei test sul codice}: indica la percentuale di istruzioni che vengono eseguite durante i test rispetto il totale. Maggiore è la percentuale testata, maggiore è la possibilità che eventuali errori siano individuati e risolti; si calcola con la seguente formula:
 		\begin{center}
-		$\frac{numero\ istruzioni\ eseguite}{numero\ istruzioni\ totali}$
-	\end{center}
+		$\frac{numero\ istruzioni\ eseguite}{numero\ istruzioni\ totali}$	
+		\end{center}
 	\begin{itemize}
 	 \item Livello di accettazione: superiore al 50\%
-	 \item Livello ottimale: superiore al 70\%
+	 \item Livello ottimale: 100\%
+	 \end{itemize}
+	 
+	 \item \textbf{MPS9 - Implementazione dei requisiti opzionali:} permette di verificare in ogni istante la percentuale di requisiti opzionali soddisfati; viene calcolata con la seguente formula: 
+		\begin{center}
+		$\frac{numero\ requisiti\ opzionali\ implementati}{numero\ requisiti\ opzionali\ totali}$
+	\end{center}
+	\begin{itemize}
+	 \item Livello di accettazione: superiore al 20\%
+	 \item Livello ottimale: 100\%
 	 \end{itemize}
 	
 	\end{itemize}
@@ -738,9 +750,13 @@ La seguente immagine riporta le attività previste a tale scopo e ne segue una b
 	\paragraph{Analisi statica locale}
 	\noindent \\
 	Viene utilizzato \textit{Total Validator} per la validazione del codice HTML5 e CSS3. \\
-	Come strumento per la validazione di codice JavaScript viene utilizzato \textit{ESLint}.
+	Come strumento per la validazione dello stile del codice JavaScript viene utilizzato \textit{ESLint}. \\
+	Inoltre, si utilizzerà \textit{SonarQube} per analizzare staticamente il codice Javascript da eventuali bug.
+	
 	\paragraph{Analisi statica remota}
 	\noindent \\
+	%TODO%
+	Per il tracking di bug e vulnerabilità del codice JavaScript remoti si utilizzerà \textit{SonarCloud}.
 	
 			
 	\subsection{Validazione}

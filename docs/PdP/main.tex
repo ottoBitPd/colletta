@@ -17,7 +17,7 @@
 \usepackage{lastpage}
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=3cm]{geometry}
 \usepackage{ltablex}
-
+\usepackage{float}
 \usepackage{titlesec}
 
 \pagestyle{fancy}
@@ -57,7 +57,7 @@
 		\color{white}\bfseries Ruolo & 
 		\multicolumn{1}{c}{\color{white}\bfseries Descrizione}\\[0.25cm]
 		2.0.0 & 2019-03-06 & Gianmarco Pettenuzzo & Responsabile & Approvazione per il rilascio\\ \hline
-		1.1.0 & 2019-03-06 & Benedetto Cosentino & Responsabile & Verifica del documento\\ \hline
+		1.1.0 & 2019-03-05 & Benedetto Cosentino & Verificatore & Documento verificato\\ \hline
 		1.0.4 & 2019-03-04 & Gianmarco Pettenuzzo & Responsabile & Completamento consuntivo\\ \hline
 		1.0.3 & 2019-02-28 & Enrico Marcato & Amministratore & Bozza consuntivo\\ \hline
 		1.0.2 & 2019-02-07 & Enrico Marcato & Amministratore & Aggiunta dettagli ripianificazione\\ \hline
@@ -113,7 +113,7 @@
 		\input{consuntivo.tex}
 		\newpage
 
-	\appendix
 	\section{Organigramma}
 		\input{appendixA.tex}
+		\newpage
 \end{document}

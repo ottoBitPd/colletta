@@ -1,6 +1,6 @@
 all_tests:
   image: node:8.15.0
-	stage: test
+  stage: test
   before_script:
     - apt-get update -yq \
       && apt-get install curl gnupg -yq \

@@ -15,6 +15,8 @@
 \usepackage{enumerate}
 \usepackage{lastpage}
 \usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{ltablex}
 \hypersetup{colorlinks,urlcolor=blue,linkcolor=black}
 
 \pagestyle{fancy}
@@ -29,32 +31,35 @@
 \definecolor{Gray}{gray}{0.8}
 \definecolor{LightGray}{gray}{0.9}
 
-
-
-
 \usepackage{lipsum}
 \usepackage{verbatim}
-
 
 
 \setcounter{tocdepth}{4}
 \setcounter{secnumdepth}{4}
 
-
+\titlespacing*{\subsection}{0pt}{8ex plus 1ex minus .2ex}{2.3ex plus .2ex}
+\titlespacing*{\subsubsection}{0pt}{8ex plus 1ex minus .2ex}{2.3ex plus .2ex}
 
 \begin{document}
 	\input{frontpage/frontpage.tex}
 	
-	
+	{\def\arraystretch{2}\tabcolsep=10pt
 	\newpage
 	\section*{\centering Registro delle modifiche}
-	\begin{tabularx}{\textwidth}{ c | c | X | c | X }
+	\begin{tabularx}{\textwidth}{ c | c | p{3.80cm} | c | X }
 		\rowcolor{LightBlue}
 		\color{white}\bfseries Versione & \color{white}\bfseries Data & \multicolumn{1}{c}{\color{white}\bfseries Autore}
 		& \color{white}\bfseries Ruolo & \multicolumn{1}{c}{\color{white}\bfseries Descrizione}\\[0.25cm]
+		2.0.0 & 2019-03-04 & Gianmarco Pettenuzzo & Responsabile & Approvazione per il rilascio \\ \hline
+		1.1.0 & 2019-03-04 & Giovanni Bergo & Verificatore & Verifica documento \\ \hline
+		1.0.6 & 2019-02-28 & Gianmarco Pettenuzzo & Amministratore & Incremento strumenti di verifica, aggiunta sezione 4.5 \\ \hline
+		1.0.5 & 2019-02-22 & Eleonora Peagno & Amministratore & Aggiunta sezione "assicurazione qualità", incremento metriche \\ \hline
+		1.0.4 & 2019-02-22 & Enrico Marcato & Amministratore & Aggiunta metriche software \\ \hline
+		1.0.3 & 2019-02-21 & Eleonora Peagno & Amministratore & Aggiunta normazione di e metriche di processo \\ \hline
 		1.0.2 & 2019-02-18 & Giovanni Bergo & Amministratore & Correzioni al documento \\ \hline
 		1.0.1 & 2019-02-04 & Michele Bortone & Amministratore & Correzioni al documento \\ \hline
-		1.0.0 & 2019-01-11 & Benedetto Cosentino & Responsabile & Approvazione documento \\ \hline
+		1.0.0 & 2019-01-11 & Benedetto Cosentino & Responsabile & Approvazione per il rilascio \\ \hline
 		0.2.0 & 2018-12-27 & Michele Bortone & Verificatore & Verifica documento \\ \hline
 		0.1.2 & 2018-12-20 & Giovanni Bergo \newline Gianmarco Pettenuzzo & Amministratore & Aggiornamento Norme di progetto \\ \hline
 		0.1.1 & 2018-12-20 & Eleonora Peagno & Amministratore & Aggiornamento processi primari \\ \hline
@@ -64,12 +69,7 @@
 		0.0.4 & 2018-12-11 & Eleonora Peagno & Amministratore & Introduzione \\ \hline
 		0.0.3 & 2018-12-16 & Giovanni Bergo \newline Gianmarco Pettenuzzo & Amministratore & Aggiornamento Norme di progetto \\ \hline
 		0.0.2 & 2018-12-14 & Giovanni Bergo \newline Gianmarco Pettenuzzo & Amministratore & Stesura processi \newline organizzativi \\ \hline
-		0.0.1 & 2018-12-11 & Giovanni Bergo \newline Gianmarco Pettenuzzo & Amministratore & Stesura processi di \newline supporto \\ \hline
-		
-		
-		
-		
-		
+		0.0.1 & 2018-12-11 & Giovanni Bergo \newline Gianmarco Pettenuzzo & Amministratore & Stesura processi di \newline supporto \\ \hline		
 	\end{tabularx}
 	
 	\newpage	
@@ -85,7 +85,7 @@
 	\\Ogni componente del gruppo è tenuto a farne riferimento così da poter ottenere dei configuration item$^*$ omogenei tra loro e, di conseguenza, più facili da verificare. 
 	Tutte le regole qui descritte sono state elaborate dall'intero gruppo, il quale deve approvare eventuali modifiche, aggiunte o rimozioni.
 	\\\\
-	Il documento Norme di progetto v2.0.0 è un documento incrementale e quindi subirà modifiche durante lo sviluppo del prodotto richiesto. In particolare al documento verranno aggiunte incrementalmente le norme per le attività più imminenti.
+	Il documento \textit{NormeDiProgetto\_v2.0.0} è un documento incrementale e quindi subirà modifiche durante lo sviluppo del prodotto richiesto. In particolare al documento verranno aggiunte incrementalmente le norme per le attività più imminenti.
 	\subsection{Scopo del prodotto}
 	Lo scopo del prodotto è creare una piattaforma collaborativa di raccolta dati su cui sia possibile predisporre e/o svolgere esercizi di analisi grammaticale. La raccolta vorrebbe avere il fine di fornire a sviluppatori e ricercatori dati sufficienti per applicare metodi di apprendimento automatico$^*$. Nello specifico si vorrebbe poter insegnare ad un elaboratore a svolgere gli stessi esercizi proposti agli utenti, divenendo una sorta di correttore automatico.  
 	Le componenti principali del prodotto saranno quindi:
@@ -158,10 +158,10 @@
 	
 	\textbf{Prodotto dell'attività:} \textit{AnalisiDeiRequisiti\_v2.0.0}
 	
-	\paragraph{Diagrammi UML dei casi d'uso}
-	\noindent \\ I casi d'uso verranno rappresentati tramite diagrammi seguendo le regole di UML 2.0, al fine di individuare i requisiti.
-	\paragraph{Denominazione dei requisiti}
-	\noindent \\ Si vuole associare un identificatore univoco per ogni requisito individuato durante l'analisi dei requisiti. Si \`e deciso di utilizzare il seguente formato:
+	\paragraph{Diagrammi UML dei casi d'uso\\}
+	 I casi d'uso verranno rappresentati tramite diagrammi seguendo le regole di UML 2.0, al fine di individuare i requisiti.
+	\paragraph{Denominazione dei requisiti\\}
+	Si vuole associare un identificatore univoco per ogni requisito individuato durante l'analisi dei requisiti. Si \`e deciso di utilizzare il seguente formato:
 	\begin{center}
 		R[Priorità][Tipo][Codice]
 	\end{center}
@@ -183,8 +183,8 @@
 		\item il campo “\textbf{Codice}” assumerà un valore numerico intero positivo, univoco ed incrementale.
 	\end{itemize}
 	
-	\paragraph{Casi d'uso}
-	\noindent \\Ad ogni caso d'uso saranno associate le seguenti informazioni:
+	\paragraph{Casi d'uso\\}
+	Ad ogni caso d'uso saranno associate le seguenti informazioni:
 	\begin{itemize}
 		\item il codice del requisito che lo interessa UC-[Codice];
 		\item un nome (univoco);
@@ -196,14 +196,14 @@
 	\subparagraph{Gerarchie dei casi d'uso} 
 	Gli identificatori numerici assegnati a casi d'uso saranno organizzati gerarchicamente come descritto di seguito. Posto UC-X codice di un caso d'uso, allora UC-X.Y è figlio di UC-X ed esiste fra i due una relazione tra quelle elencate:
 	\begin{itemize}
-		\item UC-X.Y descrive nel dettaglio una delle funzionalita di UC-X;
+		\item UC-X.Y descrive nel dettaglio una delle funzionalità di UC-X;
 		\item UC-X.Y descrive una estensione (o scenario alternativo) dello scenario descritto in UC-X; 
 		\item UC-X.Y descrive una estensione dello scenario principale di due o più figli di UC-X.
 	\end{itemize}
 	\subsubsection{Progettazione}
 	L'attività di progettazione consiste nel ricercare una soluzione che soddisfi i requisiti concordati con gli stakeholder$^*$. Essa avrà inizio quando obiettivi, vincoli e requisiti del prodotto finale saranno solidi e chiari. Spetta ai Progettisti il compito di definire l'architettura del prodotto, dando così coerenza e consistenza al progetto. Per definirsi una buona architettura dovrà rispettare le seguenti proprietà:
 	\begin{itemize}
-		\item Capacità di \textbf{soddisfare i requisiti} definiti nel documento \textit{Analisi dei requisiti v2.0.0}. L'architettura dovrà anche essere in grado di adattarsi facilmente e permettere modifiche a costo contenuto nel caso in cui i requisiti dovessero variare in corso d'opera;
+		\item Capacità di \textbf{soddisfare i requisiti} definiti nel documento \textit{AnalisiDeiRequisiti\_v2.0.0}. L'architettura dovrà anche essere in grado di adattarsi facilmente e permettere modifiche a costo contenuto nel caso in cui i requisiti dovessero variare in corso d'opera;
 		\item Di facile \textbf{comprensibilità}, per gli stakeholders, per il Responsabile e per i Verificatori;
 		\item \textbf{Organizzata e suddivisa in moduli} di complessità trattabile, così da rendere la codifica di ogni parte eseguibile da un singolo individuo;
 		\item \textbf{Rispettare l'information hiding}, fornendo dove possibile interfacce per l'utilizzo del modulo implementato nascondendo i dettagli implementativi;
@@ -212,8 +212,7 @@
 		\item \textbf{Affidabilità}, quando svolge un compito, questo deve essere svolto efficientemente;
 		\item \textbf{Sicurezza}, in caso di malfunzionamenti o di intrusioni esterne i dati e le funzioni non devono essere vulnerabili.
 	\end{itemize}	
-	\paragraph{Diagrammi UML} 
-	\noindent \\
+	\paragraph{Diagrammi UML\\} 
 	Saranno implementati, secondo lo standard UML 2.0, i diagrammi per rendere chiare le scelte progettuali adottate. Saranno forniti:
 	\begin{itemize}
 		\item Diagrammi delle classi;
@@ -221,25 +220,25 @@
 		\item Diagrammi di attività;
 		\item Diagrammi di package.
 	\end{itemize}
-	\paragraph{Design Patterns} 
-	\noindent \\Compito dei Progettisti è adottare un design pattern opportuno al problema posto dal progetto. Ciò consente ai Programmatori di seguire delle linee guida consolidate nell'implementazione delle componenti previste dal progettista. I vantaggi di tali soluzioni dovranno essere motivati spiegandone la struttura e il funzionamento.
+	\paragraph{Design Patterns\\} 
+	Compito dei Progettisti è adottare un design pattern opportuno al problema posto dal progetto. Ciò consente ai Programmatori di seguire delle linee guida consolidate nell'implementazione delle componenti previste dal progettista. I vantaggi di tali soluzioni dovranno essere motivati spiegandone la struttura e il funzionamento.
 	\subsubsection{Strumenti}
-	\paragraph{Astah}
-	\noindent \\È un programma per la modellazione di diagrammi UML che verrà utilizzato dal gruppo per la creazione di tutti i diagrammi necessari.
+	\paragraph{Astah\\}
+	È un programma per la modellazione di diagrammi UML che verrà utilizzato dal gruppo per la creazione di tutti i diagrammi necessari.
 	
 	\subsubsection{Codifica}
 	L'attività di codifica inizierà quando la progettazione sarà terminata. Pertanto le norme sottostanti potranno subire variazioni in seguito alla successiva revisione.
 	
-	\paragraph{Scopo}
-	\noindent \\ La codifica è l'attività che permette l'effettiva realizzazione del prodotto.
+	\paragraph{Scopo\\}
+	La codifica è l'attività che permette l'effettiva realizzazione del prodotto.
 	\paragraph{Linguaggi di codifica utilizzati:}
 	\begin{itemize}
 		\item Javascript: Node.js per la parte backend e React per la parte dinamica del frontend
 		\item HTML e CSS: per la struttura e la presentazione del frontend
 	\end{itemize}
 	
-	\paragraph{Commenti al codice}
-	\noindent \\ I commenti al codice, i nomi delle funzioni e delle variabili dovranno essere esplicativi ed in lingua inglese.
+	\paragraph{Commenti al codice\\}
+	I commenti al codice, i nomi delle funzioni e delle variabili dovranno essere esplicativi ed in lingua inglese.
 	I commenti devono permettere la comprensione del codice, non
 	devono quindi descrivere la sintassi del linguaggio di programmazione in uso, ma piuttosto descrivere lo scopo di tutti quei blocchi di codice la
 	cui comprensione non sia già resa immediata da una corretta scelta della nomenclatura.
@@ -254,8 +253,7 @@
 	Lo scopo è quello di fornire una descrizione accurata di tutte le norme, convenzioni e vincoli rispettati per ottenere documentazione efficace, coerente e formale.
 	\subsubsection{Implementazione}
 	
-	\paragraph{Template}
-	\noindent \\ 
+	\paragraph{Template\\}
 	Si è voluto creare un file template.tex, con l'obbiettivo di uniformare l'impaginazione dei documenti. 
 	Nello specifico:
 	\begin{itemize}
@@ -266,8 +264,8 @@
 		
 	\end{itemize}
 	
-	\paragraph{Ciclo di vita}
-	\noindent \\Tutti i documenti si troveranno in tre diverse fasi:
+	\paragraph{Ciclo di vita\\}
+	Tutti i documenti si troveranno in tre diverse fasi:
 	\begin{enumerate}
 		\item \textbf{Elaborazione:} in questa fase il documento viene creato e modificato dai Redattori, aggiornando ogni volta la versione del documento. 
 		\item \textbf{Verifica:} una volta terminato il lavoro di elaborazione, il documento verrà assegnato ai Verificatori che procederanno al controllo di correttezza. Se il documento sarà valutato non corretto, verrà riassegnato ai Redattori.
@@ -276,8 +274,8 @@
 	
 	\subsubsection{Struttura}
 	
-	\paragraph{Frontespizio} 
-	\noindent \\La prima pagina di ogni documento dovrà seguire questa struttura:
+	\paragraph{Frontespizio\\} 
+	La prima pagina di ogni documento dovrà seguire questa struttura:
 	\begin{itemize}
 		\item \textbf{Logo}
 		\item \textbf{Nome Documento}
@@ -293,8 +291,7 @@
 		\end{itemize}
 	\end{itemize}
 	
-	\paragraph{Registro delle modifiche}
-	\noindent \\
+	\paragraph{Registro delle modifiche\\}
 	Nella pagina seguente alla prima, deve essere presente una tabella riassuntiva della cronologia delle versioni del documento; anno eccezione i verbali, che non la presentano. \\
 	Nella tabella, ad ogni modifica, devono essere presenti le seguenti informazioni:
 	
@@ -306,16 +303,15 @@
 		\item \textbf{Breve descrizione}
 	\end{itemize}
 	
-	\paragraph{Indice}
-	\noindent \\L'indice del documento inizia nelle pagine successive a quelle del registro delle modifiche, ogni sezione e sottosezione sarà etichettata con un numero progressivo a partire dal numero 1 e permetterà il collegamento ipertestuale direttamente alla pagina corrispondente. Inoltre saranno presenti altri due elenchi:
+	\paragraph{Indice\\}
+	L'indice del documento inizia nelle pagine successive a quelle del registro delle modifiche, ogni sezione e sottosezione sarà etichettata con un numero progressivo a partire dal numero 1 e permetterà il collegamento ipertestuale direttamente alla pagina corrispondente. Inoltre saranno presenti altri due elenchi:
 	
 	\begin{itemize}
 		\item \textbf{Indice delle tabelle:} elenco delle eventuali tabelle presenti presenti nel documento, escluse il registro delle modifiche;
 		\item  \textbf{Indice delle figure:} elenco delle eventuali immagini presenti nel documento. 
 	\end{itemize}
 	
-	\paragraph{Contenuto}
-	\noindent \\ 
+	\paragraph{Contenuto\\}
 	Il resto del documento sarà dedicato al contenuto del documento stesso, ogni pagina seguente avrà la seguente codifica:
 	\begin{itemize}
 		\item \textbf{Intestazione}
@@ -334,8 +330,6 @@
 	\subsubsection{Design}
 	
 	\paragraph{Stile del testo}
-	
-	\noindent   
 	\begin{itemize}
 		\item \textbf{Grassetto:} va utilizzato nei titoli, elenchi puntati ed intestazione tabelle;
 		\item \textbf{Corsivo:} riferimenti a documenti interni o esterni prodotti dal team;
@@ -345,7 +339,7 @@
 		\item \textbf{Codici:} struttura \LaTeX\ $^*$ (package Listings) con carattere Teletype;
 		\item \textbf{Ruoli di progetto:} la prima lettera maiuscola;
 		\item \textbf{Nomi propri:} ogni nome proprio di persona deve essere scritto nella forma Nome Cognome;
-		\item \textbf{Riferimenti a documenti:} la prima lettera maiuscola con il riferimento alla versione nel formato vX.X.X (esempio: Norme di progetto v1.0.0);
+		\item \textbf{Riferimenti a documenti:} la prima lettera maiuscola con il riferimento alla versione nel formato vX.X.X (esempio: NormeDiProgetto\_v1.0.0);
 		\item \textbf{Riferimenti a sezioni:} i riferimenti interni al documento devono riportare il numero della sezione, preceduto dal simbolo di paragrafo (esempio: \S\ {3.1.1} ).
 		
 	\end{itemize}
@@ -357,8 +351,7 @@
 		\item \textbf{Elenchi numerati:} gli elementi vengono numerati partendo dal numero 1.
 	\end{itemize}
 	
-	\paragraph{Formati comuni}
-	\noindent \\ 
+	\paragraph{Formati comuni\\}
 	Orari e date varranno rappresentate secondo quanto definito dallo standard ISO 8601$^*$. 
 	
 	\begin{itemize}
@@ -383,8 +376,7 @@
 		
 	\end{itemize}
 	
-	\paragraph{Tabelle}	
-	\noindent \\		
+	\paragraph{Tabelle\\}	
 	Ogni tabella dovrà avere:
 	\begin{itemize}
 		\item \textbf{Numero:} indice progressivo a partire da 1 che individui la tabella univocamente;
@@ -394,8 +386,7 @@
 	
 	
 	
-	\paragraph{Figure}
-	\noindent \\	
+	\paragraph{Figure\\}
 	Ogni figura dovrà avere:
 	\begin{itemize}
 		\item \textbf{Numero:} indice progressivo a partire da 1 che individui la figura univocamente;
@@ -403,14 +394,14 @@
 	\end{itemize}
 	
 	\subsubsection{Suddivisione dei documenti}
-	\paragraph{Documenti formali}
-	\noindent \\ Un documento è definito formale dopo l’approvazione da parte del Responsabile di progetto e quindi deve aver superato con esito positivo la fase di verifica. Questi documenti sono destinati alla distribuzione esterna al gruppo.
+	\paragraph{Documenti formali\\}
+	Un documento è definito formale dopo l’approvazione da parte del Responsabile di progetto e quindi deve aver superato con esito positivo la fase di verifica. Questi documenti sono destinati alla distribuzione esterna al gruppo.
 	
-	\paragraph{Documenti informali}
-	\noindent \\ Tutti i documenti sono da considerarsi informali finché non vengono approvati dal Responsabile di progetto. L’utilizzo di tali documenti è da considerarsi interno e quindi esclusivo del team.
+	\paragraph{Documenti informali\\}
+	Tutti i documenti sono da considerarsi informali finché non vengono approvati dal Responsabile di progetto. L’utilizzo di tali documenti è da considerarsi interno e quindi esclusivo del team.
 	
-	\paragraph{Verbali}
-	\noindent \\ I verbali sono documenti redatti in occasione di incontri interni al gruppo o con enti esterni. Ogni verbale contiene:
+	\paragraph{Verbali\\}
+	I verbali sono documenti redatti in occasione di incontri interni al gruppo o con enti esterni. Ogni verbale contiene:
 	
 	\begin{itemize}
 		\item \textbf{Informazione sulla riunione:} specificano il luogo, la data, l'ora dell’incontro, tutti i partecipanti e il Segretario;
@@ -418,19 +409,19 @@
 		\item \textbf{Resoconto:} descrizione di quanto discusso durante l'incontro del team.
 	\end{itemize}
 	
-	\paragraph{Glossario}
-	\noindent \\ Documento unico ad uso esterno, consiste di un elenco di definizioni, in ordine lessicografico, di tutte le parole che possono creare ambiguità o necessitanti descrizione precisa. Tutti i termini presenti nel glossario sono marcati con un "*" ogni prima volta che compaiono in un documento (esempio: Glossario$^*$).
+	\paragraph{Glossario\\}
+	Documento unico ad uso esterno, consiste di un elenco di definizioni, in ordine lessicografico, di tutte le parole che possono creare ambiguità o necessitanti descrizione precisa. Tutti i termini presenti nel glossario sono marcati con un "*" ogni prima volta che compaiono in un documento (esempio: Glossario$^*$).
 	
 	\subsubsection{Strumenti}
 	
-	\paragraph{\LaTeX}
-	\noindent \\ Per la produzione della documentazione si è fatto uso del formato \LaTeX\ perché permette un migliore stile di codifica.\\
+	\paragraph{\LaTeX\\}
+	 Per la produzione della documentazione si è fatto uso del formato \LaTeX\ perché permette un migliore stile di codifica.\\
 	Per la produzione di codice \LaTeX\ è stato utilizzato Texmaker$^*$.
 	
 	\subsubsection{Mantenimento}
 	
-	\paragraph{Versionamento}
-	\noindent \\ Ogni documento o componente del codice, eccetto i verbali, soggetto a versionamento, è versionato tramite lo strumento GitLab$^*$ ed organizzato mediante la metodologia GitFlow.\\
+	\paragraph{Versionamento\\}
+	Ogni documento o componente del codice, eccetto i verbali, soggetto a versionamento, è versionato tramite lo strumento GitLab$^*$ ed organizzato mediante la metodologia GitFlow.\\
 	La definizione di una versione avviene seguendo questa forma:
 	\begin{center}
 		X . Y . Z
@@ -467,28 +458,288 @@
 	
 	\newpage
 	
+	\subsection{Assicurazione della qualità}
+	\subsubsection{Scopo}
+	Questo processo ha lo scopo di prevenire il presentarsi dei problemi, di individuarli quando si presentano, di identificarne le cause e di trovarvi rimedio. In questo modo si potrà garantire la qualità dei processi e dei prodotti durante il ciclo di vita del software.
+	\\
+Una corretta implementazione di questo processo permette di:
+	\begin{itemize}
+		\item determinare le politiche per la qualità, gli obiettivi e le responsabilità;
+		\item implementare le politiche di qualità stabilite, attraverso pianificazione, controllo e miglioramento della qualità. 
+	\end{itemize}
+	
+L'assicurazione della qualità riguarda sia i prodotti che i processi. Al fine di ottenere specifici attributi di qualità, i prodotti devono essere conformi ai requisiti definiti nell'\textit{AnalisiDeiRequisiti\_v2.0.0} ed aderire al \textit{PianoDiProgetto\_v2.0.0}. Anche i processi devono essere conformi a quanto specificato in quest'ultimo documento e devono, inoltre, rispettare gli standard utilizzati per la loro implementazione. \\
+Le attività riguardanti l'attività di assicurazione della qualità che vengono presentate di seguito, sono descritte in dettaglio nel documento \textit{PianoDiQualifica\_v2.0.0}.
+
+	\subsubsection{Attività: assicurazione della qualità di processo}
+	Il gruppo OttoBit ha deciso di utilizzare gli standard ISO/IEC 15504 denominato SPIECE$^*$ e lo standard PDCA$^*$ di cui viene riportata di seguito la descrizione.\\
+	\textbf{ISO/IEC 15504} \\
+	Lo standard ISO/IEC 15504, comunemente chiamato SPICE (acronimo di Software Process Improvement and Capability Determination), viene utilizzato per eseguire una valutazione concreta della qualità dei processi, inoltre permette la misurazione della capability dei processi, ovvero l'abilità con cui esso raggiunge l'obiettivo prefissato. Per eseguire queste misurazioni lo standard offre nove attributi da associare ai processi, ognuno dei quali misura un particolare aspetto della maturità del processo:
+	\begin{itemize}
+	\item \textbf{Process performance:} è una misura del grado con cui è stato raggiunto lo scopo del processo. Il completo raggiungimento di quest'attributo è dato dal fatto che il processo raggiunge gli obiettivi prefissati.
+	\item \textbf{Perfomance management:} è una misura del grado con il quale viene gestita l'organizzazione per il raggiungimento dello scopo del processo. Il processo è pianificato e monitorato. Le responsabilità per la realizzazione del processo sono assegnate e comunicate. Le risorse necessarie per il processo sono disponibili, allocate e utilizzate. 
+	\item \textbf{Work product management:} è una misura del grado con il quale i risultati prodotti dal processo vengono appropriatamente gestiti. I requisiti dei risultati della documentazione e del controllo del processo sono definiti e i risultati devono essere appropriatamente documentati e controllati. I risultati del processo sono sottoposti a verifica e a correzione se necessario.
+	\item \textbf{Process definition:} è una misura del grado con cui uno standard di processo è mantenuto (utilizzato) a supporto dell'implementazione del processo. Gli elementi fondamentali dello standard da utilizzare sono descritti e la sequenza di operazioni richieste dallo standard è definita. Le competenze, i ruoli, le infrastrutture e l'ambiente di lavoro per realizzare il processo fanno parte dello standard. I metodi di monitoraggio del processo sono definiti.
+	\item \textbf{Process deployment:} è una misura del grado con il quale lo standard di processo viene effettivamente distribuito come un processo definito in grado di raggiungere i propri obiettivi. Le responsabilità e i ruoli per utilizzare lo standard sono assegnati e comunicati, le risorse, le infrastrutture e l'ambiente di lavoro, necessarie per l'applicazione dello standard, sono disponibili allocate e utilizzate. Vengono raccolti e analizzati dati per dimostrare l'adeguatezza e l'efficacia del processo.
+	\item \textbf{Process measurement:} è una misura del grado con il quale i risultati delle misurazioni sono utilizzati per garantire il raggiungimento degli obiettivi del processo. Vengono definiti degli obiettivi di qualità basati sulle misurazioni. I risultati delle misurazioni sono raccolti analizzati e documentati per verificare che gli obiettivi di qualità siano rispettati.
+	\item \textbf{Process control:} è una misura del grado con il quale il processo è quantitativamente gestito per produrre un processo che sia stabile, abile e prevedibile entro limiti definiti. Analisi e tecniche di controllo vengono applicate. Sono stabiliti dei limiti di variazione per i risultati delle misurazioni. Vengono intraprese delle azioni correttive se necessario. 
+	\item \textbf{Process innovation:} è una misura del grado con il quale vengono identificate delle modifiche al processo attraverso l'analisi di cause comuni di variazione delle performance, e dalla ricerca di approcci innovativi alla definizione e all'implementazione del processo. Vengono definiti degli obiettivi di miglioramento. Vengono analizzati dei dati per identificare le cause comuni di variazione delle performance del processo e successivamente per identificare delle best-practice*.
+	\item \textbf{Process optimization:} è una misura del grado con il quale delle modifiche alla definizione, gestione e alle prestazioni del processo si traducono in un impatto che porta a raggiungere rilevanti miglioramenti al processo. L'impatto dei cambiamenti proposti viene valutato rispetto agli obiettivi definiti dal processo e dallo standard di processo.
+	\end{itemize}
+	A questi attributi viene assegnato uno dei seguenti quattro livelli di misura:
+	\begin{itemize}
+	\item \textbf{N not implemented:} non ci sono segni di raggiungimento dell'attributo.
+	\item \textbf{P partial implemented:} esistono alcuni risultati dell'attributo in questione.
+	\item \textbf{L largely implemented:} ci sono significanti segni di raggiungimento dell'attributo in questione.
+	\item \textbf{F fully implemented:} viene identificato un pieno raggiungimento degli obiettivi dell'attributo
+	\end{itemize}
+	Infine sulla base delle valutazioni assegnate ad ogni attributo del processo, potrà essere valutato il grado complessivo di maturazione, il quale varierà sui seguenti sei valori:
+	\begin{itemize}
+	\item \textbf{0 - Incomplete:} viene rilevato un fallimento generale nel conseguimento dell'obiettivo del processo. Non si identifica alcun prodotto o risultato. Un processo appartenente a questo livello non può essere associato ad alcun attributo.
+	\item \textbf{1 - Performed:} lo scopo del processo è generalmente raggiunto, a prova di ciò sono identificabili dei prodotti risultanti dal processo. A questo livello il processo viene associato all' attributo Process performance.
+	\item \textbf{2 - Managed:} il processo raggiunge dei risultati di qualità accettabile rispettando i tempi prestabiliti. Il risultato soddisfa tutti i requisiti e gli standard predefiniti. Un processo a questo livello è quindi gestito tramite pianificazione e controllo e correzione dei suoi risultati, i quali possono essere ritenuti sicuri. Gli attributi associati a questo livello sono process management e work product management.
+	\item \textbf{3 - Established:} il processo è implementato, gestito mediante procedure ben definite basate sui buoni principi dell'ingegneria del software. Un processo appartenente a questo livello sarà in grado di raggiungere sempre gli stessi risultati. Process definition e process deployment sono gli attributi associabili a questo livello.
+	\item \textbf{4 - Predictable:} il processo raggiunge i propri obiettivi all'interno di limiti di controllo definiti. La sostanziale differenza con il livello estabilished è che ora il processo è quantitativamente compreso e controllato. A questo livello vengono associati gli attributi process measurement e process control.
+	\item \textbf{5 - Optimizing:} le attività del processo sono ottimizzate per affrontare bisogni progettuali presenti e futuri, il processo viene sottoposto a miglioramento continuo. Gli attributi associati a questo livello sono process innovation e process optimization.
+	\end{itemize}
+	\begin{figure}[htbp]
+	\centering
+	\includegraphics[scale=0.7]{images/ISOIEC15504.pdf}
+	\caption{Riepilogo modello ISO/IEC 15504}
+	\end{figure}
+	
+	\textbf{Ciclo di Deming} \\
+Il ciclo di Deming, noto anche come PDCA (dall'inglese \textbf{P}lan-\textbf{D}o-\textbf{C}heck-\textbf{A}ct), è un metodo di gestione iterativo suddiviso in quattro stadi ed utilizzato per il controllo del miglioramento continuo dei processi e dei prodotti. Esso permette, nello specifico, di migliorare gradualmente la qualità dei processi in termini di efficienza ed efficacia, ottimizzando l'uso delle risorse e misurando la loro conformità rispetto le aspettative. \\
+La seguente immagine riporta le attività previste a tale scopo e ne segue una breve descrizione. 
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[scale=0.5]{images/pdca.png}
+	\caption{Principio del miglioramento continuo secondo PDCA}
+	
+\end{figure}
+
+\begin{itemize}
+	\item \textbf{Plan}: prevede la definizione delle attività, scadenze, responsabilità e risorse atti a raggiungere e soddisfare degli obiettivi di miglioramento;
+	\item \textbf{Do}: prevede l'esecuzione delle attività pianificate durante il periodo di pianificazione;
+	\item \textbf{Check}: prevede la verifica dell'esito del processo in seguito all'attuazione delle strategie di miglioramento ed il confronto tra i risultati raccolti durante la fase Do e quelli attesi (specificati nella fase Plan) per stimare l'impatto effettivo del o dei miglioramenti apportati;
+	\item \textbf{Act}: prevede l'attuazione delle strategie che hanno portato a dei miglioramenti. Nel caso i risultati attuali si distacchino da quelli previsti, si possono compiere delle azioni di correzione in seguito ad un'approfondita analisi delle cause di tale errore. 
+\end{itemize}
+	
+	\subsubsection{Attività: assicurazione della qualità di prodotto}
+	Questa attività ha lo scopo di assicurare che i prodotti rispettino le caratteristiche di qualità concordate con il committente. La qualità di prodotto non deve essere assicurata al solo completamento del prodotto ma anche durante tutto il suo periodo di sviluppo. \\
+	Al fine di assicurare la qualità del software, ai verificatori è assegnato il compito di controllare che il sistema di testing e verifica rispettino i parametri descritti nel \textit{PianoDiQualifica\_v2.0.0} e nelle \textit{NormeDiProgetto\_v2.0.0} e di controllare che il versionamento avvenga secondo le specifiche riportate nelle \textit{Norme di progetto} e che i relativi strumenti vengano utilizzati correttamente. Tali controlli vanno eseguiti al rilascio di ogni nova versione dei documenti citati e ogni volta che viene effettuata una modifica nella configurazione del sistema.\\
+	Nel caso uno di questi fattori non venga rispettato, il verificatore è tenuto ad avvisare il Responsabile del progetto, così che si possa porre un tempestivo rimedio ad ogni problematica. Il verificatore non ha le competenze per intervenire in prima persona e non deve farlo, il suo compito è di segnalare i problemi.
+	
 	\subsection{Verifica}
 	
 	\subsubsection{Scopo}
 	Il processo di verifica è finalizzato al controllo di eventuali errori nati nella fase di elaborazione, per garantire uno sviluppo efficace ed efficiente.
 	
+	\subsubsection{Aspettative}
+	Ciò che ci si aspetta dalla corretta implementazione di tale processo è:
+	\begin{itemize}
+		\item individuazione di una valida procedura di verifica da utilizzare;
+		\item definizione di criteri di verifica del prodotto;
+		\item definizione di un sistema di catalogazione degli errori e difetti del prodotto che dovranno essere corretti.
+	\end{itemize}	
 	
 	
 	\subsubsection{Metriche}
-	\paragraph{Gulpease}
-	\noindent \\ 
-	L'indice Gulpease$^*$ è un indice di leggibilità di un testo tarato sulla lingua italiana. Rispetto ad altri ha il vantaggio di utilizzare la lunghezza delle parole in lettere anziché in sillabe, semplificandone il calcolo automatico. Permette di misurare la complessità dello stile di un documento. L'indice di Gulpease considera due variabili linguistiche: la lunghezza della parola e la lunghezza della frase rispetto al numero delle lettere. La formula per il suo calcolo è:
+	Al fine di garantire un determinato livello di qualità, i verificatori hanno stabilito delle metriche finalizzate ad ottenere gli obiettivi descritti  nel documento \textit{PianoDiQualifica\_v2.0.0}. Tali metriche devono rispettare la seguente notazione: 
+	\begin{center}
+		M[Ambito][Codice identificativo]
+	\end{center}
+	Dove:
+	\begin{itemize}
+		\item \textbf{Ambito:} definisce se la metrica si riferisce a processi, un prodotto documento oppure un prodotto software:
+		\begin{itemize}
+			\item \textbf{PC:} indica una metrica per il processo;
+			\item \textbf{PD:} indica una metrica per il documento;
+			\item \textbf{PS:} indica una metrica per il software.
+		\end{itemize}
+		\item \textbf{Codice identificativo:} è un codice numerico univoco, formato da un intero incrementale che parte da 1.
+	\end{itemize}
+	
+	\paragraph{Metriche per i processi}
+	\begin{itemize}
+	 \item \textbf{MPC1 - ISO/IEC 15504 (SPICE)}: lo standard ISO/IEC 15504 è lo standard di riferimento per valutare oggettivamente la qualità dei processi software al fine di migliorarli e permette di misurare indipendentemente ogni processo tramite degli attributi, studiando il range di risultati che si ottengono eseguendolo. 
+	 \begin{itemize}
+	 \item Livello di accettazione: livello 2
+	 \item Livello ottimale: livello 6
+	 \end{itemize}
+	 \item \textbf{MPC2 - Requirement Stability Index (RSI)}: indica la percentuale dei requisiti rimasti invariati nel tempo. Un valore elevato di tale metrica indica un’attività di analisi attenta e corretta. Viene calcolata tramite la seguente formula:
+	 \begin{center}
+		$RSI[\%] =\ 1\ -\ \frac{(numero\ requisiti\ aggiunti)\ +\ (numero\ requisiti\ tolti)\ +\ (numero\ requisiti\ modificati)}{numero\ requisiti\ totali\ iniziali}$
+	\end{center}
+	\begin{itemize}
+	 \item Livello di accettazione: superiore a 0.6
+	 \item Livello ottimale: 1
+	 \end{itemize}
+	\item \textbf{MPC3 - Violazione dello stile di codifica}: indica il numero di violazioni allo stile di codifica. Un risultato elevato indica poca cura da parte dei programmatori che rende il codice poco affidabile. 
+	\begin{itemize}
+	 \item Livello di accettazione: minore di 10
+	 \item Livello ottimale: 0
+	 \end{itemize}
+	\item \textbf{MPC4 - Test di integrazione implementati}: indica il rapporto tra i test di integrazione effettivamente implementati e quelli totali preventivati. Un valore elevato di tale metrica indica un livello soddisfacente di test sviluppati per le interazioni tra le varie componenti del sistema. Per calcolare questo dato, si usa la seguente formula: 
+	\begin{center}
+		$TII[\%]=\frac{numero\ test\ integrazione\ implementati}{numero\ test\ integrazione\ totali}$
+	\end{center}
+	\begin{itemize}
+	 \item Livello di accettazione: superiore al 90\%
+	 \item Livello ottimale: 100\%
+	 \end{itemize}
+	\item \textbf{MPC5 - Test di sistema implementati}: indica il rapporto tra i test di sistema effettivamente implementati e quelli totali preventivati. Un valore elevato di tale metrica indica un buon livello di funzionalità del sistema. Per calcolare questo dato, si usa la seguente formula:
+	\begin{center}
+		$TII[\%]=\frac{numero\ test\ sistema\ implementati}{numero\ test\ sistema\ totali}$
+	\end{center}
+	\begin{itemize}
+	 \item Livello di accettazione: superiore al 90\%
+	 \item Livello ottimale: 100\%
+	 \end{itemize}
+	\item \textbf{MPC6 - Test di unità implementati}: indica il rapporto tra i test di unità effettivamente implementati e quelli totali preventivati. Un valore elevato di tale metrica indica un livello soddisfacente di test sviluppati per le interazioni tra le varie componenti del sistema. Per calcolare questo dato, si usa la seguente formula: 
+	\begin{center}
+		$TUI[\%]=\frac{numero\ test\ unita\ implementati}{numero\ test\ unita\ totali}$
+	\end{center}
+	\begin{itemize}
+	 \item Livello di accettazione: superiore al 90\%
+	 \item Livello ottimale: 100\%
+	 \end{itemize}
+	\item \textbf{MPC7 - Test di accettazione implementati}: indica il rapporto tra i test di accettazione effettivamente implementati e quelli totali preventivati. Un valore elevato di tale metrica indica un livello soddisfacente di test sviluppati per le interazioni tra le varie componenti del sistema. Per calcolare questo dato, si usa la seguente formula: 
+	\begin{center}
+		$TAI[\%]=\frac{numero\ test\ accettazione\ implementati}{numero\ test\ accettazione\ totali}$
+	\end{center}
+	\begin{itemize}
+	 \item Livello di accettazione: superiore al 90\%
+	 \item Livello ottimale: 100\%
+	 \end{itemize}
+	\end{itemize}
+	
+	
+	\paragraph{Metriche per i prodotti: documenti} 
+	\begin{itemize}
+		\item \textbf{MPD1 - Correttezza ortografica}: su ogni documento sarà possibile individuare gli errori ortografici tramite l'editor Texmaker. Il numero di errori rilevati accettabili è pari a zero.
+		\begin{itemize}
+	 \item Livello di accettazione: 0
+	 \item Livello ottimale: 0
+	 \end{itemize}
+	 
+		\item \textbf{MPD2 - Indice di Gullpease}: l'indice Gullpease$^*$ è un indice di leggibilità di un testo tarato sulla lingua italiana. Rispetto ad altri ha il vantaggio di utilizzare la lunghezza delle parole in lettere anziché in sillabe, semplificandone il calcolo automatico. Permette di misurare la complessità dello stile di un documento. L'indice di Gullpease considera due variabili linguistiche: la lunghezza della parola e la lunghezza della frase rispetto al numero delle lettere. La formula per il suo calcolo è:
 	\begin{center}
 		$89\ +\ \frac{300\ *\ (numero\ delle\ frasi)\ -\ 10\ *\ (numero\ delle\ lettere)}{numero\ delle\ parole}$
 	\end{center}
-	I risultati sono compresi tra 0 e 100, dove il valore 100 indica la leggibilità più alta e 0 la leggibilità più bassa. Il Verificatore si assicurerà che l'indice risultante sarà compreso tra 50 e 100.
+	I risultati sono compresi tra 0 e 100, dove il valore 100 indica la leggibilità più alta e 0 la leggibilità più bassa. I testi il cui indice è inferiore ad 80 sono difficili da leggere per chi ha la sola licenza elementare, inferiore a 60 per chi ha la licenza media e inferiore a 40 per chi possiede un diploma superiore.
+	\begin{itemize}
+	 \item Livello di accettazione: superiore a 40
+	 \item Livello ottimale: superiore a 80
+	 \end{itemize}	
+	\end{itemize}
 	
+	\paragraph{Metriche per i prodotti: software} 
+	\begin{itemize}
+		\item \textbf{MPS1 - Percentuale di superamento test}: il numero indicato deve corrispondere al 100\%. Al termine dell'attività di verifica tutti i test eseguiti devono essere superati.
+		\begin{itemize}
+	 \item Livello di accettazione: superiore al 85\%
+	 \item Livello ottimale: superiore al 100\%
+	 \end{itemize}
+	    \item \textbf{MPS2 - Numero di parametri per metodo}: il numero di parametri non deve essere elevato; la conseguenza è una scarsa manutenibilità del codice.
+	    \begin{itemize}
+	 \item Livello di accettazione: minore di 5
+	 \item Livello ottimale: minore di 3
+	 \end{itemize}
+	    \item \textbf{MPS3 - Numero di attributi per classe}: il numero di attributi non deve essere elevato, il suggerimento è di scomporre la classe in più classi per mantenere una manutenibilità del codice discreta.
+	    \begin{itemize}
+	 \item Livello di accettazione: minore di 10
+	 \item Livello ottimale: minore di 3
+	 \end{itemize}
+	    \item \textbf{MPS4 - Numero di metodi per classe}: il numero di metodi per classe non deve essere elevato, il suggerimento è di scomporre la classe in più classi per mantenere una manutenibilità del codice discreta.
+	      \begin{itemize}
+	 \item Livello di accettazione: minore di 15
+	 \item Livello ottimale: minore di 5
+	 \end{itemize}
+	    \item \textbf{MPS5 - Complessità ciclomatica media}: per dare una valutazione alla complessità del codice si utilizza questa metrica basata sulla struttura del grafo. Il valore generato dalla seguente formula se dovesse essere troppo elevato indica un'eccessiva complessità del codice.
+		\begin{center}
+		$v(G) = E – N + 2P$
+		\end{center}
+    	
+    	\begin{itemize}
+    	    \item \textbf{N}: rappresenta il numero di nodi;
+    	    \item E: rappresenta il numero di archi;
+    	    \item P: rappresenta il numero di componenti connesse.
+    	\end{itemize}
+    	  \begin{itemize}
+	 \item Livello di accettazione: minore di 10
+	 \item Livello ottimale: minore di 8
+	 \end{itemize}
+		\item \textbf{MPS6 - Implementazione dei requisiti obbligatori}: permette di verificare in ogni istante la percentuale di requisiti obbligatori soddisfati; viene calcolata con la seguente formula: 
+		\begin{center}
+		$\frac{numero\ requisiti\ obbligatori\ implementati}{numero\ requisiti\ obbligatori\ totali}$
+	\end{center}
+	\begin{itemize}
+	 \item Livello di accettazione: 100\%
+	 \item Livello ottimale: 100\%
+	 \end{itemize}
+		\item \textbf{MPS7 - Implementazione dei requisiti desiderabili}: permette di verificare in ogni istante la percentuale di requisiti desiderabili soddisfati; viene calcolata con la seguente formula: 
+		\begin{center}
+		$\frac{numero\ requisiti\ desiderabili\ implementati}{numero\ requisiti\ desiderabili\ totali}$
+	\end{center}
+	\begin{itemize}
+	 \item Livello di accettazione: superiore al 60\%
+	 \item Livello ottimale: 100\%
+	 \end{itemize}
+		\item \textbf{MPS8 - Copertura dei test sul codice}: indica la percentuale di istruzioni che vengono eseguite durante i test rispetto il totale. Maggiore è la percentuale testata, maggiore è la possibilità che eventuali errori siano individuati e risolti; si calcola con la seguente formula:
+		\begin{center}
+		$\frac{numero\ istruzioni\ eseguite}{numero\ istruzioni\ totali}$	
+		\end{center}
+	\begin{itemize}
+	 \item Livello di accettazione: superiore al 50\%
+	 \item Livello ottimale: 100\%
+	 \end{itemize}
+	 
+	 \item \textbf{MPS9 - Implementazione dei requisiti opzionali:} permette di verificare in ogni istante la percentuale di requisiti opzionali soddisfati; viene calcolata con la seguente formula: 
+		\begin{center}
+		$\frac{numero\ requisiti\ opzionali\ implementati}{numero\ requisiti\ opzionali\ totali}$
+	\end{center}
+	\begin{itemize}
+	 \item Livello di accettazione: superiore al 20\%
+	 \item Livello ottimale: 100\%
+	 \end{itemize}
 	
-	\subsubsection{Strumenti}
-	\paragraph{Verifica ortografica}
-	\noindent \\
-	La verifica ortografica è effettuata tramite Texmaker, attraverso il quale gli errori ortografici vengono sottolineati in rosso, permettendo un controllo rapido ed efficiente.
+	\end{itemize}
 	
+	\subsubsection{Analisi}
+	\paragraph{Analisi statica\\}
+	L'analisi statica `e un metodo in grado di rilevare problemi sia all'interno dei documenti che del codice sorgente del progetto. Per facilitarne la corretta esecuzione nel corso del tempo verrà svolta attraverso due metodi:
+\begin{itemize}
+	\item\textbf{Walkthrough:} Questo metodo risulta essere il più dispendioso in termini di efficienza ma si tratta anche del più semplice da imparare, diventando così essenziale nelle prime fasi del progetto. Il  metodo  prevede  una  revisione  a  largo  spettro  parallelizzabile  in  modo  tale  da stilare una prima lista degli errori più comuni.
+	\item \textbf{Inspection:} Questo procedimento risulta molto più veloce del precedente perché, utilizzando la lista di controllo degli errori e dalle misurazioni effettuate, permette un'analisi più efficace dei punti critici, tralasciando invece le parti senza problematiche.
+	\end{itemize}
+	
+	\paragraph{Analisi dinamica\\}
+	L'analisi dinamica è una tecnica di analisi del prodotto software che ne richiede l'esecuzione. Viene eseguita ogni qualvolta che si è terminata una parte di prodotto tramite dei test di unità, volti a verificare il corretto funzionamento del prodotto e a permettere l'identificazione di anomalie. \\
+	I test devono essere ripetibili e deterministici, ossia date le stesse precondizioni e lo stesso input, l'output deve essere sempre lo stesso. Per ogni test devono dunque essere definiti i seguenti parametri:
+	\begin{itemize}
+		\item \textbf{Ambiente}: il sistema hardware e software sul quale viene eseguito il test di prodotto;
+		\item \textbf{Stato iniziale}: lo stato iniziale dal quale il test viene eseguito;
+		\item \textbf{Input}: l'input che viene inserito;
+		\item \textbf{Output}: l'output atteso;
+		\item \textbf{Istruzioni aggiuntive}: ulteriori informazioni utili quali istruzioni di esecuzione dei test, per l'interpretazione dell'output, ecc. 
+	\end{itemize}
+		
+	\subsubsection{Strumenti}	
+	\paragraph{Verifica ortografica\\}
+	la verifica ortografica è effettuata tramite Texmaker, attraverso il quale gli errori ortografici vengono sottolineati in rosso, permettendo un controllo rapido ed efficiente.
+	\paragraph{Analisi dinamica locale\\}
+	Son stati scelti per la verifica \textit{Mocha} e la libreria \textit{Chai}. 
+	\paragraph{Analisi statica locale\\}
+	Viene utilizzato \textit{Total Validator} per la validazione del codice HTML5 e CSS3. \\
+	Come strumento per la validazione dello stile del codice JavaScript viene utilizzato \textit{ESLint}. \\
+	Inoltre, si utilizzerà \textit{SonarQube} per analizzare staticamente il codice Javascript da eventuali bug.
+	
+	\paragraph{Analisi statica remota\\}
+	%TODO%
+	Per il tracking di bug e vulnerabilità del codice JavaScript remoti si utilizzerà \textit{SonarCloud}.
+	
+			
 	\subsection{Validazione}
 	\subsubsection{Denominazione test}
 	Volendo associare un identificatore univoco per ogni test menzionato, si \`e deciso di utilizzare il seguente formato:
@@ -497,25 +748,25 @@
 	\end{center}
 	dove:
 	\begin{itemize}
-		\item il campo “\textbf{Priorità}” può assumere uno dei seguenti valori, nel caso in cui il test sia di sistema o validazione:
-		\begin{itemize}
-			
-			\item \textbf{O}: indica un test per verificare un requisito obbligatorio, irrinunciabile per il committente;
-			\item \textbf{D}: indica un test per verificare un requisito desiderabile ma non strettamente necessario;
-			\item \textbf{P}: indica un test per verificare un requisito opzionale, che potrebbe venir soddisfatto o meno senza che il prodotto risulti mancante di funzionalità essenziali.
-		\end{itemize}
-		Altrimenti nel caso il test sia di integrazione o unità il campo priorità sarà omesso.
-		\\
+		
 		\item il campo “\textbf{Tipo}” può assumere uno dei seguenti valori:
 		\begin{itemize}
 			\item \textbf{S}: definisce un test di sistema, ovvero un test per la verifica$^*$ del comportamento dell'intero sistema;
-			\item \textbf{V}: definisce un test di validazione, ovvero un test per la verifica$^*$ dei casi d'uso e dei requisiti concordati con il cliente;
+			\item \textbf{V}: definisce un test di validazione, ovvero un test per la verifica dei casi d'uso e dei requisiti concordati con il cliente;
 			\item \textbf{I}: definisce un test di integrazione, ovvero un test per verificare la corretta integrazione tra più componenti del sistema;
 			\item \textbf{U}: definisce un test di unità, ovvero un test per la verifica del più piccolo componente del sistema;
 		\end{itemize}
+	\item il campo “\textbf{Priorità}” può assumere uno dei seguenti valori, nel caso in cui il test sia di sistema o validazione:
 		\item il campo “\textbf{Codice}” assumerà un valore numerico intero positivo, univoco ed incrementale.
 	\end{itemize}
+\begin{itemize}
 	
+	\item \textbf{RO}: indica un test per verificare un requisito obbligatorio, irrinunciabile per il committente;
+	\item \textbf{RD}: indica un test per verificare un requisito desiderabile ma non strettamente necessario;
+	\item \textbf{RP}: indica un test per verificare un requisito opzionale, che potrebbe venir soddisfatto o meno senza che il prodotto risulti mancante di funzionalità essenziali.
+\end{itemize}
+Altrimenti nel caso il test sia di integrazione o unità il campo priorità sarà omesso.
+\\
 	
 	\section{Processi organizzativi}
 	
@@ -578,8 +829,7 @@
 	\end{center}
 	dove [Tipo] è una lettera e [ID] un numero identificativo.\\
 	
-	\paragraph{Tipi di rischio} 
-	\noindent \\
+	\paragraph{Tipi di rischio\\}
 	Esamineremo quattro principali tipologie di rischi:
 	
 	\begin{itemize}
@@ -592,31 +842,40 @@
 	\subsubsection{Ruoli di progetto}
 	I ruoli di progetto sono definiti secondo le definizioni date dal professore Vardanega nelle slide:
 	\url{https://www.math.unipd.it/~tullio/IS-1/2018/Dispense/L06.pdf}
-	
-	\newpage
-	
 	\subsubsection{Strumenti}
 	
-	\paragraph{Slack (app)}
+	\paragraph{Slack (app)\\}
 	Slack (app)$^*$ è uno strumento di collaborazione che permette la comunicazione in tempo reale tra i membri di uno stesso team di lavoro. Mette a disposizione di quest’ultimo uno spazio di lavoro (workspace), dov'è possibile comunicare organizzando conversazioni attraverso diversi canali tematici differenti, definibili dal gruppo stesso.
 	Slack inoltre fornisce la possibilità di associare applicazioni al workspace.
 	
-	\paragraph{GitLab}
+	\paragraph{GitLab\\}
 	È un software di controllo versione in cui gli sviluppatori possono caricare il proprio codice e gestire le modifiche alle varie versioni in contemporanea al lavoro di più persone.
 	Il Responsabile di progetto crea una issue$^*$ per ogni attività e le assegna ai componenti del gruppo. Il soggetto designato aprirà un nuovo branch$^*$ identificato con il codice issue.
 	Una volta finito lo stato di elaborazione (Doing), la issue passa allo stato di verifica. Se il Verificatore la considera idonea, la issue viene chiusa (Closed) e approvata dal Responsabile di progetto, altrimenti ritorna nello stato di elaborazione (Doing) in attese di aggiornamenti.
 	
 	\subsection{Gestione della Qualità}
 	\subsubsection{Pianificazione della qualità}
-	
+	Questa attività riguarda la definizione delle strategie di verifica e validazione che il gruppo si impegnerà ad utilizzare per tutto lo svolgimento del progetto, al fine di assicurare un'esecuzione corretta di tutte le attività, individuando e correggendo tempestivamente eventuali errori riscontrati. Gli obbiettivi di qualità sono descritti nel \textit{Piano di Qualifica}.\\
+	\textbf{Prodotto dell'attività:} \textit{PianoDiQualifica\_v2.0.0}
 	
 	\subsection{Ricerca sulle tecnologie} 
 	Questa attività consiste nella ricerca di informazioni su software, librerie e tutte le tecnologie che sono state ritenute utili per una o più fasi di sviluppo del progetto. Le tecnologie analizzate  sono quelle suggerite dalla proponente e quelle ritenute utili sulla base delle esperienze personali dei membri del gruppo.
 	
 	\subsection{Formazione}
 	\subsubsection{Reperimento del materiale necessario al training}
-	La formazione del personale avviene sia per studio autonomo dei framework proposti dall’azienda o valutati dal gruppo in fase di studio di fattibilità, sia tramite siti web e relativa documentazione. In particolare si studierà l'applicazione Google Firebase, Node.js e React.js.
-	realizzazione di un proof of conceptG attraverso l’uso delle tecnologie identificate.
+	La formazione del personale avviene sia per studio autonomo dei framework proposti dall’azienda o valutati dal gruppo in fase di studio di fattibilità, sia tramite siti web e relativa documentazione. In particolare si studierà le applicazioni Google Firebase, Hunpos e Node.js. Si procederà con la realizzazione di un Proof Of Concept $^*$ attraverso l’uso delle tecnologie identificate.
+	\\
+\subsection{Gestione della configurazione}
+\subsubsection{Continuous Integration}
+Continuous integration$^*$ è una pratica che si applica in contesti in cui lo sviluppo del software avviene attraverso un sistema di versioning. Consiste nell'allineamento frequente dagli ambienti di lavoro degli sviluppatori verso l'ambiente condiviso. \\
+Con la CI è possbile:
+\begin{itemize}
+	\item \textbf{Individuare gli errori il più velocemente possibile}
+	\item \textbf{Ridurre i problemi di integrazione}
+	\item \textbf{Evitare problemi di composizione} 
+\end{itemize}
+\subsubsection{Strumenti}
+\paragraph{GitLab CI\\}
+GitLab consente la pratica di integrazione codice all'interno della repository, facendo test e build ad ogni cambiamento effettuato, automaticamente, più velocemente possibile e più volte al giorno.
 \end{document}
-
 

@@ -16,13 +16,16 @@
 \usepackage{enumitem}
 \usepackage{lastpage}
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=3cm]{geometry}
+\usepackage{ltablex}
+\usepackage{float}
+\usepackage{titlesec}
 
 \pagestyle{fancy}
 \fancyhf{}
 \lhead{\includegraphics[scale=0.07]{images/logo.png}}
 
 \renewcommand {\footrulewidth}{0.2mm}
-\lfoot {Norme di Progetto}
+\lfoot {Piano di Progetto}
 \rfoot{Pagina \thepage\ di \pageref{LastPage}}
 
 
@@ -37,12 +40,15 @@
 \setcounter{tocdepth}{3}
 \setcounter{secnumdepth}{3}
 
+\titlespacing*{\subsection}{0pt}{8ex plus 1ex minus .2ex}{2.3ex plus .2ex}
+\titlespacing*{\subsubsection}{0pt}{8ex plus 1ex minus .2ex}{2.3ex plus .2ex}
 
 \begin{document}
 	\input{frontpage/frontpage.tex}
-	
+	%{\def\arraystretch{2}\tabcolsep=10pt
 	\newpage
 	\section*{\centering Registro delle modifiche}
+	%{\def\arraystretch{2}\tabcolsep=10pt
 	\begin{tabularx}{\textwidth}{ c | c | c | c | X }
 		\rowcolor{LightBlue}
 		\color{white}\bfseries Versione & 
@@ -50,6 +56,12 @@
 		\color{white}\bfseries Autore & 
 		\color{white}\bfseries Ruolo & 
 		\multicolumn{1}{c}{\color{white}\bfseries Descrizione}\\[0.25cm]
+		2.0.0 & 2019-03-06 & Gianmarco Pettenuzzo & Responsabile & Approvazione per il rilascio\\ \hline
+		1.1.0 & 2019-03-05 & Benedetto Cosentino & Verificatore & Documento verificato\\ \hline
+		1.0.4 & 2019-03-04 & Gianmarco Pettenuzzo & Responsabile & Completamento consuntivo\\ \hline
+		1.0.3 & 2019-02-28 & Enrico Marcato & Amministratore & Bozza consuntivo\\ \hline
+		1.0.2 & 2019-02-07 & Enrico Marcato & Amministratore & Aggiunta dettagli ripianificazione\\ \hline
+		1.0.1 & 2019-02-01 & Giovanni Peron & Responsabile & Ripianificazione\\ \hline
 		1.0.0 & 2019-01-11 & Benedetto Cosentino & Responsabile & Approvazione documento\\ \hline
 		0.4.0 & 2019-01-11 & Giovanni Peron & Verificatore & Documento verificato\\ \hline
 		0.3.1 & 2019-01-11 & Benedetto Cosentino & Responsabile & Correzione degli errori riscontrati durante la verifica \\ \hline
@@ -96,12 +108,12 @@
 	\section{Preventivo}
 		\input{preventivo.tex}
 		\newpage
-				
+		
 	\section{Consuntivo di periodo}
 		\input{consuntivo.tex}
 		\newpage
-		
-	\appendix
+
 	\section{Organigramma}
 		\input{appendixA.tex}
+		\newpage
 \end{document}

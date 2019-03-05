@@ -1,0 +1,32 @@
+all_tests:
+  image: node:8.15.0
+	stage: test
+  before_script:
+    - apt-get update -yq \
+      && apt-get install curl gnupg -yq \
+      && curl -sL https://deb.nodesource.com/setup_8.x | bash \
+      && apt-get install nodejs -yq \ 
+      && apt-get install -y npm
+    - npm install --save firebase-admin
+    - npm install express --save
+    - npm install shelljs
+    - npm i --global mocha
+    - npm i --save-dev mocha
+    - npm i --save-dev chai
+  
+  script:
+    - npm test
+    
+    
+codequality:
+  image: docker:latest
+  stage: build
+  variables:
+    DOCKER_DRIVER: overlay
+  services:
+    - docker:dind
+  script:
+    - docker pull codeclimate/codeclimate
+    - docker run --env CODECLIMATE_CODE="$PWD" --volume "$PWD":/code --volume /var/run/docker.sock:/var/run/docker.sock --volume /tmp/cc:/tmp/cc codeclimate/codeclimate analyze -f json > codeclimate.json
+  artifacts:
+    paths: [codeclimate.json]

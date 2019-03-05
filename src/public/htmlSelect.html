@@ -1,4 +1,4 @@
-<select name="general*i*" id="general*i*">
+<select name="general*i*" id="general*i*" onchange="general(*i*)">>
     <option value="-">Scegli una correzione</option>
     <option value="A">Aggettivo</option>
     <option value="B">Avverbio</option>
@@ -13,8 +13,8 @@
     <option value="X">Altro</option>
 </select>
 <!--secondo liv aggettivo-->
-<select name="aggettivo*i*" id="aggettivo*i*">
-    <option value="-">Scegli una correzione</option>
+<select name="aggettivo*i*" id="aggettivo*i*" onchange="aggettivo(*i*)">
+    <option value="-">Scegli una correzione OBB</option>
     <option value="AP">Aggettivo d. possesivo</option>
     <option value="DD">Aggettivo d. dimostrativo</option>
     <option value="DI">Aggettivo d. indefinito</option>
@@ -26,13 +26,8 @@
 </select>
 <!--secondo liv avverbio-->
 <select name="avverbio*i*" id="avverbio*i*">
-    <option value="-">Scegli un avverbio specifico</option>
-    <option value="B">Avverbio di modo</option>
-    <!--<option value="B">Avverbio di tempo</option>
-    <option value="B">Avverbio di luogo</option>
-    <option value="B">Avverbio di quantità</option>
-    <option value="B">Avverbio di dubbio</option>
-    <option value="B">Avverbio di affermazione</option>-->
+    <option value="-">Scegli un avverbio specifico OBB</option>
+    <option value="B">Avverbio</option>
     <option value="BN">Avverbio di negazione</option>
 </select>
 <select name="congiunzione*i*" id="congiunzione*i*">
@@ -42,7 +37,7 @@
     <!--non so se queste CS vanno a sostituire gli avverbi-->
 </select>
 <select name="preposizione*i*" id="preposizione*i*">
-    <option value="-">Scegli una correzione</option>
+    <option value="-">Scegli una correzione OBB</option>
     <option value="E">Preposizione semplice</option>
     <option value="EA">Preposizione articolata</option>
 
@@ -56,7 +51,7 @@
 
 </select>
 <!--secondo liv pronome-->
-<select name="pronome*i*" id="pronome*i*">
+<select name="pronome*i*" id="pronome*i*" onchange="pronome(*i*)">
     <option value="-">Scegli una correzione</option>
     <option value="PE">Pronome personale</option>
     <option value="PP">Pronome possessivo</option>
@@ -78,22 +73,22 @@
     <option value="RI">Articolo indeterminativo</option>
 </select>
 <!--secondo liv nome-->
-<select name="nome*i*" id="nome*i*">
-    <option value="-">Scegli una correzione</option>
+<select name="nome*i*" id="nome*i*" onchange="nome(*i*)">
+    <option value="-">Scegli una correzione OBB</option>
     <option value="S">Nome comune</option>
     <option value="SP">Nome proprio</option>
     <option value="SA">Abbreviazione</option>
     <!--ci potrebbe stare qui l'abbreviazione SA-->
 </select>
 
-<select name="verbo*i*" id="nome*i*">
-    <option value="-">Scegli tipo verbo</option>
+<select name="verbo*i*" id="verbo*i*" onchange="verbo(*i*)">
+    <option value="-">Scegli tipo verbo OBB</option>
     <option value="V">principale</option>
     <option value="VA">ausiliario</option>
     <option value="VM">modale</option>
 </select>
 
-<select name="tempo*i*" id="tempo*i*">
+<select name="tempo*i*" id="tempo*i*" onchange="tempo(*i*)">
     <option value="-">Scegli tempo verbo</option>
     <option value="ip">indicativo presente</option>
     <option value="ii">indicativo imperfetto</option>
@@ -105,30 +100,29 @@
     <option value="d">condizionale</option>
     <option value="f">infinito</option>
     <option value="g">gerundio</option>
-    <option value="pp">participio presente</option>
+    <option id="pp" value="pp">participio presente</option>
     <option value="ps">participio passato</option>
 </select>
-
+<select name="persona*i*" id="persona*i*">
+    <option value="-">Scegli persona</option>
+    <option value="1">prima</option>
+    <option value="2">seconda</option>
+    <option value="3">terza</option>
+</select>
 <select name="genere*i*" id="genere*i*">
     <option value="-">Scegli genere</option>
     <option value="m">maschile</option>
     <option value="f">femminile</option>
     <option value="n">non specificato</option>
 </select>
-
 <select name="numero*i*" id="numero*i*">
-    <option value="-">Scegli genere</option>
+    <option value="-">Scegli numero</option>
     <option value="s">singolare</option>
     <option value="p">plurale</option>
     <option value="n">non specificato</option>
 </select>
 
-<select name="persona*i*" id="persona*i*">
-    <option value="-">Scegli genere</option>
-    <option value="1">prima</option>
-    <option value="2">seconda</option>
-    <option value="3">terza</option>
-</select>
+
 
 
 

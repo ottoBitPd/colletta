@@ -181,56 +181,165 @@ Gli identificatori numerici assegnati a casi d'uso saranno organizzati gerarchic
 	\end{itemize}
 
 
-\subsubsection{UC-1 Registrazione Allievo}
+\subsubsection{UC-1 Registrazione utente}
 \begin{itemize}
 		\item \textbf{Attori: }Utente non riconosciuto.
 		\item \textbf{Precondizione: }L'utente si trova nella vista di registrazione dell'applicazione.
-		\item \textbf{Postcondizione: }L'utente è registrato come allievo nel database locale.
+		\item \textbf{Postcondizione: }L'utente è registrato nel database locale.
 		\item \textbf{Scenario principale: }
 		\begin{enumerate}
 		\item l'utente ha scelto di registrarsi al sistema, quindi di creare un nuovo profilo
-		\item l'utente seleziona la tipologia allievo
-		\item l'utente inserirà nome, cognome, username, email e password
-		\item l'utente fornirà il nome della scuola a cui appartiene e la città
+		\item l'utente inserisce il proprio nome (UC-1.1)
+		\item l'utente inserisce il proprio cognome (UC-1.2)
+		\item l'utente inserisce l'username (UC-1.3)
+		\item l'utente inserisce la propria email (UC-1.4)
+		\item l'utente inserisce la password (UC-1.5)
+		\item l'utente fornirà il nome della scuola a cui appartiene (UC-1.6)
+		\item l'utente fornirà la città in cui si trova la scuola (UC-1.7)
+		\item l'utente indica il ruolo
 		\item l'utente conferma la registrazione
 		\end{enumerate}
 		\item \textbf{Estensioni: }
 		\begin{itemize}
-			\item 5.a Nel caso in cui l'utente tenti l'inserimento di campi non validi vedrà comparire un messaggio d'errore "Campi non validi" (UC-5).
+			\item 10.a Nel caso in cui l'utente tenti l'inserimento di campi non validi vedrà comparire un messaggio d'errore "Campi non validi" (UC-5).
 		\end{itemize}
 \end{itemize}
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[scale=0.7]{images/UC-1_a.png}
-	\caption{UC-1 Registrazione Allievo}
+	\includegraphics[scale=0.7]{images/UC-1.png}
+	\caption{UC-1 Registrazione utente}
 \end{figure}
+
+\subsubsection{UC-61 Registrazione Allievo}
+\begin{itemize}
+	\item \textbf{Attori: }Utente non riconosciuto.
+	\item \textbf{Precondizione: }L'utente si trova nella vista di registrazione dell'applicazione.
+	\item \textbf{Postcondizione: }L'utente è registrato nel database locale come allievo.
+	\item \textbf{Scenario principale: }
+		\begin{enumerate}
+		\item l'utente ha scelto di registrarsi al sistema, quindi di creare un nuovo profilo
+		\item l'utente inserisce il proprio nome (UC-1.1)
+		\item l'utente inserisce il proprio cognome (UC-1.2)
+		\item l'utente inserisce l'username (UC-1.3)
+		\item l'utente inserisce la propria email (UC-1.4)
+		\item l'utente inserisce la password (UC-1.5)
+		\item l'utente fornirà il nome della scuola a cui appartiene (UC-1.6)
+		\item l'utente fornirà la città in cui si trova la scuola (UC-1.7)
+		\item l'utente indica come ruolo "Allievo"
+		\item l'utente conferma la registrazione
+		\end{enumerate}
+\end{itemize}
 
 \subsubsection{UC-33 Registrazione Insegnante}
 \begin{itemize}
 	\item \textbf{Attori: }Utente non riconosciuto.
 	\item \textbf{Precondizione: }L'utente si trova nella vista di registrazione dell'applicazione.
-	\item \textbf{Postcondizione: }L'utente è in attesa di conferma.
+	\item \textbf{Postcondizione: }L'utente è registrato nel database locale ed in attesa di conferma.
 	\item \textbf{Scenario principale: }
-	\begin{enumerate}
+		\begin{enumerate}
 		\item l'utente ha scelto di registrarsi al sistema, quindi di creare un nuovo profilo
-		\item l'utente seleziona la tipologia insegnante
-		\item l'utente inserirà nome, cognome, username, email e password
-		\item l'utente fornirà il nome della scuola a cui appartiene e la città
-		\item l'utente inserirà il proprio codice INPS
+		\item l'utente inserisce il proprio nome (UC-1.1)
+		\item l'utente inserisce il proprio cognome (UC-1.2)
+		\item l'utente inserisce l'username (UC-1.3)
+		\item l'utente inserisce la propria email (UC-1.4)
+		\item l'utente inserisce la password (UC-1.5)
+		\item l'utente fornirà il nome della scuola a cui appartiene (UC-1.6)
+		\item l'utente fornirà la città in cui si trova la scuola (UC-1.7)
+		\item l'utente indica come ruolo "Insegnante"
+		\item l'utente inserisce il proprio codice INPS (UC-33.1)
 		\item l'utente conferma la registrazione
-	\end{enumerate}
-	\item \textbf{Estensioni: }
-	\begin{itemize}
-		\item 5.a Nel caso in cui l'utente tenti l'inserimento di campi non validi vedrà comparire dei messaggi d'errore "Campi non validi" (UC-5).
-	\end{itemize}
+		\end{enumerate}
 \end{itemize}
 
-\begin{figure}[h]
-	\centering
-	\includegraphics[scale=0.7]{images/UC-1i.png}
-	\caption{UC-33 Registrazione Insegnante}
-\end{figure}	
+\subsubsection{UC-33.1 Inserimento codice INPS}
+\begin{itemize}
+	\item \textbf{Attori: }Utente non riconosciuto.
+	\item \textbf{Precondizione: }L'utente si trova nella vista di registrazione dell'applicazione e ha indicato l'iscrizione come insegnante.
+	\item \textbf{Postcondizione: }
+		L'utente ha inserito il codice INPS durante la procedura di registrazione come insegnante.
+		\item \textbf{Scenario principale:}
+		\begin{enumerate}
+			\item l'utente inserisce il codice INPS nella cella dedicata
+		\end{enumerate}
+\end{itemize}
+
+\subsubsection{UC-1.1 Inserimento nome: registrazione}
+\begin{itemize}
+	\item \textbf{Attori: }Utente non riconosciuto.
+	\item \textbf{Precondizione: }L'utente si trova nella vista 		di registrazione dell'applicazione.
+	\item \textbf{Postcondizione: }L'utente ha inserito il nome durante la procedura di registrazione.
+	\item \textbf{Scenario principale: }
+	\begin{enumerate}
+		\item l'utente inserisce il proprio nome nella cella 				dedicata
+	\end{enumerate}
+\end{itemize}
+
+\subsubsection{UC-1.2 Inserimento cognome: registrazione}
+\begin{itemize}
+	\item \textbf{Attori: }Utente non riconosciuto.
+	\item \textbf{Precondizione: }L'utente si trova nella vista 		di registrazione dell'applicazione.
+	\item \textbf{Postcondizione: }L'utente ha inserito il cognome durante la procedura di registrazione.
+	\item \textbf{Scenario principale: }
+	\begin{enumerate}
+		\item l'utente inserisce il proprio cognome nella cella 				dedicata
+	\end{enumerate}
+\end{itemize}
+
+\subsubsection{UC-1.3 Inserimento username: registrazione}
+\begin{itemize}
+	\item \textbf{Attori: }Utente non riconosciuto.
+	\item \textbf{Precondizione: }L'utente si trova nella vista 		di registrazione dell'applicazione.
+	\item \textbf{Postcondizione: }L'utente ha inserito l'username durante la procedura di registrazione.
+	\item \textbf{Scenario principale: }
+	\begin{enumerate}
+		\item l'utente inserisce il proprio username nella cella dedicata
+	\end{enumerate}
+\end{itemize}
+
+\subsubsection{UC-1.4 Inserimento email: registrazione}
+\begin{itemize}
+	\item \textbf{Attori: }Utente non riconosciuto.
+	\item \textbf{Precondizione: }L'utente si trova nella vista 		di registrazione dell'applicazione.
+	\item \textbf{Postcondizione: }L'utente ha inserito l'email durante la procedura di registrazione.
+	\item \textbf{Scenario principale: }
+	\begin{enumerate}
+		\item l'utente inserisce la propria email nella cella dedicata
+	\end{enumerate}
+\end{itemize}
+
+\subsubsection{UC-1.5 Inserimento password: registrazione}
+\begin{itemize}
+	\item \textbf{Attori: }Utente non riconosciuto.
+	\item \textbf{Precondizione: }L'utente si trova nella vista 		di registrazione dell'applicazione.
+	\item \textbf{Postcondizione: }L'utente ha inserito la password durante la procedura di registrazione.
+	\item \textbf{Scenario principale: }
+	\begin{enumerate}
+		\item l'utente inserisce la password nella cella dedicata
+	\end{enumerate}
+\end{itemize}
+
+\subsubsection{UC-1.6 Inserimento nome scuola: registrazione}
+\begin{itemize}
+	\item \textbf{Attori: }Utente non riconosciuto.
+	\item \textbf{Precondizione: }L'utente si trova nella vista 		di registrazione dell'applicazione.
+	\item \textbf{Postcondizione: }L'utente ha inserito il nome della scuola che frequenta durante la procedura di registrazione.
+	\item \textbf{Scenario principale: }
+	\begin{enumerate}
+		\item l'utente inserisce il nome della scuola che frequenta nella cella dedicata
+	\end{enumerate}
+\end{itemize}
+
+\subsubsection{UC-1.7 Inserimento città: registrazione}
+\begin{itemize}
+	\item \textbf{Attori: }Utente non riconosciuto.
+	\item \textbf{Precondizione: }L'utente si trova nella vista 		di registrazione dell'applicazione.
+	\item \textbf{Postcondizione: }L'utente ha inserito la città a cui la scuola appartiene durante la procedura di registrazione.
+	\item \textbf{Scenario principale: }
+	\begin{enumerate}
+		\item l'utente inserisce la città della scuola nella cella dedicata
+	\end{enumerate}
+\end{itemize}
 
 \subsubsection{UC-5 Visualizzazione errore di registrazione}
 \begin{itemize}
@@ -261,7 +370,8 @@ Gli identificatori numerici assegnati a casi d'uso saranno organizzati gerarchic
 			\item \textbf{Postcondizione:} L'utente ha eseguito l'accesso con il proprio ruolo.
 			\item \textbf{Scenario principale:}
 				\begin{enumerate}
-					\item l'utente inserisce propri username e password
+					\item l'utente inserisce il proprio username (UC-2.1)
+					\item l'utente inserisce la propria password (UC-2.2)
 					\item l'utente conferma l'accesso
 				\end{enumerate}
 				\item \textbf{Estensioni:}
@@ -269,6 +379,28 @@ Gli identificatori numerici assegnati a casi d'uso saranno organizzati gerarchic
 					\item 2.a Nel caso in cui l'utente tenti l'inserimento di campi non validi vedrà comparire un messaggio d'errore (UC-34).
 				\end{itemize}
 		\end{itemize}
+
+\subsubsection{UC-2.1 Inserimento username: autenticazione}
+\begin{itemize}
+	\item \textbf{Attori:} Utente non riconosciuto.
+			\item \textbf{Precondizione:} L'utente si trova nella vista di autenticazione dell'applicazione.
+			\item \textbf{Postcondizione:} L'utente ha inserito il proprio username nella vista di autenticazione.
+			\item \textbf{Scenario principale:}
+				\begin{enumerate}
+					\item l'utente scrive il proprio username nella cella apposita
+				\end{enumerate}
+\end{itemize}
+
+\subsubsection{UC-2.2 Inserimento password: autenticazione}
+\begin{itemize}
+	\item \textbf{Attori:} Utente non riconosciuto.
+			\item \textbf{Precondizione:} L'utente si trova nella vista di autenticazione dell'applicazione.
+			\item \textbf{Postcondizione:} L'utente ha inserito la propria password nella vista di autenticazione.
+			\item \textbf{Scenario principale:}
+				\begin{enumerate}
+					\item l'utente scrive la propria password nella cella apposita
+				\end{enumerate}
+\end{itemize}
 		
 \subsubsection{UC-34 Visualizzazione errore di autenticazione}
 		\begin{itemize}
@@ -300,8 +432,11 @@ Gli identificatori numerici assegnati a casi d'uso saranno organizzati gerarchic
 			\item \textbf{Postcondizione:} L'utente ha modificato i propri dati personali.
 			\item \textbf{Scenario principale:}
 				\begin{enumerate}
-					\item l'utente modifica username, password, scuola o città
-					\item L'utente conferma la modifica
+					\item l'utente modifica l'username (UC-3.1)
+					\item  l'utente modifica la password (UC-3.2)
+					\item l'utente modifica la scuola che frequenta (UC-3.3) 
+					\item l'utente modifica la città a cui la scuola appartiene (UC-3.4)
+					\item l'utente conferma la modifica
 				\end{enumerate}
 				\item \textbf{Estensioni:}
 				\begin{itemize}
@@ -313,7 +448,51 @@ Gli identificatori numerici assegnati a casi d'uso saranno organizzati gerarchic
 			\includegraphics[scale=0.7]{images/UC-3.png}
 			\caption{UC-3 Modifica profilo}
 		\end{figure}
-	
+		
+\subsubsection{UC-3.1 Modifica username}
+\begin{itemize}
+			\item \textbf{Attori:} Utente riconosciuto.
+			\item \textbf{Precondizione:} L'utente si trova nella vista di modifica dei dati del proprio profilo.
+			\item \textbf{Postcondizione:} L'utente ha modificato il proprio username.
+			\item \textbf{Scenario principale:}
+			\begin{enumerate}
+				\item l'utente inserisce il nuovo username nella cella apposita
+			\end{enumerate}
+\end{itemize}
+
+\subsubsection{UC-3.2 Modifica password}
+\begin{itemize}
+			\item \textbf{Attori:} Utente riconosciuto.
+			\item \textbf{Precondizione:} L'utente si trova nella vista di modifica dei dati del proprio profilo.
+			\item \textbf{Postcondizione:} L'utente ha modificato la propria password.
+			\item \textbf{Scenario principale:}
+			\begin{enumerate}
+				\item l'utente inserisce la nuova password nella cella apposita
+			\end{enumerate}
+\end{itemize}
+
+\subsubsection{UC-3.3 Modifica scuola}
+\begin{itemize}
+			\item \textbf{Attori:} Utente riconosciuto.
+			\item \textbf{Precondizione:} L'utente si trova nella vista di modifica dei dati del proprio profilo.
+			\item \textbf{Postcondizione:} L'utente ha modificato la scuola a cui appartiene.
+			\item \textbf{Scenario principale:}
+			\begin{enumerate}
+				\item l'utente inserisce la scuola a cui appartiene nella cella apposita
+			\end{enumerate}
+\end{itemize}
+
+\subsubsection{UC-3.4 Modifica città}
+\begin{itemize}
+			\item \textbf{Attori:} Utente riconosciuto.
+			\item \textbf{Precondizione:} L'utente si trova nella vista di modifica dei dati del proprio profilo.
+			\item \textbf{Postcondizione:} L'utente ha modificato la città a cui la scuola appartiene.
+			\item \textbf{Scenario principale:}
+			\begin{enumerate}
+				\item l'utente inserisce la città a cui la scuola appartiene nella cella apposita
+			\end{enumerate}
+\end{itemize}
+
 \subsubsection{UC-35 Visualizzazione errore di modifica del profilo}	
 	\begin{itemize}
 		\item \textbf{Attori:} Utente riconosciuto.
@@ -507,9 +686,9 @@ Gli identificatori numerici assegnati a casi d'uso saranno organizzati gerarchic
 		\item \textbf{Scenario principale: }
 			\begin{enumerate} 
 				\item l'insegnante inserisce la frase
-				\item l'insegnante inserisce la soluzione UC-12.1
-				\item l'insegnante inserisce gli argomenti UC-12.2
-				\item l'insegnante inserisce la difficoltà UC-12.3
+				\item l'insegnante inserisce la soluzione (UC-12.1)
+				\item l'insegnante inserisce gli argomenti (UC-12.2)
+				\item l'insegnante inserisce la difficoltà (UC-12.3)
 				\item l'insegnante conferma l'inserimento
 			\end{enumerate}
 		\item \textbf{Estensioni:} 

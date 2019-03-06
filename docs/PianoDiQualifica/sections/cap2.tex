@@ -1,6 +1,6 @@
 \section{Obiettivi di qualità}
 In questo capitolo vengono definiti gli obiettivi che il gruppo OttoBit si impegna a raggiungere in termini di qualità di processo e di prodotto, garantendoli nella realizzazione della piattaforma "Colletta". Ad ogni obiettivo sono associate una o più metriche$^*$ che permetteranno di effettuare una valutazione quantitativa. \\
-Sia gli obiettivi che le metriche sono identificati univocamente da un codice alfanumerico, il quale permetterà di tracciarli facilmente e di controllarli costantemente. Le metriche adottate sono definite nelle NormeDiProgetto\_v2.0.0.
+Sia gli obiettivi che le metriche sono identificati univocamente da un codice alfanumerico, il quale permetterà di tracciarli facilmente e di controllarli costantemente. Le metriche adottate sono definite nelle \textit{NormeDiProgetto\_v2.0.0}.
 
 \subsection{Classificazione degli obiettivi}
 La classificazione degli obiettivi rispetta la seguente notazione:
@@ -23,23 +23,23 @@ Dove:
 
 \subsection{Processo}
 Al fine di definire degli obiettivi di qualità di processo, il gruppo ha deciso di adottare lo standard ISO/IEC 15504 - noto anche come SPICE$^*$. Questo standard fornisce gli strumenti utili a valutare la qualità di processo e verrà utilizzato in associazione al ciclo di Deming o PDCA$^*$. Tale ciclo definisce un metodo di controllo mirato al miglioramento continuo del livello di qualità di processo evitando possibili regressioni. 
-Vengono riportate le descrizioni dello standard e del ciclo, rispettivamente, nell'appendice C e sottosezione C.1. 
+Vengono riportate le descrizioni dello standard e del ciclo, rispettivamente, nelle sezioni \S\ F.1 e sottosezione \S\ F.1.1. 
 L'uso del ciclo di Deming in aggiunta allo standard SPICE permetterà di garantire:
 \begin{itemize}
-	\item monitorare e misurare costantemente le performance dei processi;
-	\item perseguire un miglioramento continuo dei processi stessi.
+	\item monitoraggio e misurazione costante delle performance dei processi;
+	\item persecuzione di un miglioramento continuo dei processi stessi.
 \end{itemize}
 
 \subsection{Prodotto}
-Lo standard adottato per definire e delineare gli obiettivi è lo standard ISO/IEC 9126:200, il quale fornisce i criteri di applicazione delle metriche descritte in \S2.4. 
-Di questo standard, viene riportata una descrizione nell'appendice D.
+Lo standard adottato per definire e delineare gli obiettivi è lo standard ISO/IEC 9126:200, il quale fornisce i criteri di applicazione delle metriche riportate in dettaglio nell'appendice D. 
+Di questo standard, viene riportata una descrizione nell'appendice \S\ F, sezione \S\ F.2.
 Man mano che si proseguirà con lo svolgimento del progetto, verranno realizzate due tipologie di prodotto, le quali dovranno rispettare determinati requisiti:
 \begin{itemize}
 	\item Documenti: devono essere leggibili, comprensibili e corretti;
 	\item Software: 
 	\begin{itemize}
-		\item la piattaforma "Colletta" rispetta i requisiti obbligatori, desiderabili ed opzionali nelle percentuali indicati in \S2.5;
-		\item la piattaforma "Colletta" supera i test nella percentuale stabilita in \S2.5 dei casi;
+		\item la piattaforma "Colletta" rispetta i requisiti obbligatori, desiderabili ed opzionali nelle percentuali indicati nella sezione \S2.4;
+		\item la piattaforma "Colletta" supera i test nella percentuale riportata nella sezione \S2.4;
 		\item il codice di "Colletta" è comprensibile, ben commentato e mantenibile.
 	\end{itemize}
 \end{itemize}
@@ -47,7 +47,7 @@ Man mano che si proseguirà con lo svolgimento del progetto, verranno realizzate
 \newpage
 
 \subsection{Soglie di accettabilità}
-Riportiamo nella seguente tabella le soglie minime di accettabilità legate ad ogni metrica. Una descrizione approfondita di tali metriche è riportata nell'appendice \S\ appendice D.
+Riportiamo nella seguente tabella le soglie minime di accettabilità legate ad ogni metrica. Una descrizione approfondita di tali metriche è riportata nell'appendice \S\ D.
 
 \begin{longtable}{| c | p{8cm} | p{2.5cm} |}
 	\rowcolor{LightBlue}
@@ -65,6 +65,7 @@ Riportiamo nella seguente tabella le soglie minime di accettabilità legate ad o
 	MPS7 & Copertura requisiti desiderabili & $> 60\%$\\ \hline
 	MPS9 & Copertura requisiti opzionali & $> 20\%$\\ \hline
 	MPS8 & Copertura dei test sul codice & $> 50\%$\\ \hline
+	MPS10 & Numero di linee di codice per procedura & $< 30$ \\ \hline
 	MPS1 & Percentuale di superamento dei test & $> 85\%$\\ \hline
 	MPS2 & Numero di parametri per metodo & $< 5$\\ \hline
 	MPS3 & Numero di attributi per classe & $< 10$\\ \hline
@@ -88,6 +89,7 @@ Riportiamo nella seguente tabella le soglie minime di accettabilità legate ad o
 	OPS1 & Implementazione requisiti obbligatori & Indice di soddisfazione dei requisiti obbligatori & MPS6 \\ \hline
 	OPS2 & Implementazione requisiti desiderabili & Indice di soddisfazione dei requisiti desiderabili & MPS7 \\ \hline
 	OPS6 & Implementazione requisiti opzionali & Indice di soddisfazione dei requisiti opzionali & MPS9 \\ \hline
+	OPS7 & Codice per procedura & Numero di righe di codice dedicate ad ogni procedura & MPS10 \\ \hline
 	OPS3 & Copertura del codice & Indice della quantità di righe controllate tramite i test & MPS8 \\ \hline
 	OPS4 & Superamento dei test & Indice della quantità di test superati & MPS1 \\ \hline
 	OPS5 & Manutenibilità del codice & Il prodotto software deve poter essere espanso o modificato agevolmente. & MPS2 \newline MPS3 \newline MPS4 \newline MPS5\\ \hline 

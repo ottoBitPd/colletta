@@ -1,7 +1,8 @@
 \appendix
 \section{Specifica dei test}
 \subsection{Test di validazione}
-Questo tipo di test verrà utilizzato durante l'attività di collaudo del prodotto finale così da accertare che esso soddisfi le richieste del committente. Per ogni test viene specificato il proprio codice univoco, il codice identificativo del requisito ad esso associato, la descrizione e lo stato di implementazione attuale. 
+Questo tipo di test verrà utilizzato durante l'attività di collaudo del prodotto finale così da accertare che esso soddisfi le richieste del committente. \\
+Per ogni test viene specificato il proprio codice univoco, la descrizione, lo stato di implementazione attuale ed il codice identificativo del requisito -o dei requisiti- ad esso associato. 
 
 	\begin{longtable}{|>{\centering\arraybackslash}m{1.6cm}|>{\centering\arraybackslash}m{6.41cm}|>{\centering\arraybackslash}m{3.1cm} | >{\centering\arraybackslash}m{2.6cm}|}		
 		\rowcolor{LightBlue}
@@ -22,7 +23,7 @@ Questo tipo di test verrà utilizzato durante l'attività di collaudo del prodot
 				 	\item città sede della scuola di appartenenza;
 				\end{itemize}
 			\item Confermare la registrazione.
-		\end{itemize} & Non implementato & ROF1 \\ \hline
+		\end{itemize} & Non implementato & ROF1, ROF24, ROF25, ROF26, ROF27, ROF28, ROF29, ROF30 \\ \hline
 		\rowcolor{LightGray}
 		TV-RO2 & L'utente non riconosciuto vuole registrarsi alla piattaforma come insegnante, creando un account personale. All'utente è richiesto di:
 		\begin{itemize}
@@ -39,21 +40,21 @@ Questo tipo di test verrà utilizzato durante l'attività di collaudo del prodot
 				 	\item codice INPS;
 				\end{itemize}
 			\item Confermare la registrazione.
-		\end{itemize} & Non implementato & ROF22 \\ \hline
+		\end{itemize} & Non implementato & ROF22, ROF31, ROF24, ROF25, ROF26, ROF27, ROF28, ROF29, ROF30 \\ \hline
 		TV-RO3 & L'utente non riconosciuto vuole eseguire l'accesso alla piattaforma tramite le sue credenziali. All'utente è richiesto di: 
 		\begin{itemize}
 			\item Raggiungere la pagina di autenticazione;
 			\item Inserire il proprio username e password;
 			\item Confermare l'accesso.
 		\end{itemize} & Non implementato 
-		& ROF2 \\ \hline
+		& ROF2, ROF33, ROF34 \\ \hline
 		  \rowcolor{LightGray}
 		TV-RD1 & L'utente vuole modificare i dati del proprio profilo personale. All'utente è richiesto di:
 		\begin{itemize}
 			\item Raggiungere la pagina di modifica dei dati dal profilo;
 			\item Modificare una o più voci tra username, password, scuola e città;
 			\item Confermare la modifica.
-		\end{itemize}& Non implementato  & RDF1 \\ \hline
+		\end{itemize}& Non implementato  & RDF1, RDF26, RDF27, RDF28, RDF29\\ \hline
 		TV-RD2 & Il  moderatore vuole verificare le credenziali di un utente che vuole registrarsi come insegnante. Al moderatore è richiesto di:
 		\begin{itemize}
 			\item Raggiungere la pagina di amministrazione della piattaforma;
@@ -412,11 +413,13 @@ TV-RP19 & L’utente non riconosciuto vuole ricevere una e-mail per la conferma 
  \item Inviare la richiesta di registrazione come insegnante;
  \item Riceve la conferma di registrazione come insegnante.
 \end{itemize} & Non implementato & RPF20 \\ \hline
+
 		\caption{Test di validazione}
 \end{longtable}
 
 \subsection{Test di sistema}
-Di seguito riportiamo una tabella contenente i test di sistema che intendiamo implementare per la verifica dei requisiti funzionali specificati nell'\emph{Analisi dei requisiti}. Per ogni test viene specificato il proprio codice univoco, il codice identificativo del requisito ad esso associato, la descrizione e lo stato di implementazione attuale.
+Di seguito riportiamo una tabella contenente i test di sistema che intendiamo implementare per la verifica dei requisiti funzionali specificati nell'\textit{AnalisiDeiRequisiti\_v2.0.0}. \\
+Per ogni test viene specificato il proprio codice univoco, il codice identificativo del requisito ad esso associato, la descrizione e lo stato di implementazione attuale.
 	\begin{longtable}{|>{\centering\arraybackslash}m{1.6cm}|>{\centering\arraybackslash}m{1.7cm}|m{6.41cm}|>{\centering\arraybackslash}m{3.1cm}|}		
 		\rowcolor{LightBlue}
 		\textbf{\textcolor{white}{Codice\newline test}}
@@ -427,8 +430,8 @@ Di seguito riportiamo una tabella contenente i test di sistema che intendiamo im
 		\hline
 		\rowcolor{LightGray}
 		TS-RO1
-		& ROF1 
-		& Verifica che l'utente riesca a registrarsi alla piattaforma creando un account personale. 
+		& ROF32
+		& Verifica che l'utente riesca a registrarsi alla piattaforma come allievo creando un account personale. 
 		& non implementato\\ \hline
 		\rowcolor{white}
 		TS-RO2
@@ -626,12 +629,18 @@ Di seguito riportiamo una tabella contenente i test di sistema che intendiamo im
 		& RDF11 
 		& Verifica che l'utente possa confermare le operazioni.
 		& non implementato\\ \hline
+		\rowcolor{LightGray}
+		TS-RO17
+		& ROF22 
+		& Verifica che l'utente riesca a registrarsi alla piattaforma come insegnante creando un account personale. 
+		& non implementato\\ \hline
 		
 		\caption{Test di sistema}
 \end{longtable}
 
 \subsection{Test di integrazione}
-Questa tipologia di test serve per verificare che le varie componenti del sistema interagiscono tra loro nella maniera attesa. La strategia per definire i seguenti test è stata fatta partendo dalle singole componenti per poi realizzare le varie funzionalità in ordine di importanza. Per ogni test viene specificato il suo codice univoco, la descrizione e lo stato di implementazione attuale. APPROFONDIRE
+Questa tipologia di test serve per verificare che le varie componenti del sistema interagiscono tra loro nella maniera attesa. La strategia per definire -e poi eseguire- i seguenti test, è quella di partire dalle singole componenti per poi realizzare le varie funzionalità incrementalmente durante lo sviluppo del prodotto finale. Questo potrà essere di aiuto in caso di errori, in quanto essi si presenteranno in un ambiente già testato e funzionante. \\
+Per ogni test viene specificato il suo codice univoco, la descrizione e lo stato di implementazione attuale.
 
 	\begin{longtable}{|>{\centering\arraybackslash}m{1.6cm}|>{\centering\arraybackslash}m{6.41cm}|>{\centering\arraybackslash}m{3.1cm}|}		
 		\rowcolor{LightBlue}
@@ -891,6 +900,7 @@ Riportiamo di seguito i calcoli e le varie rilevazioni effettuate.
 	\caption{Serie storica rilevazioni stabilità requisiti - Revisione di progetto}	
 \end{figure}
 
+\newpage
 \section{Copertura dei requisiti}
 Viene riportata in seguito una tabella riassuntiva dei requisiti che non è da considerarsi definitiva, verrà infatti aggiornata in seguito ad ogni avanzamento significativo. \\
 I requisiti sono indicati con il loro codice identificativo definito nel documento \textit{NormeDiProgetto\_v2.0.0} e la loro descrizione dettagliata è riportata nel documento \textit{AnalisiDeiRequisiti\_v2.0.0}.
@@ -920,6 +930,17 @@ I requisiti sono indicati con il loro codice identificativo definito nel documen
 	ROF21 & Non soddisfatto \\ \hline
 	ROF22 & Non soddisfatto \\ \hline
 	ROF23 & Non soddisfatto \\ \hline
+	ROF24 & Non soddisfatto \\ \hline
+	ROF25 & Non soddisfatto \\ \hline
+	ROF26 & Non soddisfatto \\ \hline
+	ROF27 & Non soddisfatto \\ \hline
+	ROF28 & Non soddisfatto \\ \hline
+	ROF29 & Non soddisfatto \\ \hline
+	ROF30 & Non soddisfatto \\ \hline
+	ROF31 & Non soddisfatto \\ \hline
+	ROF32 & Non soddisfatto \\ \hline
+	ROF33 & Non soddisfatto \\ \hline
+	ROF34 & Non soddisfatto \\ \hline
 	RDF1 & Non soddisfatto \\ \hline
 	RDF2 & Non soddisfatto \\ \hline
 	RDF3 & Non soddisfatto \\ \hline
@@ -945,6 +966,10 @@ I requisiti sono indicati con il loro codice identificativo definito nel documen
 	RDF23 & Non soddisfatto \\ \hline
 	RDF24 & Non soddisfatto \\ \hline
 	RDF25 & Non soddisfatto \\ \hline
+	RDF26 & Non soddisfatto \\ \hline
+	RDF27 & Non soddisfatto \\ \hline
+	RDF28 & Non soddisfatto \\ \hline
+	RDF29 & Non soddisfatto \\ \hline
 	RPF1 & Non soddisfatto \\ \hline
 	RPF2 & Non soddisfatto \\ \hline
 	RPF3 & Non soddisfatto \\ \hline
@@ -1145,13 +1170,19 @@ Tali metriche devono rispettare la seguente notazione:
 	 \item Livello ottimale: 100\%
 	 \end{itemize}
 	 
-	 \item \textbf{MPS9 - Implementazione dei requisiti opzionali:} permette di verificare in ogni istante la percentuale di requisiti opzionali soddisfati; viene calcolata con la seguente formula: 
+	 \item \textbf{MPS9 - Implementazione dei requisiti opzionali}: permette di verificare in ogni istante la percentuale di requisiti opzionali soddisfati; viene calcolata con la seguente formula: 
 		\begin{center}
 		$\frac{numero\ requisiti\ opzionali\ implementati}{numero\ requisiti\ opzionali\ totali}$
 	\end{center}
 	\begin{itemize}
 	 \item Livello di accettazione: superiore al 20\%
 	 \item Livello ottimale: 100\%
+	 \end{itemize}
+	 
+	  \item \textbf{MPS10 - Numero di linee di codice di una procedura}: indica il numero di righe di codice utilizzate per ogni procedura.
+	\begin{itemize}
+	 \item Livello di accettazione: inferiore al 30
+	 \item Livello ottimale: 20
 	 \end{itemize}
 	
 	\end{itemize}
@@ -1168,7 +1199,8 @@ Successivamente alla prima revisione formale, il gruppo ha apportato diverse mod
 	
 	
 \newpage
-\section{ISO/IEC 15504}
+\section{Standard utilizzati}
+\subsection{ISO/IEC 15504}
 Lo standard ISO/IEC 15504, comunemente chiamato SPICE (acronimo di Software Process Improvement and Capability Determination), viene utilizzato per eseguire una valutazione concreta della qualità dei processi, inoltre permette la misurazione della capability dei processi, ovvero l'abilità con cui esso raggiunge l'obiettivo prefissato. Per eseguire queste misurazioni lo standard offre nove attributi da associare ai processi, ognuno dei quali misura un particolare aspetto della maturità del processo:
 \begin{itemize}
 	\item \textbf{Process performance:} è una misura del grado con cui è stato raggiunto lo scopo del processo. Il completo raggiungimento di quest'attributo è dato dal fatto che il processo raggiunge gli obiettivi prefissati.
@@ -1204,7 +1236,7 @@ Infine sulla base delle valutazioni assegnate ad ogni attributo del processo, po
 \end{figure}
 \newpage
 
-\subsection{Ciclo di Deming}
+\subsubsection{Ciclo di Deming}
 Il ciclo di Deming, noto anche come PDCA (dall'inglese \textbf{P}lan-\textbf{D}o-\textbf{C}heck-\textbf{A}ct), è un metodo di gestione iterativo suddiviso in quattro stadi ed utilizzato per il controllo del miglioramento continuo dei processi e dei prodotti. Esso permette, nello specifico, di migliorare gradualmente la qualità dei processi in termini di efficienza ed efficacia, ottimizzando l'uso delle risorse e misurando la loro conformità rispetto le aspettative. \\
 La seguente immagine riporta le attività previste a tale scopo e ne segue una breve descrizione. 
 \begin{figure}[htbp]
@@ -1221,8 +1253,7 @@ La seguente immagine riporta le attività previste a tale scopo e ne segue una b
 	\item \textbf{Act}: prevede l'attuazione delle strategie che hanno portato a dei miglioramenti. Nel caso i risultati attuali si distacchino da quelli previsti, si possono compiere delle azioni di correzione in seguito ad un'approfondita analisi delle cause di tale errore. 
 \end{itemize}
 
-\newpage
-\section{ISO/IEC 9126}
+\subsection{ISO/IEC 9126}
 Lo standard ISO/IEC 9126 definisce un modello dei requisiti qualitativi del Prodotto.
 Il modello descritto si concentra in primo luogo sui tre punti di vista della qualità che esistono sul prodotto:
 \begin{itemize}
@@ -1232,7 +1263,7 @@ Il modello descritto si concentra in primo luogo sui tre punti di vista della qu
 	codice sorgente, pertanto senza la necessità di eseguire il software;
 	\item \textbf{Qualità in uso:} esprime il livello con cui il prodotto si dimostra utile all'utente nel suo contesto d'uso. In altre parole rappresenta la capacità del prodotto di dare efficacia ed efficienza al lavoro dell'utente, a fronte di una sicurezza di utilizzo e di una soddisfazione nel far uso del prodotto.
 \end{itemize}
-\subsection{Modello per la qualità esterna ed interna}
+\subsubsection{Modello per la qualità esterna ed interna}
 Per la qualità esterna ed interna è definito un modello gerarchico formato da 6 caratteristiche principali e numerose sottocaratteristiche, tutte misurabili direttamente o indirettamente grazie all'utilizzo di metriche.
 Le sei caratteristiche principali sono elencate di seguito:
 \begin{itemize}
@@ -1243,7 +1274,7 @@ Le sei caratteristiche principali sono elencate di seguito:
 	\item \textbf{Manutenibilità:} capacità del software di essere modificato e manutenuto. Per modifiche si intendono correzioni o adattamenti del software, negli ambienti, nei requisiti e nelle specifiche funzionali. Una sottocaratteristica importante è la testabilità, cioè la capacità di un software di consentire la verifica e di essere oggetto di test;
 	\item \textbf{Portabilità:} capacità di poter essere trasferito da un ambiente di esecuzione all'altro.
 \end{itemize}
-\subsection{Modello per la qualità in uso}
+\subsubsection{Modello per la qualità in uso}
 Per la qualità in uso lo standard definisce una gerarchia separata, per enfatizzare il fatto che qui si considera non solo il prodotto software in sè, ma la relazione stretta tra esso e l'utente, nell'ambiente di utilizzo. Il modello è formato dalle seguenti quattro caratteristiche:
 \begin{itemize}
 	\item \textbf{Efficacia:} rappresenta la capacità di supportare un utente nel raggiungere i suoi obiettivi con accuratezza e completezza in un dato contesto;

@@ -38,6 +38,8 @@
 \usepackage[nottoc]{tocbibind}
 \usepackage{makeidx}
 \usepackage[indentunit=0.75em]{idxlayout}
+\usepackage{ltablex}
+\usepackage{ titlesec}
 
 \makeindex
 \def\firstentry#1\item#2{\item\textbf{#2}}
@@ -57,6 +59,7 @@
 \usepackage{lipsum}
 \begin{document}
 	\input{frontpage/frontpage.tex}
+	{\def\arraystretch{2}\tabcolsep=10pt
 	\newpage
 	\section*{\centering Registro delle modifiche}
 	\begin{tabularx}{\textwidth}{ c | c | c | c | X }

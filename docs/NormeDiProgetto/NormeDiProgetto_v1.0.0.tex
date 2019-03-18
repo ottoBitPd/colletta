@@ -51,6 +51,7 @@
 		\rowcolor{LightBlue}
 		\color{white}\bfseries Versione & \color{white}\bfseries Data & \multicolumn{1}{c}{\color{white}\bfseries Autore}
 		& \color{white}\bfseries Ruolo & \multicolumn{1}{c}{\color{white}\bfseries Descrizione}\\[0.25cm]
+		2.0.1 & 2019-03-18 & Giovanni Bergo \newline Giovanni Peron & Amministratore & Correzione errori RP \\ \hline
 		2.0.0 & 2019-03-05 & Gianmarco Pettenuzzo & Responsabile & Approvazione per il rilascio \\ \hline
 		1.1.0 & 2019-03-05 & Giovanni Bergo & Verificatore & Verifica documento \\ \hline
 		1.0.6 & 2019-02-28 & Gianmarco Pettenuzzo & Amministratore & Incremento strumenti di verifica, aggiunta sezione 4.5 \\ \hline
@@ -97,7 +98,11 @@
 	
 	\subsection{Riferimenti}
 	Segue l'elenco dei riferimenti utilizzati dal gruppo:
-	\subsubsection{Riferimenti normativi}
+	\subsubsection{Riferimenti Normativi}
+Capitolato C2 Colletta: Piattaforma per Raccolta dati mediante esercizi di grammatica
+\footnote{\url{https://www.math.unipd.it/~tullio/IS-1/2018/Progetto/C2.pdf}}
+
+	\subsubsection{Riferimenti informativi}
 	\begin{itemize}
 		\item ISO/IEC 12207$^*$
 		\footnote{\url {https://it.wikipedia.org/wiki/ISO\_12207}}
@@ -106,11 +111,8 @@
 		\footnote{\url {https://en.wikipedia.org/wiki/ISO/IEC\_15504}}
 		\item ISO/IEC 9126$^*$
 		\footnote{\url {https://it.wikipedia.org/wiki/ISO/IEC\_9126}}
-	\end{itemize}	
-	
-	\subsubsection{Riferimenti informativi}
-	\begin{itemize}
-		\item Slide del corso "Ingegneria del software" - Processi di sviluppo 
+		
+	\item Slide del corso "Ingegneria del software" - Processi di sviluppo 
 		\footnote{\url{https://www.math.unipd.it/~tullio/IS-1/2018/Dispense/L03.pdf}}
 		\item Slide del corso "Ingegneria del software" - Ciclo di vita 
 		\footnote{\url{https://www.math.unipd.it/~tullio/IS-1/2018/Dispense/L05.pdf}}
@@ -119,18 +121,31 @@
 		\item Wikipedia/GitLab
 		\footnote{\url {https://it.wikipedia.org/wiki/GitLab}}
 	\end{itemize}					
-	\newpage
+\newpage
+
 	
 	\section{Processi primari}
 	\subsection{Fornitura}
-	\subsection{Scopo}
+	\subsubsection{Scopo}
 	Questo processo$^*$ contiene le attività e i task del fornitore e si propone di gestire i rapporti con il cliente. Le attività principali sono descritte di seguito.
 	
-	\iftrue
-	\subsection{Normazione}
-	Uno dei compiti dell'Amministratore di progetto, è quello di stilare la lista delle regole che tutti i componenti del gruppo dovranno seguire nella stesura dei documenti e nello svolgimento delle attività assegnate a ciascuno. Con l'avanzamento dello sviluppo del progetto, tali regole potrebbero subire delle variazioni e/o delle aggiunte poiché, durante lo sviluppo stesso, si potranno acquisire nuove conoscenze o incontrare difficoltà tali da portare alla rielaborazione delle succitate regole. Si potrebbe anche decidere di utilizzare uno strumento diverso da quelli preventivati e, anche per questo, andranno stabilite regole specifiche.\\
-	\textbf{Prodotto dell'attività}: \textit{NormeDiProgetto\_v2.0.0}
-	\fi
+	\subsubsection{Descrizione}
+	Durante l’intero progetto si vuole instaurare un costante rapporto con MivoQ S.r.l. a fine di:
+	\begin{itemize}
+		\item Determinare i bisogni del proponente e gli aspetti chiave per soddisfarli;
+		\end{itemize}
+	
+	\subsubsection{Documentazione fornita}
+	Elenchiamo nella parte sottostante i documenti che verranno forniti alla proponente MivoQ. s.r.l. e ai committenti Prof. Vardanega, Prof. Cardin: 
+	\begin{itemize}
+	\item \textbf{Pianificazione, consegna e completamento del progetto:} descritte all’interno del \textit{PianoDiProgetto\_v3.0.0};
+	\item \textbf{Analisi}: l’analisi dei casi d’uso e dei requisiti, contenute all’interno del documento \textit{AnalisiDeiRequisiti\_v2.0.0};
+	\item \textbf{Progettazione dell’architettura}: l’applicazione e le tecnologie
+	adottate e attuate nella Proof of Concept della Technology Baseline;
+	\item\textbf{ Progettazione di Dettaglio}: l’insieme di classi, metodi, presentate durante la Product Baseline;
+	\item \textbf{Verifica e Validazione}: descritte all’interno del \textit{PianoDiQualifica\_v3.0.0};
+	\item \textbf{Garanzia della qualità dei processi e di prodotto}: descritte all’interno del \textit{PianoDiQualifica\_v3.0.0}.
+	\end{itemize}
 	
 	\subsubsection{Studio di fattibilità}
 	Nella prima fase dello sviluppo del progetto, agli Analisti è richiesto di approfondire i requisiti di ogni capitolato proposto dai committenti così da capirne l'entità e decidere se accettare o meno il contratto. Nello specifico, per ogni capitolato si vuole conoscere:
@@ -141,8 +156,45 @@
 	\end{itemize}
 	\textbf{Prodotto dell'attività}: \textit{StudioDiFattibilità\_v1.0.0}
 	
-	
-	
+	\subsubsection{Piano di Progetto}
+	Durante tutto il progetto verrà seguita una pianificazione precisa realizzata dal Responsabile e dagli Amministratori.
+	Questa pianificazione verrà denominata Piano di Progetto, e dovrà contenere:
+	\begin{itemize}
+		\item \textbf{Analisi dei rischi} identificazione dei rischi per indicare: il loro grado di rischio, i modi di rilevamento e un piano per il loro contenimento.
+		\item \textbf{Pianificazione} sezione in cui verranno individuate e pianificate tutte le diverse attività da svolgere. 
+		Queste avranno scadenze ben precise, decise in comune accordo con tutto il gruppo.
+		\item \textbf{Stima preventiva e consuntivo} in base alla pianificazione il preventivo stimerà il costo totale del progetto. Il consuntivo traccerà il reale svolgimento delle ore impiegate per ogni attività, e quindi indicherà la differenza tra costo preventivato ed effettivo. 
+	\end{itemize}
+
+\subsubsection{Piano di Qualifica}
+Sarà necessario verificare e validare tutti i prodotti realizzati dal gruppo, per fare ciò i Verificatori dovranno redarre un piano di qualifica.
+Questo documento dovrà contenere:
+\begin{itemize}
+	\item \textbf{Obbiettivi di qualità} Gli obbiettivi di qualità di processo e di prodotto che il gruppo cercherà di raggiungere.
+	\item \textbf{Metriche} Strumenti per ottenere una valutazione della qualità per ogni obiettivo da raggiungere.
+	\item \textbf{Resoconto dell'attività di verifica} dove verranno riportati i valori misurati di ogni metrica.
+	\item \textbf{Specifica dei test} verranno definiti tutti i test che verranno usati per verificare la correttezza del prodotto realizzato.
+\end{itemize}
+
+\subsubsection{Consegna del prodotto}
+Con l’avvicinarsi della data di collaudo, si cercherà di instaurare un rapporto con il Referente Dr. Giulio Paci della Proponente Mivoq S.R.L. al quale verranno sottoposti dei prototipi dell’applicazione al fine di ricevere un feedback volto al perfezionamento della stessa.
+La consegna avverrà in luogo e data da destinarsi.
+Verranno forniti alla proponente MivoQ. s.r.l. e ai committenti Prof. Vardanega, Prof. Cardin i seguenti prodotti:
+\begin{itemize}
+	\item Codice sorgente
+	\item Documentazione relativa al prodotto.
+	\item \textit{Glossario\_v3.0.0} per una maggiore comprensione dei documenti
+	\item \textit{ManualeUtente\_v1.0.0}: per l'illustrazione del processo di installazione e delle funzionalità del prodotto.
+		\item \textit{ManualeSviluppatore\_v1.0.0}: specifica come contribuire al progetto.
+\end{itemize}
+
+\subsubsection{Completamento del progetto}
+Dopo la consegna del prodotto ed aver effettuato il relativo collaudo, il progetto si considera concluso.
+In caso di necessità verrà fornito supporto alla proponente MivoQ s.r.l. e l'applicazione continuerà ad essere sviluppata in accordo con la proponente.
+
+%	\subsection{Normazione}
+%	Uno dei compiti dell'Amministratore di progetto, è quello di stilare la lista delle regole che tutti i componenti del gruppo dovranno seguire nella stesura dei documenti e nello svolgimento delle attività assegnate a ciascuno. Con l'avanzamento dello sviluppo del progetto, tali regole potrebbero subire delle variazioni e/o delle aggiunte poiché, durante lo sviluppo stesso, si potranno acquisire nuove conoscenze o incontrare difficoltà tali da portare alla rielaborazione delle succitate regole. Si potrebbe anche decidere di utilizzare uno strumento diverso da quelli preventivati e, anche per questo, andranno stabilite regole specifiche.\\
+%	\textbf{Prodotto dell'attività}: \textit{NormeDiProgetto\_v2.0.0}
 	
 	\subsection{Sviluppo}
 	\subsubsection{Analisi dei requisiti}
@@ -229,25 +281,55 @@
 	\subsubsection{Codifica}
 	L'attività di codifica inizierà quando la progettazione sarà terminata. Pertanto le norme sottostanti potranno subire variazioni in seguito alla successiva revisione.
 	
+
 	\paragraph{Scopo\\}
 	La codifica è l'attività che permette l'effettiva realizzazione del prodotto.
+	
+	\paragraph{Lingua utilizzata}
+	\noindent \\
+	I nomi di variabili, metodi, classi e commenti saranno scritti in lingua inglese in modo da facilitare un ipotetico contributo futuro da parte dei sviluppatori stranieri.
+	
+	
 	\paragraph{Linguaggi di codifica utilizzati:}
 	\begin{itemize}
 		\item Javascript: Node.js per la parte backend e React per la parte dinamica del frontend
 		\item HTML e CSS: per la struttura e la presentazione del frontend
 	\end{itemize}
 	
-	\paragraph{Commenti al codice\\}
+	\paragraph{Nomenclatura codice}
+	I nomi di classi, variabili e metodi dovranno avere un nome esplicativo per evitare il più possibile ambiguità di comprensione.
+	\begin{itemize}
+		\item \textbf{Classi}
+		\item \textbf{Costanti}
+		\item \textbf{Metodi}: per i nomi dei metodi verrà utilizzata la notazione Lower Camel Case; cioè inizieranno con la prima lettera minuscola e, nel caso sia composte da più parole successive, queste cominceranno con la lettera maiuscola.
+	\\\\
+	\textbf{Esempio:}
+	\begin{center}
+			 thisIsAnExample \hspace{2cm} ThisIsAnExample
+	\end{center}
+
+		\item \textbf{Altro}: variabili di istanza, variabili locali, parametri, nomi dei metodi; devono iniziare con una lettera minuscola
+	\end{itemize}
+	
+	\paragraph{Commenti al codice}
 	I commenti al codice, i nomi delle funzioni e delle variabili dovranno essere esplicativi ed in lingua inglese.
 	I commenti devono permettere la comprensione del codice, non
 	devono quindi descrivere la sintassi del linguaggio di programmazione in uso, ma piuttosto descrivere lo scopo di tutti quei blocchi di codice la
 	cui comprensione non sia già resa immediata da una corretta scelta della nomenclatura.
 	
-	
-	
-	\newpage
-	\section{Processi di Supporto}
-	
+	\subsubsection{Strumenti}
+	\paragraph{WebStorm} \noindent \\
+	È un IDE di JetBrains per lo sviluppo di applicazioni di Web application, che supporta Javasctipt, Node.js, HTML e CSS.
+	L'editor offre varie funzionalità, tra cui:
+	\begin{itemize}
+		\item Node.js Debugger
+		\item EsLint
+	\end{itemize}
+
+	\paragraph{JSDoc}
+\noindent \\
+	Per la generazione automatica della documentazione in stile JavaDoc, sara usato il software JSDoc.
+		\section{Processi di Supporto}
 	\subsection{Documentazione}
 	In questa sezione esamineremo dettagliatamente i processi utilizzati per stesura, verifica e mantenimento di tutta la documentazione prodotta dal gruppo Ottobit.
 	Lo scopo è quello di fornire una descrizione accurata di tutte le norme, convenzioni e vincoli rispettati per ottenere documentazione efficace, coerente e formale.
@@ -457,79 +539,7 @@
 	\end{itemize}
 	
 	\newpage
-	
-	\subsection{Assicurazione della qualità}
-	\subsubsection{Scopo}
-	Questo processo ha lo scopo di prevenire il presentarsi dei problemi, di individuarli quando si presentano, di identificarne le cause e di trovarvi rimedio. In questo modo si potrà garantire la qualità dei processi e dei prodotti durante il ciclo di vita del software.
-	\\
-Una corretta implementazione di questo processo permette di:
-	\begin{itemize}
-		\item determinare le politiche per la qualità, gli obiettivi e le responsabilità;
-		\item implementare le politiche di qualità stabilite, attraverso pianificazione, controllo e miglioramento della qualità. 
-	\end{itemize}
-	
-L'assicurazione della qualità riguarda sia i prodotti che i processi. Al fine di ottenere specifici attributi di qualità, i prodotti devono essere conformi ai requisiti definiti nell'\textit{AnalisiDeiRequisiti\_v2.0.0} ed aderire al \textit{PianoDiProgetto\_v2.0.0}. Anche i processi devono essere conformi a quanto specificato in quest'ultimo documento e devono, inoltre, rispettare gli standard utilizzati per la loro implementazione. \\
-Le attività riguardanti l'attività di assicurazione della qualità che vengono presentate di seguito, sono descritte in dettaglio nel documento \textit{PianoDiQualifica\_v2.0.0}.
 
-	\subsubsection{Attività: assicurazione della qualità di processo}
-	Il gruppo OttoBit ha deciso di utilizzare gli standard ISO/IEC 15504 denominato SPIECE$^*$ e lo standard PDCA$^*$ di cui viene riportata di seguito la descrizione.\\
-	\textbf{ISO/IEC 15504} \\
-	Lo standard ISO/IEC 15504, comunemente chiamato SPICE (acronimo di Software Process Improvement and Capability Determination), viene utilizzato per eseguire una valutazione concreta della qualità dei processi, inoltre permette la misurazione della capability dei processi, ovvero l'abilità con cui esso raggiunge l'obiettivo prefissato. Per eseguire queste misurazioni lo standard offre nove attributi da associare ai processi, ognuno dei quali misura un particolare aspetto della maturità del processo:
-	\begin{itemize}
-	\item \textbf{Process performance:} è una misura del grado con cui è stato raggiunto lo scopo del processo. Il completo raggiungimento di quest'attributo è dato dal fatto che il processo raggiunge gli obiettivi prefissati.
-	\item \textbf{Perfomance management:} è una misura del grado con il quale viene gestita l'organizzazione per il raggiungimento dello scopo del processo. Il processo è pianificato e monitorato. Le responsabilità per la realizzazione del processo sono assegnate e comunicate. Le risorse necessarie per il processo sono disponibili, allocate e utilizzate. 
-	\item \textbf{Work product management:} è una misura del grado con il quale i risultati prodotti dal processo vengono appropriatamente gestiti. I requisiti dei risultati della documentazione e del controllo del processo sono definiti e i risultati devono essere appropriatamente documentati e controllati. I risultati del processo sono sottoposti a verifica e a correzione se necessario.
-	\item \textbf{Process definition:} è una misura del grado con cui uno standard di processo è mantenuto (utilizzato) a supporto dell'implementazione del processo. Gli elementi fondamentali dello standard da utilizzare sono descritti e la sequenza di operazioni richieste dallo standard è definita. Le competenze, i ruoli, le infrastrutture e l'ambiente di lavoro per realizzare il processo fanno parte dello standard. I metodi di monitoraggio del processo sono definiti.
-	\item \textbf{Process deployment:} è una misura del grado con il quale lo standard di processo viene effettivamente distribuito come un processo definito in grado di raggiungere i propri obiettivi. Le responsabilità e i ruoli per utilizzare lo standard sono assegnati e comunicati, le risorse, le infrastrutture e l'ambiente di lavoro, necessarie per l'applicazione dello standard, sono disponibili allocate e utilizzate. Vengono raccolti e analizzati dati per dimostrare l'adeguatezza e l'efficacia del processo.
-	\item \textbf{Process measurement:} è una misura del grado con il quale i risultati delle misurazioni sono utilizzati per garantire il raggiungimento degli obiettivi del processo. Vengono definiti degli obiettivi di qualità basati sulle misurazioni. I risultati delle misurazioni sono raccolti analizzati e documentati per verificare che gli obiettivi di qualità siano rispettati.
-	\item \textbf{Process control:} è una misura del grado con il quale il processo è quantitativamente gestito per produrre un processo che sia stabile, abile e prevedibile entro limiti definiti. Analisi e tecniche di controllo vengono applicate. Sono stabiliti dei limiti di variazione per i risultati delle misurazioni. Vengono intraprese delle azioni correttive se necessario. 
-	\item \textbf{Process innovation:} è una misura del grado con il quale vengono identificate delle modifiche al processo attraverso l'analisi di cause comuni di variazione delle performance, e dalla ricerca di approcci innovativi alla definizione e all'implementazione del processo. Vengono definiti degli obiettivi di miglioramento. Vengono analizzati dei dati per identificare le cause comuni di variazione delle performance del processo e successivamente per identificare delle best-practice*.
-	\item \textbf{Process optimization:} è una misura del grado con il quale delle modifiche alla definizione, gestione e alle prestazioni del processo si traducono in un impatto che porta a raggiungere rilevanti miglioramenti al processo. L'impatto dei cambiamenti proposti viene valutato rispetto agli obiettivi definiti dal processo e dallo standard di processo.
-	\end{itemize}
-	A questi attributi viene assegnato uno dei seguenti quattro livelli di misura:
-	\begin{itemize}
-	\item \textbf{N not implemented:} non ci sono segni di raggiungimento dell'attributo.
-	\item \textbf{P partial implemented:} esistono alcuni risultati dell'attributo in questione.
-	\item \textbf{L largely implemented:} ci sono significanti segni di raggiungimento dell'attributo in questione.
-	\item \textbf{F fully implemented:} viene identificato un pieno raggiungimento degli obiettivi dell'attributo
-	\end{itemize}
-	Infine sulla base delle valutazioni assegnate ad ogni attributo del processo, potrà essere valutato il grado complessivo di maturazione, il quale varierà sui seguenti sei valori:
-	\begin{itemize}
-	\item \textbf{0 - Incomplete:} viene rilevato un fallimento generale nel conseguimento dell'obiettivo del processo. Non si identifica alcun prodotto o risultato. Un processo appartenente a questo livello non può essere associato ad alcun attributo.
-	\item \textbf{1 - Performed:} lo scopo del processo è generalmente raggiunto, a prova di ciò sono identificabili dei prodotti risultanti dal processo. A questo livello il processo viene associato all' attributo Process performance.
-	\item \textbf{2 - Managed:} il processo raggiunge dei risultati di qualità accettabile rispettando i tempi prestabiliti. Il risultato soddisfa tutti i requisiti e gli standard predefiniti. Un processo a questo livello è quindi gestito tramite pianificazione e controllo e correzione dei suoi risultati, i quali possono essere ritenuti sicuri. Gli attributi associati a questo livello sono process management e work product management.
-	\item \textbf{3 - Established:} il processo è implementato, gestito mediante procedure ben definite basate sui buoni principi dell'ingegneria del software. Un processo appartenente a questo livello sarà in grado di raggiungere sempre gli stessi risultati. Process definition e process deployment sono gli attributi associabili a questo livello.
-	\item \textbf{4 - Predictable:} il processo raggiunge i propri obiettivi all'interno di limiti di controllo definiti. La sostanziale differenza con il livello estabilished è che ora il processo è quantitativamente compreso e controllato. A questo livello vengono associati gli attributi process measurement e process control.
-	\item \textbf{5 - Optimizing:} le attività del processo sono ottimizzate per affrontare bisogni progettuali presenti e futuri, il processo viene sottoposto a miglioramento continuo. Gli attributi associati a questo livello sono process innovation e process optimization.
-	\end{itemize}
-	\begin{figure}[htbp]
-	\centering
-	\includegraphics[scale=0.7]{images/ISOIEC15504.pdf}
-	\caption{Riepilogo modello ISO/IEC 15504}
-	\end{figure}
-	
-	\textbf{Ciclo di Deming} \\
-Il ciclo di Deming, noto anche come PDCA (dall'inglese \textbf{P}lan-\textbf{D}o-\textbf{C}heck-\textbf{A}ct), è un metodo di gestione iterativo suddiviso in quattro stadi ed utilizzato per il controllo del miglioramento continuo dei processi e dei prodotti. Esso permette, nello specifico, di migliorare gradualmente la qualità dei processi in termini di efficienza ed efficacia, ottimizzando l'uso delle risorse e misurando la loro conformità rispetto le aspettative. \\
-La seguente immagine riporta le attività previste a tale scopo e ne segue una breve descrizione. 
-\begin{figure}[htbp]
-	\centering
-	\includegraphics[scale=0.5]{images/pdca.png}
-	\caption{Principio del miglioramento continuo secondo PDCA}
-	
-\end{figure}
-
-\begin{itemize}
-	\item \textbf{Plan}: prevede la definizione delle attività, scadenze, responsabilità e risorse atti a raggiungere e soddisfare degli obiettivi di miglioramento;
-	\item \textbf{Do}: prevede l'esecuzione delle attività pianificate durante il periodo di pianificazione;
-	\item \textbf{Check}: prevede la verifica dell'esito del processo in seguito all'attuazione delle strategie di miglioramento ed il confronto tra i risultati raccolti durante la fase Do e quelli attesi (specificati nella fase Plan) per stimare l'impatto effettivo del o dei miglioramenti apportati;
-	\item \textbf{Act}: prevede l'attuazione delle strategie che hanno portato a dei miglioramenti. Nel caso i risultati attuali si distacchino da quelli previsti, si possono compiere delle azioni di correzione in seguito ad un'approfondita analisi delle cause di tale errore. 
-\end{itemize}
-	
-	\subsubsection{Attività: assicurazione della qualità di prodotto}
-	Questa attività ha lo scopo di assicurare che i prodotti rispettino le caratteristiche di qualità concordate con il committente. La qualità di prodotto non deve essere assicurata al solo completamento del prodotto ma anche durante tutto il suo periodo di sviluppo. \\
-	Al fine di assicurare la qualità del software, ai verificatori è assegnato il compito di controllare che il sistema di testing e verifica rispettino i parametri descritti nel \textit{PianoDiQualifica\_v2.0.0} e nelle \textit{NormeDiProgetto\_v2.0.0} e di controllare che il versionamento avvenga secondo le specifiche riportate nelle \textit{Norme di progetto} e che i relativi strumenti vengano utilizzati correttamente. Tali controlli vanno eseguiti al rilascio di ogni nova versione dei documenti citati e ogni volta che viene effettuata una modifica nella configurazione del sistema.\\
-	Nel caso uno di questi fattori non venga rispettato, il verificatore è tenuto ad avvisare il Responsabile del progetto, così che si possa porre un tempestivo rimedio ad ogni problematica. Il verificatore non ha le competenze per intervenire in prima persona e non deve farlo, il suo compito è di segnalare i problemi.
-	
 	\subsection{Verifica}
 	
 	\subsubsection{Scopo}
@@ -563,99 +573,60 @@ La seguente immagine riporta le attività previste a tale scopo e ne segue una b
 	\paragraph{Metriche per i processi}
 	\begin{itemize}
 	 \item \textbf{MPC1 - ISO/IEC 15504 (SPICE)}: lo standard ISO/IEC 15504 è lo standard di riferimento per valutare oggettivamente la qualità dei processi software al fine di migliorarli e permette di misurare indipendentemente ogni processo tramite degli attributi, studiando il range di risultati che si ottengono eseguendolo. 
-	 \begin{itemize}
-	 \item Livello di accettazione: livello 2
-	 \item Livello ottimale: livello 6
-	 \end{itemize}
+	 
+	 
 	 \item \textbf{MPC2 - Requirement Stability Index (RSI)}: indica la percentuale dei requisiti rimasti invariati nel tempo. Un valore elevato di tale metrica indica un’attività di analisi attenta e corretta. Viene calcolata tramite la seguente formula:
 	 \begin{center}
 		$RSI[\%] =\ 1\ -\ \frac{(numero\ requisiti\ aggiunti)\ +\ (numero\ requisiti\ tolti)\ +\ (numero\ requisiti\ modificati)}{numero\ requisiti\ totali\ iniziali}$
 	\end{center}
-	\begin{itemize}
-	 \item Livello di accettazione: superiore a 0.6
-	 \item Livello ottimale: 1
-	 \end{itemize}
+	
 	\item \textbf{MPC3 - Violazione dello stile di codifica}: indica il numero di violazioni allo stile di codifica. Un risultato elevato indica poca cura da parte dei programmatori che rende il codice poco affidabile. 
-	\begin{itemize}
-	 \item Livello di accettazione: minore di 10
-	 \item Livello ottimale: 0
-	 \end{itemize}
+	
 	\item \textbf{MPC4 - Test di integrazione implementati}: indica il rapporto tra i test di integrazione effettivamente implementati e quelli totali preventivati. Un valore elevato di tale metrica indica un livello soddisfacente di test sviluppati per le interazioni tra le varie componenti del sistema. Per calcolare questo dato, si usa la seguente formula: 
 	\begin{center}
 		$TII[\%]=\frac{numero\ test\ integrazione\ implementati}{numero\ test\ integrazione\ totali}$
 	\end{center}
-	\begin{itemize}
-	 \item Livello di accettazione: superiore al 85\%
-	 \item Livello ottimale: 100\%
-	 \end{itemize}
+	
 	\item \textbf{MPC5 - Test di sistema implementati}: indica il rapporto tra i test di sistema effettivamente implementati e quelli totali preventivati. Un valore elevato di tale metrica indica un buon livello di funzionalità del sistema. Per calcolare questo dato, si usa la seguente formula:
 	\begin{center}
 		$TII[\%]=\frac{numero\ test\ sistema\ implementati}{numero\ test\ sistema\ totali}$
 	\end{center}
-	\begin{itemize}
-	 \item Livello di accettazione: superiore al 85\%
-	 \item Livello ottimale: 100\%
-	 \end{itemize}
+
 	\item \textbf{MPC6 - Test di unità implementati}: indica il rapporto tra i test di unità effettivamente implementati e quelli totali preventivati. Un valore elevato di tale metrica indica un livello soddisfacente di test sviluppati per le interazioni tra le varie componenti del sistema. Per calcolare questo dato, si usa la seguente formula: 
 	\begin{center}
 		$TUI[\%]=\frac{numero\ test\ unita\ implementati}{numero\ test\ unita\ totali}$
 	\end{center}
-	\begin{itemize}
-	 \item Livello di accettazione: superiore al 85\%
-	 \item Livello ottimale: 100\%
-	 \end{itemize}
+
 	\item \textbf{MPC7 - Test di accettazione implementati}: indica il rapporto tra i test di accettazione effettivamente implementati e quelli totali preventivati. Un valore elevato di tale metrica indica un livello soddisfacente di test sviluppati per le interazioni tra le varie componenti del sistema. Per calcolare questo dato, si usa la seguente formula: 
 	\begin{center}
 		$TAI[\%]=\frac{numero\ test\ accettazione\ implementati}{numero\ test\ accettazione\ totali}$
 	\end{center}
-	\begin{itemize}
-	 \item Livello di accettazione: superiore al 85\%
-	 \item Livello ottimale: 100\%
-	 \end{itemize}
+
 	\end{itemize}
 	
 	
 	\paragraph{Metriche per i prodotti: documenti} 
 	\begin{itemize}
 		\item \textbf{MPD1 - Correttezza ortografica}: su ogni documento sarà possibile individuare gli errori ortografici tramite l'editor Texmaker. Il numero di errori rilevati accettabili è pari a zero.
-		\begin{itemize}
-	 \item Livello di accettazione: 0
-	 \item Livello ottimale: 0
-	 \end{itemize}
-	 
+	
 		\item \textbf{MPD2 - Indice di Gullpease}: l'indice Gullpease$^*$ è un indice di leggibilità di un testo tarato sulla lingua italiana. Rispetto ad altri ha il vantaggio di utilizzare la lunghezza delle parole in lettere anziché in sillabe, semplificandone il calcolo automatico. Permette di misurare la complessità dello stile di un documento. L'indice di Gullpease considera due variabili linguistiche: la lunghezza della parola e la lunghezza della frase rispetto al numero delle lettere. La formula per il suo calcolo è:
 	\begin{center}
 		$89\ +\ \frac{300\ *\ (numero\ delle\ frasi)\ -\ 10\ *\ (numero\ delle\ lettere)}{numero\ delle\ parole}$
 	\end{center}
 	I risultati sono compresi tra 0 e 100, dove il valore 100 indica la leggibilità più alta e 0 la leggibilità più bassa. I testi il cui indice è inferiore ad 80 sono difficili da leggere per chi ha la sola licenza elementare, inferiore a 60 per chi ha la licenza media e inferiore a 40 per chi possiede un diploma superiore.
-	\begin{itemize}
-	 \item Livello di accettazione: superiore a 40
-	 \item Livello ottimale: superiore a 80
-	 \end{itemize}	
+	
 	\end{itemize}
 	
 	\paragraph{Metriche per i prodotti: software} 
 	\begin{itemize}
 		\item \textbf{MPS1 - Percentuale di superamento test}: il numero indicato deve corrispondere al 100\%. Al termine dell'attività di verifica tutti i test eseguiti devono essere superati.
-		\begin{itemize}
-	 \item Livello di accettazione: superiore al 85\%
-	 \item Livello ottimale: superiore al 100\%
-	 \end{itemize}
+		
 	    \item \textbf{MPS2 - Numero di parametri per metodo}: il numero di parametri non deve essere elevato; la conseguenza è una scarsa manutenibilità del codice.
-	    \begin{itemize}
-	 \item Livello di accettazione: minore di 5
-	 \item Livello ottimale: minore di 3
-	 \end{itemize}
+	
 	    \item \textbf{MPS3 - Numero di attributi per classe}: il numero di attributi non deve essere elevato, il suggerimento è di scomporre la classe in più classi per mantenere una manutenibilità del codice discreta.
-	    \begin{itemize}
-	 \item Livello di accettazione: minore di 10
-	 \item Livello ottimale: minore di 3
-	 \end{itemize}
+	
 	    \item \textbf{MPS4 - Numero di metodi per classe}: il numero di metodi per classe non deve essere elevato, il suggerimento è di scomporre la classe in più classi per mantenere una manutenibilità del codice discreta.
-	      \begin{itemize}
-	 \item Livello di accettazione: minore di 15
-	 \item Livello ottimale: minore di 5
-	 \end{itemize}
+	 
 	    \item \textbf{MPS5 - Complessità ciclomatica media$^*$}: per dare una valutazione alla complessità del codice si utilizza questa metrica basata sulla struttura del grafo. Il valore generato dalla seguente formula se dovesse essere troppo elevato indica un'eccessiva complessità del codice.
 		\begin{center}
 		$v(G) = E – N + 2P$
@@ -666,50 +637,30 @@ La seguente immagine riporta le attività previste a tale scopo e ne segue una b
     	    \item E: rappresenta il numero di archi;
     	    \item P: rappresenta il numero di componenti connesse.
     	\end{itemize}
-    	  \begin{itemize}
-	 \item Livello di accettazione: minore di 10
-	 \item Livello ottimale: minore di 8
-	 \end{itemize}
+    
 		\item \textbf{MPS6 - Implementazione dei requisiti obbligatori}: permette di verificare in ogni istante la percentuale di requisiti obbligatori soddisfati; viene calcolata con la seguente formula: 
 		\begin{center}
 		$\frac{numero\ requisiti\ obbligatori\ implementati}{numero\ requisiti\ obbligatori\ totali}$
 	\end{center}
-	\begin{itemize}
-	 \item Livello di accettazione: 100\%
-	 \item Livello ottimale: 100\%
-	 \end{itemize}
+	
 		\item \textbf{MPS7 - Implementazione dei requisiti desiderabili}: permette di verificare in ogni istante la percentuale di requisiti desiderabili soddisfati; viene calcolata con la seguente formula: 
 		\begin{center}
 		$\frac{numero\ requisiti\ desiderabili\ implementati}{numero\ requisiti\ desiderabili\ totali}$
 	\end{center}
-	\begin{itemize}
-	 \item Livello di accettazione: superiore al 30\%
-	 \item Livello ottimale: 100\%
-	 \end{itemize}
+
 		\item \textbf{MPS8 - Copertura dei test sul codice}: indica la percentuale di istruzioni che vengono eseguite durante i test rispetto il totale. Maggiore è la percentuale testata, maggiore è la possibilità che eventuali errori siano individuati e risolti; si calcola con la seguente formula:
 		\begin{center}
 		$\frac{numero\ istruzioni\ eseguite}{numero\ istruzioni\ totali}$	
 		\end{center}
-	\begin{itemize}
-	 \item Livello di accettazione: superiore al 50\%
-	 \item Livello ottimale: 100\%
-	 \end{itemize}
+
 	 
 	 \item \textbf{MPS9 - Implementazione dei requisiti opzionali}: permette di verificare in ogni istante la percentuale di requisiti opzionali soddisfati; viene calcolata con la seguente formula: 
 		\begin{center}
 		$\frac{numero\ requisiti\ opzionali\ implementati}{numero\ requisiti\ opzionali\ totali}$
 	\end{center}
-	\begin{itemize}
-	 \item Livello di accettazione: superiore al 10\%
-	 \item Livello ottimale: 100\%
-	 \end{itemize}
-	 
+
 	  \item \textbf{MPS10 - Numero di linee di codice di una procedura}: indica il numero di righe di codice utilizzate per ogni procedura.
-	\begin{itemize}
-	 \item Livello di accettazione: inferiore al 30
-	 \item Livello ottimale: 20
-	 \end{itemize}
-	
+
 	\end{itemize}
 	
 	\subsubsection{Analisi}
@@ -883,5 +834,80 @@ Con la CI è possbile:
 \subsubsection{Strumenti}
 \paragraph{GitLab CI\\}
 GitLab consente la pratica di integrazione codice all'interno della repository, facendo test e build ad ogni cambiamento effettuato, automaticamente, più velocemente possibile e più volte al giorno.
+
+\appendix
+\section{Assicurazione della qualità}
+
+\subsection{Scopo}
+Questo processo ha lo scopo di prevenire il presentarsi dei problemi, di individuarli quando si presentano, di identificarne le cause e di trovarvi rimedio. In questo modo si potrà garantire la qualità dei processi e dei prodotti durante il ciclo di vita del software.
+\\
+Una corretta implementazione di questo processo permette di:
+\begin{itemize}
+	\item determinare le politiche per la qualità, gli obiettivi e le responsabilità;
+	\item implementare le politiche di qualità stabilite, attraverso pianificazione, controllo e miglioramento della qualità. 
+\end{itemize}
+
+L'assicurazione della qualità riguarda sia i prodotti che i processi. Al fine di ottenere specifici attributi di qualità, i prodotti devono essere conformi ai requisiti definiti nell'\textit{AnalisiDeiRequisiti\_v2.0.0} ed aderire al \textit{PianoDiProgetto\_v2.0.0}. Anche i processi devono essere conformi a quanto specificato in quest'ultimo documento e devono, inoltre, rispettare gli standard utilizzati per la loro implementazione. \\
+Le attività riguardanti l'attività di assicurazione della qualità che vengono presentate di seguito, sono descritte in dettaglio nel documento \textit{PianoDiQualifica\_v2.0.0}.
+
+\subsection{Attività: assicurazione della qualità di processo}
+Il gruppo OttoBit ha deciso di utilizzare gli standard ISO/IEC 15504 denominato SPIECE$^*$ e lo standard PDCA$^*$ di cui viene riportata di seguito la descrizione.\\
+\textbf{ISO/IEC 15504} \\
+Lo standard ISO/IEC 15504, comunemente chiamato SPICE (acronimo di Software Process Improvement and Capability Determination), viene utilizzato per eseguire una valutazione concreta della qualità dei processi, inoltre permette la misurazione della capability dei processi, ovvero l'abilità con cui esso raggiunge l'obiettivo prefissato. Per eseguire queste misurazioni lo standard offre nove attributi da associare ai processi, ognuno dei quali misura un particolare aspetto della maturità del processo:
+\begin{itemize}
+	\item \textbf{Process performance:} è una misura del grado con cui è stato raggiunto lo scopo del processo. Il completo raggiungimento di quest'attributo è dato dal fatto che il processo raggiunge gli obiettivi prefissati.
+	\item \textbf{Perfomance management:} è una misura del grado con il quale viene gestita l'organizzazione per il raggiungimento dello scopo del processo. Il processo è pianificato e monitorato. Le responsabilità per la realizzazione del processo sono assegnate e comunicate. Le risorse necessarie per il processo sono disponibili, allocate e utilizzate. 
+	\item \textbf{Work product management:} è una misura del grado con il quale i risultati prodotti dal processo vengono appropriatamente gestiti. I requisiti dei risultati della documentazione e del controllo del processo sono definiti e i risultati devono essere appropriatamente documentati e controllati. I risultati del processo sono sottoposti a verifica e a correzione se necessario.
+	\item \textbf{Process definition:} è una misura del grado con cui uno standard di processo è mantenuto (utilizzato) a supporto dell'implementazione del processo. Gli elementi fondamentali dello standard da utilizzare sono descritti e la sequenza di operazioni richieste dallo standard è definita. Le competenze, i ruoli, le infrastrutture e l'ambiente di lavoro per realizzare il processo fanno parte dello standard. I metodi di monitoraggio del processo sono definiti.
+	\item \textbf{Process deployment:} è una misura del grado con il quale lo standard di processo viene effettivamente distribuito come un processo definito in grado di raggiungere i propri obiettivi. Le responsabilità e i ruoli per utilizzare lo standard sono assegnati e comunicati, le risorse, le infrastrutture e l'ambiente di lavoro, necessarie per l'applicazione dello standard, sono disponibili allocate e utilizzate. Vengono raccolti e analizzati dati per dimostrare l'adeguatezza e l'efficacia del processo.
+	\item \textbf{Process measurement:} è una misura del grado con il quale i risultati delle misurazioni sono utilizzati per garantire il raggiungimento degli obiettivi del processo. Vengono definiti degli obiettivi di qualità basati sulle misurazioni. I risultati delle misurazioni sono raccolti analizzati e documentati per verificare che gli obiettivi di qualità siano rispettati.
+	\item \textbf{Process control:} è una misura del grado con il quale il processo è quantitativamente gestito per produrre un processo che sia stabile, abile e prevedibile entro limiti definiti. Analisi e tecniche di controllo vengono applicate. Sono stabiliti dei limiti di variazione per i risultati delle misurazioni. Vengono intraprese delle azioni correttive se necessario. 
+	\item \textbf{Process innovation:} è una misura del grado con il quale vengono identificate delle modifiche al processo attraverso l'analisi di cause comuni di variazione delle performance, e dalla ricerca di approcci innovativi alla definizione e all'implementazione del processo. Vengono definiti degli obiettivi di miglioramento. Vengono analizzati dei dati per identificare le cause comuni di variazione delle performance del processo e successivamente per identificare delle best-practice*.
+	\item \textbf{Process optimization:} è una misura del grado con il quale delle modifiche alla definizione, gestione e alle prestazioni del processo si traducono in un impatto che porta a raggiungere rilevanti miglioramenti al processo. L'impatto dei cambiamenti proposti viene valutato rispetto agli obiettivi definiti dal processo e dallo standard di processo.
+\end{itemize}
+A questi attributi viene assegnato uno dei seguenti quattro livelli di misura:
+\begin{itemize}
+	\item \textbf{N not implemented:} non ci sono segni di raggiungimento dell'attributo.
+	\item \textbf{P partial implemented:} esistono alcuni risultati dell'attributo in questione.
+	\item \textbf{L largely implemented:} ci sono significanti segni di raggiungimento dell'attributo in questione.
+	\item \textbf{F fully implemented:} viene identificato un pieno raggiungimento degli obiettivi dell'attributo
+\end{itemize}
+Infine sulla base delle valutazioni assegnate ad ogni attributo del processo, potrà essere valutato il grado complessivo di maturazione, il quale varierà sui seguenti sei valori:
+\begin{itemize}
+	\item \textbf{0 - Incomplete:} viene rilevato un fallimento generale nel conseguimento dell'obiettivo del processo. Non si identifica alcun prodotto o risultato. Un processo appartenente a questo livello non può essere associato ad alcun attributo.
+	\item \textbf{1 - Performed:} lo scopo del processo è generalmente raggiunto, a prova di ciò sono identificabili dei prodotti risultanti dal processo. A questo livello il processo viene associato all' attributo Process performance.
+	\item \textbf{2 - Managed:} il processo raggiunge dei risultati di qualità accettabile rispettando i tempi prestabiliti. Il risultato soddisfa tutti i requisiti e gli standard predefiniti. Un processo a questo livello è quindi gestito tramite pianificazione e controllo e correzione dei suoi risultati, i quali possono essere ritenuti sicuri. Gli attributi associati a questo livello sono process management e work product management.
+	\item \textbf{3 - Established:} il processo è implementato, gestito mediante procedure ben definite basate sui buoni principi dell'ingegneria del software. Un processo appartenente a questo livello sarà in grado di raggiungere sempre gli stessi risultati. Process definition e process deployment sono gli attributi associabili a questo livello.
+	\item \textbf{4 - Predictable:} il processo raggiunge i propri obiettivi all'interno di limiti di controllo definiti. La sostanziale differenza con il livello estabilished è che ora il processo è quantitativamente compreso e controllato. A questo livello vengono associati gli attributi process measurement e process control.
+	\item \textbf{5 - Optimizing:} le attività del processo sono ottimizzate per affrontare bisogni progettuali presenti e futuri, il processo viene sottoposto a miglioramento continuo. Gli attributi associati a questo livello sono process innovation e process optimization.
+\end{itemize}
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[scale=0.7]{images/ISOIEC15504.pdf}
+	\caption{Riepilogo modello ISO/IEC 15504}
+\end{figure}
+\noindent
+\textbf{Ciclo di Deming} \\
+Il ciclo di Deming, noto anche come PDCA (dall'inglese \textbf{P}lan-\textbf{D}o-\textbf{C}heck-\textbf{A}ct), è un metodo di gestione iterativo suddiviso in quattro stadi ed utilizzato per il controllo del miglioramento continuo dei processi e dei prodotti. Esso permette, nello specifico, di migliorare gradualmente la qualità dei processi in termini di efficienza ed efficacia, ottimizzando l'uso delle risorse e misurando la loro conformità rispetto le aspettative. \\
+La seguente immagine riporta le attività previste a tale scopo e ne segue una breve descrizione. 
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[scale=0.5]{images/pdca.png}
+	\caption{Principio del miglioramento continuo secondo PDCA}
+	
+\end{figure}
+
+\begin{itemize}
+	\item \textbf{Plan}: prevede la definizione delle attività, scadenze, responsabilità e risorse atti a raggiungere e soddisfare degli obiettivi di miglioramento;
+	\item \textbf{Do}: prevede l'esecuzione delle attività pianificate durante il periodo di pianificazione;
+	\item \textbf{Check}: prevede la verifica dell'esito del processo in seguito all'attuazione delle strategie di miglioramento ed il confronto tra i risultati raccolti durante la fase Do e quelli attesi (specificati nella fase Plan) per stimare l'impatto effettivo del o dei miglioramenti apportati;
+	\item \textbf{Act}: prevede l'attuazione delle strategie che hanno portato a dei miglioramenti. Nel caso i risultati attuali si distacchino da quelli previsti, si possono compiere delle azioni di correzione in seguito ad un'approfondita analisi delle cause di tale errore. 
+\end{itemize}
+
+\subsection{Attività: assicurazione della qualità di prodotto}
+Questa attività ha lo scopo di assicurare che i prodotti rispettino le caratteristiche di qualità concordate con il committente. La qualità di prodotto non deve essere assicurata al solo completamento del prodotto ma anche durante tutto il suo periodo di sviluppo. \\
+Al fine di assicurare la qualità del software, ai verificatori è assegnato il compito di controllare che il sistema di testing e verifica rispettino i parametri descritti nel \textit{PianoDiQualifica\_v2.0.0} e nelle \textit{NormeDiProgetto\_v2.0.0} e di controllare che il versionamento avvenga secondo le specifiche riportate nelle \textit{Norme di progetto} e che i relativi strumenti vengano utilizzati correttamente. Tali controlli vanno eseguiti al rilascio di ogni nova versione dei documenti citati e ogni volta che viene effettuata una modifica nella configurazione del sistema.\\
+Nel caso uno di questi fattori non venga rispettato, il verificatore è tenuto ad avvisare il Responsabile del progetto, così che si possa porre un tempestivo rimedio ad ogni problematica. Il verificatore non ha le competenze per intervenire in prima persona e non deve farlo, il suo compito è di segnalare i problemi.
+
 \end{document}
 

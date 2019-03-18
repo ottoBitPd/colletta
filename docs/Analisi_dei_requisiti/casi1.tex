@@ -53,31 +53,20 @@ Gli identificatori numerici assegnati a casi d'uso saranno organizzati gerarchic
 				\begin{enumerate}
 					\item l'utente accede all'area dedicata alla ricerca degli esercizi
 					\item l'utente scrive la frase o una sua parte nella barra di ricerca
-					\item l'utente seleziona i filtri (UC-6.1)
+					\item l'utente seleziona i filtri in base agli autori degli esercizi (UC-6.1)
+					\item l'utente seleziona i filtri in base alla difficoltà degli esercizi (UC-6.2)
+					\item l'utente seleziona i filtri in base agli argomenti degli esercizi (UC-6.3)
 					\item l'utente avvia la ricerca
 				\end{enumerate}
 		\end{itemize}
-
-	\subsubsection{UC-6.1 Filtraggio esercizi }
-		\begin{itemize}
-			\item \textbf{Attori:} Utente generico.
-			\item \textbf{Precondizione:} L'utente si trova nella vista di ricerca degli esercizi dell'applicazione.
-			\item \textbf{Postcondizione:} L'utente ha selezionato i filtri per la ricerca.
-			\item \textbf{Scenario principale:}
-				\begin{enumerate}
-					\item l'utente può selezionare gli autori degli esercizi desiderati (UC-6.1.1)
-					\item l'utente può selezionare il livello di difficoltà degli esercizi (UC-6.1.2)
-					\item l'utente può selezionare gli argomenti degli esercizi (UC-6.1.3)
-				\end{enumerate}
-		\end{itemize}
-		
+%TODO: modifica diagramma
 		\begin{figure}[h]
 			\centering
 			\includegraphics[scale=0.7]{images/UC-6.png}
 			\caption{UC-6 Filtraggio esercizi}
 		\end{figure}	
 
-\subsubsection{UC-6.1.1 Filtraggio in base agli autori}
+\subsubsection{UC-6.1 Filtraggio in base agli autori}
 	\begin{itemize}
 		\item \textbf{Attori:} Utente generico.
 		\item \textbf{Precondizione: } L'utente si trova nella vista di ricerca degli esercizi dell'applicazione.
@@ -89,7 +78,7 @@ Gli identificatori numerici assegnati a casi d'uso saranno organizzati gerarchic
 		\end{enumerate}
 	\end{itemize}
 
-\subsubsection{UC-6.1.2 Filtraggio in base alla difficoltà}
+\subsubsection{UC-6.2 Filtraggio in base alla difficoltà}
 	\begin{itemize}
 		\item \textbf{Attori:} Utente generico.
 		\item \textbf{Precondizione: } L'utente si trova nella vista di ricerca degli esercizi dell'applicazione.
@@ -101,7 +90,7 @@ Gli identificatori numerici assegnati a casi d'uso saranno organizzati gerarchic
 		\end{enumerate}
 	\end{itemize}
 
-	\subsubsection{UC-6.1.3 Filtraggio in base agli argomenti}
+	\subsubsection{UC-6.3 Filtraggio in base agli argomenti}
 		\begin{itemize}
 			\item \textbf{Attori:} Utente generico.
 			\item \textbf{Precondizione: } L'utente si trova nella vista di ricerca degli esercizi dell'applicazione.
@@ -143,7 +132,8 @@ Gli identificatori numerici assegnati a casi d'uso saranno organizzati gerarchic
 					\item l'utente conferma la soluzione dell'esercizio
 				\end{enumerate}
 		\end{itemize}
-
+		
+%TODO: inclusione in immagine e codice UC
 	\subsubsection{UC-13.2 Visualizzazione della valutazione dell'esercizio}
 	\begin{itemize}
 			\item \textbf{Attori:} Utente generico.
@@ -352,17 +342,6 @@ Gli identificatori numerici assegnati a casi d'uso saranno organizzati gerarchic
 	\end{enumerate}
 \end{itemize}
 
-\subsubsection{UC-36 Notifica richiesta insegnante}
-   \begin{itemize}
-   \item \textbf{Attori:} Utente non riconosciuto.
-   \item \textbf{Precondizione:} L'utente ha inviato la richiesta di registrazione come insegnante.
-   \item \textbf{Postcondizione:} L'utente riceve la conferma di registrazione come insegnante. 
-   \item \textbf{Scenario principale:}
-    \begin{enumerate}
-     \item l'utente riceve una notifica della conferma via e-mail
-    \end{enumerate}
-  \end{itemize}
-
 \subsubsection{UC-2 Autenticazione}
 		\begin{itemize}
 			\item \textbf{Attori:} Utente non riconosciuto.
@@ -523,11 +502,69 @@ Gli identificatori numerici assegnati a casi d'uso saranno organizzati gerarchic
 			\item \textbf{Postcondizione:} Il moderatore ha confermato o rifiutato l'utente richiedente il ruolo di insegnante.
 			\item \textbf{Scenario principale:}
 				\begin{enumerate}
-					\item il moderatore visualizza la lista degli utenti che richiedono il ruolo di insegnante
-					\item il moderatore accetta o rifiuta l'utente selezionato
+					\item il moderatore visualizza la lista contenente l'username degli utenti che richiedono il ruolo di insegnante (UC-4.1)
+					\item il moderatore seleziona un utente dalla lista
+					\item il moderatore decide l'esito della richiesta (UC-4.2)
 				\end{enumerate}
 		\end{itemize}		
-			
+		
+\subsubsection{UC-4.1 Visualizzazione lista richiedenti ruolo insegnante}
+	\begin{itemize}
+		\item \textbf{Attori:} Moderatore.
+		\item \textbf{Precondizione:} Il moderatore si trova nella vista di amministrazione dell'applicazione.
+		\item \textbf{Postcondizione:} Il moderatore visualizza la lista di coloro che hanno fatto richiesta di registrazione come insegnante.
+		\item \textbf{Scenario principale:}
+			\begin{enumerate}
+				\item il moderatore visualizza gli utenti che hanno fatto richiesta del ruolo insegnante (UC-4.1.1)
+			\end{enumerate}
+	\end{itemize}
+		
+\subsubsection{UC-4.1.1 Visualizzazione utenti richiedenti ruolo di insegnante}
+	\begin{itemize}
+		\item \textbf{Attori:} Moderatore.
+		\item \textbf{Precondizione:} Il moderatore si trova nella vista di amministrazione dell'applicazione.
+		\item \textbf{Postcondizione:} Il moderatore visualizza le credenziali di un richiedente del ruolo di insegnante.
+		\item \textbf{Scenario principale:}
+			\begin{enumerate}
+				\item il moderatore visualizza nome del richiedente
+				\item il moderatore visualizza cognome del richiedente
+				\item il moderatore visualizza il codice INPS del richiedente
+			\end{enumerate}
+	\end{itemize}			
+
+\subsubsection{UC-4.2 Decisione esito richiesta}
+	\begin{itemize}
+		\item \textbf{Attori:} Moderatore.
+		\item \textbf{Precondizione:} Il moderatore si trova nella vista di amministrazione dell'applicazione e ha selezionato un utente.
+		\item \textbf{Postcondizione:} Il moderatore ha confermato o rifiutato l'utente richiedente il ruolo di insegnante.
+		\item \textbf{Scenario principale:}
+			\begin{enumerate}
+				\item il moderatore conferma o rifiuta la richiesta
+			\end{enumerate}
+	\end{itemize}
+
+\subsubsection{UC-4.3 Accettazione richiesta}
+	\begin{itemize}
+		\item \textbf{Attori:} Moderatore.
+		\item \textbf{Precondizione:} Il moderatore si trova nella vista di amministrazione dell'applicazione e ha selezionato un utente.
+		\item \textbf{Postcondizione:} Il moderatore ha confermato l'utente richiedente il ruolo di insegnante.
+		\item \textbf{Scenario principale:}
+			\begin{enumerate}
+				\item il moderatore conferma la richiesta
+			\end{enumerate}
+	\end{itemize}
+
+\subsubsection{UC-4.4 Rifiuto richiesta}
+	\begin{itemize}
+		\item \textbf{Attori:} Moderatore.
+		\item \textbf{Precondizione:} Il moderatore si trova nella vista di amministrazione dell'applicazione e ha selezionato un utente.
+		\item \textbf{Postcondizione:} Il moderatore ha rifiutato l'utente richiedente il ruolo di insegnante.
+		\item \textbf{Scenario principale:}
+			\begin{enumerate}
+				\item il moderatore rifiuta la richiesta
+			\end{enumerate}
+	\end{itemize}
+
 \subsubsection{UC-50 Visualizzazione lista degli esercizi: moderatore}
 	\begin{itemize}
 		\item \textbf{Attori:} Moderatore.
@@ -536,8 +573,23 @@ Gli identificatori numerici assegnati a casi d'uso saranno organizzati gerarchic
 		\item \textbf{Scenario principale:}
 			\begin{enumerate}
 				\item il moderatore seleziona l'opzione "Esercizi"
+				\item il moderatore visualizza gli esercizi inseriti nella piattaforma (UC-50.1)
 			\end{enumerate}
 	\end{itemize}
+		
+\subsubsection{UC-50.1 Visualizzazione esercizi inseriti}
+	\begin{itemize}
+		\item \textbf{Attori:} Moderatore.
+		\item \textbf{Precondizione:} Il moderatore si trova nella vista di amministrazione dell'applicazione.
+		\item \textbf{Postcondizione:} Il moderatore visualizza le informazioni di un esercizio presente nella piattaforma.
+		\item \textbf{Scenario principale:}
+			\begin{enumerate}
+				\item il moderatore visualizza il codice associato all'esercizio
+				\item il moderatore visualizza la frase dell'esercizio
+				\item il moderatore visualizza l'username dell'autore dell'esercizio
+				\item il moderatore visualizza la data in cui l'esercizio è stato inserito
+			\end{enumerate}
+	\end{itemize}		
 		
 \subsubsection{UC-51 Ricerca esercizi: moderatore}
 	\begin{itemize}

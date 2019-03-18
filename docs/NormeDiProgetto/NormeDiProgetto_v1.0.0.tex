@@ -18,6 +18,47 @@
 \usepackage{titlesec}
 \usepackage{ltablex}
 \hypersetup{colorlinks,urlcolor=blue,linkcolor=black}
+\usepackage{listings}
+\usepackage{multicol}
+\setlength{\columnsep}{1cm}
+
+\definecolor{lightgray}{rgb}{.9,.9,.9}
+\definecolor{darkgray}{rgb}{.4,.4,.4}
+\definecolor{purple}{rgb}{0.65, 0.12, 0.82}
+
+\lstdefinelanguage{JavaScript}{
+	keywords={typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break},
+	keywordstyle=\color{blue}\bfseries,
+	ndkeywords={class, export, boolean, throw, implements, import, this},
+	ndkeywordstyle=\color{darkgray}\bfseries,
+	identifierstyle=\color{black},
+	sensitive=false,
+	comment=[l]{//},
+	morecomment=[s]{/*}{*/},
+	commentstyle=\color{purple}\ttfamily,
+	stringstyle=\color{red}\ttfamily,
+	morestring=[b]',
+	morestring=[b]"
+}
+
+\lstset{
+	language=JavaScript,
+	backgroundcolor=\color{lightgray},
+	extendedchars=true,
+	basicstyle=\footnotesize\ttfamily,
+	showstringspaces=false,
+	showspaces=false,
+	numbers=left,
+	numberstyle=\footnotesize,
+	numbersep=9pt,
+	tabsize=2,
+	breaklines=true,
+	showtabs=false,
+	captionpos=b
+}
+
+\renewcommand{\lstlistingname}{Esempio}% Listing -> Algorithm
+\renewcommand{\lstlistlistingname}{Elenco degli Esempi}% List of Listings -> List of Algorithms
 
 \pagestyle{fancy}
 \fancyhf{}
@@ -78,6 +119,9 @@
 	\renewcommand  \contentsname {\Large Indice} 
 	
 	\tableofcontents
+	\newpage
+	\listoffigures
+	\lstlistoflistings
 	\newpage
 	
 	\section{Introduzione}
@@ -282,40 +326,95 @@ In caso di necessità verrà fornito supporto alla proponente MivoQ s.r.l. e l'a
 	L'attività di codifica inizierà quando la progettazione sarà terminata. Pertanto le norme sottostanti potranno subire variazioni in seguito alla successiva revisione.
 	
 
-	\paragraph{Scopo\\}
+	\paragraph{Scopo}
 	La codifica è l'attività che permette l'effettiva realizzazione del prodotto.
-	
+		
 	\paragraph{Lingua utilizzata}
-	\noindent \\
+ 
 	I nomi di variabili, metodi, classi e commenti saranno scritti in lingua inglese in modo da facilitare un ipotetico contributo futuro da parte dei sviluppatori stranieri.
-	
 	
 	\paragraph{Linguaggi di codifica utilizzati:}
 	\begin{itemize}
-		\item Javascript: Node.js per la parte backend e React per la parte dinamica del frontend
-		\item HTML e CSS: per la struttura e la presentazione del frontend
+		\item Javascript: Node.js per la parte back-end e React per la parte dinamica del front-end
+		\item HTML e CSS: per la struttura e la presentazione del front-end
 	\end{itemize}
+	
+	\paragraph{Uso di JSHint}
+	Al fine di evitare errori di stile del codice, in WebStorm dovrà essere abilitato JSHint, nel seguente modo: Settings | Languages \& Frameworks | JavaScript | Code Quality Tools | JSHint.
+	Prima di ogni file bisogna includere la seguente linea di codice:
+	\begin{lstlisting}[caption=Esempio inclusione JSHint]
+/*jshint esversion:6*/
+	\end{lstlisting}
+	
+	\paragraph{Lunghezza delle linee di codice} Le linee di codice non dovranno superare i 79 caratteri. In ogni caso l'IDE che abbiamo scelto mette a disposizione una linea limite da non superare.
 	
 	\paragraph{Nomenclatura codice}
 	I nomi di classi, variabili e metodi dovranno avere un nome esplicativo per evitare il più possibile ambiguità di comprensione.
 	\begin{itemize}
-		\item \textbf{Classi}
-		\item \textbf{Costanti}
+		\item \textbf{Classi}: per i nomi delle classi verrà utilizzata la notazione Upper Camel Case; cioè inizieranno con la prima lettera maiuscola e, nel caso sia composte da più parole successive, queste cominceranno con la lettera maiuscola.
+	
+		\begin{multicols}{2}
+			
+			\begin{lstlisting}[caption=Esempio Corretto]
+		class DataBaseManager(){
+			...
+		}
+			\end{lstlisting}
+			
+			\begin{lstlisting}[caption=Esempio Scorretto]
+			class databasemanager(){
+				...
+			}
+			\end{lstlisting}
+		\end{multicols}
+		
+		\item \textbf{Costanti}: i nomi delle costanti verranno scritti usando solo maiuscole.
+		
+		\begin{multicols}{2}
+			
+			\begin{lstlisting}[caption=Esempio Corretto]
+			var MAXLENGTH = 100;
+			\end{lstlisting}
+			
+			\begin{lstlisting}[caption=Esempio Scorretto]
+			var MaxLenght = 100;
+			\end{lstlisting}
+		\end{multicols}
+		
 		\item \textbf{Metodi}: per i nomi dei metodi verrà utilizzata la notazione Lower Camel Case; cioè inizieranno con la prima lettera minuscola e, nel caso sia composte da più parole successive, queste cominceranno con la lettera maiuscola.
-	\\\\
-	\textbf{Esempio:}
-	\begin{center}
-			 thisIsAnExample \hspace{2cm} ThisIsAnExample
-	\end{center}
+	
+
+\begin{multicols}{2}
+	
+	\begin{lstlisting}[caption=Esempio Corretto]
+	thisIsAnExample();
+	\end{lstlisting}
+
+	\begin{lstlisting}[caption=Esempio Scorretto]
+ 	ThisIsAnExample();
+	\end{lstlisting}
+\end{multicols}
+
 
 		\item \textbf{Altro}: variabili di istanza, variabili locali, parametri, nomi dei metodi; devono iniziare con una lettera minuscola
 	\end{itemize}
 	
 	\paragraph{Commenti al codice}
-	I commenti al codice, i nomi delle funzioni e delle variabili dovranno essere esplicativi ed in lingua inglese.
+	I commenti al codice, dovranno come descritto sopra essere esplicativi ed in lingua inglese.
 	I commenti devono permettere la comprensione del codice, non
-	devono quindi descrivere la sintassi del linguaggio di programmazione in uso, ma piuttosto descrivere lo scopo di tutti quei blocchi di codice la
-	cui comprensione non sia già resa immediata da una corretta scelta della nomenclatura.
+	devono quindi descrivere la sintassi del linguaggio di programmazione in uso, ma piuttosto descrivere lo scopo di tutti quei blocchi di codice la cui comprensione non sia già resa immediata da una corretta scelta della nomenclatura.
+	
+	\begin{lstlisting}[caption=Esempio di commento ad un metodo]
+	/**
+	* This method writes a sentence in the database.
+	* @param sentence - the sentence to write
+	* @returns {number} returns the key of the sentence written
+	*/
+	writeSentence(sentence){
+		...
+	}
+	
+	\end{lstlisting}
 	
 	\subsubsection{Strumenti}
 	\paragraph{WebStorm} \noindent \\
@@ -323,12 +422,14 @@ In caso di necessità verrà fornito supporto alla proponente MivoQ s.r.l. e l'a
 	L'editor offre varie funzionalità, tra cui:
 	\begin{itemize}
 		\item Node.js Debugger
-		\item EsLint
+		\item JSHint
 	\end{itemize}
 
 	\paragraph{JSDoc}
 \noindent \\
-	Per la generazione automatica della documentazione in stile JavaDoc, sara usato il software JSDoc.
+	Per la generazione automatica della documentazione in stile JavaDoc, sarà usato il software JSDoc.
+	
+	
 		\section{Processi di Supporto}
 	\subsection{Documentazione}
 	In questa sezione esamineremo dettagliatamente i processi utilizzati per stesura, verifica e mantenimento di tutta la documentazione prodotta dal gruppo Ottobit.
@@ -356,7 +457,7 @@ In caso di necessità verrà fornito supporto alla proponente MivoQ s.r.l. e l'a
 	
 	\subsubsection{Struttura}
 	
-	\paragraph{Frontespizio\\} 
+	\paragraph{Frontespizio} 
 	La prima pagina di ogni documento dovrà seguire questa struttura:
 	\begin{itemize}
 		\item \textbf{Logo}
@@ -689,7 +790,7 @@ In caso di necessità verrà fornito supporto alla proponente MivoQ s.r.l. e l'a
 	Son stati scelti per la verifica \textit{Mocha} e la libreria \textit{Chai}. 
 	\paragraph{Analisi statica locale\\}
 	Viene utilizzato \textit{Total Validator} per la validazione del codice HTML5 e CSS3. \\
-	Come strumento per la validazione dello stile del codice JavaScript viene utilizzato \textit{ESLint}. \\
+	Come strumento per la validazione dello stile del codice JavaScript viene utilizzato \textit{JSHint}. \\
 	Inoltre, si utilizzerà \textit{SonarQube} per analizzare staticamente il codice Javascript da eventuali bug.
 	
 	\paragraph{Analisi statica remota\\}

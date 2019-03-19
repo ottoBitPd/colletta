@@ -10,6 +10,7 @@
 					\item lo sviluppatore scrive nella barra di ricerca una sottostringa della frase cercata
 					\item lo sviluppatore seleziona i filtri da usare nella ricerca (UC-S1.1)
 					\item lo sviluppatore conferma la ricerca
+					\item lo sviluppatore visualizza le annotazioni filtrate (UC-S1.2)
 				\end{enumerate}
 		\end{itemize}
 	
@@ -45,6 +46,19 @@
 				\end{itemize}		
 		\end{itemize}
 			
+\subsubsection{UC-S1.2 Visualizzazione delle annotazioni}
+		\begin{itemize}
+			\item \textbf{Attori:} Sviluppatore.
+			\item \textbf{Precondizione:} Lo sviluppatore si trova nell'area dati.
+			\item \textbf{Postcondizione:} Lo sviluppatore visualizza le informazioni di un'annotazione.
+			\item \textbf{Scenario principale:}
+				\begin{enumerate}
+					\item lo sviluppatore visualizza la data dell'annotazione
+					\item lo sviluppatore visualizza l'username dell'utente autore dell'annotazione
+					\item lo sviluppatore visualizza l'ID dell'esercizio
+				\end{enumerate}
+		\end{itemize}
+
 	\subsubsection{UC-S2 Visualizzazione errore di data non valida}
 		\begin{itemize}					
 			\item \textbf{Attori:} Sviluppatore.
@@ -88,7 +102,7 @@
 			\item \textbf{Scenario principale:}
 				\begin{enumerate}
 					\item lo sviluppatore seleziona una annotazione
-					\item lo sviluppatore visualizza data, utente e soluzione proposta
+					\item lo sviluppatore visualizza data, utente, ID esercizio e soluzione proposta
 				\end{enumerate}
 		\end{itemize}
 	
@@ -173,8 +187,21 @@
 			\item \textbf{Scenario principale:}
 			\begin{enumerate}
 					\item lo sviluppatore seleziona la voce "Lista dei modelli"
+					\item lo sviluppatore visualizza i modelli (UC-S9.1)
 				\end{enumerate}
 		\end{itemize}	
+		
+\subsubsection{UC-S9.1 Visualizzazione modelli}
+		\begin{itemize}
+			\item \textbf{Attori:} Sviluppatore.
+			\item \textbf{Precondizione:} Lo sviluppatore si trova nell'area dati.
+			\item \textbf{Postcondizione:} Lo sviluppatore visualizza le informazioni riguardanti un modello.
+			\item \textbf{Scenario principale:}
+			\begin{enumerate}
+					\item lo sviluppatore visualizza il nome del modello
+					\item lo sviluppatore visualizza la lingua del modello
+				\end{enumerate}
+		\end{itemize}			
 	
 	\subsubsection{UC-S10 Download di un modello}
 		\begin{itemize}

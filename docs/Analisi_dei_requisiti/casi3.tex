@@ -46,7 +46,7 @@
 				\end{itemize}		
 		\end{itemize}
 			
-\subsubsection{UC-S1.2 Visualizzazione delle annotazioni}
+\subsubsection{UC-S1.2 Visualizzazione dell'annotazione in lista}
 		\begin{itemize}
 			\item \textbf{Attori:} Sviluppatore.
 			\item \textbf{Precondizione:} Lo sviluppatore si trova nell'area dati.
@@ -133,16 +133,17 @@
 		\begin{itemize}
 			\item \textbf{Attori:} Sviluppatore.
 			\item \textbf{Precondizione:} Lo sviluppatore visualizza la lista delle annotazioni ricercate.
-			\item \textbf{Postcondizione:} Lo sviluppatore ottiene un file \texttt{.txt} con i dati dei risultati precedentemente trovati.
+			\item \textbf{Postcondizione:} Lo sviluppatore ottiene un file con i dati dei risultati precedentemente trovati.
 			\item \textbf{Scenario principale:}
 				\begin{enumerate}
 					\item lo sviluppatore richiede il download dei dati
 					\item lo sviluppatore decide il path in cui il file viene salvato
+					\item lo sviluppatore sceglie il formato dei dati da scaricare
 					\item lo sviluppatore esegue il salvataggio
 				\end{enumerate}
 			\item \textbf{Estensioni:}
 				\begin{itemize}
-					\item 2.a Se il path indicato è inesistente, viene visualizzato un messaggio di errore (UC-S7).
+					\item 2.a Se il path indicato è inesistente, viene visualizzato un messaggio di errore (UC-S10).
 				\end{itemize}
 		\end{itemize}
 		\begin{figure}[h]
@@ -150,8 +151,50 @@
 			\includegraphics[scale=0.7]{images/UC-19.png}
 			\caption{UC-S6 Download dei dati raccolti}
 		\end{figure}	
+	
+\subsubsection{UC-S7 Download dei dati raccolti in .txt}
+		\begin{itemize}
+			\item \textbf{Attori:} Sviluppatore.
+			\item \textbf{Precondizione:} Lo sviluppatore visualizza la lista delle annotazioni ricercate.
+			\item \textbf{Postcondizione:} Lo sviluppatore ottiene un file con i dati dei risultati precedentemente trovati in formato \textit{.txt}.
+			\item \textbf{Scenario principale:}
+				\begin{enumerate}
+					\item lo sviluppatore richiede il download dei dati
+					\item lo sviluppatore decide il path in cui il file viene salvato
+					\item lo sviluppatore sceglie il formato \textit{.txt} per il download dei dati
+					\item lo sviluppatore esegue il salvataggio
+				\end{enumerate}
+		\end{itemize}
 
-	\subsubsection{UC-S7 Visualizzazione errore di path inesistente}
+\subsubsection{UC-S8 Download dei dati raccolti in .csv}
+		\begin{itemize}
+			\item \textbf{Attori:} Sviluppatore.
+			\item \textbf{Precondizione:} Lo sviluppatore visualizza la lista delle annotazioni ricercate.
+			\item \textbf{Postcondizione:} Lo sviluppatore ottiene un file con i dati dei risultati precedentemente trovati in formato \textit{.csv}.
+			\item \textbf{Scenario principale:}
+				\begin{enumerate}
+					\item lo sviluppatore richiede il download dei dati
+					\item lo sviluppatore decide il path in cui il file viene salvato
+					\item lo sviluppatore sceglie il formato \textit{.csv} per il download dei dati
+					\item lo sviluppatore esegue il salvataggio
+				\end{enumerate}
+		\end{itemize}
+
+\subsubsection{UC-S9 Download dei dati raccolti in .json}
+		\begin{itemize}
+			\item \textbf{Attori:} Sviluppatore.
+			\item \textbf{Precondizione:} Lo sviluppatore visualizza la lista delle annotazioni ricercate.
+			\item \textbf{Postcondizione:} Lo sviluppatore ottiene un file con i dati dei risultati precedentemente trovati in formato \textit{.json}.
+			\item \textbf{Scenario principale:}
+				\begin{enumerate}
+					\item lo sviluppatore richiede il download dei dati
+					\item lo sviluppatore decide il path in cui il file viene salvato
+					\item lo sviluppatore sceglie il formato \textit{.json} per il download dei dati
+					\item lo sviluppatore esegue il salvataggio
+				\end{enumerate}
+		\end{itemize}
+
+\subsubsection{UC-S10 Visualizzazione errore di path inesistente}
 		\begin{itemize}					
 			\item \textbf{Attori:} Sviluppatore.
 			\item \textbf{Precondizione:} Lo sviluppatore ha indicato un path non esistente.
@@ -162,7 +205,7 @@
 				\end{enumerate}	
 		\end{itemize}				
 				
-	\subsubsection{UC-S8 Download di un dataset}
+	\subsubsection{UC-S11 Download di un dataset}
 		\begin{itemize}
 			\item \textbf{Attori:} Sviluppatore.
 			\item \textbf{Precondizione:} Lo sviluppatore visualizza la lista delle annotazioni ricercate.
@@ -175,11 +218,11 @@
 			\end{enumerate}
 			\item \textbf{Estensioni:}
 				\begin{itemize}
-					\item 2.a Se il path indicato è inesistente, viene visualizzato un messaggio di errore (UC-S7).
+					\item 2.a Se il path indicato è inesistente, viene visualizzato un messaggio di errore (UC-S10).
 				\end{itemize}
 		\end{itemize}
 		
-	\subsubsection{UC-S9 Visualizzazione lista dei modelli}
+	\subsubsection{UC-S12 Visualizzazione lista dei modelli}
 		\begin{itemize}
 			\item \textbf{Attori:} Sviluppatore.
 			\item \textbf{Precondizione:} Lo sviluppatore si trova nell'area dati.
@@ -191,7 +234,7 @@
 				\end{enumerate}
 		\end{itemize}	
 		
-\subsubsection{UC-S9.1 Visualizzazione modelli}
+\subsubsection{UC-S12.1 Visualizzazione modello in lista}
 		\begin{itemize}
 			\item \textbf{Attori:} Sviluppatore.
 			\item \textbf{Precondizione:} Lo sviluppatore si trova nell'area dati.
@@ -203,7 +246,7 @@
 				\end{enumerate}
 		\end{itemize}			
 	
-	\subsubsection{UC-S10 Download di un modello}
+	\subsubsection{UC-S13 Download di un modello}
 		\begin{itemize}
 			\item \textbf{Attori:} Sviluppatore.
 			\item \textbf{Precondizione:} Lo sviluppatore visualizza la lista dei modelli disponibili per l'applicazione.
@@ -217,11 +260,11 @@
 			\end{enumerate}
 			\item \textbf{Estensioni:}
 				\begin{itemize}
-					\item 3.a Se il path indicato è inesistente, viene visualizzato un messaggio di errore (UC-S7).
+					\item 3.a Se il path indicato è inesistente, viene visualizzato un messaggio di errore (UC-S10).
 				\end{itemize}
 		\end{itemize}	
 
-	\subsubsection{UC-S11 Visualizzazione informazioni di un modello}
+	\subsubsection{UC-S14 Visualizzazione informazioni di un modello}
 		\begin{itemize}
 			\item \textbf{Attori:} Sviluppatore.
 			\item \textbf{Precondizione:} Lo sviluppatore visualizza la lista dei modelli disponibili per l'applicazione.
@@ -233,7 +276,7 @@
 				\end{enumerate}
 		\end{itemize}
 		
-	\subsubsection{UC-S12 Creazione di un modello}		
+	\subsubsection{UC-S15 Creazione di un modello}		
 		\begin{itemize}
 			\item \textbf{Attori:} Sviluppatore.
 			\item \textbf{Precondizione:} Lo sviluppatore si trova nell'area dati.
@@ -246,7 +289,7 @@
 			\end{enumerate}
 			\item \textbf{Estensioni:}
 				\begin{itemize}
-					\item 2.a Se il dataset fornito ha un formato errato, viene visualizzato un messaggio di errore (UC-S13).
+					\item 2.a Se il dataset fornito ha un formato errato, viene visualizzato un messaggio di errore (UC-S16).
 				\end{itemize}
 		\end{itemize}
 		
@@ -256,7 +299,7 @@
 				\caption{UC-S12 Creazione di un modello}
 		\end{figure}	
 	
-	\subsubsection{UC-S13 Visualizzazione errore di formato del dataset errato}	
+	\subsubsection{UC-S16 Visualizzazione errore di formato del dataset errato}	
 	\begin{itemize}					
 			\item \textbf{Attori:} Sviluppatore.
 			\item \textbf{Precondizione:} Lo sviluppatore ha fornito un dataset con un formato non corretto.
@@ -267,7 +310,7 @@
 				\end{enumerate}	
 		\end{itemize}		
 	
-	\subsubsection{UC-S14 Cambio modello}
+	\subsubsection{UC-S17 Cambio modello}
 	\begin{itemize}					
 			\item \textbf{Attori:} Sviluppatore.
 			\item \textbf{Precondizione:} Lo sviluppatore visualizza la lista dei modelli disponibili per l'applicazione.

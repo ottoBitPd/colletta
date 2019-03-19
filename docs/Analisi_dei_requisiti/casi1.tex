@@ -107,7 +107,7 @@ Gli identificatori numerici assegnati a casi d'uso saranno organizzati gerarchic
 			\end{enumerate}
 		\end{itemize}
 		
-\subsubsection{UC-G3.4 Visualizzazione esercizi}
+\subsubsection{UC-G3.4 Visualizzazione esercizio in lista}
 		\begin{itemize}
 			\item \textbf{Attori:} Utente generico.
 			\item \textbf{Precondizione: } L'utente si trova nella vista di ricerca degli esercizi dell'applicazione.
@@ -644,7 +644,7 @@ Gli identificatori numerici assegnati a casi d'uso saranno organizzati gerarchic
 			\end{enumerate}
 	\end{itemize}
 	
-\subsubsection{UC-M5.1 Visualizzazione utenti iscritti: moderatore}
+\subsubsection{UC-M5.1 Visualizzazione utente iscritto in lista}
 	\begin{itemize}
 		\item \textbf{Attori:} Moderatore.
 		\item \textbf{Precondizione:} Il moderatore ha eseguito l'accesso all'area Utenti e può aver svolto una ricerca tra gli utenti.
@@ -693,7 +693,7 @@ Gli identificatori numerici assegnati a casi d'uso saranno organizzati gerarchic
 	\end{enumerate}
 \end{itemize}
 
-\subsubsection{UC-M8.1 Visualizzazione segnalazioni}
+\subsubsection{UC-M8.1 Visualizzazione segnalazione in lista}
 \begin{itemize}
 	\item \textbf{Attori:} Moderatore.
 	\item \textbf{Precondizione:} Il moderatore si trova nella vista di amministrazione dell'applicazione.
@@ -755,7 +755,7 @@ Gli identificatori numerici assegnati a casi d'uso saranno organizzati gerarchic
 		\end{enumerate}
 	\end{itemize}
 
-\subsubsection{UC-I1.1 Visualizzazione lista esercizi inseriti}
+\subsubsection{UC-I1.1 Visualizzazione esercizio inserito trovato}
 \begin{itemize}
 \item \textbf{Attori: }Insegnante.
 		\item \textbf{Precondizione: }L'insegnante si trova nell'area Esercizi inseriti e può aver svolto una ricerca tra gli esercizi.
@@ -764,7 +764,6 @@ Gli identificatori numerici assegnati a casi d'uso saranno organizzati gerarchic
 		\begin{enumerate}
 			\item l'insegnante visualizza la frase dell'esercizio
 			\item l'insegnante visualizza la data di inserimento dell'esercizio
-			\item l'insegnante visualizza la soluzione inserita per l'esercizio
 		\end{enumerate}
 	\end{itemize}
 
@@ -898,9 +897,31 @@ Gli identificatori numerici assegnati a casi d'uso saranno organizzati gerarchic
 	\item \textbf{Scenario principale:}
 	\begin{enumerate}
 		\item l'insegnante selezione l'opzione "Crea classe"
-		\item l'insegnante assegna un nome alla classe
-		\item l'insegnante assegna una descrizione alla classe
+		\item l'insegnante inserisce il nome della classe (UC-I8.1)
+		\item l'insegnante inserisce la descrizione della classe (UC-I8.2)
 		\item l'insegnante conferma la creazione
+	\end{enumerate}
+\end{itemize}
+
+\subsubsection{UC-I8.1 Inserimento nome della classe}
+\begin{itemize}
+	\item \textbf{Attori:} Insegnante.
+	\item \textbf{Precondizione:} L'insegnante si trova nella vista del proprio profilo e ha selezionato la creazione di una nuova classe.
+	\item \textbf{Postcondizione:} L'insegnante ha inserito il nome della classe durante la creazione della classe.
+	\item \textbf{Scenario principale:}
+	\begin{enumerate}
+		\item l'insegnante inserisce il nome della classe nella cella appropriata
+	\end{enumerate}
+\end{itemize}
+
+\subsubsection{UC-I8.2 Inserimento desrizione della classe}
+\begin{itemize}
+	\item \textbf{Attori:} Insegnante.
+	\item \textbf{Precondizione:} L'insegnante si trova nella vista del proprio profilo e ha selezionato la creazione di una nuova classe.
+	\item \textbf{Postcondizione:} L'insegnante ha inserito la descrizione della classe durante la creazione della classe.
+	\item \textbf{Scenario principale:}
+	\begin{enumerate}
+		\item l'insegnante inserisce la descrizione della classe nella cella appropriata
 	\end{enumerate}
 \end{itemize}
 
@@ -946,7 +967,7 @@ Gli identificatori numerici assegnati a casi d'uso saranno organizzati gerarchic
 \begin{itemize}
 	\item \textbf{Attori:} Insegnante.
 	\item \textbf{Precondizione:} l'insegnante si trova nella vista di aggiunta degli alunni a una classe
-	\item \textbf{Precondizione:} l'insegnante visualizza la lista di tutti gli alunni presenti sulla piattaforma.
+	\item \textbf{Postcondizione:} l'insegnante visualizza la lista di tutti gli alunni presenti sulla piattaforma.
 	\item \textbf{Scenario principale:}
 	\begin{enumerate}
 		\item l'insegnante visualizza gli alunni iscritti alla piattaforma (UC-I10.1.1.1)
@@ -1002,7 +1023,7 @@ Gli identificatori numerici assegnati a casi d'uso saranno organizzati gerarchic
 	\end{enumerate}		
 \end{itemize}
 
-\subsubsection{UC-I12.1 Visualizzazione classe creata}		
+\subsubsection{UC-I12.1 Visualizzazione classe in lista}		
 \begin{itemize}
 	\item \textbf{Attori:} Insegnante.
 	\item \textbf{Precondizione:} L'insegnante si trova nella vista del proprio profilo.
@@ -1039,7 +1060,7 @@ Gli identificatori numerici assegnati a casi d'uso saranno organizzati gerarchic
 			\end{enumerate}		
 \end{itemize}
 
-\subsubsection{UC-I14.1 Visualizzazione alunno iscritto alla classe}		
+\subsubsection{UC-I14.1 Visualizzazione alunno iscritto alla classe in lista}		
 \begin{itemize}
 	\item \textbf{Attori:} Insegnante.
 	\item \textbf{Precondizione:} L'insegnante si trova nella vista di gestione di una propria classe.
@@ -1112,7 +1133,7 @@ Gli identificatori numerici assegnati a casi d'uso saranno organizzati gerarchic
 			\end{enumerate}
 		\end{itemize}			
 
-\subsubsection{UC-A2.1 Visualizzazione classe di appartenenza}
+\subsubsection{UC-A2.1 Visualizzazione classe di appartenenza in lista}
 		\begin{itemize}
 			\item \textbf{Attori:} Allievo.
 			\item \textbf{Precondizione:} L'allievo si trova nella vista del proprio profilo.

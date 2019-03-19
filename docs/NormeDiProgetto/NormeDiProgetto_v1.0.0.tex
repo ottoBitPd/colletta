@@ -342,7 +342,7 @@ In caso di necessità verrà fornito supporto alla proponente MivoQ s.r.l. e l'a
 	\paragraph{Uso di JSHint}
 	Al fine di evitare errori di stile del codice, in WebStorm dovrà essere abilitato JSHint, nel seguente modo: Settings | Languages \& Frameworks | JavaScript | Code Quality Tools | JSHint.
 	Prima di ogni file bisogna includere la seguente linea di codice:
-	\begin{lstlisting}[caption=Esempio inclusione JSHint]
+	\begin{lstlisting}[caption=inclusione JSHint]
 /*jshint esversion:6*/
 	\end{lstlisting}
 	
@@ -355,13 +355,13 @@ In caso di necessità verrà fornito supporto alla proponente MivoQ s.r.l. e l'a
 	
 		\begin{multicols}{2}
 			
-			\begin{lstlisting}[caption=Esempio Corretto]
+			\begin{lstlisting}[caption=nome classe corretto]
 		class DataBaseManager(){
 			...
 		}
 			\end{lstlisting}
 			
-			\begin{lstlisting}[caption=Esempio Scorretto]
+			\begin{lstlisting}[caption=nome classe scorretto]
 			class databasemanager(){
 				...
 			}
@@ -370,13 +370,12 @@ In caso di necessità verrà fornito supporto alla proponente MivoQ s.r.l. e l'a
 		
 		\item \textbf{Costanti}: i nomi delle costanti verranno scritti usando solo maiuscole.
 		
-		\begin{multicols}{2}
-			
-			\begin{lstlisting}[caption=Esempio Corretto]
+		\begin{multicols}{2}	
+			\begin{lstlisting}[caption=nome costante corretto]
 			var MAXLENGTH = 100;
 			\end{lstlisting}
 			
-			\begin{lstlisting}[caption=Esempio Scorretto]
+			\begin{lstlisting}[caption=nome costante scorretto]
 			var MaxLenght = 100;
 			\end{lstlisting}
 		\end{multicols}
@@ -385,12 +384,11 @@ In caso di necessità verrà fornito supporto alla proponente MivoQ s.r.l. e l'a
 	
 
 \begin{multicols}{2}
-	
-	\begin{lstlisting}[caption=Esempio Corretto]
+	\begin{lstlisting}[caption=nome metodo corretto]
 	thisIsAnExample();
 	\end{lstlisting}
 
-	\begin{lstlisting}[caption=Esempio Scorretto]
+	\begin{lstlisting}[caption=nome metodo scorretto]
  	ThisIsAnExample();
 	\end{lstlisting}
 \end{multicols}
@@ -404,20 +402,64 @@ In caso di necessità verrà fornito supporto alla proponente MivoQ s.r.l. e l'a
 	I commenti devono permettere la comprensione del codice, non
 	devono quindi descrivere la sintassi del linguaggio di programmazione in uso, ma piuttosto descrivere lo scopo di tutti quei blocchi di codice la cui comprensione non sia già resa immediata da una corretta scelta della nomenclatura.
 	
-	\begin{lstlisting}[caption=Esempio di commento ad un metodo]
-	/**
-	* This method writes a sentence in the database.
-	* @param sentence - the sentence to write
-	* @returns {number} returns the key of the sentence written
-	*/
-	writeSentence(sentence){
-		...
-	}
-	
-	\end{lstlisting}
+	\paragraph{Uso di JSDoc}
+	Al fine di generare in modo automatico una documentazione del prodotto in stile JavaDoc, sarà usato JSDoc.
+	Prevediamo di utilizzare questo strumento per documentare principalmente classi e metodi dell'applicazione, nel seguente modo:
+	\begin{itemize}
+		\item \textbf{Commento alle classi}: Tutte le classi dovranno essere precedute da un commento che indichi se la classe è astratta o se estende qualche altra classe. Di seguito vengono riportati degli esempi alcuni più esplicativi:
+		\begin{lstlisting}[caption=Commento ad una classe semplice]
+		/**
+		* Class that provides the hunpos service to the application
+		*/
+		class HunposAdapter{
+			...
+		}
+		\end{lstlisting}
+			\begin{lstlisting}[caption=Commento ad una classe che ne estende un altra]
+		/**
+		* Class to manage the databases.
+		* @extends DatabaseManager
+		*/
+		class FirebaseAdapter extends DatabaseManager {
+			...
+		}
+		\end{lstlisting}
+		\begin{lstlisting}[caption=Commento ad una classe astratta]
+		/**
+		* Class to manage the database.
+		* @abstract
+		*/
+		class DatabaseManager{
+			...
+		}
+		\end{lstlisting}
+		\item \textbf{Commento ai costruttori}:
+		Tutti i costuttori dovranno essere preceduti da un commento che li descriva. 
+		\begin{lstlisting}[caption=Commento ad una classe astratta]
+		/**
+		* Initializes all attributes needed to HunposAdapter object.
+		*/
+		constructor(){
+			...
+		}
+		\end{lstlisting}
+		\item \textbf{Commento ai metodi}:
+		Tutti i metodi dovranno essere preceduti da un commento che li descriva e che indichi i parametri e il tipo di ritorno., nel caso sia necessario.
+		\begin{lstlisting}[caption=Commento ad un metodo]
+		/**
+		* This method writes a sentence in the database.
+		* @param sentence - the sentence to write
+		* @returns {number} returns the key of the sentence written
+		*/
+		writeSentence(sentence){
+			...
+		}
+		
+		\end{lstlisting}
+	\end{itemize}
 	
 	\subsubsection{Strumenti}
-	\paragraph{WebStorm} \noindent \\
+	\paragraph{WebStorm\\} 
 	È un IDE di JetBrains per lo sviluppo di applicazioni di Web application, che supporta Javasctipt, Node.js, HTML e CSS.
 	L'editor offre varie funzionalità, tra cui:
 	\begin{itemize}
@@ -425,8 +467,7 @@ In caso di necessità verrà fornito supporto alla proponente MivoQ s.r.l. e l'a
 		\item JSHint
 	\end{itemize}
 
-	\paragraph{JSDoc}
-\noindent \\
+	\paragraph{JSDoc\\}
 	Per la generazione automatica della documentazione in stile JavaDoc, sarà usato il software JSDoc.
 	
 	

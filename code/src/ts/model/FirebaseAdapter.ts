@@ -7,7 +7,8 @@ class FirebaseAdapter extends DatabaseManager {
      */
     private database : Admin.database.Database;
     private sentences : number;
-    constructor() {
+    //private static INSTANCE : FirebaseAdapter = new FirebaseAdapter();
+    /*private*/ constructor() {
         super();
         this.database = this.initDB();
         this.sentences=0;
@@ -19,6 +20,9 @@ class FirebaseAdapter extends DatabaseManager {
         });
     }
 
+    /*public static getInstance() : FirebaseAdapter{
+        return INSTANCE;
+    }*/
     /**
      * This method executes the connection with firebase database.
      * @returns {admin.database.Database} reference to the database service.

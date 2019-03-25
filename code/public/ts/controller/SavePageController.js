@@ -12,6 +12,7 @@ class SavePageController extends PageController_1.PageController {
             var sentence = request.body.sentence;
             var key = request.body.key;
             var hunposTags = JSON.parse(request.body.hunposTags);
+            console.log(require('util').inspect(request.body));
             var tagsCorrection = this.correctionToTags(wordsnumber, request.body);
             //building a array merging tags coming from user corrections and hunpos solution
             var finalTags = this.correctsHunpos(hunposTags, tagsCorrection);

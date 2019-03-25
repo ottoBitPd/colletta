@@ -3,7 +3,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const DatabaseManager_1 = require("./DatabaseManager");
 /** Class to manage database. */
 class FirebaseAdapter extends DatabaseManager_1.DatabaseManager {
-    constructor() {
+    //private static INSTANCE : FirebaseAdapter = new FirebaseAdapter();
+    /*private*/ constructor() {
         super();
         this.database = this.initDB();
         this.sentences = 0;
@@ -14,6 +15,9 @@ class FirebaseAdapter extends DatabaseManager_1.DatabaseManager {
             //console.log("inizio key: "+this.sentences);
         });
     }
+    /*public static getInstance() : FirebaseAdapter{
+        return INSTANCE;
+    }*/
     /**
      * This method executes the connection with firebase database.
      * @returns {admin.database.Database} reference to the database service.

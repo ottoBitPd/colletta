@@ -11,7 +11,7 @@ class InsertPageView extends PageView {
             "<head> " +
             "<meta charset=\"UTF-8\"> " +
             "<title>Inserimento frase</title> " +
-            "<link rel=\"stylesheet\" type=\"text/css\" href=\"/style.css\"> " +
+            "<link rel=\"stylesheet\" href=\"/style.css\"> " +
             "</head> " +
             "<body> " +
             "<div id=\"back\"> " +

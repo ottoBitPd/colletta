@@ -15,7 +15,7 @@ const app = express();
 
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname));
 console.log("a: "+__dirname);
 var insertPageView = new InsertPageView();
 var insertPage = new InsertPageController(insertPageView);

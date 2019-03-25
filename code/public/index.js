@@ -13,7 +13,7 @@ const objDb = new FirebaseAdapter_1.FirebaseAdapter();
 const app = express();
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname));
 console.log("a: " + __dirname);
 var insertPageView = new InsertPageView_1.InsertPageView();
 var insertPage = new InsertPageController_1.InsertPageController(insertPageView);

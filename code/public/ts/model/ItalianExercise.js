@@ -11,6 +11,9 @@ class ItalianExercise extends Exercise_1.Exercise {
     getSentence() {
         return super.getSentence();
     }
+    getPOSManager() {
+        return super.getPOSManager();
+    }
     setKey(key) {
         super.setKey(key);
     }
@@ -18,9 +21,9 @@ class ItalianExercise extends Exercise_1.Exercise {
         super.setSentence(sentence);
     }
     autosolve() {
-        return 1;
+        return super.getPOSManager().getSolution(this.getSentence());
     }
-    evaluate() {
+    evaluate(correctionID, solution) {
         return 1;
     }
     toJSON() {

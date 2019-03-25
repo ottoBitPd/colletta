@@ -1,4 +1,5 @@
 import {Exercise} from './Exercise'
+import {POSManager} from "./POSManager";
 
 class ItalianExercise extends Exercise{
     constructor(key : number, sentence : string){
@@ -10,6 +11,9 @@ class ItalianExercise extends Exercise{
     getSentence() : string{
         return super.getSentence();
     }
+    getPOSManager(): POSManager {
+        return super.getPOSManager();
+    }
     setKey(key : number) : void{
         super.setKey(key);
     }
@@ -18,23 +22,16 @@ class ItalianExercise extends Exercise{
     }
 
     autosolve() : any{
-       return 1;
+       return super.getPOSManager().getSolution(this.getSentence())
     }
 
-    evaluate(): any{
+    evaluate(correctionID:number, solution:any): number{
+
         return 1;
     }
 
     toJSON(): any{
         return 1;
     }
-
-    /**
-     * Converts solution tags to italian.
-     * @param tags - array of tag coming from hunpos solution
-     * @returns {Array} an array containing the italian translation for every tag
-     */
-
-
 }
 export {ItalianExercise};

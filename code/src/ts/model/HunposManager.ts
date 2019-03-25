@@ -1,31 +1,30 @@
 ///<reference path="POSManager.ts"/>
 
 import {POSManager} from "./POSManager";
-
 class HunposManager implements POSManager{
     private fileSystem : any;
     private shell:any;
-    private modelFilePath:string;
-    private inputFilePath:string;
-    private outputFilePath:string;
+    //private modelFilePath:string;
+    //private inputFilePath:string;
+    //private outputFilePath:string;
 
     constructor() {
         this.fileSystem = require('fs');
         this.shell = require('shelljs');
         this.train();
-        this.inputFilePath='./js/controller/hunpos/input.txt';
-        this.outputFilePath='./js/controller/hunpos/output.txt';
-        this.modelFilePath='./js/controller/hunpos/italian_model';
+        //this.inputFilePath='..\controller\hunpos\input.txt';
+        //this.outputFilePath='..\controller\hunpos\output.txt';
+        //this.modelFilePath='..\controller\hunpos\italian_model';
     }
 
      setModel(modelFilePath:string):void{
-    this.modelFilePath=modelFilePath;
+    //this.modelFilePath=modelFilePath;
      };
 
      buildInputFile(sentence:string):void{
          var words = sentence.split(" ");
          for(let i = 0; i < words.length; i++) {
-             this.fileSystem.appendFileSync(this.inputFilePath, words[i] + "\n", (err:any) => {
+             this.fileSystem.appendFileSync( '..\\controller\\hunpos\\input.txt', words[i] + "\n", (err:any) => {
                  if (err) throw err;
                  console.log('The "data to append" was appended to file!');
              });
@@ -38,7 +37,8 @@ class HunposManager implements POSManager{
      };
 
      buildSolution():any{
-         var wordSolArray = this.fileSystem.readFileSync(this.outputFilePath).toString().split("\n");
+         var wordSolArray = this.fileSystem.readFileSync('..\\controller\\hunpos\\output.txt').toString().split("\n");
+         console.log("arr: "+wordSolArray);
          let obj : any= {
              sentence: []
          };
@@ -48,7 +48,7 @@ class HunposManager implements POSManager{
              obj.sentence.push({word: wordLab[0], label: wordLab[1]});
              i++;
          }
-         this.fileSystem.writeFileSync(this.inputFilePath, "");
+         this.fileSystem.writeFileSync('..\\controller\\hunpos\\input.txt', "");
          return obj;
      };
 
@@ -59,10 +59,10 @@ class HunposManager implements POSManager{
      };
 
      train():void{
-         this.shell.exec('./js/controller/hunpos/hunpos-train ' + this.modelFilePath +'< ./js/controller/hunpos/train');
+         this.shell.exec('ts\\controller\\hunpos\\hunpos-train ts\\controller\\hunpos\\italian_model < ts\\controller\\hunpos\\train');
      };
      tag():void{
-         this.shell.exec('./js/controller/hunpos/hunpos-tag '+ this.modelFilePath +' < '+ this.inputFilePath+'>'+ this.outputFilePath);
+         this.shell.exec('ts\\controller\\hunpos\\hunpos-tag ts\\controller\\hunpos\\italian_model < ts\\controller\\hunpos\\input.txt > ts\\controller\\hunpos\\output.txt');
      };
 
 

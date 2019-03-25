@@ -4,29 +4,32 @@ const PageController_1 = require("./PageController");
 //import {ExercisePageView} from "../view/ExercisePageView";
 //import {Exercise} from "../model/Exercise";
 const ItalianExercise_1 = require("../model/ItalianExercise");
-const HunposManager_1 = require("../model/HunposManager");
+//import {HunposManager} from "../model/HunposManager";
 class ExercisePageController extends PageController_1.PageController {
     constructor(view, model) {
         super(view);
         this.model = model;
-        this.exercise = new ItalianExercise_1.ItalianExercise(1, "1");
-        this.hunpos = new HunposManager_1.HunposManager();
+        //this.exercise = new ItalianExercise(1,"1");
+        //this.hunpos = new HunposManager();
         //declare function require(name:string);
         this.fileSystem = require('fs');
     }
     update(app) {
         app.post('/exercise', (request, response) => {
-            this.exercise.setSentence(request.body.sentence);
             //checking if the exercise sentence already exists in the database
-            var key = this.model.checkIfExists(this.exercise.getSentence());
-            if (key >= 0)
+            var key = this.model.checkIfExists(request.body.sentence);
+            /*if(key>=0)
                 this.exercise.setKey(key);
             else
-                this.exercise.setKey(this.model.writeSentence(this.exercise.getSentence()));
+                this.exercise.setKey(this.model.writeSentence(this.exercise.getSentence()));*/
+            if (key === -1) {
+                key = this.model.writeSentence(request.body.sentence);
+            }
+            this.exercise = new ItalianExercise_1.ItalianExercise(key, request.body.sentence);
             //sending the sentence to hunpos which will provide a solution
-            var hunposSolution = this.hunpos.getHunposSolution(this.exercise.getSentence());
+            var hunposSolution = this.exercise.autosolve();
             //creation of the array containing tags provided from hunpos solution
-            var hunposTags = this.exercise.extractTags(hunposSolution);
+            var hunposTags = this.extractTags(hunposSolution);
             //converting tags to italian
             var hunposTranslation = this.translateTags(hunposTags);
             //console.log("view: "+JSON.stringify(this.view));
@@ -36,6 +39,13 @@ class ExercisePageController extends PageController_1.PageController {
             this.view.setHunposTags(hunposTags);
             response.send(this.view.getPage());
         });
+    }
+    extractTags(objSolution) {
+        let tags = [];
+        for (let i in objSolution.sentence) {
+            tags.push(objSolution.sentence[i].label);
+        }
+        return tags;
     }
     /**
      * Converts solution tags to italian.

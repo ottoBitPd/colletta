@@ -34,10 +34,8 @@ abstract class Exercise {
 
     abstract autosolve(): any;
 
-    abstract evaluate() : any;
+    abstract evaluate(correctionID:number, solution:any) : number;
 
     abstract  toJSON() : any;
-
-
 }
 export {Exercise};

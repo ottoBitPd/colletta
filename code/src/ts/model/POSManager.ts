@@ -1,12 +1,10 @@
 interface POSManager {
-    inputFilePath: string;
-    outputFilePath: string;
 
-
-    setModel():void;
+    setModel(modelFilePath:string):void;
     train():void;
     tag():void;
-    getSolutions(sentence: string): any;
+    getSolution(sentence: string): any;
 
 }
 
+export {POSManager};

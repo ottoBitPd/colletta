@@ -1,4 +1,5 @@
 import {POSManager} from './POSManager';
+import {HunposManager} from "./HunposManager";
 
 abstract class Exercise {
     private sentence: string;
@@ -8,7 +9,7 @@ abstract class Exercise {
     constructor(key : number, sentence : string) {
         this.sentence = sentence;
         this.key = key;
-        this.hunpos = new POSManager();
+        this.hunpos = new HunposManager();
     }
 
     getKey(): number {
@@ -35,7 +36,7 @@ abstract class Exercise {
 
     abstract evaluate() : any;
 
-    protected toJSON() : any;
+    abstract  toJSON() : any;
 
 
 }

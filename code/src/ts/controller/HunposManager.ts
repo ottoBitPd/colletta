@@ -1,0 +1,73 @@
+///<reference path="POSManager.ts"/>
+
+import {POSManager} from "./POSManager";
+
+
+
+
+class HunposManager implements POSManager{
+    private fileSystem : any;
+    private shell:any;
+    private modelFilePath:string;
+    private inputFilePath:string;
+    private outputFilePath:string;
+
+    constructor() {
+        this.fileSystem = require('fs');
+        this.shell = require('shelljs');
+        this.train();
+        this.inputFilePath='./js/controller/hunpos/input.txt';
+        this.outputFilePath='./js/controller/hunpos/output.txt';
+    }
+
+     setModel(modelFilePath):void{
+    this.modelFilePath=modelFilePath;
+     };
+
+     buildInputFile(sentence:string):void{
+         var words = sentence.split(" ");
+         for(let i = 0; i < words.length; i++) {
+             this.fileSystem.appendFileSync(this.inputFilePath, words[i] + "\n", (err) => {
+                 if (err) throw err;
+                 console.log('The "data to append" was appended to file!');
+             });
+             /*if(i<(words.length-1)){
+                 fileSystem.appendFileSync('input.txt', '\n', (err) => {    //controllo per non far mettere l'ultimo invio
+                     if (err) throw err;
+                 });
+             }*/
+         }
+     };
+
+     buildSolution():any{
+         var wordSolArray = this.fileSystem.readFileSync(this.outputFilePath).toString().split("\n");
+         let obj = {
+             sentence: []
+         };
+         let i=0;
+         while(wordSolArray[i]!==""){
+             var wordLab = wordSolArray[i].split("\t");
+             obj.sentence.push({word: wordLab[0],label: wordLab[1]});
+             i++;
+         }
+         this.fileSystem.writeFileSync(this.inputFilePath, "");
+         return obj;
+     };
+
+     getSolution(modelFilePath:string):any{
+         this.buildInputFile(modelFilePath);
+         this.tag();
+         return this.buildSolution();
+     };
+
+     train():void{
+         this.shell.exec('./js/controller/hunpos/hunpos-train ' + this.modelFilePath +'< ./js/controller/hunpos/train');
+     };
+     tag():void{
+         this.shell.exec('./js/controller/hunpos/hunpos-tag '+ this.modelFilePath +' < '+ this.inputFilePath+'>'+ this.outputFilePath);
+     };
+
+
+}
+
+export {HunposManager};

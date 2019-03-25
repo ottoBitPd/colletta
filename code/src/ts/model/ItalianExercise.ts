@@ -17,11 +17,17 @@ class ItalianExercise extends Exercise{
         super.setSentence(sentence);
     }
 
-    autosolve() : any;
+    autosolve() : any{
+       return 1;
+    }
 
-    evaluate(): any;
+    evaluate(): any{
+        return 1;
+    }
 
-    protected toJSON(): any;
+    toJSON(): any{
+        return 1;
+    }
 
     /**
      * Converts solution tags to italian.

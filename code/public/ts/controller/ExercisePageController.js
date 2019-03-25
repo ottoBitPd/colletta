@@ -2,14 +2,15 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const PageController_1 = require("./PageController");
 //import {ExercisePageView} from "../view/ExercisePageView";
-const Exercise_1 = require("./Exercise");
-const HunposAdapter_1 = require("./HunposAdapter");
+//import {Exercise} from "../model/Exercise";
+const ItalianExercise_1 = require("../model/ItalianExercise");
+const HunposManager_1 = require("../model/HunposManager");
 class ExercisePageController extends PageController_1.PageController {
     constructor(view, model) {
         super(view);
         this.model = model;
-        this.exercise = new Exercise_1.Exercise();
-        this.hunpos = new HunposAdapter_1.HunposAdapter();
+        this.exercise = new ItalianExercise_1.ItalianExercise(1, "1");
+        this.hunpos = new HunposManager_1.HunposManager();
         //declare function require(name:string);
         this.fileSystem = require('fs');
     }

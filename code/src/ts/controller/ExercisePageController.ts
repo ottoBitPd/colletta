@@ -1,7 +1,8 @@
 import {PageController} from "./PageController"
 //import {ExercisePageView} from "../view/ExercisePageView";
-import {Exercise} from "./Exercise";
-import {HunposAdapter} from "./HunposAdapter";
+//import {Exercise} from "../model/Exercise";
+import {ItalianExercise} from "../model/ItalianExercise";
+import {HunposManager} from "../model/HunposManager";
 
 class ExercisePageController extends PageController{
     private fileSystem : any;
@@ -11,9 +12,9 @@ class ExercisePageController extends PageController{
     constructor(view : any, model : any){
         super(view);
         this.model=model;
-        this.exercise = new Exercise();
+        this.exercise = new ItalianExercise(1,"1");
 
-        this.hunpos = new HunposAdapter();
+        this.hunpos = new HunposManager();
         //declare function require(name:string);
         this.fileSystem = require ('fs');
     }

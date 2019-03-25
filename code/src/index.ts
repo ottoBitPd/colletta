@@ -1,4 +1,4 @@
-import * as functions from 'firebase-functions';
+//import * as functions from 'firebase-functions';//
 import * as express from 'express';
 
 import {InsertPageView} from './ts/view/InsertPageView';
@@ -16,7 +16,7 @@ const app = express();
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(__dirname + '/public'));
-
+console.log("a: "+__dirname);
 var insertPageView = new InsertPageView();
 var insertPage = new InsertPageController(insertPageView);
 insertPage.update(app);
@@ -29,21 +29,10 @@ var savePageView = new SavePageView();
 var savePage = new SavePageController(savePageView, objDb);
 savePage.update(app);
 
-//const { exec } = require('child_process');
-/*app.get('/test', (request: any, response: any) => {
-    let shell=require('shelljs');
-    //let fileSystem=require('fs');
-    const { exec } = require('child_process');
-    /*exec('echo "ehila te come stai" > ./src/ts/controller/hunpos/file.txt');
-    //shell.exec('echo "ehila te come stai" > ./src/ts/controller/hunpos/file.txt');
-    response.send("paperino: "+fileSystem.readFileSync('./src/ts/controller/hunpos/file.txt').toString());*/
-    /*fileSystem.appendFileSync('./tmp/ciao.txt', "ehi\n thomas\n");
-    console.log("file: \n"+fileSystem.readFileSync("./tmp/ciao.txt").toString());
-    response.send("file: <br/>"+fileSystem.readFileSync("./tmp/ciao.txt").toString());*/
-    /*shell.exec('echo "ehila te come stai"');
-    exec('echo "si riprova"');
-    response.send("va in mona");
+//exports.app = functions.https.onRequest(app); per firebase deployable
 
-});*/
-console.log("A");
-exports.app = functions.https.onRequest(app);
+app.listen(8080, function () {
+    var host = "127.0.0.1";
+    var port = "8080";
+    console.log("Example app listening at http://%s:%s", host, port)
+});

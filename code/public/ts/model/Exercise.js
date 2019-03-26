@@ -1,10 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const HunposManager_1 = require("./HunposManager");
-class Exercise /*extends Data*/ {
-    constructor(key, sentence) {
+class Exercise {
+    constructor(sentence) {
         this.sentence = sentence;
-        this.key = key;
+        this.key = -1;
+        this.solutionTags = [];
         this.topics = [];
         this.difficulty = 0;
         this.hunpos = new HunposManager_1.HunposManager();
@@ -30,11 +31,17 @@ class Exercise /*extends Data*/ {
     setDifficulty(difficulty) {
         this.difficulty = difficulty;
     }
+    setSolutionTags(solutionTags) {
+        this.solutionTags = solutionTags;
+    }
     getTopics() {
         return this.topics;
     }
     getDifficulty() {
         return this.difficulty;
+    }
+    getSolutionTags() {
+        return this.solutionTags;
     }
 }
 exports.Exercise = Exercise;

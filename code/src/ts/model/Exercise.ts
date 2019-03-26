@@ -1,7 +1,8 @@
 import {POSManager} from './POSManager';
 import {HunposManager} from "./HunposManager";
+import {Data} from "./Data";
 
-abstract class Exercise /*extends Data*/{
+abstract class Exercise implements Data{
     private sentence: string;
     private topics: string [];
     private difficulty: number;
@@ -56,9 +57,6 @@ abstract class Exercise /*extends Data*/{
     }
     getSolutionTags() : string []{
         return this.solutionTags;
-    }
-    split() : string []{
-       return this.sentence.split(" ");
     }
 
     abstract autosolve(): any;

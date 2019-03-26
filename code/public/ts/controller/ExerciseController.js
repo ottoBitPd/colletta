@@ -6,11 +6,11 @@ const PageController_1 = require("./PageController");
 const ItalianExercise_1 = require("../model/ItalianExercise");
 //import {HunposManager} from "../model/HunposManager";
 class ExerciseController extends PageController_1.PageController {
-    constructor(viewExercise, viewSave, model) {
+    constructor(viewExercise, viewSave, db) {
         super(null);
         this.viewExercise = viewExercise;
         this.viewSave = viewSave;
-        this.model = model;
+        this.db = db;
         //this.exercise = new ItalianExercise(1,"1");
         //this.hunpos = new HunposManager();
         //declare function require(name:string);
@@ -19,11 +19,11 @@ class ExerciseController extends PageController_1.PageController {
     update(app) {
         app.post('/exercise', (request, response) => {
             //checking if the exercise sentence already exists in the database
-            var key = this.model.checkIfExists(request.body.sentence);
-            if (key === -1) {
-                key = this.model.writeSentence(request.body.sentence);
-            }
-            this.exercise = new ItalianExercise_1.ItalianExercise(key, request.body.sentence);
+            /*var key= this.model.checkIfExists(request.body.sentence);
+            if(key===-1){
+                key = this.model.writeSentence(request.body.sentence)
+            }*/
+            this.exercise = new ItalianExercise_1.ItalianExercise(request.body.sentence);
             //sending the sentence to hunpos which will provide a solution
             var hunposSolution = this.exercise.autosolve();
             //creation of the array containing tags provided from hunpos solution
@@ -43,14 +43,16 @@ class ExerciseController extends PageController_1.PageController {
             console.log('topics: ' + this.exercise.getTopics());
             console.log('topics: ' + this.exercise.getDifficulty());
             var wordsnumber = request.body.wordsnumber;
-            var sentence = request.body.sentence;
-            var key = request.body.key;
+            /*var sentence = request.body.sentence;
+            var key = request.body.key;*/
             var hunposTags = JSON.parse(request.body.hunposTags);
             var tagsCorrection = this.correctionToTags(wordsnumber, request.body);
             //building a array merging tags coming from user corrections and hunpos solution
             var finalTags = this.correctsHunpos(hunposTags, tagsCorrection);
+            this.exercise.setSolutionTags(finalTags);
+            this.db.insert(this.exercise);
             //saving in the database the final solution for the exercise
-            this.model.writeSolution(sentence.split(" "), finalTags, sentence, key);
+            //this.model.writeSolution(sentence.split(" "), finalTags, sentence, key);
             response.send(this.viewSave.getPage());
         });
     }
@@ -137,7 +139,7 @@ class ExerciseController extends PageController_1.PageController {
      * @returns {Array} an array containing the tags of the solution suggested by the user
      */
     correctionToTags(wordsnumber, dataCorrection) {
-        //console.log(require('util').inspect(dataCorrection));
+        //console.log("dataCorrection: "+require('util').inspect(dataCorrection));
         let optionsIndex = 0, wordIndex = 0; //optionsIndex counter for options of the first select input field
         let tagsCorrection = [];
         tagsCorrection.length = wordsnumber;

@@ -7,15 +7,15 @@ import {ItalianExercise} from "../model/ItalianExercise";
 class ExerciseController extends PageController{
     private fileSystem : any;
     //private hunpos : any;
-    private model : any;
+    private db : any;
     private exercise : any;
     private viewExercise : any;
     private viewSave : any;
-    constructor(viewExercise : any, viewSave : any,  model : any){
+    constructor(viewExercise : any, viewSave : any,  db : any){
         super(null);
         this.viewExercise=viewExercise;
         this.viewSave=viewSave;
-        this.model=model;
+        this.db=db;
         //this.exercise = new ItalianExercise(1,"1");
 
         //this.hunpos = new HunposManager();
@@ -39,10 +39,10 @@ class ExerciseController extends PageController{
             var hunposTranslation = this.translateTags(hunposTags);
             //console.log("view: "+JSON.stringify(this.view));
 
-            /*this.viewExercise.setSentence(this.exercise.getSentence());
+            this.viewExercise.setSentence(this.exercise.getSentence());
             this.viewExercise.setKey(this.exercise.getKey());
             this.viewExercise.setHunposTranslation(hunposTranslation);
-            this.viewExercise.setHunposTags(hunposTags);*/
+            this.viewExercise.setHunposTags(hunposTags);
 
             response.send(this.viewExercise.getPage());
         });
@@ -52,8 +52,8 @@ class ExerciseController extends PageController{
             console.log('topics: '+this.exercise.getTopics());
             console.log('topics: '+this.exercise.getDifficulty());
             var wordsnumber = request.body.wordsnumber;
-            var sentence = request.body.sentence;
-            var key = request.body.key;
+            /*var sentence = request.body.sentence;
+            var key = request.body.key;*/
             var hunposTags = JSON.parse(request.body.hunposTags);
 
             var tagsCorrection = this.correctionToTags(wordsnumber,request.body);
@@ -62,9 +62,9 @@ class ExerciseController extends PageController{
 
             this.exercise.setSolutionTags(finalTags);
 
-            this.model.insert(this.exercise);
+            this.db.insert(this.exercise);
             //saving in the database the final solution for the exercise
-            this.model.writeSolution(sentence.split(" "), finalTags, sentence, key);
+            //this.model.writeSolution(sentence.split(" "), finalTags, sentence, key);
             response.send(this.viewSave.getPage());
         });
     }

@@ -31,8 +31,8 @@ class ItalianExercise extends Exercise{
     }
 
     toJSON(): any{
-        let json = [];
-        json =
+        //json = "1";
+        return [];
     }
 }
 export {ItalianExercise};

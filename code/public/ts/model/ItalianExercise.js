@@ -2,8 +2,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const Exercise_1 = require("./Exercise");
 class ItalianExercise extends Exercise_1.Exercise {
-    constructor(key, sentence) {
-        super(key, sentence);
+    constructor(sentence) {
+        super(sentence);
     }
     getKey() {
         return super.getKey();
@@ -27,7 +27,8 @@ class ItalianExercise extends Exercise_1.Exercise {
         return 1;
     }
     toJSON() {
-        return 1;
+        //json = "1";
+        return [];
     }
 }
 exports.ItalianExercise = ItalianExercise;

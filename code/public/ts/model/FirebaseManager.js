@@ -1,18 +1,13 @@
-import {DatabaseManager} from "./DatabaseManager";
-import * as Admin from "firebase-admin";
-import {Data} from "./Data";
-
-class FirebaseManager implements DatabaseManager {
-    private static registry: Map<string, FirebaseManager> = new Map<string, FirebaseManager>();
-    protected static database: Admin.database.Database = FirebaseManager.initDB();
-
-    protected constructor() {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+class FirebaseManager {
+    constructor() {
     }
     /**
      * This method executes the connection with firebase database.
      * @returns {admin.database.Database} reference to the database service.
      */
-    private static initDB() {
+    static initDB() {
         const admin = require("firebase-admin");
         admin.initializeApp({
             credential: admin.credential.cert({
@@ -24,31 +19,26 @@ class FirebaseManager implements DatabaseManager {
         });
         return admin.database();
     }
-
-    protected static lookup(istanceName: string): FirebaseManager | null | undefined{
+    static lookup(istanceName) {
         if (FirebaseManager.registry.has(istanceName))
             return FirebaseManager.registry.get(istanceName);
         return null;
     }
-
-    insert(obj: Data): number {return -1;}
-
-    remove(id: number): boolean {return false;}
-
-    read(id: number): Data | null {return null;}
-
-    update(id: number): void {}
-
-    static registerInstance(instanceName : string, instance : FirebaseManager) : void{
-        FirebaseManager.registry.set(instanceName,instance);
+    insert(obj) { return -1; }
+    remove(id) { return false; }
+    read(id) { return null; }
+    update(id) { }
+    static registerInstance(instanceName, instance) {
+        FirebaseManager.registry.set(instanceName, instance);
     }
-
-    static getInstance(instanceName : string) : FirebaseManager {
+    static getInstance(instanceName) {
         let dbInstance = FirebaseManager.lookup(instanceName);
-        if(dbInstance === null || dbInstance === undefined)
+        if (dbInstance === null || dbInstance === undefined)
             throw new Error('Error: Database non trovato');
         return dbInstance;
     }
 }
-
-export {FirebaseManager};
+FirebaseManager.registry = new Map();
+FirebaseManager.database = FirebaseManager.initDB();
+exports.FirebaseManager = FirebaseManager;
+//# sourceMappingURL=FirebaseManager.js.map

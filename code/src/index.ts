@@ -8,8 +8,8 @@ import {ExerciseController} from "./ts/controller/ExerciseController";
 /*import {SavePageController} from "./ts/controller/SavePageController";*/
 import {SavePageView} from "./ts/view/SavePageView";
 
-import {FirebaseAdapter} from './ts/model/FirebaseAdapter';
-const objDb = new FirebaseAdapter();
+import {FirebaseExerciseManager} from "./ts/model/FirebaseExerciseManager";
+const objDb = new FirebaseExerciseManager();
 
 const app = express();
 

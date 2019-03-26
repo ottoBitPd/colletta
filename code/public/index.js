@@ -8,8 +8,8 @@ const ExercisePageView_1 = require("./ts/view/ExercisePageView");
 const ExerciseController_1 = require("./ts/controller/ExerciseController");
 /*import {SavePageController} from "./ts/controller/SavePageController";*/
 const SavePageView_1 = require("./ts/view/SavePageView");
-const FirebaseAdapter_1 = require("./ts/model/FirebaseAdapter");
-const objDb = new FirebaseAdapter_1.FirebaseAdapter();
+const FirebaseExerciseManager_1 = require("./ts/model/FirebaseExerciseManager");
+const objDb = new FirebaseExerciseManager_1.FirebaseExerciseManager();
 const app = express();
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));

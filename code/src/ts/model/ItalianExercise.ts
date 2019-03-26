@@ -2,8 +2,8 @@ import {Exercise} from './Exercise'
 import {POSManager} from "./POSManager";
 
 class ItalianExercise extends Exercise{
-    constructor(key : number, sentence : string){
-        super(key, sentence);
+    constructor(sentence : string){
+        super(sentence);
     }
     getKey() : number{
         return super.getKey();
@@ -31,7 +31,8 @@ class ItalianExercise extends Exercise{
     }
 
     toJSON(): any{
-        return 1;
+        let json = [];
+        json =
     }
 }
 export {ItalianExercise};

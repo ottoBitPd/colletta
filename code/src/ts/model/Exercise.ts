@@ -5,12 +5,14 @@ abstract class Exercise /*extends Data*/{
     private sentence: string;
     private topics: string [];
     private difficulty: number;
+    private solutionTags: string [];
     private key: number;
     private hunpos: POSManager;
 
-    constructor(key : number, sentence : string) {
+    constructor( sentence : string) {
         this.sentence = sentence;
-        this.key = key;
+        this.key = -1;
+        this.solutionTags = [];
         this.topics = [];
         this.difficulty = 0;
         this.hunpos = new HunposManager();
@@ -43,12 +45,20 @@ abstract class Exercise /*extends Data*/{
     setDifficulty(difficulty : number): void {
         this.difficulty=difficulty;
     }
-
+    setSolutionTags(solutionTags : string []) : void{
+        this.solutionTags=solutionTags;
+    }
     getTopics(): string [] {
         return this.topics;
     }
     getDifficulty() : number{
         return this.difficulty;
+    }
+    getSolutionTags() : string []{
+        return this.solutionTags;
+    }
+    split() : string []{
+       return this.sentence.split(" ");
     }
 
     abstract autosolve(): any;

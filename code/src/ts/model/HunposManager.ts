@@ -11,7 +11,7 @@ class HunposManager implements POSManager{
     constructor() {
         this.fileSystem = require('fs');
         this.shell = require('shelljs');
-        this.train();
+        //this.train();
         this.inputFilePath='src\\ts\\controller\\hunpos\\input.txt';
         this.outputFilePath='src\\ts\\controller\\hunpos\\output.txt';
         this.modelFilePath='src\\ts\\controller\\hunpos\\italian_model';

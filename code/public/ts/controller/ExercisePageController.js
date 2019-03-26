@@ -94,4 +94,4 @@ class ExercisePageController extends PageController_1.PageController {
     }
 }
 exports.ExercisePageController = ExercisePageController;
-//# sourceMappingURL=ExercisePageController.js.map
+//# sourceMappingURL=ExerciseController.js.map

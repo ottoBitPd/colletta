@@ -1,5 +1,3 @@
-ciao	Vpsms	
-perry	Smn	
-prova	Sfs	
-video	Smn	
+Ciao	SP	
+bortolone	Sms	
 

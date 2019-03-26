@@ -6,7 +6,11 @@ abstract class PageController{
         this.view=view;
     }
     abstract update(app : any) : void;
-
+    /*
+    //forse è un idea
+    setView(view:any) : void{
+        this.view=view;
+    }*/
 
 }
 export {PageController};

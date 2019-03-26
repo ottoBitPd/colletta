@@ -4,8 +4,8 @@ import * as express from 'express';
 import {InsertPageView} from './ts/view/InsertPageView';
 import {InsertPageController} from './ts/controller/InsertPageController';
 import {ExercisePageView} from "./ts/view/ExercisePageView";
-import {ExercisePageController} from "./ts/controller/ExercisePageController";
-import {SavePageController} from "./ts/controller/SavePageController";
+import {ExerciseController} from "./ts/controller/ExerciseController";
+/*import {SavePageController} from "./ts/controller/SavePageController";*/
 import {SavePageView} from "./ts/view/SavePageView";
 
 import {FirebaseAdapter} from './ts/model/FirebaseAdapter';
@@ -21,13 +21,14 @@ var insertPageView = new InsertPageView();
 var insertPage = new InsertPageController(insertPageView);
 insertPage.update(app);
 
+var savePageView = new SavePageView();
 var exercisePageView = new ExercisePageView();
-var exercisePage = new ExercisePageController(exercisePageView, objDb );//objDb
+var exercisePage = new ExerciseController(exercisePageView, savePageView, objDb );//objDb
 exercisePage.update(app);
 
-var savePageView = new SavePageView();
+/*var savePageView = new SavePageView();
 var savePage = new SavePageController(savePageView, objDb);
-savePage.update(app);
+savePage.update(app);*/
 
 //exports.app = functions.https.onRequest(app); per firebase deployable
 

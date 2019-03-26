@@ -1,5 +1,5 @@
 "use strict";
-///<reference path="POSManager.ts"/>
+//<reference path="POSManager.ts"/>
 Object.defineProperty(exports, "__esModule", { value: true });
 class HunposManager {
     constructor() {
@@ -32,7 +32,7 @@ class HunposManager {
     ;
     buildSolution() {
         var wordSolArray = this.fileSystem.readFileSync(this.outputFilePath).toString().split("\n");
-        console.log("arr: " + wordSolArray);
+        //console.log("arr: "+wordSolArray);
         let obj = {
             sentence: []
         };

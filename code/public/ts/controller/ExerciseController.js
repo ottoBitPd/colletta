@@ -38,11 +38,14 @@ class ExerciseController extends PageController_1.PageController {
             response.send(this.viewExercise.getPage());
         });
         app.post('/saveExercise', (request, response) => {
+            this.exercise.setTopics(this.convertTopics(request.body.topics));
+            this.exercise.setDifficulty(request.body.difficulty);
+            console.log('topics: ' + this.exercise.getTopics());
+            console.log('topics: ' + this.exercise.getDifficulty());
             var wordsnumber = request.body.wordsnumber;
             var sentence = request.body.sentence;
             var key = request.body.key;
             var hunposTags = JSON.parse(request.body.hunposTags);
-            console.log(require('util').inspect(request.body));
             var tagsCorrection = this.correctionToTags(wordsnumber, request.body);
             //building a array merging tags coming from user corrections and hunpos solution
             var finalTags = this.correctsHunpos(hunposTags, tagsCorrection);
@@ -134,7 +137,7 @@ class ExerciseController extends PageController_1.PageController {
      * @returns {Array} an array containing the tags of the solution suggested by the user
      */
     correctionToTags(wordsnumber, dataCorrection) {
-        console.log(require('util').inspect(dataCorrection));
+        //console.log(require('util').inspect(dataCorrection));
         let optionsIndex = 0, wordIndex = 0; //optionsIndex counter for options of the first select input field
         let tagsCorrection = [];
         tagsCorrection.length = wordsnumber;
@@ -161,6 +164,14 @@ class ExerciseController extends PageController_1.PageController {
             }
         }
         return tagsCorrection;
+    }
+    /**
+     * This method splits the topics by space and saves it in an array
+     * @param topics - a string conattaining the topics
+     * @returns {Array} an array containing the topics splitted by space
+     */
+    convertTopics(topics) {
+        return topics.split(" ");
     }
 }
 exports.ExerciseController = ExerciseController;

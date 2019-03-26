@@ -1,14 +1,18 @@
 import {POSManager} from './POSManager';
 import {HunposManager} from "./HunposManager";
 
-abstract class Exercise {
+abstract class Exercise /*extends Data*/{
     private sentence: string;
+    private topics: string [];
+    private difficulty: number;
     private key: number;
     private hunpos: POSManager;
 
     constructor(key : number, sentence : string) {
         this.sentence = sentence;
         this.key = key;
+        this.topics = [];
+        this.difficulty = 0;
         this.hunpos = new HunposManager();
     }
 
@@ -30,6 +34,21 @@ abstract class Exercise {
 
     setSentence(sentence: string): void {
         this.sentence=sentence;
+    }
+
+    setTopics(topics: string []): void {
+        this.topics=topics;
+    }
+
+    setDifficulty(difficulty : number): void {
+        this.difficulty=difficulty;
+    }
+
+    getTopics(): string [] {
+        return this.topics;
+    }
+    getDifficulty() : number{
+        return this.difficulty;
     }
 
     abstract autosolve(): any;

@@ -1,4 +1,4 @@
-///<reference path="POSManager.ts"/>
+//<reference path="POSManager.ts"/>
 
 import {POSManager} from "./POSManager";
 class HunposManager implements POSManager{
@@ -38,7 +38,7 @@ class HunposManager implements POSManager{
 
      buildSolution():any{
          var wordSolArray = this.fileSystem.readFileSync(this.outputFilePath).toString().split("\n");
-         console.log("arr: "+wordSolArray);
+         //console.log("arr: "+wordSolArray);
          let obj : any= {
              sentence: []
          };

@@ -97,14 +97,10 @@ class FirebaseAdapter extends DatabaseManager {
      */
     writeSolution(words: string[], finalTags: string[], sentence: string, sentenceKey: number){
         let solutionKey=0;
-        console.log("sentenceKey: "+sentenceKey);
         this.database.ref('data/sentences/'+sentenceKey+'/solutions').once("value", snap => {
             // @ts-ignore
             solutionKey=snap.numChildren();
-            console.log("solutionKey: "+solutionKey);
             for(let wordSolutionKey=0;wordSolutionKey<words.length;wordSolutionKey++){
-                console.log("number: "+solutionKey);
-                console.log("string: "+String(solutionKey));
                 this.database.ref('data/sentences/'+sentenceKey+'/solutions').child(String(solutionKey)).child(String(wordSolutionKey)).set({"word":words[wordSolutionKey],"tag":finalTags[wordSolutionKey]});
             }
         });

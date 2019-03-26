@@ -108,7 +108,6 @@ class FirebaseAdapter extends DatabaseManager {
                 this.database.ref('data/sentences/'+sentenceKey+'/solutions').child(String(solutionKey)).child(String(wordSolutionKey)).set({"word":words[wordSolutionKey],"tag":finalTags[wordSolutionKey]});
             }
         });
-
     }
 
     /**

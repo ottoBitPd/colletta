@@ -2,16 +2,13 @@
 ///<reference path="POSManager.ts"/>
 Object.defineProperty(exports, "__esModule", { value: true });
 class HunposManager {
-    //private modelFilePath:string;
-    //private inputFilePath:string;
-    //private outputFilePath:string;
     constructor() {
         this.fileSystem = require('fs');
         this.shell = require('shelljs');
         this.train();
-        //this.inputFilePath='..\controller\hunpos\input.txt';
-        //this.outputFilePath='..\controller\hunpos\output.txt';
-        //this.modelFilePath='..\controller\hunpos\italian_model';
+        this.inputFilePath = 'src\\ts\\controller\\hunpos\\input.txt';
+        this.outputFilePath = 'src\\ts\\controller\\hunpos\\output.txt';
+        this.modelFilePath = 'src\\ts\\controller\\hunpos\\italian_model';
     }
     setModel(modelFilePath) {
         //this.modelFilePath=modelFilePath;
@@ -20,7 +17,7 @@ class HunposManager {
     buildInputFile(sentence) {
         var words = sentence.split(" ");
         for (let i = 0; i < words.length; i++) {
-            this.fileSystem.appendFileSync('..\\controller\\hunpos\\input.txt', words[i] + "\n", (err) => {
+            this.fileSystem.appendFileSync(this.inputFilePath, words[i] + "\n", (err) => {
                 if (err)
                     throw err;
                 console.log('The "data to append" was appended to file!');
@@ -34,7 +31,7 @@ class HunposManager {
     }
     ;
     buildSolution() {
-        var wordSolArray = this.fileSystem.readFileSync('..\\controller\\hunpos\\output.txt').toString().split("\n");
+        var wordSolArray = this.fileSystem.readFileSync(this.outputFilePath).toString().split("\n");
         console.log("arr: " + wordSolArray);
         let obj = {
             sentence: []
@@ -45,7 +42,7 @@ class HunposManager {
             obj.sentence.push({ word: wordLab[0], label: wordLab[1] });
             i++;
         }
-        this.fileSystem.writeFileSync('..\\controller\\hunpos\\input.txt', "");
+        this.fileSystem.writeFileSync(this.inputFilePath, "");
         return obj;
     }
     ;
@@ -56,11 +53,11 @@ class HunposManager {
     }
     ;
     train() {
-        this.shell.exec('ts\\controller\\hunpos\\hunpos-train ts\\controller\\hunpos\\italian_model < ts\\controller\\hunpos\\train');
+        this.shell.exec('src\\ts\\controller\\hunpos\\hunpos-train ' + this.modelFilePath + '< src\\ts\\controller\\hunpos\\train');
     }
     ;
     tag() {
-        this.shell.exec('ts\\controller\\hunpos\\hunpos-tag ts\\controller\\hunpos\\italian_model < ts\\controller\\hunpos\\input.txt > ts\\controller\\hunpos\\output.txt');
+        this.shell.exec('src\\ts\\controller\\hunpos\\hunpos-tag ' + this.modelFilePath + '< ' + this.inputFilePath + '>' + this.outputFilePath);
     }
     ;
 }

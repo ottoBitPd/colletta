@@ -26,11 +26,11 @@ class ExerciseController extends PageController{
     update(app : any){
         app.post('/exercise', (request: any, response: any) => {
             //checking if the exercise sentence already exists in the database
-            var key= this.model.checkIfExists(request.body.sentence);
+            /*var key= this.model.checkIfExists(request.body.sentence);
             if(key===-1){
                 key = this.model.writeSentence(request.body.sentence)
-            }
-            this.exercise = new ItalianExercise(key, request.body.sentence);
+            }*/
+            this.exercise = new ItalianExercise(request.body.sentence);
             //sending the sentence to hunpos which will provide a solution
             var hunposSolution = this.exercise.autosolve();
             //creation of the array containing tags provided from hunpos solution
@@ -38,23 +38,31 @@ class ExerciseController extends PageController{
             //converting tags to italian
             var hunposTranslation = this.translateTags(hunposTags);
             //console.log("view: "+JSON.stringify(this.view));
-            this.viewExercise.setSentence(this.exercise.getSentence());
+
+            /*this.viewExercise.setSentence(this.exercise.getSentence());
             this.viewExercise.setKey(this.exercise.getKey());
             this.viewExercise.setHunposTranslation(hunposTranslation);
-            this.viewExercise.setHunposTags(hunposTags);
+            this.viewExercise.setHunposTags(hunposTags);*/
+
             response.send(this.viewExercise.getPage());
         });
         app.post('/saveExercise', (request : any, response : any) => {
-
+            this.exercise.setTopics(this.convertTopics(request.body.topics));
+            this.exercise.setDifficulty(request.body.difficulty);
+            console.log('topics: '+this.exercise.getTopics());
+            console.log('topics: '+this.exercise.getDifficulty());
             var wordsnumber = request.body.wordsnumber;
             var sentence = request.body.sentence;
             var key = request.body.key;
             var hunposTags = JSON.parse(request.body.hunposTags);
-            console.log(require('util').inspect(request.body));
+
             var tagsCorrection = this.correctionToTags(wordsnumber,request.body);
             //building a array merging tags coming from user corrections and hunpos solution
             var finalTags = this.correctsHunpos(hunposTags,tagsCorrection);
 
+            this.exercise.setSolutionTags(finalTags);
+
+            this.model.insert(this.exercise);
             //saving in the database the final solution for the exercise
             this.model.writeSolution(sentence.split(" "), finalTags, sentence, key);
             response.send(this.viewSave.getPage());
@@ -150,7 +158,7 @@ class ExerciseController extends PageController{
      * @returns {Array} an array containing the tags of the solution suggested by the user
      */
     correctionToTags(wordsnumber : number, dataCorrection : any) : string []{
-        console.log(require('util').inspect(dataCorrection));
+        //console.log("dataCorrection: "+require('util').inspect(dataCorrection));
         let optionsIndex=0, wordIndex=0;//optionsIndex counter for options of the first select input field
         let tagsCorrection = [];
         tagsCorrection.length = wordsnumber;
@@ -178,6 +186,15 @@ class ExerciseController extends PageController{
             }
         }
         return tagsCorrection;
+    }
+
+    /**
+     * This method splits the topics by space and saves it in an array
+     * @param topics - a string conattaining the topics
+     * @returns {Array} an array containing the topics splitted by space
+     */
+    convertTopics(topics : string) : string[]{
+        return topics.split(" ");
     }
 }
 export {ExerciseController};

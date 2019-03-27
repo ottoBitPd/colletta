@@ -1,4 +1,4 @@
 interface Data {
-    toJSON() : any;
+   toJSON() : any;
 }
 export {Data};

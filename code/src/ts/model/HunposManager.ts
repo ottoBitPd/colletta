@@ -16,7 +16,7 @@ class HunposManager implements POSManager{
         this.outputFilePath='src\\ts\\controller\\hunpos\\output.txt';
         this.modelFilePath='src\\ts\\controller\\hunpos\\italian_model';
     }
-
+    /*TODO*/
      setModel(modelFilePath:string):void{
     //this.modelFilePath=modelFilePath;
      };

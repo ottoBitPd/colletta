@@ -61,8 +61,10 @@ abstract class Exercise implements Data{
 
     abstract autosolve(): any;
 
-    abstract evaluate(correctionID:number, solution:any) : number;
+    evaluate(correctionID:number, solution:any) : number {return 1;};
 
-    abstract  toJSON() : any;
+    toJSON() : any{
+        return 1;
+    }
 }
 export {Exercise};

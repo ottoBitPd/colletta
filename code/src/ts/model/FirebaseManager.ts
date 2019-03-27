@@ -14,23 +14,25 @@ class FirebaseManager implements DatabaseManager {
      */
     private static initDB() {
         const admin = require("firebase-admin");
-        /*
+
         //altro metodo
         admin.initializeApp({
             credential: admin.credential.cert({
-                projectId: 'project-af138',
-                clientEmail: 'firebase-adminsdk-k34e2@project-af138.iam.gserviceaccount.com',
-                privateKey: "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDzeipKFQW70tnT\nYSP2MrtJmQdSq/j7Yn/7el5ntbtpPWNsADogw/YpAWcrLnifw4Tffce7dqAGmoWU\nxCNIIznQD2A8Og0jQXIYgUkbQlgZnTD1hRDWPCYqbfm+Ahplw/xoOsMVFSGno2mr\nW3glFfCTXeVmGtJnBg/U8S2cSpyzk3juERztmRv7DiZdYmr2g1iaBzaC5ae/1ee9\nyraiMS367Lq4n8cujQmaUvu8ng4hWu2t32PzaufD+BtvNleAT4MYnS88GwEyMS/m\nc4AVjii0oF/utILcMCdPhMrBWi3xa6MWsQxoA2JNEJz4DrucP0IP0nXtayiRWVNo\n+hQESHpPAgMBAAECggEAHNvmF1HWlCSx3PQupwfsWxTgYVQw9tr+AHjIp9JKnHbC\nShLc0PVpQAMCj4O6mHU8UqE+A2JUJXQ7UR7Ob8Z9G8Q2y+y1kfA37d+lIq4Cc0bG\nftN+42XNwEm4yGTHbDiGunP8m4sdqhkcdUsqOnsXQOBoSGn1dnCpf7v2hAfz+vTM\nuTEIR2niXXxz5Pt1rc/Nb061+R1bEMV2ISNhAzh+zo0DjkMF44lr0nb1dUAGTN8Y\nqKU2f2DQnH9XVBuyMUc5knU38HdTWdZLL6laJjRHS4CXj4n6C9882qDpwcavawv9\n3nV1bhZBSm5jagrLIi3w24POAHVAvJ87F4seeDblwQKBgQD7CdNacb/HJ7l4iJqH\nJwaq9ULrbJxVBvIJGT1mFhjBdmhtzJU+6Tq/ET0+q56HZvB6aLtpgjW3oyvtPKcw\nxhwpG13meeBN6aaubqdAghs4k27IYDPGW49Ng1FDFyxqMcPLGN70hwYEI7lFYDr5\nPZNjTswU4UMUYTV6ncu9etH18wKBgQD4ShUcG8+EkO5Wx+IqsHW3bYc3lUEDKbaP\nEWNS91l6Qjc/GsDWnvvWI8DY38eEMatjdbiz5cMHnYDqU63KSZPAffI4fS2n6IUR\nOOaNoTXayBXO6v3qcpzfRdDIK1nBDhwU0BmtP8feRUxXDTVmuIoF/T8DUBHkq4b8\nsJybgJX1NQKBgB8fZ7mV0p3hOehMn0PUPcpiH8rKK1OLSeSA4ZDPeoA5qta5/2LO\nTX80pvAnHL9SrsuuQlXhU8GRlDeURnIQjZs3DlwtjfZ62jRT+Z5QwwkvlhN3gdO8\ntDZ66k80B0ifJNQAIFwWhVNsDmMgfA88aBJuyXRpPQTAzH2IJKM4H+GrAoGBALAi\n/e6+2+xTVIFDs3JNVHUXwkDwJPq1cMj1sNx+lH9i0gZ2WC7pAgbbvkccGVHyWn9o\nV+tnJ4ATgAy76CIFKEf6EQd55hWjoiKhlw0KPEZEgxQTKKZVQGwz/vTBrB6Ef+9T\n4aNCB+vqhUmMGUIRz/iHu1gCSW9LL6u7Lp4yDi+xAoGAc5q/9ihIISfjTRzYM0sx\nxmRU7TPBV9vpRGSQI/Homsm40JREPZ9ux3OTYEv8Uld3eI92H8sZ/lfslYQmXDl6\n4e20ahJJSb+NDAwS8IHYFmvTP49mgJaTPsjj5fBCFJ9OOoFCak8+7lilOWtYHtx1\nvxMOR/bNpTMyJqbqY+uyX+A=\n-----END PRIVATE KEY-----\n"
+                projectId: 'colletta-3e789',
+                clientEmail: 'firebase-adminsdk-e5uh6@colletta-3e789.iam.gserviceaccount.com',
+                privateKey: "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDa5DAZ17JNk79q\nWqbpppmOirHAzj3Z7udelxcNjtSamglic/hYlOkcLGx70fS8TQY1WwwUZSc4vTwN\nlXZMkyZ9ZM66dUzZM7e52NLlPi2OERZAOw27Kk3hMKtQf/qgdDPma6XtC3ST6Xe0\njlq3E7t1d0F/4XR7RklkC48TejNmaXGAJp7XNCBwTrIICSOMSIkGjTqPjcfnxaRw\npAQc+/YIGTBanuJNURX6EwCYpH7Kpmf/zW/HpbqqHHkG0utLvoR97MZHf0G+KrhX\nBR0PBNHlV52wPoWMciPK4Ux0Kq2kjbXQMPpJV4bOOsrdQJwVhJ0uF+SLKpu1cEoB\nf3J5unxJAgMBAAECggEAAmAIvhULNiCI6o9kgYNJZgSvAFW0kdtv5wS6by8aMznB\n6Y+y1Yo7G89HF5JcBpmK3FQaNdPxqKHUB500MQlFOQXZoOgSLwaqwxFdW3ew4Jpi\nnIyPffUL7oo7x6Y12t0b7Y+EN8XgrFSzk/HZ/ePQzEngm/G/NPG6rONbuHVCXsV3\nvMySpDrXfsASQ3M8SUAme8lZ12zDBPvvZKSFYS6xw6cRZTUz976lfSi+JHiS2DTx\nSmJtlYRnx3HlHhH29XknkxI70FDMqpY2vO/N9WaFIHCJz24+q4S8YlbuZEoNKrEc\nuS1TjaEdobx1fsC7KLPuyGkM8c3ODi6oXuRwihDecQKBgQD6K6KSB6U0XzmyZ0cL\nDUDUe4pP6mG5GC27C+wV1qIfM2nN8NdWnRTg55KZBOKsGOBcL2zGZK0CGQ0AR54f\n/MKBqoGqd4QbN/R2isVg59iCanncBvwn+TjxNKwnDBSqvkIMmwI6ioV8ZWoUjIPC\nyhqpV4GQxF1sLTi0/Id+/E2ekQKBgQDf/fX21Q3fqKj+5nZSdch8uMpC+B0A0VHY\n5U/W+2aX15SXulZmUB72un1qg+J4Ap+psCtk32XfRlgfb6nIC8KHrAXycMRknnbw\nVxnWoPLKs7sP7QISD9CcFSBogsp5P+xiI9cNhRIditjRmT1l5Ucg2U1Yjcmubyp3\n4xABWQJOOQKBgDMc4zRO15QhuJoYu80oQgynyRSW4Kx+oilLQEsd9TXGvWFUScrq\ngS+KYMte0ikzU/PBxMmsHCUHlT5vY4FJlTwE6EU58gXVot7tb3JjLDtJIeiwjKhm\nJRozFtFLiJVyFfCZYxUu5CMMXWYhZ3JO9K+Qr2oylJvbiXCA//YT+o/hAoGBAIfJ\nG79rfsKUKwaDTT1F26kIGM0qPeLOAdD7ij/oHVR1QsYMFu5lKbAmc3sLwlFAPewP\nOO8ookgNC8Ta21DDGEVI2j4TcGsSyUV/d9FttmF9PSw1YGj0n2DPSdsxVm7Ueocv\n9OFkRwwTrMa7H8ZSjKD0OngxVA7joxoUUxKOE+C5AoGAY3N0Vc5Oi2t1ejEpFbFG\n+QqqMEPrGF3mRDo8UHliA5cZTltz29XYhlT1kPQ+afP6uOnt6I5q5Andu28eEJHm\n9Kp4ZJt9rGlZJJqfg0uYFPQyXLYz0EKeWxsg1EGxthYR/ZxUXyfC2GRUmlQ+XyDU\npEAmb5aRTVNzshtw7q97udE=\n-----END PRIVATE KEY-----\n",
             }),
-            databaseURL: "https://project-af138.firebaseio.com"
-        });*/
+            databaseURL: "https://colletta-3e789.firebaseio.com"
+        });
 
+        /*
+        //altro modo che funziona meno
         var serviceAccount = require('./colletta-3e789-firebase-adminsdk-e5uh6-c5f75d36ee.json');
 
         admin.initializeApp({
             credential: admin.credential.cert(serviceAccount),
             databaseURL: "https://colletta-3e789.firebaseio.com"
-        });
+        });*/
         return admin.database();
     }
 

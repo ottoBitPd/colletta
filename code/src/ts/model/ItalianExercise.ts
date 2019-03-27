@@ -26,13 +26,17 @@ class ItalianExercise extends Exercise{
     }
 
     evaluate(correctionID:number, solution:any): number{
+        //2 array di tags uno riferito alla soluzione di riferimento esatta
 
+        //prendere la soluzione con quell'ID
         return 1;
     }
 
+    /*
+    //forse non serve
     toJSON(): any{
         //json = "1";
         return [];
-    }
+    }*/
 }
 export {ItalianExercise};

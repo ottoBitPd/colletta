@@ -24,11 +24,9 @@ class ItalianExercise extends Exercise_1.Exercise {
         return super.getPOSManager().getSolution(this.getSentence());
     }
     evaluate(correctionID, solution) {
+        //2 array di tags uno riferito alla soluzione di riferimento esatta
+        //prendere la soluzione con quell'ID
         return 1;
-    }
-    toJSON() {
-        //json = "1";
-        return [];
     }
 }
 exports.ItalianExercise = ItalianExercise;

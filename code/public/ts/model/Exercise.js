@@ -43,6 +43,11 @@ class Exercise {
     getSolutionTags() {
         return this.solutionTags;
     }
+    evaluate(correctionID, solution) { return 1; }
+    ;
+    toJSON() {
+        return 1;
+    }
 }
 exports.Exercise = Exercise;
 //# sourceMappingURL=Exercise.js.map

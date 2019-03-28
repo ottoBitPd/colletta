@@ -29,17 +29,21 @@ var savePageView = new SavePageView_1.SavePageView();
 var exercisePageView = new ExercisePageView_1.ExercisePageView();
 var exercisePage = new ExerciseController_1.ExerciseController(exercisePageView, savePageView, objDb); //objDb
 exercisePage.update(app);
+/*var savePageView = new SavePageView();
+var savePage = new SavePageController(savePageView, objDb);
+savePage.update(app);*/
+//import {Exercise} from "./ts/model/Exercise";
 app.listen(8080, function () {
     return __awaiter(this, void 0, void 0, function* () {
         var host = "127.0.0.1";
         var port = "8080";
-        // @ts-ignore
-        var rd = yield objDb.read("3");
-        if (rd !== undefined)
-            console.log("rdgetSentence " + rd.getSentence());
-        else
-            console.log("El ze undefined ostrega");
         console.log("Example app listening at http://%s:%s", host, port);
+        // @ts-ignore
+        var key = yield objDb.search("gianfigone");
+        console.log(key);
+        var b = yield objDb.remove(key);
+        console.log("fuori index");
+        console.log(b);
     });
 });
 //# sourceMappingURL=index.js.map

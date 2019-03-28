@@ -10,6 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const FirebaseManager_1 = require("./FirebaseManager");
 const ItalianExercise_1 = require("./ItalianExercise");
+//import * as firebase from "firebase";
 //import {Exercise} from "./Exercise";
 class FirebaseExerciseManager extends FirebaseManager_1.FirebaseManager {
     constructor() {
@@ -41,14 +42,18 @@ class FirebaseExerciseManager extends FirebaseManager_1.FirebaseManager {
             return new Promise(function (resolve) {
                 FirebaseManager_1.FirebaseManager.database.ref('data/sentences/').orderByChild('sentence')
                     .once("value", function (snapshot) {
-                    snapshot.forEach(function (data) {
-                        if (data.val().sentence.toLowerCase() === sentence.toLowerCase()) {
-                            //console.log("esiste");
-                            return resolve(data.key);
-                        }
-                        //console.log("non esiste");
-                        return resolve(undefined);
-                    });
+                    if (snapshot.exists()) {
+                        snapshot.forEach(function (data) {
+                            if (data.val().sentence.toLowerCase() === sentence.toLowerCase()) {
+                                console.log("esiste");
+                                return resolve(data.key);
+                            }
+                            console.log("non esiste");
+                            return resolve(undefined);
+                        });
+                    }
+                    console.log("database vuoto");
+                    return resolve(undefined);
                 });
             });
         });
@@ -119,6 +124,30 @@ class FirebaseExerciseManager extends FirebaseManager_1.FirebaseManager {
                         return resolve(readedData);
                     }
                     return resolve(undefined);
+                });
+            });
+        });
+    }
+    // @ts-ignore
+    remove(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const ProData = this.removeFromId(id);
+            const removed = yield ProData;
+            return removed;
+        });
+    }
+    removeFromId(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const ref = FirebaseManager_1.FirebaseManager.database.ref("data/sentences/" + id);
+            // @ts-ignore
+            return new Promise(function (resolve) {
+                ref.once('value', function (snapshot) {
+                    if (snapshot.exists()) {
+                        ref.remove();
+                        // @ts-ignore
+                        return resolve(true);
+                    }
+                    return resolve(false);
                 });
             });
         });

@@ -30,18 +30,17 @@ exercisePage.update(app);
 var savePage = new SavePageController(savePageView, objDb);
 savePage.update(app);*/
 
-import {Exercise} from "./ts/model/Exercise";
+//import {Exercise} from "./ts/model/Exercise";
 
 app.listen(8080, async function () {
     var host = "127.0.0.1";
     var port = "8080";
-
+    console.log("Example app listening at http://%s:%s", host, port);
     // @ts-ignore
-    var rd : Exercise = await objDb.read("3");
-    if(rd!== undefined)
-        console.log("rdgetSentence " + rd.getSentence());
-    else
-        console.log("El ze undefined ostrega");
-
-    console.log("Example app listening at http://%s:%s", host, port)
+    /*
+    var key : string = await objDb.search("gianfigone");
+    console.log(key);
+    var b : boolean= await objDb.remove(key);
+    console.log(b);
+    */
 });

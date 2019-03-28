@@ -4,7 +4,7 @@ const HunposManager_1 = require("./HunposManager");
 class Exercise {
     constructor(sentence) {
         this.sentence = sentence;
-        this.key = -1;
+        this.key = "-1";
         this.solutionTags = [];
         this.topics = [];
         this.difficulty = 0;

@@ -30,10 +30,18 @@ exercisePage.update(app);
 var savePage = new SavePageController(savePageView, objDb);
 savePage.update(app);*/
 
-//exports.app = functions.https.onRequest(app); per firebase deployable
+import {Exercise} from "./ts/model/Exercise";
 
-app.listen(8080, function () {
+app.listen(8080, async function () {
     var host = "127.0.0.1";
     var port = "8080";
+
+    // @ts-ignore
+    var rd : Exercise = await objDb.read("3");
+    if(rd!== undefined)
+        console.log("rdgetSentence " + rd.getSentence());
+    else
+        console.log("El ze undefined ostrega");
+
     console.log("Example app listening at http://%s:%s", host, port)
 });

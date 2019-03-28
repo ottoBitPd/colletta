@@ -42,13 +42,13 @@ class FirebaseManager implements DatabaseManager {
         return null;
     }
 
-    insert(obj: Data): number {return -1;}
+    insert(obj: Data): string {return "-1";}
 
-    remove(id: number): boolean {return false;}
+    remove(id: string): boolean {return false;}
 
-    read(id: number): Data | null {return null;}
+    read(id: string): Data | null {return null;}
 
-    update(id: number): void {}
+    update(id: string): void {}
 
     static registerInstance(instanceName : string, instance : FirebaseManager) : void{
         FirebaseManager.registry.set(instanceName,instance);

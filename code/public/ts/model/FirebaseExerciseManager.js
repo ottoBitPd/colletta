@@ -1,51 +1,57 @@
 "use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const FirebaseManager_1 = require("./FirebaseManager");
+const ItalianExercise_1 = require("./ItalianExercise");
 //import {Exercise} from "./Exercise";
 class FirebaseExerciseManager extends FirebaseManager_1.FirebaseManager {
     constructor() {
         super();
         FirebaseManager_1.FirebaseManager.registerInstance("FirebaseExerciseManager", this);
-        this.sentences = 0;
-        FirebaseManager_1.FirebaseManager.database.ref('data/sentences').on("value", snap => {
-            if (snap) //aggiunto per TSLint
-                this.sentences = snap.numChildren();
-            //console.log("inizio key: "+this.sentences);
-        });
     }
+    // @ts-ignore
     insert(obj) {
-        //guardo se esiste data in json e butto dentro in db
-        let exercise = obj;
-        let key = this.checkIfExists(exercise.getSentence());
-        //console.log("key1: " + key);
-        if (key === -1) {
-            key = this.writeSentence(exercise.getSentence());
-            //this.writeDifficulty(key,exercise.getDifficulty());
-            //this.writeTopics(key,exercise.getTopics());
-        }
-        //console.log("key2: " + key);
-        this.writeSolution(exercise, key);
-        return key;
+        return __awaiter(this, void 0, void 0, function* () {
+            //guardo se esiste data in json e butto dentro in db
+            let exercise = obj;
+            let key;
+            key = yield this.search(exercise.getSentence());
+            console.log("ritorna: " + key);
+            if (key === undefined) {
+                key = this.writeSentence(exercise.getSentence());
+            }
+            this.writeSolutionMio(exercise, key);
+            return key;
+        });
     }
     /**
      * This method checks if a sentence already exists in the database.
      * @param sentence - the sentence to check.
      * @returns {number} the key of the sentence if sentence already exists, -1 otherwise.
      */
-    checkIfExists(sentence) {
-        var equal = false;
-        for (var sentenceKey = 0; sentenceKey < this.sentences; sentenceKey++) {
-            FirebaseManager_1.FirebaseManager.database.ref('data/sentences/' + sentenceKey).on("value", (snap) => {
-                // @ts-ignore
-                if (sentence.toLowerCase() === snap.val().sentence.toLowerCase()) {
-                    equal = true;
-                }
+    search(sentence) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return new Promise(function (resolve) {
+                FirebaseManager_1.FirebaseManager.database.ref('data/sentences/').orderByChild('sentence')
+                    .once("value", function (snapshot) {
+                    snapshot.forEach(function (data) {
+                        if (data.val().sentence.toLowerCase() === sentence.toLowerCase()) {
+                            //console.log("esiste");
+                            return resolve(data.key);
+                        }
+                        //console.log("non esiste");
+                        return resolve(undefined);
+                    });
+                });
             });
-            if (equal) {
-                return sentenceKey;
-            }
-        }
-        return -1;
+        });
     }
     /**
      * This method writes a sentence in the database.
@@ -53,9 +59,10 @@ class FirebaseExerciseManager extends FirebaseManager_1.FirebaseManager {
      * @returns {number} returns the key of the sentence written
      */
     writeSentence(sentence) {
-        FirebaseManager_1.FirebaseManager.database.ref('data/sentences/' + this.sentences).set({ sentence: sentence });
-        //return this.sentences - 1;
-        return this.sentences - 1;
+        let ref = FirebaseManager_1.FirebaseManager.database.ref('data/sentences/').push({ sentence: sentence });
+        let array = String(ref).split("/");
+        //console.log("returno: "+array[array.length -1])
+        return array[array.length - 1];
     }
     // /**
     //  */
@@ -87,32 +94,54 @@ class FirebaseExerciseManager extends FirebaseManager_1.FirebaseManager {
      * @param sentence - the sentence string
      * @param sentenceKey - key of the sentence in the database
      */
-    writeSolution(exercise, sentenceKey /*words: string[], finalTags: string[], sentence: string, sentenceKey: number*/) {
+    writeSolutionMio(exercise, sentenceKey) {
+        // vecchi parametri words: string[], finalTags: string[], sentence: string, sentenceKey: number
         let words = exercise.getSentence().split(" "); //poi ci sarà una funzione split migliore in Exercise
         let finalTags = exercise.getSolutionTags();
         //let topics = exercise.getTopics();
         let solutionKey = 0;
         //console.log("sentenceKey: " + sentenceKey);
-        FirebaseManager_1.FirebaseManager.database.ref('data/sentences/' + sentenceKey + '/solutions').once("value", snap => {
-            // @ts-ignore
+        FirebaseManager_1.FirebaseManager.database.ref('data/sentences/' + sentenceKey + '/solutions')
+            .once("value", snap => {
             solutionKey = snap.numChildren();
-            //console.log("solutionKey: " + solutionKey);
-            console.log("difficulty: " + exercise.getDifficulty());
-            /*FirebaseManager.database.ref('data/sentences/' + sentenceKey + '/solutions/'+String(solutionKey)).set({
-                "difficulty": exercise.getDifficulty()
-            });*/
             FirebaseManager_1.FirebaseManager.database.ref('data/sentences/' + sentenceKey + '/solutions/' + String(solutionKey)).set({
                 "difficulty": exercise.getDifficulty(),
                 "topics": exercise.getTopics()
             });
             for (let wordSolutionKey = 0; wordSolutionKey < words.length; wordSolutionKey++) {
-                //console.log("number: " + solutionKey);
-                //console.log("string: " + String(solutionKey));
                 FirebaseManager_1.FirebaseManager.database.ref('data/sentences/' + sentenceKey + '/solutions/' + String(solutionKey)).child(String(wordSolutionKey)).set({
                     "word": words[wordSolutionKey],
                     "tag": finalTags[wordSolutionKey]
                 });
             }
+        });
+    }
+    // @ts-ignore
+    read(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const ProData = this.getExerciseById(id);
+            const readed = yield ProData;
+            return readed;
+        });
+    }
+    // @ts-ignore
+    getExerciseById(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return new Promise(function (resolve) {
+                FirebaseManager_1.FirebaseManager.database.ref("data/sentences/" + id)
+                    .once('value', function (snapshot) {
+                    if (snapshot.exists()) {
+                        let readedData;
+                        readedData = new ItalianExercise_1.ItalianExercise(snapshot.val().sentence);
+                        readedData.setKey(id);
+                        readedData.setDifficulty(snapshot.val().difficulty);
+                        readedData.setSolutionTags(snapshot.val().tag);
+                        readedData.setTopics(snapshot.val().topics);
+                        return resolve(readedData);
+                    }
+                    return resolve(undefined);
+                });
+            });
         });
     }
 }

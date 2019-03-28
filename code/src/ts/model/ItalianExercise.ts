@@ -5,7 +5,7 @@ class ItalianExercise extends Exercise{
     constructor(sentence : string){
         super(sentence);
     }
-    getKey() : number{
+    getKey() : string{
         return super.getKey();
     }
     getSentence() : string{
@@ -14,7 +14,7 @@ class ItalianExercise extends Exercise{
     getPOSManager(): POSManager {
         return super.getPOSManager();
     }
-    setKey(key : number) : void{
+    setKey(key : string) : void{
         super.setKey(key);
     }
     setSentence(sentence : string) : void{

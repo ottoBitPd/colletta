@@ -1,34 +1,27 @@
 import {FirebaseManager} from "./FirebaseManager";
 import {Data} from "./Data";
 import {Exercise} from "./Exercise";
+import {ItalianExercise} from "./ItalianExercise";
 //import {Exercise} from "./Exercise";
 
 class FirebaseExerciseManager extends FirebaseManager {
-    private sentences: number;
 
     public constructor() {
         super();
         FirebaseManager.registerInstance("FirebaseExerciseManager", this);
-        this.sentences = 0;
-        FirebaseManager.database.ref('data/sentences').on("value", snap => {
-            if(snap)//aggiunto per TSLint
-            this.sentences=snap.numChildren();
-            //console.log("inizio key: "+this.sentences);
-        });
     }
 
-    insert(obj: Data): number {
+    // @ts-ignore
+    async insert(obj: Data): string {
         //guardo se esiste data in json e butto dentro in db
         let exercise = <Exercise> obj;
-        let key = this.checkIfExists(exercise.getSentence());
-        //console.log("key1: " + key);
-        if (key === -1) {
+        let key : any;
+        key = await this.search(exercise.getSentence());
+        console.log("ritorna: "+key);
+        if(key===undefined){
             key = this.writeSentence(exercise.getSentence());
-            //this.writeDifficulty(key,exercise.getDifficulty());
-            //this.writeTopics(key,exercise.getTopics());
         }
-        //console.log("key2: " + key);
-        this.writeSolution(exercise, key);
+        this.writeSolutionMio(exercise,key);
         return key;
     }
 
@@ -37,20 +30,23 @@ class FirebaseExerciseManager extends FirebaseManager {
      * @param sentence - the sentence to check.
      * @returns {number} the key of the sentence if sentence already exists, -1 otherwise.
      */
-    private checkIfExists(sentence: string) {
-        var equal = false;
-        for (var sentenceKey = 0; sentenceKey < this.sentences; sentenceKey++) {
-            FirebaseManager.database.ref('data/sentences/' + sentenceKey).on("value", (snap : any) => {
-                // @ts-ignore
-                if (sentence.toLowerCase() === snap.val().sentence.toLowerCase()) {
-                    equal = true;
-                }
-            });
-            if (equal) {
-                return sentenceKey;
-            }
-        }
-        return -1;
+
+
+    public async search(sentence: string) {
+        return new Promise(function (resolve) {
+            FirebaseManager.database.ref('data/sentences/').orderByChild('sentence')
+                .once("value", function(snapshot : any) {
+                    snapshot.forEach(function(data :any){
+                        if(data.val().sentence.toLowerCase()===sentence.toLowerCase()) {
+                            //console.log("esiste");
+                            return resolve(data.key);
+                        }
+                        //console.log("non esiste");
+                        return resolve(undefined);
+                    });
+
+                });
+        });
     }
 
     /**
@@ -58,10 +54,12 @@ class FirebaseExerciseManager extends FirebaseManager {
      * @param sentence - the sentence to write
      * @returns {number} returns the key of the sentence written
      */
-    private writeSentence(sentence: string) {
-        FirebaseManager.database.ref('data/sentences/' + this.sentences).set({sentence: sentence});
-        //return this.sentences - 1;
-        return this.sentences -1;
+
+    public writeSentence(sentence: string) {
+        let ref = FirebaseManager.database.ref('data/sentences/').push({sentence: sentence});
+        let array = String (ref).split("/");
+        //console.log("returno: "+array[array.length -1])
+        return array[array.length -1];
     }
 
     // /**
@@ -96,44 +94,64 @@ class FirebaseExerciseManager extends FirebaseManager {
      * @param sentence - the sentence string
      * @param sentenceKey - key of the sentence in the database
      */
-    private writeSolution(exercise : Exercise, sentenceKey: number/*words: string[], finalTags: string[], sentence: string, sentenceKey: number*/) {
+    private writeSolutionMio(exercise : Exercise, sentenceKey: string) {
+        // vecchi parametri words: string[], finalTags: string[], sentence: string, sentenceKey: number
         let words = exercise.getSentence().split(" ");//poi ci sarà una funzione split migliore in Exercise
         let finalTags = exercise.getSolutionTags();
         //let topics = exercise.getTopics();
         let solutionKey = 0;
         //console.log("sentenceKey: " + sentenceKey);
-        FirebaseManager.database.ref('data/sentences/' + sentenceKey + '/solutions').once("value", snap => {
-            // @ts-ignore
+        FirebaseManager.database.ref('data/sentences/' + sentenceKey + '/solutions')
+            .once("value", snap => {
             solutionKey = snap.numChildren();
-            //console.log("solutionKey: " + solutionKey);
-            console.log("difficulty: " + exercise.getDifficulty());
-            /*FirebaseManager.database.ref('data/sentences/' + sentenceKey + '/solutions/'+String(solutionKey)).set({
-                "difficulty": exercise.getDifficulty()
-            });*/
-            FirebaseManager.database.ref('data/sentences/' + sentenceKey + '/solutions/'+String(solutionKey)).set({
+            FirebaseManager.database.ref('data/sentences/' + sentenceKey + '/solutions/' + String(solutionKey)).set({
                 "difficulty": exercise.getDifficulty(),
                 "topics": exercise.getTopics()
             });
             for (let wordSolutionKey = 0; wordSolutionKey < words.length; wordSolutionKey++) {
-                //console.log("number: " + solutionKey);
-                //console.log("string: " + String(solutionKey));
-                FirebaseManager.database.ref('data/sentences/' + sentenceKey + '/solutions/'+String(solutionKey)).child(String(wordSolutionKey)).set({
+                FirebaseManager.database.ref('data/sentences/' + sentenceKey + '/solutions/' + String(solutionKey)).child(String(wordSolutionKey)).set({
                     "word": words[wordSolutionKey],
                     "tag": finalTags[wordSolutionKey]
                 });
             }
-
         });
     }
+    // @ts-ignore
+    async read(id: string): Data {
 
+        const ProData: Promise <Exercise> = this.getExerciseById(id);
+        const readed = await ProData;
+
+        return readed;
+    }
+
+    // @ts-ignore
+    async getExerciseById(id : string) : Promise<Exercise> {
+
+        return new Promise<Exercise>(function (resolve) {
+            FirebaseManager.database.ref("data/sentences/" + id)
+                .once('value', function (snapshot) {
+                if (snapshot.exists()) {
+                    let readedData: Exercise;
+                    readedData = new ItalianExercise(snapshot.val().sentence);
+                    readedData.setKey(id);
+                    readedData.setDifficulty(snapshot.val().difficulty);
+                    readedData.setSolutionTags(snapshot.val().tag);
+                    readedData.setTopics(snapshot.val().topics);
+                    return resolve(readedData);
+                }
+                return resolve(undefined);
+            });
+        });
+    }
     /*
     //TODO
     remove(id: number): boolean;
 
     read(id: number): Data;
 
-    update(id: number): void;
-    */
+    update(id: number): void;*/
+
 
 
 }

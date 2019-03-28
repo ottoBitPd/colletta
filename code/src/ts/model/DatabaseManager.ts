@@ -43,9 +43,9 @@
 import {Data} from "./Data";
 
 interface DatabaseManager{
-    insert(obj:Data) : number;
-    remove(id:number) : boolean;
-    read(id:number) : Data | null;
-    update(id:number) : void;
+    insert(obj:Data) : string;
+    remove(id:string) : boolean;
+    read(id:string) : Data | null;
+    update(id:string) : void;
 }
 export {DatabaseManager};

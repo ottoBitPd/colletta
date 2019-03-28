@@ -7,19 +7,19 @@ abstract class Exercise implements Data{
     private topics: string [];
     private difficulty: number;
     private solutionTags: string [];
-    private key: number;
+    private key: string;
     private hunpos: POSManager;
 
     constructor( sentence : string) {
         this.sentence = sentence;
-        this.key = -1;
+        this.key = "-1";
         this.solutionTags = [];
         this.topics = [];
         this.difficulty = 0;
         this.hunpos = new HunposManager();
     }
 
-    getKey(): number {
+    getKey(): string {
         return this.key;
     }
 
@@ -31,7 +31,7 @@ abstract class Exercise implements Data{
         return this.hunpos;
     }
 
-    setKey(key: number): void {
+    setKey(key: string): void {
         this.key=key;
     }
 

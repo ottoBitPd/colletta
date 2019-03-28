@@ -21,7 +21,7 @@ class FirebaseExerciseManager extends FirebaseManager {
         if(key===undefined){
             key = this.writeSentence(exercise.getSentence());
         }
-        this.writeSolutionMio(exercise,key);
+        this.writeSolution(exercise,key);
         return key;
     }
 
@@ -62,29 +62,6 @@ class FirebaseExerciseManager extends FirebaseManager {
         return array[array.length -1];
     }
 
-    // /**
-    //  */
-    //  * This method writes the difficulty of a sentence in the database.
-    //  * @param sentence - the sentence to write
-    //  * @returns {number} returns the key of the sentence written
-    //  */
-    // private writeDifficulty(sentenceKey : number, difficulty: number) : void {
-    //     FirebaseManager.database.ref('data/sentences/' + sentenceKey).set({difficulty: difficulty});
-    // }
-    // /**
-    //  * This method writes th topics of a sentence in the database.
-    //  * @param sentence - the sentence to write
-    //  * @returns {number} returns the key of the sentence written
-    //  */
-    // private writeTopics(sentenceKey : number, topics: string []) : void {
-    //     for (let topicIndex = 0; topicIndex < topics.length; topicIndex++) {
-    //         FirebaseManager.database.ref('data/sentences/' + sentenceKey + '/topics').set({
-    //             "topic": topics[topicIndex]
-    //         });
-    //     }
-    // }
-
-
     /**
      * This method write the sentence solution on the database.
      * The sentence solution is composed of tags coming from hunpos and from user correction,
@@ -94,7 +71,7 @@ class FirebaseExerciseManager extends FirebaseManager {
      * @param sentence - the sentence string
      * @param sentenceKey - key of the sentence in the database
      */
-    private writeSolutionMio(exercise : Exercise, sentenceKey: string) {
+    private writeSolution(exercise : Exercise, sentenceKey: string) {
         // vecchi parametri words: string[], finalTags: string[], sentence: string, sentenceKey: number
         let words = exercise.getSentence().split(" ");//poi ci sarà una funzione split migliore in Exercise
         let finalTags = exercise.getSolutionTags();
@@ -102,7 +79,7 @@ class FirebaseExerciseManager extends FirebaseManager {
         let solutionKey = 0;
         //console.log("sentenceKey: " + sentenceKey);
         FirebaseManager.database.ref('data/sentences/' + sentenceKey + '/solutions')
-            .once("value", snap => {
+            .once("value", (snap : any) => {
             solutionKey = snap.numChildren();
             FirebaseManager.database.ref('data/sentences/' + sentenceKey + '/solutions/' + String(solutionKey)).set({
                 "difficulty": exercise.getDifficulty(),
@@ -130,7 +107,7 @@ class FirebaseExerciseManager extends FirebaseManager {
 
         return new Promise<Exercise>(function (resolve) {
             FirebaseManager.database.ref("data/sentences/" + id)
-                .once('value', function (snapshot) {
+                .once('value', function (snapshot : any) {
                 if (snapshot.exists()) {
                     let readedData: Exercise;
                     readedData = new ItalianExercise(snapshot.val().sentence);

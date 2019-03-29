@@ -10,6 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const FirebaseManager_1 = require("./FirebaseManager");
 const ItalianExercise_1 = require("./ItalianExercise");
+//import * as firebase from "firebase";
 //import {Exercise} from "./Exercise";
 class FirebaseExerciseManager extends FirebaseManager_1.FirebaseManager {
     constructor() {
@@ -49,6 +50,7 @@ class FirebaseExerciseManager extends FirebaseManager_1.FirebaseManager {
                     if (snapshot.exists()) {
                         snapshot.forEach(function (data) {
                             if (data.val().sentence.toLowerCase() === sentence.toLowerCase()) {
+<<<<<<< HEAD
                                 //console.log("esiste");
                                 return resolve(data.key);
                             }
@@ -57,6 +59,16 @@ class FirebaseExerciseManager extends FirebaseManager_1.FirebaseManager {
                         return resolve(undefined);
                     }
                     //console.log("database vuoto");
+=======
+                                console.log("esiste");
+                                return resolve(data.key);
+                            }
+                            console.log("non esiste");
+                            return resolve(undefined);
+                        });
+                    }
+                    console.log("database vuoto");
+>>>>>>> c9586abdb1b46356b4a4ca055a9ffaae1c48b050
                     return resolve(undefined);
                 });
             });
@@ -157,6 +169,30 @@ class FirebaseExerciseManager extends FirebaseManager_1.FirebaseManager {
                         return resolve(readData);
                     }
                     return resolve(undefined);
+                });
+            });
+        });
+    }
+    // @ts-ignore
+    remove(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const ProData = this.removeFromId(id);
+            const removed = yield ProData;
+            return removed;
+        });
+    }
+    removeFromId(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const ref = FirebaseManager_1.FirebaseManager.database.ref("data/sentences/" + id);
+            // @ts-ignore
+            return new Promise(function (resolve) {
+                ref.once('value', function (snapshot) {
+                    if (snapshot.exists()) {
+                        ref.remove();
+                        // @ts-ignore
+                        return resolve(true);
+                    }
+                    return resolve(false);
                 });
             });
         });

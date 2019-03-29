@@ -3,7 +3,6 @@ import {Data} from "./Data";
 import {Exercise} from "./Exercise";
 import {ItalianExercise} from "./ItalianExercise";
 import {Solution} from "./Solution";
-//import {Exercise} from "./Exercise";
 
 class FirebaseExerciseManager extends FirebaseManager {
 
@@ -135,16 +134,15 @@ class FirebaseExerciseManager extends FirebaseManager {
     */
 
     // @ts-ignore
-    async read(id: string): Data {
+    public async read(id: string): Data {
 
         const ProData: Promise <Exercise> = this.getExerciseById(id);
         const readed = await ProData;
-
         return readed;
     }
 
     // @ts-ignore
-    async getExerciseById(id : string) : Promise<Exercise> {
+    private async getExerciseById(id : string) : Promise<Exercise> {
 
         return new Promise<Exercise>(function (resolve) {
             FirebaseManager.database.ref("data/sentences/" + id)
@@ -172,11 +170,30 @@ class FirebaseExerciseManager extends FirebaseManager {
         });
     }
 
+    // @ts-ignore
+    public async remove(id: string): boolean {
+        const ProData: Promise<boolean> = this.removeFromId(id);
+        const removed = await ProData;
+        return removed;
+    }
+
+    private async removeFromId(id : string) {
+        const ref=FirebaseManager.database.ref("data/sentences/" + id);
+        // @ts-ignore
+        return new Promise<boolean>(function (resolve) {
+            ref.once('value',  function (snapshot: any) {
+                if (snapshot.exists()) {
+                    ref.remove();
+                    // @ts-ignore
+                    return resolve(true);
+                }
+                return resolve(false);
+            });
+        });
+    }
+
     /*
     //TODO
-    remove(id: number): boolean;
-
-    read(id: number): Data;
 
     update(id: number): void;*/
 

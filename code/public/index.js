@@ -29,33 +29,20 @@ var savePageView = new SavePageView_1.SavePageView();
 var exercisePageView = new ExercisePageView_1.ExercisePageView();
 var exercisePage = new ExerciseController_1.ExerciseController(exercisePageView, savePageView, objDb); //objDb
 exercisePage.update(app);
-<<<<<<< HEAD
-const ItalianExercise_1 = require("./ts/model/ItalianExercise");
-=======
 /*var savePageView = new SavePageView();
 var savePage = new SavePageController(savePageView, objDb);
 savePage.update(app);*/
 //import {Exercise} from "./ts/model/Exercise";
->>>>>>> c9586abdb1b46356b4a4ca055a9ffaae1c48b050
+//import {ItalianExercise} from "./ts/model/ItalianExercise";
 app.listen(8080, function () {
     return __awaiter(this, void 0, void 0, function* () {
         var host = "127.0.0.1";
         var port = "8080";
-<<<<<<< HEAD
         // @ts-ignore
-        var rd = new ItalianExercise_1.ItalianExercise("Ciao enrico", "authorIdValue");
-        rd.setSolution("chicco", ["ciccio", "pasticcio"], ["topics"], 3);
-        rd.addValutation("jjjj", 5);
-        objDb.insert(rd);
-=======
->>>>>>> c9586abdb1b46356b4a4ca055a9ffaae1c48b050
         console.log("Example app listening at http://%s:%s", host, port);
-        // @ts-ignore
-        var key = yield objDb.search("gianfigone");
-        console.log(key);
-        var b = yield objDb.remove(key);
-        console.log("fuori index");
-        console.log(b);
+        let key = yield objDb.search("frase per prova");
+        let path = ("data/sentences/" + key + "/solutions/0/difficulty");
+        yield objDb.update(path, "5");
     });
 });
 //# sourceMappingURL=index.js.map

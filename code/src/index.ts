@@ -30,6 +30,7 @@ exercisePage.update(app);
 var savePage = new SavePageController(savePageView, objDb);
 savePage.update(app);*/
 
+
 import {Exercise} from "./ts/model/Exercise";
 import {Client} from "./ts/model/Client";
 import ClientBuilder = Client.ClientBuilder;
@@ -38,6 +39,8 @@ import ClientBuilder = Client.ClientBuilder;
 app.listen(8080, async function () {
     var host = "127.0.0.1";
     var port = "8080";
+    console.log("Example app listening at http://%s:%s", host, port);
+
 
     // @ts-ignore
     var rd : Exercise = new Exercise("frase per prova", "authorIdValue");

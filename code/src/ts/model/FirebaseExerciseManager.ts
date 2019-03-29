@@ -192,11 +192,27 @@ class FirebaseExerciseManager extends FirebaseManager {
         });
     }
 
-    /*
-    //TODO
+    public async update (path:string, value: any) {
+        let splittedPath =path.split("/");
+        let position : number = splittedPath.length -1;
+        let field : string=splittedPath[position];
+        console.log(field);
+        switch (field) {
+            case "difficulty": await this.updateDifficulty(path, value);
+            //case "tags": await this.updateTags(path, value);
+            default : await console.log("field doesn't exists");
+        }
+    }
 
-    update(id: number): void;*/
 
+    private async updateDifficulty(path : string, value:any) {
+        const ref=FirebaseManager.database.ref(path);
+        ref.once('value',function (snapshot:any) {
+            if (snapshot.exists()) {
+                ref.set(value);
+            }
+        });
+    }
 
 
 }

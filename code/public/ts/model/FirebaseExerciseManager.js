@@ -9,7 +9,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const FirebaseManager_1 = require("./FirebaseManager");
+<<<<<<< HEAD
 const Exercise_1 = require("./Exercise");
+=======
+const ItalianExercise_1 = require("./ItalianExercise");
+>>>>>>> 8ed49eb3689a68adb5e2595c44b1be0277b399db
 class FirebaseExerciseManager extends FirebaseManager_1.FirebaseManager {
     constructor() {
         super();
@@ -181,6 +185,29 @@ class FirebaseExerciseManager extends FirebaseManager_1.FirebaseManager {
                     }
                     return resolve(false);
                 });
+            });
+        });
+    }
+    update(path, value) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let splittedPath = path.split("/");
+            let position = splittedPath.length - 1;
+            let field = splittedPath[position];
+            console.log(field);
+            switch (field) {
+                case "difficulty": yield this.updateDifficulty(path, value);
+                //case "tags": await this.updateTags(path, value);
+                default: yield console.log("field doesn't exists");
+            }
+        });
+    }
+    updateDifficulty(path, value) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const ref = FirebaseManager_1.FirebaseManager.database.ref(path);
+            ref.once('value', function (snapshot) {
+                if (snapshot.exists()) {
+                    ref.set(value);
+                }
             });
         });
     }

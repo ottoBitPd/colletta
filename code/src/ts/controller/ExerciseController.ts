@@ -1,7 +1,7 @@
 import {PageController} from "./PageController"
 //import {ExercisePageView} from "../view/ExercisePageView";
-//import {Exercise} from "../model/Exercise";
-import {ItalianExercise} from "../model/ItalianExercise";
+import {Exercise} from "../model/Exercise";
+
 //import {HunposManager} from "../model/HunposManager";
 
 class ExerciseController extends PageController{
@@ -30,7 +30,7 @@ class ExerciseController extends PageController{
             if(key===-1){
                 key = this.model.writeSentence(request.body.sentence)
             }*/
-            this.exercise = new ItalianExercise(request.body.sentence, "authorIdValue");
+            this.exercise = new Exercise(request.body.sentence, "authorIdValue");
             //sending the sentence to hunpos which will provide a solution
             var hunposSolution = this.exercise.autosolve();
             //creation of the array containing tags provided from hunpos solution

@@ -31,17 +31,23 @@ var savePage = new SavePageController(savePageView, objDb);
 savePage.update(app);*/
 
 import {Exercise} from "./ts/model/Exercise";
-import {ItalianExercise} from "./ts/model/ItalianExercise";
+import {Client} from "./ts/model/Client";
+import ClientBuilder = Client.ClientBuilder;
+
 
 app.listen(8080, async function () {
     var host = "127.0.0.1";
     var port = "8080";
 
     // @ts-ignore
-    var rd : Exercise = new ItalianExercise("Ciao enrico", "authorIdValue");
-    rd.setSolution("chicco",["ciccio","pasticcio"],["topics"],3);
-    rd.addValutation("jjjj",5);
+    var rd : Exercise = new Exercise("frase per prova", "authorIdValue");
+    rd.setSolution("solverIdValue",["tag1","tag2"],["topic1","topic2"],5);
+    rd.addValutation("teacherIdValue",10);
     objDb.insert(rd);
+
+    let client = (new ClientBuilder()).build();
+    client.getClassClient();
+
 
     console.log("Example app listening at http://%s:%s", host, port);
 });

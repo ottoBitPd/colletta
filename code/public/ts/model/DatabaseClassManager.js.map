@@ -1,0 +1,1 @@
+{"version":3,"file":"DatabaseClassManager.js","sourceRoot":"","sources":["../../../src/ts/model/DatabaseClassManager.ts"],"names":[],"mappings":";;AAGA,MAAM,oBAAoB;IACtB;IAEA,CAAC;IACD,MAAM,CAAC,GAAQ;QACX,OAAO,GAAG,CAAC;IACf,CAAC;IACD,MAAM,CAAC,EAAS;QACZ,OAAO,IAAI,CAAC;IAChB,CAAC;IACD,IAAI,CAAC,EAAS;QACV,OAAO,IAAI,CAAC;IAChB,CAAC;IACD,MAAM,CAAC,EAAS;IAEhB,CAAC;CACJ;AACO,oDAAoB"}

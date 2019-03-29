@@ -8,7 +8,7 @@ class Exercise {
         this.key = "-1";
         this.authorId = authorId;
         this.newSolution = null;
-        this.solution = [];
+        this.solutions = [];
         this.hunpos = new HunposManager_1.HunposManager();
     }
     getKey() {
@@ -33,10 +33,10 @@ class Exercise {
         this.newSolution = new Solution_1.Solution(undefined, solverId, solutionTags, topics, difficulty);
     }
     addSolution(key, solverId, solutionTags, topics, difficulty, valutations, time) {
-        this.solution.push(new Solution_1.Solution(key, solverId, solutionTags, topics, difficulty, valutations, time));
+        this.solutions.push(new Solution_1.Solution(key, solverId, solutionTags, topics, difficulty, valutations, time));
     }
     getSolutions() {
-        return this.solution;
+        return this.solutions;
     }
     addValutation(teacherID, mark) {
         if (this.newSolution)
@@ -45,6 +45,10 @@ class Exercise {
     getNewSolution() {
         return this.newSolution;
     }
+    autosolve() {
+        return this.getPOSManager().getSolution(this.getSentence());
+    }
+    ;
     evaluate() { return 1; }
     ;
     toJSON() {

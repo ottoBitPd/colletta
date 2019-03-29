@@ -9,9 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const FirebaseManager_1 = require("./FirebaseManager");
-const ItalianExercise_1 = require("./ItalianExercise");
-//import * as firebase from "firebase";
-//import {Exercise} from "./Exercise";
+const Exercise_1 = require("./Exercise");
 class FirebaseExerciseManager extends FirebaseManager_1.FirebaseManager {
     constructor() {
         super();
@@ -50,7 +48,6 @@ class FirebaseExerciseManager extends FirebaseManager_1.FirebaseManager {
                     if (snapshot.exists()) {
                         snapshot.forEach(function (data) {
                             if (data.val().sentence.toLowerCase() === sentence.toLowerCase()) {
-<<<<<<< HEAD
                                 //console.log("esiste");
                                 return resolve(data.key);
                             }
@@ -59,16 +56,6 @@ class FirebaseExerciseManager extends FirebaseManager_1.FirebaseManager {
                         return resolve(undefined);
                     }
                     //console.log("database vuoto");
-=======
-                                console.log("esiste");
-                                return resolve(data.key);
-                            }
-                            console.log("non esiste");
-                            return resolve(undefined);
-                        });
-                    }
-                    console.log("database vuoto");
->>>>>>> c9586abdb1b46356b4a4ca055a9ffaae1c48b050
                     return resolve(undefined);
                 });
             });
@@ -157,7 +144,7 @@ class FirebaseExerciseManager extends FirebaseManager_1.FirebaseManager {
                     .once('value', function (snapshot) {
                     if (snapshot.exists()) {
                         let readData = snapshot.val();
-                        let exercise = new ItalianExercise_1.ItalianExercise(readData.sentence, readData.authorID);
+                        let exercise = new Exercise_1.Exercise(readData.sentence, readData.authorID);
                         exercise.setKey(id);
                         for (let sol in readData.solutions) {
                             let vals = new Map();

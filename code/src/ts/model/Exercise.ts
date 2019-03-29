@@ -3,11 +3,11 @@ import {HunposManager} from "./HunposManager";
 import {Data} from "./Data";
 import {Solution} from "./Solution";
 
-abstract class Exercise implements Data{
+class Exercise implements Data{
     private sentence: string;
     private authorId: string;
     private newSolution : Solution | null;
-    private solution : Solution [];
+    private solutions : Solution [];
     private key: string;
     private hunpos: POSManager;
 
@@ -17,7 +17,7 @@ abstract class Exercise implements Data{
         this.key = "-1";
         this.authorId = authorId;
         this.newSolution = null;
-        this.solution = [];
+        this.solutions = [];
         this.hunpos = new HunposManager();
     }
 
@@ -50,10 +50,10 @@ abstract class Exercise implements Data{
 
     addSolution(key : number, solverId: string, solutionTags: string[], topics: string[],
                 difficulty: number, valutations : Map<string,number>,time : Date): void {
-        this.solution.push(new Solution(key,solverId, solutionTags, topics, difficulty, valutations,time));
+        this.solutions.push(new Solution(key,solverId, solutionTags, topics, difficulty, valutations,time));
     }
     getSolutions() : Solution []{
-        return this.solution;
+        return this.solutions;
     }
     addValutation(teacherID : string, mark : number) {
         if (this.newSolution)
@@ -63,7 +63,9 @@ abstract class Exercise implements Data{
         return this.newSolution;
     }
 
-    abstract autosolve(): any;
+    autosolve(): any{
+        return this.getPOSManager().getSolution(this.getSentence());
+    };
 
     evaluate() : number {return 1;};
 

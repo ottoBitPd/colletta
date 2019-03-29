@@ -1,7 +1,7 @@
 import {FirebaseManager} from "./FirebaseManager";
 import {Data} from "./Data";
 import {Exercise} from "./Exercise";
-import {ItalianExercise} from "./ItalianExercise";
+//import {ItalianExercise} from "./ItalianExercise";
 import {Solution} from "./Solution";
 
 class FirebaseExerciseManager extends FirebaseManager {
@@ -65,7 +65,7 @@ class FirebaseExerciseManager extends FirebaseManager {
      * @returns {number} returns the key of the sentence written
      */
 
-    public writeSentence(sentence: string, authorId: string) {
+    private writeSentence(sentence: string, authorId: string) {
         let ref = FirebaseManager.database.ref('data/sentences/').push({sentence: sentence, authorId: authorId});
         let array = String(ref).split("/");
         //console.log("returno: "+array[array.length -1])
@@ -149,7 +149,7 @@ class FirebaseExerciseManager extends FirebaseManager {
                 .once('value', function (snapshot : any) {
                 if (snapshot.exists()) {
                     let readData: any = snapshot.val();
-                    let exercise = new ItalianExercise(readData.sentence,readData.authorID);
+                    let exercise = new Exercise(readData.sentence,readData.authorID);
                     exercise.setKey(id);
                     for (let sol in readData.solutions){
                         let vals = new Map<string,number>();

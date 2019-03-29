@@ -31,17 +31,17 @@ var savePage = new SavePageController(savePageView, objDb);
 savePage.update(app);*/
 
 import {Exercise} from "./ts/model/Exercise";
+import {ItalianExercise} from "./ts/model/ItalianExercise";
 
 app.listen(8080, async function () {
     var host = "127.0.0.1";
     var port = "8080";
 
     // @ts-ignore
-    var rd : Exercise = await objDb.read("3");
-    if(rd!== undefined)
-        console.log("rdgetSentence " + rd.getSentence());
-    else
-        console.log("El ze undefined ostrega");
+    var rd : Exercise = new ItalianExercise("Ciao enrico", "authorIdValue");
+    rd.setSolution("chicco",["ciccio","pasticcio"],["topics"],3);
+    rd.addValutation("jjjj",5);
+    objDb.insert(rd);
 
-    console.log("Example app listening at http://%s:%s", host, port)
+    console.log("Example app listening at http://%s:%s", host, port);
 });

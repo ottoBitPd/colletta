@@ -1,13 +1,14 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const HunposManager_1 = require("./HunposManager");
+const Solution_1 = require("./Solution");
 class Exercise {
-    constructor(sentence) {
+    constructor(sentence, authorId) {
         this.sentence = sentence;
         this.key = "-1";
-        this.solutionTags = [];
-        this.topics = [];
-        this.difficulty = 0;
+        this.authorId = authorId;
+        this.newSolution = null;
+        this.solution = [];
         this.hunpos = new HunposManager_1.HunposManager();
     }
     getKey() {
@@ -19,31 +20,32 @@ class Exercise {
     getPOSManager() {
         return this.hunpos;
     }
+    getAuthorId() {
+        return this.authorId;
+    }
     setKey(key) {
         this.key = key;
     }
     setSentence(sentence) {
         this.sentence = sentence;
     }
-    setTopics(topics) {
-        this.topics = topics;
+    setSolution(solverId, solutionTags, topics, difficulty) {
+        this.newSolution = new Solution_1.Solution(undefined, solverId, solutionTags, topics, difficulty);
     }
-    setDifficulty(difficulty) {
-        this.difficulty = difficulty;
+    addSolution(key, solverId, solutionTags, topics, difficulty, valutations, time) {
+        this.solution.push(new Solution_1.Solution(key, solverId, solutionTags, topics, difficulty, valutations, time));
     }
-    setSolutionTags(solutionTags) {
-        this.solutionTags = solutionTags;
+    getSolutions() {
+        return this.solution;
     }
-    getTopics() {
-        return this.topics;
+    addValutation(teacherID, mark) {
+        if (this.newSolution)
+            this.newSolution.addNewMark(teacherID, mark);
     }
-    getDifficulty() {
-        return this.difficulty;
+    getNewSolution() {
+        return this.newSolution;
     }
-    getSolutionTags() {
-        return this.solutionTags;
-    }
-    evaluate(correctionID, solution) { return 1; }
+    evaluate() { return 1; }
     ;
     toJSON() {
         return 1;

@@ -29,16 +29,16 @@ var savePageView = new SavePageView_1.SavePageView();
 var exercisePageView = new ExercisePageView_1.ExercisePageView();
 var exercisePage = new ExerciseController_1.ExerciseController(exercisePageView, savePageView, objDb); //objDb
 exercisePage.update(app);
+const ItalianExercise_1 = require("./ts/model/ItalianExercise");
 app.listen(8080, function () {
     return __awaiter(this, void 0, void 0, function* () {
         var host = "127.0.0.1";
         var port = "8080";
         // @ts-ignore
-        var rd = yield objDb.read("3");
-        if (rd !== undefined)
-            console.log("rdgetSentence " + rd.getSentence());
-        else
-            console.log("El ze undefined ostrega");
+        var rd = new ItalianExercise_1.ItalianExercise("Ciao enrico", "authorIdValue");
+        rd.setSolution("chicco", ["ciccio", "pasticcio"], ["topics"], 3);
+        rd.addValutation("jjjj", 5);
+        objDb.insert(rd);
         console.log("Example app listening at http://%s:%s", host, port);
     });
 });

@@ -1,21 +1,23 @@
 import {POSManager} from './POSManager';
 import {HunposManager} from "./HunposManager";
 import {Data} from "./Data";
+import {Solution} from "./Solution";
 
 abstract class Exercise implements Data{
     private sentence: string;
-    private topics: string [];
-    private difficulty: number;
-    private solutionTags: string [];
+    private authorId: string;
+    private newSolution : Solution | null;
+    private solution : Solution [];
     private key: string;
     private hunpos: POSManager;
 
-    constructor( sentence : string) {
+
+    constructor( sentence : string, authorId :string) {
         this.sentence = sentence;
         this.key = "-1";
-        this.solutionTags = [];
-        this.topics = [];
-        this.difficulty = 0;
+        this.authorId = authorId;
+        this.newSolution = null;
+        this.solution = [];
         this.hunpos = new HunposManager();
     }
 
@@ -30,6 +32,9 @@ abstract class Exercise implements Data{
     getPOSManager(): POSManager {
         return this.hunpos;
     }
+    getAuthorId(): string {
+        return this.authorId;
+    }
 
     setKey(key: string): void {
         this.key=key;
@@ -39,29 +44,28 @@ abstract class Exercise implements Data{
         this.sentence=sentence;
     }
 
-    setTopics(topics: string []): void {
-        this.topics=topics;
+    setSolution(solverId: string, solutionTags: string[],topics : string[], difficulty : number) : void {
+        this.newSolution = new Solution(undefined,solverId,solutionTags,topics,difficulty);
     }
 
-    setDifficulty(difficulty : number): void {
-        this.difficulty=difficulty;
+    addSolution(key : number, solverId: string, solutionTags: string[], topics: string[],
+                difficulty: number, valutations : Map<string,number>,time : Date): void {
+        this.solution.push(new Solution(key,solverId, solutionTags, topics, difficulty, valutations,time));
     }
-    setSolutionTags(solutionTags : string []) : void{
-        this.solutionTags=solutionTags;
+    getSolutions() : Solution []{
+        return this.solution;
     }
-    getTopics(): string [] {
-        return this.topics;
+    addValutation(teacherID : string, mark : number) {
+        if (this.newSolution)
+            this.newSolution.addNewMark(teacherID,mark);
     }
-    getDifficulty() : number{
-        return this.difficulty;
-    }
-    getSolutionTags() : string []{
-        return this.solutionTags;
+    getNewSolution() : Solution | null{
+        return this.newSolution;
     }
 
     abstract autosolve(): any;
 
-    evaluate(correctionID:number, solution:any) : number {return 1;};
+    evaluate() : number {return 1;};
 
     toJSON() : any{
         return 1;

@@ -23,7 +23,7 @@ class ExerciseController extends PageController_1.PageController {
             if(key===-1){
                 key = this.model.writeSentence(request.body.sentence)
             }*/
-            this.exercise = new ItalianExercise_1.ItalianExercise(request.body.sentence);
+            this.exercise = new ItalianExercise_1.ItalianExercise(request.body.sentence, "authorIdValue");
             //sending the sentence to hunpos which will provide a solution
             var hunposSolution = this.exercise.autosolve();
             //creation of the array containing tags provided from hunpos solution

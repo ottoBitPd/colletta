@@ -10,7 +10,7 @@ abstract class Exercise implements Data{
     private key: string;
     private hunpos: POSManager;
 
-    constructor( sentence : string) {
+    protected constructor( sentence : string) {
         this.sentence = sentence;
         this.key = "-1";
         this.solutionTags = [];

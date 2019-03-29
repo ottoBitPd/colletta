@@ -1,5 +1,5 @@
 //import * as functions from 'firebase-functions';//
-import * as express from 'express';
+import * as express from "express";
 
 import {InsertPageView} from './ts/view/InsertPageView';
 import {InsertPageController} from './ts/controller/InsertPageController';
@@ -43,10 +43,14 @@ app.listen(8080, async function () {
 
 
     // @ts-ignore
-    var rd : Exercise = new Exercise("frase per prova", "authorIdValue");
-    rd.setSolution("solverIdValue",["tag1","tag2"],["topic1","topic2"],5);
-    rd.addValutation("teacherIdValue",10);
+    var rd : Exercise = new Exercise("ciao tizio come", "authorIdValue");
+    rd.setSolution("solverIdValue",[ 'Smn', 'Ams', 'Ei' ]
+        ,["topic1","topic2"],5);
+    let myMap = new Map();
+    var d = new Date();
+    rd.addSolution(999,"solverIdValue1",["ciao","p"],["topic1","topic2"],5,myMap,d);
     objDb.insert(rd);
+    console.log("ciaooooo");
 
     let client = (new ClientBuilder()).build();
     client.getClassClient();

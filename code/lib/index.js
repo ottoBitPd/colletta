@@ -41,13 +41,11 @@ app.listen(8080, function () {
         var port = "8080";
         console.log("Example app listening at http://%s:%s", host, port);
         // @ts-ignore
-        var rd = new Exercise_1.Exercise("ciao tizio come", "authorIdValue");
-        rd.setSolution("solverIdValue", ['Smn', 'Ams', 'Ei'], ["topic1", "topic2"], 5);
-        let myMap = new Map();
-        var d = new Date();
-        rd.addSolution(999, "solverIdValue1", ["ciao", "p"], ["topic1", "topic2"], 5, myMap, d);
+        var rd = new Exercise_1.Exercise("frase per prova", "authorIdValue");
+        rd.setSolution("solverIdValue", ["ciao", "perry", "gio"], ["topic1", "topic2"], 5);
+        rd.addValutation("teacherIdValue", 10);
         objDb.insert(rd);
-        console.log(rd.evaluate());
+        console.log(rd.evaluate("solverIdValue"));
         console.log("ciaooooo");
         let client = (new ClientBuilder()).build();
         client.getClassClient();

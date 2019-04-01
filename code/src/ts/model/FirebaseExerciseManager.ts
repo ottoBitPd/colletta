@@ -39,7 +39,7 @@ class FirebaseExerciseManager extends FirebaseManager {
      */
 
 
-    public async search(sentence: string) {
+    public async search(sentence: string): Promise<string> {
         return new Promise(function (resolve) {
             FirebaseManager.database.ref('data/sentences/').orderByChild('sentence')
                 .once("value", function (snapshot: any) {
@@ -134,14 +134,13 @@ class FirebaseExerciseManager extends FirebaseManager {
     */
 
     // @ts-ignore
-    public async read(id: string): Data {
+    public async read(id: string): Promise<Data> {
 
         const ProData: Promise <Exercise> = this.getExerciseById(id);
         const readed = await ProData;
         return readed;
     }
 
-    // @ts-ignore
     private async getExerciseById(id : string) : Promise<Exercise> {
 
         return new Promise<Exercise>(function (resolve) {
@@ -158,20 +157,20 @@ class FirebaseExerciseManager extends FirebaseManager {
                             vals.set(val, readData.solutions[sol].valutations[val]);
                         }
 
-                        exercise.addSolution(readData.solutions[sol].key,readData.solutions[sol].solverID,readData.solutions[sol].tags,
+                        exercise.addSolution(
+                            readData.solutions[sol].key,readData.solutions[sol].solverID,readData.solutions[sol].tags,
                             readData.solutions[sol].topics,readData.solutions[sol].difficulty,vals,readData.solutions[sol].time);
                     }
 
 
-                    return resolve(readData);
+                    return resolve(exercise);
                 }
                 return resolve(undefined);
             });
         });
     }
 
-    // @ts-ignore
-    public async remove(id: string): boolean {
+    public async remove(id: string): Promise<boolean> {
         const ProData: Promise<boolean> = this.removeFromId(id);
         const removed = await ProData;
         return removed;
@@ -198,14 +197,16 @@ class FirebaseExerciseManager extends FirebaseManager {
         let field : string=splittedPath[position];
         console.log(field);
         switch (field) {
-            case "difficulty": await this.updateDifficulty(path, value);
-            //case "tags": await this.updateTags(path, value);
-            default : await console.log("field doesn't exists");
+            case "difficulty": await this.updateField(path, value); break;
+            case "tags": await this.updateField(path, value); break;
+            case "topics":await this.updateField(path, value); break;
+            default : await console.log("field doesn't exists"); return;
         }
+        await this.updateTime(path);
     }
 
 
-    private async updateDifficulty(path : string, value:any) {
+    private async updateField(path : string, value:any) {
         const ref=FirebaseManager.database.ref(path);
         ref.once('value',function (snapshot:any) {
             if (snapshot.exists()) {
@@ -214,6 +215,14 @@ class FirebaseExerciseManager extends FirebaseManager {
         });
     }
 
-
+    private async updateTime(path: string)  {
+        // @ts-ignore
+        let ref=FirebaseManager.database.ref(path).parent.child("time");
+        ref.once('value',function (snapshot:any) {
+            if (snapshot.exists()) {
+                ref.set(Date.now());
+            }
+        });
+    }
 }
 export {FirebaseExerciseManager};

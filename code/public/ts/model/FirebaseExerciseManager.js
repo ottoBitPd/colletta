@@ -136,7 +136,6 @@ class FirebaseExerciseManager extends FirebaseManager_1.FirebaseManager {
             return readed;
         });
     }
-    // @ts-ignore
     getExerciseById(id) {
         return __awaiter(this, void 0, void 0, function* () {
             return new Promise(function (resolve) {
@@ -153,14 +152,13 @@ class FirebaseExerciseManager extends FirebaseManager_1.FirebaseManager {
                             }
                             exercise.addSolution(readData.solutions[sol].key, readData.solutions[sol].solverID, readData.solutions[sol].tags, readData.solutions[sol].topics, readData.solutions[sol].difficulty, vals, readData.solutions[sol].time);
                         }
-                        return resolve(readData);
+                        return resolve(exercise);
                     }
                     return resolve(undefined);
                 });
             });
         });
     }
-    // @ts-ignore
     remove(id) {
         return __awaiter(this, void 0, void 0, function* () {
             const ProData = this.removeFromId(id);
@@ -191,18 +189,39 @@ class FirebaseExerciseManager extends FirebaseManager_1.FirebaseManager {
             let field = splittedPath[position];
             console.log(field);
             switch (field) {
-                case "difficulty": yield this.updateDifficulty(path, value);
-                //case "tags": await this.updateTags(path, value);
-                default: yield console.log("field doesn't exists");
+                case "difficulty":
+                    yield this.updateField(path, value);
+                    break;
+                case "tags":
+                    yield this.updateField(path, value);
+                    break;
+                case "topics":
+                    yield this.updateField(path, value);
+                    break;
+                default:
+                    yield console.log("field doesn't exists");
+                    return;
             }
+            yield this.updateTime(path);
         });
     }
-    updateDifficulty(path, value) {
+    updateField(path, value) {
         return __awaiter(this, void 0, void 0, function* () {
             const ref = FirebaseManager_1.FirebaseManager.database.ref(path);
             ref.once('value', function (snapshot) {
                 if (snapshot.exists()) {
                     ref.set(value);
+                }
+            });
+        });
+    }
+    updateTime(path) {
+        return __awaiter(this, void 0, void 0, function* () {
+            // @ts-ignore
+            let ref = FirebaseManager_1.FirebaseManager.database.ref(path).parent.child("time");
+            ref.once('value', function (snapshot) {
+                if (snapshot.exists()) {
+                    ref.set(Date.now());
                 }
             });
         });

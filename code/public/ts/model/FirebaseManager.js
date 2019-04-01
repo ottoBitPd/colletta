@@ -34,7 +34,7 @@ class FirebaseManager {
         return null;
     }
     insert(obj) { return "-1"; }
-    remove(id) { return false; }
+    // @ts-ignore
     read(id) { return null; }
     update(path, value) { }
     static registerInstance(instanceName, instance) {

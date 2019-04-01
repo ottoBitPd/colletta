@@ -1,5 +1,5 @@
 //import * as functions from 'firebase-functions';//
-import * as express from 'express';
+import * as express from "express";
 
 import {InsertPageView} from './ts/view/InsertPageView';
 import {InsertPageController} from './ts/controller/InsertPageController';
@@ -8,8 +8,10 @@ import {ExerciseController} from "./ts/controller/ExerciseController";
 /*import {SavePageController} from "./ts/controller/SavePageController";*/
 import {SavePageView} from "./ts/view/SavePageView";
 
-import {FirebaseExerciseManager} from "./ts/model/FirebaseExerciseManager";
-const objDb = new FirebaseExerciseManager();
+import {FirebaseUserManager} from "./ts/model/FirebaseUserManager";
+// @ts-ignore
+import {Data} from ".ts/model/Data";
+const objDb = new FirebaseUserManager();
 
 const app = express();
 
@@ -35,12 +37,10 @@ savePage.update(app);*/
 //import {Client} from "./ts/model/Client";
 //import ClientBuilder = Client.ClientBuilder;
 
-
 app.listen(8080, async function () {
     var host = "127.0.0.1";
     var port = "8080";
     console.log("Example app listening at http://%s:%s", host, port);
-
 
     // @ts-ignore
     /*var rd : Exercise = new Exercise("frase per prova", "authorIdValue");
@@ -50,5 +50,5 @@ app.listen(8080, async function () {
 
     /*let client = (new ClientBuilder()).build();
     client.getClassClient();*/
-
+    
 });

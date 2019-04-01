@@ -66,8 +66,47 @@ class Exercise implements Data{
     autosolve(): any{
         return this.getPOSManager().getSolution(this.getSentence());
     };
-
-    evaluate() : number {return 1;};
+    //da un voto alla soluzione corrente(newSolution) rispetto a solution con quel teacherID
+    evaluate(teacherID?: string) : number {
+        console.log("almeno qui entra");
+        var mySolution:Solution|null=this.getNewSolution();
+        if(mySolution==null){
+            return -1;
+        }
+        else{
+            console.log("anche qui");
+            var rightTagsNumber=0;
+            let sol:any;
+            let tags:string [] = [];
+            let exists=false;
+            let solutions= this.getSolutions();
+            if(teacherID!=null){
+                console.log(solutions.length);
+                for(let i=0;i<  solutions.length && !exists;i++){
+                    if(solutions[i].getSolverId()== teacherID){
+                        console.log("trovatoID");
+                        exists=true;
+                        tags=solutions[i].getSolutionTags()
+                    }
+                }
+            }
+            if(!exists || teacherID==null){
+                console.log("non trovato id");
+                sol=this.autosolve();
+                for (let i in sol.sentence) {
+                    tags.push(sol.sentence[i].label);
+                }
+                console.log(tags);
+            }
+            let mySolutionTags=mySolution.getSolutionTags();
+            for(let j =0; j<mySolutionTags.length;j++){
+                if(mySolutionTags[j]==tags[j]){
+                    rightTagsNumber++;
+                }
+            }
+            return ((rightTagsNumber*10)/mySolutionTags.length);
+        }
+    }
 
     toJSON() : any{
         return 1;

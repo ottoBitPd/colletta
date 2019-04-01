@@ -7,6 +7,10 @@ import {ExercisePageView} from "./ts/view/ExercisePageView";
 import {ExerciseController} from "./ts/controller/ExerciseController";
 /*import {SavePageController} from "./ts/controller/SavePageController";*/
 import {SavePageView} from "./ts/view/SavePageView";
+import {LoginView} from "./ts/view/LoginView";
+import {RegistrationView} from "./ts/view/RegistrationView";
+import {AuthenticationController} from "./ts/controller/AuthenticationController";
+
 
 import {FirebaseExerciseManager} from "./ts/model/FirebaseExerciseManager";
 const objDb = new FirebaseExerciseManager();
@@ -17,23 +21,25 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(__dirname));
 
-var insertPageView = new InsertPageView();
-var insertPage = new InsertPageController(insertPageView);
+const insertPageView = new InsertPageView();
+const insertPage = new InsertPageController(insertPageView);
 insertPage.update(app);
 
-var savePageView = new SavePageView();
-var exercisePageView = new ExercisePageView();
-var exercisePage = new ExerciseController(exercisePageView, savePageView, objDb );//objDb
+const savePageView = new SavePageView();
+const exercisePageView = new ExercisePageView();
+const exercisePage = new ExerciseController(exercisePageView, savePageView, objDb );//objDb
 exercisePage.update(app);
 
-/*var savePageView = new SavePageView();
-var savePage = new SavePageController(savePageView, objDb);
-savePage.update(app);*/
+const loginView  = new LoginView();
+const registrationView : any= new RegistrationView();
+const LoginPage = new AuthenticationController(loginView,registrationView);
+LoginPage.update(app);
 
 
-import {Exercise} from "./ts/model/Exercise";
-import {Client} from "./ts/model/Client";
-import ClientBuilder = Client.ClientBuilder;
+
+//import {Exercise} from "./ts/model/Exercise";
+//import {Client} from "./ts/model/Client";
+//import ClientBuilder = Client.ClientBuilder;
 
 
 app.listen(8080, async function () {
@@ -42,7 +48,7 @@ app.listen(8080, async function () {
     console.log("Example app listening at http://%s:%s", host, port);
 
 
-    // @ts-ignore
+  /*  // @ts-ignore
     var rd : Exercise = new Exercise("ciao tizio come", "authorIdValue");
     rd.setSolution("solverIdValue",[ 'Smn', 'Ams', 'Ei' ]
         ,["topic1","topic2"],5);
@@ -53,8 +59,7 @@ app.listen(8080, async function () {
     console.log("ciaooooo");
 
     let client = (new ClientBuilder()).build();
-    client.getClassClient();
+    client.getClassClient();*/
 
 
-    console.log("Example app listening at http://%s:%s", host, port);
 });

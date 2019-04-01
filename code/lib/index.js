@@ -16,40 +16,46 @@ const ExercisePageView_1 = require("./ts/view/ExercisePageView");
 const ExerciseController_1 = require("./ts/controller/ExerciseController");
 /*import {SavePageController} from "./ts/controller/SavePageController";*/
 const SavePageView_1 = require("./ts/view/SavePageView");
+const LoginView_1 = require("./ts/view/LoginView");
+const RegistrationView_1 = require("./ts/view/RegistrationView");
+const AuthenticationController_1 = require("./ts/controller/AuthenticationController");
 const FirebaseExerciseManager_1 = require("./ts/model/FirebaseExerciseManager");
 const objDb = new FirebaseExerciseManager_1.FirebaseExerciseManager();
 const app = express();
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(__dirname));
-var insertPageView = new InsertPageView_1.InsertPageView();
-var insertPage = new InsertPageController_1.InsertPageController(insertPageView);
+const insertPageView = new InsertPageView_1.InsertPageView();
+const insertPage = new InsertPageController_1.InsertPageController(insertPageView);
 insertPage.update(app);
-var savePageView = new SavePageView_1.SavePageView();
-var exercisePageView = new ExercisePageView_1.ExercisePageView();
-var exercisePage = new ExerciseController_1.ExerciseController(exercisePageView, savePageView, objDb); //objDb
+const savePageView = new SavePageView_1.SavePageView();
+const exercisePageView = new ExercisePageView_1.ExercisePageView();
+const exercisePage = new ExerciseController_1.ExerciseController(exercisePageView, savePageView, objDb); //objDb
 exercisePage.update(app);
-/*var savePageView = new SavePageView();
-var savePage = new SavePageController(savePageView, objDb);
-savePage.update(app);*/
-const Exercise_1 = require("./ts/model/Exercise");
-const Client_1 = require("./ts/model/Client");
-var ClientBuilder = Client_1.Client.ClientBuilder;
+const loginView = new LoginView_1.LoginView();
+const registrationView = new RegistrationView_1.RegistrationView();
+const LoginPage = new AuthenticationController_1.AuthenticationController(loginView, registrationView);
+LoginPage.update(app);
+//import {Exercise} from "./ts/model/Exercise";
+//import {Client} from "./ts/model/Client";
+//import ClientBuilder = Client.ClientBuilder;
 app.listen(8080, function () {
     return __awaiter(this, void 0, void 0, function* () {
         var host = "127.0.0.1";
         var port = "8080";
         console.log("Example app listening at http://%s:%s", host, port);
-        // @ts-ignore
-        var rd = new Exercise_1.Exercise("frase per prova", "authorIdValue");
-        rd.setSolution("solverIdValue", ["ciao", "perry", "gio"], ["topic1", "topic2"], 5);
-        rd.addValutation("teacherIdValue", 10);
-        objDb.insert(rd);
-        console.log(rd.evaluate("solverIdValue"));
-        console.log("ciaooooo");
-        let client = (new ClientBuilder()).build();
-        client.getClassClient();
-        console.log("Example app listening at http://%s:%s", host, port);
+        /*  // @ts-ignore
+          var rd : Exercise = new Exercise("ciao tizio come", "authorIdValue");
+          rd.setSolution("solverIdValue",[ 'Smn', 'Ams', 'Ei' ]
+              ,["topic1","topic2"],5);
+          let myMap = new Map();
+          var d = new Date();
+          rd.addSolution(999,"solverIdValue1",["ciao","p"],["topic1","topic2"],5,myMap,d);
+          objDb.insert(rd);
+          console.log("ciaooooo");
+      
+          let client = (new ClientBuilder()).build();
+          client.getClassClient();*/
     });
 });
 //# sourceMappingURL=index.js.map

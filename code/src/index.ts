@@ -31,9 +31,9 @@ var savePage = new SavePageController(savePageView, objDb);
 savePage.update(app);*/
 
 
-import {Exercise} from "./ts/model/Exercise";
-import {Client} from "./ts/model/Client";
-import ClientBuilder = Client.ClientBuilder;
+//import {Exercise} from "./ts/model/Exercise";
+//import {Client} from "./ts/model/Client";
+//import ClientBuilder = Client.ClientBuilder;
 
 
 app.listen(8080, async function () {
@@ -43,14 +43,12 @@ app.listen(8080, async function () {
 
 
     // @ts-ignore
-    var rd : Exercise = new Exercise("frase per prova", "authorIdValue");
+    /*var rd : Exercise = new Exercise("frase per prova", "authorIdValue");
     rd.setSolution("solverIdValue",["tag1","tag2"],["topic1","topic2"],5);
     rd.addValutation("teacherIdValue",10);
-    objDb.insert(rd);
+    objDb.insert(rd);*/
 
-    let client = (new ClientBuilder()).build();
-    client.getClassClient();
+    /*let client = (new ClientBuilder()).build();
+    client.getClassClient();*/
 
-
-    console.log("Example app listening at http://%s:%s", host, port);
 });

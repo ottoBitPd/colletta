@@ -32,33 +32,21 @@ exercisePage.update(app);
 /*var savePageView = new SavePageView();
 var savePage = new SavePageController(savePageView, objDb);
 savePage.update(app);*/
-<<<<<<< HEAD
-const Exercise_1 = require("./ts/model/Exercise");
-const Client_1 = require("./ts/model/Client");
-var ClientBuilder = Client_1.Client.ClientBuilder;
-=======
 //import {Exercise} from "./ts/model/Exercise";
-//import {ItalianExercise} from "./ts/model/ItalianExercise";
->>>>>>> 8ed49eb3689a68adb5e2595c44b1be0277b399db
+//import {Client} from "./ts/model/Client";
+//import ClientBuilder = Client.ClientBuilder;
 app.listen(8080, function () {
     return __awaiter(this, void 0, void 0, function* () {
         var host = "127.0.0.1";
         var port = "8080";
+        console.log("Example app listening at http://%s:%s", host, port);
         // @ts-ignore
-<<<<<<< HEAD
-        var rd = new Exercise_1.Exercise("frase per prova", "authorIdValue");
-        rd.setSolution("solverIdValue", ["tag1", "tag2"], ["topic1", "topic2"], 5);
-        rd.addValutation("teacherIdValue", 10);
-        objDb.insert(rd);
-        let client = (new ClientBuilder()).build();
-        client.getClassClient();
-        console.log("Example app listening at http://%s:%s", host, port);
-=======
-        console.log("Example app listening at http://%s:%s", host, port);
-        let key = yield objDb.search("frase per prova");
-        let path = ("data/sentences/" + key + "/solutions/0/difficulty");
-        yield objDb.update(path, "5");
->>>>>>> 8ed49eb3689a68adb5e2595c44b1be0277b399db
+        /*var rd : Exercise = new Exercise("frase per prova", "authorIdValue");
+        rd.setSolution("solverIdValue",["tag1","tag2"],["topic1","topic2"],5);
+        rd.addValutation("teacherIdValue",10);
+        objDb.insert(rd);*/
+        /*let client = (new ClientBuilder()).build();
+        client.getClassClient();*/
     });
 });
 //# sourceMappingURL=index.js.map

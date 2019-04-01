@@ -9,11 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const FirebaseManager_1 = require("./FirebaseManager");
-<<<<<<< HEAD
 const Exercise_1 = require("./Exercise");
-=======
-const ItalianExercise_1 = require("./ItalianExercise");
->>>>>>> 8ed49eb3689a68adb5e2595c44b1be0277b399db
 class FirebaseExerciseManager extends FirebaseManager_1.FirebaseManager {
     constructor() {
         super();

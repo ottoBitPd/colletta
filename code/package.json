@@ -12,6 +12,7 @@
     "body-parser": "^1.18.3",
     "firebase": "^5.9.1",
     "firebase-admin": "^7.0.0",
+    "password-hash": "^1.2.2",
     "shelljs": "^0.8.3"
   },
   "devDependencies": {

@@ -44,6 +44,7 @@ class AuthenticationController extends PageController {
             if(req.body.username!=="admin")
             {
                 res.send('<h3>Utente registrato</h3>');
+                // @ts-ignore
                 ref.child('profilo6').set({username: req.body.username,password:hashedPassword});
 
             }else

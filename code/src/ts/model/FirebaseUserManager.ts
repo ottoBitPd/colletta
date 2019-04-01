@@ -1,6 +1,8 @@
 import {FirebaseManager} from "./FirebaseManager";
 import {Data} from "./Data";
 import {User} from "./User";
+import {Student} from "./Student";
+import {Teacher} from "./Teacher";
 
 class FirebaseUserManager extends FirebaseManager {
     constructor() {
@@ -13,10 +15,22 @@ class FirebaseUserManager extends FirebaseManager {
         let user = <User>obj;
         let exist  = await this.search(user.getUsername());
         if (exist==="false") {
-            FirebaseManager.database.ref('data/users/').push({name: user.getName(),
-                password: user.getPassword(), lastname: user.getLastName(), username: user.getUsername(),
-                city: user.getCity(), school: user.getSchool()});
-
+            //controllo se user è teacher o student
+            if (user.isTeacher()===true) {
+                let teacher= <Teacher>obj;
+                FirebaseManager.database.ref('data/users').push({name: teacher.getName(),
+                    password: teacher.getPassword(), lastname: teacher.getLastName(), username: teacher.getUsername(),
+                    city: teacher.getCity(), school: user.getSchool(), INPScode: teacher.getINPS()
+                });
+            }
+            else {
+                FirebaseManager.database.ref('data/users').push({
+                    //let student= <Student>obj;
+                    name: user.getName(),
+                    password: user.getPassword(), lastname: user.getLastName(), username: user.getUsername(),
+                    city: user.getCity(), school: user.getSchool()
+                });
+            }
             return user.getID();
         }
         else {
@@ -36,18 +50,18 @@ class FirebaseUserManager extends FirebaseManager {
             FirebaseManager.database.ref("data/users/" + id)
                 .once('value', function (snapshot : any) {
                     if (snapshot.exists()) {
-                        // @ts-ignore
-                        let readData: any = snapshot.val()
-
-                        //----TODO: CONTROLLO SE USER è ALLIEVO O INSEGNANTE
-
-                            //let user = new User(readData.username, readData.password, readData.name,
-                            //readData.lastname, readData.city, readData.school);
-
-                        //return resolve(user);
-
+                        let readData: any = snapshot.val();
+                        let user;
+                        if (readData.INPScode) {
+                             user = new Teacher(readData.username, readData.password, readData.name,
+                                readData.lastname, readData.city, readData.school, readData.INPScode);
+                        }
+                        else {
+                             user = new Student(readData.username, readData.password, readData.name,
+                                readData.lastname, readData.city, readData.school);
+                        }
+                        resolve(user);
                     }
-
                     return resolve(undefined);
                 });
         });
@@ -107,7 +121,7 @@ class FirebaseUserManager extends FirebaseManager {
             case "city": await this.updateField(path, value); break;
             case "school": await this.updateField(path, value); break;
             case "username": await this.updateField(path, value); break;
-
+            case "INPScode": await this.updateField(path, value); break;
             default : console.log("field doesn't exists"); return;
         }
     }

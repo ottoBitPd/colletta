@@ -71,5 +71,15 @@ class Solution {
         this.valutations.set(teacherID,mark);
     }
 
+    evaluateSolution(tags: string []):number{
+        var rightTagsNumber=0;
+        let mySolutionTags=this.getSolutionTags();
+        for(let j =0; j<mySolutionTags.length;j++){
+            if(mySolutionTags[j]==tags[j]){
+                rightTagsNumber++;
+            }
+        }
+        return ((rightTagsNumber*10)/mySolutionTags.length);
+    }
 }
 export {Solution};

@@ -5,6 +5,7 @@ class AuthenticationController extends PageController_1.PageController {
     //private fileSystem:any;
     constructor(viewLogin, viewRegistration) {
         super(null);
+        this.passwordHash = require('password-hash');
         this.viewLogin = viewLogin;
         this.viewRegistration = viewRegistration;
         //this.fileSystem = require ('fs');
@@ -21,6 +22,17 @@ class AuthenticationController extends PageController_1.PageController {
             else {
                 response.send(this.viewRegistration.getPageM(request.query.mess));
             }
+        });
+        app.post("/profile", (req, res) => {
+            let hashedPassword = this.passwordHash.generate(req.body.username);
+            // console.log(hashedPassword);
+            if (req.body.username !== "admin") {
+                res.send('<h3>Utente registrato</h3>');
+                // @ts-ignore
+                ref.child('profilo6').set({ username: req.body.username, password: hashedPassword });
+            }
+            else
+                res.send('<h3>Credenziali sbagliate</h3>');
         });
     }
 }

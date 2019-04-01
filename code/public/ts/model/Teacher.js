@@ -17,9 +17,12 @@ class Teacher extends User_1.User {
         });
         return lista;
     }
+<<<<<<< HEAD
+=======
     isTeacher() {
         return true;
     }
+>>>>>>> 9db7ee1784113cb663fb16eba5c63c485f967a12
 }
 exports.Teacher = Teacher;
 //# sourceMappingURL=Teacher.js.map

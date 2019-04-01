@@ -48,6 +48,11 @@ class Exercise {
     autosolve() {
         return this.getPOSManager().getSolution(this.getSentence());
     }
+<<<<<<< HEAD
+    ;
+    evaluate() { return 1; }
+=======
+>>>>>>> 9db7ee1784113cb663fb16eba5c63c485f967a12
     ;
     //da un voto alla soluzione corrente(newSolution) rispetto a solution con quel teacherID
     evaluate(teacherID) {

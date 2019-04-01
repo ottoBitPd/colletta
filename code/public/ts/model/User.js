@@ -30,6 +30,13 @@ class User {
     getSchool() {
         return this.databaseInfo.school;
     }
+<<<<<<< HEAD
+    samePassword(otherPassword) {
+        if (otherPassword == this.databaseInfo.password)
+            return true;
+        return false;
+    }
+=======
     getPassword() {
         return this.databaseInfo.password;
     }
@@ -45,6 +52,7 @@ class User {
     isTeacher() {
         return false;
     }
+>>>>>>> 9db7ee1784113cb663fb16eba5c63c485f967a12
     getID() {
         return this.databaseInfo.id;
     }

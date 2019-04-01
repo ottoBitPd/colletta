@@ -2,7 +2,7 @@ import {FirebaseManager} from "./FirebaseManager";
 import {Data} from "./Data";
 import {Exercise} from "./Exercise";
 import {ItalianExercise} from "./ItalianExercise";
-//import {Exercise} from "./Exercise";
+import {Solution} from "./Solution";
 
 class FirebaseExerciseManager extends FirebaseManager {
 
@@ -14,14 +14,21 @@ class FirebaseExerciseManager extends FirebaseManager {
     // @ts-ignore
     async insert(obj: Data): string {
         //guardo se esiste data in json e butto dentro in db
-        let exercise = <Exercise> obj;
-        let key : any;
+        let exercise = <Exercise>obj;
+        let key: any;
         key = await this.search(exercise.getSentence());
-        console.log("ritorna: "+key);
-        if(key===undefined){
-            key = this.writeSentence(exercise.getSentence());
+        console.log("ritorna: " + key);
+        if (key === undefined) {//exercise does not exist in the db
+            console.log("inserting sentence");
+            key = this.writeSentence(exercise.getSentence(), exercise.getAuthorId());
         }
-        this.writeSolution(exercise,key);
+
+        let solution = exercise.getNewSolution();
+        if ( solution !== null){
+            console.log("inserting solution");
+            this.writeSolution(solution, key);
+        }
+
         return key;
     }
 
@@ -35,16 +42,19 @@ class FirebaseExerciseManager extends FirebaseManager {
     public async search(sentence: string) {
         return new Promise(function (resolve) {
             FirebaseManager.database.ref('data/sentences/').orderByChild('sentence')
-                .once("value", function(snapshot : any) {
-                    snapshot.forEach(function(data :any){
-                        if(data.val().sentence.toLowerCase()===sentence.toLowerCase()) {
-                            //console.log("esiste");
-                            return resolve(data.key);
-                        }
+                .once("value", function (snapshot: any) {
+                    if (snapshot.exists()) {
+                        snapshot.forEach(function (data: any) {
+                            if (data.val().sentence.toLowerCase() === sentence.toLowerCase()) {
+                                //console.log("esiste");
+                                return resolve(data.key);
+                            }
+                        });
                         //console.log("non esiste");
                         return resolve(undefined);
-                    });
-
+                    }
+                    //console.log("database vuoto");
+                    return resolve(undefined);
                 });
         });
     }
@@ -55,12 +65,14 @@ class FirebaseExerciseManager extends FirebaseManager {
      * @returns {number} returns the key of the sentence written
      */
 
-    public writeSentence(sentence: string) {
-        let ref = FirebaseManager.database.ref('data/sentences/').push({sentence: sentence});
-        let array = String (ref).split("/");
+    public writeSentence(sentence: string, authorId: string) {
+        let ref = FirebaseManager.database.ref('data/sentences/').push({sentence: sentence, authorId: authorId});
+        let array = String(ref).split("/");
         //console.log("returno: "+array[array.length -1])
-        return array[array.length -1];
+        return array[array.length - 1];
     }
+
+
 
     /**
      * This method write the sentence solution on the database.
@@ -71,19 +83,31 @@ class FirebaseExerciseManager extends FirebaseManager {
      * @param sentence - the sentence string
      * @param sentenceKey - key of the sentence in the database
      */
-    private writeSolution(exercise : Exercise, sentenceKey: string) {
+    private writeSolution(solution: Solution, sentenceKey: string) : void {
+        if (solution.getValutations() !== null){
+            FirebaseManager.database.ref('data/sentences/' + sentenceKey + '/solutions/').push({
+                "solverId": solution.getSolverId(),
+                "tags": solution.getSolutionTags(),
+                "topics": solution.getTopics(),
+                "difficulty": solution.getDifficulty(),
+                "valutations" : solution.JSONValutations(),
+                "time" : Date.now()
+            });
+        }
+            //FirebaseManager.database.ref('data/sentences/' + sentenceKey + '/solutions/' + String(solutionKey)).child(String(wordSolutionKey)).set({
         // vecchi parametri words: string[], finalTags: string[], sentence: string, sentenceKey: number
-        let words = exercise.getSentence().split(" ");//poi ci sarà una funzione split migliore in Exercise
-        let finalTags = exercise.getSolutionTags();
+        //let words = exercise.getSentence().split(" ");//poi ci sarà una funzione split migliore in Exercise
+
         //let topics = exercise.getTopics();
-        let solutionKey = 0;
+        //let solutionKey = 0;
         //console.log("sentenceKey: " + sentenceKey);
-        FirebaseManager.database.ref('data/sentences/' + sentenceKey + '/solutions')
+        /*FirebaseManager.database.ref('data/sentences/' + sentenceKey + '/solutions')
             .once("value", (snap : any) => {
             solutionKey = snap.numChildren();
             FirebaseManager.database.ref('data/sentences/' + sentenceKey + '/solutions/' + String(solutionKey)).set({
-                "difficulty": exercise.getDifficulty(),
-                "topics": exercise.getTopics()
+                "difficulty": exercise.getSolution().getDifficulty(),
+                "solverId": exercise.getSolution().getSolverId(),
+                "topics": exercise.getSolution().getTopics()
             });
             for (let wordSolutionKey = 0; wordSolutionKey < words.length; wordSolutionKey++) {
                 FirebaseManager.database.ref('data/sentences/' + sentenceKey + '/solutions/' + String(solutionKey)).child(String(wordSolutionKey)).set({
@@ -91,44 +115,104 @@ class FirebaseExerciseManager extends FirebaseManager {
                     "tag": finalTags[wordSolutionKey]
                 });
             }
-        });
+            this.writeValutation(exercise , sentenceKey, solutionKey );
+        });*/
     }
+
+    /*
+    private writeValutation(exercise : Exercise, sentenceKey : string, solutionKey : number) {
+        FirebaseManager.database.ref('data/sentences/' + sentenceKey + '/solutions/'+solutionKey+'/valutations')
+            .once("value", (snap : any) => {
+                let valutationKey = snap.numChildren();
+                FirebaseManager.database.ref('data/sentences/' + sentenceKey + '/solutions/' + String(solutionKey)).child(String(valutationKey)).set({
+                    "teacherId": "id del teacher che ha inserito la valutazione scelta",
+                    "valutation": "10 se session=teacher, else risultato evaluate()"
+                });
+
+            });
+    }
+    */
+
     // @ts-ignore
-    async read(id: string): Data {
+    public async read(id: string): Data {
 
         const ProData: Promise <Exercise> = this.getExerciseById(id);
         const readed = await ProData;
-
         return readed;
     }
 
     // @ts-ignore
-    async getExerciseById(id : string) : Promise<Exercise> {
+    private async getExerciseById(id : string) : Promise<Exercise> {
 
         return new Promise<Exercise>(function (resolve) {
             FirebaseManager.database.ref("data/sentences/" + id)
                 .once('value', function (snapshot : any) {
                 if (snapshot.exists()) {
-                    let readedData: Exercise;
-                    readedData = new ItalianExercise(snapshot.val().sentence);
-                    readedData.setKey(id);
-                    readedData.setDifficulty(snapshot.val().difficulty);
-                    readedData.setSolutionTags(snapshot.val().tag);
-                    readedData.setTopics(snapshot.val().topics);
-                    return resolve(readedData);
+                    let readData: any = snapshot.val();
+                    let exercise = new ItalianExercise(readData.sentence,readData.authorID);
+                    exercise.setKey(id);
+                    for (let sol in readData.solutions){
+                        let vals = new Map<string,number>();
+
+                        for (let val in readData.solutions[sol].valutations) {
+                            vals.set(val, readData.solutions[sol].valutations[val]);
+                        }
+
+                        exercise.addSolution(readData.solutions[sol].key,readData.solutions[sol].solverID,readData.solutions[sol].tags,
+                            readData.solutions[sol].topics,readData.solutions[sol].difficulty,vals,readData.solutions[sol].time);
+                    }
+
+
+                    return resolve(readData);
                 }
                 return resolve(undefined);
             });
         });
     }
-    /*
-    //TODO
-    remove(id: number): boolean;
 
-    read(id: number): Data;
+    // @ts-ignore
+    public async remove(id: string): boolean {
+        const ProData: Promise<boolean> = this.removeFromId(id);
+        const removed = await ProData;
+        return removed;
+    }
 
-    update(id: number): void;*/
+    private async removeFromId(id : string) {
+        const ref=FirebaseManager.database.ref("data/sentences/" + id);
+        // @ts-ignore
+        return new Promise<boolean>(function (resolve) {
+            ref.once('value',  function (snapshot: any) {
+                if (snapshot.exists()) {
+                    ref.remove();
+                    // @ts-ignore
+                    return resolve(true);
+                }
+                return resolve(false);
+            });
+        });
+    }
 
+    public async update (path:string, value: any) {
+        let splittedPath =path.split("/");
+        let position : number = splittedPath.length -1;
+        let field : string=splittedPath[position];
+        console.log(field);
+        switch (field) {
+            case "difficulty": await this.updateDifficulty(path, value);
+            //case "tags": await this.updateTags(path, value);
+            default : await console.log("field doesn't exists");
+        }
+    }
+
+
+    private async updateDifficulty(path : string, value:any) {
+        const ref=FirebaseManager.database.ref(path);
+        ref.once('value',function (snapshot:any) {
+            if (snapshot.exists()) {
+                ref.set(value);
+            }
+        });
+    }
 
 
 }

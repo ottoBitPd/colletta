@@ -48,7 +48,7 @@ class FirebaseManager implements DatabaseManager {
 
     read(id: string): Data | null {return null;}
 
-    update(id: string): void {}
+    update(path:string, value: any): void {}
 
     static registerInstance(instanceName : string, instance : FirebaseManager) : void{
         FirebaseManager.registry.set(instanceName,instance);

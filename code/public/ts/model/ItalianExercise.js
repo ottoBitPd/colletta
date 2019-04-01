@@ -2,8 +2,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const Exercise_1 = require("./Exercise");
 class ItalianExercise extends Exercise_1.Exercise {
-    constructor(sentence) {
-        super(sentence);
+    constructor(sentence, authorId) {
+        super(sentence, authorId);
     }
     getKey() {
         return super.getKey();
@@ -23,7 +23,7 @@ class ItalianExercise extends Exercise_1.Exercise {
     autosolve() {
         return super.getPOSManager().getSolution(this.getSentence());
     }
-    evaluate(correctionID, solution) {
+    evaluate() {
         //2 array di tags uno riferito alla soluzione di riferimento esatta
         //prendere la soluzione con quell'ID
         return 1;

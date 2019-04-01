@@ -36,7 +36,7 @@ class FirebaseManager {
     insert(obj) { return "-1"; }
     remove(id) { return false; }
     read(id) { return null; }
-    update(id) { }
+    update(path, value) { }
     static registerInstance(instanceName, instance) {
         FirebaseManager.registry.set(instanceName, instance);
     }

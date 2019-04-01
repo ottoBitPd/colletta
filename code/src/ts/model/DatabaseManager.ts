@@ -46,6 +46,6 @@ interface DatabaseManager{
     insert(obj:Data) : string;
     remove(id:string) : boolean;
     read(id:string) : Data | null;
-    update(id:string) : void;
+    update(path:string, value: any) : void;
 }
 export {DatabaseManager};

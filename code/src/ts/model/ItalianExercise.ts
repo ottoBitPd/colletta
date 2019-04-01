@@ -2,8 +2,8 @@ import {Exercise} from './Exercise'
 import {POSManager} from "./POSManager";
 
 class ItalianExercise extends Exercise{
-    constructor(sentence : string){
-        super(sentence);
+    constructor(sentence : string, authorId : string){
+        super(sentence, authorId);
     }
     getKey() : string{
         return super.getKey();
@@ -25,7 +25,7 @@ class ItalianExercise extends Exercise{
        return super.getPOSManager().getSolution(this.getSentence())
     }
 
-    evaluate(correctionID:number, solution:any): number{
+    evaluate(): number{
         //2 array di tags uno riferito alla soluzione di riferimento esatta
 
         //prendere la soluzione con quell'ID

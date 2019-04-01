@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 class User {
-    constructor(username) {
+    constructor(username, password, name, lastname, city, school) {
         this.DatabaseUserInfo = class {
             constructor(id, psw, name, lN, city, sc) {
                 this.id = id;
@@ -13,13 +13,30 @@ class User {
             }
         };
         this.username = username;
-        this.databaseInfo = new this.DatabaseUserInfo(0, "", "", "", "", "");
+        this.databaseInfo = new this.DatabaseUserInfo("0", password, name, lastname, city, school);
+    }
+    getUsername() {
+        return this.username;
     }
     getName() {
         return this.databaseInfo.name;
     }
     getLastName() {
         return this.databaseInfo.lastName;
+    }
+    getCity() {
+        return this.databaseInfo.city;
+    }
+    getSchool() {
+        return this.databaseInfo.school;
+    }
+    samePassword(otherPassword) {
+        if (otherPassword == this.databaseInfo.password)
+            return true;
+        return false;
+    }
+    getID() {
+        return this.databaseInfo.id;
     }
     toJSON() {
         return 1;

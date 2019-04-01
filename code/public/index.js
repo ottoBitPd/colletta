@@ -29,17 +29,33 @@ var savePageView = new SavePageView_1.SavePageView();
 var exercisePageView = new ExercisePageView_1.ExercisePageView();
 var exercisePage = new ExerciseController_1.ExerciseController(exercisePageView, savePageView, objDb); //objDb
 exercisePage.update(app);
+/*var savePageView = new SavePageView();
+var savePage = new SavePageController(savePageView, objDb);
+savePage.update(app);*/
+//import {Exercise} from "./ts/model/Exercise";
+const Student_1 = require("./ts/model/Student");
+const Teacher_1 = require("./ts/model/Teacher");
+const Class_1 = require("./ts/model/Class");
 app.listen(8080, function () {
     return __awaiter(this, void 0, void 0, function* () {
         var host = "127.0.0.1";
         var port = "8080";
-        // @ts-ignore
-        var rd = yield objDb.read("3");
-        if (rd !== undefined)
-            console.log("rdgetSentence " + rd.getSentence());
-        else
-            console.log("El ze undefined ostrega");
         console.log("Example app listening at http://%s:%s", host, port);
+        /*
+        -------------- PROVA PER UPDATE ----------
+        // @ts-ignore
+    
+        let key= await objDb.search("frase per prova");
+        let path = ("data/sentences/" + key + "/solutions/0/difficulty");
+        await objDb.update(path, "5");
+        */
+        let classes = [new Class_1.Class("ciao", ["1", "2", "3"]), new Class_1.Class("cia", ["1", "3"]), new Class_1.Class("ciao", ["1", "2", "3"])];
+        let student = new Student_1.Student("ciaone", "", "cc", "cc", "cc", "cc");
+        let teacher = new Teacher_1.Teacher("ciaone", "", "cc", "cc", "cc", "cc", 123);
+        student.databaseInfo.id = "2";
+        teacher.databaseInfo.id = "ciao";
+        console.log(student.getClasses(classes));
+        console.log(teacher.getClasses(classes));
     });
 });
 //# sourceMappingURL=index.js.map

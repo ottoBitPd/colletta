@@ -4,23 +4,23 @@ import {Class} from "./Class";
 abstract class User implements Data{
 
     private username : string;
-    private databaseInfo : any;
+    public databaseInfo : any;
 
 
-    protected constructor(username : string) {
+    constructor(username : string, password: string, name : string, lastname:string, city:string, school : string) {
         this.username= username;
-        this.databaseInfo=new this.DatabaseUserInfo(0, "", "", "", "", "");
+        this.databaseInfo= new this.DatabaseUserInfo("0", password, name, lastname, city, school);
     }
 
     public DatabaseUserInfo = class {
-        public id : number;
+        public id : string;
         public password : string;
         public name : string;
         public lastName : string;
         public city : string;
         public school : string;
 
-        constructor(id : number, psw : string, name : string, lN : string, city : string, sc : string){
+        constructor(id : string, psw : string, name : string, lN : string, city : string, sc : string){
             this.id = id;
             this.password = psw;
             this.name = name;
@@ -58,7 +58,7 @@ abstract class User implements Data{
 
     public abstract getClasses(classList : Class[]) : Class[];
 
-    public getID() {
+    public getID() : string {
         return this.databaseInfo.id;
     }
 

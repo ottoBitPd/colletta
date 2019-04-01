@@ -1,13 +1,16 @@
 import {User} from "./User";
 import {Class} from "./Class";
-import {Exercise} from "./Exercise";
 
 class Teacher extends User {
 
     private INPS : number;
 
-    constructor (username : string, inps : number){
-        super(username);
+    getINPS(): number {
+        return this.INPS;
+    }
+
+    constructor (username : string, password: string, name : string, lastname:string, city:string, school : string, inps : number){
+        super(username, password, name, lastname, city, school);
         this.INPS = inps;
     }
 
@@ -21,3 +24,4 @@ class Teacher extends User {
         return lista;
     }
 }
+export {Teacher}

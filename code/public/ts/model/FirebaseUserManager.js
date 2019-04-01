@@ -31,7 +31,30 @@ class FirebaseUserManager extends FirebaseManager_1.FirebaseManager {
             }
         });
     }
-    // @ts-ignore
+    read(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const ProData = this.getUserById(id);
+            const read = yield ProData;
+            return read;
+        });
+    }
+    getUserById(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return new Promise(function (resolve) {
+                FirebaseManager_1.FirebaseManager.database.ref("data/users/" + id)
+                    .once('value', function (snapshot) {
+                    if (snapshot.exists()) {
+                        // @ts-ignore
+                        let readData = snapshot.val();
+                        //----TODO: CONTROLLO SE USER è ALLIEVO O INSEGNANTE
+                        let user = new User_1.User(readData.username, readData.password, readData.name, readData.lastname, readData.city, readData.school);
+                        return resolve(user);
+                    }
+                    return resolve(undefined);
+                });
+            });
+        });
+    }
     search(username) {
         return __awaiter(this, void 0, void 0, function* () {
             return new Promise(function (resolve) {
@@ -49,30 +72,6 @@ class FirebaseUserManager extends FirebaseManager_1.FirebaseManager {
                     }
                     //console.log("database vuoto");
                     return resolve("false");
-                });
-            });
-        });
-    }
-    // @ts-ignore
-    read(id) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const ProData = this.getUserById(id);
-            const read = yield ProData;
-            return read;
-        });
-    }
-    getUserById(id) {
-        return __awaiter(this, void 0, void 0, function* () {
-            return new Promise(function (resolve) {
-                FirebaseManager_1.FirebaseManager.database.ref("data/users/" + id)
-                    .once('value', function (snapshot) {
-                    if (snapshot.exists()) {
-                        let readData = snapshot.val();
-                        let user = new User_1.User(readData.username, readData.password, readData.name, readData.lastname, readData.city, readData.school);
-                        user.setID(id);
-                        return resolve(user);
-                    }
-                    return resolve(undefined);
                 });
             });
         });

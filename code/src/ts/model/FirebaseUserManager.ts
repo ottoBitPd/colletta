@@ -14,7 +14,7 @@ class FirebaseUserManager extends FirebaseManager {
         let exist  = await this.search(user.getUsername());
         if (exist==="false") {
             FirebaseManager.database.ref('data/users/').push({name: user.getName(),
-                password:user.getPassword(), lastname: user.getLastName(), username: user.getUsername(),
+                password: user.getPassword(), lastname: user.getLastName(), username: user.getUsername(),
                 city: user.getCity(), school: user.getSchool()});
 
             return user.getID();
@@ -36,11 +36,16 @@ class FirebaseUserManager extends FirebaseManager {
             FirebaseManager.database.ref("data/users/" + id)
                 .once('value', function (snapshot : any) {
                     if (snapshot.exists()) {
-                        let readData: any = snapshot.val();
-                        let user = new User(readData.username, readData.password, readData.name,
-                            readData.lastname, readData.city, readData.school);
+                        // @ts-ignore
+                        let readData: any = snapshot.val()
 
-                        return resolve(user);
+                        //----TODO: CONTROLLO SE USER è ALLIEVO O INSEGNANTE
+
+                            //let user = new User(readData.username, readData.password, readData.name,
+                            //readData.lastname, readData.city, readData.school);
+
+                        //return resolve(user);
+
                     }
 
                     return resolve(undefined);

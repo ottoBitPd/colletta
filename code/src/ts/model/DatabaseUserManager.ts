@@ -8,12 +8,12 @@ class DatabaseUserManager implements DatabaseManager{
     insert(obj:Data) : string {
         return "1";
     }
-    remove(id:string) : boolean{
-        return true;
-    }
-    read(id:string) : Data | null{
+    remove(id:string) : Promise<boolean> | null {
         return null;
     }
+    read(id:string) : Promise<Data> | null;
+
+    // @ts-ignore
     update(id:string) : void{
 
     }

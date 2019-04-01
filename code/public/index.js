@@ -16,8 +16,6 @@ const ExercisePageView_1 = require("./ts/view/ExercisePageView");
 const ExerciseController_1 = require("./ts/controller/ExerciseController");
 /*import {SavePageController} from "./ts/controller/SavePageController";*/
 const SavePageView_1 = require("./ts/view/SavePageView");
-//import {User} from "./ts/model/User";
-//import {User} from "./ts/model/User";
 const FirebaseUserManager_1 = require("./ts/model/FirebaseUserManager");
 //import {FirebaseExerciseManager} from "./ts/model/FirebaseExerciseManager";
 const objDb = new FirebaseUserManager_1.FirebaseUserManager();
@@ -36,14 +34,10 @@ exercisePage.update(app);
 /*var savePageView = new SavePageView();
 var savePage = new SavePageController(savePageView, objDb);
 savePage.update(app);*/
-const Exercise_1 = require("./ts/model/Exercise");
-const Client_1 = require("./ts/model/Client");
-var ClientBuilder = Client_1.Client.ClientBuilder;
 app.listen(8080, function () {
     return __awaiter(this, void 0, void 0, function* () {
         var host = "127.0.0.1";
         var port = "8080";
-<<<<<<< HEAD
         console.log("Example app listening at http://%s:%s", host, port);
         //-------------- PROVA PER UPDATE ----------
         // @ts-ignore
@@ -72,29 +66,14 @@ app.listen(8080, function () {
         let user2 : User = await objDb.read(idkey);
         console.log(user2.getName());
         */
-        const idkey = yield objDb.search("perry");
+        const idkey = yield objDb.search("ciccio652");
         console.log(idkey);
         // @ts-ignore
         let user2 = yield objDb.read(idkey);
         console.log(user2.getUsername());
         let path1 = ("data/users/" + idkey + "/username");
-        yield objDb.update(path1, "ciccio652");
-        yield console.log(user2.getUsername());
-=======
-        console.log("Example app listening at http://%s:%s", host, port);
-        // @ts-ignore
-        var rd = new Exercise_1.Exercise("ciao tizio come", "authorIdValue");
-        rd.setSolution("solverIdValue", ['Smn', 'Ams', 'Ei'], ["topic1", "topic2"], 5);
-        let myMap = new Map();
-        var d = new Date();
-        rd.addSolution(999, "solverIdValue1", ["ciao", "p"], ["topic1", "topic2"], 5, myMap, d);
-        objDb.insert(rd);
-        console.log(rd.evaluate());
-        console.log("ciaooooo");
-        let client = (new ClientBuilder()).build();
-        client.getClassClient();
-        console.log("Example app listening at http://%s:%s", host, port);
->>>>>>> 130d677f694a86367158c685ba991e9230783eb0
+        yield objDb.update(path1, "perry15");
+        console.log(user2.getUsername());
     });
 });
 //# sourceMappingURL=index.js.map

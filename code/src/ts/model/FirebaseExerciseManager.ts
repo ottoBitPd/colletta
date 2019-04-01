@@ -1,7 +1,6 @@
 import {FirebaseManager} from "./FirebaseManager";
 import {Data} from "./Data";
 import {Exercise} from "./Exercise";
-//import {ItalianExercise} from "./ItalianExercise";
 import {Solution} from "./Solution";
 
 class FirebaseExerciseManager extends FirebaseManager {
@@ -94,29 +93,6 @@ class FirebaseExerciseManager extends FirebaseManager {
                 "time" : Date.now()
             });
         }
-            //FirebaseManager.database.ref('data/sentences/' + sentenceKey + '/solutions/' + String(solutionKey)).child(String(wordSolutionKey)).set({
-        // vecchi parametri words: string[], finalTags: string[], sentence: string, sentenceKey: number
-        //let words = exercise.getSentence().split(" ");//poi ci sarà una funzione split migliore in Exercise
-
-        //let topics = exercise.getTopics();
-        //let solutionKey = 0;
-        //console.log("sentenceKey: " + sentenceKey);
-        /*FirebaseManager.database.ref('data/sentences/' + sentenceKey + '/solutions')
-            .once("value", (snap : any) => {
-            solutionKey = snap.numChildren();
-            FirebaseManager.database.ref('data/sentences/' + sentenceKey + '/solutions/' + String(solutionKey)).set({
-                "difficulty": exercise.getSolution().getDifficulty(),
-                "solverId": exercise.getSolution().getSolverId(),
-                "topics": exercise.getSolution().getTopics()
-            });
-            for (let wordSolutionKey = 0; wordSolutionKey < words.length; wordSolutionKey++) {
-                FirebaseManager.database.ref('data/sentences/' + sentenceKey + '/solutions/' + String(solutionKey)).child(String(wordSolutionKey)).set({
-                    "word": words[wordSolutionKey],
-                    "tag": finalTags[wordSolutionKey]
-                });
-            }
-            this.writeValutation(exercise , sentenceKey, solutionKey );
-        });*/
     }
 
     /*
@@ -133,7 +109,6 @@ class FirebaseExerciseManager extends FirebaseManager {
     }
     */
 
-    // @ts-ignore
     public async read(id: string): Promise<Data> {
 
         const ProData: Promise <Exercise> = this.getExerciseById(id);

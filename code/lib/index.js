@@ -19,8 +19,8 @@ const SavePageView_1 = require("./ts/view/SavePageView");
 const LoginView_1 = require("./ts/view/LoginView");
 const RegistrationView_1 = require("./ts/view/RegistrationView");
 const AuthenticationController_1 = require("./ts/controller/AuthenticationController");
-const FirebaseExerciseManager_1 = require("./ts/model/FirebaseExerciseManager");
-const objDb = new FirebaseExerciseManager_1.FirebaseExerciseManager();
+const FirebaseUserManager_1 = require("./ts/model/FirebaseUserManager");
+const objDb = new FirebaseUserManager_1.FirebaseUserManager();
 const app = express();
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -44,18 +44,13 @@ app.listen(8080, function () {
         var host = "127.0.0.1";
         var port = "8080";
         console.log("Example app listening at http://%s:%s", host, port);
-        /*  // @ts-ignore
-          var rd : Exercise = new Exercise("ciao tizio come", "authorIdValue");
-          rd.setSolution("solverIdValue",[ 'Smn', 'Ams', 'Ei' ]
-              ,["topic1","topic2"],5);
-          let myMap = new Map();
-          var d = new Date();
-          rd.addSolution(999,"solverIdValue1",["ciao","p"],["topic1","topic2"],5,myMap,d);
-          objDb.insert(rd);
-          console.log("ciaooooo");
-      
-          let client = (new ClientBuilder()).build();
-          client.getClassClient();*/
+        // @ts-ignore
+        /*var rd : Exercise = new Exercise("frase per prova", "authorIdValue");
+        rd.setSolution("solverIdValue",["tag1","tag2"],["topic1","topic2"],5);
+        rd.addValutation("teacherIdValue",10);
+        objDb.insert(rd);*/
+        /*let client = (new ClientBuilder()).build();
+        client.getClassClient();*/
     });
 });
 //# sourceMappingURL=index.js.map

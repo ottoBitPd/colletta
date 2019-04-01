@@ -7,12 +7,13 @@ class DatabaseExerciseManager {
         return "1";
     }
     remove(id) {
-        return true;
+        return null;
     }
     read(id) {
         return null;
     }
     update(id) {
+        ;
     }
 }
 exports.DatabaseExerciseManager = DatabaseExerciseManager;

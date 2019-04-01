@@ -8,14 +8,16 @@ class DatabaseClassManager implements DatabaseManager{
     insert(obj:Data) : string {
         return "1";
     }
-    remove(id:string) : boolean{
-        return true;
-    }
-    read(id:string) : Data | null{
+    remove(id:string) : Promise<boolean> | null {
         return null;
     }
-    update(id:string) : void{
 
+    read(id:string) : Promise<Data> | null {
+        return null;
+    }
+
+    update(id:string) : void {
+        ;
     }
 }
 export {DatabaseClassManager}

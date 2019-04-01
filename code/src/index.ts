@@ -11,6 +11,8 @@ import {SavePageView} from "./ts/view/SavePageView";
 import {FirebaseUserManager} from "./ts/model/FirebaseUserManager";
 // @ts-ignore
 import {Data} from ".ts/model/Data";
+import {Student} from "./ts/model/Student";
+import {Teacher} from "./ts/model/Teacher";
 const objDb = new FirebaseUserManager();
 
 const app = express();

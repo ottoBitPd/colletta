@@ -65,6 +65,12 @@ abstract class User implements Data{
         this.databaseInfo.id= id;
     }
 
+    public isTeacher () {
+        return false;
+    }
+
+    //public abstract getClasses(classList : Class[]) : Class[];
+
     public getID() {
         return this.databaseInfo.id;
     }

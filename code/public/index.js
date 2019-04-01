@@ -17,9 +17,9 @@ const ExerciseController_1 = require("./ts/controller/ExerciseController");
 /*import {SavePageController} from "./ts/controller/SavePageController";*/
 const SavePageView_1 = require("./ts/view/SavePageView");
 const FirebaseUserManager_1 = require("./ts/model/FirebaseUserManager");
-//import {FirebaseExerciseManager} from "./ts/model/FirebaseExerciseManager";
+const Student_1 = require("./ts/model/Student");
+const Teacher_1 = require("./ts/model/Teacher");
 const objDb = new FirebaseUserManager_1.FirebaseUserManager();
-//const objDbEx = new FirebaseExerciseManager();
 const app = express();
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -39,41 +39,10 @@ app.listen(8080, function () {
         var host = "127.0.0.1";
         var port = "8080";
         console.log("Example app listening at http://%s:%s", host, port);
-        //-------------- PROVA PER UPDATE ----------
-        // @ts-ignore
-        //let key= await objDb.insert("")
-        /*
-            let key= await objDbEx.search("frase per prova");
-            console.log (key);
-            let topics : string [] = ["modifica", "anche", "time"];
-            let path1 = ("data/sentences/" + key + "/solutions/-LbN7803AaGYNgx5b-8k/topics");
-            await objDbEx.update(path1, topics);
-        */
-        /*
-        let key= await objDbEx.search("frase per prova");
-        console.log(key);
-        let ex = <ItalianExercise>(await objDbEx.read(key));
-        console.log(ex.getSentence());
-    
-    
-        let user=new User("ciccio652", "ciccio", "ciccio", "pasticcio", "Padova", "UniPD");
-        // @ts-ignore
-        const b =await objDb.insert(user);
-        console.log(b);
-        // @ts-ignore
-        const idkey=await objDb.search(user.getUsername());
-        // @ts-ignore
-        let user2 : User = await objDb.read(idkey);
-        console.log(user2.getName());
-        */
-        const idkey = yield objDb.search("ciccio652");
-        console.log(idkey);
-        // @ts-ignore
-        let user2 = yield objDb.read(idkey);
-        console.log(user2.getUsername());
-        let path1 = ("data/users/" + idkey + "/username");
-        yield objDb.update(path1, "perry15");
-        console.log(user2.getUsername());
+        let st = new Student_1.Student("ciccio652", "qwerty", "ciccio", "pasticcio", "padova", "uniPD");
+        console.log(st.isTeacher());
+        let te = new Teacher_1.Teacher("file88", "p1", "Gilberto", "File", "Padua", "UniPD", 404);
+        console.log(te.isTeacher());
     });
 });
 //# sourceMappingURL=index.js.map

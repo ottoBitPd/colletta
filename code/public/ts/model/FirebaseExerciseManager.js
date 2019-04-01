@@ -92,28 +92,6 @@ class FirebaseExerciseManager extends FirebaseManager_1.FirebaseManager {
                 "time": Date.now()
             });
         }
-        //FirebaseManager.database.ref('data/sentences/' + sentenceKey + '/solutions/' + String(solutionKey)).child(String(wordSolutionKey)).set({
-        // vecchi parametri words: string[], finalTags: string[], sentence: string, sentenceKey: number
-        //let words = exercise.getSentence().split(" ");//poi ci sarà una funzione split migliore in Exercise
-        //let topics = exercise.getTopics();
-        //let solutionKey = 0;
-        //console.log("sentenceKey: " + sentenceKey);
-        /*FirebaseManager.database.ref('data/sentences/' + sentenceKey + '/solutions')
-            .once("value", (snap : any) => {
-            solutionKey = snap.numChildren();
-            FirebaseManager.database.ref('data/sentences/' + sentenceKey + '/solutions/' + String(solutionKey)).set({
-                "difficulty": exercise.getSolution().getDifficulty(),
-                "solverId": exercise.getSolution().getSolverId(),
-                "topics": exercise.getSolution().getTopics()
-            });
-            for (let wordSolutionKey = 0; wordSolutionKey < words.length; wordSolutionKey++) {
-                FirebaseManager.database.ref('data/sentences/' + sentenceKey + '/solutions/' + String(solutionKey)).child(String(wordSolutionKey)).set({
-                    "word": words[wordSolutionKey],
-                    "tag": finalTags[wordSolutionKey]
-                });
-            }
-            this.writeValutation(exercise , sentenceKey, solutionKey );
-        });*/
     }
     /*
     private writeValutation(exercise : Exercise, sentenceKey : string, solutionKey : number) {
@@ -128,7 +106,6 @@ class FirebaseExerciseManager extends FirebaseManager_1.FirebaseManager {
             });
     }
     */
-    // @ts-ignore
     read(id) {
         return __awaiter(this, void 0, void 0, function* () {
             const ProData = this.getExerciseById(id);

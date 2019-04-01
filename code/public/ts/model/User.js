@@ -43,6 +43,10 @@ class User {
     setID(id) {
         this.databaseInfo.id = id;
     }
+    isTeacher() {
+        return false;
+    }
+    //public abstract getClasses(classList : Class[]) : Class[];
     getID() {
         return this.databaseInfo.id;
     }

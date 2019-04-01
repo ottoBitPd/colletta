@@ -9,7 +9,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const FirebaseManager_1 = require("./FirebaseManager");
-const User_1 = require("./User");
 class FirebaseUserManager extends FirebaseManager_1.FirebaseManager {
     constructor() {
         super();
@@ -47,8 +46,9 @@ class FirebaseUserManager extends FirebaseManager_1.FirebaseManager {
                         // @ts-ignore
                         let readData = snapshot.val();
                         //----TODO: CONTROLLO SE USER è ALLIEVO O INSEGNANTE
-                        let user = new User_1.User(readData.username, readData.password, readData.name, readData.lastname, readData.city, readData.school);
-                        return resolve(user);
+                        //let user = new User(readData.username, readData.password, readData.name,
+                        //readData.lastname, readData.city, readData.school);
+                        //return resolve(user);
                     }
                     return resolve(undefined);
                 });

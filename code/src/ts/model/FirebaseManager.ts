@@ -44,9 +44,10 @@ class FirebaseManager implements DatabaseManager {
 
     insert(obj: Data): string {return "-1";}
 
-    remove(id: string): boolean {return false;}
+    remove(id: string): Promise<boolean>;
 
-    read(id: string): Data | null {return null;}
+    // @ts-ignore
+    read(id: string): Promise<Data> | null {return null;}
 
     update(path:string, value: any): void {}
 

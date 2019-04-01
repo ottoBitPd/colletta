@@ -1,2 +1,19 @@
-gianfigone	Sfs	
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+Siamo	Vip1p	
+2	N	
+giova	Vip3s	
+=======
+<<<<<<< HEAD
+scrivi	Vcp3s	
+una	RIfs	
+frase	Sfs	
+=======
+ciao	Smn	
+tizio	Ams	
+come	E	
+>>>>>>> 130d677f694a86367158c685ba991e9230783eb0
+>>>>>>> 448935f6fe3b08e8e8e812e97d23069c3982df4d
 
+>>>>>>> 2de84acd94baf15a1e7780ff42b9280e1fe9dd02

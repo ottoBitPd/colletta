@@ -1,7 +1,7 @@
 import {PageController} from "./PageController"
 //import {ExercisePageView} from "../view/ExercisePageView";
-//import {Exercise} from "../model/Exercise";
-import {ItalianExercise} from "../model/ItalianExercise";
+import {Exercise} from "../model/Exercise";
+
 //import {HunposManager} from "../model/HunposManager";
 
 class ExerciseController extends PageController{
@@ -30,7 +30,7 @@ class ExerciseController extends PageController{
             if(key===-1){
                 key = this.model.writeSentence(request.body.sentence)
             }*/
-            this.exercise = new ItalianExercise(request.body.sentence, "authorIdValue");
+            this.exercise = new Exercise(request.body.sentence, "authorIdValue");
             //sending the sentence to hunpos which will provide a solution
             var hunposSolution = this.exercise.autosolve();
             //creation of the array containing tags provided from hunpos solution
@@ -47,10 +47,10 @@ class ExerciseController extends PageController{
             response.send(this.viewExercise.getPage());
         });
         app.post('/saveExercise', (request : any, response : any) => {
-            this.exercise.setTopics(this.convertTopics(request.body.topics));
-            this.exercise.setDifficulty(request.body.difficulty);
-            console.log('topics: '+this.exercise.getTopics());
-            console.log('topics: '+this.exercise.getDifficulty());
+           /* this.exercise.setTopics(this.convertTopics(request.body.topics));
+            this.exercise.setDifficulty(request.body.difficulty);*/
+            console.log('topics: '+this.convertTopics(request.body.topics));
+            console.log('topics: '+request.body.difficulty);
             var wordsnumber = request.body.wordsnumber;
             /*var sentence = request.body.sentence;
             var key = request.body.key;*/
@@ -60,8 +60,9 @@ class ExerciseController extends PageController{
             //building a array merging tags coming from user corrections and hunpos solution
             var finalTags = this.correctsHunpos(hunposTags,tagsCorrection);
 
-            this.exercise.setSolutionTags(finalTags);
-
+            //solverId ha un valore di Prova
+            this.exercise.setSolution("solverIdValue",finalTags,this.convertTopics(request.body.topics),request.body.difficulty);
+            this.exercise.addValutation("teacherIdValue",10);//valori di prova
             this.db.insert(this.exercise);
             //saving in the database the final solution for the exercise
             //this.model.writeSolution(sentence.split(" "), finalTags, sentence, key);

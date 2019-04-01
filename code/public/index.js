@@ -16,23 +16,34 @@ const ExercisePageView_1 = require("./ts/view/ExercisePageView");
 const ExerciseController_1 = require("./ts/controller/ExerciseController");
 /*import {SavePageController} from "./ts/controller/SavePageController";*/
 const SavePageView_1 = require("./ts/view/SavePageView");
-const FirebaseExerciseManager_1 = require("./ts/model/FirebaseExerciseManager");
-const objDb = new FirebaseExerciseManager_1.FirebaseExerciseManager();
+const LoginView_1 = require("./ts/view/LoginView");
+const RegistrationView_1 = require("./ts/view/RegistrationView");
+const AuthenticationController_1 = require("./ts/controller/AuthenticationController");
+const FirebaseUserManager_1 = require("./ts/model/FirebaseUserManager");
+<<<<<<< HEAD
+=======
+const Teacher_1 = require("./ts/model/Teacher");
+const Student_1 = require("./ts/model/Student");
+>>>>>>> 47ab27f4adcef8ffc23fc87cf5fe90ec8c1174ed
+const objDb = new FirebaseUserManager_1.FirebaseUserManager();
 const app = express();
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(__dirname));
-var insertPageView = new InsertPageView_1.InsertPageView();
-var insertPage = new InsertPageController_1.InsertPageController(insertPageView);
+const insertPageView = new InsertPageView_1.InsertPageView();
+const insertPage = new InsertPageController_1.InsertPageController(insertPageView);
 insertPage.update(app);
-var savePageView = new SavePageView_1.SavePageView();
-var exercisePageView = new ExercisePageView_1.ExercisePageView();
-var exercisePage = new ExerciseController_1.ExerciseController(exercisePageView, savePageView, objDb); //objDb
+const savePageView = new SavePageView_1.SavePageView();
+const exercisePageView = new ExercisePageView_1.ExercisePageView();
+const exercisePage = new ExerciseController_1.ExerciseController(exercisePageView, savePageView, objDb); //objDb
 exercisePage.update(app);
-/*var savePageView = new SavePageView();
-var savePage = new SavePageController(savePageView, objDb);
-savePage.update(app);*/
+const loginView = new LoginView_1.LoginView();
+const registrationView = new RegistrationView_1.RegistrationView();
+const LoginPage = new AuthenticationController_1.AuthenticationController(loginView, registrationView);
+LoginPage.update(app);
+<<<<<<< HEAD
 //import {Exercise} from "./ts/model/Exercise";
+<<<<<<< HEAD
 const Student_1 = require("./ts/model/Student");
 const Teacher_1 = require("./ts/model/Teacher");
 const Class_1 = require("./ts/model/Class");
@@ -56,6 +67,40 @@ app.listen(8080, function () {
         teacher.databaseInfo.id = "ciao";
         console.log(student.getClasses(classes));
         console.log(teacher.getClasses(classes));
+=======
+//import {Client} from "./ts/model/Client";
+//import ClientBuilder = Client.ClientBuilder;
+=======
+>>>>>>> 47ab27f4adcef8ffc23fc87cf5fe90ec8c1174ed
+app.listen(8080, function () {
+    return __awaiter(this, void 0, void 0, function* () {
+        const host = "127.0.0.1";
+        const port = "8080";
+        console.log("Example app listening at http://%s:%s", host, port);
+<<<<<<< HEAD
+        // @ts-ignore
+        /*var rd : Exercise = new Exercise("frase per prova", "authorIdValue");
+        rd.setSolution("solverIdValue",["tag1","tag2"],["topic1","topic2"],5);
+        rd.addValutation("teacherIdValue",10);
+        objDb.insert(rd);*/
+        /*let client = (new ClientBuilder()).build();
+        client.getClassClient();*/
+=======
+        let file = new Teacher_1.Teacher("Gilby55", "daccordoo", "Gilberto", "File", "Padova", "UniPD", 404);
+        yield objDb.insert(file);
+        let gio = new Student_1.Student("Perry15", "Xiaominote7", "Giovanni", "Peron", "Camposampiero city", "UniPD");
+        yield objDb.insert(gio);
+        let keyfile = yield objDb.search("Gilby55");
+        // @ts-ignore
+        console.log(keyfile);
+        let bfile = yield objDb.read(keyfile);
+        console.log(bfile);
+        // @ts-ignore
+        console.log("inpscode " + ((bfile).getINPS()));
+        let path = ("data/users/" + keyfile + "/INPScode");
+        objDb.update(path, 526821651616512161561);
+>>>>>>> 47ab27f4adcef8ffc23fc87cf5fe90ec8c1174ed
+>>>>>>> 9db7ee1784113cb663fb16eba5c63c485f967a12
     });
 });
 //# sourceMappingURL=index.js.map

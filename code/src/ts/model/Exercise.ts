@@ -67,10 +67,39 @@ class Exercise implements Data{
         return this.getPOSManager().getSolution(this.getSentence());
     };
 
-    evaluate() : number {return 1;};
+    //da un voto alla soluzione corrente(newSolution) rispetto a solution con quel teacherID
+    evaluate(teacherID?: string) : number {
+        const mySolution:Solution|null=this.getNewSolution();
+        if(mySolution===null){
+            return -1;
+        }
+        else{
+            let tags:string [] = [];
+            const solutions= this.getSolutions();
+            if(teacherID!==null){
+                const teacherSolution=solutions.find(function(element){
+                    return element.getSolverId()===teacherID;
+                });
+                if(typeof(teacherSolution)==='undefined'){
+                    throw new Error("ID non trovato");
+                }
+                else{
+                    tags=teacherSolution.getSolutionTags();
+                }
+            }
+            else{
+                const hunposSolution=this.autosolve();
+                for (let i in hunposSolution.sentence) {
+                    tags.push(hunposSolution.sentence[i].label);
+                }
+            }
+            return mySolution.evaluateSolution(tags);
+        }
+    }
 
     toJSON() : any{
         return 1;
     }
+
 }
 export {Exercise};

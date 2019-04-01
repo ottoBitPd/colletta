@@ -44,8 +44,8 @@ import {Data} from "./Data";
 
 interface DatabaseManager{
     insert(obj:Data) : string;
-    remove(id:string) : boolean;
-    read(id:string) : Data | null;
+    remove(id:string) : Promise<boolean> | null;
+    read(id:string) : Promise<Data> | null;
     update(path:string, value: any) : void;
 }
 export {DatabaseManager};

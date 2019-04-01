@@ -5,10 +5,6 @@ class Teacher extends User {
 
     private INPS : number;
 
-    getINPS(): number {
-        return this.INPS;
-    }
-
     constructor (username : string, password: string, name : string, lastname:string, city:string, school : string, inps : number){
         super(username, password, name, lastname, city, school);
         this.INPS = inps;
@@ -22,6 +18,14 @@ class Teacher extends User {
         });
 
         return lista;
+    }
+
+    public getINPS() {
+            return this.INPS;
+        }
+
+    public isTeacher(): boolean {
+        return true;
     }
 }
 export {Teacher}

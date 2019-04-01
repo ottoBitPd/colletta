@@ -50,15 +50,28 @@ abstract class User implements Data{
         return this.databaseInfo.school;
     }
 
+
+    public getPassword() : string {
+        return this.databaseInfo.password;
+    }
+
     public samePassword(otherPassword : string) : boolean {
-        if(otherPassword == this.databaseInfo.password)
+        if(otherPassword === this.databaseInfo.password)
             return true;
+        return false;
+    }
+
+    public setID(id :string) {
+        this.databaseInfo.id= id;
+    }
+
+    public isTeacher () {
         return false;
     }
 
     public abstract getClasses(classList : Class[]) : Class[];
 
-    public getID() : string {
+    public getID() {
         return this.databaseInfo.id;
     }
 

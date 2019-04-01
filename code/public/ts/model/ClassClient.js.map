@@ -1,0 +1,1 @@
+{"version":3,"file":"ClassClient.js","sourceRoot":"","sources":["../../../src/ts/model/ClassClient.ts"],"names":[],"mappings":";;AAAA,iEAA4D;AAE5D,MAAM,WAAW;IAEb;QACI,IAAI,CAAC,cAAc,GAAE,IAAI,2CAAoB,EAAE,CAAC;IACpD,CAAC;IAED,iBAAiB;QACb,OAAO,IAAI,CAAC,cAAc,CAAC;IAC/B,CAAC;CACJ;AACM,kCAAW"}

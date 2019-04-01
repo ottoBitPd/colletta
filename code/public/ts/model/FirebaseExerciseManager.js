@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const FirebaseManager_1 = require("./FirebaseManager");
-const ItalianExercise_1 = require("./ItalianExercise");
+const Exercise_1 = require("./Exercise");
 class FirebaseExerciseManager extends FirebaseManager_1.FirebaseManager {
     constructor() {
         super();
@@ -143,7 +143,7 @@ class FirebaseExerciseManager extends FirebaseManager_1.FirebaseManager {
                     .once('value', function (snapshot) {
                     if (snapshot.exists()) {
                         let readData = snapshot.val();
-                        let exercise = new ItalianExercise_1.ItalianExercise(readData.sentence, readData.authorID);
+                        let exercise = new Exercise_1.Exercise(readData.sentence, readData.authorID);
                         exercise.setKey(id);
                         for (let sol in readData.solutions) {
                             let vals = new Map();

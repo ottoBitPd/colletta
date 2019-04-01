@@ -8,7 +8,7 @@ class Exercise {
         this.key = "-1";
         this.authorId = authorId;
         this.newSolution = null;
-        this.solution = [];
+        this.solutions = [];
         this.hunpos = new HunposManager_1.HunposManager();
     }
     getKey() {
@@ -33,10 +33,10 @@ class Exercise {
         this.newSolution = new Solution_1.Solution(undefined, solverId, solutionTags, topics, difficulty);
     }
     addSolution(key, solverId, solutionTags, topics, difficulty, valutations, time) {
-        this.solution.push(new Solution_1.Solution(key, solverId, solutionTags, topics, difficulty, valutations, time));
+        this.solutions.push(new Solution_1.Solution(key, solverId, solutionTags, topics, difficulty, valutations, time));
     }
     getSolutions() {
-        return this.solution;
+        return this.solutions;
     }
     addValutation(teacherID, mark) {
         if (this.newSolution)
@@ -45,8 +45,51 @@ class Exercise {
     getNewSolution() {
         return this.newSolution;
     }
-    evaluate() { return 1; }
+    autosolve() {
+        return this.getPOSManager().getSolution(this.getSentence());
+    }
     ;
+    //da un voto alla soluzione corrente(newSolution) rispetto a solution con quel teacherID
+    evaluate(teacherID) {
+        console.log("almeno qui entra");
+        var mySolution = this.getNewSolution();
+        if (mySolution == null) {
+            return -1;
+        }
+        else {
+            console.log("anche qui");
+            var rightTagsNumber = 0;
+            let sol;
+            let tags = [];
+            let exists = false;
+            let solutions = this.getSolutions();
+            if (teacherID != null) {
+                console.log(solutions.length);
+                for (let i = 0; i < solutions.length && !exists; i++) {
+                    if (solutions[i].getSolverId() == teacherID) {
+                        console.log("trovatoID");
+                        exists = true;
+                        tags = solutions[i].getSolutionTags();
+                    }
+                }
+            }
+            if (!exists || teacherID == null) {
+                console.log("non trovato id");
+                sol = this.autosolve();
+                for (let i in sol.sentence) {
+                    tags.push(sol.sentence[i].label);
+                }
+                console.log(tags);
+            }
+            let mySolutionTags = mySolution.getSolutionTags();
+            for (let j = 0; j < mySolutionTags.length; j++) {
+                if (mySolutionTags[j] == tags[j]) {
+                    rightTagsNumber++;
+                }
+            }
+            return ((rightTagsNumber * 10) / mySolutionTags.length);
+        }
+    }
     toJSON() {
         return 1;
     }

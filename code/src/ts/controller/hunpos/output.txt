@@ -1,4 +1,10 @@
+<<<<<<< HEAD
 scrivi	Vcp3s	
 una	RIfs	
 frase	Sfs	
+=======
+ciao	Smn	
+tizio	Ams	
+come	E	
+>>>>>>> 130d677f694a86367158c685ba991e9230783eb0
 

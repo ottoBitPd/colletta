@@ -36,12 +36,14 @@ exercisePage.update(app);
 /*var savePageView = new SavePageView();
 var savePage = new SavePageController(savePageView, objDb);
 savePage.update(app);*/
-//import {Exercise} from "./ts/model/Exercise";
-//import {ItalianExercise} from "./ts/model/ItalianExercise";
+const Exercise_1 = require("./ts/model/Exercise");
+const Client_1 = require("./ts/model/Client");
+var ClientBuilder = Client_1.Client.ClientBuilder;
 app.listen(8080, function () {
     return __awaiter(this, void 0, void 0, function* () {
         var host = "127.0.0.1";
         var port = "8080";
+<<<<<<< HEAD
         console.log("Example app listening at http://%s:%s", host, port);
         //-------------- PROVA PER UPDATE ----------
         // @ts-ignore
@@ -78,6 +80,21 @@ app.listen(8080, function () {
         let path1 = ("data/users/" + idkey + "/username");
         yield objDb.update(path1, "ciccio652");
         yield console.log(user2.getUsername());
+=======
+        console.log("Example app listening at http://%s:%s", host, port);
+        // @ts-ignore
+        var rd = new Exercise_1.Exercise("ciao tizio come", "authorIdValue");
+        rd.setSolution("solverIdValue", ['Smn', 'Ams', 'Ei'], ["topic1", "topic2"], 5);
+        let myMap = new Map();
+        var d = new Date();
+        rd.addSolution(999, "solverIdValue1", ["ciao", "p"], ["topic1", "topic2"], 5, myMap, d);
+        objDb.insert(rd);
+        console.log(rd.evaluate());
+        console.log("ciaooooo");
+        let client = (new ClientBuilder()).build();
+        client.getClassClient();
+        console.log("Example app listening at http://%s:%s", host, port);
+>>>>>>> 130d677f694a86367158c685ba991e9230783eb0
     });
 });
 //# sourceMappingURL=index.js.map

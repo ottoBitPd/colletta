@@ -1,5 +1,5 @@
 //import * as functions from 'firebase-functions';//
-import * as express from 'express';
+import * as express from "express";
 
 import {InsertPageView} from './ts/view/InsertPageView';
 import {InsertPageController} from './ts/controller/InsertPageController';
@@ -40,14 +40,18 @@ exercisePage.update(app);
 var savePage = new SavePageController(savePageView, objDb);
 savePage.update(app);*/
 
-//import {Exercise} from "./ts/model/Exercise";
-//import {ItalianExercise} from "./ts/model/ItalianExercise";
+
+import {Exercise} from "./ts/model/Exercise";
+import {Client} from "./ts/model/Client";
+import ClientBuilder = Client.ClientBuilder;
+
 
 app.listen(8080, async function () {
     var host = "127.0.0.1";
     var port = "8080";
     console.log("Example app listening at http://%s:%s", host, port);
 
+<<<<<<< HEAD
     //-------------- PROVA PER UPDATE ----------
     // @ts-ignore
     //let key= await objDb.insert("")
@@ -86,3 +90,22 @@ app.listen(8080, async function () {
     console.log(user2.getUsername());
 
 });
+=======
+
+    // @ts-ignore
+    var rd : Exercise = new Exercise("ciao tizio come", "authorIdValue");
+    rd.setSolution("solverIdValue",[ 'Smn', 'Ams', 'Ei' ]
+        ,["topic1","topic2"],5);
+    let myMap = new Map();
+    var d = new Date();
+    rd.addSolution(999,"solverIdValue1",["ciao","p"],["topic1","topic2"],5,myMap,d);
+    objDb.insert(rd);
+    console.log("ciaooooo");
+
+    let client = (new ClientBuilder()).build();
+    client.getClassClient();
+
+
+    console.log("Example app listening at http://%s:%s", host, port);
+});
+>>>>>>> 130d677f694a86367158c685ba991e9230783eb0

@@ -48,19 +48,36 @@ class Exercise {
     autosolve() {
         return this.getPOSManager().getSolution(this.getSentence());
     }
+<<<<<<< HEAD
+    ;
+    evaluate() { return 1; }
+=======
+>>>>>>> 9db7ee1784113cb663fb16eba5c63c485f967a12
     ;
     //da un voto alla soluzione corrente(newSolution) rispetto a solution con quel teacherID
     evaluate(teacherID) {
+<<<<<<< HEAD
         var mySolution = this.getNewSolution();
         if (mySolution == null) {
+=======
+        const mySolution = this.getNewSolution();
+        if (mySolution === null) {
+>>>>>>> 7864bf13b5e02e8d76b41f59181e574bf03b9cea
             return -1;
         }
         else {
             let tags = [];
+<<<<<<< HEAD
             let solutions = this.getSolutions();
             if (teacherID != null) {
                 var teacherSolution = solutions.find(function (element) {
                     return element.getSolverId() == teacherID;
+=======
+            const solutions = this.getSolutions();
+            if (teacherID !== null) {
+                const teacherSolution = solutions.find(function (element) {
+                    return element.getSolverId() === teacherID;
+>>>>>>> 7864bf13b5e02e8d76b41f59181e574bf03b9cea
                 });
                 if (typeof (teacherSolution) === 'undefined') {
                     throw new Error("ID non trovato");
@@ -70,7 +87,11 @@ class Exercise {
                 }
             }
             else {
+<<<<<<< HEAD
                 var hunposSolution = this.autosolve();
+=======
+                const hunposSolution = this.autosolve();
+>>>>>>> 7864bf13b5e02e8d76b41f59181e574bf03b9cea
                 for (let i in hunposSolution.sentence) {
                     tags.push(hunposSolution.sentence[i].label);
                 }

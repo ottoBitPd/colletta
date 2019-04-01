@@ -27,8 +27,34 @@ class Client {
     getClassClient(): ClassClient | undefined {
         return this.classClient;
     }
+
+    public static builder = class ClientBuilder{
+        private dbClassManager: ClassClient | undefined;
+        private dbExerciseManager: ExerciseClient | undefined;
+        private dbUserManager: UserClient | undefined;
+
+        buildClassClient(): ClientBuilder {
+            this.dbClassManager = new ClassClient();
+            return this;
+        }
+
+        buildExerciseClient(): ClientBuilder {
+            this.dbExerciseManager = new ExerciseClient();
+            return this;
+
+        }
+
+        buildUserClient(): ClientBuilder {
+            this.dbUserManager = new UserClient();
+            return this;
+        }
+
+        build() : Client {
+            return new Client(this.dbUserManager, this.dbExerciseManager, this.dbClassManager);
+        }
+    }
 }
-module Client {
+/*
     export class ClientBuilder {
         private dbClassManager: ClassClient | undefined;
         private dbExerciseManager: ExerciseClient | undefined;
@@ -51,11 +77,10 @@ module Client {
         }
 
         build() {
-            // @ts-ignore
             return new Client(this.dbClassManager, this.dbExerciseManager, this.dbUserManager);
         }
 
     }
-}
+}*/
 
 export {Client}

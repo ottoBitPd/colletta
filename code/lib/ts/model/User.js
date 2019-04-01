@@ -1,6 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-//import {Class} from "./Class";
 class User {
     constructor(username, password, name, lastname, city, school) {
         this.DatabaseUserInfo = class {
@@ -35,13 +34,16 @@ class User {
         return this.databaseInfo.password;
     }
     samePassword(otherPassword) {
-        if (otherPassword == this.databaseInfo.password)
+        if (otherPassword === this.databaseInfo.password)
             return true;
         return false;
     }
     //public abstract getClasses(classList : Class[]) : Class[];
     setID(id) {
         this.databaseInfo.id = id;
+    }
+    isTeacher() {
+        return false;
     }
     getID() {
         return this.databaseInfo.id;

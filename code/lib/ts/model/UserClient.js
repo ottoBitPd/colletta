@@ -5,8 +5,11 @@ class UserClient {
     constructor() {
         this.dbUserManager = new DatabaseUserManager_1.DatabaseUserManager();
     }
-    getDbUserManager() {
+    /*getDbUserManager(): DatabaseUserManager {
         return this.dbUserManager;
+    }*/
+    insert(user) {
+        return this.dbUserManager.insert(user);
     }
 }
 exports.UserClient = UserClient;

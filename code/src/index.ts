@@ -15,14 +15,9 @@ import {AuthenticationController} from "./ts/controller/AuthenticationController
 import {FirebaseUserManager} from "./ts/model/FirebaseUserManager";
 // @ts-ignore
 import {Data} from ".ts/model/Data";
-import {FirebaseClassManager} from "./ts/model/FirebaseClassManager";
-import {Class} from "./ts/model/Class";
-import {Teacher} from "./ts/model/Teacher";
-import {Student} from "./ts/model/Student";
 
 const objDb = new FirebaseUserManager();
 // @ts-ignore
-const objDbC=new FirebaseClassManager();
 
 const app = express();
 
@@ -39,14 +34,21 @@ const exercisePageView = new ExercisePageView();
 const exercisePage = new ExerciseController(exercisePageView, savePageView, objDb );//objDb
 exercisePage.update(app);
 
+/*var savePageView = new SavePageView();
+var savePage = new SavePageController(savePageView, objDb);
+savePage.update(app);*/
+
+//import {Exercise} from "./ts/model/Exercise";
+
+
 const loginView  = new LoginView();
 const registrationView : any= new RegistrationView();
 const LoginPage = new AuthenticationController(loginView,registrationView);
 LoginPage.update(app);
 
 app.listen(8080, async function () {
-    var host = "127.0.0.1";
-    var port = "8080";
+    const host = "127.0.0.1";
+    const port = "8080";
     console.log("Example app listening at http://%s:%s", host, port);
 
 });

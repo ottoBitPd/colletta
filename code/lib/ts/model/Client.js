@@ -19,27 +19,22 @@ class Client {
         return this.classClient;
     }
 }
-exports.Client = Client;
-(function (Client) {
-    class ClientBuilder {
-        buildClassClient() {
-            this.dbClassManager = new ClassClient_1.ClassClient();
-            return this;
-        }
-        buildExerciseClient() {
-            this.dbExerciseManager = new ExerciseClient_1.ExerciseClient();
-            return this;
-        }
-        buildUserClient() {
-            this.dbUserManager = new UserClient_1.UserClient();
-            return this;
-        }
-        build() {
-            // @ts-ignore
-            return new Client(this.dbClassManager, this.dbExerciseManager, this.dbUserManager);
-        }
+Client.builder = class ClientBuilder {
+    buildClassClient() {
+        this.dbClassManager = new ClassClient_1.ClassClient();
+        return this;
     }
-    Client.ClientBuilder = ClientBuilder;
-})(Client || (Client = {}));
+    buildExerciseClient() {
+        this.dbExerciseManager = new ExerciseClient_1.ExerciseClient();
+        return this;
+    }
+    buildUserClient() {
+        this.dbUserManager = new UserClient_1.UserClient();
+        return this;
+    }
+    build() {
+        return new Client(this.dbUserManager, this.dbExerciseManager, this.dbClassManager);
+    }
+};
 exports.Client = Client;
 //# sourceMappingURL=Client.js.map

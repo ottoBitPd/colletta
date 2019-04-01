@@ -4,7 +4,7 @@ import {Class} from "./Class";
 abstract class User implements Data{
 
     private username : string;
-    private databaseInfo : any;
+    public databaseInfo : any;
 
 
     constructor(username : string, password: string, name : string, lastname:string, city:string, school : string) {
@@ -50,6 +50,7 @@ abstract class User implements Data{
         return this.databaseInfo.school;
     }
 
+
     public getPassword() : string {
         return this.databaseInfo.password;
     }
@@ -60,7 +61,6 @@ abstract class User implements Data{
         return false;
     }
 
-    //public abstract getClasses(classList : Class[]) : Class[];
     public setID(id :string) {
         this.databaseInfo.id= id;
     }

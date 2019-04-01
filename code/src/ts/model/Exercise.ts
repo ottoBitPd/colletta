@@ -69,16 +69,16 @@ class Exercise implements Data{
 
     //da un voto alla soluzione corrente(newSolution) rispetto a solution con quel teacherID
     evaluate(teacherID?: string) : number {
-        var mySolution:Solution|null=this.getNewSolution();
-        if(mySolution==null){
+        const mySolution:Solution|null=this.getNewSolution();
+        if(mySolution===null){
             return -1;
         }
         else{
             let tags:string [] = [];
-            let solutions= this.getSolutions();
-            if(teacherID!=null){
-                var teacherSolution=solutions.find(function(element){
-                    return element.getSolverId()==teacherID;
+            const solutions= this.getSolutions();
+            if(teacherID!==null){
+                const teacherSolution=solutions.find(function(element){
+                    return element.getSolverId()===teacherID;
                 });
                 if(typeof(teacherSolution)==='undefined'){
                     throw new Error("ID non trovato");
@@ -88,7 +88,7 @@ class Exercise implements Data{
                 }
             }
             else{
-                var hunposSolution=this.autosolve();
+                const hunposSolution=this.autosolve();
                 for (let i in hunposSolution.sentence) {
                     tags.push(hunposSolution.sentence[i].label);
                 }

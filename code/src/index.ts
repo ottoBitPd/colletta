@@ -38,26 +38,9 @@ const registrationView : any= new RegistrationView();
 const LoginPage = new AuthenticationController(loginView,registrationView);
 LoginPage.update(app);
 
-
-
-//import {Exercise} from "./ts/model/Exercise";
-//import {Client} from "./ts/model/Client";
-//import ClientBuilder = Client.ClientBuilder;
-
-
 app.listen(8080, async function () {
     const host = "127.0.0.1";
     const port = "8080";
     console.log("Example app listening at http://%s:%s", host, port);
 
-    // @ts-ignore
-    /*var rd : Exercise = new Exercise("frase per prova", "authorIdValue");
-    rd.setSolution("solverIdValue",["tag1","tag2"],["topic1","topic2"],5);
-    rd.addValutation("teacherIdValue",10);
-    objDb.insert(rd);*/
-
-    /*let client = (new ClientBuilder()).build();
-    client.getClassClient();*/
-    
 });
-

@@ -28,6 +28,7 @@ class AuthenticationController extends PageController_1.PageController {
             }
         });
         app.post("/profile", (req, res) => {
+<<<<<<< HEAD
             const hashedPassword = this.passwordHash.generate(req.body.username);
             // console.log(hashedPassword);
             console.log("client: :" + this.client);
@@ -49,6 +50,17 @@ class AuthenticationController extends PageController_1.PageController {
                 console.log("tutto a puttane");
                 res.redirect("/registration?mess=errUsername");
             }
+=======
+            let hashedPassword = this.passwordHash.generate(req.body.username);
+            // console.log(hashedPassword);
+            if (req.body.username !== "admin") {
+                res.send('<h3>Utente registrato</h3>');
+                // @ts-ignore
+                ref.child('profilo6').set({ username: req.body.username, password: hashedPassword });
+            }
+            else
+                res.send('<h3>Credenziali sbagliate</h3>');
+>>>>>>> 47ab27f4adcef8ffc23fc87cf5fe90ec8c1174ed
         });
     }
 }

@@ -1,5 +1,5 @@
 import {Data} from "./Data";
-//import {Class} from "./Class";
+import {Class} from "./Class";
 
 abstract class User implements Data{
 
@@ -55,7 +55,7 @@ abstract class User implements Data{
     }
 
     public samePassword(otherPassword : string) : boolean {
-        if(otherPassword == this.databaseInfo.password)
+        if(otherPassword === this.databaseInfo.password)
             return true;
         return false;
     }
@@ -69,7 +69,7 @@ abstract class User implements Data{
         return false;
     }
 
-    //public abstract getClasses(classList : Class[]) : Class[];
+    public abstract getClasses(classList : Class[]) : Class[];
 
     public getID() {
         return this.databaseInfo.id;

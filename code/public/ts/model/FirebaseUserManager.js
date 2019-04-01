@@ -9,6 +9,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const FirebaseManager_1 = require("./FirebaseManager");
+const Student_1 = require("./Student");
+const Teacher_1 = require("./Teacher");
 class FirebaseUserManager extends FirebaseManager_1.FirebaseManager {
     constructor() {
         super();
@@ -20,9 +22,22 @@ class FirebaseUserManager extends FirebaseManager_1.FirebaseManager {
             let user = obj;
             let exist = yield this.search(user.getUsername());
             if (exist === "false") {
-                FirebaseManager_1.FirebaseManager.database.ref('data/users/').push({ name: user.getName(),
-                    password: user.getPassword(), lastname: user.getLastName(), username: user.getUsername(),
-                    city: user.getCity(), school: user.getSchool() });
+                //controllo se user è teacher o student
+                if (user.isTeacher() === true) {
+                    let teacher = obj;
+                    FirebaseManager_1.FirebaseManager.database.ref('data/users').push({ name: teacher.getName(),
+                        password: teacher.getPassword(), lastname: teacher.getLastName(), username: teacher.getUsername(),
+                        city: teacher.getCity(), school: user.getSchool(), INPScode: teacher.getINPS()
+                    });
+                }
+                else {
+                    FirebaseManager_1.FirebaseManager.database.ref('data/users').push({
+                        //let student= <Student>obj;
+                        name: user.getName(),
+                        password: user.getPassword(), lastname: user.getLastName(), username: user.getUsername(),
+                        city: user.getCity(), school: user.getSchool()
+                    });
+                }
                 return user.getID();
             }
             else {
@@ -43,12 +58,15 @@ class FirebaseUserManager extends FirebaseManager_1.FirebaseManager {
                 FirebaseManager_1.FirebaseManager.database.ref("data/users/" + id)
                     .once('value', function (snapshot) {
                     if (snapshot.exists()) {
-                        // @ts-ignore
                         let readData = snapshot.val();
-                        //----TODO: CONTROLLO SE USER è ALLIEVO O INSEGNANTE
-                        //let user = new User(readData.username, readData.password, readData.name,
-                        //readData.lastname, readData.city, readData.school);
-                        //return resolve(user);
+                        let user;
+                        if (readData.INPScode) {
+                            user = new Teacher_1.Teacher(readData.username, readData.password, readData.name, readData.lastname, readData.city, readData.school, readData.INPScode);
+                        }
+                        else {
+                            user = new Student_1.Student(readData.username, readData.password, readData.name, readData.lastname, readData.city, readData.school);
+                        }
+                        resolve(user);
                     }
                     return resolve(undefined);
                 });
@@ -121,6 +139,9 @@ class FirebaseUserManager extends FirebaseManager_1.FirebaseManager {
                     yield this.updateField(path, value);
                     break;
                 case "username":
+                    yield this.updateField(path, value);
+                    break;
+                case "INPScode":
                     yield this.updateField(path, value);
                     break;
                 default:

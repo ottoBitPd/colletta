@@ -5,7 +5,7 @@ class Teacher extends User {
 
     private INPS : number;
 
-    getINPS(): number {
+    public getINPS() {
         return this.INPS;
     }
 

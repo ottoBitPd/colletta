@@ -37,10 +37,10 @@ class ExerciseController extends PageController_1.PageController {
             response.send(this.viewExercise.getPage());
         });
         app.post('/saveExercise', (request, response) => {
-            this.exercise.setTopics(this.convertTopics(request.body.topics));
-            this.exercise.setDifficulty(request.body.difficulty);
-            console.log('topics: ' + this.exercise.getTopics());
-            console.log('topics: ' + this.exercise.getDifficulty());
+            /* this.exercise.setTopics(this.convertTopics(request.body.topics));
+             this.exercise.setDifficulty(request.body.difficulty);*/
+            console.log('topics: ' + this.convertTopics(request.body.topics));
+            console.log('topics: ' + request.body.difficulty);
             var wordsnumber = request.body.wordsnumber;
             /*var sentence = request.body.sentence;
             var key = request.body.key;*/
@@ -48,7 +48,9 @@ class ExerciseController extends PageController_1.PageController {
             var tagsCorrection = this.correctionToTags(wordsnumber, request.body);
             //building a array merging tags coming from user corrections and hunpos solution
             var finalTags = this.correctsHunpos(hunposTags, tagsCorrection);
-            this.exercise.setSolutionTags(finalTags);
+            //solverId ha un valore di Prova
+            this.exercise.setSolution("solverIdValue", finalTags, this.convertTopics(request.body.topics), request.body.difficulty);
+            this.exercise.addValutation("teacherIdValue", 10); //valori di prova
             this.db.insert(this.exercise);
             //saving in the database the final solution for the exercise
             //this.model.writeSolution(sentence.split(" "), finalTags, sentence, key);

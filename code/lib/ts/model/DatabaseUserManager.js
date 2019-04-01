@@ -7,11 +7,9 @@ class DatabaseUserManager {
         return "1";
     }
     remove(id) {
-        return true;
-    }
-    read(id) {
         return null;
     }
+    // @ts-ignore
     update(id) {
     }
 }

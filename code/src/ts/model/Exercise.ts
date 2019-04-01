@@ -69,8 +69,8 @@ class Exercise implements Data{
     //da un voto alla soluzione corrente(newSolution) rispetto a solution con quel teacherID
     evaluate(teacherID?: string) : number {
         console.log("almeno qui entra");
-        var mySolution:Solution|null=this.getNewSolution();
-        if(mySolution==null){
+        const mySolution:Solution|null=this.getNewSolution();
+        if(mySolution===null){
             return -1;
         }
         else{
@@ -80,17 +80,17 @@ class Exercise implements Data{
             let tags:string [] = [];
             let exists=false;
             let solutions= this.getSolutions();
-            if(teacherID!=null){
+            if(teacherID!==null){
                 console.log(solutions.length);
                 for(let i=0;i<  solutions.length && !exists;i++){
-                    if(solutions[i].getSolverId()== teacherID){
+                    if(solutions[i].getSolverId()=== teacherID){
                         console.log("trovatoID");
                         exists=true;
                         tags=solutions[i].getSolutionTags()
                     }
                 }
             }
-            if(!exists || teacherID==null){
+            if(!exists || teacherID===null){
                 console.log("non trovato id");
                 sol=this.autosolve();
                 for (let i in sol.sentence) {
@@ -98,7 +98,7 @@ class Exercise implements Data{
                 }
                 console.log(tags);
             }
-            let mySolutionTags=mySolution.getSolutionTags();
+            const mySolutionTags=mySolution.getSolutionTags();
             for(let j =0; j<mySolutionTags.length;j++){
                 if(mySolutionTags[j]==tags[j]){
                     rightTagsNumber++;

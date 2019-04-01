@@ -52,8 +52,8 @@ class Exercise {
     //da un voto alla soluzione corrente(newSolution) rispetto a solution con quel teacherID
     evaluate(teacherID) {
         console.log("almeno qui entra");
-        var mySolution = this.getNewSolution();
-        if (mySolution == null) {
+        const mySolution = this.getNewSolution();
+        if (mySolution === null) {
             return -1;
         }
         else {
@@ -63,17 +63,17 @@ class Exercise {
             let tags = [];
             let exists = false;
             let solutions = this.getSolutions();
-            if (teacherID != null) {
+            if (teacherID !== null) {
                 console.log(solutions.length);
                 for (let i = 0; i < solutions.length && !exists; i++) {
-                    if (solutions[i].getSolverId() == teacherID) {
+                    if (solutions[i].getSolverId() === teacherID) {
                         console.log("trovatoID");
                         exists = true;
                         tags = solutions[i].getSolutionTags();
                     }
                 }
             }
-            if (!exists || teacherID == null) {
+            if (!exists || teacherID === null) {
                 console.log("non trovato id");
                 sol = this.autosolve();
                 for (let i in sol.sentence) {
@@ -81,7 +81,7 @@ class Exercise {
                 }
                 console.log(tags);
             }
-            let mySolutionTags = mySolution.getSolutionTags();
+            const mySolutionTags = mySolution.getSolutionTags();
             for (let j = 0; j < mySolutionTags.length; j++) {
                 if (mySolutionTags[j] == tags[j]) {
                     rightTagsNumber++;

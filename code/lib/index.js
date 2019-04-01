@@ -41,8 +41,8 @@ LoginPage.update(app);
 //import ClientBuilder = Client.ClientBuilder;
 app.listen(8080, function () {
     return __awaiter(this, void 0, void 0, function* () {
-        var host = "127.0.0.1";
-        var port = "8080";
+        const host = "127.0.0.1";
+        const port = "8080";
         console.log("Example app listening at http://%s:%s", host, port);
         // @ts-ignore
         /*var rd : Exercise = new Exercise("frase per prova", "authorIdValue");

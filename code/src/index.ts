@@ -15,8 +15,7 @@ import {AuthenticationController} from "./ts/controller/AuthenticationController
 import {FirebaseUserManager} from "./ts/model/FirebaseUserManager";
 // @ts-ignore
 import {Data} from ".ts/model/Data";
-import {Student} from "./ts/model/Student";
-import {Teacher} from "./ts/model/Teacher";
+
 const objDb = new FirebaseUserManager();
 
 const app = express();
@@ -47,8 +46,8 @@ LoginPage.update(app);
 
 
 app.listen(8080, async function () {
-    var host = "127.0.0.1";
-    var port = "8080";
+    const host = "127.0.0.1";
+    const port = "8080";
     console.log("Example app listening at http://%s:%s", host, port);
 
     // @ts-ignore

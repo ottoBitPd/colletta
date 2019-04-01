@@ -20,7 +20,7 @@ class FirebaseUserManager extends FirebaseManager {
                 let teacher= <Teacher>obj;
                 FirebaseManager.database.ref('data/users').push({name: teacher.getName(),
                     password: teacher.getPassword(), lastname: teacher.getLastName(), username: teacher.getUsername(),
-                    city: teacher.getCity(), school: user.getSchool(), INPScode: teacher.getINPS()
+                    city: teacher.getCity(), school: teacher.getSchool(), INPScode: teacher.getINPS()
                 });
             }
             else {
@@ -31,13 +31,32 @@ class FirebaseUserManager extends FirebaseManager {
                     city: user.getCity(), school: user.getSchool()
                 });
             }
-            return user.getID();
+            return "true";
         }
         else {
-            return (exist);
+            return ("false");
         }
     }
 
+    public async search(username : string) : Promise<string>{
+        return new Promise(function (resolve) {
+            FirebaseManager.database.ref('data/users/').orderByChild('username')
+                .once("value", function (snapshot: any) {
+                    if (snapshot.exists()) {
+                        snapshot.forEach(function (data: any) {
+                            if (data.val().username.toLowerCase() === username.toLowerCase()) {
+                                //console.log("esiste");
+                                return resolve(data.key);
+                            }
+                        });
+                        //console.log("non esiste");
+                        return resolve("false");
+                    }
+                    //console.log("database vuoto");
+                    return resolve("false");
+                });
+        });
+    }
 
     public async read(id: string): Promise<Data> {
         const ProData: Promise <User> = this.getUserById(id);
@@ -66,27 +85,6 @@ class FirebaseUserManager extends FirebaseManager {
                 });
         });
     }
-
-    public async search(username : string) : Promise<string>{
-        return new Promise(function (resolve) {
-            FirebaseManager.database.ref('data/users/').orderByChild('username')
-                .once("value", function (snapshot: any) {
-                    if (snapshot.exists()) {
-                        snapshot.forEach(function (data: any) {
-                            if (data.val().username.toLowerCase() === username.toLowerCase()) {
-                                //console.log("esiste");
-                                return resolve(data.key);
-                            }
-                        });
-                        //console.log("non esiste");
-                        return resolve("false");
-                    }
-                    //console.log("database vuoto");
-                    return resolve("false");
-                });
-        });
-    }
-
 
     public async remove(id: string): Promise<boolean> {
         const ProData: Promise<boolean> = this.removeFromId(id);

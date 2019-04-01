@@ -64,6 +64,16 @@ class Solution {
             this.valutations = new Map();
         this.valutations.set(teacherID, mark);
     }
+    evaluateSolution(tags) {
+        var rightTagsNumber = 0;
+        let mySolutionTags = this.getSolutionTags();
+        for (let j = 0; j < mySolutionTags.length; j++) {
+            if (mySolutionTags[j] == tags[j]) {
+                rightTagsNumber++;
+            }
+        }
+        return ((rightTagsNumber * 10) / mySolutionTags.length);
+    }
 }
 exports.Solution = Solution;
 //# sourceMappingURL=Solution.js.map

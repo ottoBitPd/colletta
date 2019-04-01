@@ -18,12 +18,11 @@ class FirebaseExerciseManager extends FirebaseManager_1.FirebaseManager {
     // @ts-ignore
     insert(obj) {
         return __awaiter(this, void 0, void 0, function* () {
-            //guardo se esiste data in json e butto dentro in db
             let exercise = obj;
             let key;
             key = yield this.search(exercise.getSentence());
             console.log("ritorna: " + key);
-            if (key === undefined) { //exercise does not exist in the db
+            if (key === "false") { //exercise does not exist in the db
                 console.log("inserting sentence");
                 key = this.writeSentence(exercise.getSentence(), exercise.getAuthorId());
             }
@@ -32,7 +31,7 @@ class FirebaseExerciseManager extends FirebaseManager_1.FirebaseManager {
                 console.log("inserting solution");
                 this.writeSolution(solution, key);
             }
-            return key;
+            return "true";
         });
     }
     /**
@@ -53,10 +52,10 @@ class FirebaseExerciseManager extends FirebaseManager_1.FirebaseManager {
                             }
                         });
                         //console.log("non esiste");
-                        return resolve(undefined);
+                        return resolve("false");
                     }
                     //console.log("database vuoto");
-                    return resolve(undefined);
+                    return resolve("false");
                 });
             });
         });

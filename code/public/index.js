@@ -20,9 +20,13 @@ const LoginView_1 = require("./ts/view/LoginView");
 const RegistrationView_1 = require("./ts/view/RegistrationView");
 const AuthenticationController_1 = require("./ts/controller/AuthenticationController");
 const FirebaseUserManager_1 = require("./ts/model/FirebaseUserManager");
+const FirebaseClassManager_1 = require("./ts/model/FirebaseClassManager");
+const Class_1 = require("./ts/model/Class");
 const Teacher_1 = require("./ts/model/Teacher");
 const Student_1 = require("./ts/model/Student");
 const objDb = new FirebaseUserManager_1.FirebaseUserManager();
+// @ts-ignore
+const objDbC = new FirebaseClassManager_1.FirebaseClassManager();
 const app = express();
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -43,19 +47,23 @@ app.listen(8080, function () {
         var host = "127.0.0.1";
         var port = "8080";
         console.log("Example app listening at http://%s:%s", host, port);
-        let file = new Teacher_1.Teacher("Gilby55", "daccordoo", "Gilberto", "File", "Padova", "UniPD", 404);
-        yield objDb.insert(file);
-        let gio = new Student_1.Student("Perry15", "Xiaominote7", "Giovanni", "Peron", "Camposampiero city", "UniPD");
-        yield objDb.insert(gio);
-        let keyfile = yield objDb.search("Gilby55");
         // @ts-ignore
-        console.log(keyfile);
-        let bfile = yield objDb.read(keyfile);
-        console.log(bfile);
+        let ben = new Teacher_1.Teacher("benny", "mepiasa", "Benedetto", "Cosentino", "Catania", "unipd", 404);
+        //await objDb.insert(ben);
+        let io = new Student_1.Student("gian995", "gianduiotto", "Gianmarco", "Pettenuzzo", "SML", "unipd");
+        let gio = new Student_1.Student("perry15", "xiaomi", "Giovanni", "Peron", "campo", "unipd");
+        //await objDb.insert(io);
+        //await objDb.insert(gio);
+        let classe = [io.getUsername(), gio.getUsername()];
+        let eser = ["es1", "es2"];
         // @ts-ignore
-        console.log("inpscode " + ((bfile).getINPS()));
-        let path = ("data/users/" + keyfile + "/INPScode");
-        objDb.update(path, 526821651616512161561);
+        let c = new Class_1.Class("8bit", "classe per i bimbi di swe", yield objDb.search("benny"), classe, eser);
+        yield objDbC.insert(c);
+        // @ts-ignore
+        let classID = yield objDbC.search(c.getTeacherID(), c.getName());
+        // @ts-ignore
+        console.log(classID);
+        yield objDbC.remove(classID);
     });
 });
 //# sourceMappingURL=index.js.map

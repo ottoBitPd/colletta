@@ -15,10 +15,14 @@ import {AuthenticationController} from "./ts/controller/AuthenticationController
 import {FirebaseUserManager} from "./ts/model/FirebaseUserManager";
 // @ts-ignore
 import {Data} from ".ts/model/Data";
+import {FirebaseClassManager} from "./ts/model/FirebaseClassManager";
+import {Class} from "./ts/model/Class";
 import {Teacher} from "./ts/model/Teacher";
 import {Student} from "./ts/model/Student";
 
 const objDb = new FirebaseUserManager();
+// @ts-ignore
+const objDbC=new FirebaseClassManager();
 
 const app = express();
 

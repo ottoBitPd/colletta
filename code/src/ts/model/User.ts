@@ -1,7 +1,7 @@
 import {Data} from "./Data";
 //import {Class} from "./Class";
 
-class User implements Data{
+abstract class User implements Data{
 
     private username : string;
     private databaseInfo : any;

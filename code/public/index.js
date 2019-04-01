@@ -20,11 +20,6 @@ const LoginView_1 = require("./ts/view/LoginView");
 const RegistrationView_1 = require("./ts/view/RegistrationView");
 const AuthenticationController_1 = require("./ts/controller/AuthenticationController");
 const FirebaseUserManager_1 = require("./ts/model/FirebaseUserManager");
-<<<<<<< HEAD
-=======
-const Teacher_1 = require("./ts/model/Teacher");
-const Student_1 = require("./ts/model/Student");
->>>>>>> 47ab27f4adcef8ffc23fc87cf5fe90ec8c1174ed
 const objDb = new FirebaseUserManager_1.FirebaseUserManager();
 const app = express();
 const bodyParser = require('body-parser');
@@ -41,40 +36,11 @@ const loginView = new LoginView_1.LoginView();
 const registrationView = new RegistrationView_1.RegistrationView();
 const LoginPage = new AuthenticationController_1.AuthenticationController(loginView, registrationView);
 LoginPage.update(app);
-<<<<<<< HEAD
-//import {Exercise} from "./ts/model/Exercise";
-//import {Client} from "./ts/model/Client";
-//import ClientBuilder = Client.ClientBuilder;
-=======
->>>>>>> 47ab27f4adcef8ffc23fc87cf5fe90ec8c1174ed
 app.listen(8080, function () {
     return __awaiter(this, void 0, void 0, function* () {
         const host = "127.0.0.1";
         const port = "8080";
         console.log("Example app listening at http://%s:%s", host, port);
-<<<<<<< HEAD
-        // @ts-ignore
-        /*var rd : Exercise = new Exercise("frase per prova", "authorIdValue");
-        rd.setSolution("solverIdValue",["tag1","tag2"],["topic1","topic2"],5);
-        rd.addValutation("teacherIdValue",10);
-        objDb.insert(rd);*/
-        /*let client = (new ClientBuilder()).build();
-        client.getClassClient();*/
-=======
-        let file = new Teacher_1.Teacher("Gilby55", "daccordoo", "Gilberto", "File", "Padova", "UniPD", 404);
-        yield objDb.insert(file);
-        let gio = new Student_1.Student("Perry15", "Xiaominote7", "Giovanni", "Peron", "Camposampiero city", "UniPD");
-        yield objDb.insert(gio);
-        let keyfile = yield objDb.search("Gilby55");
-        // @ts-ignore
-        console.log(keyfile);
-        let bfile = yield objDb.read(keyfile);
-        console.log(bfile);
-        // @ts-ignore
-        console.log("inpscode " + ((bfile).getINPS()));
-        let path = ("data/users/" + keyfile + "/INPScode");
-        objDb.update(path, 526821651616512161561);
->>>>>>> 47ab27f4adcef8ffc23fc87cf5fe90ec8c1174ed
     });
 });
 //# sourceMappingURL=index.js.map

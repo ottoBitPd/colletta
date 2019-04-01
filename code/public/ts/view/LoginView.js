@@ -17,9 +17,8 @@ class LoginView extends PageView_1.PageView {
             "<div id=\"back\"> " +
             "<h1>LOGIN</h1>" +
             "<form method=\"POST\" action=\"/profile\"> " +
-            "<label for=\"sentence\">Inserisci una frase</label> " +
-            "<input type=\"text\" id=\"username\" name=\"username\"/> " +
-            "<input type=\"password\" id=\"password\" name=\"password\"/> " +
+            "<input type=\"text\" id=\"username\" name=\"username\" placeholder='Inserisci la tua username'/> " +
+            "<input type=\"password\" id=\"password\" name=\"password\" placeholder='Inserisci la tua password'/> " +
             "<input type=\"submit\" value=\"invia\"/> " +
             "</form> " +
             "<a href=\"/registration\">Registrati</a>" +

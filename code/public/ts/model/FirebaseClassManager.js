@@ -9,35 +9,22 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const FirebaseManager_1 = require("./FirebaseManager");
-const Student_1 = require("./Student");
-const Teacher_1 = require("./Teacher");
-class FirebaseUserManager extends FirebaseManager_1.FirebaseManager {
+const Class_1 = require("./Class");
+class FirebaseClassManager extends FirebaseManager_1.FirebaseManager {
     constructor() {
         super();
-        FirebaseManager_1.FirebaseManager.registerInstance("FirebaseUserManager", this);
+        FirebaseManager_1.FirebaseManager.registerInstance("FirebaseClassManager", this);
     }
     // @ts-ignore
     insert(obj) {
         return __awaiter(this, void 0, void 0, function* () {
-            let user = obj;
-            let exist = yield this.search(user.getUsername());
-            if (exist === "false") {
-                //controllo se user è teacher o student
-                if (user.isTeacher() === true) {
-                    let teacher = obj;
-                    FirebaseManager_1.FirebaseManager.database.ref('data/users').push({ name: teacher.getName(),
-                        password: teacher.getPassword(), lastname: teacher.getLastName(), username: teacher.getUsername(),
-                        city: teacher.getCity(), school: teacher.getSchool(), INPScode: teacher.getINPS()
-                    });
-                }
-                else {
-                    FirebaseManager_1.FirebaseManager.database.ref('data/users').push({
-                        //let student= <Student>obj;
-                        name: user.getName(),
-                        password: user.getPassword(), lastname: user.getLastName(), username: user.getUsername(),
-                        city: user.getCity(), school: user.getSchool()
-                    });
-                }
+            let _class = obj;
+            let exists = yield this.search(_class.getTeacherID(), _class.getName());
+            if (exists === "false") {
+                FirebaseManager_1.FirebaseManager.database.ref('data/classes').push({ name: _class.getName(),
+                    description: _class.getDescription(), students: _class.getStudents(), teacherID: _class.getTeacherID(),
+                    exercises: _class.getExercises()
+                });
                 return "true";
             }
             else {
@@ -45,14 +32,15 @@ class FirebaseUserManager extends FirebaseManager_1.FirebaseManager {
             }
         });
     }
-    search(username) {
+    search(teacherID, name) {
         return __awaiter(this, void 0, void 0, function* () {
             return new Promise(function (resolve) {
-                FirebaseManager_1.FirebaseManager.database.ref('data/users/').orderByChild('username')
+                FirebaseManager_1.FirebaseManager.database.ref('data/classes/')
                     .once("value", function (snapshot) {
                     if (snapshot.exists()) {
                         snapshot.forEach(function (data) {
-                            if (data.val().username.toLowerCase() === username.toLowerCase()) {
+                            if ((data.val().teacherID.toLowerCase() === teacherID.toLowerCase()) &&
+                                (data.val().name.toLowerCase() === name.toLowerCase())) {
                                 //console.log("esiste");
                                 return resolve(data.key);
                             }
@@ -68,26 +56,20 @@ class FirebaseUserManager extends FirebaseManager_1.FirebaseManager {
     }
     read(id) {
         return __awaiter(this, void 0, void 0, function* () {
-            const ProData = this.getUserById(id);
-            const read = yield ProData;
-            return read;
+            const ProData = this.getClassById(id);
+            const readed = yield ProData;
+            return readed;
         });
     }
-    getUserById(id) {
+    getClassById(id) {
         return __awaiter(this, void 0, void 0, function* () {
             return new Promise(function (resolve) {
-                FirebaseManager_1.FirebaseManager.database.ref("data/users/" + id)
+                FirebaseManager_1.FirebaseManager.database.ref("data/classes/" + id)
                     .once('value', function (snapshot) {
                     if (snapshot.exists()) {
                         let readData = snapshot.val();
-                        let user;
-                        if (readData.INPScode) {
-                            user = new Teacher_1.Teacher(readData.username, readData.password, readData.name, readData.lastname, readData.city, readData.school, readData.INPScode);
-                        }
-                        else {
-                            user = new Student_1.Student(readData.username, readData.password, readData.name, readData.lastname, readData.city, readData.school);
-                        }
-                        resolve(user);
+                        let _class = new Class_1.Class(readData.name, readData.description, readData.teacherID, readData.students, readData.exercises);
+                        return resolve(_class);
                     }
                     return resolve(undefined);
                 });
@@ -103,7 +85,7 @@ class FirebaseUserManager extends FirebaseManager_1.FirebaseManager {
     }
     removeFromId(id) {
         return __awaiter(this, void 0, void 0, function* () {
-            const ref = FirebaseManager_1.FirebaseManager.database.ref("data/users/" + id);
+            const ref = FirebaseManager_1.FirebaseManager.database.ref("data/classes/" + id);
             return new Promise(function (resolve) {
                 ref.once('value', function (snapshot) {
                     if (snapshot.exists()) {
@@ -123,25 +105,10 @@ class FirebaseUserManager extends FirebaseManager_1.FirebaseManager {
             let field = splittedPath[position];
             console.log(field);
             switch (field) {
-                case "password":
+                case "exercises":
                     yield this.updateField(path, value);
                     break;
-                case "name":
-                    yield this.updateField(path, value);
-                    break;
-                case "lastname":
-                    yield this.updateField(path, value);
-                    break;
-                case "city":
-                    yield this.updateField(path, value);
-                    break;
-                case "school":
-                    yield this.updateField(path, value);
-                    break;
-                case "username":
-                    yield this.updateField(path, value);
-                    break;
-                case "INPScode":
+                case "students":
                     yield this.updateField(path, value);
                     break;
                 default:
@@ -161,5 +128,5 @@ class FirebaseUserManager extends FirebaseManager_1.FirebaseManager {
         });
     }
 }
-exports.FirebaseUserManager = FirebaseUserManager;
-//# sourceMappingURL=FirebaseUserManager.js.map
+exports.FirebaseClassManager = FirebaseClassManager;
+//# sourceMappingURL=FirebaseClassManager.js.map

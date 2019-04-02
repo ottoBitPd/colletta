@@ -10,7 +10,6 @@ import {LoginView} from "./ts/view/LoginView";
 import {RegistrationView} from "./ts/view/RegistrationView";
 import {AuthenticationController} from "./ts/controller/AuthenticationController";
 
-
 const app = express();
 
 const bodyParser = require('body-parser');

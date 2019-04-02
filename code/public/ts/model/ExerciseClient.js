@@ -8,6 +8,8 @@ class ExerciseClient {
     getDbExerciseManager() {
         return this.dbExerciseManager;
     }
+    insertNewExercise() {
+    }
 }
 exports.ExerciseClient = ExerciseClient;
 //# sourceMappingURL=ExerciseClient.js.map

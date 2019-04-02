@@ -1,10 +1,14 @@
 import {PageView} from "./PageView";
 
 class LoginView extends PageView{
+    private error :string;
     constructor(){
         super();
+        this.error="";
     }
-
+    setError(error:string){
+        this.error=error;
+    }
     getPage() {
         return "<!DOCTYPE html> " +
             "<html lang=\"it\"> " +
@@ -16,7 +20,8 @@ class LoginView extends PageView{
             "<body> " +
             "<div id=\"back\"> " +
             "<h1>LOGIN</h1>" +
-            "<form method=\"POST\" action=\"/profile\"> " +
+            "<p class='red'>"+this.error+"</p>"+
+            "<form method=\"POST\" action=\"/checklogin\"> " +
             "<input type=\"text\" id=\"username\" name=\"username\" placeholder='Inserisci la tua username'/> " +
             "<input type=\"password\" id=\"password\" name=\"password\" placeholder='Inserisci la tua password'/> " +
             "<input type=\"submit\" value=\"invia\"/> " +

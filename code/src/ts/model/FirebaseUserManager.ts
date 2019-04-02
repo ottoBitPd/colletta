@@ -39,7 +39,7 @@ class FirebaseUserManager extends FirebaseManager {
     }
 
 
-    public async read(id: string): Promise<Data> {
+    public async read(id: string): Promise<User> {
         const ProData: Promise <User> = this.getUserById(id);
         const read = await ProData;
         return read;

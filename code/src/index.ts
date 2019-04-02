@@ -3,7 +3,7 @@ import * as express from "express";
 
 import {InsertPageView} from './ts/view/InsertPageView';
 import {InsertPageController} from './ts/controller/InsertPageController';
-/*import {ExercisePageView} from "./ts/view/ExercisePageView";
+/*import {ExerciseView} from "./ts/view/ExerciseView";
 import {ExerciseController} from "./ts/controller/ExerciseController";
 import {SavePageView} from "./ts/view/SavePageView";*/
 import {LoginView} from "./ts/view/LoginView";
@@ -21,7 +21,7 @@ const insertPage = new InsertPageController(insertPageView);
 insertPage.update(app);
 
 /*const savePageView = new SavePageView();
-const exercisePageView = new ExercisePageView();
+const exercisePageView = new ExerciseView();
 const exercisePage = new ExerciseController(exercisePageView, savePageView);//objDb
 exercisePage.update(app);*/
 

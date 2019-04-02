@@ -11,6 +11,7 @@
     "@types/express": "^4.16.1",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
+    "express-session": "^1.15.6",
     "firebase": "^5.9.1",
     "firebase-admin": "^7.0.0",
     "nodejs": "0.0.0",

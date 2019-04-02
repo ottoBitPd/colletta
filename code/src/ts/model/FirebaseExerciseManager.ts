@@ -10,8 +10,8 @@ class FirebaseExerciseManager extends FirebaseManager {
         FirebaseManager.registerInstance("FirebaseExerciseManager", this);
     }
 
-    // @ts-ignore
-    async insert(obj: Data): string {
+
+    async insert(obj: Data): Promise<string> {
         let exercise = <Exercise>obj;
         let key: any;
         key = await this.search(exercise.getSentence());

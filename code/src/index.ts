@@ -7,7 +7,7 @@ import {RegistrationView} from "./ts/view/RegistrationView";
 import {AuthenticationController} from "./ts/controller/AuthenticationController";
 
 import {ExerciseView} from "./ts/view/ExerciseView";
-import {SavePageView} from "./ts/view/SavePageView";
+import {SaveView} from "./ts/view/SaveView";
 import {ExerciseController} from "./ts/controller/ExerciseController";
 
 
@@ -20,7 +20,7 @@ const insertPageView = new InsertPageView();
 const insertPage = new InsertPageController(insertPageView);
 insertPage.update(app);
 
-const savePageView = new SavePageView();
+const savePageView = new SaveView();
 const exerciseView = new ExerciseView();
 
 const exercisePage = new ExerciseController(exerciseView, savePageView);

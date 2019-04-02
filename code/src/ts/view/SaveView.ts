@@ -1,6 +1,6 @@
 import {PageView} from "./PageView";
 
-class SavePageView extends PageView{
+class SaveView extends PageView{
     constructor(){
         super();
     }
@@ -10,4 +10,4 @@ class SavePageView extends PageView{
     }
 
 }
-export {SavePageView};
+export {SaveView};

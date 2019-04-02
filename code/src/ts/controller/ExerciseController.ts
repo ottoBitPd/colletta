@@ -19,11 +19,6 @@ class ExerciseController extends PageController{
 
     update(app : any){
         app.post('/exercise', async (request: any, response: any) => {
-            //checking if the exercise sentence already exists in the database
-            // var key= this.model.checkIfExists(request.body.sentence);
-            // if(key===-1){
-            //     key = this.model.writeSentence(request.body.sentence)
-            // }
             if(this.exerciseClient) {
                 let key = await this.exerciseClient.insertExercise(request.body.sentence, "authorIdValue");
                 //sending the sentence to hunpos which will provide a solution
@@ -33,7 +28,6 @@ class ExerciseController extends PageController{
                 //converting tags to italian
                 var hunposTranslation = this.translateTags(hunposTags);
                 //console.log("view: "+JSON.stringify(this.view));
-
                 this.viewExercise.setSentence(request.body.sentence);
                 this.viewExercise.setKey(key);
                 this.viewExercise.setHunposTranslation(hunposTranslation);
@@ -43,30 +37,15 @@ class ExerciseController extends PageController{
             }
         });
         app.post('/saveExercise', (request : any, response : any) => {
-            /*
-            //this.exercise.setTopics(this.convertTopics(request.body.topics));
-            //this.exercise.setDifficulty(request.body.difficulty);
-            console.log('topics: '+this.convertTopics(request.body.topics));
-            console.log('topics: '+request.body.difficulty);
-            var wordsnumber = request.body.wordsnumber;
-            //var sentence = request.body.sentence;
-            //var key = request.body.key;
-            var hunposTags = JSON.parse(request.body.hunposTags);
-
-            var tagsCorrection = this.correctionToTags(wordsnumber,request.body);
-            //building a array merging tags coming from user corrections and hunpos solution
-            var finalTags = this.correctsHunpos(hunposTags,tagsCorrection);
-            */
             if(this.exerciseClient) {
                 console.log("post: ",request.body);
-                var words= this.exerciseClient.getSentenceSplitted(request.body.sentence);
+                var words= this.exerciseClient.getSplittedSentence(request.body.sentence);
                 var wordsnumber = words.length;
                 var hunposTags = JSON.parse(request.body.hunposTags);
                 var tagsCorrection = this.correctionToTags(wordsnumber,request.body);
                 //building a array merging tags coming from user corrections and hunpos solution
                 var finalTags = this.correctsHunpos(hunposTags,tagsCorrection);
-                console.log("finalTags: "+finalTags);
-
+                //console.log("finalTags: "+finalTags);
 
                 //solverId ha un valore di Prova
                 this.exerciseClient.setSolution(request.body.sentence, "sessionAuthorId", "solverID", finalTags, this.convertTopics(request.body.topics), request.body.difficulty);

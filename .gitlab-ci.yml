@@ -31,6 +31,7 @@ compile:
     - npm install express --save
     - npm install shelljs
     - npm install typescript
+    - npm install
     - cd code
   script:
     - npm run build

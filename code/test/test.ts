@@ -1,3 +1,4 @@
+/*
 import {Exercise} from '../src/ts/model/Exercise';
 import {HunposManager} from '../src/ts/model/HunposManager';
 import {expect} from 'chai';
@@ -52,3 +53,5 @@ describe('#getSolution()', function() {
         })
     })
 });
+
+*/

@@ -6,9 +6,7 @@ import {ExerciseClient} from "../model/ExerciseClient";
 
 class ExerciseController extends PageController{
     private fileSystem : any;
-    //private hunpos : any;
     private exerciseClient : ExerciseClient | undefined;
-    //private exercise : any;
     private viewExercise : any;
     private viewSave : any;
     constructor(viewExercise : any, viewSave : any){
@@ -16,33 +14,28 @@ class ExerciseController extends PageController{
         this.viewExercise=viewExercise;
         this.viewSave=viewSave;
         this.exerciseClient =(new Client.builder()).buildExerciseClient().build().getExerciseClient();
-        //this.exercise = new ItalianExercise(1,"1");
-
-        //this.hunpos = new HunposManager();
-        //declare function require(name:string);
         this.fileSystem = require ('fs');
     }
 
     update(app : any){
-        app.post('/exercise', (request: any, response: any) => {
+        app.post('/exercise', async (request: any, response: any) => {
             //checking if the exercise sentence already exists in the database
             // var key= this.model.checkIfExists(request.body.sentence);
             // if(key===-1){
             //     key = this.model.writeSentence(request.body.sentence)
             // }
-            let exercise;
             if(this.exerciseClient) {
-                this.exerciseClient.insert(request.body.sentence, "authorIdValue");
+                let key = await this.exerciseClient.insertExercise(request.body.sentence, "authorIdValue");
                 //sending the sentence to hunpos which will provide a solution
-                var hunposSolution = this.exerciseClient.solveExrercise("id");
+                var hunposSolution = await this.exerciseClient.autosolve(request.body.sentence, "authorIdValue");
                 //creation of the array containing tags provided from hunpos solution
                 var hunposTags = this.extractTags(hunposSolution);
                 //converting tags to italian
                 var hunposTranslation = this.translateTags(hunposTags);
                 //console.log("view: "+JSON.stringify(this.view));
-                this.viewExercise.setExercise(this.exerciseClient);
-                this.viewExercise.setSentence(exercise.getSentence());
-                this.viewExercise.setKey(exercise.getKey());
+
+                this.viewExercise.setSentence(request.body.sentence);
+                this.viewExercise.setKey(key);
                 this.viewExercise.setHunposTranslation(hunposTranslation);
                 this.viewExercise.setHunposTags(hunposTags);
 
@@ -64,17 +57,24 @@ class ExerciseController extends PageController{
             //building a array merging tags coming from user corrections and hunpos solution
             var finalTags = this.correctsHunpos(hunposTags,tagsCorrection);
             */
-            var wordsnumber = this.exerciseClient.getSentenceSplitted().length;
-            var hunposTags
-            var tagsCorrection
-            var finalTags
-            //solverId ha un valore di Prova
-            this.exercise.setSolution("solverIdValue",finalTags,this.convertTopics(request.body.topics),request.body.difficulty);
-            this.exercise.addValutation("teacherIdValue",10);//valori di prova
-            this.client.insertNewExercise(this.exercise);
-            //saving in the database the final solution for the exercise
-            //this.model.writeSolution(sentence.split(" "), finalTags, sentence, key);
-            response.send(this.viewSave.getPage());
+            if(this.exerciseClient) {
+                console.log("post: ",request.body);
+                var words= this.exerciseClient.getSentenceSplitted(request.body.sentence);
+                var wordsnumber = words.length;
+                var hunposTags = JSON.parse(request.body.hunposTags);
+                var tagsCorrection = this.correctionToTags(wordsnumber,request.body);
+                //building a array merging tags coming from user corrections and hunpos solution
+                var finalTags = this.correctsHunpos(hunposTags,tagsCorrection);
+                console.log("finalTags: "+finalTags);
+
+
+                //solverId ha un valore di Prova
+                this.exerciseClient.setSolution(request.body.sentence, "sessionAuthorId", "solverID", finalTags, this.convertTopics(request.body.topics), request.body.difficulty);
+                this.exerciseClient.addValutation(request.body.sentence, "sessionauthorId","teacherIdValue", 10);//valori di prova
+                //saving in the database the final solution for the exercise
+                //this.model.writeSolution(sentence.split(" "), finalTags, sentence, key);
+                response.send(this.viewSave.getPage());
+            }
         });
     }
 

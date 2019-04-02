@@ -49,7 +49,7 @@ class FirebaseClassManager extends FirebaseManager {
         });
     }
 
-    public async read(id: string): Promise<Data> {
+    public async read(id: string): Promise<Class> {
         const ProData: Promise <Class> = this.getClassById(id);
         const readed = await ProData;
         return readed;

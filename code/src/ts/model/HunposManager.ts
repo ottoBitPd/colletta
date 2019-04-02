@@ -12,9 +12,9 @@ class HunposManager implements POSManager{
         this.fileSystem = require('fs');
         this.shell = require('shelljs');
         //this.train();
-        this.inputFilePath='src\\ts\\controller\\hunpos\\input.txt';
-        this.outputFilePath='src\\ts\\controller\\hunpos\\output.txt';
-        this.modelFilePath='src\\ts\\controller\\hunpos\\italian_model';
+        this.inputFilePath='src/ts/controller/hunpos/input.txt';
+        this.outputFilePath='src/ts/controller/hunpos/output.txt';
+        this.modelFilePath='src/ts/controller/hunpos/italian_model';
     }
 
     setModel(modelFilePath:string):void{
@@ -23,6 +23,7 @@ class HunposManager implements POSManager{
 
     buildInputFile(sentence:string):void{
         var words = sentence.split(" ");
+        this.fileSystem.writeFile(this.inputFilePath,'',() => console.log('done'));
         for(let i = 0; i < words.length; i++) {
             this.fileSystem.appendFileSync( this.inputFilePath, words[i] + "\n", (err:any) => {
                 if (err) throw err;

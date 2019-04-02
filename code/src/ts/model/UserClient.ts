@@ -19,6 +19,7 @@ class UserClient{
     insertTeacher(username : string, password : string, name : string, surname : string, city : string, school : string, inps:string) : string{
         return this.dbUserManager.insert(new Teacher(username, password, name, surname, city, school, inps));
     }
+
     async search(username : string) : Promise<string>{
         return await this.dbUserManager.search(username);
     }

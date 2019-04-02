@@ -15,23 +15,70 @@ class FirebaseExerciseManager extends FirebaseManager_1.FirebaseManager {
         super();
         FirebaseManager_1.FirebaseManager.registerInstance("FirebaseExerciseManager", this);
     }
-    // @ts-ignore
-    insert(obj) {
-        return __awaiter(this, void 0, void 0, function* () {
-            let exercise = obj;
-            let key;
-            key = yield this.search(exercise.getSentence());
-            console.log("ritorna: " + key);
-            if (key === "false") { //exercise does not exist in the db
+    /*
+    async insert(obj: Data): Promise<boolean> {
+        let exercise = <Exercise>obj;
+        let key: any;
+        key = await this.search(exercise.getSentence());
+
+            if (key === "false") {//exercise does not exist in the db
                 console.log("inserting sentence");
                 key = this.writeSentence(exercise.getSentence(), exercise.getAuthorId());
             }
+
             let solution = exercise.getNewSolution();
             if (solution !== null) {
                 console.log("inserting solution");
                 this.writeSolution(solution, key);
             }
-            return "true";
+            return true;
+
+    }
+    */
+    insert(obj) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let exercise = obj;
+            let exists = yield this.search(exercise.getSentence());
+            let wrsolution = exercise.getNewSolution();
+            return new Promise(function (resolve) {
+                return __awaiter(this, void 0, void 0, function* () {
+                    //scrivo esercizio
+                    if (exists === "false" && wrsolution !== null) { //exercise does not exist in the db
+                        console.log("inserting sentence");
+                        //key = this.writeSentence(exercise.getSentence(), exercise.getAuthorId());
+                        let ref = FirebaseManager_1.FirebaseManager.database.ref('data/sentences/').push({
+                            sentence: exercise.getSentence(),
+                            authorId: exercise.getAuthorId()
+                        });
+                        //scrivo soluzione
+                        let array = String(ref).split("/");
+                        let sentenceKey = array[array.length - 1];
+                        FirebaseManager_1.FirebaseManager.database.ref('data/sentences/' + sentenceKey + '/solutions/').push({
+                            "solverId": wrsolution.getSolverId(),
+                            "tags": wrsolution.getSolutionTags(),
+                            "topics": wrsolution.getTopics(),
+                            "difficulty": wrsolution.getDifficulty(),
+                            "valutations": wrsolution.JSONValutations(),
+                            "time": Date.now()
+                        });
+                        resolve(true);
+                    }
+                    else if (exists !== "false" && wrsolution !== null) {
+                        FirebaseManager_1.FirebaseManager.database.ref('data/sentences/' + exists + '/solutions/').push({
+                            "solverId": wrsolution.getSolverId(),
+                            "tags": wrsolution.getSolutionTags(),
+                            "topics": wrsolution.getTopics(),
+                            "difficulty": wrsolution.getDifficulty(),
+                            "valutations": wrsolution.JSONValutations(),
+                            "time": Date.now()
+                        });
+                        resolve(true);
+                    }
+                    else {
+                        resolve(false);
+                    }
+                });
+            });
         });
     }
     /**
@@ -65,12 +112,14 @@ class FirebaseExerciseManager extends FirebaseManager_1.FirebaseManager {
      * @param sentence - the sentence to write
      * @returns {number} returns the key of the sentence written
      */
-    writeSentence(sentence, authorId) {
-        let ref = FirebaseManager_1.FirebaseManager.database.ref('data/sentences/').push({ sentence: sentence, authorId: authorId });
+    /*
+    private writeSentence(sentence: string, authorId: string) {
+        let ref = FirebaseManager.database.ref('data/sentences/').push({sentence: sentence, authorId: authorId});
         let array = String(ref).split("/");
         //console.log("returno: "+array[array.length -1])
         return array[array.length - 1];
     }
+    */
     /**
      * This method write the sentence solution on the database.
      * The sentence solution is composed of tags coming from hunpos and from user correction,
@@ -80,18 +129,20 @@ class FirebaseExerciseManager extends FirebaseManager_1.FirebaseManager {
      * @param sentence - the sentence string
      * @param sentenceKey - key of the sentence in the database
      */
-    writeSolution(solution, sentenceKey) {
-        if (solution.getValutations() !== null) {
-            FirebaseManager_1.FirebaseManager.database.ref('data/sentences/' + sentenceKey + '/solutions/').push({
+    /*
+    private writeSolution(solution: Solution, sentenceKey: string) : void {
+        if (solution.getValutations() !== null){
+            FirebaseManager.database.ref('data/sentences/' + sentenceKey + '/solutions/').push({
                 "solverId": solution.getSolverId(),
                 "tags": solution.getSolutionTags(),
                 "topics": solution.getTopics(),
                 "difficulty": solution.getDifficulty(),
-                "valutations": solution.JSONValutations(),
-                "time": Date.now()
+                "valutations" : solution.JSONValutations(),
+                "time" : Date.now()
             });
         }
     }
+    */
     /*
     private writeValutation(exercise : Exercise, sentenceKey : string, solutionKey : number) {
         FirebaseManager.database.ref('data/sentences/' + sentenceKey + '/solutions/'+solutionKey+'/valutations')

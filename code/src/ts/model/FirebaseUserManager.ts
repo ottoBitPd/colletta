@@ -10,32 +10,31 @@ class FirebaseUserManager extends FirebaseManager {
         FirebaseManager.registerInstance("FirebaseUserManager", this);
     }
 
-    // @ts-ignore
-    async insert(obj: Data): string {
-        let user = <User>obj;
-        let exist  = await this.search(user.getUsername());
-        if (exist==="false") {
-            //controllo se user è teacher o student
-            if (user.isTeacher()===true) {
-                let teacher= <Teacher>obj;
-                FirebaseManager.database.ref('data/users').push({name: teacher.getName(),
-                    password: teacher.getPassword(), lastname: teacher.getLastName(), username: teacher.getUsername(),
-                    city: teacher.getCity(), school: teacher.getSchool(), INPScode: teacher.getINPS()
-                });
+    public async insert(obj: Data): Promise<boolean> {
+        const user = <User>obj;
+        const exist : string = await this.search(user.getUsername());
+        return new Promise(async function (resolve) {
+            if (exist==="false") {
+                if (user.isTeacher()===true) {
+                    const teacher= <Teacher>obj;
+                    FirebaseManager.database.ref('data/users').push({name: teacher.getName(),
+                        password: teacher.getPassword(), lastname: teacher.getLastName(), username: teacher.getUsername(),
+                        city: teacher.getCity(), school: teacher.getSchool(), INPScode: teacher.getINPS()
+                    });
+                }
+                else {
+                    FirebaseManager.database.ref('data/users').push({
+                        //let student= <Student>obj;
+                        name: user.getName(), password: user.getPassword(), lastname: user.getLastName(),
+                        username: user.getUsername(), city: user.getCity(), school: user.getSchool()
+                    });
+                }
+                return resolve(true);
             }
             else {
-                FirebaseManager.database.ref('data/users').push({
-                    //let student= <Student>obj;
-                    name: user.getName(),
-                    password: user.getPassword(), lastname: user.getLastName(), username: user.getUsername(),
-                    city: user.getCity(), school: user.getSchool()
-                });
+                return resolve(false);
             }
-            return "true";
-        }
-        else {
-            return ("false");
-        }
+        });
     }
 
     public async search(username : string) : Promise<string>{

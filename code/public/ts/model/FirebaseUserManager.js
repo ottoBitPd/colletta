@@ -16,33 +16,34 @@ class FirebaseUserManager extends FirebaseManager_1.FirebaseManager {
         super();
         FirebaseManager_1.FirebaseManager.registerInstance("FirebaseUserManager", this);
     }
-    // @ts-ignore
     insert(obj) {
         return __awaiter(this, void 0, void 0, function* () {
-            let user = obj;
-            let exist = yield this.search(user.getUsername());
-            if (exist === "false") {
-                //controllo se user è teacher o student
-                if (user.isTeacher() === true) {
-                    let teacher = obj;
-                    FirebaseManager_1.FirebaseManager.database.ref('data/users').push({ name: teacher.getName(),
-                        password: teacher.getPassword(), lastname: teacher.getLastName(), username: teacher.getUsername(),
-                        city: teacher.getCity(), school: teacher.getSchool(), INPScode: teacher.getINPS()
-                    });
-                }
-                else {
-                    FirebaseManager_1.FirebaseManager.database.ref('data/users').push({
-                        //let student= <Student>obj;
-                        name: user.getName(),
-                        password: user.getPassword(), lastname: user.getLastName(), username: user.getUsername(),
-                        city: user.getCity(), school: user.getSchool()
-                    });
-                }
-                return "true";
-            }
-            else {
-                return ("false");
-            }
+            const user = obj;
+            const exist = yield this.search(user.getUsername());
+            return new Promise(function (resolve) {
+                return __awaiter(this, void 0, void 0, function* () {
+                    if (exist === "false") {
+                        if (user.isTeacher() === true) {
+                            const teacher = obj;
+                            FirebaseManager_1.FirebaseManager.database.ref('data/users').push({ name: teacher.getName(),
+                                password: teacher.getPassword(), lastname: teacher.getLastName(), username: teacher.getUsername(),
+                                city: teacher.getCity(), school: teacher.getSchool(), INPScode: teacher.getINPS()
+                            });
+                        }
+                        else {
+                            FirebaseManager_1.FirebaseManager.database.ref('data/users').push({
+                                //let student= <Student>obj;
+                                name: user.getName(), password: user.getPassword(), lastname: user.getLastName(),
+                                username: user.getUsername(), city: user.getCity(), school: user.getSchool()
+                            });
+                        }
+                        return resolve(true);
+                    }
+                    else {
+                        return resolve(false);
+                    }
+                });
+            });
         });
     }
     search(username) {

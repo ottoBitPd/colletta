@@ -5,9 +5,9 @@ class DatabaseClassManager implements DatabaseManager{
     constructor(){
 
     }
-    insert(obj:Data) : string {
-        return "1";
-    }
+    insert(obj:Data) : Promise<boolean>;
+
+    // @ts-ignore
     remove(id:string) : Promise<boolean> | null {
         return null;
     }

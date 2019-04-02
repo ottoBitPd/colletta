@@ -3,9 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 class DatabaseClassManager {
     constructor() {
     }
-    insert(obj) {
-        return "1";
-    }
+    // @ts-ignore
     remove(id) {
         return null;
     }

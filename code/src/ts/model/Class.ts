@@ -39,6 +39,7 @@ class Class implements Data {
     public getNumberOfStudents() : number {
         return this.students.length;
     }
+
     public deleteStudent(student : string) : void {
         this.students = this.students.filter(s => s !== student);
     }

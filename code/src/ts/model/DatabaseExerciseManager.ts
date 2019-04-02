@@ -7,9 +7,11 @@ class DatabaseExerciseManager implements DatabaseManager{
     constructor(){
         this.firebaseExerciseManager= new FirebaseExerciseManager();
     }
-    async insert(obj:Data) : Promise<> {
+
+    async insert(obj:Data) : Promise<boolean> {
         return await this.firebaseExerciseManager.insert(obj);
     }
+
     remove(id:string) : Promise<boolean> | null {
         return null;
     }
@@ -17,11 +19,13 @@ class DatabaseExerciseManager implements DatabaseManager{
     read(id:string) : Promise<Data> | null {
         return null;
     }
+
     async search(sentence: string){
         return await this.firebaseExerciseManager.search(sentence);
     }
-    update(id:string) {
-        ;
+
+    update(id:string) : void {
+
     }
 }
 export {DatabaseExerciseManager}

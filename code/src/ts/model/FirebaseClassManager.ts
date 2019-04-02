@@ -8,20 +8,24 @@ class FirebaseClassManager extends FirebaseManager {
         FirebaseManager.registerInstance("FirebaseClassManager", this);
     }
 
-    // @ts-ignore
-    async insert(obj: Data): string {
-        let _class = <Class>obj;
-        let exists = await this.search(_class.getTeacherID(), _class.getName());
-        if (exists === "false") {
-            FirebaseManager.database.ref('data/classes').push({name: _class.getName(),
-                description: _class.getDescription(), students: _class.getStudents(), teacherID: _class.getTeacherID(),
-                exercises: _class.getExercises()
-            });
-            return "true";
-        }
-        else {
-            return ("false");
-        }
+    public async insert(obj: Data): Promise<boolean> {
+        const _class = <Class>obj;
+        const exists : string = await this.search(_class.getTeacherID(), _class.getName());
+        return new Promise(async function (resolve) {
+            if (exists === "false") {
+                FirebaseManager.database.ref('data/classes').push({
+                    name: _class.getName(),
+                    description: _class.getDescription(),
+                    students: _class.getStudents(),
+                    teacherID: _class.getTeacherID(),
+                    exercises: _class.getExercises()
+                });
+                return resolve(true);
+            } 
+            else {
+                return resolve(false);
+            }
+        });
     }
 
     public async search(teacherID: string, name:string): Promise<string> {

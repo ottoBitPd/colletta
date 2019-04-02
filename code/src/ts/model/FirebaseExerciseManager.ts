@@ -81,11 +81,11 @@ class FirebaseExerciseManager extends FirebaseManager {
     }
 
 
-    public async read(id: string): Promise<Data> {
+    public async read(id: string): Promise<Exercise> {
 
         const ProData: Promise <Exercise> = this.getExerciseById(id);
-        const readed = await ProData;
-        return readed;
+        const read = await ProData;
+        return read;
     }
 
     private async getExerciseById(id : string) : Promise<Exercise> {

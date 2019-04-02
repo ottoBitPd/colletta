@@ -1,6 +1,7 @@
 import {DatabaseManager} from "./DatabaseManager";
 import {Data} from "./Data";
 import {FirebaseExerciseManager} from "./FirebaseExerciseManager";
+import {Exercise} from "./Exercise";
 
 class DatabaseExerciseManager implements DatabaseManager{
     private firebaseExerciseManager : FirebaseExerciseManager;
@@ -16,8 +17,8 @@ class DatabaseExerciseManager implements DatabaseManager{
         return null;
     }
 
-    read(id:string) : Promise<Data> | null {
-        return null;
+    async read(id:string) : Promise<Exercise> {
+        return await this.firebaseExerciseManager.read(id);
     }
 
     async search(sentence: string){

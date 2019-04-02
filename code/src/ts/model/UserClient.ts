@@ -13,11 +13,11 @@ class UserClient{
         return this.dbUserManager;
     }*/
 
-    insertStudent(username : string, password : string, name : string, surname : string, city : string, school : string) : string{
-        return this.dbUserManager.insert(new Student(username, password, name, surname, city, school));
+    async insertStudent(username : string, password : string, name : string, surname : string, city : string, school : string) : Promise<boolean>{
+        return await this.dbUserManager.insert(new Student(username, password, name, surname, city, school));
     }
-    insertTeacher(username : string, password : string, name : string, surname : string, city : string, school : string, inps:string) : string{
-        return this.dbUserManager.insert(new Teacher(username, password, name, surname, city, school, inps));
+    async insertTeacher(username : string, password : string, name : string, surname : string, city : string, school : string, inps:string) : Promise<boolean>{
+        return await this.dbUserManager.insert(new Teacher(username, password, name, surname, city, school, inps));
     }
 
     async search(username : string) : Promise<string>{

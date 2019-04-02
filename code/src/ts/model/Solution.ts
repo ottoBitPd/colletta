@@ -58,8 +58,11 @@ class Solution {
                 result += '"' + key +'" : '+value+",";
             });
          }
-        result = result.substr(0,result.length-1);
+        console.log(result);
+        if (result !== "{")
+            result = result.substr(0,result.length-1);
         result += "}";
+        console.log(result);
         return JSON.parse(result);
     }
     getTime(): Date {

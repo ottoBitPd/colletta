@@ -9,6 +9,7 @@
   "main": "public/index.js",
   "dependencies": {
     "@types/express": "^4.16.1",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
     "firebase": "^5.9.1",
     "firebase-admin": "^7.0.0",
@@ -23,7 +24,8 @@
     "mocha": "^6.0.2",
     "ts-node": "^8.0.3",
     "tslint": "^5.12.0",
-    "typescript": "^3.2.2"
+    "typescript": "^3.2.2",
+    "typings": "^2.1.1"
   },
   "private": true
 }

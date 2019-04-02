@@ -1,4 +1,12 @@
 "use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const PageController_1 = require("./PageController");
 const Client_1 = require("../model/Client");
@@ -8,40 +16,64 @@ class AuthenticationController extends PageController_1.PageController {
     //private fileSystem:any;
     constructor(viewLogin, viewRegistration) {
         super(null);
-        this.passwordHash = require('password-hash');
+        this.passwordHash = require('bcryptjs');
         this.viewLogin = viewLogin;
         this.viewRegistration = viewRegistration;
-        this.client = (new Client_1.Client.builder()).buildUserClient().build();
+        this.client = (new Client_1.Client.builder()).buildUserClient().build().getUserClient();
         //this.fileSystem = require ('fs');
     }
     update(app) {
+        app.get('/profile', (request, response) => {
+            response.send("Login avvenuto con successo sei nel tuo profilo");
+        });
         app.get('/login', (request, response) => {
+            if (request.query.mess === "invalidLogin") {
+                this.viewLogin.setError("username o password invalidi");
+            }
+            else {
+                this.viewLogin.setError("");
+            }
             response.send(this.viewLogin.getPage());
         });
+        app.post('/checklogin', (request, response) => __awaiter(this, void 0, void 0, function* () {
+            if (this.client && request.body.username !== "admin") { //if is not undefined
+                let idUser = yield this.client.search(request.body.username);
+                if (idUser !== "false") {
+                    let user = yield this.client.read(idUser);
+                    let password = user.getPassword();
+                    if (this.passwordHash.compareSync(request.body.password, password)) {
+                        //console.log("password match");
+                        response.redirect("/profile");
+                    }
+                    //console.log("password dont match")
+                    response.redirect("/login?mess=invalidLogin");
+                }
+                //console.log("user dont match");
+                response.redirect("/login?mess=invalidLogin");
+            }
+        }));
         app.get('/registration', (request, response) => {
-            if (typeof request.query.mess === 'undefined') {
-                console.log("passo");
-                response.send(this.viewRegistration.getPage());
+            if (request.query.mess === "errUsername") {
+                this.viewRegistration.setError("username già utilizzata, scegli un'altra username");
             }
-            else { //errore username
-                response.send(this.viewRegistration.getPageM(request.query.mess));
+            else {
+                this.viewRegistration.setError("");
             }
+            response.send(this.viewRegistration.getPage());
         });
-        app.post("/profile", (req, res) => {
-            const hashedPassword = this.passwordHash.generate(req.body.username);
-            // console.log(hashedPassword);
-            console.log("client: :" + this.client);
-            const user = this.client.getUserClient();
-            console.log("username :" + req.body.username + " role: " + req.body.role + " user : " + user);
-            if (req.body.username !== "admin" && req.body.role === "student" && user !== undefined) {
+        app.post("/saveuser", (req, res) => {
+            const hashedPassword = this.passwordHash.hashSync(req.body.username, 10);
+            //console.log("hashedPassword:" + hashedPassword);
+            console.log("username :" + req.body.username + " role: " + req.body.role + " user : " + this.client);
+            if (req.body.username !== "admin" && req.body.role === "student" && this.client !== undefined) {
                 const student = new Student_1.Student(req.body.username, hashedPassword, req.body.name, req.body.surname, "Città", "Scuola");
-                user.insert(student);
+                this.client.insert(student);
                 console.log("studente registrato con successo");
                 res.redirect("/login?mess=regisDone");
             }
-            else if (req.body.username !== "admin" && req.body.role === "teacher" && user !== undefined) {
+            else if (req.body.username !== "admin" && req.body.role === "teacher" && this.client !== undefined) {
                 const teacher = new Teacher_1.Teacher(req.body.username, hashedPassword, req.body.name, req.body.surname, "Città", "Scuola", 0);
-                user.insert(teacher);
+                this.client.insert(teacher);
                 console.log("teacher registrato con successo");
                 res.redirect("/login?mess=regisDone");
             }

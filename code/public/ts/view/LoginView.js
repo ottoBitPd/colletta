@@ -4,6 +4,10 @@ const PageView_1 = require("./PageView");
 class LoginView extends PageView_1.PageView {
     constructor() {
         super();
+        this.error = "";
+    }
+    setError(error) {
+        this.error = error;
     }
     getPage() {
         return "<!DOCTYPE html> " +
@@ -16,7 +20,8 @@ class LoginView extends PageView_1.PageView {
             "<body> " +
             "<div id=\"back\"> " +
             "<h1>LOGIN</h1>" +
-            "<form method=\"POST\" action=\"/profile\"> " +
+            "<p class='red'>" + this.error + "</p>" +
+            "<form method=\"POST\" action=\"/checklogin\"> " +
             "<input type=\"text\" id=\"username\" name=\"username\" placeholder='Inserisci la tua username'/> " +
             "<input type=\"password\" id=\"password\" name=\"password\" placeholder='Inserisci la tua password'/> " +
             "<input type=\"submit\" value=\"invia\"/> " +

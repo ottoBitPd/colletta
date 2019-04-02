@@ -9,5 +9,8 @@ class ExerciseClient{
     getDbExerciseManager(): DatabaseExerciseManager {
         return this.dbExerciseManager;
     }
+    insertNewExercise(){
+
+    }
 }
 export{ExerciseClient}

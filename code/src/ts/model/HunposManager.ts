@@ -58,14 +58,12 @@ class HunposManager implements POSManager{
         return this.buildSolution();
     };
 
-    train():void{
-        this.shell.exec('src\\ts\\controller\\hunpos\\hunpos-train ' + this.modelFilePath + '< src\\ts\\controller\\hunpos\\train');
-    };
-    tag():void{
-        this.shell.exec('src\\ts\\controller\\hunpos\\hunpos-tag ' + this.modelFilePath + '< ' + this.inputFilePath + '>' + this.outputFilePath);
-    };
-
-
+     train():void{
+         this.shell.exec('./src/ts/controller/hunpos/hunpos-train ' + this.modelFilePath + '< ./src/ts/controller/hunpos/train');
+     };
+     tag():void{
+         this.shell.exec('./src/ts/controller/hunpos/hunpos-tag ' + this.modelFilePath + '< ' + this.inputFilePath + '>' + this.outputFilePath);
+     };
 }
 
 export {HunposManager};

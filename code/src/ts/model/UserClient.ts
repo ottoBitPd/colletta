@@ -1,6 +1,7 @@
 import {DatabaseUserManager} from "./DatabaseUserManager";
-import {User} from "./User";
 import {Data} from "./Data";
+import {Teacher} from "./Teacher";
+import {Student} from "./Student";
 
 class UserClient{
     private dbUserManager : DatabaseUserManager;
@@ -12,8 +13,11 @@ class UserClient{
         return this.dbUserManager;
     }*/
 
-    insert(user : User) : Promise<boolean>{
-        return this.dbUserManager.insert(user);
+    insertStudent(username : string, password : string, name : string, surname : string, city : string, school : string) : string{
+        return this.dbUserManager.insert(new Student(username, password, name, surname, city, school));
+    }
+    insertTeacher(username : string, password : string, name : string, surname : string, city : string, school : string, inps:string) : string{
+        return this.dbUserManager.insert(new Teacher(username, password, name, surname, city, school, inps));
     }
 
     async search(username : string) : Promise<string>{

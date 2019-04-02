@@ -1,13 +1,17 @@
 import {DatabaseManager} from "./DatabaseManager";
 import {Data} from "./Data";
+import {FirebaseExerciseManager} from "./FirebaseExerciseManager";
 
 class DatabaseExerciseManager implements DatabaseManager{
+    private firebaseExerciseManager : FirebaseExerciseManager;
     constructor(){
-
+        this.firebaseExerciseManager= new FirebaseExerciseManager();
     }
-    insert(obj:Data) : Promise<boolean>;
 
-    // @ts-ignore
+    async insert(obj:Data) : Promise<boolean> {
+        return await this.firebaseExerciseManager.insert(obj);
+    }
+
     remove(id:string) : Promise<boolean> | null {
         return null;
     }
@@ -16,8 +20,12 @@ class DatabaseExerciseManager implements DatabaseManager{
         return null;
     }
 
+    async search(sentence: string){
+        return await this.firebaseExerciseManager.search(sentence);
+    }
+
     update(id:string) : void {
-        ;
+
     }
 }
 export {DatabaseExerciseManager}

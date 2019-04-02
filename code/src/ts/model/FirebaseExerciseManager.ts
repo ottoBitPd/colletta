@@ -9,6 +9,7 @@ class FirebaseExerciseManager extends FirebaseManager {
         FirebaseManager.registerInstance("FirebaseExerciseManager", this);
     }
 
+
     async insert(obj: Data): Promise<boolean> {
         let exercise = <Exercise>obj;
         let exists : string= await this.search(exercise.getSentence());

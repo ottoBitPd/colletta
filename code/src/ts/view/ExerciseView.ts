@@ -1,6 +1,8 @@
 import {PageView} from "./PageView";
+import {ExerciseClient} from "../model/ExerciseClient";
 
-class ExercisePageView extends PageView{
+class ExerciseView extends PageView{
+    private exerciseClient : ExerciseClient | undefined = undefined;
     private sentence : any;
     private key : any;
     private hunposTranslation : any;
@@ -11,6 +13,10 @@ class ExercisePageView extends PageView{
         this.key = null;
         this.hunposTranslation = null;
         this.hunposTags = null;
+    }
+
+    setExercise(exerciseClient: ExerciseClient){
+        this.exerciseClient = exerciseClient;
     }
 
     setSentence(value : string) {
@@ -71,4 +77,4 @@ class ExercisePageView extends PageView{
         return input.replace(/\*i\*/g,index);
     }
 }
-export {ExercisePageView};
+export {ExerciseView};

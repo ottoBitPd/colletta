@@ -11,8 +11,9 @@ class UserClient{
         return this.dbUserManager;
     }*/
 
-    insert(user : User) : string{
+    insert(user : User) : Promise<boolean>{
         return this.dbUserManager.insert(user);
     }
+
 }
 export{UserClient}

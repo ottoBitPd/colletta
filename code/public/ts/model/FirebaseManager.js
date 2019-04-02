@@ -33,7 +33,6 @@ class FirebaseManager {
             return FirebaseManager.registry.get(istanceName);
         return null;
     }
-    insert(obj) { return "-1"; }
     // @ts-ignore
     read(id) { return null; }
     update(path, value) { }

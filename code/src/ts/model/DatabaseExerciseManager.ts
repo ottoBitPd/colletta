@@ -5,9 +5,9 @@ class DatabaseExerciseManager implements DatabaseManager{
     constructor(){
 
     }
-    insert(obj:Data) : string {
-        return "1";
-    }
+    insert(obj:Data) : Promise<boolean>;
+
+    // @ts-ignore
     remove(id:string) : Promise<boolean> | null {
         return null;
     }
@@ -16,7 +16,7 @@ class DatabaseExerciseManager implements DatabaseManager{
         return null;
     }
 
-    update(id:string) {
+    update(id:string) : void {
         ;
     }
 }

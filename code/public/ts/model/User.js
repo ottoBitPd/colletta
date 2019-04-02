@@ -30,13 +30,6 @@ class User {
     getSchool() {
         return this.databaseInfo.school;
     }
-<<<<<<< HEAD
-    samePassword(otherPassword) {
-        if (otherPassword == this.databaseInfo.password)
-            return true;
-        return false;
-    }
-=======
     getPassword() {
         return this.databaseInfo.password;
     }
@@ -45,14 +38,12 @@ class User {
             return true;
         return false;
     }
-    //public abstract getClasses(classList : Class[]) : Class[];
     setID(id) {
         this.databaseInfo.id = id;
     }
     isTeacher() {
         return false;
     }
->>>>>>> 9db7ee1784113cb663fb16eba5c63c485f967a12
     getID() {
         return this.databaseInfo.id;
     }

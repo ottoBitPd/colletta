@@ -64,8 +64,6 @@ class HunposManager implements POSManager{
      tag():void{
          this.shell.exec('./src/ts/controller/hunpos/hunpos-tag ' + this.modelFilePath + '< ' + this.inputFilePath + '>' + this.outputFilePath);
      };
-
-
 }
 
 export {HunposManager};

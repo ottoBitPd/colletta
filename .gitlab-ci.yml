@@ -20,7 +20,7 @@ all_tests:
 compile:
   image: node:8.15.0
   stage: build
-	before_script:
+  before_script:
     - npm install
   lint:
     script:

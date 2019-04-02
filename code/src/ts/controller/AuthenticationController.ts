@@ -44,18 +44,25 @@ class AuthenticationController extends PageController {
             if(this.client && request.body.username !== "admin"){//if is not undefined
                 let idUser = await this.client.search(request.body.username);
                 if(idUser!=="false"){
-                    let user : Data= await this.client.read(idUser);
-                    let password=(<User>user).getPassword();
-                    if(this.passwordHash.compareSync(request.body.password,password)){
-                        //console.log("password match");
-                        response.redirect("/profile");
-                    }
+                    let user : Data | null= await this.client.read(idUser);
+                    if(user!==null) {
+                        let password = (<User>user).getPassword();
+                        if (this.passwordHash.compareSync(request.body.password, password)) {
+                            //console.log("password match");
+                            response.redirect("/profile");
+                        } else
+                        //console.log("password dont match")
+                            response.redirect("/login?mess=invalidLogin");
+                    } else
                     //console.log("password dont match")
+                        response.redirect("/login?mess=invalidLogin");
+                } else
+                //console.log("password dont match")
                     response.redirect("/login?mess=invalidLogin");
-                }
+
+            } else
                 //console.log("user dont match");
                 response.redirect("/login?mess=invalidLogin");
-            }
         });
         app.get('/registration', (request: any, response: any) => {
             if(request.query.mess==="errUsername") {

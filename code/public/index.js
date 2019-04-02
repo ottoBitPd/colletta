@@ -20,18 +20,21 @@ const RegistrationView_1 = require("./ts/view/RegistrationView");
 const AuthenticationController_1 = require("./ts/controller/AuthenticationController");
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 const FirebaseUserManager_1 = require("./ts/model/FirebaseUserManager");
 <<<<<<< HEAD
 const FirebaseClassManager_1 = require("./ts/model/FirebaseClassManager");
+>>>>>>> 24d1d471687b0249866b1676f63e14647e0eb878
 const Class_1 = require("./ts/model/Class");
-const Teacher_1 = require("./ts/model/Teacher");
-const Student_1 = require("./ts/model/Student");
-=======
->>>>>>> 7864bf13b5e02e8d76b41f59181e574bf03b9cea
-const objDb = new FirebaseUserManager_1.FirebaseUserManager();
+const FirebaseClassManager_1 = require("./ts/model/FirebaseClassManager");
+const objDb = new FirebaseClassManager_1.FirebaseClassManager();
 // @ts-ignore
+<<<<<<< HEAD
+=======
 const objDbC = new FirebaseClassManager_1.FirebaseClassManager();
 >>>>>>> 2e9495e021589f870c65e3191570385d33099a4e
+>>>>>>> 24d1d471687b0249866b1676f63e14647e0eb878
 const app = express();
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -39,14 +42,26 @@ app.use(express.static(__dirname));
 const insertPageView = new InsertPageView_1.InsertPageView();
 const insertPage = new InsertPageController_1.InsertPageController(insertPageView);
 insertPage.update(app);
+<<<<<<< HEAD
+const savePageView = new SavePageView_1.SavePageView();
+const exercisePageView = new ExercisePageView_1.ExercisePageView();
+const exercisePage = new ExerciseController_1.ExerciseController(exercisePageView, savePageView, objDb); //objDb
+exercisePage.update(app);
+/*var savePageView = new SavePageView();
+var savePage = new SavePageController(savePageView, objDb);
+savePage.update(app);*/
+=======
 /*const savePageView = new SavePageView();
 const exercisePageView = new ExercisePageView();
 const exercisePage = new ExerciseController(exercisePageView, savePageView);//objDb
 exercisePage.update(app);*/
+>>>>>>> 24d1d471687b0249866b1676f63e14647e0eb878
 const loginView = new LoginView_1.LoginView();
 const registrationView = new RegistrationView_1.RegistrationView();
 const LoginPage = new AuthenticationController_1.AuthenticationController(loginView, registrationView);
 LoginPage.update(app);
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 <<<<<<< HEAD
@@ -86,11 +101,17 @@ app.listen(8080, function () {
 >>>>>>> 47ab27f4adcef8ffc23fc87cf5fe90ec8c1174ed
 >>>>>>> 6f5582cbb399fdad3aa5396bdc408ac6db38dd4f
 >>>>>>> 2e9495e021589f870c65e3191570385d33099a4e
+>>>>>>> 24d1d471687b0249866b1676f63e14647e0eb878
 app.listen(8080, function () {
     return __awaiter(this, void 0, void 0, function* () {
         const host = "127.0.0.1";
         const port = "8080";
         console.log("Example app listening at http://%s:%s", host, port);
+<<<<<<< HEAD
+        let _clas = new Class_1.Class("fa0", "fdf0", "fdafadsf", ["fs", "kk"], ["1", "2"]);
+        let k = yield objDb.insert(_clas);
+        console.log(k);
+=======
 <<<<<<< HEAD
 =======
 <<<<<<< HEAD
@@ -137,6 +158,7 @@ app.listen(8080, function () {
 >>>>>>> 6f5582cbb399fdad3aa5396bdc408ac6db38dd4f
 >>>>>>> 7864bf13b5e02e8d76b41f59181e574bf03b9cea
 >>>>>>> 2e9495e021589f870c65e3191570385d33099a4e
+>>>>>>> 24d1d471687b0249866b1676f63e14647e0eb878
     });
 });
 //# sourceMappingURL=index.js.map

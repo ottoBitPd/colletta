@@ -3,9 +3,9 @@ import {Class} from "./Class";
 
 class Teacher extends User {
 
-    private INPS : number;
+    private INPS : string;
 
-    constructor (username : string, password: string, name : string, lastname:string, city:string, school : string, inps : number){
+    constructor (username : string, password: string, name : string, lastname:string, city:string, school : string, inps : string){
         super(username, password, name, lastname, city, school);
         this.INPS = inps;
     }

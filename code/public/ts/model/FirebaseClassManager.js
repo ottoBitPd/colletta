@@ -15,21 +15,27 @@ class FirebaseClassManager extends FirebaseManager_1.FirebaseManager {
         super();
         FirebaseManager_1.FirebaseManager.registerInstance("FirebaseClassManager", this);
     }
-    // @ts-ignore
     insert(obj) {
         return __awaiter(this, void 0, void 0, function* () {
-            let _class = obj;
-            let exists = yield this.search(_class.getTeacherID(), _class.getName());
-            if (exists === "false") {
-                FirebaseManager_1.FirebaseManager.database.ref('data/classes').push({ name: _class.getName(),
-                    description: _class.getDescription(), students: _class.getStudents(), teacherID: _class.getTeacherID(),
-                    exercises: _class.getExercises()
+            const _class = obj;
+            const exists = yield this.search(_class.getTeacherID(), _class.getName());
+            return new Promise(function (resolve) {
+                return __awaiter(this, void 0, void 0, function* () {
+                    if (exists === "false") {
+                        FirebaseManager_1.FirebaseManager.database.ref('data/classes').push({
+                            name: _class.getName(),
+                            description: _class.getDescription(),
+                            students: _class.getStudents(),
+                            teacherID: _class.getTeacherID(),
+                            exercises: _class.getExercises()
+                        });
+                        return resolve(true);
+                    }
+                    else {
+                        return resolve(false);
+                    }
                 });
-                return "true";
-            }
-            else {
-                return ("false");
-            }
+            });
         });
     }
     search(teacherID, name) {

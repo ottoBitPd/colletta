@@ -3,11 +3,11 @@ import {LoginView} from "../view/LoginView";
 import {RegistrationView} from "../view/RegistrationView";
 import {Client} from "../model/Client";
 
-import {Student} from "../model/Student";
-import {Teacher} from "../model/Teacher";
 import {User} from "../model/User";
 import {Data} from "../model/Data";
 import {UserClient} from "../model/UserClient";
+
+var session = require('express-session');
 
 
 class AuthenticationController extends PageController {
@@ -29,7 +29,8 @@ class AuthenticationController extends PageController {
 
     update(app: any) {
         app.get('/profile', (request: any, response: any) => {
-            response.send("Login avvenuto con successo sei nel tuo profilo");
+
+            response.send("Login avvenuto con successo sei nel tuo profilo"+request.session.username);
         });
         app.get('/login', (request: any, response: any) => {
             if(request.query.mess==="invalidLogin") {
@@ -49,6 +50,10 @@ class AuthenticationController extends PageController {
                         let password = (<User>user).getPassword();
                         if (this.passwordHash.compareSync(request.body.password, password)) {
                             //console.log("password match");
+                            app.use(session({
+                                userId: idUser,
+                                username: request.body.username
+                            }));
                             response.redirect("/profile");
                         } else
                         //console.log("password dont match")
@@ -80,15 +85,13 @@ class AuthenticationController extends PageController {
             console.log("username :"+req.body.username+" role: "+ req.body.role+" user : "+this.client );
             if(req.body.username!=="admin" && req.body.role==="student" && this.client !== undefined)
             {
-                const student = new Student( req.body.username, hashedPassword, req.body.name, req.body.surname, "Città", "Scuola")
-                this.client.insert(student);
+                this.client.insertStudent(req.body.username, hashedPassword, req.body.name, req.body.surname, "Città", "Scuola");
                 console.log("studente registrato con successo");
                 res.redirect("/login?mess=regisDone");
 
             }
             else if(req.body.username!=="admin" && req.body.role==="teacher" && this.client !== undefined){
-                const teacher = new Teacher( req.body.username, hashedPassword, req.body.name, req.body.surname, "Città", "Scuola", 0);
-                this.client.insert(teacher);
+                this.client.insertTeacher(req.body.username, hashedPassword, req.body.name, req.body.surname, "Città", "Scuola", "0002");
                 console.log("teacher registrato con successo");
                 res.redirect("/login?mess=regisDone");
             }

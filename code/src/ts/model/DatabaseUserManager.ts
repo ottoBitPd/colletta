@@ -8,7 +8,7 @@ class DatabaseUserManager implements DatabaseManager{
     constructor(){
         this.firebaseUserManager = new FirebaseUserManager();
     }
-    insert(obj:Data) : string {
+    insert(obj:Data) : Promise<boolean> {
         return this.firebaseUserManager.insert(obj);
     }
     async remove(id:string) : Promise<boolean> {

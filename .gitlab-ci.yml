@@ -23,7 +23,6 @@ compile:
   before_script:
     - npm install
   script:
-    - npm run tslint
     - npm run build
     
 codequality:

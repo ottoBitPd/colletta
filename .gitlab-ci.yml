@@ -1,6 +1,3 @@
-before_script:
-  - cd code
-
 all_tests:
   image: node:8.15.0
   stage: test
@@ -16,6 +13,7 @@ all_tests:
     - npm i --global mocha
     - npm i --save-dev mocha
     - npm i --save-dev chai
+    - cd code
   
   script:
     - npm test
@@ -25,6 +23,7 @@ compile:
   stage: build
   before_script:
     - npm install
+    - cd code
   script:
     - npm run build
     

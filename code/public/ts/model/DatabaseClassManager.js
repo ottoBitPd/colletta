@@ -31,6 +31,11 @@ class DatabaseClassManager {
             return yield this.firebaseClassManager.update(path, value);
         });
     }
+    elements() {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this.firebaseClassManager.elements();
+        });
+    }
 }
 exports.DatabaseClassManager = DatabaseClassManager;
 //# sourceMappingURL=DatabaseClassManager.js.map

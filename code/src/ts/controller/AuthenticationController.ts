@@ -3,12 +3,10 @@ import {LoginView} from "../view/LoginView";
 import {RegistrationView} from "../view/RegistrationView";
 import {Client} from "../model/Client";
 
-import {User} from "../model/User";
-import {Data} from "../model/Data";
 import {UserClient} from "../model/UserClient";
+//import {Session} from "inspector";
 
-var session = require('express-session');
-
+const session = require('express-session');
 
 class AuthenticationController extends PageController {
     private passwordHash = require('bcryptjs');
@@ -28,6 +26,9 @@ class AuthenticationController extends PageController {
     }
 
     update(app: any) {
+        app.get('/profile', (request: any, response: any) => {
+            response.send("Login avvenuto con successo sei nel tuo profilo"+session.username);
+        });
         app.get('/login', (request: any, response: any) => {
             if(request.query.mess==="invalidLogin") {
                 this.viewLogin.setError("username o password invalidi");
@@ -38,32 +39,21 @@ class AuthenticationController extends PageController {
             response.send(this.viewLogin.getPage());
         });
         app.post('/checklogin', async (request: any, response: any) => {
-            if(this.client && request.body.username !== "admin"){//if is not undefined
-                let idUser = await this.client.search(request.body.username);
-                if(idUser!=="false"){
-                    let user : Data | null= await this.client.read(idUser);
-                    if(user!==null) {
-                        let password = (<User>user).getPassword();
-                        if (this.passwordHash.compareSync(request.body.password, password)) {
-                            //console.log("password match");
-                            app.use(session({
-                                userId: idUser,
-                                username: request.body.username
-                            }));
-                            response.redirect("/profile");
-                        } else
-                        //console.log("password dont match")
-                            response.redirect("/login?mess=invalidLogin");
-                    } else
-                    //console.log("password dont match")
-                        response.redirect("/login?mess=invalidLogin");
-                } else
-                //console.log("password dont match")
-                    response.redirect("/login?mess=invalidLogin");
+            //app.use(session({name:'bortolone',secret: 'ciao',resave: true, saveUninitialized: true}));
 
-            } else
-                //console.log("user dont match");
-                response.redirect("/login?mess=invalidLogin");
+
+            console.log(session);
+            if(this.client && request.body.username !== "admin") {//if is not undefined
+                if (await this.client.verifyUser(request.body.username, request.body.password)) {
+                    app.use(session({secret: 'colletta',resave: false, saveUninitialized: true}));
+                    session.username = request.body.username;
+                    session.password = request.body.password;
+                    response.redirect("/profile");
+                }
+                else {
+                    response.redirect("/login?mess=invalidLogin");
+                }
+            }
         });
         app.get('/registration', (request: any, response: any) => {
             if(request.query.mess==="errUsername") {
@@ -92,7 +82,6 @@ class AuthenticationController extends PageController {
                 res.redirect("/login?mess=regisDone");
             }
             else{
-
                 console.log("tutto a puttane");
                 res.redirect("/registration?mess=errUsername");
             }

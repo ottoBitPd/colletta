@@ -5,7 +5,7 @@ import 'mocha';
 
 
 describe('#getMethods', function() {
-    let obj= new Class("name", "description","1234",["st1", "st2"],["es1, es2"]);
+    let obj= new Class("name", "description","1234",["st1", "st2"],["es1", "es2"]);
 
     context('ClassTest.getName()', function() {
         it('should return the name', function() {
@@ -54,9 +54,9 @@ describe('#getMethods', function() {
 
     context('ClassTest.deleteExercise()', function() {
         it('should return delete exercise', function() {
-            const array=obj.getExercises();
+            let array = ["es1", "es2"];
             obj.deleteExercise("es1");
-            expect(!array.every((snap)=> (obj.getExercises().indexOf(snap)!==-1)));
+            expect(obj.getExercises()).eql(array.filter(e => e !== "es1"));
 
         });
     });

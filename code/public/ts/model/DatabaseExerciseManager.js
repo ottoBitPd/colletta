@@ -33,6 +33,11 @@ class DatabaseExerciseManager {
     }
     update(id) {
     }
+    elements() {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this.firebaseExerciseManager.elements();
+        });
+    }
 }
 exports.DatabaseExerciseManager = DatabaseExerciseManager;
 //# sourceMappingURL=DatabaseExerciseManager.js.map

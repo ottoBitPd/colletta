@@ -36,6 +36,11 @@ class DatabaseUserManager {
             return yield this.firebaseUserManager.search(username);
         });
     }
+    elements() {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this.firebaseUserManager.elements();
+        });
+    }
 }
 exports.DatabaseUserManager = DatabaseUserManager;
 //# sourceMappingURL=DatabaseUserManager.js.map

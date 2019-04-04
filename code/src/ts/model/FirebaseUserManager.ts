@@ -57,6 +57,26 @@ class FirebaseUserManager extends FirebaseManager {
         });
     }
 
+    public async elements () : Promise<Map<string, string>> {
+        let container = new Map<string, string>();
+        return new Promise(function (resolve) {
+            FirebaseManager.database.ref('data/users')
+                .once("value", function (snapshot: any) {
+                    if (snapshot.exists()) {
+                        snapshot.forEach(function (data: any) {
+                            container.set(data.key, data.val().username);
+                        });
+                        //console.log("non esiste");
+                        return resolve(container);
+                    }
+                    //console.log("database vuoto");
+                    else {
+                        return resolve(container);
+                    }
+                });
+        });
+    }
+
     public async read(id: string): Promise<User> {
         const ProData: Promise <User> = this.getUserById(id);
         const read = await ProData;

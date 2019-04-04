@@ -22,5 +22,8 @@ class DatabaseClassManager implements DatabaseManager{
     async update(path:string, value: any){//non so se sia giusto tutto perchè async ma in teoria void non so se ritorna qualcosa
         return await this.firebaseClassManager.update(path,value);
     }
+    async elements() : Promise<Map<string, string>> {
+        return await this.firebaseClassManager.elements();
+    }
 }
 export {DatabaseClassManager}

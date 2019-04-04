@@ -10,8 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const PageController_1 = require("./PageController");
 const Client_1 = require("../model/Client");
-const Student_1 = require("../model/Student");
-const Teacher_1 = require("../model/Teacher");
+var session = require('express-session');
 class AuthenticationController extends PageController_1.PageController {
     //private fileSystem:any;
     constructor(viewLogin, viewRegistration) {
@@ -24,7 +23,7 @@ class AuthenticationController extends PageController_1.PageController {
     }
     update(app) {
         app.get('/profile', (request, response) => {
-            response.send("Login avvenuto con successo sei nel tuo profilo");
+            response.send("Login avvenuto con successo sei nel tuo profilo" + request.session.username);
         });
         app.get('/login', (request, response) => {
             if (request.query.mess === "invalidLogin") {
@@ -40,17 +39,31 @@ class AuthenticationController extends PageController_1.PageController {
                 let idUser = yield this.client.search(request.body.username);
                 if (idUser !== "false") {
                     let user = yield this.client.read(idUser);
-                    let password = user.getPassword();
-                    if (this.passwordHash.compareSync(request.body.password, password)) {
-                        //console.log("password match");
-                        response.redirect("/profile");
+                    if (user !== null) {
+                        let password = user.getPassword();
+                        if (this.passwordHash.compareSync(request.body.password, password)) {
+                            //console.log("password match");
+                            app.use(session({
+                                userId: idUser,
+                                username: request.body.username
+                            }));
+                            response.redirect("/profile");
+                        }
+                        else
+                            //console.log("password dont match")
+                            response.redirect("/login?mess=invalidLogin");
                     }
+                    else
+                        //console.log("password dont match")
+                        response.redirect("/login?mess=invalidLogin");
+                }
+                else
                     //console.log("password dont match")
                     response.redirect("/login?mess=invalidLogin");
-                }
+            }
+            else
                 //console.log("user dont match");
                 response.redirect("/login?mess=invalidLogin");
-            }
         }));
         app.get('/registration', (request, response) => {
             if (request.query.mess === "errUsername") {
@@ -66,14 +79,12 @@ class AuthenticationController extends PageController_1.PageController {
             //console.log("hashedPassword:" + hashedPassword);
             console.log("username :" + req.body.username + " role: " + req.body.role + " user : " + this.client);
             if (req.body.username !== "admin" && req.body.role === "student" && this.client !== undefined) {
-                const student = new Student_1.Student(req.body.username, hashedPassword, req.body.name, req.body.surname, "Città", "Scuola");
-                this.client.insert(student);
+                this.client.insertStudent(req.body.username, hashedPassword, req.body.name, req.body.surname, "Città", "Scuola");
                 console.log("studente registrato con successo");
                 res.redirect("/login?mess=regisDone");
             }
             else if (req.body.username !== "admin" && req.body.role === "teacher" && this.client !== undefined) {
-                const teacher = new Teacher_1.Teacher(req.body.username, hashedPassword, req.body.name, req.body.surname, "Città", "Scuola", 0);
-                this.client.insert(teacher);
+                this.client.insertTeacher(req.body.username, hashedPassword, req.body.name, req.body.surname, "Città", "Scuola", "0002");
                 console.log("teacher registrato con successo");
                 res.redirect("/login?mess=regisDone");
             }

@@ -47,5 +47,6 @@ interface DatabaseManager{
     remove(id:string) : Promise<boolean> | null;
     read(id:string) : Promise<Data> | null;
     update(path:string, value: any) : void;
+    elements() : Promise<Map<string, string>>;
 }
 export {DatabaseManager};

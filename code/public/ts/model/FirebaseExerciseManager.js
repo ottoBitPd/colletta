@@ -15,26 +15,6 @@ class FirebaseExerciseManager extends FirebaseManager_1.FirebaseManager {
         super();
         FirebaseManager_1.FirebaseManager.registerInstance("FirebaseExerciseManager", this);
     }
-    /*
-    async insert(obj: Data): Promise<boolean> {
-        let exercise = <Exercise>obj;
-        let key: any;
-        key = await this.search(exercise.getSentence());
-
-            if (key === "false") {//exercise does not exist in the db
-                console.log("inserting sentence");
-                key = this.writeSentence(exercise.getSentence(), exercise.getAuthorId());
-            }
-
-            let solution = exercise.getNewSolution();
-            if (solution !== null) {
-                console.log("inserting solution");
-                this.writeSolution(solution, key);
-            }
-            return true;
-
-    }
-    */
     insert(obj) {
         return __awaiter(this, void 0, void 0, function* () {
             let exercise = obj;
@@ -107,60 +87,11 @@ class FirebaseExerciseManager extends FirebaseManager_1.FirebaseManager {
             });
         });
     }
-    /**
-     * This method writes a sentence in the database.
-     * @param sentence - the sentence to write
-     * @returns {number} returns the key of the sentence written
-     */
-    /*
-    private writeSentence(sentence: string, authorId: string) {
-        let ref = FirebaseManager.database.ref('data/sentences/').push({sentence: sentence, authorId: authorId});
-        let array = String(ref).split("/");
-        //console.log("returno: "+array[array.length -1])
-        return array[array.length - 1];
-    }
-    */
-    /**
-     * This method write the sentence solution on the database.
-     * The sentence solution is composed of tags coming from hunpos and from user correction,
-     * these tags are contained in finalTags parameter.
-     * @param words - array containing the sentence words
-     * @param finalTags - array containing the sentence tags
-     * @param sentence - the sentence string
-     * @param sentenceKey - key of the sentence in the database
-     */
-    /*
-    private writeSolution(solution: Solution, sentenceKey: string) : void {
-        if (solution.getValutations() !== null){
-            FirebaseManager.database.ref('data/sentences/' + sentenceKey + '/solutions/').push({
-                "solverId": solution.getSolverId(),
-                "tags": solution.getSolutionTags(),
-                "topics": solution.getTopics(),
-                "difficulty": solution.getDifficulty(),
-                "valutations" : solution.JSONValutations(),
-                "time" : Date.now()
-            });
-        }
-    }
-    */
-    /*
-    private writeValutation(exercise : Exercise, sentenceKey : string, solutionKey : number) {
-        FirebaseManager.database.ref('data/sentences/' + sentenceKey + '/solutions/'+solutionKey+'/valutations')
-            .once("value", (snap : any) => {
-                let valutationKey = snap.numChildren();
-                FirebaseManager.database.ref('data/sentences/' + sentenceKey + '/solutions/' + String(solutionKey)).child(String(valutationKey)).set({
-                    "teacherId": "id del teacher che ha inserito la valutazione scelta",
-                    "valutation": "10 se session=teacher, else risultato evaluate()"
-                });
-
-            });
-    }
-    */
     read(id) {
         return __awaiter(this, void 0, void 0, function* () {
             const ProData = this.getExerciseById(id);
-            const readed = yield ProData;
-            return readed;
+            const read = yield ProData;
+            return read;
         });
     }
     getExerciseById(id) {

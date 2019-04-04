@@ -49,6 +49,13 @@ class Exercise {
         return this.getPOSManager().getSolution(this.getSentence());
     }
     ;
+    getSenteceSplitted() {
+        //TODO splittare anche punteggiatura ma no apostrofo
+        //creare un espressione regolare ed usarla per inserire uno spazio prima dei simboli e di punteggiatura dopo
+        //gli apostrofi,
+        //poi splittare in base allo spazio.
+        return this.sentence.split(" ");
+    }
     //da un voto alla soluzione corrente(newSolution) rispetto a solution con quel teacherID
     evaluate(teacherID) {
         const mySolution = this.getNewSolution();

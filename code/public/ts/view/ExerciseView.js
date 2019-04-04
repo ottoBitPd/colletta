@@ -4,21 +4,11 @@ const PageView_1 = require("./PageView");
 class ExerciseView extends PageView_1.PageView {
     constructor() {
         super();
-<<<<<<< HEAD
-=======
-        this.exerciseClient = undefined;
->>>>>>> 2136ba3cf6c696211931ba6f008aadaee8f7febb
         this.sentence = null;
         this.key = null;
         this.hunposTranslation = null;
         this.hunposTags = null;
     }
-<<<<<<< HEAD
-=======
-    setExercise(exerciseClient) {
-        this.exerciseClient = exerciseClient;
-    }
->>>>>>> 2136ba3cf6c696211931ba6f008aadaee8f7febb
     setSentence(value) {
         this.sentence = value;
     }
@@ -37,11 +27,7 @@ class ExerciseView extends PageView_1.PageView {
         data = data.replace(/\*table\*/g, this.buildForm(words));
         data = data.replace(/\*script\*/g, this.getScript());
         data = data.replace(/\*css\*/g, this.buildCss(words));
-<<<<<<< HEAD
         //data=data.replace(/\*wordsnumber\*/g, words.length);
-=======
-        data = data.replace(/\*wordsnumber\*/g, words.length);
->>>>>>> 2136ba3cf6c696211931ba6f008aadaee8f7febb
         data = data.replace(/\*sentence\*/g, this.sentence);
         data = data.replace(/\*key\*/g, this.key);
         data = data.replace(/\*hunposTags\*/g, JSON.stringify(this.hunposTags));

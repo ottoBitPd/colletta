@@ -1,0 +1,1 @@
+{"version":3,"file":"SaveView.js","sourceRoot":"","sources":["../../../src/ts/view/SaveView.ts"],"names":[],"mappings":";;AAAA,yCAAoC;AAEpC,MAAM,QAAS,SAAQ,mBAAQ;IAC3B;QACI,KAAK,EAAE,CAAC;IACZ,CAAC;IAED,OAAO;QACH,OAAO,IAAI,CAAC,UAAU,CAAC,YAAY,CAAC,6BAA6B,CAAC,CAAC,QAAQ,EAAE,CAAC;IAClF,CAAC;CAEJ;AACO,4BAAQ"}

@@ -1,5 +1,6 @@
 import {DatabaseExerciseManager} from "./DatabaseExerciseManager";
 import {Exercise} from "./Exercise";
+//import {forEach} from "@firebase/util";
 
 
 class ExerciseClient{
@@ -31,6 +32,26 @@ class ExerciseClient{
     addValutation(sentence: string , authorId :string, userId : string, mark : number) : void {
         let exercise = new Exercise(sentence, authorId);
         exercise.addValutation(userId, mark);
+    }
+
+    async getExercise(id:string):Promise<Exercise>{
+        return await this.dbExerciseManager.read(id);
+    }
+
+    async searchExercise(searchParameter:string):Promise<Exercise[]>{
+        var regex= new RegExp(searchParameter,"i");
+        var elements = await this.dbExerciseManager.elements();
+        var ids:string [] = [];
+        var exercises: Exercise [] = [];
+        elements.forEach(function (value:string, key:string){
+            if(value.search(regex)>=0){
+                ids.push(key);
+            }
+        });
+        for(var i in ids){
+            exercises.push(await this.getExercise(ids[i]));
+        }
+        return exercises;
     }
 }
 export{ExerciseClient}

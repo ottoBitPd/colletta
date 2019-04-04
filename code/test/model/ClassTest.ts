@@ -6,6 +6,8 @@ import 'mocha';
 
 describe('#getMethods', function() {
     let obj= new Class("name", "description","1234",["st1", "st2"],["es1", "es2"]);
+    let student= new Class("name", "description","1234",["st1", "st2"],["es1", "es2"]);
+    let exercise= new Class("name", "description","1234",["st1", "st2"],["es1", "es2"]);
 
     context('ClassTest.getName()', function() {
         it('should return the name', function() {
@@ -45,16 +47,17 @@ describe('#getMethods', function() {
 
     context('ClassTest.deleteStudent()', function() {
         it('should return delete students', function() {
-            const array=obj.getStudents();
+            const array=["st2","st1"];
+            array.pop();
             obj.deleteStudent("st1");
-         expect(!array.every((snap)=> (obj.getStudents().indexOf(snap)!==-1)));
+            expect(obj.getStudents()).eql(array.filter(e => e !== "st1"));
 
         });
     });
 
     context('ClassTest.deleteExercise()', function() {
         it('should return delete exercise', function() {
-            let array = ["es1", "es2"];
+            const array = ["es1", "es2"];
             obj.deleteExercise("es1");
             expect(obj.getExercises()).eql(array.filter(e => e !== "es1"));
 
@@ -63,11 +66,30 @@ describe('#getMethods', function() {
 
     context('ClassTest.addStudent()', function() {
         it('should return add Student', function() {
-            const array=obj.getStudents();
-            obj.addStudent("st3");
-            expect(array);
+            const array=["st1","st2"];
+            array.push("st3");
+            student.addStudent("st3");
+            expect(student.getStudents()).eql(array);
 
         });
     });
+
+    context('ClassTest.addExercise()', function() {
+        it('should return add exercise', function() {
+            const array=["es1","es2"];
+            array.push("es3");
+            exercise.addExercise("es3");
+            expect(exercise.getExercises()).eql(array);
+
+        });
+    });
+
+    context('ClassTest.findStudent()', function() {
+        it('should return find student', function() {
+            expect(student.findStudent("st2")).to.equal(true);
+
+        });
+    });
+
 
 });

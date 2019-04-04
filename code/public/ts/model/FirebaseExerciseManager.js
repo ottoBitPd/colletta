@@ -87,6 +87,33 @@ class FirebaseExerciseManager extends FirebaseManager_1.FirebaseManager {
             });
         });
     }
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+    elements() {
+        return __awaiter(this, void 0, void 0, function* () {
+            let container = new Map();
+            return new Promise(function (resolve) {
+                FirebaseManager_1.FirebaseManager.database.ref('data/sentences')
+                    .once("value", function (snapshot) {
+                    if (snapshot.exists()) {
+                        snapshot.forEach(function (data) {
+                            container.set(data.key, data.val().sentence);
+                        });
+                        //console.log("non esiste");
+                        return resolve(container);
+                    }
+                    //console.log("database vuoto");
+                    else {
+                        return resolve(container);
+                    }
+                });
+            });
+        });
+    }
+=======
+>>>>>>> f396a68ac90e913fa7f7e2e6c01568510c7ba49a
+>>>>>>> c1e446aaa2c441efbaf23c5d38c6e652b3c88635
     read(id) {
         return __awaiter(this, void 0, void 0, function* () {
             const ProData = this.getExerciseById(id);

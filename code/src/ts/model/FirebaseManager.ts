@@ -45,7 +45,10 @@ class FirebaseManager implements DatabaseManager {
     // @ts-ignore
     insert(obj: Data): Promise<boolean>;
 
+    // @ts-ignore
     remove(id: string): Promise<boolean>;
+
+    elements(): Promise<Map<string, string>>;
 
     // @ts-ignore
     read(id: string): Promise<Data> | null {return null;}

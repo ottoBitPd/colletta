@@ -60,6 +60,27 @@ class FirebaseClassManager extends FirebaseManager_1.FirebaseManager {
             });
         });
     }
+    elements() {
+        return __awaiter(this, void 0, void 0, function* () {
+            let container = new Map();
+            return new Promise(function (resolve) {
+                FirebaseManager_1.FirebaseManager.database.ref('data/classes')
+                    .once("value", function (snapshot) {
+                    if (snapshot.exists()) {
+                        snapshot.forEach(function (data) {
+                            container.set(data.key, data.val().name);
+                        });
+                        //console.log("non esiste");
+                        return resolve(container);
+                    }
+                    //console.log("database vuoto");
+                    else {
+                        return resolve(container);
+                    }
+                });
+            });
+        });
+    }
     read(id) {
         return __awaiter(this, void 0, void 0, function* () {
             const ProData = this.getClassById(id);

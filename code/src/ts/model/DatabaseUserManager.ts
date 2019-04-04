@@ -24,5 +24,8 @@ class DatabaseUserManager implements DatabaseManager{
     async search(username:string) : Promise<string>{
         return await this.firebaseUserManager.search(username);
     }
+    async elements() : Promise<Map<string, string>> {
+        return await this.firebaseUserManager.elements();
+    }
 }
 export {DatabaseUserManager}

@@ -10,7 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const PageController_1 = require("./PageController");
 const Client_1 = require("../model/Client");
-var session = require('express-session');
+//var session = require('express-session');
 class AuthenticationController extends PageController_1.PageController {
     //private fileSystem:any;
     constructor(viewLogin, viewRegistration) {
@@ -33,34 +33,14 @@ class AuthenticationController extends PageController_1.PageController {
         });
         app.post('/checklogin', (request, response) => __awaiter(this, void 0, void 0, function* () {
             if (this.client && request.body.username !== "admin") { //if is not undefined
-                let idUser = yield this.client.search(request.body.username);
-                if (idUser !== "false") {
-                    let user = yield this.client.read(idUser);
-                    if (user !== null) {
-                        let password = user.getPassword();
-                        if (this.passwordHash.compareSync(request.body.password, password)) {
-                            //console.log("password match");
-                            app.use(session({
-                                userId: idUser,
-                                username: request.body.username
-                            }));
-                            response.redirect("/profile");
-                        }
-                        else
-                            //console.log("password dont match")
-                            response.redirect("/login?mess=invalidLogin");
-                    }
-                    else
-                        //console.log("password dont match")
-                        response.redirect("/login?mess=invalidLogin");
+                if (yield this.client.verifyUser(request.body.username, request.body.password)) {
+                    //TODO variabile sessione
+                    response.redirect("/profile");
                 }
-                else
-                    //console.log("password dont match")
+                else {
                     response.redirect("/login?mess=invalidLogin");
+                }
             }
-            else
-                //console.log("user dont match");
-                response.redirect("/login?mess=invalidLogin");
         }));
         app.get('/registration', (request, response) => {
             if (request.query.mess === "errUsername") {

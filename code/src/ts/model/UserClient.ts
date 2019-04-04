@@ -18,9 +18,9 @@ class UserClient{
         return await this.dbUserManager.insert(new Teacher(username, password, name, surname, city, school, inps));
     }
     async verifyUser(username: string, insertedPassword : string) : Promise<boolean>{
-        let idUser = await this.search(username);
+        let idUser = await this.dbUserManager.search(username);
         if(idUser!=="false") {
-            let user: Data | null = await this.read(idUser);
+            let user: Data | null = await this.dbUserManager.read(idUser);
             if (user !== null) {
                 let password = (<User>user).getPassword();
                 if (this.passwordHash.compareSync(insertedPassword, password)) {
@@ -39,12 +39,6 @@ class UserClient{
             return false;
         }
 
-    }
-    async search(username : string) : Promise<string>{
-        return await this.dbUserManager.search(username);
-    }
-    private async read(id:string) : Promise<Data>{
-        return await this.dbUserManager.read(id);
     }
 }
 export{UserClient}

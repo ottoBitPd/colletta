@@ -7,7 +7,6 @@ import {UserClient} from "../model/UserClient";
 //import {Session} from "inspector";
 
 const session = require('express-session');
-let FileStore = require('session-file-store')(session);
 
 class AuthenticationController extends PageController {
     private passwordHash = require('bcryptjs');
@@ -28,7 +27,7 @@ class AuthenticationController extends PageController {
 
     update(app: any) {
         app.get('/profile', (request: any, response: any) => {
-            response.send("Login avvenuto con successo sei nel tuo profilo");
+            response.send("Login avvenuto con successo sei nel tuo profilo"+session.username);
         });
         app.get('/login', (request: any, response: any) => {
             if(request.query.mess==="invalidLogin") {
@@ -41,13 +40,14 @@ class AuthenticationController extends PageController {
         });
         app.post('/checklogin', async (request: any, response: any) => {
             //app.use(session({name:'bortolone',secret: 'ciao',resave: true, saveUninitialized: true}));
-            app.use(session({name:'bortolone',secret: 'ciao',store: new FileStore(),resave: false, saveUninitialized: true}));
-            session.username=request.body.username;
-            session.password=request.body.password;
+
+
             console.log(session);
             if(this.client && request.body.username !== "admin") {//if is not undefined
                 if (await this.client.verifyUser(request.body.username, request.body.password)) {
-                    //TODO variabile sessione
+                    app.use(session({secret: 'colletta',resave: false, saveUninitialized: true}));
+                    session.username = request.body.username;
+                    session.password = request.body.password;
                     response.redirect("/profile");
                 }
                 else {

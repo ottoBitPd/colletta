@@ -1,5 +1,5 @@
 "use strict";
-//<reference path="POSManager.ts"/>
+///<reference path="POSManager.ts"/>
 Object.defineProperty(exports, "__esModule", { value: true });
 class HunposManager {
     constructor() {

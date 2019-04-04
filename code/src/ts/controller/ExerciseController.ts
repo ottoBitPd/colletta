@@ -11,8 +11,8 @@ class ExerciseController extends PageController{
     private viewSave : any;
     constructor(viewExercise : any, viewSave : any){
         super(null);
-        this.viewExercise=viewExercise;
-        this.viewSave=viewSave;
+        this.viewExercise = viewExercise;
+        this.viewSave = viewSave;
         this.exerciseClient =(new Client.builder()).buildExerciseClient().build().getExerciseClient();
         this.fileSystem = require ('fs');
     }

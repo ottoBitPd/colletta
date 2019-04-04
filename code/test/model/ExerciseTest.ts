@@ -1,10 +1,11 @@
 import {Exercise} from '../../src/ts/model/Exercise';
 import {expect} from 'chai';
+//import {assert} from 'chai';
 import {HunposManager} from "../../src/ts/model/HunposManager";
 import 'mocha';
 
 describe('#getMethods', function() {
-    const obj= new Exercise("sentence", "user");
+    const obj= new Exercise("sentence sentence", "user");
 
     context('ExerciseTest.getKey()', function() {
         it('should return the key', function() {
@@ -46,12 +47,8 @@ describe('#getMethods', function() {
     context('ExerciseTest.getSentenceSplitted', function() {
         it('should return', function() {
 
-            expect(obj.getSenteceSplitted().every((snap)=>(obj.getSentence().split(" ")).indexOf(snap)!==-1));
-            /*
-            oppure
-            let splittedSentence = ["sentence"];
-            expect(obj.getSenteceSplitted()).to.equal(splittedSentence);
-             */
+            expect(obj.getSenteceSplitted()).eql(obj.getSentence().split(" "));
+            //expect(obj.getSenteceSplitted().every((snap)=>(obj.getSentence().split(" ")).indexOf(snap)!==-1));
         });
     });
 });
@@ -73,6 +70,11 @@ describe('#setMethods', function() {
         });
     });
 
+    context('ExerciseTest.setSolution()', function() {
+        it('should return a no-null solution', function() {
+            expect(obj.setSolution("solverId", ["tag"], ["topic"], 2)).not.equal(null);
+        });
+    });
 });
 /*
 context('ExerciseTest.', function() {

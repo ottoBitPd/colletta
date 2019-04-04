@@ -28,5 +28,9 @@ class DatabaseExerciseManager implements DatabaseManager{
     update(id:string) : void {
 
     }
+
+    async elements() : Promise<Map<string, string>> {
+        return await this.firebaseExerciseManager.elements();
+    }
 }
 export {DatabaseExerciseManager}

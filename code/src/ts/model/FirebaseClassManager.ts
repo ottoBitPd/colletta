@@ -49,6 +49,26 @@ class FirebaseClassManager extends FirebaseManager {
         });
     }
 
+    public async elements () : Promise<Map<string, string>> {
+        let container = new Map<string, string>();
+        return new Promise(function (resolve) {
+            FirebaseManager.database.ref('data/classes')
+                .once("value", function (snapshot: any) {
+                    if (snapshot.exists()) {
+                        snapshot.forEach(function (data: any) {
+                            container.set(data.key, data.val().name);
+                        });
+                        //console.log("non esiste");
+                        return resolve(container);
+                    }
+                    //console.log("database vuoto");
+                    else {
+                        return resolve(container);
+                    }
+                });
+        });
+    }
+
     public async read(id: string): Promise<Class> {
         const ProData: Promise <Class> = this.getClassById(id);
         const readed = await ProData;

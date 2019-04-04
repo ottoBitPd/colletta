@@ -10,6 +10,8 @@ import {ExerciseView} from "./ts/view/ExerciseView";
 import {SaveView} from "./ts/view/SaveView";
 import {ExerciseController} from "./ts/controller/ExerciseController";
 
+import {ProfileView} from "./ts/view/ProfileView";
+import {ProfileController} from "./ts/controller/ProfileController";
 
 
 const app = express();
@@ -30,6 +32,10 @@ const loginView  = new LoginView();
 const registrationView : any= new RegistrationView();
 const LoginPage = new AuthenticationController(loginView,registrationView);
 LoginPage.update(app);
+
+const profileView  = new ProfileView();
+const profilePage = new ProfileController(profileView);
+profilePage.update(app);
 
 app.listen(8080, async function () {
     const host = "127.0.0.1";

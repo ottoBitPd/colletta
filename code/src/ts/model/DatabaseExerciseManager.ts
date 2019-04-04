@@ -13,8 +13,8 @@ class DatabaseExerciseManager implements DatabaseManager{
         return await this.firebaseExerciseManager.insert(obj);
     }
 
-    remove(id:string) : Promise<boolean> | null {
-        return null;
+     async remove(id:string) : Promise<boolean> {
+        return await this.firebaseExerciseManager.remove(id);
     }
 
     async read(id:string) : Promise<Exercise> {
@@ -25,8 +25,8 @@ class DatabaseExerciseManager implements DatabaseManager{
         return await this.firebaseExerciseManager.search(sentence);
     }
 
-    update(id:string) : void {
-
+    async update(path:string, value:any){
+        return await this.firebaseExerciseManager.update(path, value);
     }
 
     async elements() : Promise<Map<string, string>> {

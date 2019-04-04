@@ -10,13 +10,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const PageController_1 = require("./PageController");
 const Client_1 = require("../model/Client");
-<<<<<<< HEAD
 //import {Session} from "inspector";
 const session = require('express-session');
-let FileStore = require('session-file-store')(session);
-=======
-var session = require('express-session');
->>>>>>> c1e446aaa2c441efbaf23c5d38c6e652b3c88635
 class AuthenticationController extends PageController_1.PageController {
     //private fileSystem:any;
     constructor(viewLogin, viewRegistration) {
@@ -28,17 +23,9 @@ class AuthenticationController extends PageController_1.PageController {
         //this.fileSystem = require ('fs');
     }
     update(app) {
-<<<<<<< HEAD
         app.get('/profile', (request, response) => {
-<<<<<<< HEAD
-            console.log(session);
-            response.send("Login avvenuto con successo sei nel tuo profilo");
-=======
-            response.send("Login avvenuto con successo sei nel tuo profilo" + request.session.username);
->>>>>>> c1e446aaa2c441efbaf23c5d38c6e652b3c88635
+            response.send("Login avvenuto con successo sei nel tuo profilo" + session.username);
         });
-=======
->>>>>>> f396a68ac90e913fa7f7e2e6c01568510c7ba49a
         app.get('/login', (request, response) => {
             if (request.query.mess === "invalidLogin") {
                 this.viewLogin.setError("username o password invalidi");
@@ -49,46 +36,19 @@ class AuthenticationController extends PageController_1.PageController {
             response.send(this.viewLogin.getPage());
         });
         app.post('/checklogin', (request, response) => __awaiter(this, void 0, void 0, function* () {
-            //  app.use(session({name:'bortolone',secret: 'ciao',resave: true, saveUninitialized: true}));
-            app.use(session({ name: 'bortolone', secret: 'ciao', store: new FileStore(), resave: false, saveUninitialized: true, cookie: {} }));
-            session.username = request.body.username;
-            session.password = request.body.password;
+            //app.use(session({name:'bortolone',secret: 'ciao',resave: true, saveUninitialized: true}));
+            console.log(session);
             if (this.client && request.body.username !== "admin") { //if is not undefined
-                let idUser = yield this.client.search(request.body.username);
-                if (idUser !== "false") {
-                    let user = yield this.client.read(idUser);
-                    if (user !== null) {
-                        let password = user.getPassword();
-                        if (this.passwordHash.compareSync(request.body.password, password)) {
-                            //console.log("password match");
-<<<<<<< HEAD
-                            /*  app.use(session({
-                                  userId: idUser,
-                                  username: request.body.username
-                              }));*/
-=======
-                            app.use(session({
-                                userId: idUser,
-                                username: request.body.username
-                            }));
->>>>>>> c1e446aaa2c441efbaf23c5d38c6e652b3c88635
-                            response.redirect("/profile");
-                        }
-                        else
-                            //console.log("password dont match")
-                            response.redirect("/login?mess=invalidLogin");
-                    }
-                    else
-                        //console.log("password dont match")
-                        response.redirect("/login?mess=invalidLogin");
+                if (yield this.client.verifyUser(request.body.username, request.body.password)) {
+                    app.use(session({ secret: 'colletta', resave: false, saveUninitialized: true }));
+                    session.username = request.body.username;
+                    session.password = request.body.password;
+                    response.redirect("/profile");
                 }
-                else
-                    //console.log("password dont match")
+                else {
                     response.redirect("/login?mess=invalidLogin");
+                }
             }
-            else
-                //console.log("user dont match");
-                response.redirect("/login?mess=invalidLogin");
         }));
         app.get('/registration', (request, response) => {
             if (request.query.mess === "errUsername") {

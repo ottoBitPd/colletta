@@ -28,10 +28,6 @@ class AuthenticationController extends PageController {
     }
 
     update(app: any) {
-        app.get('/profile', (request: any, response: any) => {
-
-            response.send("Login avvenuto con successo sei nel tuo profilo"+request.session.username);
-        });
         app.get('/login', (request: any, response: any) => {
             if(request.query.mess==="invalidLogin") {
                 this.viewLogin.setError("username o password invalidi");

@@ -87,6 +87,7 @@ class FirebaseExerciseManager extends FirebaseManager_1.FirebaseManager {
             });
         });
     }
+<<<<<<< HEAD
     elements() {
         return __awaiter(this, void 0, void 0, function* () {
             let container = new Map();
@@ -108,6 +109,8 @@ class FirebaseExerciseManager extends FirebaseManager_1.FirebaseManager {
             });
         });
     }
+=======
+>>>>>>> f396a68ac90e913fa7f7e2e6c01568510c7ba49a
     read(id) {
         return __awaiter(this, void 0, void 0, function* () {
             const ProData = this.getExerciseById(id);

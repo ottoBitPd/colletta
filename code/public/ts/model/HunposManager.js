@@ -6,9 +6,9 @@ class HunposManager {
         this.fileSystem = require('fs');
         this.shell = require('shelljs');
         //this.train();
-        this.inputFilePath = 'src\\ts\\controller\\hunpos\\input.txt';
-        this.outputFilePath = 'src\\ts\\controller\\hunpos\\output.txt';
-        this.modelFilePath = 'src\\ts\\controller\\hunpos\\italian_model';
+        this.inputFilePath = 'src/ts/controller/hunpos/input.txt';
+        this.outputFilePath = 'src/ts/controller/hunpos/output.txt';
+        this.modelFilePath = 'src/ts/controller/hunpos/italian_model';
     }
     setModel(modelFilePath) {
         //this.modelFilePath=modelFilePath;
@@ -16,6 +16,7 @@ class HunposManager {
     ;
     buildInputFile(sentence) {
         var words = sentence.split(" ");
+        this.fileSystem.writeFile(this.inputFilePath, '', () => console.log('done'));
         for (let i = 0; i < words.length; i++) {
             this.fileSystem.appendFileSync(this.inputFilePath, words[i] + "\n", (err) => {
                 if (err)
@@ -53,11 +54,11 @@ class HunposManager {
     }
     ;
     train() {
-        this.shell.exec('src\\ts\\controller\\hunpos\\hunpos-train ' + this.modelFilePath + '< src\\ts\\controller\\hunpos\\train');
+        this.shell.exec('./src/ts/controller/hunpos/hunpos-train ' + this.modelFilePath + '< ./src/ts/controller/hunpos/train');
     }
     ;
     tag() {
-        this.shell.exec('src\\ts\\controller\\hunpos\\hunpos-tag ' + this.modelFilePath + '< ' + this.inputFilePath + '>' + this.outputFilePath);
+        this.shell.exec('./src/ts/controller/hunpos/hunpos-tag ' + this.modelFilePath + '< ' + this.inputFilePath + '>' + this.outputFilePath);
     }
     ;
 }

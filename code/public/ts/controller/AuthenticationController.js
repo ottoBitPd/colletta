@@ -22,9 +22,12 @@ class AuthenticationController extends PageController_1.PageController {
         //this.fileSystem = require ('fs');
     }
     update(app) {
+<<<<<<< HEAD
         app.get('/profile', (request, response) => {
             response.send("Login avvenuto con successo sei nel tuo profilo" + request.session.username);
         });
+=======
+>>>>>>> f396a68ac90e913fa7f7e2e6c01568510c7ba49a
         app.get('/login', (request, response) => {
             if (request.query.mess === "invalidLogin") {
                 this.viewLogin.setError("username o password invalidi");

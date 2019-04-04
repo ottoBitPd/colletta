@@ -17,9 +17,14 @@ const AuthenticationController_1 = require("./ts/controller/AuthenticationContro
 const ExerciseView_1 = require("./ts/view/ExerciseView");
 const SaveView_1 = require("./ts/view/SaveView");
 const ExerciseController_1 = require("./ts/controller/ExerciseController");
+<<<<<<< HEAD
 //import {Exercise} from "./ts/model/Exercise";
 const FirebaseClassManager_1 = require("./ts/model/FirebaseClassManager");
 const objDb = new FirebaseClassManager_1.FirebaseClassManager();
+=======
+const ProfileView_1 = require("./ts/view/ProfileView");
+const ProfileController_1 = require("./ts/controller/ProfileController");
+>>>>>>> f396a68ac90e913fa7f7e2e6c01568510c7ba49a
 const app = express();
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -35,15 +40,24 @@ const loginView = new LoginView_1.LoginView();
 const registrationView = new RegistrationView_1.RegistrationView();
 const LoginPage = new AuthenticationController_1.AuthenticationController(loginView, registrationView);
 LoginPage.update(app);
+<<<<<<< HEAD
+=======
+const profileView = new ProfileView_1.ProfileView();
+const profilePage = new ProfileController_1.ProfileController(profileView);
+profilePage.update(app);
+>>>>>>> f396a68ac90e913fa7f7e2e6c01568510c7ba49a
 app.listen(8080, function () {
     return __awaiter(this, void 0, void 0, function* () {
         const host = "127.0.0.1";
         const port = "8080";
         console.log("Example app listening at http://%s:%s", host, port);
+<<<<<<< HEAD
         //let c = new Class("classe", "clase per prova", "dkjfhs", ["1", "2"], ["1", "2"]);
         //objDb.insert(c);
         let map = yield objDb.elements();
         console.log(map);
+=======
+>>>>>>> f396a68ac90e913fa7f7e2e6c01568510c7ba49a
     });
 });
 //# sourceMappingURL=index.js.map

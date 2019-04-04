@@ -45,13 +45,7 @@ describe('#getMethods', function() {
 
     context('ExerciseTest.getSentenceSplitted', function() {
         it('should return', function() {
-
             expect(obj.getSenteceSplitted().every((snap)=>(obj.getSentence().split(" ")).indexOf(snap)!==-1));
-            /*
-            oppure
-            let splittedSentence = ["sentence"];
-            expect(obj.getSenteceSplitted()).to.equal(splittedSentence);
-             */
         });
     });
 });
@@ -73,6 +67,11 @@ describe('#setMethods', function() {
         });
     });
 
+    context('ExerciseTest.setSolution()', function() {
+        it('should return a no-null solution', function() {
+            expect(obj.setSolution("solverId", ["tag"], ["topic"], 2)).not.equal(null);
+        });
+    });
 });
 /*
 context('ExerciseTest.', function() {

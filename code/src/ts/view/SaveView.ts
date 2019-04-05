@@ -1,8 +1,10 @@
 import {PageView} from "./PageView";
 
 class SaveView extends PageView{
-    constructor(){
-        super();
+    private fileSystem : any;
+    constructor(app : any){
+        super(app);
+        this.fileSystem=require('fs');
     }
 
     getPage() {

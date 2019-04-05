@@ -19,7 +19,9 @@ class DatabaseExerciseManager {
         });
     }
     remove(id) {
-        return null;
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this.firebaseExerciseManager.remove(id);
+        });
     }
     read(id) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -31,7 +33,10 @@ class DatabaseExerciseManager {
             return yield this.firebaseExerciseManager.search(sentence);
         });
     }
-    update(id) {
+    update(path, value) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this.firebaseExerciseManager.update(path, value);
+        });
     }
     elements() {
         return __awaiter(this, void 0, void 0, function* () {

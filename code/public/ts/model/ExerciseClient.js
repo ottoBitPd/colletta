@@ -10,6 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const DatabaseExerciseManager_1 = require("./DatabaseExerciseManager");
 const Exercise_1 = require("./Exercise");
+//import {forEach} from "@firebase/util";
 class ExerciseClient {
     constructor() {
         this.dbExerciseManager = new DatabaseExerciseManager_1.DatabaseExerciseManager();
@@ -38,6 +39,28 @@ class ExerciseClient {
     addValutation(sentence, authorId, userId, mark) {
         let exercise = new Exercise_1.Exercise(sentence, authorId);
         exercise.addValutation(userId, mark);
+    }
+    getExercise(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this.dbExerciseManager.read(id);
+        });
+    }
+    searchExercise(searchParameter) {
+        return __awaiter(this, void 0, void 0, function* () {
+            var regex = new RegExp(searchParameter, "i");
+            var elements = yield this.dbExerciseManager.elements();
+            var ids = [];
+            var exercises = [];
+            elements.forEach(function (value, key) {
+                if (value.search(regex) >= 0) {
+                    ids.push(key);
+                }
+            });
+            for (var i in ids) {
+                exercises.push(yield this.getExercise(ids[i]));
+            }
+            return exercises;
+        });
     }
 }
 exports.ExerciseClient = ExerciseClient;

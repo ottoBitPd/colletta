@@ -28,9 +28,9 @@ class UserClient {
     }
     verifyUser(username, insertedPassword) {
         return __awaiter(this, void 0, void 0, function* () {
-            let idUser = yield this.search(username);
+            let idUser = yield this.dbUserManager.search(username);
             if (idUser !== "false") {
-                let user = yield this.read(idUser);
+                let user = yield this.dbUserManager.read(idUser);
                 if (user !== null) {
                     let password = user.getPassword();
                     if (this.passwordHash.compareSync(insertedPassword, password)) {
@@ -50,16 +50,6 @@ class UserClient {
             else {
                 return false;
             }
-        });
-    }
-    search(username) {
-        return __awaiter(this, void 0, void 0, function* () {
-            return yield this.dbUserManager.search(username);
-        });
-    }
-    read(id) {
-        return __awaiter(this, void 0, void 0, function* () {
-            return yield this.dbUserManager.read(id);
         });
     }
 }

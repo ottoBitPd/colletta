@@ -65,8 +65,15 @@ class Class implements Data {
         return false;
     }
 
-    public toJSON() : any{
-        return 1;
+    public toJSON() : any {
+        let _class: any = {
+            "name": this.name,
+            "description": this.description,
+            "teacherID": this.teacherID,
+            "students": this.students,
+            "exercises": this.exercises
+        };
+        return _class;
     }
 }
 export {Class};

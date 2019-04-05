@@ -12,6 +12,7 @@ import {ExerciseController} from "./ts/controller/ExerciseController";
 
 import {ProfileView} from "./ts/view/ProfileView";
 import {ProfileController} from "./ts/controller/ProfileController";
+import {Class} from "./ts/model/Class";
 
 
 const app = express();
@@ -41,4 +42,13 @@ app.listen(8080, async function () {
     const host = "127.0.0.1";
     const port = "8080";
     console.log("Example app listening at http://%s:%s", host, port);
+
+ let name : string="ciao";
+let description : string="djdsa";
+let teacherID : string="cdhskj";
+let students : string[]=["studente1", "studente2"];
+let exercises : string[]=["esercizio1", "esercizio2"];
+    let classe : Class = new Class(name,description,teacherID,students,exercises);
+    console.log(classe.toJSON());
+
 });

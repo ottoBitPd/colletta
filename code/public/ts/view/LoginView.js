@@ -2,8 +2,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const PageView_1 = require("./PageView");
 class LoginView extends PageView_1.PageView {
-    constructor() {
-        super();
+    constructor(app) {
+        super(app);
         this.error = "";
     }
     setError(error) {

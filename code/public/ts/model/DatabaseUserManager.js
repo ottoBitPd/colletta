@@ -14,7 +14,9 @@ class DatabaseUserManager {
         this.firebaseUserManager = new FirebaseUserManager_1.FirebaseUserManager();
     }
     insert(obj) {
-        return this.firebaseUserManager.insert(obj);
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this.firebaseUserManager.insert(obj);
+        });
     }
     remove(id) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -34,6 +36,11 @@ class DatabaseUserManager {
     search(username) {
         return __awaiter(this, void 0, void 0, function* () {
             return yield this.firebaseUserManager.search(username);
+        });
+    }
+    elements() {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this.firebaseUserManager.elements();
         });
     }
 }

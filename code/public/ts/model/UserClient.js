@@ -13,11 +13,9 @@ const Teacher_1 = require("./Teacher");
 const Student_1 = require("./Student");
 class UserClient {
     constructor() {
+        this.passwordHash = require('bcryptjs');
         this.dbUserManager = new DatabaseUserManager_1.DatabaseUserManager();
     }
-    /*getDbUserManager(): DatabaseUserManager {
-        return this.dbUserManager;
-    }*/
     insertStudent(username, password, name, surname, city, school) {
         return __awaiter(this, void 0, void 0, function* () {
             return yield this.dbUserManager.insert(new Student_1.Student(username, password, name, surname, city, school));
@@ -28,14 +26,30 @@ class UserClient {
             return yield this.dbUserManager.insert(new Teacher_1.Teacher(username, password, name, surname, city, school, inps));
         });
     }
-    search(username) {
+    verifyUser(username, insertedPassword) {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield this.dbUserManager.search(username);
-        });
-    }
-    read(id) {
-        return __awaiter(this, void 0, void 0, function* () {
-            return yield this.dbUserManager.read(id);
+            let idUser = yield this.dbUserManager.search(username);
+            if (idUser !== "false") {
+                let user = yield this.dbUserManager.read(idUser);
+                if (user !== null) {
+                    let password = user.getPassword();
+                    if (this.passwordHash.compareSync(insertedPassword, password)) {
+                        //console.log("password match");
+                        return true;
+                    }
+                    else {
+                        //console.log("password dont match")
+                        return false;
+                    }
+                }
+                else {
+                    //console.log("password dont match")
+                    return false;
+                }
+            }
+            else {
+                return false;
+            }
         });
     }
 }

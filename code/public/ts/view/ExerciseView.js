@@ -2,12 +2,13 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const PageView_1 = require("./PageView");
 class ExerciseView extends PageView_1.PageView {
-    constructor() {
-        super();
+    constructor(app) {
+        super(app);
         this.sentence = null;
         this.key = null;
         this.hunposTranslation = null;
         this.hunposTags = null;
+        this.fileSystem = require('fs');
     }
     setSentence(value) {
         this.sentence = value;

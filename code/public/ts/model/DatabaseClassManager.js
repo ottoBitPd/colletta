@@ -14,7 +14,9 @@ class DatabaseClassManager {
         this.firebaseClassManager = new FirebaseClassManager_1.FirebaseClassManager();
     }
     insert(obj) {
-        return this.firebaseClassManager.insert(obj);
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this.firebaseClassManager.insert(obj);
+        });
     }
     remove(id) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -29,6 +31,11 @@ class DatabaseClassManager {
     update(path, value) {
         return __awaiter(this, void 0, void 0, function* () {
             return yield this.firebaseClassManager.update(path, value);
+        });
+    }
+    elements() {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this.firebaseClassManager.elements();
         });
     }
 }

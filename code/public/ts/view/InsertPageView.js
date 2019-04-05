@@ -2,8 +2,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const PageView_1 = require("./PageView");
 class InsertPageView extends PageView_1.PageView {
-    constructor() {
-        super();
+    constructor(app) {
+        super(app);
     }
     getPage() {
         return "<!DOCTYPE html> " +

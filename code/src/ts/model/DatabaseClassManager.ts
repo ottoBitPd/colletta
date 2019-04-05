@@ -8,8 +8,8 @@ class DatabaseClassManager implements DatabaseManager{
     constructor(){
         this.firebaseClassManager = new FirebaseClassManager();
     }
-    insert(obj:Data) : Promise<boolean> {
-        return this.firebaseClassManager.insert(obj);
+    async insert(obj:Data) : Promise<boolean> {
+        return await this.firebaseClassManager.insert(obj);
     }
     async remove(id:string) : Promise<boolean> {
         return await this.firebaseClassManager.remove(id);

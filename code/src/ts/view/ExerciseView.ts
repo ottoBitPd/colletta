@@ -5,12 +5,14 @@ class ExerciseView extends PageView{
     private key : any;
     private hunposTranslation : any;
     private hunposTags : any;
-    constructor(){
-        super();
+    private fileSystem : any;
+    constructor(app : any){
+        super(app);
         this.sentence = null;
         this.key = null;
         this.hunposTranslation = null;
         this.hunposTags = null;
+        this.fileSystem = require('fs');
     }
 
     setSentence(value : string) {

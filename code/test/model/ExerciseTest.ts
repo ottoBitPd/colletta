@@ -1,4 +1,4 @@
-import {Exercise} from '../../src/ts/model/Exercise';
+/*import {Exercise} from '../../src/ts/model/Exercise';
 import {expect} from 'chai';
 //import {assert} from 'chai';
 //import {HunposManager} from "../../src/ts/model/HunposManager";

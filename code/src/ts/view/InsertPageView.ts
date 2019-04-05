@@ -1,8 +1,8 @@
 import {PageView} from "./PageView";
 
 class InsertPageView extends PageView {
-    constructor(){
-        super();
+    constructor(app : any){
+        super(app);
     }
 
     getPage() {

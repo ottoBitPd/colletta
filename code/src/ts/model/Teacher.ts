@@ -13,7 +13,7 @@ class Teacher extends User {
     public getClasses(classList: Class[]): Class[] {
         let lista : Class[] =[];
         classList.forEach((_class) => {
-            if (_class.getTeacherID() == this.getID())
+            if (_class.getTeacherID() === this.getID())
                 lista.push(_class);
         });
 

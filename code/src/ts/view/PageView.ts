@@ -4,15 +4,12 @@
  */
 abstract class PageView {
     protected title : any;
-    protected mainList: any;
     protected menuList: any;
-
     private app : any;
     /**
      * PageView is an abstract class and it cannot have objects
      */
     constructor(app : any){
-        this.mainList = null;
         this.menuList = null;
         this.title = null;
         this.app=app;
@@ -24,10 +21,6 @@ abstract class PageView {
 
     setTitle(value: any) {
         this.title = value;
-    }
-
-    setMainList(value: any) {
-        this.mainList = value;
     }
 
     setMenuList(value: any) {
@@ -56,6 +49,7 @@ abstract class PageView {
     }
 
     abstract getPage() : string;
+
 
 
 }

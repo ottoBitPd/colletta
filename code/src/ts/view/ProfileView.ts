@@ -16,8 +16,7 @@ class ProfileView extends PageView{
             ret+="    </div>" +
             "</nav>" +
             "<div class=\"container\">" +
-            "    <div class=\"row\">" +
-                    this.getMain()
+            "    <div class=\"row\">vuoto" +
             "    </div>        " +
             "</div>";
             ret+=this.getFoot("");
@@ -45,10 +44,6 @@ class ProfileView extends PageView{
         ret+="    </div>" +
             "</nav>";
         return ret;
-    }
-
-    private getMain() {
-        return this.mainList;
     }
 
     private loginLogout() {

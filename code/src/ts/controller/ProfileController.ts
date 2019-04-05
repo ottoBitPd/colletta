@@ -10,7 +10,7 @@ var session = require('express-session');
 class ProfileController extends PageController{
     //private classClient : ClassClient | undefined;
     private passwordHash = require('bcryptjs');
-    private client : Client;
+
     constructor(view : any){
         super(view);
         this.client = (new Client.builder()).buildUserClient().build();

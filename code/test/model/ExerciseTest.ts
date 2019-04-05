@@ -1,9 +1,9 @@
-import {Exercise} from '../../src/ts/model/Exercise';
+/*import {Exercise} from '../../src/ts/model/Exercise';
 import {expect} from 'chai';
 //import {assert} from 'chai';
 import {HunposManager} from "../../src/ts/model/HunposManager";
 import 'mocha';
-
+*/ /*
 describe('#getMethods', function() {
     const obj= new Exercise("sentence sentence", "user");
 
@@ -76,13 +76,13 @@ describe('#setMethods', function() {
         });
     });
 });
-/*
+
 context('ExerciseTest.', function() {
         it('should return', function() {
             expect(obj.()).to.equal();
         });
     });
- */
 
 
 
+*/

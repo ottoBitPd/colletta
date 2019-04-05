@@ -52,3 +52,4 @@ let exercises : string[]=["esercizio1", "esercizio2"];
     console.log(classe.toJSON());
 
 });
+

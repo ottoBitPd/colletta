@@ -4,7 +4,7 @@ import {ProfileController} from "../controller/ProfileController";
 class RegistrationView extends PageView {
     private profileController :ProfileController;
     constructor(app : any) {
-        super(app);
+        super();
         this.profileController= new ProfileController(this);
         this.profileController.update(app);
     }
@@ -14,7 +14,7 @@ class RegistrationView extends PageView {
         ret +=  "<div class=\"container\">" +
                 "   <div class=\"row\">" +
                         "<h1>Registrati</h1>";
-        if(this.profileController.isUsernameIvalid()){
+        if(this.profileController.isUsernameInvalid()){
             ret+= "<p class='red'>username già utilizzata, scegli un'altra username</p>";
         }
         ret+=

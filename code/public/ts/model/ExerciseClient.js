@@ -28,7 +28,7 @@ class ExerciseClient {
             yield this.dbExerciseManager.insert(ex);
         });
     }
-    getSplittedSentence(sentence) {
+    getSplitSentence(sentence) {
         return sentence.split(" ");
     }
     setSolution(sentence, authorId, solverId, finalTags, topics, difficulty) {
@@ -45,9 +45,9 @@ class ExerciseClient {
             return yield this.dbExerciseManager.read(id);
         });
     }
-    searchExercise(searchParameter) {
+    searchExercise(substring) {
         return __awaiter(this, void 0, void 0, function* () {
-            var regex = new RegExp(searchParameter, "i");
+            var regex = new RegExp(substring, "i");
             var elements = yield this.dbExerciseManager.elements();
             var ids = [];
             var exercises = [];

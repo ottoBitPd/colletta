@@ -2,7 +2,7 @@ import {DatabaseManager} from "./DatabaseManager";
 import * as Admin from "firebase-admin";
 import {Data} from "./Data";
 
-class FirebaseManager implements DatabaseManager {
+abstract class FirebaseManager implements DatabaseManager {
     private static registry: Map<string, FirebaseManager> = new Map<string, FirebaseManager>();
     protected static database: Admin.database.Database = FirebaseManager.initDB();
 
@@ -42,18 +42,17 @@ class FirebaseManager implements DatabaseManager {
         return null;
     }
 
-    // @ts-ignore
-    insert(obj: Data): Promise<boolean>;
 
-    // @ts-ignore
-    remove(id: string): Promise<boolean>;
+    abstract insert(obj: Data): Promise<boolean>;
 
-    elements(): Promise<Map<string, string>>;
+    abstract remove(id: string): Promise<boolean>;
 
-    // @ts-ignore
-    read(id: string): Promise<Data> | null {return null;}
+    abstract elements(): Promise<Map<string, string>>;
 
-    update(path:string, value: any): void {}
+
+    abstract read(id: string): Promise<Data>;
+
+    abstract update(path:string, value: any): void;
 
     static registerInstance(instanceName : string, instance : FirebaseManager) : void{
         FirebaseManager.registry.set(instanceName,instance);

@@ -3,7 +3,7 @@ import {PageView} from "./PageView";
 class SaveView extends PageView{
     private fileSystem : any;
     constructor(app : any){
-        super(app);
+        super();
         this.fileSystem=require('fs');
     }
 

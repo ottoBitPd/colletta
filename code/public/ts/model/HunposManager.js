@@ -54,11 +54,13 @@ class HunposManager {
     }
     ;
     train() {
-        this.shell.exec('./src/ts/controller/hunpos/hunpos-train ' + this.modelFilePath + '< ./src/ts/controller/hunpos/train');
+        this.shell.exec('\\src\\ts\\controller\\hunpos\\hunpos-train ' + this.modelFilePath + '< \\src\\ts\\controller\\hunpos\\train');
+        //this.shell.exec('./src/ts/controller/hunpos/hunpos-train ' + this.modelFilePath + '< ./src/ts/controller/hunpos/train');
     }
     ;
     tag() {
-        this.shell.exec('./src/ts/controller/hunpos/hunpos-tag ' + this.modelFilePath + '< ' + this.inputFilePath + '>' + this.outputFilePath);
+        this.shell.exec('\\src\\ts\\controller\\hunpos\\hunpos-tag ' + this.modelFilePath + '< ' + this.inputFilePath + '>' + this.outputFilePath);
+        //this.shell.exec('./src/ts/controller/hunpos/hunpos-tag ' + this.modelFilePath + '< ' + this.inputFilePath + '>' + this.outputFilePath);
     }
     ;
 }

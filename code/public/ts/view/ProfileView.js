@@ -4,7 +4,7 @@ const PageView_1 = require("./PageView");
 const ProfileController_1 = require("../controller/ProfileController");
 class ProfileView extends PageView_1.PageView {
     constructor(app) {
-        super(app);
+        super();
         this.profileController = new ProfileController_1.ProfileController(this);
         this.profileController.update(app);
     }
@@ -14,9 +14,8 @@ class ProfileView extends PageView_1.PageView {
         ret += "    </div>" +
             "</nav>" +
             "<div class=\"container\">" +
-            "    <div class=\"row\">" +
-            this.getMain();
-        "    </div>        " +
+            "    <div class=\"row\"><a href='/insert'>Fai esercizio</a>" +
+            "    </div>        " +
             "</div>";
         ret += this.getFoot("");
         return ret;
@@ -37,15 +36,12 @@ class ProfileView extends PageView_1.PageView {
         }
         ret += "</ul>";
         //aggiungo login o logout
-        ret += this.loginLogout();
+        ret += this.getLoginArea();
         ret += "    </div>" +
             "</nav>";
         return ret;
     }
-    getMain() {
-        return this.mainList;
-    }
-    loginLogout() {
+    getLoginArea() {
         if (this.profileController.isLoggedIn()) {
             return "" +
                 "        <div class=\"login-container\">" +

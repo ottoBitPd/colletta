@@ -103,7 +103,8 @@ class FirebaseUserManager extends FirebaseManager_1.FirebaseManager {
                     if (snapshot.exists()) {
                         let readData = snapshot.val();
                         let user;
-                        if (readData.INPScode) {
+                        console.log(readData.INPScode);
+                        if (readData.INPScode !== undefined) {
                             user = new Teacher_1.Teacher(readData.username, readData.password, readData.name, readData.lastname, readData.city, readData.school, readData.INPScode);
                         }
                         else {

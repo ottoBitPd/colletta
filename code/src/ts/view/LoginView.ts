@@ -3,7 +3,7 @@ import {PageView} from "./PageView";
 class LoginView extends PageView{
     private error :string;
     constructor(app : any){
-        super(app);
+        super();
         this.error="";
     }
     setError(error:string){

@@ -5,18 +5,18 @@ class ProfileView extends PageView{
 
     private profileController :ProfileController;
     constructor(app : any){
-        super(app);
+        super();
         this.profileController= new ProfileController(this);
         this.profileController.update(app);
     }
 
-    getPage() {
+    public getPage() {
         let ret = this.getHead();
             ret +=this.getMenu();
             ret+="    </div>" +
             "</nav>" +
             "<div class=\"container\">" +
-            "    <div class=\"row\">vuoto" +
+            "    <div class=\"row\"><a href='/insert'>Fai esercizio</a>" +
             "    </div>        " +
             "</div>";
             ret+=this.getFoot("");
@@ -24,7 +24,7 @@ class ProfileView extends PageView{
     }
 
 
-    private getMenu() {
+    private getMenu() : string {
         let ret ="<nav class=\"navbar navbar-expand-sm bg-dark navbar-dark\">" +
         "    <div class=\"navbar-brand\">Colletta</div>" +
         "    <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#collapsibleNavbar\">" +
@@ -40,13 +40,13 @@ class ProfileView extends PageView{
         }
         ret+="</ul>";
         //aggiungo login o logout
-        ret+=this.loginLogout();
+        ret+=this.getLoginArea();
         ret+="    </div>" +
             "</nav>";
         return ret;
     }
 
-    private loginLogout() {
+    private getLoginArea() : string {
 
         if(this.profileController.isLoggedIn()){
             return "" +

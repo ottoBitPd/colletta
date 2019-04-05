@@ -49,7 +49,7 @@ class Exercise {
         return this.getPOSManager().getSolution(this.getSentence());
     }
     ;
-    getSenteceSplitted() {
+    getSplitSentence() {
         //TODO splittare anche punteggiatura ma no apostrofo
         //creare un espressione regolare ed usarla per inserire uno spazio prima dei simboli e di punteggiatura dopo
         //gli apostrofi,

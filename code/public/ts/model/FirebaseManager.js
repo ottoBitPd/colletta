@@ -33,9 +33,6 @@ class FirebaseManager {
             return FirebaseManager.registry.get(istanceName);
         return null;
     }
-    // @ts-ignore
-    read(id) { return null; }
-    update(path, value) { }
     static registerInstance(instanceName, instance) {
         FirebaseManager.registry.set(instanceName, instance);
     }

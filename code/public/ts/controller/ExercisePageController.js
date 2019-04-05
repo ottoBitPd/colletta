@@ -35,8 +35,8 @@ class ExercisePageController extends PageController_1.PageController {
             //console.log("view: "+JSON.stringify(this.view));
             this.view.setSentence(this.exercise.getSentence());
             this.view.setKey(this.exercise.getKey());
-            this.view.setHunposTranslation(hunposTranslation);
-            this.view.setHunposTags(hunposTags);
+            this.view.setPosTranslation(hunposTranslation);
+            this.view.setPosTags(hunposTags);
             response.send(this.view.getPage());
         });
     }

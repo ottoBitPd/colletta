@@ -67,7 +67,7 @@ class Exercise implements Data{
         return this.getPOSManager().getSolution(this.getSentence());
     };
 
-    getSenteceSplitted() : string []{
+    getSplitSentence() : string []{
         //TODO splittare anche punteggiatura ma no apostrofo
         //creare un espressione regolare ed usarla per inserire uno spazio prima dei simboli e di punteggiatura dopo
         //gli apostrofi,

@@ -5,19 +5,14 @@
 abstract class PageView {
     protected title : any;
     protected menuList: any;
-    private app : any;
     /**
      * PageView is an abstract class and it cannot have objects
      */
-    constructor(app : any){
+    constructor(){
         this.menuList = null;
         this.title = null;
-        this.app=app;
     }
-    //tslint non rompere
-    getApp(){
-        return this.app;
-    }
+
 
     setTitle(value: any) {
         this.title = value;

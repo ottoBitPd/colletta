@@ -9,27 +9,23 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express = require("express");
-/*
-import {InsertPageView} from './ts/view/InsertPageView';
-import {InsertPageController} from './ts/controller/InsertPageController';
-*/
-/*
-import {ExerciseView} from "./ts/view/ExerciseView";
-import {SaveView} from "./ts/view/SaveView";
-import {ExerciseController} from "./ts/controller/ExerciseController";*/
+const InsertPageView_1 = require("./ts/view/InsertPageView");
+//import {InsertPageController} from './ts/controller/InsertPageController';
+const ExerciseView_1 = require("./ts/view/ExerciseView");
+const SaveView_1 = require("./ts/view/SaveView");
+//import {ExerciseController} from "./ts/controller/ExerciseController";
 const ProfileView_1 = require("./ts/view/ProfileView");
 const RegistrationView_1 = require("./ts/view/RegistrationView");
 const app = express();
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(__dirname));
-/*const insertPageView = new InsertPageView();
-const insertPage = new InsertPageController(insertPageView);
-insertPage.update(app);
-
-const savePageView = new SaveView();
-const exerciseView = new ExerciseView();
-
+new InsertPageView_1.InsertPageView(app);
+//const insertPage = new InsertPageController(insertPageView);
+//insertPage.update(app);
+new SaveView_1.SaveView(app);
+new ExerciseView_1.ExerciseView(app);
+/*
 const exercisePage = new ExerciseController(exerciseView, savePageView);
 exercisePage.update(app);*/
 /*const loginView  = new LoginView();

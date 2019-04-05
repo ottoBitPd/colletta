@@ -1,9 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const PageView_1 = require("./PageView");
+const InsertPageController_1 = require("../controller/InsertPageController");
 class InsertPageView extends PageView_1.PageView {
     constructor(app) {
-        super(app);
+        super();
+        this.insertPageController = new InsertPageController_1.InsertPageController(this);
+        this.insertPageController.update(app);
     }
     getPage() {
         return "<!DOCTYPE html> " +

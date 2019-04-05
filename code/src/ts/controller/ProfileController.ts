@@ -18,7 +18,7 @@ class ProfileController extends PageController{
 
     update(app : any){
         //autenticazione
-        app.get('logout', (request: any, response: any) => {
+        app.get('/logout', (request: any, response: any) => {
             //TODO trovarle e cancellarle tutte
             delete session.invalidLogin;
             delete session.errUsername;
@@ -29,13 +29,17 @@ class ProfileController extends PageController{
         app.get('/profile', (request: any, response: any) => {
             session.invalidLogin = request.query.mess==="invalidLogin";
 
-            this.view.setMainList("Login avvenuto con successo sei nel tuo profilo"+session.username);
+            //this.view.setMainList("Login avvenuto con successo sei nel tuo profilo"+session.username);
 
-            let menuList = {
-                0 :{"link":"link1","name":"name1"},
-                1 :{"link":"link2","name":"name2"},
-                2 :{"link":"link3","name":"name3"}
-            }
+
+            let menuList :any
+                if(session.role==="teacher"){
+                    menuList= {
+                        0 :{"link":"/insert","a":"name1"},
+                        1 :{"link":"link2","name":"name2"},
+                        2 :{"link":"link3","name":"name3"}
+                    }
+                }
             this.view.setMenuList(menuList);
             //this.viewProfile.setMainList(["class1","class2","class3","class4","class5","class6","class7","class8"]);
             response.send(this.view.getPage());
@@ -88,14 +92,21 @@ class ProfileController extends PageController{
             response.send("elimino la classe "+request.body.classToDelete);
         });
     }
-
-    isLoggedIn() {
+    /**
+     * method used by the View to understand if ther is any user logged in
+     */
+    isLoggedIn() : boolean {
         return session.username!==undefined;
     }
-    isLoginInvalid() {
+
+    /**
+     * method used by the View to understand if the login is valid
+     */
+    isLoginInvalid() : boolean {
         return session.invalidLogin;
     }
-    isUsernameIvalid(){
+
+    isUsernameInvalid() : boolean {
         return  session.errUsername;
     }
 

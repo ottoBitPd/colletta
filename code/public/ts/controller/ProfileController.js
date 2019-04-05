@@ -18,11 +18,11 @@ class ProfileController extends PageController_1.PageController {
         super(view);
         //private classClient : ClassClient | undefined;
         this.passwordHash = require('bcryptjs');
-        this.userClient = (new Client_1.Client.builder()).buildUserClient().build().getUserClient();
+        this.client = (new Client_1.Client.builder()).buildUserClient().build();
     }
     update(app) {
         //autenticazione
-        app.get('logout', (request, response) => {
+        app.get('/logout', (request, response) => {
             //TODO trovarle e cancellarle tutte
             delete session.invalidLogin;
             delete session.errUsername;
@@ -32,19 +32,23 @@ class ProfileController extends PageController_1.PageController {
         });
         app.get('/profile', (request, response) => {
             session.invalidLogin = request.query.mess === "invalidLogin";
-            this.view.setMainList("Login avvenuto con successo sei nel tuo profilo" + session.username);
-            let menuList = {
-                0: { "link": "link1", "name": "name1" },
-                1: { "link": "link2", "name": "name2" },
-                2: { "link": "link3", "name": "name3" }
-            };
+            //this.view.setMainList("Login avvenuto con successo sei nel tuo profilo"+session.username);
+            let menuList;
+            if (session.role === "teacher") {
+                menuList = {
+                    0: { "link": "/insert", "a": "name1" },
+                    1: { "link": "link2", "name": "name2" },
+                    2: { "link": "link3", "name": "name3" }
+                };
+            }
             this.view.setMenuList(menuList);
             //this.viewProfile.setMainList(["class1","class2","class3","class4","class5","class6","class7","class8"]);
             response.send(this.view.getPage());
         });
         app.post('/checklogin', (request, response) => __awaiter(this, void 0, void 0, function* () {
-            if (this.userClient && request.body.username !== "admin") { //if is not undefined
-                if (yield this.userClient.verifyUser(request.body.username, request.body.password)) {
+            let userClient = this.client.getUserClient();
+            if (userClient && request.body.username !== "admin") { //if is not undefined
+                if (yield userClient.verifyUser(request.body.username, request.body.password)) {
                     app.use(session({ secret: 'colletta', resave: false, saveUninitialized: true }));
                     session.username = request.body.username;
                     session.password = request.body.password;
@@ -62,14 +66,15 @@ class ProfileController extends PageController_1.PageController {
         app.post("/saveuser", (req, res) => {
             const hashedPassword = this.passwordHash.hashSync(req.body.username, 10);
             //console.log("hashedPassword:" + hashedPassword);
-            console.log("username :" + req.body.username + " role: " + req.body.role + " user : " + this.userClient);
-            if (req.body.username !== "admin" && req.body.role === "student" && this.userClient !== undefined) {
-                this.userClient.insertStudent(req.body.username, hashedPassword, req.body.name, req.body.surname, "Città", "Scuola");
+            let userClient = this.client.getUserClient();
+            console.log("username :" + req.body.username + " role: " + req.body.role + " user : " + userClient);
+            if (req.body.username !== "admin" && req.body.role === "student" && userClient !== undefined) {
+                userClient.insertStudent(req.body.username, hashedPassword, req.body.name, req.body.surname, "Città", "Scuola");
                 console.log("studente registrato con successo");
                 res.redirect("/profile");
             }
-            else if (req.body.username !== "admin" && req.body.role === "teacher" && this.userClient !== undefined) {
-                this.userClient.insertTeacher(req.body.username, hashedPassword, req.body.name, req.body.surname, "Città", "Scuola", "0002");
+            else if (req.body.username !== "admin" && req.body.role === "teacher" && userClient !== undefined) {
+                userClient.insertTeacher(req.body.username, hashedPassword, req.body.name, req.body.surname, "Città", "Scuola", "0002");
                 console.log("teacher registrato con successo");
                 res.redirect("/profile");
             }
@@ -83,13 +88,19 @@ class ProfileController extends PageController_1.PageController {
             response.send("elimino la classe " + request.body.classToDelete);
         }));
     }
+    /**
+     * method used by the View to understand if ther is any user logged in
+     */
     isLoggedIn() {
         return session.username !== undefined;
     }
+    /**
+     * method used by the View to understand if the login is valid
+     */
     isLoginInvalid() {
         return session.invalidLogin;
     }
-    isUsernameIvalid() {
+    isUsernameInvalid() {
         return session.errUsername;
     }
 }

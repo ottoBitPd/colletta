@@ -1,8 +1,13 @@
 import {PageView} from "./PageView";
+import {InsertPageController} from "../controller/InsertPageController";
 
 class InsertPageView extends PageView {
+
+    private insertPageController : InsertPageController;
     constructor(app : any){
-        super(app);
+        super();
+        this.insertPageController =  new InsertPageController(this);
+        this.insertPageController.update(app);
     }
 
     getPage() {

@@ -1,14 +1,14 @@
 import * as express from "express";
-/*
+
 import {InsertPageView} from './ts/view/InsertPageView';
-import {InsertPageController} from './ts/controller/InsertPageController';
-*/
+//import {InsertPageController} from './ts/controller/InsertPageController';
 
 
-/*
+
+
 import {ExerciseView} from "./ts/view/ExerciseView";
 import {SaveView} from "./ts/view/SaveView";
-import {ExerciseController} from "./ts/controller/ExerciseController";*/
+//import {ExerciseController} from "./ts/controller/ExerciseController";
 
 import {ProfileView} from "./ts/view/ProfileView";
 
@@ -19,13 +19,15 @@ const app = express();
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(__dirname));
-/*const insertPageView = new InsertPageView();
-const insertPage = new InsertPageController(insertPageView);
-insertPage.update(app);
 
-const savePageView = new SaveView();
-const exerciseView = new ExerciseView();
 
+new InsertPageView(app);
+//const insertPage = new InsertPageController(insertPageView);
+//insertPage.update(app);
+
+new SaveView(app);
+new ExerciseView(app);
+/*
 const exercisePage = new ExerciseController(exerciseView, savePageView);
 exercisePage.update(app);*/
 
@@ -45,13 +47,7 @@ app.listen(8080, async function () {
     const port = "8080";
     console.log("Example app listening at http://%s:%s", host, port);
 
- /*let name : string="ciao";
-let description : string="djdsa";
-let teacherID : string="cdhskj";
-let students : string[]=["studente1", "studente2"];
-let exercises : string[]=["esercizio1", "esercizio2"];
-    let classe : Class = new Class(name,description,teacherID,students,exercises);
-    console.log(classe.toJSON());*/
+
 
 });
 

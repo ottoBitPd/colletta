@@ -8,21 +8,12 @@ class PageView {
     /**
      * PageView is an abstract class and it cannot have objects
      */
-    constructor(app) {
-        this.mainList = null;
+    constructor() {
         this.menuList = null;
         this.title = null;
-        this.app = app;
-    }
-    //tslint non rompere
-    getApp() {
-        return this.app;
     }
     setTitle(value) {
         this.title = value;
-    }
-    setMainList(value) {
-        this.mainList = value;
     }
     setMenuList(value) {
         this.menuList = value;

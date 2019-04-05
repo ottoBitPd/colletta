@@ -52,6 +52,15 @@ class UserClient {
             }
         });
     }
+    isTeacher(username) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let id = yield this.dbUserManager.search(username);
+            let user = yield this.dbUserManager.read(id);
+            console.log(user);
+            console.log(user.getUsername());
+            return user.isTeacher();
+        });
+    }
 }
 exports.UserClient = UserClient;
 //# sourceMappingURL=UserClient.js.map

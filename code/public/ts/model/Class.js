@@ -46,7 +46,14 @@ class Class {
         return false;
     }
     toJSON() {
-        return 1;
+        let _class = {
+            "name": this.name,
+            "description": this.description,
+            "teacherID": this.teacherID,
+            "students": this.students,
+            "exercises": this.exercises
+        };
+        return _class;
     }
 }
 exports.Class = Class;

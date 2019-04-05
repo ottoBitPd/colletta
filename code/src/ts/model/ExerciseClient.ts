@@ -20,7 +20,7 @@ class ExerciseClient{
         await this.dbExerciseManager.insert(ex);
     }
 
-    getSplittedSentence(sentence:string) : string []{
+    getSplitSentence(sentence:string) : string []{
         return sentence.split(" ");
     }
 
@@ -38,8 +38,8 @@ class ExerciseClient{
         return await this.dbExerciseManager.read(id);
     }
 
-    async searchExercise(searchParameter:string):Promise<Exercise[]>{
-        var regex= new RegExp(searchParameter,"i");
+    async searchExercise(substring:string):Promise<Exercise[]>{
+        var regex= new RegExp(substring,"i");
         var elements = await this.dbExerciseManager.elements();
         var ids:string [] = [];
         var exercises: Exercise [] = [];

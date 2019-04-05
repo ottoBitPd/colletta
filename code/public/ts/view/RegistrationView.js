@@ -4,7 +4,7 @@ const PageView_1 = require("./PageView");
 const ProfileController_1 = require("../controller/ProfileController");
 class RegistrationView extends PageView_1.PageView {
     constructor(app) {
-        super(app);
+        super();
         this.profileController = new ProfileController_1.ProfileController(this);
         this.profileController.update(app);
     }
@@ -13,7 +13,7 @@ class RegistrationView extends PageView_1.PageView {
         ret += "<div class=\"container\">" +
             "   <div class=\"row\">" +
             "<h1>Registrati</h1>";
-        if (this.profileController.isUsernameIvalid()) {
+        if (this.profileController.isUsernameInvalid()) {
             ret += "<p class='red'>username già utilizzata, scegli un'altra username</p>";
         }
         ret +=

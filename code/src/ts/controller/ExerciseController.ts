@@ -1,63 +1,67 @@
 import {PageController} from "./PageController"
-//import {ExerciseView} from "../view/ExerciseView";
 import {Client} from "../model/Client";
-import {ExerciseClient} from "../model/ExerciseClient";
-//import {HunposManager} from "../model/HunposManager";
+
+var session = require('express-session');
 
 class ExerciseController extends PageController{
+
     private fileSystem : any;
-    private exerciseClient : ExerciseClient | undefined;
-    private viewExercise : any;
-    private viewSave : any;
-    constructor(viewExercise : any, viewSave : any){
-        super(null);
-        this.viewExercise = viewExercise;
-        this.viewSave = viewSave;
-        this.exerciseClient =(new Client.builder()).buildExerciseClient().build().getExerciseClient();
+
+    constructor(view : any){
+        super(view);
+        this.client =(new Client.builder()).buildExerciseClient().buildUserClient().build();
         this.fileSystem = require ('fs');
     }
 
     update(app : any){
         app.post('/exercise', async (request: any, response: any) => {
-            if(this.exerciseClient) {
-                let key = await this.exerciseClient.insertExercise(request.body.sentence, "authorIdValue");
-                //sending the sentence to hunpos which will provide a solution
-                var hunposSolution = await this.exerciseClient.autosolve(request.body.sentence, "authorIdValue");
-                //creation of the array containing tags provided from hunpos solution
-                var hunposTags = this.extractTags(hunposSolution);
-                //converting tags to italian
-                var hunposTranslation = this.translateTags(hunposTags);
-                //console.log("view: "+JSON.stringify(this.view));
-                this.viewExercise.setSentence(request.body.sentence);
-                this.viewExercise.setKey(key);
-                this.viewExercise.setHunposTranslation(hunposTranslation);
-                this.viewExercise.setHunposTags(hunposTags);
-
-                response.send(this.viewExercise.getPage());
+            let exerciseClient = this.client.getExerciseClient();
+            let userClient = this.client.getUserClient();
+            if(exerciseClient && userClient){
+                await exerciseClient.insertExercise(request.body.sentence, "authorIdValue");
+                if(await userClient.isTeacher(session.username)) {
+                    console.log("sono passato, sei un insegnante");
+                    //sending the sentence to hunpos which will provide a solution
+                    var posSolution = await exerciseClient.autosolve(request.body.sentence, "authorIdValue");
+                    //creation of the array containing tags provided from hunpos solution
+                    var posTags = this.extractTags(posSolution);
+                    //converting tags to italian
+                    var posTranslation = this.translateTags(posTags);
+                    //console.log("view: "+JSON.stringify(this.view));
+                    this.view.setSentence(request.body.sentence);
+                    this.view.setPosTranslation(posTranslation);
+                    this.view.setPosTags(posTags);
+                }
+                else{
+                    console.log("niente hunpos, sei uno studente");
+                    this.view.setSentence(request.body.sentence);
+                }
+                response.send(this.view.getPage());
             }
         });
         app.post('/saveExercise', (request : any, response : any) => {
-            if(this.exerciseClient) {
+            let exerciseClient = this.client.getExerciseClient();
+            if(exerciseClient){
                 console.log("post: ",request.body);
-                var words= this.exerciseClient.getSplittedSentence(request.body.sentence);
+                var words= exerciseClient.getSplitSentence(request.body.sentence);
                 var wordsnumber = words.length;
                 var hunposTags = JSON.parse(request.body.hunposTags);
                 var tagsCorrection = this.correctionToTags(wordsnumber,request.body);
                 //building a array merging tags coming from user corrections and hunpos solution
-                var finalTags = this.correctsHunpos(hunposTags,tagsCorrection);
+                var finalTags = this.correctsPOS(hunposTags,tagsCorrection);
                 //console.log("finalTags: "+finalTags);
 
                 //solverId ha un valore di Prova
-                this.exerciseClient.setSolution(request.body.sentence, "sessionAuthorId", "solverID", finalTags, this.convertTopics(request.body.topics), request.body.difficulty);
-                this.exerciseClient.addValutation(request.body.sentence, "sessionauthorId","teacherIdValue", 10);//valori di prova
+                exerciseClient.setSolution(request.body.sentence, "sessionAuthorId", "solverID", finalTags, this.splitTopics(request.body.topics), request.body.difficulty);
+                exerciseClient.addValutation(request.body.sentence, "sessionauthorId","teacherIdValue", 10);//valori di prova
                 //saving in the database the final solution for the exercise
                 //this.model.writeSolution(sentence.split(" "), finalTags, sentence, key);
-                response.send(this.viewSave.getPage());
+                response.send(this.view.getPage());
             }
         });
     }
 
-    extractTags(objSolution: any) {
+    private extractTags(objSolution: any) {
         let tags = [];
         for (let i in objSolution.sentence) {
             tags.push(objSolution.sentence[i].label);
@@ -70,7 +74,7 @@ class ExerciseController extends PageController{
      * @param tags - array of tag coming from hunpos solution
      * @returns {Array} an array containing the italian translation for every tag
      */
-    translateTags(tags : string []){
+    private translateTags(tags : string []){
         var hunposTranslation = [];
         for(var i=0;i<tags.length;i++){
             hunposTranslation[i]=this.translateTag(tags[i]);
@@ -83,7 +87,7 @@ class ExerciseController extends PageController{
      * @param tag - a string containg the tag to convert
      * @returns {string} a string containing the italian translation of the tag
      */
-    translateTag(tag : string){
+    private translateTag(tag : string){
         var content = this.fileSystem.readFileSync("./src/ts/controller/vocabolario.json");
         var jsonContent = JSON.parse(content);
 
@@ -122,17 +126,17 @@ class ExerciseController extends PageController{
      * @param tagsCorrection - array that contains the solution tags provided by user
      * @returns {Array} a string array containing the tags of the final solution.
      */
-    correctsHunpos(hunposTags : string [] ,tagsCorrection : string []){
+    private correctsPOS(posTags : string [] ,tagsCorrection : string []){
         let finalTags : string []=[];
         //console.log("hunpos: "+hunposTags);
         //console.log("user: "+tagsCorrection);
-        for(let i in hunposTags){
+        for(let i in posTags){
             if(tagsCorrection[i]==="")
-                finalTags[i]=hunposTags[i];
-            else if(tagsCorrection[i]!==hunposTags[i])
+                finalTags[i]=posTags[i];
+            else if(tagsCorrection[i]!==posTags[i])
                 finalTags[i]=tagsCorrection[i];
             else
-                finalTags[i]=hunposTags[i];
+                finalTags[i]=posTags[i];
         }
         //console.log("Final: "+finalTags);
         return finalTags;
@@ -145,7 +149,7 @@ class ExerciseController extends PageController{
      * @param dataCorrection - a json object containing all the corrections suggested by the user
      * @returns {Array} an array containing the tags of the solution suggested by the user
      */
-    correctionToTags(wordsnumber : number, dataCorrection : any) : string []{
+    private correctionToTags(wordsnumber : number, dataCorrection : any) : string []{
         //console.log("dataCorrection: "+require('util').inspect(dataCorrection));
         let optionsIndex=0, wordIndex=0;//optionsIndex counter for options of the first select input field
         let tagsCorrection = [];
@@ -181,7 +185,7 @@ class ExerciseController extends PageController{
      * @param topics - a string conattaining the topics
      * @returns {Array} an array containing the topics splitted by space
      */
-    convertTopics(topics : string) : string[]{
+    private splitTopics(topics : string) : string[]{
         return topics.split(" ");
     }
 }

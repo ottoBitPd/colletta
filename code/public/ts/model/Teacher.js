@@ -9,7 +9,7 @@ class Teacher extends User_1.User {
     getClasses(classList) {
         let lista = [];
         classList.forEach((_class) => {
-            if (_class.getTeacherID() == this.getID())
+            if (_class.getTeacherID() === this.getID())
                 lista.push(_class);
         });
         return lista;

@@ -40,5 +40,12 @@ class UserClient{
         }
 
     }
+    async isTeacher(username:string) : Promise<boolean>{
+        let id = await this.dbUserManager.search(username);
+        let user = await this.dbUserManager.read(id);
+        console.log(user);
+        console.log(user.getUsername());
+        return user.isTeacher();
+    }
 }
 export{UserClient}

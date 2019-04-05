@@ -26,10 +26,19 @@ class AuthenticationController extends PageController {
     }
 
     update(app: any) {
+        app.get('/logout', (request: any, response: any) => {
+            //TODO cancellarle tutte
+            delete request.session.username;
+            delete request.session.password;
+            response.redirect('/login');
+        });
         app.get('/profile', (request: any, response: any) => {
-            response.send("Login avvenuto con successo sei nel tuo profilo"+session.username);
+            response.send("Login avvenuto con successo sei nel tuo profilo "+session.username+
+                "<br><a href='/logout'>Logout</a>");
         });
         app.get('/login', (request: any, response: any) => {
+            console.log("sessione: "+session.username);
+            console.log("sessione: "+session.password);
             if(request.query.mess==="invalidLogin") {
                 this.viewLogin.setError("username o password invalidi");
             }

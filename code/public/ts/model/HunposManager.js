@@ -6,9 +6,14 @@ class HunposManager {
         this.fileSystem = require('fs');
         this.shell = require('shelljs');
         //this.train();
-        this.inputFilePath = 'src/ts/controller/hunpos/input.txt';
-        this.outputFilePath = 'src/ts/controller/hunpos/output.txt';
-        this.modelFilePath = 'src/ts/controller/hunpos/italian_model';
+        //scommentare per mac/linux
+        //this.inputFilePath='src/ts/controller/hunpos/input.txt';
+        //this.outputFilePath='src/ts/controller/hunpos/output.txt';
+        //this.modelFilePath='src/ts/controller/hunpos/italian_model';
+        //scommentare per windows
+        this.inputFilePath = 'src\\ts\\controller\\hunpos\\input.txt';
+        this.outputFilePath = 'src\\ts\\controller\\hunpos\\output.txt';
+        this.modelFilePath = 'src\\ts\\controller\\hunpos\\italian_model';
     }
     setModel(modelFilePath) {
         //this.modelFilePath=modelFilePath;
@@ -49,17 +54,22 @@ class HunposManager {
     ;
     getSolution(modelFilePath) {
         this.buildInputFile(modelFilePath);
+        //this.train();
         this.tag();
         return this.buildSolution();
     }
     ;
     train() {
-        this.shell.exec('\\src\\ts\\controller\\hunpos\\hunpos-train ' + this.modelFilePath + '< \\src\\ts\\controller\\hunpos\\train');
+        //scommentare per windows
+        this.shell.exec('src\\ts\\controller\\hunpos\\hunpos-train ' + this.modelFilePath + '< src\\ts\\controller\\hunpos\\train');
+        //scommentare per mac/linux
         //this.shell.exec('./src/ts/controller/hunpos/hunpos-train ' + this.modelFilePath + '< ./src/ts/controller/hunpos/train');
     }
     ;
     tag() {
-        this.shell.exec('\\src\\ts\\controller\\hunpos\\hunpos-tag ' + this.modelFilePath + '< ' + this.inputFilePath + '>' + this.outputFilePath);
+        //scommentare per windows
+        this.shell.exec('src\\ts\\controller\\hunpos\\hunpos-tag ' + this.modelFilePath + '< ' + this.inputFilePath + '>' + this.outputFilePath);
+        //scommentare per mac/linux
         //this.shell.exec('./src/ts/controller/hunpos/hunpos-tag ' + this.modelFilePath + '< ' + this.inputFilePath + '>' + this.outputFilePath);
     }
     ;

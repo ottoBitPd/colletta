@@ -12,10 +12,10 @@ class UserClient{
     }
 
     async insertStudent(username : string, password : string, name : string, surname : string, city : string, school : string) : Promise<boolean>{
-        return await this.dbUserManager.insert(new Student(username, password, name, surname, city, school));
+        return await this.dbUserManager.insert(new Student("0",username, password, name, surname, city, school));
     }
     async insertTeacher(username : string, password : string, name : string, surname : string, city : string, school : string, inps:string) : Promise<boolean>{
-        return await this.dbUserManager.insert(new Teacher(username, password, name, surname, city, school, inps));
+        return await this.dbUserManager.insert(new Teacher("0",username, password, name, surname, city, school, inps));
     }
     async verifyUser(username: string, insertedPassword : string) : Promise<boolean>{
         const idUser = await this.dbUserManager.search(username);

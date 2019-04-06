@@ -188,10 +188,10 @@ class ExerciseController extends PageController{
                 }
 
                 optionsIndex++;
-                if (optionsIndex == 14) {
+                if (optionsIndex === 14) {
                     optionsIndex = 0;
                     tagsCorrection[wordIndex]= actualTag;
-                    wordIndex++
+                    wordIndex++;
                     actualTag = "";
                 }
             }

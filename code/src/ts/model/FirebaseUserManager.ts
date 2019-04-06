@@ -92,11 +92,11 @@ class FirebaseUserManager extends FirebaseManager {
                         let user;
                         console.log(readData.INPScode);
                         if (readData.INPScode !== undefined) {
-                             user = new Teacher(readData.username, readData.password, readData.name,
+                             user = new Teacher(id,readData.username, readData.password, readData.name,
                                 readData.lastname, readData.city, readData.school, readData.INPScode);
                         }
                         else {
-                             user = new Student(readData.username, readData.password, readData.name,
+                             user = new Student(id,readData.username, readData.password, readData.name,
                                 readData.lastname, readData.city, readData.school);
                         }
                         resolve(user);

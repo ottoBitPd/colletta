@@ -20,14 +20,14 @@ class Student extends User {
         return lista;
     }
 
-    public getAverage(exercises : Exercise[]) : Map<number,number> {
+    public getAverage(exercises : Exercise[]) : Map<number,number>   {
         let averageMap = new Map<number,number>();
         let solutions : Solution[] = [];
 
         for (let i =0 ; i < exercises.length; i++)
-            solutions.concat((exercises[i].getSolutions()).filter((sol) => sol.getSolverId() === this.getID()));
+        solutions.concat((exercises[i].getSolutions()).filter((sol) => sol.getSolverId() === this.getID()));
 
-        solutions = solutions.sort((sol1,sol2) => sol1.getTime().getTime() - sol2.getTime().getTime());
+        solutions = solutions.sort((sol1,sol2) => sol1.getTime()! - sol2.getTime()!);
 
         let totalValutation = 0;
         let counter = 0;
@@ -42,10 +42,10 @@ class Student extends User {
                 counter += valutations.size;
             }
 
-            averageMap.set(solutions[i].getTime().getTime(),totalValutation/counter);
+            averageMap.set( solutions[i].getTime()! ,totalValutation/counter) ;
         }
 
-        return averageMap;
+        return averageMap ;
     }
 }
 export {Student}

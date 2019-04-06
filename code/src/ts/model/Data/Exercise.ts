@@ -1,5 +1,5 @@
-import {POSManager} from './POSManager';
-import {HunposManager} from "./HunposManager";
+import {POSManager} from '../POSManager/POSManager';
+import {HunposManager} from "../POSManager/HunposManager";
 import {Data} from "./Data";
 import {Solution} from "./Solution";
 

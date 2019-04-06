@@ -1,4 +1,4 @@
-import {Class} from "../../src/ts/model/Class";
+import {Class} from "../../src/ts/model/Data/Class";
 import {expect} from 'chai';
 import 'mocha';
 

@@ -1,6 +1,6 @@
 import {DatabaseManager} from "./DatabaseManager";
-import {Data} from "./Data";
-import {FirebaseUserManager} from "./FirebaseUserManager";
+import {Data} from "../Data/Data";
+import {FirebaseUserManager} from "../Firebase/FirebaseUserManager";
 
 
 class DatabaseUserManager extends DatabaseManager{

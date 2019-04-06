@@ -1,7 +1,7 @@
 import {expect} from 'chai';
 import 'mocha';
-import {Teacher} from "../../src/ts/model/Teacher";
-import {Class} from "../../src/ts/model/Class";
+import {Teacher} from "../../src/ts/model/Data/Teacher";
+import {Class} from "../../src/ts/model/Data/Class";
 
 
 

@@ -1,6 +1,6 @@
 import {FirebaseManager} from "./FirebaseManager";
-import {Data} from "./Data";
-import {Exercise} from "./Exercise";
+import {Data} from "../Data/Data";
+import {Exercise} from "../Data/Exercise";
 
 class FirebaseExerciseManager extends FirebaseManager {
 

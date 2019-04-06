@@ -1,5 +1,5 @@
 import {PagePresenter} from "./PagePresenter"
-import {Client} from "../model/Client";
+import {Client} from "../model/Client/Client";
 
 var session = require('express-session');
 

@@ -1,6 +1,6 @@
-import {DatabaseExerciseManager} from "./DatabaseExerciseManager";
-import {Exercise} from "./Exercise";
-import {Data} from "./Data";
+import {DatabaseExerciseManager} from "../DatabaseManager/DatabaseExerciseManager";
+import {Exercise} from "../Data/Exercise";
+import {Data} from "../Data/Data";
 //import {forEach} from "@firebase/util";
 
 

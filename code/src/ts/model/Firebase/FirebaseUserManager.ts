@@ -1,8 +1,8 @@
 import {FirebaseManager} from "./FirebaseManager";
-import {Data} from "./Data";
-import {User} from "./User";
-import {Student} from "./Student";
-import {Teacher} from "./Teacher";
+import {Data} from "../Data/Data";
+import {User} from "../Data/User";
+import {Student} from "../Data/Student";
+import {Teacher} from "../Data/Teacher";
 
 class FirebaseUserManager extends FirebaseManager {
     constructor() {

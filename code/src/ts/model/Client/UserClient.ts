@@ -1,8 +1,8 @@
-import {DatabaseUserManager} from "./DatabaseUserManager";
-import {Data} from "./Data";
-import {Teacher} from "./Teacher";
-import {Student} from "./Student";
-import {User} from "./User";
+import {DatabaseUserManager} from "../DatabaseManager/DatabaseUserManager";
+import {Data} from "../Data/Data";
+import {Teacher} from "../Data/Teacher";
+import {Student} from "../Data/Student";
+import {User} from "../Data/User";
 
 class UserClient{
     private dbUserManager : DatabaseUserManager;

@@ -5,8 +5,8 @@ class Teacher extends User {
 
     private INPS : string;
 
-    constructor (username : string, password: string, name : string, lastname:string, city:string, school : string, inps : string){
-        super(username, password, name, lastname, city, school);
+    constructor (id:string, username : string, password: string, name : string, lastname:string, city:string, school : string, inps : string){
+        super(id,username, password, name, lastname, city, school);
         this.INPS = inps;
     }
 

@@ -7,9 +7,9 @@ abstract class User implements Data{
     public databaseInfo : any;
 
 
-    constructor(username : string, password: string, name : string, lastname:string, city:string, school : string) {
+    constructor(id : string, username : string, password: string, name : string, lastname:string, city:string, school : string) {
         this.username= username;
-        this.databaseInfo= new this.DatabaseUserInfo("0", password, name, lastname, city, school);
+        this.databaseInfo= new this.DatabaseUserInfo(id, password, name, lastname, city, school);
     }
 
     public DatabaseUserInfo = class {

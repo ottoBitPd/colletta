@@ -2,14 +2,13 @@ import {expect} from 'chai';
 import 'mocha';
 import {Teacher} from "../../src/ts/model/Teacher";
 import {Class} from "../../src/ts/model/Class";
-import {User} from "../../src/ts/model/User";
 
 
 
 
 describe('#getMethods', function() {
 
-    let learn = new Teacher("Bortolone", "ciao", "Michele", "Bortone", "Scorze", "Venezia", "A110");
+    let learn = new Teacher("1","Bortolone", "ciao", "Michele", "Bortone", "Scorze", "Venezia", "A110");
 
     context('StudentTest.getUsername()', function () {
         it('should return the username', function () {
@@ -60,21 +59,18 @@ describe('#getMethods', function() {
         });
     });
 
-  /*  context('StudentTest.getClasses()', function () {
+    context('StudentTest.getClasses()', function () {
         it('should return classes', function () {
 
-            var teacher1=new Teacher("Bortolone", "ciao", "Michele", "Bortone", "Scorze", "Venezia", "A110");
-           // var teache2=new Teacher("Bortolone", "ciao", "gianni", "Bortone", "Scorze", "Venezia", "A111");
-            let uno= new Class("name", "description","A110",["st1", "st2"],["es1", "es2"]);
-           //let due= new Class("name", "description","A110",["st1", "st2"],["es1", "es2"]);
+            var teacher1=new Teacher("1","Bortolone", "ciao", "Michele", "Bortone", "Scorze", "Venezia", "A110");
+          //  var teacher2=new Teacher("3","Perry15", "ciao", "Perry", "Peron", "Scorze", "Venezia", "A111");
+            let uno= new Class("name", "description","1",["st1", "st2"],["es1", "es2"]);
+            let due= new Class("name", "description","1",["st1", "st2"],["es1", "es2"]);
+            let tre= new Class("name", "description","3",["st1", "st2"],["es1", "es2"]);
 
-            let prova= new teacher1.DatabaseUserInfo("A110","ciao","gianni","Bortone","Scorze","Venezia");
-
-            console.log(prova.id);
-
-            expect(teacher1.getClasses([uno]));
+            expect(teacher1.getClasses([uno,due,tre])).eql([uno,due]);
         });
-    });*/
+    });
 
 
 });

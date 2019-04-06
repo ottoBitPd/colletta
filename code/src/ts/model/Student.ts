@@ -5,8 +5,8 @@ import {Solution} from "./Solution";
 
 class Student extends User {
 
-    constructor (username : string, password: string, name : string, lastname:string, city:string, school : string){
-        super(username, password, name, lastname, city, school);
+    constructor (id : string, username : string, password: string, name : string, lastname:string, city:string, school : string){
+        super(id, username, password, name, lastname, city, school);
     }
 
     public getClasses(classList: Class[]): Class[] {

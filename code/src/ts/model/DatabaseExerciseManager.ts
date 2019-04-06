@@ -1,36 +1,38 @@
 import {DatabaseManager} from "./DatabaseManager";
 import {Data} from "./Data";
 import {FirebaseExerciseManager} from "./FirebaseExerciseManager";
-import {Exercise} from "./Exercise";
 
-class DatabaseExerciseManager implements DatabaseManager{
-    private firebaseExerciseManager : FirebaseExerciseManager;
+
+
+class DatabaseExerciseManager extends DatabaseManager{
+
     constructor(){
-        this.firebaseExerciseManager= new FirebaseExerciseManager();
+        super(new FirebaseExerciseManager());
     }
 
     async insert(obj:Data) : Promise<boolean> {
-        return await this.firebaseExerciseManager.insert(obj);
+        return await this.getDatabase().insert(obj);
     }
 
      async remove(id:string) : Promise<boolean> {
-        return await this.firebaseExerciseManager.remove(id);
+        return await this.getDatabase().remove(id);
     }
 
-    async read(id:string) : Promise<Exercise> {
-        return await this.firebaseExerciseManager.read(id);
+    async read(id:string) : Promise<Data> {
+        return await this.getDatabase().read(id);
     }
 
-    async search(sentence: string){
-        return await this.firebaseExerciseManager.search(sentence);
+    async search(sentence: string):  Promise<string>{
+        return await this.getDatabase().search(sentence);
     }
 
-    async update(path:string, value:any){
-        return await this.firebaseExerciseManager.update(path, value);
+    async update(path:string, value:any): Promise<void>{
+
+        return await this.getDatabase().update(path, value);
     }
 
     async elements() : Promise<Map<string, string>> {
-        return await this.firebaseExerciseManager.elements();
+        return await this.getDatabase().elements();
     }
 }
 export {DatabaseExerciseManager}

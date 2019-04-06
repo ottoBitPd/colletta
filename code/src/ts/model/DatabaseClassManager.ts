@@ -1,29 +1,34 @@
 import {DatabaseManager} from "./DatabaseManager";
 import {Data} from "./Data";
 import {FirebaseClassManager} from "./FirebaseClassManager";
-import {Class} from "./Class";
 
-class DatabaseClassManager implements DatabaseManager{
-    private firebaseClassManager : FirebaseClassManager;
+
+class DatabaseClassManager extends DatabaseManager{
+
     constructor(){
-        this.firebaseClassManager = new FirebaseClassManager();
+        super(new FirebaseClassManager());
     }
     async insert(obj:Data) : Promise<boolean> {
-        return await this.firebaseClassManager.insert(obj);
+        return await this.getDatabase().insert(obj);
     }
     async remove(id:string) : Promise<boolean> {
-        return await this.firebaseClassManager.remove(id);
+        return await this.getDatabase().remove(id);
     }
 
-    async read(id:string) : Promise<Class> {
-        return await this.firebaseClassManager.read(id);
+    async read(id:string) : Promise<Data> {
+        return await this.getDatabase().read(id);
     }
 
-    async update(path:string, value: any){//non so se sia giusto tutto perchè async ma in teoria void non so se ritorna qualcosa
-        return await this.firebaseClassManager.update(path,value);
+    async search(id:string) : Promise<string> {
+        return await this.getDatabase().search(id);
+    }
+
+
+    async update(path:string, value: any): Promise<void> {
+        return await this.getDatabase().update(path,value);
     }
     async elements() : Promise<Map<string, string>> {
-        return await this.firebaseClassManager.elements();
+        return await this.getDatabase().elements();
     }
 }
 export {DatabaseClassManager}

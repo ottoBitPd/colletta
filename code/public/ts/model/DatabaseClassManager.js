@@ -8,34 +8,40 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const DatabaseManager_1 = require("./DatabaseManager");
 const FirebaseClassManager_1 = require("./FirebaseClassManager");
-class DatabaseClassManager {
+class DatabaseClassManager extends DatabaseManager_1.DatabaseManager {
     constructor() {
-        this.firebaseClassManager = new FirebaseClassManager_1.FirebaseClassManager();
+        super(new FirebaseClassManager_1.FirebaseClassManager());
     }
     insert(obj) {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield this.firebaseClassManager.insert(obj);
+            return yield this.getDatabase().insert(obj);
         });
     }
     remove(id) {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield this.firebaseClassManager.remove(id);
+            return yield this.getDatabase().remove(id);
         });
     }
     read(id) {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield this.firebaseClassManager.read(id);
+            return yield this.getDatabase().read(id);
+        });
+    }
+    search(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this.getDatabase().search(id);
         });
     }
     update(path, value) {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield this.firebaseClassManager.update(path, value);
+            return yield this.getDatabase().update(path, value);
         });
     }
     elements() {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield this.firebaseClassManager.elements();
+            return yield this.getDatabase().elements();
         });
     }
 }

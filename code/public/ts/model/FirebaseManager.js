@@ -37,7 +37,7 @@ class FirebaseManager {
         FirebaseManager.registry.set(instanceName, instance);
     }
     static getInstance(instanceName) {
-        let dbInstance = FirebaseManager.lookup(instanceName);
+        const dbInstance = FirebaseManager.lookup(instanceName);
         if (dbInstance === null || dbInstance === undefined)
             throw new Error('Error: Database non trovato');
         return dbInstance;

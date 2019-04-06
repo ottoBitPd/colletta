@@ -1,12 +1,13 @@
-import {DatabaseManager} from "./DatabaseManager";
+
 import * as Admin from "firebase-admin";
 import {Data} from "./Data";
 
-abstract class FirebaseManager implements DatabaseManager {
+abstract class FirebaseManager {
     private static registry: Map<string, FirebaseManager> = new Map<string, FirebaseManager>();
     protected static database: Admin.database.Database = FirebaseManager.initDB();
 
     protected constructor() {
+
     }
     /**
      * This method executes the connection with firebase database.
@@ -49,6 +50,7 @@ abstract class FirebaseManager implements DatabaseManager {
 
     abstract elements(): Promise<Map<string, string>>;
 
+    abstract search(dataName:string) : Promise<string>;
 
     abstract read(id: string): Promise<Data>;
 
@@ -59,11 +61,12 @@ abstract class FirebaseManager implements DatabaseManager {
     }
 
     static getInstance(instanceName : string) : FirebaseManager {
-        let dbInstance = FirebaseManager.lookup(instanceName);
+        const dbInstance = FirebaseManager.lookup(instanceName);
         if(dbInstance === null || dbInstance === undefined)
             throw new Error('Error: Database non trovato');
         return dbInstance;
     }
+
 }
 
 export {FirebaseManager};

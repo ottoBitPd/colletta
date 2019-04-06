@@ -1,31 +1,31 @@
 import {DatabaseManager} from "./DatabaseManager";
 import {Data} from "./Data";
 import {FirebaseUserManager} from "./FirebaseUserManager";
-import {User} from "./User";
 
-class DatabaseUserManager implements DatabaseManager{
-    private firebaseUserManager : FirebaseUserManager;
+
+class DatabaseUserManager extends DatabaseManager{
+
     constructor(){
-        this.firebaseUserManager = new FirebaseUserManager();
+        super(new FirebaseUserManager());
     }
     async insert(obj:Data) : Promise<boolean> {
-        return await this.firebaseUserManager.insert(obj);
+        return await this.getDatabase().insert(obj);
     }
     async remove(id:string) : Promise<boolean> {
-        return await this.firebaseUserManager.remove(id);
+        return await this.getDatabase().remove(id);
     }
-    async read(id:string) : Promise<User>{//non dovrebbe tornare Promise<User> tornava Data?
-        return await this.firebaseUserManager.read(id);
+    async read(id:string) : Promise<Data>{
+        return await this.getDatabase().read(id);
     }
 
-    async update(path:string, value: any){//non so se sia giusto tutto perchè async ma in teoria void non so se ritorna qualcosa
-        return await this.firebaseUserManager.update(path,value);
+    async update(path:string, value: any): Promise<void>{
+        return await this.getDatabase().update(path,value);
     }
     async search(username:string) : Promise<string>{
-        return await this.firebaseUserManager.search(username);
+        return await this.getDatabase().search(username);
     }
     async elements() : Promise<Map<string, string>> {
-        return await this.firebaseUserManager.elements();
+        return await this.getDatabase().elements();
     }
 }
 export {DatabaseUserManager}

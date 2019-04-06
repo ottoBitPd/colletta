@@ -18,11 +18,11 @@ class UserClient{
         return await this.dbUserManager.insert(new Teacher(username, password, name, surname, city, school, inps));
     }
     async verifyUser(username: string, insertedPassword : string) : Promise<boolean>{
-        let idUser = await this.dbUserManager.search(username);
+        const idUser = await this.dbUserManager.search(username);
         if(idUser!=="false") {
-            let user: Data | null = await this.dbUserManager.read(idUser);
+            const user: Data | null = await this.dbUserManager.read(idUser);
             if (user !== null) {
-                let password = (<User>user).getPassword();
+                const password = (<User>user).getPassword();
                 if (this.passwordHash.compareSync(insertedPassword, password)) {
                     //console.log("password match");
                     return true;
@@ -41,11 +41,11 @@ class UserClient{
 
     }
     async isTeacher(username:string) : Promise<boolean>{
-        let id = await this.dbUserManager.search(username);
-        let user = await this.dbUserManager.read(id);
-        console.log(user);
-        console.log(user.getUsername());
-        return user.isTeacher();
+        const id = await this.dbUserManager.search(username);
+        const user = await this.dbUserManager.read(id);
+        console.log((<User>user));
+        console.log((<User>user).getUsername());
+        return (<User>user).isTeacher();
     }
 }
 export{UserClient}

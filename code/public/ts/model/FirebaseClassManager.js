@@ -18,7 +18,7 @@ class FirebaseClassManager extends FirebaseManager_1.FirebaseManager {
     insert(obj) {
         return __awaiter(this, void 0, void 0, function* () {
             const _class = obj;
-            const exists = yield this.search(_class.getTeacherID(), _class.getName());
+            const exists = yield this.search(_class.getName());
             return new Promise(function (resolve) {
                 return __awaiter(this, void 0, void 0, function* () {
                     if (exists === "false") {
@@ -38,15 +38,14 @@ class FirebaseClassManager extends FirebaseManager_1.FirebaseManager {
             });
         });
     }
-    search(teacherID, name) {
+    search(name) {
         return __awaiter(this, void 0, void 0, function* () {
             return new Promise(function (resolve) {
                 FirebaseManager_1.FirebaseManager.database.ref('data/classes/')
                     .once("value", function (snapshot) {
                     if (snapshot.exists()) {
                         snapshot.forEach(function (data) {
-                            if ((data.val().teacherID.toLowerCase() === teacherID.toLowerCase()) &&
-                                (data.val().name.toLowerCase() === name.toLowerCase())) {
+                            if (data.val().name.toLowerCase() === name.toLowerCase()) {
                                 //console.log("esiste");
                                 return resolve(data.key);
                             }
@@ -94,8 +93,8 @@ class FirebaseClassManager extends FirebaseManager_1.FirebaseManager {
                 FirebaseManager_1.FirebaseManager.database.ref("data/classes/" + id)
                     .once('value', function (snapshot) {
                     if (snapshot.exists()) {
-                        let readData = snapshot.val();
-                        let _class = new Class_1.Class(readData.name, readData.description, readData.teacherID, readData.students, readData.exercises);
+                        const readData = snapshot.val();
+                        const _class = new Class_1.Class(readData.name, readData.description, readData.teacherID, readData.students, readData.exercises);
                         return resolve(_class);
                     }
                     return resolve(undefined);
@@ -127,9 +126,9 @@ class FirebaseClassManager extends FirebaseManager_1.FirebaseManager {
     }
     update(path, value) {
         return __awaiter(this, void 0, void 0, function* () {
-            let splittedPath = path.split("/");
-            let position = splittedPath.length - 1;
-            let field = splittedPath[position];
+            const splittedPath = path.split("/");
+            const position = splittedPath.length - 1;
+            const field = splittedPath[position];
             console.log(field);
             switch (field) {
                 case "exercises":

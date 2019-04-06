@@ -8,39 +8,40 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const DatabaseManager_1 = require("./DatabaseManager");
 const FirebaseExerciseManager_1 = require("./FirebaseExerciseManager");
-class DatabaseExerciseManager {
+class DatabaseExerciseManager extends DatabaseManager_1.DatabaseManager {
     constructor() {
-        this.firebaseExerciseManager = new FirebaseExerciseManager_1.FirebaseExerciseManager();
+        super(new FirebaseExerciseManager_1.FirebaseExerciseManager());
     }
     insert(obj) {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield this.firebaseExerciseManager.insert(obj);
+            return yield this.getDatabase().insert(obj);
         });
     }
     remove(id) {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield this.firebaseExerciseManager.remove(id);
+            return yield this.getDatabase().remove(id);
         });
     }
     read(id) {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield this.firebaseExerciseManager.read(id);
+            return yield this.getDatabase().read(id);
         });
     }
     search(sentence) {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield this.firebaseExerciseManager.search(sentence);
+            return yield this.getDatabase().search(sentence);
         });
     }
     update(path, value) {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield this.firebaseExerciseManager.update(path, value);
+            return yield this.getDatabase().update(path, value);
         });
     }
     elements() {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield this.firebaseExerciseManager.elements();
+            return yield this.getDatabase().elements();
         });
     }
 }

@@ -10,7 +10,7 @@ class FirebaseClassManager extends FirebaseManager {
 
     public async insert(obj: Data): Promise<boolean> {
         const _class = <Class>obj;
-        const exists : string = await this.search(_class.getTeacherID(), _class.getName());
+        const exists : string = await this.search(_class.getName());
         return new Promise(async function (resolve) {
             if (exists === "false") {
                 FirebaseManager.database.ref('data/classes').push({
@@ -28,14 +28,13 @@ class FirebaseClassManager extends FirebaseManager {
         });
     }
 
-    public async search(teacherID: string, name:string): Promise<string> {
+    public async search(name:string): Promise<string> {
         return new Promise(function (resolve) {
             FirebaseManager.database.ref('data/classes/')
                 .once("value", function (snapshot: any) {
                     if (snapshot.exists()) {
                         snapshot.forEach(function (data: any) {
-                            if ((data.val().teacherID.toLowerCase()=== teacherID.toLowerCase()) &&
-                                (data.val().name.toLowerCase() === name.toLowerCase())) {
+                            if (data.val().name.toLowerCase() === name.toLowerCase()) {
                                 //console.log("esiste");
                                 return resolve(data.key);
                             }
@@ -69,7 +68,7 @@ class FirebaseClassManager extends FirebaseManager {
         });
     }
 
-    public async read(id: string): Promise<Class> {
+    public async read(id: string): Promise<Data> {
         const ProData: Promise <Class> = this.getClassById(id);
         const readed = await ProData;
         return readed;
@@ -80,8 +79,8 @@ class FirebaseClassManager extends FirebaseManager {
             FirebaseManager.database.ref("data/classes/" + id)
                 .once('value', function (snapshot : any) {
                     if (snapshot.exists()) {
-                        let readData: any = snapshot.val();
-                        let _class = new Class(readData.name, readData.description, readData.teacherID,
+                        const readData: any = snapshot.val();
+                        const _class = new Class(readData.name, readData.description, readData.teacherID,
                             readData.students, readData.exercises);
                         return resolve(_class);
                     }
@@ -111,9 +110,9 @@ class FirebaseClassManager extends FirebaseManager {
     }
 
     public async update (path:string, value: any) {
-        let splittedPath =path.split("/");
-        let position : number = splittedPath.length -1;
-        let field : string=splittedPath[position];
+        const splittedPath =path.split("/");
+        const position : number = splittedPath.length -1;
+        const field : string=splittedPath[position];
         console.log(field);
         switch (field) {
             case "exercises": await this.updateField(path, value); break;
@@ -132,15 +131,6 @@ class FirebaseClassManager extends FirebaseManager {
         });
     }
 
-
-    //TODO
-    /*
-
-
-    // @ts-ignore
-
-    update(path:string, value: any): void {}
-    */
 }
 
 export{FirebaseClassManager};

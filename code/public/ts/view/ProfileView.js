@@ -1,11 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const PageView_1 = require("./PageView");
-const ProfileController_1 = require("../controller/ProfileController");
+const ProfilePresenter_1 = require("../presenter/ProfilePresenter");
 class ProfileView extends PageView_1.PageView {
     constructor(app) {
         super();
-        this.profileController = new ProfileController_1.ProfileController(this);
+        this.profileController = new ProfilePresenter_1.ProfilePresenter(this);
         this.profileController.update(app);
     }
     getPage() {

@@ -14,7 +14,7 @@ const InsertPageView_1 = require("./ts/view/InsertPageView");
 const InsertPageController_1 = require("./ts/controller/InsertPageController");
 const ExercisePageView_1 = require("./ts/view/ExercisePageView");
 const ExerciseController_1 = require("./ts/controller/ExerciseController");
-/*import {SavePageController} from "./ts/controller/SavePageController";*/
+/*import {SavePageController} from "./ts/presenter/SavePageController";*/
 const SavePageView_1 = require("./ts/view/SavePageView");
 const LoginView_1 = require("./ts/view/LoginView");
 const RegistrationView_1 = require("./ts/view/RegistrationView");

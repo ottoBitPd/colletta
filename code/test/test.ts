@@ -24,13 +24,13 @@ describe('#buildInputFile()', function() {
     context('input file created', function() {
         const obj= new HunposManager();
         const input = require('fs');
-        input.writeFileSync('./src/ts/controller/hunpos/input.txt', "");
+        input.writeFileSync('./src/ts/presenter/hunpos/input.txt', "");
         obj.buildInputFile("ciao amico");
         it('should write the sentence', function() {
-            const st = input.readFileSync('./src/ts/controller/hunpos/input.txt');
+            const st = input.readFileSync('./src/ts/presenter/hunpos/input.txt');
             const sentence = st.toString();
             expect(sentence).to.equal("ciao\namico\n");
-            input.writeFileSync('./src/ts/controller/hunpos/input.txt', "ciao\namico");
+            input.writeFileSync('./src/ts/presenter/hunpos/input.txt', "ciao\namico");
         })
     })
 });
@@ -42,14 +42,14 @@ describe('#getSolution()', function() {
         it('should write the solution word-label', function() {
             const obj1= new HunposManager();
             const input1 = require('fs');
-            input1.writeFileSync('./src/ts/controller/hunpos/input.txt', "");
+            input1.writeFileSync('./src/ts/presenter/hunpos/input.txt', "");
             obj1.buildInputFile("ciao amico");
             obj1.tag();
             const rjson = obj1.buildSolution();
-            const st1 = input1.readFileSync('./src/ts/controller/hunpos/output.txt');
+            const st1 = input1.readFileSync('./src/ts/presenter/hunpos/output.txt');
             const sentence1 = st1.toString();
             expect(sentence1).to.equal(rjson.sentence[0].word+"\t"+rjson.sentence[0].label+"\t\n"+rjson.sentence[1].word+"\t"+rjson.sentence[1].label+"\t\n\n");
-            input1.writeFileSync('./src/ts/controller/hunpos/input.txt', "");
+            input1.writeFileSync('./src/ts/presenter/hunpos/input.txt', "");
         })
     })
 });

@@ -1,4 +1,4 @@
-import {PageController} from "./PageController"
+import {PagePresenter} from "./PagePresenter"
 import {Client} from "../model/Client";
 
 
@@ -7,7 +7,7 @@ import {Client} from "../model/Client";
 
 var session = require('express-session');
 
-class ProfileController extends PageController{
+class ProfilePresenter extends PagePresenter{
     //private classClient : ClassClient | undefined;
     private passwordHash = require('bcryptjs');
 
@@ -111,4 +111,4 @@ class ProfileController extends PageController{
     }
 
 }
-export {ProfileController};
+export {ProfilePresenter};

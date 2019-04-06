@@ -1,11 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const PageView_1 = require("./PageView");
-const InsertPageController_1 = require("../controller/InsertPageController");
+const InsertPagePresenter_1 = require("../presenter/InsertPagePresenter");
 class InsertPageView extends PageView_1.PageView {
     constructor(app) {
         super();
-        this.insertPageController = new InsertPageController_1.InsertPageController(this);
+        this.insertPageController = new InsertPagePresenter_1.InsertPagePresenter(this);
         this.insertPageController.update(app);
     }
     getPage() {

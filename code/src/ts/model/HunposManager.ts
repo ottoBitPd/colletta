@@ -14,13 +14,13 @@ class HunposManager implements POSManager{
         //this.train();
 
         //scommentare per mac/linux
-        this.inputFilePath='src/ts/controller/hunpos/input.txt';
-        this.outputFilePath='src/ts/controller/hunpos/output.txt';
-        this.modelFilePath='src/ts/controller/hunpos/italian_model';
+        /*this.inputFilePath='src/ts/presenter/hunpos/input.txt';
+        this.outputFilePath='src/ts/presenter/hunpos/output.txt';
+        this.modelFilePath='src/ts/presenter/hunpos/italian_model';*/
         //scommentare per windows
-      /*  this.inputFilePath='src\\ts\\controller\\hunpos\\input.txt';
-        this.outputFilePath='src\\ts\\controller\\hunpos\\output.txt';
-        this.modelFilePath='src\\ts\\controller\\hunpos\\italian_model';*/
+        this.inputFilePath='src\\ts\\presenter\\hunpos\\input.txt';
+        this.outputFilePath='src\\ts\\presenter\\hunpos\\output.txt';
+        this.modelFilePath='src\\ts\\presenter\\hunpos\\italian_model';
     }
 
     setModel(modelFilePath:string):void{
@@ -68,15 +68,15 @@ class HunposManager implements POSManager{
 
      train():void{
          //scommentare per windows
-      //   this.shell.exec('src\\ts\\controller\\hunpos\\hunpos-train ' + this.modelFilePath + '< src\\ts\\controller\\hunpos\\train');
+         this.shell.exec('src\\ts\\presenter\\hunpos\\hunpos-train ' + this.modelFilePath + '< src\\ts\\presenter\\hunpos\\train');
          //scommentare per mac/linux
-         this.shell.exec('./src/ts/controller/hunpos/hunpos-train ' + this.modelFilePath + '< ./src/ts/controller/hunpos/train');
+         //this.shell.exec('./src/ts/presenter/hunpos/hunpos-train ' + this.modelFilePath + '< ./src/ts/presenter/hunpos/train');
      };
      tag():void{
          //scommentare per windows
-      //   this.shell.exec('src\\ts\\controller\\hunpos\\hunpos-tag ' + this.modelFilePath + '< ' + this.inputFilePath + '>' + this.outputFilePath);
+         this.shell.exec('src\\ts\\presenter\\hunpos\\hunpos-tag ' + this.modelFilePath + '< ' + this.inputFilePath + '>' + this.outputFilePath);
          //scommentare per mac/linux
-         this.shell.exec('./src/ts/controller/hunpos/hunpos-tag ' + this.modelFilePath + '< ' + this.inputFilePath + '>' + this.outputFilePath);
+         //this.shell.exec('./src/ts/presenter/hunpos/hunpos-tag ' + this.modelFilePath + '< ' + this.inputFilePath + '>' + this.outputFilePath);
      };
 }
 

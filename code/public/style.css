@@ -75,7 +75,11 @@ input[type="submit"]{
     list-style-type:none;
     padding:5em;
 }
-#esercizio li:nth-child(-n+3){
+#esercizio ul ul{
+    width:100%;
+    list-style-type:none;
+}
+#esercizio ul>ul>li{
     background-color: #181341;
     color:white;
     margin:0.3em;

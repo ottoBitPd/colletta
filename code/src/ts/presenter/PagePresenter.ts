@@ -2,7 +2,7 @@
 
 import {Client} from "../model/Client";
 
-abstract class PageController{
+abstract class PagePresenter{
     protected view: any;
     protected client : Client;
     constructor(view : any ){
@@ -17,4 +17,4 @@ abstract class PageController{
     }*/
 
 }
-export {PageController};
+export {PagePresenter};

@@ -1,11 +1,11 @@
-import {PageController} from "./PageController";
+import {PagePresenter} from "./PagePresenter";
 import {PageView} from "../view/PageView";
 /**
- * InsertPageController is a class that represents the controller for the insert page
+ * InsertPagePresenter is a class that represents the presenter for the insert page
  */
-class InsertPageController extends PageController{
+class InsertPagePresenter extends PagePresenter{
     /**
-     * InsertPageController constructor initializes all attributes needed to InsertPageController object.
+     * InsertPagePresenter constructor initializes all attributes needed to InsertPagePresenter object.
      */
     constructor(view: PageView){
         super(view);
@@ -21,4 +21,4 @@ class InsertPageController extends PageController{
         });
     }
 }
-export {InsertPageController};
+export {InsertPagePresenter};

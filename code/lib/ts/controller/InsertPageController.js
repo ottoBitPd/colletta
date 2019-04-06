@@ -2,11 +2,11 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const PageController_1 = require("./PageController");
 /**
- * InsertPageController is a class that represents the controller for the insert page
+ * InsertPagePresenter is a class that represents the presenter for the insert page
  */
 class InsertPageController extends PageController_1.PageController {
     /**
-     * InsertPageController constructor initializes all attributes needed to InsertPageController object.
+     * InsertPagePresenter constructor initializes all attributes needed to InsertPagePresenter object.
      */
     constructor(view) {
         super(view);
@@ -22,4 +22,4 @@ class InsertPageController extends PageController_1.PageController {
     }
 }
 exports.InsertPageController = InsertPageController;
-//# sourceMappingURL=InsertPageController.js.map
+//# sourceMappingURL=InsertPagePresenter.js.map

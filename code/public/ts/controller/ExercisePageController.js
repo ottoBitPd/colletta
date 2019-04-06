@@ -65,7 +65,7 @@ class ExercisePageController extends PageController_1.PageController {
      * @returns {string} a string containing the italian translation of the tag
      */
     translateTag(tag) {
-        var content = this.fileSystem.readFileSync("./src/ts/controller/vocabolario.json");
+        var content = this.fileSystem.readFileSync("./src/ts/presenter/vocabolario.json");
         var jsonContent = JSON.parse(content);
         var lowercase = tag.split(/[A-Z]{1,2}/);
         var uppercase = tag.split(/[a-z0-9]+/);
@@ -94,4 +94,4 @@ class ExercisePageController extends PageController_1.PageController {
     }
 }
 exports.ExercisePageController = ExercisePageController;
-//# sourceMappingURL=ExerciseController.js.map
+//# sourceMappingURL=ExercisePresenter.js.map

@@ -105,4 +105,4 @@ class ProfileController extends PageController_1.PageController {
     }
 }
 exports.ProfileController = ProfileController;
-//# sourceMappingURL=ProfileController.js.map
+//# sourceMappingURL=ProfilePresenter.js.map

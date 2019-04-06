@@ -1,14 +1,14 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const PageView_1 = require("./PageView");
-const ExerciseController_1 = require("../controller/ExerciseController");
+const ExercisePresenter_1 = require("../presenter/ExercisePresenter");
 class ExerciseView extends PageView_1.PageView {
     constructor(app) {
         super();
         this.sentence = null;
         this.posTranslation = null;
         this.posTags = null;
-        this.exerciseController = new ExerciseController_1.ExerciseController(this);
+        this.exerciseController = new ExercisePresenter_1.ExercisePresenter(this);
         this.exerciseController.update(app);
         this.fileSystem = require('fs');
     }
@@ -73,11 +73,11 @@ class ExerciseView extends PageView_1.PageView {
         // return data;
     }
     buildForm(words) {
-        let table = "<li class='first'>FRASE</li>";
+        let table = "<ul><li class='first'>FRASE</li>";
         if (this.posTranslation) {
             table += "<li class=\"second\">CORREZIONE AUTOGENERATA</li>";
         }
-        table += "<li id=\"thirdHeader\">CORREZIONE</li>";
+        table += "<li id=\"thirdHeader\">CORREZIONE</li></ul>";
         for (let i = 0; i < words.length; i++) {
             table += "<li class='first'>" + words[i] + "</li>";
             if (this.posTranslation) {

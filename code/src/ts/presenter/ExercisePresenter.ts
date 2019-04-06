@@ -1,9 +1,9 @@
-import {PageController} from "./PageController"
+import {PagePresenter} from "./PagePresenter"
 import {Client} from "../model/Client";
 
 var session = require('express-session');
 
-class ExerciseController extends PageController{
+class ExercisePresenter extends PagePresenter{
 
     private fileSystem : any;
 
@@ -14,12 +14,12 @@ class ExerciseController extends PageController{
     }
 
     update(app : any){
-        this.listenExrcise(app);
+        this.listenExercise(app);
         this.saveExercise(app);
 
     }
 
-    private listenExrcise(app :any) : void {
+    private listenExercise(app :any) : void {
         app.post('/exercise', async (request: any, response: any) => {
             let exerciseClient = this.client.getExerciseClient();
             let userClient = this.client.getUserClient();
@@ -41,6 +41,7 @@ class ExerciseController extends PageController{
                 else{
                     console.log("niente hunpos, sei uno studente");
                     this.view.setSentence(request.body.sentence);
+                    //exerciseClient.searchSolution(request.body.sentence);
                 }
                 response.send(this.view.getPage());
             }
@@ -51,7 +52,7 @@ class ExerciseController extends PageController{
         app.post('/saveExercise', (request : any, response : any) => {
             let exerciseClient = this.client.getExerciseClient();
             if(exerciseClient){
-//                console.log("post: ",request.body);
+                //console.log("post: ",request.body);
                 var words= exerciseClient.getSplitSentence(request.body.sentence);
                 var wordsnumber = words.length;
                 var hunposTags = JSON.parse(request.body.hunposTags);
@@ -107,7 +108,7 @@ class ExerciseController extends PageController{
      * @returns {string} a string containing the italian translation of the tag
      */
     private translateTag(tag : string){
-        var content = this.fileSystem.readFileSync("./src/ts/controller/vocabolario.json");
+        var content = this.fileSystem.readFileSync("./src/ts/presenter/vocabolario.json");
         var jsonContent = JSON.parse(content);
 
         var lowercase=tag.split(/[A-Z]{1,2}/);
@@ -208,4 +209,4 @@ class ExerciseController extends PageController{
         return topics.split(" ");
     }
 }
-export {ExerciseController};
+export {ExercisePresenter};

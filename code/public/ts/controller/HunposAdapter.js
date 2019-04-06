@@ -10,7 +10,7 @@ class HunposAdapter {
     constructor() {
         this.fileSystem = require('fs');
         this.shell = require('shelljs');
-        this.shell.exec('src\\ts\\controller\\hunpos\\hunpos-train src\\ts\\controller\\hunpos\\italian_model < src\\ts\\controller\\hunpos\\train');
+        this.shell.exec('src\\ts\\presenter\\hunpos\\hunpos-train src\\ts\\presenter\\hunpos\\italian_model < src\\ts\\presenter\\hunpos\\train');
     }
     /**
      * This method provide the hunpos solution for a sentence passed as parameter
@@ -19,13 +19,13 @@ class HunposAdapter {
      */
     getHunposSolution(sentence) {
         this.buildInputFile(sentence);
-        this.shell.exec('src\\ts\\controller\\hunpos\\hunpos-tag src\\ts\\controller\\hunpos\\italian_model < src\\ts\\controller\\hunpos\\input.txt > src\\ts\\controller\\hunpos\\output.txt');
+        this.shell.exec('src\\ts\\presenter\\hunpos\\hunpos-tag src\\ts\\presenter\\hunpos\\italian_model < src\\ts\\presenter\\hunpos\\input.txt > src\\ts\\presenter\\hunpos\\output.txt');
         return this.buildSolution();
     }
     buildInputFile(sentence) {
         var words = sentence.split(" ");
         for (let i = 0; i < words.length; i++) {
-            this.fileSystem.appendFileSync('./src/ts/controller/hunpos/input.txt', words[i] + "\n");
+            this.fileSystem.appendFileSync('./src/ts/presenter/hunpos/input.txt', words[i] + "\n");
             /*if(i<(words.length-1)){
                 fileSystem.appendFileSync('input.txt', '\n', (err) => {    //controllo per non far mettere l'ultimo invio
                     if (err) throw err;
@@ -34,7 +34,7 @@ class HunposAdapter {
         }
     }
     buildSolution() {
-        let wordSolArray = this.fileSystem.readFileSync('./src/ts/controller/hunpos/output.txt').toString().split("\n");
+        let wordSolArray = this.fileSystem.readFileSync('./src/ts/presenter/hunpos/output.txt').toString().split("\n");
         let obj = {
             sentence: []
         };
@@ -44,7 +44,7 @@ class HunposAdapter {
             obj.sentence.push({ word: wordLab[0], label: wordLab[1] });
             i++;
         }
-        this.fileSystem.writeFileSync('./src/ts/controller/hunpos/input.txt', "");
+        this.fileSystem.writeFileSync('./src/ts/presenter/hunpos/input.txt', "");
         return obj;
     }
 }

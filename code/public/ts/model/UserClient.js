@@ -28,11 +28,11 @@ class UserClient {
     }
     verifyUser(username, insertedPassword) {
         return __awaiter(this, void 0, void 0, function* () {
-            let idUser = yield this.dbUserManager.search(username);
+            const idUser = yield this.dbUserManager.search(username);
             if (idUser !== "false") {
-                let user = yield this.dbUserManager.read(idUser);
+                const user = yield this.dbUserManager.read(idUser);
                 if (user !== null) {
-                    let password = user.getPassword();
+                    const password = user.getPassword();
                     if (this.passwordHash.compareSync(insertedPassword, password)) {
                         //console.log("password match");
                         return true;
@@ -54,8 +54,8 @@ class UserClient {
     }
     isTeacher(username) {
         return __awaiter(this, void 0, void 0, function* () {
-            let id = yield this.dbUserManager.search(username);
-            let user = yield this.dbUserManager.read(id);
+            const id = yield this.dbUserManager.search(username);
+            const user = yield this.dbUserManager.read(id);
             console.log(user);
             console.log(user.getUsername());
             return user.isTeacher();

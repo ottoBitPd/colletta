@@ -51,7 +51,7 @@ class ExerciseController extends PageController{
         app.post('/saveExercise', (request : any, response : any) => {
             let exerciseClient = this.client.getExerciseClient();
             if(exerciseClient){
-                console.log("post: ",request.body);
+//                console.log("post: ",request.body);
                 var words= exerciseClient.getSplitSentence(request.body.sentence);
                 var wordsnumber = words.length;
                 var hunposTags = JSON.parse(request.body.hunposTags);

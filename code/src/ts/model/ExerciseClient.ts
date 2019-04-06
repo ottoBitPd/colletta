@@ -1,5 +1,6 @@
 import {DatabaseExerciseManager} from "./DatabaseExerciseManager";
 import {Exercise} from "./Exercise";
+import {Data} from "./Data";
 //import {forEach} from "@firebase/util";
 
 
@@ -37,7 +38,7 @@ class ExerciseClient{
         exercise.addValutation(userId, mark);
     }
     */
-    async getExercise(id:string):Promise<Exercise>{
+    private async getExercise(id:string):Promise<Data>{
         return await this.dbExerciseManager.read(id);
     }
 
@@ -52,7 +53,7 @@ class ExerciseClient{
             }
         });
         for(var i in ids){
-            exercises.push(await this.getExercise(ids[i]));
+            exercises.push(<Exercise>await this.getExercise(ids[i]));
         }
         return exercises;
     }

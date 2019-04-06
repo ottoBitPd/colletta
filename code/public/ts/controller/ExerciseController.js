@@ -22,7 +22,7 @@ class ExerciseController extends PageController_1.PageController {
             let exerciseClient = this.client.getExerciseClient();
             let userClient = this.client.getUserClient();
             if (exerciseClient && userClient) {
-                yield exerciseClient.insertExercise(request.body.sentence, "authorIdValue");
+                //await exerciseClient.insertExercise(request.body.sentence, "authorIdValue");
                 if (yield userClient.isTeacher(session.username)) {
                     console.log("sono passato, sei un insegnante");
                     //sending the sentence to hunpos which will provide a solution
@@ -55,14 +55,26 @@ class ExerciseController extends PageController_1.PageController {
                 var finalTags = this.correctsPOS(hunposTags, tagsCorrection);
                 //console.log("finalTags: "+finalTags);
                 //solverId ha un valore di Prova
-                exerciseClient.setSolution(request.body.sentence, "sessionAuthorId", "solverID", finalTags, this.splitTopics(request.body.topics), request.body.difficulty);
-                exerciseClient.addValutation(request.body.sentence, "sessionauthorId", "teacherIdValue", 10); //valori di prova
+                let solution = {
+                    0: "solverID",
+                    1: finalTags,
+                    2: this.splitTopics(request.body.topics),
+                    3: request.body.difficulty
+                };
+                let valutation = {
+                    0: "teacherIdValue",
+                    1: 10
+                };
+                exerciseClient.insertExercise(request.body.sentence, "sessionAuthorId", solution, valutation);
+                //exerciseClient.addValutation(request.body.sentence, "sessionauthorId","teacherIdValue", 10);//valori di prova
+                //await exerciseClient.insertExercise(request.body.sentence, "authorIdValue",);
                 //saving in the database the final solution for the exercise
                 //this.model.writeSolution(sentence.split(" "), finalTags, sentence, key);
                 response.send(this.view.getPage());
             }
         });
     }
+    //private
     extractTags(objSolution) {
         let tags = [];
         for (let i in objSolution.sentence) {

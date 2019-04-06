@@ -13,27 +13,30 @@ class ExerciseClient{
         let exercise = new Exercise(sentence,authorId);
         return exercise.autosolve();
     }
-
+    /*
     async insertExercise(sentence :string , authorId : string, solution=[], topics=[]){
         let ex = new Exercise(sentence,authorId);
         ex.setSolution(authorId,solution,topics,-1);
         await this.dbExerciseManager.insert(ex);
     }
-
+    */
     getSplitSentence(sentence:string) : string []{
         return sentence.split(" ");
     }
 
-    setSolution(sentence: string , authorId :string, solverId : string, finalTags :string [], topics : string [], difficulty : number) : void {
+    //setSolution(sentence: string , authorId :string, solverId : string, finalTags :string [], topics : string [], difficulty : number) : void {
+    insertExercise(sentence: string , authorId :string, solution : any, valutation :any) : void {
         let exercise = new Exercise(sentence, authorId);
-        exercise.setSolution(solverId,finalTags,topics,difficulty);
+        exercise.setSolution(solution[0],solution[1],solution[2],solution[3]);
+        exercise.addValutation(valutation[0], valutation[1]);
         this.dbExerciseManager.insert(exercise);
     }
+    /*
     addValutation(sentence: string , authorId :string, userId : string, mark : number) : void {
         let exercise = new Exercise(sentence, authorId);
         exercise.addValutation(userId, mark);
     }
-
+    */
     async getExercise(id:string):Promise<Exercise>{
         return await this.dbExerciseManager.read(id);
     }

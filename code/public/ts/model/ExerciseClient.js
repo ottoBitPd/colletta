@@ -21,25 +21,29 @@ class ExerciseClient {
             return exercise.autosolve();
         });
     }
-    insertExercise(sentence, authorId, solution = [], topics = []) {
-        return __awaiter(this, void 0, void 0, function* () {
-            let ex = new Exercise_1.Exercise(sentence, authorId);
-            ex.setSolution(authorId, solution, topics, -1);
-            yield this.dbExerciseManager.insert(ex);
-        });
+    /*
+    async insertExercise(sentence :string , authorId : string, solution=[], topics=[]){
+        let ex = new Exercise(sentence,authorId);
+        ex.setSolution(authorId,solution,topics,-1);
+        await this.dbExerciseManager.insert(ex);
     }
+    */
     getSplitSentence(sentence) {
         return sentence.split(" ");
     }
-    setSolution(sentence, authorId, solverId, finalTags, topics, difficulty) {
+    //setSolution(sentence: string , authorId :string, solverId : string, finalTags :string [], topics : string [], difficulty : number) : void {
+    insertExercise(sentence, authorId, solution, valutation) {
         let exercise = new Exercise_1.Exercise(sentence, authorId);
-        exercise.setSolution(solverId, finalTags, topics, difficulty);
+        exercise.setSolution(solution[0], solution[1], solution[2], solution[3]);
+        exercise.addValutation(valutation[0], valutation[1]);
         this.dbExerciseManager.insert(exercise);
     }
-    addValutation(sentence, authorId, userId, mark) {
-        let exercise = new Exercise_1.Exercise(sentence, authorId);
+    /*
+    addValutation(sentence: string , authorId :string, userId : string, mark : number) : void {
+        let exercise = new Exercise(sentence, authorId);
         exercise.addValutation(userId, mark);
     }
+    */
     getExercise(id) {
         return __awaiter(this, void 0, void 0, function* () {
             return yield this.dbExerciseManager.read(id);

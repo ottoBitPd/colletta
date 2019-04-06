@@ -14,6 +14,12 @@ class ExerciseController extends PageController{
     }
 
     update(app : any){
+        this.listenExrcise(app);
+        this.saveExercise(app);
+
+    }
+
+    private listenExrcise(app :any) : void {
         app.post('/exercise', async (request: any, response: any) => {
             let exerciseClient = this.client.getExerciseClient();
             let userClient = this.client.getUserClient();
@@ -39,6 +45,9 @@ class ExerciseController extends PageController{
                 response.send(this.view.getPage());
             }
         });
+    }
+
+    private saveExercise(app : any) : any{
         app.post('/saveExercise', (request : any, response : any) => {
             let exerciseClient = this.client.getExerciseClient();
             if(exerciseClient){
@@ -72,9 +81,6 @@ class ExerciseController extends PageController{
             }
         });
     }
-
-    //private
-
     private extractTags(objSolution: any) {
         let tags = [];
         for (let i in objSolution.sentence) {
@@ -82,7 +88,6 @@ class ExerciseController extends PageController{
         }
         return tags;
     }
-
     /**
      * Converts solution tags to italian.
      * @param tags - array of tag coming from hunpos solution

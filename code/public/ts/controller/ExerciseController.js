@@ -18,6 +18,10 @@ class ExerciseController extends PageController_1.PageController {
         this.fileSystem = require('fs');
     }
     update(app) {
+        this.listenExrcise(app);
+        this.saveExercise(app);
+    }
+    listenExrcise(app) {
         app.post('/exercise', (request, response) => __awaiter(this, void 0, void 0, function* () {
             let exerciseClient = this.client.getExerciseClient();
             let userClient = this.client.getUserClient();
@@ -43,6 +47,8 @@ class ExerciseController extends PageController_1.PageController {
                 response.send(this.view.getPage());
             }
         }));
+    }
+    saveExercise(app) {
         app.post('/saveExercise', (request, response) => {
             let exerciseClient = this.client.getExerciseClient();
             if (exerciseClient) {
@@ -74,7 +80,6 @@ class ExerciseController extends PageController_1.PageController {
             }
         });
     }
-    //private
     extractTags(objSolution) {
         let tags = [];
         for (let i in objSolution.sentence) {

@@ -7,8 +7,8 @@ import {Exercise} from "../../src/ts/model/Exercise";
 
 
 describe('#getMethods', function() {
-   let obj= new Student("gioperry15","ciao","giovanni","Peron","Castelfranco","Unipd");
-   let test= new Student("gioperry15","ciao","giovanni","Peron","Castelfranco","Unipd");
+   let obj= new Student("1","gioperry15","ciao","giovanni","Peron","Castelfranco","Unipd");
+   let test= new Student("3","gioperry15","ciao","giovanni","Peron","Castelfranco","Unipd");
 
 
 
@@ -79,7 +79,7 @@ describe('#getMethods', function() {
     context('StudentTest.getClasses()', function () {
         it('should return classes of student', function () {
             const clase = new Class("name", "description","1234",["st1","st2"],["es1", "es2"]);
-            let student= new Student("gian","gianni","Gianmarco","Pettenuzzo","Castelfranco","Unipd");
+            let student= new Student("1","gian","gianni","Gianmarco","Pettenuzzo","Castelfranco","Unipd");
 
             const clase1 = new Class("carlo", "bo","1111",["st3"],["es5"]);
 
@@ -90,7 +90,7 @@ describe('#getMethods', function() {
     context('StudentTest.getAverage()', function () {
         it('should return avarage', function () {
             const take= new Exercise("sentence sentence", "user");
-            let student= new Student("gian","gianni","Gianmarco","Pettenuzzo","Castelfranco","Unipd");
+            let student= new Student("1","gian","gianni","Gianmarco","Pettenuzzo","Castelfranco","Unipd");
             const take1= new Exercise("sentence ", "11");
             const take2= new Exercise("ewfre ", "1wed1");
 

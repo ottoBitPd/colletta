@@ -49,7 +49,7 @@ class Exercise implements Data{
     }
 
     addSolution(key : number, solverId: string, solutionTags: string[], topics: string[],
-                difficulty: number, valutations : Map<string,number>,time : Date): void {
+                difficulty: number, valutations : Map<string,number>,time : number): void {
         this.solutions.push(new Solution(key,solverId, solutionTags, topics, difficulty, valutations,time));
     }
     getSolutions() : Solution []{

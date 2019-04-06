@@ -12,9 +12,9 @@ class Solution {
     private topics: string [] | null;//gli argomenti della soluzione
     private difficulty: Difficulty | null;//la difficoltà dell'esercizio
     private valutations : Map<string,number> | null; // coppie di valutazioni con chiave insegnante e valore la valutazione ottenuta
-    private time : Date | null;
+    private time : number | null;
     // @ts-ignore
-    constructor(key? : number, solverId: string, solutionTags: string[], topics? : string[], difficulty? : Difficulty, valutations? : Map<string,number>, time? : Date) {
+    constructor(key? : number, solverId: string, solutionTags: string[], topics? : string[], difficulty? : Difficulty, valutations? : Map<string,number>, time? : number) {
         this.key = key || null;
         this.solverId = solverId;
         this.solutionTags = solutionTags;
@@ -65,8 +65,8 @@ class Solution {
         console.log(result);
         return JSON.parse(result);
     }
-    getTime(): Date {
-        return <Date>this.time;
+    getTime(): number | null{
+        return this.time;
     }
     addNewMark(teacherID : string, mark : number) {
         if (!this.valutations)
@@ -78,7 +78,7 @@ class Solution {
         var rightTagsNumber=0;
         let mySolutionTags=this.getSolutionTags();
         for(let j =0; j<mySolutionTags.length;j++){
-            if(mySolutionTags[j]==tags[j]){
+            if(mySolutionTags[j]===tags[j]){
                 rightTagsNumber++;
             }
         }

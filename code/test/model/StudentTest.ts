@@ -2,12 +2,12 @@ import {expect} from 'chai';
 import 'mocha';
 import {Student} from "../../src/ts/model/Student";
 import {Class} from "../../src/ts/model/Class";
-import {Exercise} from "../../src/ts/model/Exercise";
+//import {Exercise} from "../../src/ts/model/Exercise";
 
 
 
 describe('#getMethods', function() {
-   let obj= new Student("1","gioperry15","ciao","giovanni","Peron","Castelfranco","Unipd");
+   let obj= new Student("11","gioperry15","ciao","giovanni","Peron","Castelfranco","Unipd");
    let test= new Student("3","gioperry15","ciao","giovanni","Peron","Castelfranco","Unipd");
 
 
@@ -87,15 +87,20 @@ describe('#getMethods', function() {
         });
     });
 
-    context('StudentTest.getAverage()', function () {
+ /*   context('StudentTest.getAverage()', function () {
         it('should return avarage', function () {
-            const take= new Exercise("sentence sentence", "user");
+            const take= new Exercise("Ciao amici", "1");
             let student= new Student("1","gian","gianni","Gianmarco","Pettenuzzo","Castelfranco","Unipd");
-            const take1= new Exercise("sentence ", "11");
-            const take2= new Exercise("ewfre ", "1wed1");
+            const take1= new Exercise("Ciao minerva ", "11");
+let valutations=new Map<string,number>();
+valutations.set("1",10);
 
-            expect(obj.getAverage([take,take1])).eql(student.getAverage([take2]));
+
+            console.log(student.getAverage([take.addSolution(1,"11",["F","F"],["uno","due"],3,valutations,10]));
+            console.log(obj.getAverage([take1]));
+
+            expect(obj.getAverage([take1])).eql(student.getAverage([take1.addSolution(10,"1",["F","F"],["uno","due"],3,valutations,)]));
         });
-    });
+    });*/
 
 });

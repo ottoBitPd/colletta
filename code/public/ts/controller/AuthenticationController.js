@@ -1,5 +1,5 @@
 "use strict";
-// import {PageController} from "./PageController"
+// import {PagePresenter} from "./PagePresenter"
 // import {LoginView} from "../view/LoginView";
 // import {RegistrationView} from "../view/RegistrationView";
 // import {Client} from "../model/Client";
@@ -9,7 +9,7 @@
 //
 // const session = require('express-session');
 //
-// class AuthenticationController extends PageController {
+// class AuthenticationPresenter extends PagePresenter {
 //     private passwordHash = require('bcryptjs');
 //
 //
@@ -89,5 +89,5 @@
 //         });
 //     }
 // }
-// export {AuthenticationController};
-//# sourceMappingURL=AuthenticationController.js.map
+// export {AuthenticationPresenter};
+//# sourceMappingURL=AuthenticationPresenter.js.map

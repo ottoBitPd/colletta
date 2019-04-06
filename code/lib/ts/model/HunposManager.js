@@ -6,9 +6,9 @@ class HunposManager {
         this.fileSystem = require('fs');
         this.shell = require('shelljs');
         //this.train();
-        this.inputFilePath = './src/ts/controller/hunpos/input.txt';
-        this.outputFilePath = './src/ts/controller/hunpos/output.txt';
-        this.modelFilePath = './src/ts/controller/hunpos/italian_model';
+        this.inputFilePath = './src/ts/presenter/hunpos/input.txt';
+        this.outputFilePath = './src/ts/presenter/hunpos/output.txt';
+        this.modelFilePath = './src/ts/presenter/hunpos/italian_model';
     }
     /*TODO*/
     setModel(modelFilePath) {
@@ -54,11 +54,11 @@ class HunposManager {
     }
     ;
     train() {
-        this.shell.exec('./src/ts/controller/hunpos/hunpos-train ' + this.modelFilePath + '< ./src/ts/controller/hunpos/train');
+        this.shell.exec('./src/ts/presenter/hunpos/hunpos-train ' + this.modelFilePath + '< ./src/ts/presenter/hunpos/train');
     }
     ;
     tag() {
-        this.shell.exec('./src/ts/controller/hunpos/hunpos-tag ' + this.modelFilePath + '< ' + this.inputFilePath + '>' + this.outputFilePath);
+        this.shell.exec('./src/ts/presenter/hunpos/hunpos-tag ' + this.modelFilePath + '< ' + this.inputFilePath + '>' + this.outputFilePath);
     }
     ;
 }

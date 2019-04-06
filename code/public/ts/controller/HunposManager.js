@@ -6,8 +6,8 @@ var HunposManager = /** @class */ (function () {
         this.fileSystem = require('fs');
         this.shell = require('shelljs');
         this.train();
-        this.inputFilePath = './js/controller/hunpos/input.txt';
-        this.outputFilePath = './js/controller/hunpos/output.txt';
+        this.inputFilePath = './js/presenter/hunpos/input.txt';
+        this.outputFilePath = './js/presenter/hunpos/output.txt';
     }
     HunposManager.prototype.setModel = function (modelFilePath) {
         this.modelFilePath = modelFilePath;
@@ -51,11 +51,11 @@ var HunposManager = /** @class */ (function () {
     };
     ;
     HunposManager.prototype.train = function () {
-        this.shell.exec('./js/controller/hunpos/hunpos-train ' + this.modelFilePath + '< ./js/controller/hunpos/train');
+        this.shell.exec('./js/presenter/hunpos/hunpos-train ' + this.modelFilePath + '< ./js/presenter/hunpos/train');
     };
     ;
     HunposManager.prototype.tag = function () {
-        this.shell.exec('./js/controller/hunpos/hunpos-tag ' + this.modelFilePath + ' < ' + this.inputFilePath + '>' + this.outputFilePath);
+        this.shell.exec('./js/presenter/hunpos/hunpos-tag ' + this.modelFilePath + ' < ' + this.inputFilePath + '>' + this.outputFilePath);
     };
     ;
     return HunposManager;

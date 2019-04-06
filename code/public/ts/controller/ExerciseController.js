@@ -18,10 +18,10 @@ class ExerciseController extends PageController_1.PageController {
         this.fileSystem = require('fs');
     }
     update(app) {
-        this.listenExrcise(app);
+        this.listenExercise(app);
         this.saveExercise(app);
     }
-    listenExrcise(app) {
+    listenExercise(app) {
         app.post('/exercise', (request, response) => __awaiter(this, void 0, void 0, function* () {
             let exerciseClient = this.client.getExerciseClient();
             let userClient = this.client.getUserClient();
@@ -43,6 +43,7 @@ class ExerciseController extends PageController_1.PageController {
                 else {
                     console.log("niente hunpos, sei uno studente");
                     this.view.setSentence(request.body.sentence);
+                    exerciseClient.searchSolution(request.body.sentence);
                 }
                 response.send(this.view.getPage());
             }
@@ -52,7 +53,7 @@ class ExerciseController extends PageController_1.PageController {
         app.post('/saveExercise', (request, response) => {
             let exerciseClient = this.client.getExerciseClient();
             if (exerciseClient) {
-                console.log("post: ", request.body);
+                //console.log("post: ",request.body);
                 var words = exerciseClient.getSplitSentence(request.body.sentence);
                 var wordsnumber = words.length;
                 var hunposTags = JSON.parse(request.body.hunposTags);
@@ -105,7 +106,7 @@ class ExerciseController extends PageController_1.PageController {
      * @returns {string} a string containing the italian translation of the tag
      */
     translateTag(tag) {
-        var content = this.fileSystem.readFileSync("./src/ts/controller/vocabolario.json");
+        var content = this.fileSystem.readFileSync("./src/ts/presenter/vocabolario.json");
         var jsonContent = JSON.parse(content);
         var lowercase = tag.split(/[A-Z]{1,2}/);
         var uppercase = tag.split(/[a-z0-9]+/);
@@ -201,4 +202,4 @@ class ExerciseController extends PageController_1.PageController {
     }
 }
 exports.ExerciseController = ExerciseController;
-//# sourceMappingURL=ExerciseController.js.map
+//# sourceMappingURL=ExercisePresenter.js.map

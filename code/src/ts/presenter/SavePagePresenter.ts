@@ -1,5 +1,5 @@
-// import {PageController} from "./PageController"
-// class SavePageController extends PageController{
+// import {PagePresenter} from "./PagePresenter"
+// class SavePageController extends PagePresenter{
 //     private model : any;
 //     constructor(view :any, model : any){
 //         super(view);

@@ -14,13 +14,7 @@ class ExerciseClient{
         let exercise = new Exercise(sentence,authorId);
         return exercise.autosolve();
     }
-    /*
-    async insertExercise(sentence :string , authorId : string, solution=[], topics=[]){
-        let ex = new Exercise(sentence,authorId);
-        ex.setSolution(authorId,solution,topics,-1);
-        await this.dbExerciseManager.insert(ex);
-    }
-    */
+
     getSplitSentence(sentence:string) : string []{
         return sentence.split(" ");
     }
@@ -32,17 +26,11 @@ class ExerciseClient{
         exercise.addValutation(valutation[0], valutation[1]);
         this.dbExerciseManager.insert(exercise);
     }
-    /*
-    addValutation(sentence: string , authorId :string, userId : string, mark : number) : void {
-        let exercise = new Exercise(sentence, authorId);
-        exercise.addValutation(userId, mark);
-    }
-    */
     private async getExercise(id:string):Promise<Data>{
         return await this.dbExerciseManager.read(id);
     }
 
-    async searchExercise(substring:string):Promise<Exercise[]>{
+    async searchExercise(substring:string) : Promise<Exercise[]>{
         var regex= new RegExp(substring,"i");
         var elements = await this.dbExerciseManager.elements();
         var ids:string [] = [];
@@ -56,6 +44,17 @@ class ExerciseClient{
             exercises.push(<Exercise>await this.getExercise(ids[i]));
         }
         return exercises;
+    }
+    //non funziona
+    async searchSolution(sentence:string) : Promise<Map<string,string>>{
+        //var regex= new RegExp(substring,"i");
+        var exerciseKey = await this.dbExerciseManager.search(sentence);
+        if(exerciseKey !== "false"){
+            var exercise : Data = await this.dbExerciseManager.read(exerciseKey);
+            //console.log("Exercise: ",exercise);
+            console.log("solution ",(<Exercise>exercise).getSolutions());
+        }
+        return new Map();
     }
 }
 export{ExerciseClient}

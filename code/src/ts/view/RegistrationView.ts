@@ -1,11 +1,11 @@
 import {PageView} from "./PageView";
-import {ProfileController} from "../controller/ProfileController";
+import {ProfilePresenter} from "../presenter/ProfilePresenter";
 
 class RegistrationView extends PageView {
-    private profileController :ProfileController;
+    private profileController :ProfilePresenter;
     constructor(app : any) {
         super();
-        this.profileController= new ProfileController(this);
+        this.profileController= new ProfilePresenter(this);
         this.profileController.update(app);
     }
 

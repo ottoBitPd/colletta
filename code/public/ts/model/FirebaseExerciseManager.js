@@ -129,7 +129,8 @@ class FirebaseExerciseManager extends FirebaseManager_1.FirebaseManager {
                             for (let val in readData.solutions[sol].valutations) {
                                 vals.set(val, readData.solutions[sol].valutations[val]);
                             }
-                            exercise.addSolution(readData.solutions[sol].key, readData.solutions[sol].solverID, readData.solutions[sol].tags, readData.solutions[sol].topics, readData.solutions[sol].difficulty, vals, readData.solutions[sol].time);
+                            console.log("solution: ", readData.solutions[sol].parent.key);
+                            exercise.addSolution(readData.solutions[sol].parent.key, readData.solutions[sol].solverId, readData.solutions[sol].tags, readData.solutions[sol].topics, readData.solutions[sol].difficulty, vals, readData.solutions[sol].time);
                         }
                         return resolve(exercise);
                     }

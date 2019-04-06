@@ -21,13 +21,6 @@ class ExerciseClient {
             return exercise.autosolve();
         });
     }
-    /*
-    async insertExercise(sentence :string , authorId : string, solution=[], topics=[]){
-        let ex = new Exercise(sentence,authorId);
-        ex.setSolution(authorId,solution,topics,-1);
-        await this.dbExerciseManager.insert(ex);
-    }
-    */
     getSplitSentence(sentence) {
         return sentence.split(" ");
     }
@@ -38,12 +31,6 @@ class ExerciseClient {
         exercise.addValutation(valutation[0], valutation[1]);
         this.dbExerciseManager.insert(exercise);
     }
-    /*
-    addValutation(sentence: string , authorId :string, userId : string, mark : number) : void {
-        let exercise = new Exercise(sentence, authorId);
-        exercise.addValutation(userId, mark);
-    }
-    */
     getExercise(id) {
         return __awaiter(this, void 0, void 0, function* () {
             return yield this.dbExerciseManager.read(id);
@@ -64,6 +51,19 @@ class ExerciseClient {
                 exercises.push(yield this.getExercise(ids[i]));
             }
             return exercises;
+        });
+    }
+    //non funziona
+    searchSolution(sentence) {
+        return __awaiter(this, void 0, void 0, function* () {
+            //var regex= new RegExp(substring,"i");
+            var exerciseKey = yield this.dbExerciseManager.search(sentence);
+            if (exerciseKey !== "false") {
+                var exercise = yield this.dbExerciseManager.read(exerciseKey);
+                //console.log("Exercise: ",exercise);
+                console.log("solution ", exercise.getSolutions());
+            }
+            return new Map();
         });
     }
 }

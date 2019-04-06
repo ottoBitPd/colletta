@@ -1,14 +1,14 @@
 import * as express from "express";
 
 import {InsertPageView} from './ts/view/InsertPageView';
-//import {InsertPageController} from './ts/controller/InsertPageController';
+//import {InsertPagePresenter} from './ts/presenter/InsertPagePresenter';
 
 
 
 
 import {ExerciseView} from "./ts/view/ExerciseView";
 import {SaveView} from "./ts/view/SaveView";
-//import {ExerciseController} from "./ts/controller/ExerciseController";
+//import {ExercisePresenter} from "./ts/presenter/ExercisePresenter";
 
 import {ProfileView} from "./ts/view/ProfileView";
 
@@ -22,22 +22,23 @@ app.use(express.static(__dirname));
 
 
 new InsertPageView(app);
-//const insertPage = new InsertPageController(insertPageView);
+//const insertPage = new InsertPagePresenter(insertPageView);
 //insertPage.update(app);
+new ProfileView(app);
+new RegistrationView(app);
 
 new SaveView(app);
 new ExerciseView(app);
 /*
-const exercisePage = new ExerciseController(exerciseView, savePageView);
+const exercisePage = new ExercisePresenter(exerciseView, savePageView);
 exercisePage.update(app);*/
 
 /*const loginView  = new LoginView();
 const registrationView : any= new RegistrationView();
-const LoginPage = new AuthenticationController(loginView,registrationView);
+const LoginPage = new AuthenticationPresenter(loginView,registrationView);
 LoginPage.update(app);*/
 
-new ProfileView(app);
-new RegistrationView(app);
+
 
 /*registrationPage.update(app)
 profilePage.update(app);*/
@@ -46,8 +47,5 @@ app.listen(8080, async function () {
     const host = "127.0.0.1";
     const port = "8080";
     console.log("Example app listening at http://%s:%s", host, port);
-
-
-
 });
 

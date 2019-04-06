@@ -1,5 +1,5 @@
 import {PageView} from "./PageView";
-import {ExerciseController} from "../controller/ExerciseController";
+import {ExercisePresenter} from "../presenter/ExercisePresenter";
 
 class ExerciseView extends PageView{
     private sentence : any;
@@ -7,13 +7,13 @@ class ExerciseView extends PageView{
     private posTags : any;
     private fileSystem : any;
     //@ts-ignore
-    private exerciseController : ExerciseController;
+    private exerciseController : ExercisePresenter;
     constructor(app : any){
         super();
         this.sentence = null;
         this.posTranslation = null;
         this.posTags = null;
-        this.exerciseController = new ExerciseController(this);
+        this.exerciseController = new ExercisePresenter(this);
         this.exerciseController.update(app);
         this.fileSystem = require('fs');
     }
@@ -83,11 +83,11 @@ class ExerciseView extends PageView{
         // return data;
     }
     private buildForm(words : string[]){
-        let table="<li class='first'>FRASE</li>";
+        let table="<ul><li class='first'>FRASE</li>";
         if(this.posTranslation) {
             table += "<li class=\"second\">CORREZIONE AUTOGENERATA</li>";
         }
-        table+="<li id=\"thirdHeader\">CORREZIONE</li>";
+        table+="<li id=\"thirdHeader\">CORREZIONE</li></ul>";
         for(let i=0;i < words.length;i++){
             table += "<li class='first'>" + words[i] + "</li>";
             if(this.posTranslation){

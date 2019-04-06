@@ -1,6 +1,6 @@
 
 import * as Admin from "firebase-admin";
-import {Data} from "./Data";
+import {Data} from "../Data/Data";
 
 abstract class FirebaseManager {
     private static registry: Map<string, FirebaseManager> = new Map<string, FirebaseManager>();

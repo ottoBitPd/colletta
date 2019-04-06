@@ -1,6 +1,6 @@
 //import {PageView} from "../view/PageView";
 
-import {Client} from "../model/Client";
+import {Client} from "../model/Client/Client";
 
 abstract class PagePresenter{
     protected view: any;

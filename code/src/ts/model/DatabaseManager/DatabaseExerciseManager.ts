@@ -1,6 +1,6 @@
 import {DatabaseManager} from "./DatabaseManager";
-import {Data} from "./Data";
-import {FirebaseExerciseManager} from "./FirebaseExerciseManager";
+import {Data} from "../Data/Data";
+import {FirebaseExerciseManager} from "../Firebase/FirebaseExerciseManager";
 
 
 

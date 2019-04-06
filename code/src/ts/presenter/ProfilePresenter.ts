@@ -1,5 +1,5 @@
 import {PagePresenter} from "./PagePresenter"
-import {Client} from "../model/Client";
+import {Client} from "../model/Client/Client";
 
 
 //import {Client} from "../model/Client";

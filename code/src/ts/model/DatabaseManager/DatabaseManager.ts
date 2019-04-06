@@ -1,6 +1,6 @@
-import {Data} from "./Data";
+import {Data} from "../Data/Data";
 
-import {FirebaseManager} from "./FirebaseManager";
+import {FirebaseManager} from "../Firebase/FirebaseManager";
 
 abstract class DatabaseManager{
     private firebaseManager : FirebaseManager;

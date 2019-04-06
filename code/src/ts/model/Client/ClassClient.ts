@@ -1,6 +1,6 @@
-import {DatabaseClassManager} from "./DatabaseClassManager";
-import {Class} from "./Class";
-import {Data} from "./Data";
+import {DatabaseClassManager} from "../DatabaseManager/DatabaseClassManager";
+import {Class} from "../Data/Class";
+import {Data} from "../Data/Data";
 
 class ClassClient{
     private dbClassManager : DatabaseClassManager;

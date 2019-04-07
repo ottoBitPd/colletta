@@ -18,21 +18,25 @@ class PageView {
     setMenuList(value) {
         this.menuList = value;
     }
-    getHead() {
-        return "<!DOCTYPE html>" +
-            "<html lang=\"en\">" +
-            "<head>" +
-            "    <meta charset=\"UTF-8\">" +
-            "    <title>" + this.title + "</title>" +
-            "    <link rel=\"stylesheet\" type=\"text/css\" href=\"/newStyle.css\">" +
-            "    <link rel=\"stylesheet\" type=\"text/css\" href=\"/style.css\">" +
+    getHead(style) {
+        let ret = "<!DOCTYPE html>" +
+            "<html lang=\"it\">\n" +
+            "<head>\n" +
+            "    <meta charset=\"UTF-8\">\n" +
+            "    <title>" + this.title + "</title>\n" +
+            "    <link rel=\"stylesheet\" type=\"text/css\" href=\"/newStyle.css\">\n" +
+            /*"    <link rel=\"stylesheet\" type=\"text/css\" href=\"/style.css\">\n"+*/
             "    <!--bootstrap-->" +
-            "    <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css\">" +
-            "    <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\"></script>" +
-            "    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js\"></script>" +
-            "    <script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js\"></script>" +
-            "</head>" +
-            "<body>";
+            "    <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css\">\n" +
+            "    <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\"></script>\n" +
+            "    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js\"></script>\n" +
+            "    <script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js\"></script>\n";
+        if (style !== undefined) {
+            ret += style;
+        }
+        ret += "</head>\n" +
+            "<body>\n";
+        return ret;
     }
     getFoot(script) {
         return "</body>" +

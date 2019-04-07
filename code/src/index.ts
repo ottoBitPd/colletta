@@ -1,18 +1,12 @@
 import * as express from "express";
 
 import {InsertPageView} from './ts/view/InsertPageView';
-//import {InsertPagePresenter} from './ts/presenter/InsertPagePresenter';
-
-
-
+import {SaveView} from "./ts/view/SaveView";
 
 import {ExerciseView} from "./ts/view/ExerciseView";
-import {SaveView} from "./ts/view/SaveView";
-//import {ExercisePresenter} from "./ts/presenter/ExercisePresenter";
-
 import {ProfileView} from "./ts/view/ProfileView";
-
 import {RegistrationView} from "./ts/view/RegistrationView";
+import {SearchView} from "./ts/view/SearchView";
 
 
 const app = express();
@@ -29,6 +23,8 @@ new RegistrationView(app);
 
 new SaveView(app);
 new ExerciseView(app);
+
+new SearchView(app);
 /*
 const exercisePage = new ExercisePresenter(exerciseView, savePageView);
 exercisePage.update(app);*/

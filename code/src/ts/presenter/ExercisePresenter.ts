@@ -24,8 +24,8 @@ class ExercisePresenter extends PagePresenter{
             let exerciseClient = this.client.getExerciseClient();
             let userClient = this.client.getUserClient();
             if(exerciseClient && userClient){
-                //await exerciseClient.insertExercise(request.body.sentence, "authorIdValue");
-                if(await userClient.isTeacher(session.username)) {
+                //console.log("session.username: ", session.username);
+                if(session.username!== undefined && await userClient.isTeacher(session.username)) {
                     console.log("sono passato, sei un insegnante");
                     //sending the sentence to hunpos which will provide a solution
                     var posSolution = await exerciseClient.autosolve(request.body.sentence, "authorIdValue");
@@ -38,10 +38,16 @@ class ExercisePresenter extends PagePresenter{
                     this.view.setPosTranslation(posTranslation);
                     this.view.setPosTags(posTags);
                 }
-                else{
-                    console.log("niente hunpos, sei uno studente");
-                    this.view.setSentence(request.body.sentence);
-                    //exerciseClient.searchSolution(request.body.sentence);
+                else{//user is not a teacher, it might be student or user not logged in
+                    //console.log("niente hunpos, non sei un insegnante");
+                    console.log("key arrivata: ",request.body.key);
+                    const sentence = await exerciseClient.getSentence(request.body.key);
+                    this.view.setSentence(sentence);
+                    this.view.setPosTranslation(null);
+                    //console.log("solutions: ", await exerciseClient.searchSolution(sentence));
+                    //let solutions = await exerciseClient.searchSolution(sentence);
+                    //TODO sono arrivato al punto che bisogna mettere apposto ExerciseView in modo che se non è un
+                    // insegnante mostri che soluzione selezionare
                 }
                 response.send(this.view.getPage());
             }
@@ -49,35 +55,41 @@ class ExercisePresenter extends PagePresenter{
     }
 
     private saveExercise(app : any) : any{
-        app.post('/saveExercise', (request : any, response : any) => {
+        app.post('/saveExercise', async (request : any, response : any) => {
             let exerciseClient = this.client.getExerciseClient();
-            if(exerciseClient){
-                //console.log("post: ",request.body);
-                var words= exerciseClient.getSplitSentence(request.body.sentence);
-                var wordsnumber = words.length;
-                var hunposTags = JSON.parse(request.body.hunposTags);
-                var tagsCorrection = this.correctionToTags(wordsnumber,request.body);
-                //building a array merging tags coming from user corrections and hunpos solution
-                var finalTags = this.correctsPOS(hunposTags,tagsCorrection);
-                //console.log("finalTags: "+finalTags);
+            let userClient = this.client.getUserClient();
+            if(exerciseClient && userClient){
+                if(session.username!== undefined && await userClient.isTeacher(session.username)) {
+                    //console.log("post: ",request.body);
+                    var words = exerciseClient.getSplitSentence(request.body.sentence);
+                    var wordsnumber = words.length;
+                    var hunposTags = JSON.parse(request.body.hunposTags);
+                    var tagsCorrection = this.correctionToTags(wordsnumber, request.body);
+                    //building a array merging tags coming from user corrections and hunpos solution
+                    var finalTags = this.correctsPOS(hunposTags, tagsCorrection);
+                    //console.log("finalTags: "+finalTags);
+                    //TODO recuperare il solverId per salvarlo nel db
+                    //const solverId = userClient.getUserId(session.username)
+                    let solution = {
+                        0: "solverID",
+                        1: finalTags,
+                        2: this.splitTopics(request.body.topics),
+                        3: request.body.difficulty
+                    };
+                    let valutation = {
+                        0: "teacherIdValue",
+                        1: 10
+                    };
+                    exerciseClient.insertExercise(request.body.sentence, "sessionAuthorId", solution, valutation);
+                    //exerciseClient.addValutation(request.body.sentence, "sessionauthorId","teacherIdValue", 10);//valori di prova
+                    //await exerciseClient.insertExercise(request.body.sentence, "authorIdValue",);
 
-                //solverId ha un valore di Prova
-                let solution = {
-                    0:"solverID",
-                    1: finalTags,
-                    2: this.splitTopics(request.body.topics),
-                    3: request.body.difficulty
-                };
-                let valutation = {
-                    0:"teacherIdValue",
-                    1:10
-                };
-                exerciseClient.insertExercise(request.body.sentence, "sessionAuthorId", solution, valutation);
-                //exerciseClient.addValutation(request.body.sentence, "sessionauthorId","teacherIdValue", 10);//valori di prova
-                //await exerciseClient.insertExercise(request.body.sentence, "authorIdValue",);
-
-                //saving in the database the final solution for the exercise
-                //this.model.writeSolution(sentence.split(" "), finalTags, sentence, key);
+                    //saving in the database the final solution for the exercise
+                    //this.model.writeSolution(sentence.split(" "), finalTags, sentence, key);
+                }
+                else{
+                    //it is not teacher
+                }
                 response.send(this.view.getPage());
             }
         });

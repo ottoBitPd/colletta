@@ -7,14 +7,14 @@ class ExerciseView extends PageView{
     private posTags : any;
     private fileSystem : any;
     //@ts-ignore
-    private exerciseController : ExercisePresenter;
+    private exercisePresenter : ExercisePresenter;
     constructor(app : any){
         super();
         this.sentence = null;
         this.posTranslation = null;
         this.posTags = null;
-        this.exerciseController = new ExercisePresenter(this);
-        this.exerciseController.update(app);
+        this.exercisePresenter = new ExercisePresenter(this);
+        this.exercisePresenter.update(app);
         this.fileSystem = require('fs');
     }
 
@@ -32,23 +32,16 @@ class ExerciseView extends PageView{
     }
 
     getPage() {
+
         const words = this.sentence.split(" ");
-        let ret = "<!DOCTYPE html>" +
-            "<html lang=\"it\">" +
-            "    <head>" +
-            "        <meta charset=\"UTF-8\">" +
-            "        <title>Esercizio</title>" +
-            "        <link rel=\"stylesheet\" type=\"text/css\" href=\"/style.css\">" +
-            "        <style>";
-            ret+=this.buildCss(words);
-            ret+="        </style>" +
-            "    </head>" +
-            "    <body>" +
+        let ret = this.getHead(this.buildCss(words));
+        ret +=this.getMenu();
+        ret +="<div class=\"container\">" +
             "    <div id=\"esercizio\">" +
-            "        <form method=\"POST\" action=\"/saveExercise\">" +
-            "            <ul>";
-                            ret+=this.buildForm(words);
-            ret+="            </ul>" +
+            "        <form method=\"POST\" action=\"/saveExercise\">";
+
+                            ret+=this.buildTable(words);
+            ret+="" +
             "            <input type=\"hidden\" name=\"wordsnumber\" value=\"*wordsnumber*\"/>" +
             "            <input type=\"hidden\" name=\"sentence\" value=\""+this.sentence+"\"/>";
                 if(this.posTags) {
@@ -82,28 +75,55 @@ class ExerciseView extends PageView{
         // data=data.replace(/\*hunposTags\*/g, JSON.stringify(this.hunposTags));
         // return data;
     }
-    private buildForm(words : string[]){
-        let table="<ul><li class='first'>FRASE</li>";
-        if(this.posTranslation) {
-            table += "<li class=\"second\">CORREZIONE AUTOGENERATA</li>";
-        }
-        table+="<li id=\"thirdHeader\">CORREZIONE</li></ul>";
-        for(let i=0;i < words.length;i++){
-            table += "<li class='first'>" + words[i] + "</li>";
-            if(this.posTranslation){
-                table+="<li class='second'>"+this.posTranslation[i]+"</li>";
+    private buildTable(words : string[]){
+        let table=""+
+            "<ul class='list-group'>" +
+            "<li class='list-group-item active'>" +
+            "<div class='row'>" +
+                "<div class='col-sm-4'>" +
+                "FRASE" +
+                "</div>";
+            if(this.posTranslation) {
+                table +=""+
+                "<div class='col-sm-4'>" +
+                "CORREZIONE AUTOGENERATA" +
+                "</div>";
             }
-            table+="<li class='third'>"+this.getSelect(i)+"</li>\n";
+        table +="<div class='col-sm-4'>" +
+                "CORREZIONE" +
+                "</div>" +
+            "</div>" +
+            "</li>";
+        for(let i=0;i < words.length;i++){
+            table += ""+
+            "<li class='list-group-item'>" +
+                "<div class='row'>" +
+                    "<div class='col-sm-4'>" +
+                        words[i] +
+                    "</div>";
+                if(this.posTranslation) {
+                table += "" +
+                    "<div class='col-sm-4'>" +
+                        this.posTranslation[i] +
+                    "</div>";
+                }
+            table+=""+
+                "<div class='row'>" +
+                "<div class='col-sm-4'>" +
+                this.getSelect(i) +
+                "</div>"+
+            "</div>" +
+            "</li>";
         }
-        return table;
+        return table + "</ul>";
     }
 
     private buildCss(words : string[]){
-        let css="";
+        let css="<style>\n";
         for(let i=0;i < words.length;i++){
             css += this.getCss(i);
         }
-        return css;
+        return css+"</style>\n";
     }
 
     private getSelect(index : number){
@@ -118,6 +138,58 @@ class ExerciseView extends PageView{
     private getCss(index : number){
         const input =  this.fileSystem.readFileSync('./public/cssSelect.css').toString();
         return input.replace(/\*i\*/g,index);
+    }
+    private getMenu() : string {
+        let ret ="<nav class=\"navbar navbar-expand-sm bg-dark navbar-dark\">" +
+            "    <div class=\"navbar-brand\">Colletta</div>" +
+            "    <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#collapsibleNavbar\">" +
+            "        <span class=\"navbar-toggler-icon\"></span>" +
+            "    </button>" +
+            "    <div class=\"collapse navbar-collapse\" id=\"collapsibleNavbar\">"+
+            "<ul class=\"navbar-nav mr-auto\">";
+        for(let i in this.menuList) {
+            ret += ""+
+                "<li class=\"nav-item\">" +
+                "   <a class=\"nav-link\" href=\""+this.menuList[i].link+"\">"+this.menuList[i].name+"</a>" +
+                "</li>";
+        }
+        ret+="</ul>";
+        //aggiungo login o logout
+        ret+=this.getLoginArea();
+        ret+="    </div>" +
+            "</nav>";
+        return ret;
+    }
+
+    private getLoginArea() : string {
+
+        if(this.exercisePresenter.isLoggedIn()){
+            return "" +
+                "        <form class='form-inline my-2 my-lg-0' action='/logout'>\n" +
+                "           <div class=\"form-group\">" +
+                "               <button type=\"submit\" class=\"btn btn-primary my-2 my-sm-0\">Logout</button>" +
+                "           </div>\n" +
+                "        </form>\n";
+        }
+        else{
+            let ret ="";
+            ret += "" +
+                "        <form class='form-inline my-2 my-lg-0' method ='post' action='/checklogin'>\n";
+            if(this.exercisePresenter.isLoginInvalid()){
+                ret+="<p class='red'>username o password invalidi</p>\n";
+            }
+            ret+="           <div class=\"form-group\">" +
+                "               <input type=\"text\" class=\"form-control mr-sm-2\" name='username' placeholder=\"Username\" required=\"required\">" +
+                "           </div>\n" +
+                "           <div class=\"form-group\">" +
+                "               <input type=\"password\" class=\"form-control mr-sm-2\" name='password' placeholder=\"Password\" required=\"required\">" +
+                "           </div>\n" +
+                "           <div class=\"form-group\">" +
+                "               <button type=\"submit\" class=\"btn btn-primary my-2 my-sm-0\">Login</button>" +
+                "           </div>\n" +
+                "        </form>\n";
+            return ret;
+        }
     }
 }
 export {ExerciseView};

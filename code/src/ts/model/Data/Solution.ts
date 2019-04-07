@@ -6,7 +6,7 @@ enum Difficulty {
     veryhard = 5,
 }
 class Solution {
-    private key : number | null; // chiave univoca della soluzione
+    private key : string | null; // chiave univoca della soluzione
     private solverId : string;//id dell'autore della soluzione
     private solutionTags: string [];//soluzione proposta
     private topics: string [] | null;//gli argomenti della soluzione
@@ -14,7 +14,7 @@ class Solution {
     private valutations : Map<string,number> | null; // coppie di valutazioni con chiave insegnante e valore la valutazione ottenuta
     private time : Date | null;
     // @ts-ignore
-    constructor(key? : number, solverId: string, solutionTags: string[], topics? : string[], difficulty? : Difficulty, valutations? : Map<string,number>, time? : Date) {
+    constructor(key? : string, solverId: string, solutionTags: string[], topics? : string[], difficulty? : Difficulty, valutations? : Map<string,number>, time? : Date) {
         this.key = key || null;
         this.solverId = solverId;
         this.solutionTags = solutionTags;
@@ -33,7 +33,7 @@ class Solution {
         this.topics = [];
         this.difficulty = 1;
     }*/
-    getKey(): number | null{
+    getKey(): string | null{
         return this.key;
     }
     getSolverId(): string {

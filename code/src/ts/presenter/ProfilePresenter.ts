@@ -1,10 +1,6 @@
 import {PagePresenter} from "./PagePresenter"
 import {Client} from "../model/Client/Client";
 
-
-//import {Client} from "../model/Client";
-//import {ClassClient} from "../model/ClassClient";
-
 var session = require('express-session');
 
 class ProfilePresenter extends PagePresenter{
@@ -19,27 +15,24 @@ class ProfilePresenter extends PagePresenter{
     update(app : any){
         //autenticazione
         app.get('/logout', (request: any, response: any) => {
+            console.log("LOGOUT");
             //TODO trovarle e cancellarle tutte
             delete session.invalidLogin;
             delete session.errUsername;
             delete session.username;
             delete session.password;
-            response.redirect('/profile');
+            response.redirect('/home');
         });
         app.get('/profile', (request: any, response: any) => {
-            session.invalidLogin = request.query.mess==="invalidLogin";
+            //session.invalidLogin = request.query.mess==="invalidLogin";
 
             //this.view.setMainList("Login avvenuto con successo sei nel tuo profilo"+session.username);
 
-
-            let menuList :any
-                if(session.role==="teacher"){
-                    menuList= {
-                        0 :{"link":"/insert","a":"name1"},
-                        1 :{"link":"link2","name":"name2"},
-                        2 :{"link":"link3","name":"name3"}
-                    }
-                }
+            let menuList :any;
+            menuList= {
+                0 :{"link":"link1","name":"name1"},
+                1 :{"link":"link2","name":"name2"}
+            }
             this.view.setMenuList(menuList);
             //this.viewProfile.setMainList(["class1","class2","class3","class4","class5","class6","class7","class8"]);
             response.send(this.view.getPage());
@@ -55,7 +48,7 @@ class ProfilePresenter extends PagePresenter{
                     response.redirect("/profile");
                 }
                 else {
-                    response.redirect("/profile?mess=invalidLogin");
+                    response.redirect("/home?mess=invalidLogin");
                 }
             }
         });
@@ -92,19 +85,7 @@ class ProfilePresenter extends PagePresenter{
             response.send("elimino la classe "+request.body.classToDelete);
         });
     }
-    /**
-     * method used by the View to understand if ther is any user logged in
-     */
-    isLoggedIn() : boolean {
-        return session.username!==undefined;
-    }
 
-    /**
-     * method used by the View to understand if the login is valid
-     */
-    isLoginInvalid() : boolean {
-        return session.invalidLogin;
-    }
 
     isUsernameInvalid() : boolean {
         return  session.errUsername;

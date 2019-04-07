@@ -10,12 +10,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const express = require("express");
 const InsertPageView_1 = require("./ts/view/InsertPageView");
-//import {InsertPagePresenter} from './ts/presenter/InsertPagePresenter';
-const ExerciseView_1 = require("./ts/view/ExerciseView");
 const SaveView_1 = require("./ts/view/SaveView");
-//import {ExercisePresenter} from "./ts/presenter/ExercisePresenter";
+const ExerciseView_1 = require("./ts/view/ExerciseView");
 const ProfileView_1 = require("./ts/view/ProfileView");
 const RegistrationView_1 = require("./ts/view/RegistrationView");
+const SearchView_1 = require("./ts/view/SearchView");
 const app = express();
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -27,6 +26,7 @@ new ProfileView_1.ProfileView(app);
 new RegistrationView_1.RegistrationView(app);
 new SaveView_1.SaveView(app);
 new ExerciseView_1.ExerciseView(app);
+new SearchView_1.SearchView(app);
 /*
 const exercisePage = new ExercisePresenter(exerciseView, savePageView);
 exercisePage.update(app);*/

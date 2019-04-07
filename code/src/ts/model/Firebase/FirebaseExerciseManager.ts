@@ -10,7 +10,7 @@ class FirebaseExerciseManager extends FirebaseManager {
     }
 
 
-    async insert(obj: Data): Promise<boolean> {
+    public async insert(obj: Data): Promise<boolean> {
         let exercise = <Exercise>obj;
         let exists : string= await this.search(exercise.getSentence());
         let wrsolution=exercise.getNewSolution();
@@ -101,7 +101,6 @@ class FirebaseExerciseManager extends FirebaseManager {
     }
 
     public async read(id: string): Promise<Exercise> {
-
         const ProData: Promise <Exercise> = this.getExerciseById(id);
         const read = await ProData;
         return read;
@@ -122,9 +121,9 @@ class FirebaseExerciseManager extends FirebaseManager {
                         for (let val in readData.solutions[sol].valutations) {
                             vals.set(val, readData.solutions[sol].valutations[val]);
                         }
-                        console.log("solution: ",readData.solutions[sol].parent.key);
+                        //console.log("solutionKey: ",sol);
                         exercise.addSolution(
-                            readData.solutions[sol].parent.key,readData.solutions[sol].solverId,readData.solutions[sol].tags,
+                            sol,readData.solutions[sol].solverId,readData.solutions[sol].tags,
                             readData.solutions[sol].topics,readData.solutions[sol].difficulty,vals,readData.solutions[sol].time);
                     }
 

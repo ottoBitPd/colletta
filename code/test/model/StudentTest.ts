@@ -6,9 +6,6 @@ import {Exercise} from "../../src/ts/model/Data/Exercise";
 import {Class} from "../../src/ts/model/Data/Class";
 
 
-
-
-
 describe('#getMethods', function() {
    let obj= new Student("11","gioperry15","ciao","giovanni","Peron","Castelfranco","Unipd");
    let test= new Student("3","gioperry15","ciao","giovanni","Peron","Castelfranco","Unipd");
@@ -59,8 +56,7 @@ describe('#getMethods', function() {
 
     context('StudentTest.getID()', function () {
         it('should return id', function () {
-            let student = new test.DatabaseUserInfo("0", "gioperry15", "giovanni", "Peron", "Castelfranco"," Unipd");
-            expect(test.getID()).to.equal(student.id);
+            expect(test.getID()).to.equal("3");
         });
     });
 
@@ -91,7 +87,7 @@ describe('#getMethods', function() {
     });
 
     context('StudentTest.getAverage()', function () {
-        it('should return avarage', function () {
+        it('should return average', function () {
 
             let student= new Student("1","gian","gianni","Gianmarco","Pettenuzzo","Castelfranco","Unipd");
             const take= new Exercise("Ciao", "1");
@@ -103,9 +99,9 @@ describe('#getMethods', function() {
             
             student.getAverage([take]);
 
-            let valori=student.getAverage([take]).size;
-            console.log( student.getAverage([take]).values());
-            console.log(valori);
+            //let valori=student.getAverage([take]).size;
+            //console.log( student.getAverage([take]).values());
+            //console.log(valori);
 
 
             expect(obj.getAverage([take]));

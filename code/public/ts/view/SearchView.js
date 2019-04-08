@@ -66,7 +66,7 @@ class SearchView extends PageView_1.PageView {
             ret += "" +
                 "        <form class='form-inline my-2 my-lg-0' method ='post' action='/checklogin'>\n";
             if (this.searchPresenter.isLoginInvalid()) {
-                ret += "<p class='red'>username o password invalidi</p>\n";
+                ret += "<p class='text-danger m-1 p-1'>username o password invalidi</p>";
             }
             ret += "           <div class=\"form-group\">" +
                 "               <input type=\"text\" class=\"form-control mr-sm-2\" name='username' placeholder=\"Username\" required=\"required\">" +

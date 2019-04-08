@@ -15,11 +15,11 @@ describe('#getMethods', function() {
         });
     });
 
-  context('ClassTest.getDescription()', function() {
-    it('should return the description', function() {
-        expect(obj.getDescription()).to.equal("description");
+    context('ClassTest.getDescription()', function() {
+      it('should return the description', function() {
+          expect(obj.getDescription()).to.equal("description");
+      });
     });
-});
 
     context('ClassTest.getTeacherID()', function() {
         it('should return the teacherID', function() {

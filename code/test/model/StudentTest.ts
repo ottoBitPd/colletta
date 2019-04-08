@@ -6,9 +6,6 @@ import {Exercise} from "../../src/ts/model/Data/Exercise";
 import {Class} from "../../src/ts/model/Data/Class";
 
 
-
-
-
 describe('#getMethods', function() {
    let obj= new Student("11","gioperry15","ciao","giovanni","Peron","Castelfranco","Unipd");
    let test= new Student("3","gioperry15","ciao","giovanni","Peron","Castelfranco","Unipd");
@@ -59,8 +56,7 @@ describe('#getMethods', function() {
 
     context('StudentTest.getID()', function () {
         it('should return id', function () {
-            let student = new test.DatabaseUserInfo("0", "gioperry15", "giovanni", "Peron", "Castelfranco"," Unipd");
-            expect(test.getID()).to.equal(student.id);
+            expect(test.getID()).to.equal("3");
         });
     });
 
@@ -91,7 +87,9 @@ describe('#getMethods', function() {
     });
 
     context('StudentTest.getAverage()', function () {
+
         it('should return avarage of 3 exercises', function () {
+
 
             let student= new Student("1","gian","gianni","Gianmarco","Pettenuzzo","Castelfranco","Unipd");
             const take:Exercise[]=[];

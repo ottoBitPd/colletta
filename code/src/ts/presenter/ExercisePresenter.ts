@@ -1,22 +1,19 @@
 import {PagePresenter} from "./PagePresenter"
 import {Client} from "../model/Client/Client";
+import * as fileSystem from "fs";
 
 var session = require('express-session');
 
 class ExercisePresenter extends PagePresenter{
 
-    private fileSystem : any;
-
     constructor(view : any){
         super(view);
         this.client =(new Client.builder()).buildExerciseClient().buildUserClient().build();
-        this.fileSystem = require ('fs');
     }
 
     update(app : any){
         this.listenExercise(app);
         this.saveExercise(app);
-
     }
 
     private listenExercise(app :any) : void {
@@ -120,8 +117,8 @@ class ExercisePresenter extends PagePresenter{
      * @returns {string} a string containing the italian translation of the tag
      */
     private translateTag(tag : string){
-        var content = this.fileSystem.readFileSync("./src/ts/presenter/vocabolario.json");
-        var jsonContent = JSON.parse(content);
+        const content = fileSystem.readFileSync("./src/ts/presenter/vocabolario.json");
+        const jsonContent = JSON.parse(content.toString());
 
         var lowercase=tag.split(/[A-Z]{1,2}/);
         var uppercase=tag.split(/[a-z0-9]+/);

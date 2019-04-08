@@ -15,8 +15,30 @@
 \usepackage{enumitem}
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=3cm]{geometry}
 \usepackage{ltablex}
+\usepackage{listings}
 \usepackage{lastpage}
 \usepackage{titlesec}
+\usepackage{xcolor}
+
+\definecolor{lightgray}{rgb}{.9,.9,.9}
+\definecolor{darkgray}{rgb}{.4,.4,.4}
+\definecolor{purple}{rgb}{0.65, 0.12, 0.82}
+\lstset{
+	language=bash,
+	backgroundcolor=\color{lightgray},
+	extendedchars=true,
+	basicstyle=\footnotesize\ttfamily,
+	showstringspaces=false,
+	showspaces=false,
+	numbers=none,
+	tabsize=2,
+	breaklines=true,
+	showtabs=false,
+	captionpos=none
+}
+
+%\renewcommand{\lstlistingname}{Esempio}% Listing -> Algorithm
+%\renewcommand{\lstlistlistingname}{Elenco degli Esempi}% List of Listings -> List of Algorithms
 
 \pagestyle{fancy}
 \fancyhf{}
@@ -62,7 +84,8 @@
 		\input{intro.tex}
 		\newpage	
 
-	\section{Installazione}	
+	\section{Installazione}
+	\input{installazione.tex}
 	\newpage
 
 	\section{Configurazione dell'ambiente di sviluppo}

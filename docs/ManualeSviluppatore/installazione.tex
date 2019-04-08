@@ -1,0 +1,76 @@
+\subsection{Requisiti software}
+Colletta è in generale compatibile con qualsiasi dispositivo, tuttavia garantiamo il corretto funzionamento per i seguenti software.
+\begin{itemize}
+	\item Node.js versione 8.15
+	\item npm versione 6.4.1
+	\item Browser supportati:
+	\begin{itemize}
+		\item Google Chrome 73
+		\item Mozilla Firefox 61
+		\item Safari 12
+	\end{itemize}
+\end{itemize}
+\subsection{Requisiti hardware}
+\subsubsection{Requisiti per Windows}
+\begin{itemize}
+	\item Sistema: Windows 7, 8 or 10, 32-bit or 64-bit
+	\item RAM: 1GB
+	\item Hard-drive: 1GB di spazio
+	\item Connessione ad Internet: obbligatoria
+\end{itemize}
+\subsubsection{Requisiti per Linux}
+\begin{itemize}
+	\item Sistema: Ubuntu 17.10
+	\item RAM: 512MB
+	\item Hard-drive: 1GB di spazio
+	\item Connessione ad Internet: obbligatoria
+\end{itemize}
+\subsubsection{Requisiti per Mac}
+\begin{itemize}
+	\item Sistema: MacOS Mojave 10.14.4
+	\item RAM: 512MB
+	\item Hard-drive: 1GB di spazio
+	\item Connessione ad Internet: obbligatoria
+\end{itemize}
+\subsection{Come installare l'applicazione}
+Per il momento l'applicazione necessita di essere installata ed eseguita in locale.
+\begin{itemize}
+	\item \textbf{Download dell'applicazione:}\\
+Recatevi al seguente indirizzo e scaricate la versione corrispondente al vostro sistema operativo.
+\begin{center}
+	\url{https://github.com/ottoBitPd/colletta} 	
+\end{center}
+
+
+	\item \textbf{Installazione di Node.js:}\\
+Scaricate Node.js versione 8.15 o superiore dal sito ufficiale di seguito riportato 
+\begin{center}
+	\url{https://nodejs.org/en/download/}
+\end{center}
+
+	\item \textbf{Download e installazione di tutte le librarie necessarie:}\\ 
+Recatevi all' interno della sottocartella /code contenuta nella cartella principale dell'applicazione precedentemente scaricata. Utilizzando una shell eseguite il seguente comando per scaricare ed installare le librerie necessarie all'esecuzione dell'applicazione in locale.
+
+\begin{lstlisting}[xleftmargin=.25\textwidth,xrightmargin=.25\textwidth]
+npm install 
+\end{lstlisting}
+	\item \textbf{Eseguire il server in locale:}\\
+Aprite una finestra di comando nela cartella principale dell'applicazione e usate i seguenti comandi per eseguire il server in locale.
+%	framextopmargin=.25\textwidth,
+%framexbottommargin=.25\textwidth,
+%framexleftmargin=.25\textwidth,
+%framexrightmargin=.25\textwidth,
+
+\begin{center}
+	\noindent\fcolorbox{lightgray}{lightgray}{
+		\begin{minipage}{0.5\textwidth}
+\footnotesize
+\texttt{npm run build}\\
+\texttt{node public/index.js}
+
+\end{minipage}
+}
+
+\end{center}
+
+\end{itemize}

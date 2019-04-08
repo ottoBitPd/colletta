@@ -1,0 +1,35 @@
+La nostra architettura utilizza il framework$^{*}$ Express e del servizio di database fornito da Firebase (Firestore). L'architettura dell'applicazione è client-server$^{*}$ ed è costituita da tre principali parti: model (che gestisce le operazioni sul database), presenter (che gestisce la logica dell'applicazione) e view (che gestisce la visualizzazione delle pagine web). Il sistema permette di:
+\begin{itemize}
+	\item lo svolgimento di esercizi di analisi grammaticale (e loro valutazione) e la scrittura dei dati, come ad esempio la soluzione, su un database Firestore messo a disposizione da Firebase;
+	\item la visualizzazione e l'utilizzo di un software di apprendimento automatico per il riconoscimento delle classi grammaticali delle parole di una frase.
+\end{itemize}
+
+\begin{figure}[h]
+	\includegraphics[scale=0.4]{images/architettura.png}
+	\caption{Schema generale dell'applicazione}
+\end{figure}
+
+Più in dettaglio, abbiamo suddiviso ulteriormente il model in:
+\begin{itemize}
+	\item POSManager: parte dell'applicazione che si occupa dell'uso del software di apprendimento automatico;
+	\item Data: l'insieme delle classi di business che permettono di svolgere le operazione di calcolo sui dati estratti dal database;
+	\item Firebase: insieme di classi usate per l'utilizzo del database fornito da Firebase;
+	\item Database: insieme di classi che utilizzano quelle definite dal pacchetto Firebase e che disaccoppiano l'applicazione dall'implementazione del database;
+	\item Client: il cui scopo è esporre le funzionalità del model.
+\end{itemize}
+\begin{figure}[h]
+	\includegraphics[scale=0.5]{images/package.png}
+	\caption{Diagramma dei package}
+\end{figure}
+
+
+\newpage
+\subsection{View}
+\input{view.tex}
+\newpage
+\subsection{Presenter}
+\input{presenter.tex}
+\newpage
+\subsection{Model}
+\input{model.tex}
+\newpage

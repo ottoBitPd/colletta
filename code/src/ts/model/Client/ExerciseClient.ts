@@ -1,3 +1,4 @@
+
 import {DatabaseExerciseManager} from "../DatabaseManager/DatabaseExerciseManager";
 import {Exercise} from "../Data/Exercise";
 import {Data} from "../Data/Data";

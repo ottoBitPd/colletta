@@ -20,32 +20,33 @@ class Student extends User {
         return lista;
     }
 
-    public getAverage(exercises : Exercise[]) : Map<number,number>   {
-        let averageMap = new Map<number,number>();
-        let solutions : Solution[] = [];
 
-        for (let i =0 ; i < exercises.length; i++)
-        solutions.concat((exercises[i].getSolutions()).filter((sol) => sol.getSolverId() === this.getID()));
+    public getAverage(exercises : Exercise[]) : Map<number,number> {
+        let averageMap = new Map<number, number>();
+        let solutions: Solution[] = [];
 
-        solutions = solutions.sort((sol1,sol2) => sol1.getTime()! - sol2.getTime()!);
+        exercises.forEach((currentValue: Exercise, index: number) => {
 
-        let totalValutation = 0;
-        let counter = 0;
+            solutions=solutions.concat(currentValue.getSolutions().filter((sol) => sol.getSolverId() === this.getID()));
 
-        for (let i =0 ; i < solutions.length; i++) {
-            let valutations = solutions[i].getValutations();
+        });
+        let  sommaVoti = 0; var i = 0;
+        solutions.forEach((currentValue: Solution, index: number) => {
+              let sommUnaSoluzione = 0;
 
-            if (valutations) {
-                valutations.forEach((value, key) => {
-                    totalValutation += value;
+            currentValue.getValutations()!.forEach((value: number,key: string) => {
+
+                sommUnaSoluzione+=value;
+                i++;
                 });
-                counter += valutations.size;
-            }
 
-            averageMap.set( solutions[i].getTime()! ,totalValutation/counter) ;
-        }
+            sommaVoti+=sommUnaSoluzione;
+            let media=sommaVoti/i;
 
-        return averageMap ;
+            averageMap.set(currentValue.getTime()!, media);
+            });
+
+        return averageMap;
     }
 }
 export {Student}

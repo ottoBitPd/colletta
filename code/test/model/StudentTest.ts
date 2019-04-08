@@ -91,25 +91,41 @@ describe('#getMethods', function() {
     });
 
     context('StudentTest.getAverage()', function () {
-        it('should return avarage', function () {
+        it('should return avarage of 3 exercises', function () {
 
             let student= new Student("1","gian","gianni","Gianmarco","Pettenuzzo","Castelfranco","Unipd");
-            const take= new Exercise("Ciao", "1");
+            const take:Exercise[]=[];
+            take.push(new Exercise("Ciao", "1"));
+            take.push(new Exercise("Ciao ciao", "3"));
+            take.push(new Exercise("Ciao ciao ciao", "10"));
 
             let valutations=new Map<string,number>();
-            valutations.set("1",10);
 
-            take.addSolution("1","1",["F"],["uno"],3,valutations,1);
-            
-            student.getAverage([take]);
+            valutations.set("1",8);
 
-            let valori=student.getAverage([take]).size;
-            console.log( student.getAverage([take]).values());
-            console.log(valori);
+            valutations.set("2",6);
 
+            valutations.set("3",4);
 
-            expect(obj.getAverage([take]));
-            //expect(obj);
+            let valutazione1=new Map<string,number>();
+
+            valutazione1.set("1",4);
+
+            valutazione1.set("2",6);
+
+            valutazione1.set("3",5);
+
+            let valutazionL=new Map<string,number>();
+
+            valutazionL.set("10",9);
+
+            take[0].addSolution("1","1",["F"],["uno"],3,valutations,1);
+            take[1].addSolution("1","1",["AG"],["due"],3,valutazione1,1);
+            take[2].addSolution("1","1",["AG"],["due"],3,valutazionL,1);
+            let test=student.getAverage(take).get(1);
+
+            expect(test).to.equal(6);
+
         });
     });
 

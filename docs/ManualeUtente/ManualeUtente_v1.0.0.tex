@@ -121,56 +121,82 @@
 		\item il servizio esistente open-source per il pos-tagging.
 	\end{itemize}
 	
-	\subsection{Riferimenti}
-	Segue l'elenco dei riferimenti utilizzati dal gruppo:
-	\subsubsection{Riferimenti Normativi}
-
-	\subsubsection{Riferimenti informativi}
-	\begin{itemize}
-		\item 
-		
-	\end{itemize}	
+	\subsection{Note esplicative}
+	Tutti i termini marcati con un * ad apice presenti nel seguente documento trovano una definizione
+	all’interno del \textit{Glossario\_v3.0.0}.
+	I nomi dei documenti interni/esterni prodotti dal gruppo OttoBit saranno scritti in corsivo.
+	\newpage
 	\section{Download e installazione}
 	\subsection{Requisiti}
-	L'applicazione è supportata solo ed esclusivamente da dispositivi desktop.
-	\smallskip
-	Sistemi operativi preferibili:
+	L'applicazione è supportata solo ed esclusivamente da dispositivi desktop. In seguito illustriamo i requisiti richiesti per il funzionamento di Colletta.
+	\subsubsection{Sistemi operativi:} 
 	\begin{itemize}
 		\item Windows 10;
 		\item Ubuntu 18.04;
 		\item MacOS 10.14.4.		
 	\end{itemize}
-	\smallskip
-	Browser preferibili:
+	\subsubsection{Browser:}
 		\begin{itemize}
 		\item Mozilla Firefox 66.0;
 		\item Google Chrome 67.0;
 		\item Safari 12.1 (solo per MacOS).		
 	\end{itemize}
-	\smallskip
-	Framework richiesti:
+	\subsubsection{Framework:}
 		\begin{itemize}
-		\item NodeJS \\ Scaricalo per il tuo sistema operativo da https://nodejs.org/en/download/ ;		
+		\item NodeJS.
 		\end{itemize}
 	
 
 	\subsection{Download}
-	L'applicazione è disponibile al download al seguente indirizzo:
-	https://github.com/ottoBitPd/colletta-poc
+	\subsubsection{NodeJS}
+	Scaricalo per il tuo sistema operativo da https://nodejs.org/en/download/ ;
+	\subsubsection{Colletta}		
+	L'applicazione è disponibile alla seguente repository Github:
+	https://github.com/ottoBitPd/colletta-poc.
 	
 	\subsection{Installazione}
 	Per eseguire l'applicazione seguire i seguenti passi:
 	 \begin{enumerate}
-	 	\item Installare le librerie necessarie.\\ Da terminale, posizionarsi sulla cartella principale e utilizzare il seguente comando:\begin{lstlisting}[numbers=none]
+	 	\item \textbf{Installare le librerie necessarie:}\\ Da terminale, posizionarsi nella cartella principale e utilizzare il seguente comando:\begin{lstlisting}[numbers=none]
 	 	npm install
 	 	\end{lstlisting}
-	 	\item Lanciare il server.\\ Sempre da terminale e nella cartella principale, utilizzare il seguente comando:\begin{lstlisting}[numbers=none]
+	 	\item \textbf{Eseguire il server:}\\ Sempre da terminale e nella cartella principale, utilizzare il seguente comando:\begin{lstlisting}[numbers=none]
 	 	node index.js
 	 	\end{lstlisting}
-	 	\item Accedere all'applicazione.\\ Apri il tuo browser e vai all'indirizzo: http://localhost:8080
-	 	
+	 	\item \textbf{Accedere all'applicazione:}\\ Apri il tuo browser e vai all'indirizzo: http://localhost:8080
 	 \end{enumerate}
+ 
+ \newpage
 	\section{Utilizzo}	
+	In base al tipo di utilizzatore Colletta offre differenti funzionalità, esse vengono suddivise in paragrafi diversi.
+	
+	\subsection{Utente non registrato}
+		\subsubsection{Registrarsi alla piattaforma}
+		\subsubsection{Inserimento frase da svolgere}
+		\subsubsection{Svolgere esercizio}
+		\subsubsection{Visualizzazione della valutazione}
+		\subsubsection{Segnalare un abuso}
+	
+	\subsection{Utente registrato}
+		\subsubsection{Accedere alla piattaforma}
+		\subsubsection{Modificare il proprio profilo}
+	
+	\subsection{Allievo}
+		Oltre alle funzionalità già descritte per l'utente non registrato, la registrazione come allievo comporta l'aggiunta di altre funzionalità.
+		\subsubsection{Visualizzare i propri progressi}
+		\subsubsection{Assegnazione ad una classe}
+		\subsubsection{Svolgere esercizi assegnati}
+	
+	\subsection{Insegnante}
+		Oltre alle funzionalità già descritte per l'utente non registrato, la registrazione come insegnante comporta l'aggiunta di altre funzionalità.
+		\subsubsection{Inserire un esercizio}
+		\subsubsection{Fornire una soluzione}
+		\subsubsection{Creare una classe}
+		\subsubsection{Assegnare esercizi}
+		
+	\subsection{Moderatore}
+		\subsubsection{Verificare la richiesta di insegnante}
+		\subsubsection{Eliminare esercizi e utenti}
 \newpage
 
 	

@@ -63,20 +63,21 @@ class HunposManager implements POSManager{
         return this.buildSolution();
     };
 
-     train():void{
-         const shell = require('shelljs');
-         //scommentare per windows
-         //shell.exec('src\\ts\\presenter\\hunpos\\hunpos-train ' + this.modelFilePath + '< src\\ts\\presenter\\hunpos\\train');
-         //scommentare per mac/linux
-         shell.exec('./src/ts/presenter/hunpos/hunpos-train ' + this.modelFilePath + '< ./src/ts/presenter/hunpos/train');
-     };
-     tag():void{
-         //scommentare per windows
-         const shell = require('shelljs');
-         //shell.exec('src\\ts\\presenter\\hunpos\\hunpos-tag ' + this.modelFilePath + '< ' + this.inputFilePath + '>' + this.outputFilePath);
-         //scommentare per mac/linux
-         shell.exec('./src/ts/presenter/hunpos/hunpos-tag ' + this.modelFilePath + '< ' + this.inputFilePath + '>' + this.outputFilePath);
-     };
+    train():void{
+        const shell = require('shelljs');
+        //scommentare per windows
+        //shell.exec('src\\ts\\presenter\\hunpos\\hunpos-train ' + this.modelFilePath + '< src\\ts\\presenter\\hunpos\\train');
+        //scommentare per mac/linux
+        shell.exec('./src/ts/presenter/hunpos/hunpos-train ' + this.modelFilePath + '< ./src/ts/presenter/hunpos/train');
+    };
+    tag():void{
+        const shell = require('shelljs');
+        //scommentare per windows
+        //shell.exec('src\\ts\\presenter\\hunpos\\hunpos-tag ' + this.modelFilePath + '< ' + this.inputFilePath + '>' + this.outputFilePath);
+        //scommentare per mac/linux
+        shell.exec('./src/ts/presenter/hunpos/hunpos-tag ' + this.modelFilePath + '< ' + this.inputFilePath + '>' + this.outputFilePath);
+
+    };
 }
 
 export {HunposManager};

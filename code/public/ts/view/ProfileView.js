@@ -27,7 +27,6 @@ class ProfileView extends PageView_1.PageView {
             "    <div class=\"collapse navbar-collapse\" id=\"collapsibleNavbar\">" +
             "<ul class=\"navbar-nav mr-auto\">";
         for (let i in this.menuList) {
-            //si esegue un passaggio alla OttoBit (^o^)
             ret += "" +
                 "<li class=\"nav-item\">" +
                 "" +
@@ -55,7 +54,7 @@ class ProfileView extends PageView_1.PageView {
             ret += "" +
                 "        <form class='form-inline my-2 my-lg-0' method ='post' action='/checklogin'>";
             if (this.profileController.isLoginInvalid()) {
-                ret += "<p class='red'>username o password invalidi</p>";
+                ret += "<p class='text-danger m-1 p-1'>username o password invalidi</p>";
             }
             ret += "           <div class=\"form-group\">" +
                 "               <input type=\"text\" class=\"form-control mr-sm-2\" name='username' placeholder=\"Username\" required=\"required\">" +

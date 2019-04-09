@@ -10,14 +10,14 @@ class Student extends User {
     }
 
     public getClasses(classList: Class[]): Class[] {
-        let lista : Class[] =[];
+        let list : Class[] =[];
         classList.forEach((_class) => {
             if (_class.getStudents().indexOf(this.getID()) !== -1){
-                lista.push(_class);
+                list.push(_class);
             }
         });
 
-        return lista;
+        return list;
     }
 
     public getAverage(exercises : Exercise[]) : Map<number,number>   {
@@ -42,7 +42,7 @@ class Student extends User {
                 counter += valutations.size;
             }
 
-            averageMap.set( solutions[i].getTime()! ,totalValutation/counter) ;
+            averageMap.set(solutions[i].getTime()! ,totalValutation/counter) ;
         }
 
         return averageMap ;

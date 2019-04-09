@@ -3,8 +3,29 @@
   "scripts": {
     "lint": "tslint --project tsconfig.json",
     "build": "tsc --outDir public",
-    "test": "mocha -r ts-node/register test/**/*.ts",
-    "start": "npm run shell"
+    "test": "nyc --reporter=html --reporter=text mocha -r ts-node/register test/**/*.ts",
+    "start": "npm run shell",
+    "sonar-scanner": "./node_modules/sonar-scanner/bin/sonar-scanner"
+
+  },
+  "nyc": {
+    "include": [
+      "src/**/*.ts",
+      "src/**/*.tsx"
+    ],
+    "extension": [
+      ".ts",
+      ".tsx"
+    ],
+    "require": [
+      "ts-node/register"
+    ],
+    "reporter": [
+      "text-summary",
+      "html"
+    ],
+    "sourceMap": true,
+    "instrument": true
   },
   "main": "public/index.js",
   "dependencies": {
@@ -14,6 +35,7 @@
     "express-session": "^1.15.6",
     "firebase": "^5.9.1",
     "firebase-admin": "^7.0.0",
+    "mocha-sonar-reporter": "^0.1.6",
     "morgan": "^1.9.1",
     "nodejs": "0.0.0",
     "session-file-store": "^1.2.0",
@@ -24,7 +46,9 @@
     "@types/mocha": "^5.2.6",
     "chai": "^4.2.0",
     "express": "^4.16.4",
-    "mocha": "^6.1.1",
+    "mocha": "^6.1.2",
+    "mocha-sonarqube-reporter": "^1.0.1",
+    "sonar-scanner": "^3.1.0",
     "ts-node": "^8.0.3",
     "tslint": "^5.12.0",
     "typescript": "^3.2.2",

@@ -27,7 +27,6 @@ class ProfileView extends PageView_1.PageView {
             "    <div class=\"collapse navbar-collapse\" id=\"collapsibleNavbar\">" +
             "<ul class=\"navbar-nav mr-auto\">";
         for (let i in this.menuList) {
-            //si esegue un passaggio alla OttoBit (^o^)
             ret += "" +
                 "<li class=\"nav-item\">" +
                 "" +

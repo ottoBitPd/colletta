@@ -29,6 +29,7 @@ class ExerciseView extends PageView_1.PageView {
             "    <div id=\"esercizio\">" +
             "        <form method=\"POST\" action=\"/saveExercise\">";
         ret += this.buildTable(words);
+        //si esegue un passaggio alla OttoBit (^o^)
         ret += "" +
             "            <input type=\"hidden\" name=\"wordsnumber\" value=\"*wordsnumber*\"/>" +
             "            <input type=\"hidden\" name=\"sentence\" value=\"" + this.sentence + "\"/>";

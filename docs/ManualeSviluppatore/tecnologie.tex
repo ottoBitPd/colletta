@@ -1,16 +1,66 @@
 \subsection{Node.js}
-\subsection{Firebase}
+Node.js è un ambiente dedicato all'esecuzione di codice JavaScript$^*$ lato server. Questo ambiente è dotato di un'architettura ad eventi che permette input/output asincroni, allo scopo di ottimizzare throughput$^*$ e scalabilità$^*$.
+\subsection{Google Firebase}
+Firebase è un potente servizio on line che permette di salvare e sincronizzare i dati elaborati da applicazioni web e mobile. Si tratta di un database NoSQL dalle grandissime risorse, ad alta disponibilità ed integrabile in tempi rapidissimi in altri progetti software, semplicemente sottoscrivendo un account al servizio.
+
+\subparagraph{Google Firebase Realtime Database}
+ \noindent \\Il nostro progetto utilizza Firebase Realtime Database, quest'ultimo è in pratica un unico grande oggetto JSON gestibile in tempo reale. Ciò permette di utilizzare un modello di dati semplice e flessibile. Infatti è un database schemaless, ovvero non richiede che sia determinata una struttura fissa nella fase iniziale di progettazione. 
 \subsection{Hunpos}
+Hunpos è una reimplementazione opensource di Tnt, un noto software di POSTagging.
+Hunpos può offrire le seguenti funzionalità:
+\begin{itemize}
+\item È gratuito e opensource anche per usi commerciali.
+
+\item È abbastanza competitivo rispetto all'odierna generazione di algoritmi di apprendimento. Infatti il principale vantaggio è che il ciclo di training/tagging è molto più veloce rispetto a modelli più complessi.
+
+\item Lavora facilmente con tag sets molto grandi,
+ma questo non compromette le performance di training e tagging.
+
+\item Effortless integration of knowledge from morphological analyzers/dictionaries into best path calculation.
+
+\item Facile integrazione di modelli morfologici esterni
+
+\item Probabilità lessicali constestualizzate con finestre di contesto di qualsiasi dimensione. In pratica Hunpos è in grado di stimare il tag corrente basandosi sui tags precedenti e successivi.
+
+\item Hunpos è implementato in OCaml, un linguaggio che supporta uno stile di codifica conciso e mantenibile. La compilazione in OCaml è molto veloce.
+\end{itemize}
 \subsection{Librerie esterne}
 \subsubsection{Express.js}
-È un framework open source per applicazioni web Node.js, molto utilizzato e ben documentato. È utilizza per i seguenti motivi:
+
+Express è un framework per applicazioni web Node.js flessibile e leggero che fornisce una serie di funzioni avanzate, è inoltre molto utilizzato e ben documentato. Le sue principali funzionalità sono:
 \begin{itemize}
- \item Offre un sistema di routing$^*$ semplice, che consente di utilizzare template engine$^*$ per generare le pagine HTML;
- \item Permette di accedere in maniera agevole al corpo delle richieste e manipolare quindi i dati;
- \item Tramite i middleware$^*$ consente una efficace ed elegante gestione degli errori;
- \item Essendo ampiamente utilizzato, è disponibile una grande comunità di supporto online.
- \end{itemize}
+	\item Un sistema di routing$^*$ semplice, che consente di utilizzare template engine$^*$ per generare le pagine HTML;
+	\item Permette di accedere in maniera agevole al corpo delle richieste e manipolare quindi i dati;
+	\item Essendo ampiamente utilizzato, è disponibile una grande comunità di supporto online.
+\end{itemize}
+Una completa documentazione di tale libreria è disponibile al seguente indirizzo:
+\begin{center}
+	\url{https://expressjs.com/it/}
+\end{center}
 \subsubsection{express-session}
+La nostra applicazione utilizza la libreria express-session. Questa ci consente di creare delle variabili di sessione, utili per avere sempre disponibili i dati principali di un utente che ha effettuato il login.
+Una completa documentazione di tale libreria è disponibile al seguente indirizzo:
+\begin{center}
+	\url{https://www.npmjs.com/package/express-session}
+\end{center}
 \subsubsection{shelljs}
-\subsubsection{fs}
+Shelljs è una libreria che è stata impiegata nel nostro progetto, per poter utilizzare i comandi train e tag di Hunpos. Utilizzando tale libreria ci consente di invocare dei comandi da shell tramite codice typescript e quindi utilizzare le funzionalità di Hunpos che sono appunto tramite comandi shell.
+Una completa documentazione di tale libreria è disponibile al seguente indirizzo:
+
+\begin{center}
+	\url{https://www.npmjs.com/package/shelljs}
+\end{center}
+\subsubsection{file-system}
+La libreria file-system è utilizzata all'interno di alcuni casi della nostra applicazione. Questa libreria consente di leggere e scrivere dei file dal file system. Questo è indispensabile per utilizzare le funzionalità di Hunpos.
+Una completa documentazione di tale libreria è disponibile al seguente indirizzo:
+
+\begin{center}
+	\url{https://www.npmjs.com/package/file-system}
+\end{center}
 \subsubsection{bcryptjs}
+Bcryptjs è una libreria che è stata impiegata nel nostro progetto principalmente solo nelle fasi di registrazione e di autenticazione di un utente. Grazie a bcryptjs è possibile infatti criptare una password prima di salvarla nel database. Utilizziamo inoltre un API di questa libreria che ci consente quindi di confrontare la password criptata salvata nel database con quella in chiaro inserita dall'utente che desidera autenticarsi.
+Una completa documentazione di tale libreria è disponibile al seguente indirizzo:
+
+\begin{center}
+	\url{https://www.npmjs.com/package/bcryptjs}
+\end{center}

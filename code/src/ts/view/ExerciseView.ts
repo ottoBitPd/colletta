@@ -48,9 +48,10 @@ class ExerciseView extends PageView{
                 if(this.posTags) {
                     ret += "<input type=\"hidden\" name=\"hunposTags\" value='" + JSON.stringify(this.posTags) + "'/>";
                 }
+                if(this.exercisePresenter.whoIs())
             ret+="   <br/>" +
-            "            <input type=\"text\" name=\"topics\"/>" +
-            "            <select name=\"difficulty\">" +
+            "            <input type=\"text\" class='form-control' name=\"topics\"/>" +
+            "            <select class='form-control' name=\"difficulty\">" +
             "                <option value=\"1\">Molto facile</option>" +
             "                <option value=\"2\">Facile</option>" +
             "                <option value=\"3\">Medio</option>" +

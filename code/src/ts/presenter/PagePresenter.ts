@@ -21,6 +21,8 @@ abstract class PagePresenter{
     isLoginInvalid() : boolean {
         return session.invalidLogin;
     }
+
+
     abstract update(app : any) : void;
     /*
     //forse è un idea

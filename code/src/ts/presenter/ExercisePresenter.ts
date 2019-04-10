@@ -16,6 +16,8 @@ class ExercisePresenter extends PagePresenter{
         this.saveExercise(app);
     }
 
+
+
     private listenExercise(app :any) : void {
         app.post('/exercise', async (request: any, response: any) => {
             let exerciseClient = this.client.getExerciseClient();
@@ -35,7 +37,7 @@ class ExercisePresenter extends PagePresenter{
                     this.view.setPosTranslation(posTranslation);
                     this.view.setPosTags(posTags);
                 }
-                else{//user is not a teacher, it might be student or user not logged in
+                else if(session.username!== undefined && !(await userClient.isTeacher(session.username))){
                     //console.log("niente hunpos, non sei un insegnante");
                     console.log("key arrivata: ",request.body.key);
                     const sentence = await exerciseClient.getSentence(request.body.key);
@@ -45,6 +47,11 @@ class ExercisePresenter extends PagePresenter{
                     //let solutions = await exerciseClient.searchSolution(sentence);
                     //TODO sono arrivato al punto che bisogna mettere apposto ExerciseView in modo che se non è un
                     // insegnante mostri che soluzione selezionare
+                }
+                else{
+                    //not logged
+                    this.view.setSentence(request.body.sentence);
+                    this.view.setPosTranslation(null);
                 }
                 response.send(this.view.getPage());
             }
@@ -216,6 +223,24 @@ class ExercisePresenter extends PagePresenter{
      */
     private splitTopics(topics : string) : string[]{
         return topics.split(" ");
+    }
+    /**
+     * method used by the View to understand if the login is valid
+     */
+    async whois() : boolean {
+        let exerciseClient = this.client.getExerciseClient();
+        let userClient = this.client.getUserClient();
+        if(exerciseClient && userClient){
+            if(session.username!== undefined && await userClient.isTeacher(session.username)) {
+                return "teacher";
+            }
+            else if(session.username!== undefined){
+                return "student";
+            }
+            else{
+                return "user";
+            }
+        }
     }
 }
 export {ExercisePresenter};

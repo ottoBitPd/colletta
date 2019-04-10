@@ -6,7 +6,6 @@
     "test": "nyc --reporter=html --reporter=text mocha -r ts-node/register test/**/*.ts",
     "start": "npm run shell",
     "sonar-scanner": "./node_modules/sonar-scanner/bin/sonar-scanner"
-
   },
   "nyc": {
     "include": [

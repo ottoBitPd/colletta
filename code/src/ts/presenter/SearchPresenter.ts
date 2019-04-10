@@ -11,7 +11,7 @@ class SearchPresenter extends PagePresenter {
     }
 
     update(app: any) {
-        app.get('/home', (request: any, response: any) => {
+        app.get('/searchexercise', (request: any, response: any) => {
             session.invalidLogin = request.query.mess==="invalidLogin";
             let menuList :any;
             menuList= {
@@ -19,7 +19,7 @@ class SearchPresenter extends PagePresenter {
                 1 :{"link":"link2","name":"name2"}
             }
 
-            this.view.setTitle("Homepage");
+            this.view.setTitle("Ricerca esercizio");
             this.view.setMenuList(menuList);
             //this.viewProfile.setMainList(["class1","class2","class3","class4","class5","class6","class7","class8"]);
             response.send(this.view.getPage());

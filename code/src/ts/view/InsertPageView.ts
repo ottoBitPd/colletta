@@ -1,16 +1,16 @@
 import {PageView} from "./PageView";
-import {InsertPagePresenter} from "../presenter/InsertPagePresenter";
+import {InsertPresenter} from "../presenter/InsertPresenter";
 
 class InsertPageView extends PageView {
 
-    private insertPageController : InsertPagePresenter;
+    private exercisePresenter : InsertPresenter;
     constructor(app : any){
         super();
-        this.insertPageController =  new InsertPagePresenter(this);
-        this.insertPageController.update(app);
+        this.exercisePresenter =  new InsertPresenter(this);
+        this.exercisePresenter.update(app);
     }
 
-    getPage() {
+    /*getPage() {
         return "<!DOCTYPE html> " +
             "<html lang=\"it\"> " +
             "<head> " +
@@ -28,6 +28,78 @@ class InsertPageView extends PageView {
             "</div> " +
             "</body> " +
             "</html>";
+    }*/
+    getPage() {
+        let ret = this.getHead();
+        ret +=this.getMenu();
+        ret +="<div class=\"container\" style=\"margin-top: 10%\">" +
+            "<h1 class ='text-center mb-5'>Inserisci frase</h1>" +
+            "<form method ='post' action='/exercise'>"+
+            "   <div class=\"form-group\">" +
+            "       <label for=\"sentence\">Frase</label>"+
+            "       <input type=\"text\" class=\"form-control\" id='sentence' name='sentence' placeholder=\"Inserisci una frase\" required=\"required\">" +
+            "   </div>" +
+            "   <div class=\"form-group text-center\">" +
+            "       <button type=\"submit\" class=\"btn btn-primary my-2 my-sm-0 w-25\">Invia</button>" +
+            "   </div>" +
+            "</form>";
+
+        ret+="</div>"+this.getFoot("");
+        return ret;
+    }
+    private getMenu() : string {
+        let ret ="<nav class=\"navbar navbar-expand-sm bg-dark navbar-dark\">" +
+            "    <div class=\"navbar-brand\">Colletta</div>" +
+            "    <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#collapsibleNavbar\">" +
+            "        <span class=\"navbar-toggler-icon\"></span>" +
+            "    </button>" +
+            "    <div class=\"collapse navbar-collapse\" id=\"collapsibleNavbar\">"+
+            "<ul class=\"navbar-nav mr-auto\">";
+        for(let i in this.menuList) {
+            ret += ""+
+                "<li class=\"nav-item\">" +
+                "   <a class=\"nav-link\" href=\""+this.menuList[i].link+"\">"+this.menuList[i].name+"</a>" +
+                "</li>";
+        }
+        ret+="</ul>";
+        //aggiungo login o logout
+        ret+=this.getLoginArea();
+        ret+="    </div>" +
+            "</nav>";
+        return ret;
+    }
+
+    private getLoginArea() : string {
+
+        if(this.exercisePresenter.isLoggedIn()){
+            return "" +
+                "        <form class='form-inline my-2 my-lg-0' action='/logout'>\n" +
+                "           <div class=\"form-group\">" +
+                "               <button type=\"submit\" class=\"btn btn-primary my-2 my-sm-0\">Logout</button>" +
+                "           </div>\n" +
+                "        </form>\n";
+        }
+        else{
+            let ret ="";
+            ret += "" +
+                "        <form class='form-inline my-2 my-lg-0' method ='post' action='/checklogin'>\n";
+            if(this.exercisePresenter.isLoginInvalid()){
+                ret+="<p class='text-danger m-1 p-1'>username o password invalidi</p>";
+            }
+            ret+="<div class=\"form-group\">               \n" +
+            "\t\t\t\t<input type=\"text\" class=\"form-control mr-sm-2\" name='username' placeholder=\"Username\" required=\"required\">          \n" +
+            "\t\t\t</div>\n" +
+            "           <div class=\"form-group\">               \n" +
+            "           \t\t<input type=\"password\" class=\"form-control mr-sm-2\" name='password' placeholder=\"Password\" required=\"required\">           \n" +
+            "           \t</div>\n" +
+            "           <div class=\"form-group\">            \n" +
+            "\t\t\t\t<button type=\"submit\" class=\"btn-sm btn btn-primary my-2 my-sm-0 mr-2\">Accedi</button>  \n" +
+            //"           \t\t<button type=\"submit\" class=\"btn-sm btn btn-primary my-2 my-sm-0\">Registrati</button> \n" +          \n" +
+            "<a class=\"btn-sm btn btn-primary my-2 my-sm-0\" href=\"/registration\" role=\"button\">Registrati</a>"+
+            "           \t</div>\n" +
+            "        </form>\n";
+            return ret;
+        }
     }
 }
 export {InsertPageView};

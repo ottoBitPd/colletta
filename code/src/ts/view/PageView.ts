@@ -27,8 +27,7 @@ abstract class PageView {
         "<head>\n" +
         "    <meta charset=\"UTF-8\">\n" +
         "    <title>"+this.title+"</title>\n" +
-        "    <link rel=\"stylesheet\" type=\"text/css\" href=\"/newStyle.css\">\n" +
-        /*"    <link rel=\"stylesheet\" type=\"text/css\" href=\"/style.css\">\n"+*/
+        "    <link rel=\"stylesheet\" type=\"text/css\" href=\"/style.css\">\n"+
         "    <!--bootstrap-->" +
         "    <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css\">" +
         "    <link rel=\"stylesheet\" href=\"https://use.fontawesome.com/releases/v5.7.0/css/all.css\" integrity=\"sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ\" crossorigin=\"anonymous\">" +

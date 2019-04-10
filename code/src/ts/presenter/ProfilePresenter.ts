@@ -1,7 +1,7 @@
 import {PagePresenter} from "./PagePresenter"
 import {Client} from "../model/Client/Client";
 
-var session = require('express-session');
+//var session = require('express-session');
 
 class ProfilePresenter extends PagePresenter{
     //private classClient : ClassClient | undefined;
@@ -34,11 +34,6 @@ class ProfilePresenter extends PagePresenter{
             console.log("post: ",request.body);
             response.send("elimino la classe "+request.body.classToDelete);
         });
-    }
-
-
-    isUsernameInvalid() : boolean {
-        return  session.errUsername;
     }
 
 }

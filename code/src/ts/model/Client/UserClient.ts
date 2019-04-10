@@ -47,5 +47,8 @@ class UserClient{
         console.log((<User>user).getUsername());
         return (<User>user).isTeacher();
     }
+    async search(username:string) : Promise<string>{
+        return await this.dbUserManager.search(username);
+    }
 }
 export{UserClient}

@@ -113,13 +113,7 @@
 	\subsection{Scopo del documento}
 	Lo scopo di questo documento è quello di illustrare le funzionalità che l'applicazione possiede e spiegarne l'utilizzo. Il documento subirà delle modifiche fino a quando lo sviluppo dell'applicazione non sarà completato.
 	\subsection{Scopo del prodotto}
-	Lo scopo del prodotto è creare una piattaforma collaborativa di raccolta dati su cui sia possibile predisporre e/o svolgere esercizi di analisi grammaticale. La raccolta vorrebbe avere il fine di fornire a sviluppatori e ricercatori dati sufficienti per applicare metodi di apprendimento automatico$^*$. Nello specifico si vorrebbe poter insegnare ad un elaboratore a svolgere gli stessi esercizi proposti agli utenti, divenendo una sorta di correttore automatico.  
-	Le componenti principali del prodotto saranno quindi:
-	\begin{itemize}
-		\item un'interfaccia web, su cui verranno predisposti e svolti gli esercizi;
-		\item un servizio esistente di database$^*$;
-		\item il servizio esistente open-source per il pos-tagging.
-	\end{itemize}
+	Lo scopo del prodotto è creare una piattaforma collaborativa di raccolta dati su cui sia possibile predisporre e/o svolgere esercizi di analisi grammaticale. La raccolta vorrebbe avere il fine di fornire a sviluppatori e ricercatori dati sufficienti per applicare metodi di apprendimento automatico$^*$. Nello specifico si vorrebbe poter insegnare ad un elaboratore a svolgere gli stessi esercizi proposti agli utenti, divenendo una sorta di correttore automatico.
 	
 	\subsection{Note esplicative}
 	Tutti i termini marcati con un * ad apice presenti nel seguente documento trovano una definizione
@@ -169,7 +163,6 @@
  
  \newpage
 	\section{Utilizzo}	
-	Colletta offre diverse funzionalità in base al tipo di utente che ha eseguito l'accesso. 
 	
 	\subsection{Registrazione}
 	Per registrarsi a Colletta seguire i seguenti passi:
@@ -188,33 +181,47 @@
 	\end{enumerate}
 
 	\subsection{Ricerca esercizio}
-		\begin{enumerate}
-		\item 
+	Per svolgere esercizi inseriti da insegnanti è necessario accedere alla pagina di ricerca (vedi Figura 1). In questa pagina è presente un elenco con tutti gli esercizi disponibili, inoltre è possibile filtrarli tramite una barra di ricerca.
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[scale=0.65]{images/ricerca.jpg}vf
+		\caption{Ricerca esercizio}
+	\end{figure}
+
+	\begin{enumerate}
+		\item Nella homepage cliccare su "Ricerca esercizio" nella navbar in alto;
+		\item Nella lista cliccare sulla frase che si desidera svolgere;
 	\end{enumerate}
 	
-	\subsection{Inserimento frase}	
+	\subsection{Inserimento frase}
+	Inserire una frase permette di eseguire un esercizio non presente nella piattaforma e ricevere la valutazione automatica quindi non inserita da un insegnante.	
 	\begin{enumerate}
-		\item Nella homepage inserire la frase nella barra di ricerca;
+		\item Nella homepage cliccare su "Inserisci frase" nella navbar in alto;
+		\item Inserire la frase desiderata nel campo;
 		\item Cliccare su "Svolgi esercizio";
-		\item Compilare i campi opportunamente;
-		\item Cliccare su "Invia".
+
 	\end{enumerate}
 	
 	\subsection{Svolgimento esercizio}
-	\begin{figure}[h]
+	\begin{figure}[h!]
 		\centering
-		\includegraphics[scale=0.65]{images/svolgimentoesercizio.jpg}
+		\includegraphics[scale=0.65]{images/svolgimento.jpg}
 		\caption{Svolgimento esercizio}
 	\end{figure}
 	\begin{enumerate}
-		\item Nella homepage inserire la frase nella barra di ricerca;
-		\item Nella lista dei suggerimenti selezionare "Esegui esercizio" corrispondente alla frase che si desidera svolgere;
+		\item Nella homepage ricercare o inserire una frase poi cliccare su "Esegui esercizio";
 		\item Compila i campi opportunamente;
-		\item Se hai eseguScegli nel menu a tendina l'autore della correzione;
+		\item Scegli nel menu a tendina l'autore della correzione;
 		\item Cliccare su "Invia".
 	\end{enumerate}
 
 	\subsection{Valutazione esercizio}
+		\begin{figure}[h!]
+		\centering
+		\includegraphics[scale=0.65]{images/valutazione.jpg}
+		\caption{Valutazione}
+	\end{figure}
 	
 	\subsection{Modificare il proprio profilo}
 	\begin{enumerate}
@@ -224,10 +231,7 @@
 		\item Cliccare su "Conferma".
 	\end{enumerate}
 	
-	\subsection{Visualizzare i propri progressi}
-	Questa funzionalità è riservata all'utente di tipo \textbf{Allievo}.
-	
-	\subsection{Assegnazione ad una classe}
+	\subsection{Visualizzare i progressi}
 	Questa funzionalità è riservata all'utente di tipo \textbf{Allievo}.
 	
 	\subsection{Svolgere esercizi assegnati}
@@ -244,12 +248,45 @@
 
 			
 	\subsection{Creare una classe}
-			Questa funzionalità è riservata all'utente di tipo \textbf{Insegnante}.
-	\subsection{Assegnare esercizi}
-			Questa funzionalità è riservata all'utente di tipo \textbf{Insegnante}.
+			Questa funzionalità è riservata all'utente di tipo \textbf{Insegnante}.\\
+			Una classe permette ad un insegnante di interagire direttamente con i propri allievi.
+				\begin{figure}[h!]
+				\centering
+				\includegraphics[scale=0.65]{images/classi.jpg}
+				\caption{Gestione delle classi}
+			\end{figure}
+					\begin{enumerate}
+			\item Accedere dal proprio profilo personale all'area dedicata alla gestione delle classi (vedi Figura);
+			\item Cliccare su "Aggiungi una nuova classe";
+			\item Compilare i campi dati richiesti;
+			\item Clicca su aggiungi;
+		\end{enumerate}
+	\subsection{Assegnare esercizi ad una classe}
+			Questa funzionalità è riservata all'utente di tipo \textbf{Insegnante}.\\
+			Assegnando esercizi ad una classe si permette agli allievi appartenti alla stessa di svolgere tali esercizi.
+			\begin{enumerate}
+				\item Accedere dal proprio profilo personale all'area dedicata alla gestione delle classi(vedi Figura);
+				\item Dall'elenco delle proprie classi (vedi Figura), cliccare sulla classe desiderata;
+				\item Cliccare su "Aggiungi esercizio".
+			\end{enumerate}
+		
+		\subsection{Assegnare allievo ad una classe}
+		Questa funzionalità è riservata all'utente di tipo \textbf{Insegnante}.\\
+		Assegnando un allievo ad una classe si permette all'allievo di essere valutato negli esercizi assegnati alla stessa classe.
+		\begin{enumerate}
+			\item Accedere dal proprio profilo personale all'area dedicata alla gestione delle classi(vedi Figura);
+			\item Dall'elenco delle proprie classi (vedi Figura), cliccare sulla classe desiderata;
+			\item Cliccare su "Aggiungi allievo".
+		\end{enumerate}
+	
+		\begin{figure}[h!]
+		\centering
+		\includegraphics[scale=0.65]{images/gestioneclasse.jpg}
+		\caption{Gestione della singola classe}
+	\end{figure}
 			
 	\subsection{Segnalazione abuso}
-	Nel caso in cui sia necessario segnalare un contenuto che ritieni non debba essere presente nella piattaforma seguire i seguenti passi:
+	Nel caso in cui sia necessario segnalare un contenuto che ritieni non debba essere presente nella piattaforma.
 	\begin{enumerate}
 		\item Ricerca frase da segnalare appartenente ad un esercizio;
 		\item clicca su "Segnala".

@@ -92,6 +92,7 @@
 		\rowcolor{LightBlue}
 		\color{white}\bfseries Versione & \color{white}\bfseries Data & \multicolumn{1}{c}{\color{white}\bfseries Autore}
 		& \color{white}\bfseries Ruolo & \multicolumn{1}{c}{\color{white}\bfseries Descrizione}\\[0.25cm]
+		2.0.2 & 2019-04-10 & Eleonora Peagno & Amministratore & Aggiornamento \S2.2.4.4 e \S2.2.5.2 \\ \hline
 		2.0.1 & 2019-03-18 & Giovanni Bergo \newline Giovanni Peron & Amministratore & Correzione errori RP \\ \hline
 		2.0.0 & 2019-03-05 & Gianmarco Pettenuzzo & Responsabile & Approvazione per il rilascio \\ \hline
 		1.1.0 & 2019-03-05 & Giovanni Bergo & Verificatore & Verifica documento \\ \hline
@@ -335,16 +336,18 @@ In caso di necessità verrà fornito supporto alla proponente MivoQ s.r.l. e l'a
 	
 	\paragraph{Linguaggi di codifica utilizzati:}
 	\begin{itemize}
-		\item Javascript: Node.js per la parte back-end e React per la parte dinamica del front-end
+		\item JavaScript: Node.js per la parte back-end e routing
 		\item HTML e CSS: per la struttura e la presentazione del front-end
 	\end{itemize}
 	
-	\paragraph{Uso di JSHint}
-	Al fine di evitare errori di stile del codice, in WebStorm dovrà essere abilitato JSHint, nel seguente modo: Settings | Languages \& Frameworks | JavaScript | Code Quality Tools | JSHint.
-	Prima di ogni file bisogna includere la seguente linea di codice:
-	\begin{lstlisting}[caption=Esempio inclusione JSHint]
-/*jshint esversion:6*/
-	\end{lstlisting}
+	\paragraph{Uso di TSLint}
+	Al fine di evitare errori di stile del codice, in WebStorm dovrà essere abilitato TSLint, nel seguente modo: Settings — Languages \& Frameworks — TypeScript — TSLint. Utilizzare il seguente comando per installare TSLint:
+	
+	\begin{minipage}{.5\textwidth}
+		\begin{lstlisting}[caption=Installazione di TSLint,numbers=none]
+			$ npm install tslint typescript
+		\end{lstlisting}
+	\end{minipage}		
 	
 	\paragraph{Lunghezza delle linee di codice} Le linee di codice non dovranno superare i 79 caratteri. In ogni caso l'IDE che abbiamo scelto mette a disposizione una linea limite da non superare.
 	
@@ -425,9 +428,23 @@ In caso di necessità verrà fornito supporto alla proponente MivoQ s.r.l. e l'a
 		\item JSHint
 	\end{itemize}
 
-	\paragraph{JSDoc}
-\noindent \\
-	Per la generazione automatica della documentazione in stile JavaDoc, sarà usato il software JSDoc.
+	\paragraph{TypeDoc}
+	\noindent \\
+	Per la generazione automatica della documentazione in stile JavaDoc, è stato utilizzato il software TypeDoc. Per essere utilizzato TypeDoc necessita di essere installato tramite npm nel vostro sistema. Al fine di effettuare tale operazione utilizzare il seguente comando:
+	
+	\begin{minipage}{.5\textwidth}
+		\begin{lstlisting}[caption=Installazione di TypeDoc,numbers=none]
+			$ npm install --global typedoc
+		\end{lstlisting}
+	\end{minipage}		
+	
+	Per utilizzare TypeDoc e produrre la documentazione automatica basata sui commenti introdotti nel sorgente prodotto, è necessario invocare il seguente comando dalla cartella principale dell’applicazione:
+	
+	\begin{minipage}{.5\textwidth}
+		\begin{lstlisting}[caption=Installazione di TSLint,numbers=none]
+			$ typedoc -- out docs ./ src
+		\end{lstlisting}
+	\end{minipage}		
 	
 	
 		\section{Processi di Supporto}
@@ -790,14 +807,9 @@ In caso di necessità verrà fornito supporto alla proponente MivoQ s.r.l. e l'a
 	Son stati scelti per la verifica \textit{Mocha} e la libreria \textit{Chai}. 
 	\paragraph{Analisi statica locale\\}
 	Viene utilizzato \textit{Total Validator} per la validazione del codice HTML5 e CSS3. \\
-	Come strumento per la validazione dello stile del codice JavaScript viene utilizzato \textit{JSHint}. \\
-	Inoltre, si utilizzerà \textit{SonarQube} per analizzare staticamente il codice Javascript da eventuali bug.
+	Come strumento per la validazione dello stile del codice TypeScript viene utilizzato \textit{TSLint}. \\
+	Inoltre, si utilizzerà \textit{Istanbul} per analizzare staticamente il codice TypeScript da eventuali bug.
 	
-	\paragraph{Analisi statica remota\\}
-	%TODO%
-	Per il tracking di bug e vulnerabilità del codice JavaScript remoti si utilizzerà \textit{SonarCloud}.
-	
-			
 	\subsection{Validazione}
 	\subsubsection{Denominazione test}
 	Volendo associare un identificatore univoco per ogni test menzionato, si \`e deciso di utilizzare il seguente formato:
@@ -806,7 +818,6 @@ In caso di necessità verrà fornito supporto alla proponente MivoQ s.r.l. e l'a
 	\end{center}
 	dove:
 	\begin{itemize}
-		
 		\item il campo “\textbf{Tipo}” può assumere uno dei seguenti valori:
 		\begin{itemize}
 			\item \textbf{S}: definisce un test di sistema, ovvero un test per la verifica$^*$ del comportamento dell'intero sistema;

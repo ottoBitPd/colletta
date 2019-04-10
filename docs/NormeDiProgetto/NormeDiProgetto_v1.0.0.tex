@@ -341,12 +341,9 @@ In caso di necessità verrà fornito supporto alla proponente MivoQ s.r.l. e l'a
 		\item HTML e CSS: per la struttura e la presentazione del front-end
 	\end{itemize}
 	
-	\paragraph{Uso di JSHint}
-	Al fine di evitare errori di stile del codice, in WebStorm dovrà essere abilitato JSHint, nel seguente modo: Settings | Languages \& Frameworks | JavaScript | Code Quality Tools | JSHint.
-	Prima di ogni file bisogna includere la seguente linea di codice:
-	\begin{lstlisting}[caption=inclusione JSHint]
-/*jshint esversion:6*/
-	\end{lstlisting}
+	\paragraph{Uso di TSLint}
+	Al fine di evitare errori di stile del codice, in WebStorm dovrà essere abilitato TSLint, nel seguente modo: Settings | Languages \& Frameworks | TypeScript | TSLint.
+	Per fare in modo che TSLint funzioni correttamente è necessario configurarlo utilizzando il file tsconfig.json presente all'interno della cartella principale del sorgente dell'applicazione. È possibile quindi settare l'impostazione ``Configutation file'' su Automated search o specificare manualmente il percorso del file appena citato.
 	
 	\paragraph{Lunghezza delle linee di codice} Le linee di codice non dovranno superare i 79 caratteri. In ogni caso l'IDE che abbiamo scelto mette a disposizione una linea limite da non superare.
 	
@@ -466,7 +463,7 @@ In caso di necessità verrà fornito supporto alla proponente MivoQ s.r.l. e l'a
 	L'editor offre varie funzionalità, tra cui:
 	\begin{itemize}
 		\item Node.js Debugger
-		\item JSHint
+		\item TSLint
 	\end{itemize}
 
 	\paragraph{JSDoc\\}
@@ -868,7 +865,7 @@ Ogni commit deve essere accompagnato da una sensata descrizione, che permetta fa
 	Son stati scelti per la verifica \textit{Mocha} e la libreria \textit{Chai}. 
 	\paragraph{Analisi statica locale\\}
 	Viene utilizzato \textit{Total Validator} per la validazione del codice HTML5 e CSS3. \\
-	Come strumento per la validazione dello stile del codice JavaScript viene utilizzato \textit{JSHint}. \\
+	Come strumento per la validazione dello stile del codice JavaScript viene utilizzato \textit{TSLint}. \\
 	Inoltre, si utilizzerà \textit{SonarQube} per analizzare staticamente il codice Javascript da eventuali bug.
 	
 	\paragraph{Analisi statica remota\\}

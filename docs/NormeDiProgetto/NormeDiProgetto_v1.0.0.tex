@@ -825,17 +825,15 @@ In caso di necessità verrà fornito supporto alla proponente MivoQ s.r.l. e l'a
 			\item \textbf{I}: definisce un test di integrazione, ovvero un test per verificare la corretta integrazione tra più componenti del sistema;
 			\item \textbf{U}: definisce un test di unità, ovvero un test per la verifica del più piccolo componente del sistema;
 		\end{itemize}
-	\item il campo “\textbf{Priorità}” può assumere uno dei seguenti valori, nel caso in cui il test sia di sistema o validazione:
+		\item il campo “\textbf{Priorità}” può assumere uno dei seguenti valori, nel caso in cui il test sia di sistema o validazione:
+			\begin{itemize}
+				\item \textbf{RO}: indica un test per verificare un requisito obbligatorio, irrinunciabile per il committente;
+				\item \textbf{RD}: indica un test per verificare un requisito desiderabile ma non strettamente necessario;
+				\item \textbf{RP}: indica un test per verificare un requisito opzionale, che potrebbe venir soddisfatto o meno senza che il prodotto risulti mancante di funzionalità essenziali.
+			\end{itemize}
+			Nel caso il test sia di integrazione o unità, il campo priorità sarà omesso.
 		\item il campo “\textbf{Codice}” assumerà un valore numerico intero positivo, univoco ed incrementale.
 	\end{itemize}
-\begin{itemize}
-	
-	\item \textbf{RO}: indica un test per verificare un requisito obbligatorio, irrinunciabile per il committente;
-	\item \textbf{RD}: indica un test per verificare un requisito desiderabile ma non strettamente necessario;
-	\item \textbf{RP}: indica un test per verificare un requisito opzionale, che potrebbe venir soddisfatto o meno senza che il prodotto risulti mancante di funzionalità essenziali.
-\end{itemize}
-Altrimenti nel caso il test sia di integrazione o unità il campo priorità sarà omesso.
-\\
 	
 	\section{Processi organizzativi}
 	

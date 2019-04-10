@@ -52,29 +52,23 @@ Scaricate Node.js versione 8.15 o superiore dal sito ufficiale di seguito riport
 Recatevi all' interno della sottocartella /code contenuta nella cartella principale dell'applicazione precedentemente scaricata. Utilizzando una shell eseguite il seguente comando per scaricare ed installare le librerie necessarie all'esecuzione dell'applicazione in locale.
 
 \begin{center}
-	\noindent\fcolorbox{lightgray}{lightgray}{
-		\begin{minipage}{0.5\textwidth}
-			\vspace{3pt}
-			\small
-			\texttt{npm install}
-			\vspace{1pt}
-		\end{minipage}
-	}
+	\begin{minipage}{0.5\textwidth}
+		\begin{lstlisting}[caption=Installazione per l'analisi statica,numbers=none]
+			$ npm install
+		\end{lstlisting}
+	\end{minipage}
 \end{center}
 
 	\item \textbf{Eseguire il server in locale:}\\
 Aprite una finestra di comando nela cartella principale dell'applicazione e usate i seguenti comandi per eseguire il server in locale.
 
 \begin{center}
-	\noindent\fcolorbox{lightgray}{lightgray}{
-		\begin{minipage}{0.5\textwidth}
-			\vspace{3pt}
-			\small
-			\texttt{npm run build}\\
-			\texttt{node public/index.js}
-			\vspace{1pt}
-		\end{minipage}
-	}
+	\begin{minipage}{0.5\textwidth}
+		\begin{lstlisting}[caption=Avvio della piattaforma,numbers=none]	
+			$ npm run build
+			$ node public/index.js
+		\end{lstlisting}
+	\end{minipage}
 \end{center}
 
 \end{itemize}

@@ -2,17 +2,24 @@
  * PageView is an abstract class that represents the view
  * for all the application pages
  */
+enum UserKind {
+    user=0,
+    student= 1,
+    teacher=2
+}
+
 abstract class PageView {
     protected title : any;
     protected menuList: any;
+    protected userKind : UserKind;
     /**
      * PageView is an abstract class and it cannot have objects
      */
     constructor(){
         this.menuList = null;
         this.title = null;
+        this.userKind = 0;
     }
-
 
     setTitle(value: any) {
         this.title = value;
@@ -21,6 +28,15 @@ abstract class PageView {
     setMenuList(value: any) {
         this.menuList = value;
     }
+
+    setUserKind(usr : UserKind) {
+        this.userKind = usr;
+    }
+
+    getUserKind() : UserKind{
+        return this.userKind;
+    }
+
     getHead(style? : string) : string {
         let ret = "<!DOCTYPE html>" +
         "<html lang=\"it\">\n" +
@@ -52,3 +68,4 @@ abstract class PageView {
 
 }
 export {PageView};
+export {UserKind};

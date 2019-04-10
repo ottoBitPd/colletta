@@ -1,4 +1,4 @@
-import {PageView} from "./PageView";
+import {PageView, UserKind} from "./PageView";
 import {ExercisePresenter} from "../presenter/ExercisePresenter";
 
 class ExerciseView extends PageView{
@@ -32,7 +32,6 @@ class ExerciseView extends PageView{
     }
 
     getPage() {
-
         const words = this.sentence.split(" ");
         let ret = this.getHead(this.buildCss(words));
         ret +=this.getMenu();
@@ -84,7 +83,7 @@ class ExerciseView extends PageView{
                 "<div class='col-sm-4'>" +
                 "FRASE" +
                 "</div>";
-            if(this.posTranslation) {
+            if(this.userKind === UserKind.teacher) {
                 table +=""+
                 "<div class='col-sm-4'>" +
                 "CORREZIONE AUTOGENERATA" +
@@ -102,7 +101,7 @@ class ExerciseView extends PageView{
                     "<div class='col-sm-4'>" +
                         words[i] +
                     "</div>";
-                if(this.posTranslation) {
+                if(this.userKind === UserKind.teacher) {
                 table += "" +
                     "<div class='col-sm-4'>" +
                         this.posTranslation[i] +

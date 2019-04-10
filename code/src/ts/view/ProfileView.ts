@@ -1,4 +1,4 @@
-import {PageView} from "./PageView";
+import {PageView, UserKind} from "./PageView";
 import {ProfilePresenter} from "../presenter/ProfilePresenter";
 
 class ProfileView extends PageView{
@@ -15,7 +15,10 @@ class ProfileView extends PageView{
             ret +=this.getMenu();
         ret +="<div class=\"container\">" +
             "<p>Benvenuto nel tuo profilo</p>" +
-            "<a href='/insert'>Inserisci un esercizio</a>" +
+            "<form method='post' action='/exercise"+(this.userKind === UserKind.teacher ? "/insert" : "")+"'>" +
+            "   <input type='text' name='sentence'/>" +
+            "   <button type='submit'>Aggiungi esercizio</button>" +
+            "</form>" +
             "</div>";
             ret+=this.getFoot("");
             return ret;

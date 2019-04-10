@@ -1,12 +1,13 @@
 import {PagePresenter} from "./PagePresenter"
 import {Client} from "../model/Client/Client";
 import * as fileSystem from "fs";
+import {PageView, UserKind} from "../view/PageView";
 
 var session = require('express-session');
 
 class ExercisePresenter extends PagePresenter{
 
-    constructor(view : any){
+    constructor(view : PageView){
         super(view);
         this.client =(new Client.builder()).buildExerciseClient().buildUserClient().build();
     }
@@ -14,44 +15,43 @@ class ExercisePresenter extends PagePresenter{
     update(app : any){
         this.listenExercise(app);
         this.saveExercise(app);
+        this.insertExercise(app);
     }
 
-
+    private insertExercise(app : any) : void {
+        app.post('/exercise/insert', async (request: any, response: any) => {
+            let exerciseClient = this.client.getExerciseClient();
+            if (exerciseClient) {
+                //sending the sentence to hunpos which will provide a solution
+                var posSolution = await exerciseClient.autosolve(request.body.sentence, "authorIdValue");
+                //creation of the array containing tags provided from hunpos solution
+                var posTags = this.extractTags(posSolution);
+                //converting tags to italian
+                var posTranslation = this.translateTags(posTags);
+                //console.log("view: "+JSON.stringify(this.view));
+                this.view.setSentence(request.body.sentence);
+                this.view.setPosTranslation(posTranslation);
+                this.view.setPosTags(posTags);
+                this.view.setUserKind(UserKind.teacher);
+                response.send(this.view.getPage());
+            }
+        });
+    }
 
     private listenExercise(app :any) : void {
         app.post('/exercise', async (request: any, response: any) => {
             let exerciseClient = this.client.getExerciseClient();
-            let userClient = this.client.getUserClient();
-            if(exerciseClient && userClient){
-                //console.log("session.username: ", session.username);
-                if(session.username!== undefined && await userClient.isTeacher(session.username)) {
-                    console.log("sono passato, sei un insegnante");
-                    //sending the sentence to hunpos which will provide a solution
-                    var posSolution = await exerciseClient.autosolve(request.body.sentence, "authorIdValue");
-                    //creation of the array containing tags provided from hunpos solution
-                    var posTags = this.extractTags(posSolution);
-                    //converting tags to italian
-                    var posTranslation = this.translateTags(posTags);
-                    //console.log("view: "+JSON.stringify(this.view));
-                    this.view.setSentence(request.body.sentence);
-                    this.view.setPosTranslation(posTranslation);
-                    this.view.setPosTags(posTags);
-                }
-                else if(session.username!== undefined && !(await userClient.isTeacher(session.username))){
+            if(exerciseClient){
+                // console.log("key arrivata: ",request.body.sentence);
+                this.view.setSentence(request.body.sentence);
+                this.view.setPosTranslation(null);
+                if(session.username !== undefined){
+                    //const sentence = await exerciseClient.getSentence(request.body.sentence);
                     //console.log("niente hunpos, non sei un insegnante");
-                    console.log("key arrivata: ",request.body.key);
-                    const sentence = await exerciseClient.getSentence(request.body.key);
-                    this.view.setSentence(sentence);
-                    this.view.setPosTranslation(null);
-                    //console.log("solutions: ", await exerciseClient.searchSolution(sentence));
-                    //let solutions = await exerciseClient.searchSolution(sentence);
-                    //TODO sono arrivato al punto che bisogna mettere apposto ExerciseView in modo che se non è un
-                    // insegnante mostri che soluzione selezionare
-                }
-                else{
+                    this.view.setUserKind(UserKind.student);
+                } else {
                     //not logged
-                    this.view.setSentence(request.body.sentence);
-                    this.view.setPosTranslation(null);
+                    this.view.setUserKind(UserKind.user);
                 }
                 response.send(this.view.getPage());
             }
@@ -63,7 +63,7 @@ class ExercisePresenter extends PagePresenter{
             let exerciseClient = this.client.getExerciseClient();
             let userClient = this.client.getUserClient();
             if(exerciseClient && userClient){
-                if(session.username!== undefined && await userClient.isTeacher(session.username)) {
+                if(session.username!== undefined && this.view.getUserKind() === UserKind.teacher) {
                     //console.log("post: ",request.body);
                     var words = exerciseClient.getSplitSentence(request.body.sentence);
                     var wordsnumber = words.length;
@@ -72,16 +72,16 @@ class ExercisePresenter extends PagePresenter{
                     //building a array merging tags coming from user corrections and hunpos solution
                     var finalTags = this.correctsPOS(hunposTags, tagsCorrection);
                     //console.log("finalTags: "+finalTags);
-                    //TODO recuperare il solverId per salvarlo nel db
                     //const solverId = userClient.getUserId(session.username)
+                    let ID = await userClient.search(session.username);
                     let solution = {
-                        0: "solverID",
+                        0: ID,
                         1: finalTags,
                         2: this.splitTopics(request.body.topics),
                         3: request.body.difficulty
                     };
                     let valutation = {
-                        0: "teacherIdValue",
+                        0: ID,
                         1: 10
                     };
                     exerciseClient.insertExercise(request.body.sentence, "sessionAuthorId", solution, valutation);
@@ -91,10 +91,41 @@ class ExercisePresenter extends PagePresenter{
                     //saving in the database the final solution for the exercise
                     //this.model.writeSolution(sentence.split(" "), finalTags, sentence, key);
                 }
-                else{
-                    //it is not teacher
+                else if (session.username !== undefined && this.view.getUserKind() === UserKind.student){
+                    let words = exerciseClient.getSplitSentence(request.body.sentence);
+                    let wordsnumber = words.length;
+                    let ID = await userClient.search(session.username);
+                    let solution = {
+                        0: ID,
+                        1: this.correctionToTags(wordsnumber,words),
+                        2: this.splitTopics(request.body.topics),
+                        3: request.body.difficulty
+                    };
+                    let valutation = {
+                        0: ID, //TODO:inserire tendina correzioni
+                        1: 0
+                    };
+                    exerciseClient.insertExercise(request.body.sentence, "sessionAuthorId", solution, valutation);
+                } else {
+                    let words = exerciseClient.getSplitSentence(request.body.sentence);
+                    console.log(words);
+                    let wordsnumber = words.length;
+                    let solution = {
+                        0: undefined,
+                        1: this.correctionToTags(wordsnumber,request.body),
+                        2: this.splitTopics(request.body.topics),
+                        3: request.body.difficulty
+                    };
+                    let valutation = {
+                        0: "teacherIdValue",
+                        1: 0
+                    };
+
+                    console.log(solution);
+                    console.log(valutation);
                 }
-                response.send(this.view.getPage());
+                //
+                response.redirect('/home');
             }
         });
     }
@@ -227,20 +258,25 @@ class ExercisePresenter extends PagePresenter{
     /**
      * method used by the View to understand if the login is valid
      */
-    async whois() : boolean {
-        let exerciseClient = this.client.getExerciseClient();
+    async loggedTeacher() : Promise<boolean> {
         let userClient = this.client.getUserClient();
-        if(exerciseClient && userClient){
-            if(session.username!== undefined && await userClient.isTeacher(session.username)) {
-                return "teacher";
-            }
-            else if(session.username!== undefined){
-                return "student";
-            }
-            else{
-                return "user";
+        if(userClient){
+            if(session.username !== undefined && await userClient.isTeacher(session.username)) {
+                return true;
             }
         }
+        return false;
     }
+
+    async loggedStudent() : Promise<boolean> {
+        let userClient = this.client.getUserClient();
+        if(userClient){
+            if(session.username !== undefined && !(await userClient.isTeacher(session.username))) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }
 export {ExercisePresenter};

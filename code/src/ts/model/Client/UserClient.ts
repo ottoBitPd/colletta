@@ -40,14 +40,19 @@ class UserClient{
         }
 
     }
-    async isTeacher(username:string) : Promise<boolean>{
+
+    async isTeacher(username:string) : Promise<boolean> {
         const id = await this.dbUserManager.search(username);
         const user = await this.dbUserManager.read(id);
         console.log((<User>user));
         console.log((<User>user).getUsername());
-        return (<User>user).isTeacher();
+        if (user !== undefined)
+            return (<User>user).isTeacher();
+        else
+            return false;
     }
-    async search(username:string) : Promise<string>{
+
+    async search(username:string) : Promise<string> {
         return await this.dbUserManager.search(username);
     }
 }

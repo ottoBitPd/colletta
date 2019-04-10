@@ -12,7 +12,6 @@ class AuthenticationPresenter extends PagePresenter {
     }
 
     update(app: any) {
-        //autenticazione
         app.get('/logout', (request: any, response: any) => {
             console.log("LOGOUT");
             //TODO trovarle e cancellarle tutte

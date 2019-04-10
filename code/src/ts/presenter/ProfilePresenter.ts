@@ -1,7 +1,8 @@
 import {PagePresenter} from "./PagePresenter"
 import {Client} from "../model/Client/Client";
+import {UserKind} from "../view/PageView";
 
-//var session = require('express-session');
+var session = require('express-session');
 
 class ProfilePresenter extends PagePresenter{
     //private classClient : ClassClient | undefined;
@@ -13,7 +14,7 @@ class ProfilePresenter extends PagePresenter{
 
     update(app : any){
 
-        app.get('/profile', (request: any, response: any) => {
+        app.get('/profile', async (request: any, response: any) => {
             //session.invalidLogin = request.query.mess==="invalidLogin";
 
             //this.view.setMainList("Login avvenuto con successo sei nel tuo profilo"+session.username);
@@ -25,6 +26,17 @@ class ProfilePresenter extends PagePresenter{
             }
             this.view.setMenuList(menuList);
             //this.viewProfile.setMainList(["class1","class2","class3","class4","class5","class6","class7","class8"]);
+            let userClient = this.client.getUserClient();
+            if (userClient){
+                if (await userClient.isTeacher(session.username)){
+                    console.log("teacher");
+                    this.view.setUserKind(UserKind.teacher);
+                } else {
+                    console.log("student");
+                    this.view.setUserKind(UserKind.student);
+                }
+            }
+
             response.send(this.view.getPage());
         });
 

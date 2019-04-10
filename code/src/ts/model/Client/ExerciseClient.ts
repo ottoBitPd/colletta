@@ -83,6 +83,7 @@ class ExerciseClient{
 
     public async getSentence(id: string): Promise<string> {
         var exercise : Data = await this.dbExerciseManager.read(id);
+        console.log(exercise);
         return (<Exercise>exercise).getSentence();
     }
 }

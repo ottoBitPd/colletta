@@ -224,23 +224,5 @@ class ExercisePresenter extends PagePresenter{
     private splitTopics(topics : string) : string[]{
         return topics.split(" ");
     }
-    /**
-     * method used by the View to understand if the login is valid
-     */
-    async whois() : boolean {
-        let exerciseClient = this.client.getExerciseClient();
-        let userClient = this.client.getUserClient();
-        if(exerciseClient && userClient){
-            if(session.username!== undefined && await userClient.isTeacher(session.username)) {
-                return "teacher";
-            }
-            else if(session.username!== undefined){
-                return "student";
-            }
-            else{
-                return "user";
-            }
-        }
-    }
 }
 export {ExercisePresenter};

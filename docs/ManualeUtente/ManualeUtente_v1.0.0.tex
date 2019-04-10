@@ -170,72 +170,100 @@
 	\item Nella homepage cliccare su "Registrati";
 	\item Scegliere se registrarsi come allievo oppure come insegnante;
 	\item Compilare i campi richiesti;
-	\item Se è stata scelta l'opzione allievo cliccare su "Invia dati" e la registrazione è conclusa.
-	\item Se è stata scelta la registrazione come insegnante cliccare su "Invia dati" e attendere che un moderatore accetti la richiesta.
+	\item Se è stata scelta l'opzione allievo cliccare su "Registrati" e la registrazione è conclusa.
+	\item Se è stata scelta la registrazione come insegnante cliccare su "Registrati" e attendere che un moderatore accetti la richiesta.
 	\end{enumerate}
 
 	\subsection{Autenticazione}
 	\begin{enumerate}
 		\item Compilare con le credenziali username e password i campi nella pagina homepage;
-		\item Cliccare su "Login".
+		\item Cliccare su "Accedi".
+	\end{enumerate}
+
+	\begin{figure}[h]
+		\centering
+		\includegraphics[scale=0.65]{images/home.jpg}
+		\caption{Homepage}
+	\end{figure}
+
+	\subsection{Inserimento frase}
+	Inserire una frase permette di eseguire un esercizio non presente nella piattaforma e ricevere la valutazione automatica quindi non inserita da un insegnante.	
+	\begin{enumerate}
+		\item Nell'homepage inserire la frase desiderata nella barra;
+		\item Cliccare su "Invia";
+		
 	\end{enumerate}
 
 	\subsection{Ricerca esercizio}
-	Per svolgere esercizi inseriti da insegnanti è necessario accedere alla pagina di ricerca (vedi Figura 1). In questa pagina è presente un elenco con tutti gli esercizi disponibili, inoltre è possibile filtrarli tramite una barra di ricerca.
+	Per svolgere esercizi inseriti da insegnanti è necessario accedere alla pagina di ricerca (vedi Figura 2). In questa pagina è presente un elenco con tutti gli esercizi disponibili, inoltre è possibile filtrarli tramite una barra di ricerca.
 	
 	\begin{figure}[h]
 		\centering
-		\includegraphics[scale=0.65]{images/ricerca.jpg}vf
+		\includegraphics[scale=0.65]{images/ricerca.jpg}
 		\caption{Ricerca esercizio}
 	\end{figure}
 
 	\begin{enumerate}
 		\item Nella homepage cliccare su "Ricerca esercizio" nella navbar in alto;
-		\item Nella lista cliccare sulla frase che si desidera svolgere;
-	\end{enumerate}
-	
-	\subsection{Inserimento frase}
-	Inserire una frase permette di eseguire un esercizio non presente nella piattaforma e ricevere la valutazione automatica quindi non inserita da un insegnante.	
-	\begin{enumerate}
-		\item Nella homepage cliccare su "Inserisci frase" nella navbar in alto;
-		\item Inserire la frase desiderata nel campo;
-		\item Cliccare su "Svolgi esercizio";
-
+		\item Filtrare la frase tramite l'apposita barra;
+		\item Nella lista cliccare sul bottone "Esegui esercizio" corrispondente alla frase che si desidera svolgere.
 	\end{enumerate}
 	
 	\subsection{Svolgimento esercizio}
-	\begin{figure}[h!]
+	\begin{enumerate}
+		\item Nella homepage ricercare o inserire una frase poi cliccare su "Esegui esercizio";
+		\item Compilare i campi opportunamente;
+		\item Scegliere nel menu a tendina l'autore della correzione;
+		\item Cliccare su "Invia".
+	\end{enumerate}
+
+	\begin{figure}[h]
 		\centering
 		\includegraphics[scale=0.65]{images/svolgimento.jpg}
 		\caption{Svolgimento esercizio}
 	\end{figure}
-	\begin{enumerate}
-		\item Nella homepage ricercare o inserire una frase poi cliccare su "Esegui esercizio";
-		\item Compila i campi opportunamente;
-		\item Scegli nel menu a tendina l'autore della correzione;
-		\item Cliccare su "Invia".
-	\end{enumerate}
 
 	\subsection{Valutazione esercizio}
+	Al termine dell'esercizio vengono evidenziati eventuali errori in rosso e in verde le soluzioni esatte.
 		\begin{figure}[h!]
 		\centering
 		\includegraphics[scale=0.65]{images/valutazione.jpg}
 		\caption{Valutazione}
 	\end{figure}
 	
-	\subsection{Modificare il proprio profilo}
+	\subsection{Visualizzare il proprio profilo}
+	Sia gli allievi che gli insegnanti hanno la possi
 	\begin{enumerate}
-		\item Effettuare l'accesso alla piattaforma;
-		\item Cliccare sull'username in alto a sinistra;
-		\item Da qui modificare i campi di interesse;
-		\item Cliccare su "Conferma".
+		\item Cliccare sull'icona del profilo in alto a destra;
+		\item Si visualizzano le informazioni del proprio profilo con la possibilità di modificarne i campi.
 	\end{enumerate}
+
+	\begin{figure}[h]
+		\centering
+		\includegraphics[scale=0.65]{images/profiloinsegnante.jpg}
+		\caption{Profilo insegnante}
+	\end{figure}
+	
 	
 	\subsection{Visualizzare i progressi}
-	Questa funzionalità è riservata all'utente di tipo \textbf{Allievo}.
+	Questa funzionalità è riservata all'utente di tipo \textbf{Allievo}.\\
+	In questa pagina sono rappresentati i progressi dell'alunno ricavati dagli esercizi svolti suddivisi per settimana.
 	
+	\begin{enumerate}
+		\item Accedere al proprio profilo;
+		\item Cliccare su "I tuoi progressi";
+		
+		\begin{figure}[h]
+		\centering
+		\includegraphics[scale=0.65]{images/progressi.jpg}
+		\caption{Progressi alunno}
+	\end{figure}
+	
+	\end{enumerate}
 	\subsection{Svolgere esercizi assegnati}
 	Questa funzionalità è riservata all'utente di tipo \textbf{Allievo}.
+	
+	Questa sezione verrà implementata successivamente.
 		
 	\subsection{Inserire una frase e fornire una soluzione}
 			Questa funzionalità è riservata all'utente di tipo \textbf{Insegnante}.
@@ -293,10 +321,28 @@
 	\end{enumerate}
 		
 	\subsection{Verificare la richiesta di insegnante}
-			Questa funzionalità è riservata all'utente di tipo \textbf{Moderatore}.
+			Questa funzionalità è riservata all'utente di tipo \textbf{Moderatore}.\\
+			Questa sezione verrà implementata successivamente.
 			
 	\subsection{Eliminare esercizi e utenti}
-			Questa funzionalità è riservata all'utente di tipo \textbf{Moderatore}.
+			Questa funzionalità è riservata all'utente di tipo \textbf{Moderatore}.\\
+			Questa sezione verrà implementata successivamente.
+	
+	\subsection{Creare modello}
+				Questa funzionalità è riservata all'utente di tipo \textbf{Sviluppatore}.\\
+				Questa sezione verrà implementata successivamente.
+	\subsection{Cambiare modello}
+				Questa funzionalità è riservata all'utente di tipo \textbf{Sviluppatore}.\\
+				Questa sezione verrà implementata successivamente.
+	\subsection{Scaricare modello}
+				Questa funzionalità è riservata all'utente di tipo \textbf{Sviluppatore}.\\
+				Questa sezione verrà implementata successivamente.
+	\subsection{Scaricare dati}
+				Questa funzionalità è riservata all'utente di tipo \textbf{Sviluppatore}.\\
+				Questa sezione verrà implementata successivamente.
+	\subsection{Scaricare dataset}
+				Questa funzionalità è riservata all'utente di tipo \textbf{Sviluppatore}.\\
+				Questa sezione verrà implementata successivamente.
 \newpage
 
 	

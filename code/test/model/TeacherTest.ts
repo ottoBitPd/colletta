@@ -6,60 +6,60 @@ import {Class} from "../../src/ts/model/Data/Class";
 
 
 
-describe('#getMethods', function() {
+describe('Teacher', function() {
 
     let learn = new Teacher("1","Bortolone", "ciao", "Michele", "Bortone", "Scorze", "Venezia", "A110");
 
-    context('StudentTest.getUsername()', function () {
+    describe('Teacher.getUsername()', function () {
         it('should return the username', function () {
             expect(learn.getUsername()).to.equal("Bortolone");
         });
     });
 
-    context('StudentTest.getName()', function () {
+    describe('Teacher.getName()', function () {
         it('should return the username', function () {
             expect(learn.getName()).to.equal("Michele");
         });
     });
 
-    context('StudentTest.getLastName()', function () {
+    describe('Teacher.getLastName()', function () {
         it('should return the last name', function () {
             expect(learn.getLastName()).to.equal("Bortone");
         });
     });
 
-    context('StudentTest.getCity()', function () {
+    describe('Teacher.getCity()', function () {
         it('should return the city', function () {
             expect(learn.getCity()).to.equal("Scorze");
         });
     });
 
-    context('StudentTest.getSchool()', function () {
+    describe('Teacher.getSchool()', function () {
         it('should return the school', function () {
             expect(learn.getSchool()).to.equal("Venezia");
         });
     });
 
-    context('StudentTest.getPassword()', function () {
+    describe('Teacher.getPassword()', function () {
         it('should return the password', function () {
             expect(learn.getPassword()).to.equal("ciao");
         });
     });
 
-    context('StudentTest.getINPS()', function () {
+    describe('Teacher.getINPS()', function () {
         it('should return the code inps', function () {
             expect(learn.getINPS()).to.equal("A110");
         });
     });
 
-    context('StudentTest.isTeacher()', function () {
+    describe('Teacher.isTeacher()', function () {
         it('should return is teacher', function () {
 
             expect(learn.isTeacher()).to.equal(true);
         });
     });
 
-    context('StudentTest.getClasses()', function () {
+    describe('Teacher.getClasses()', function () {
         it('should return classes', function () {
 
             var teacher1=new Teacher("1","Bortolone", "ciao", "Michele", "Bortone", "Scorze", "Venezia", "A110");

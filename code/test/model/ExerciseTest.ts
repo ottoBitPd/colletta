@@ -1,156 +1,212 @@
-/*import {Exercise} from '../../src/ts/model/Exercise';
+import {Exercise} from '../../src/ts/model/Data/Exercise';
 import {expect} from 'chai';
-//import {assert} from 'chai';
-//import {HunposManager} from "../../src/ts/model/HunposManager";
 import 'mocha';
-import {FirebaseExerciseManager} from "../../src/ts/model/FirebaseExerciseManager";
+import {HunposManager} from "../../src/ts/model/POSManager/HunposManager";
+import {Solution} from "../../src/ts/model/Data/Solution";
 
-describe('getKey()', function () {
-    context("default key", function () {
-        it('should return the key\'s default value', function() {
-            const obj=new Exercise("sentence", "authorIdValue");
+describe('Exercise', function() {
+    let exercise : Exercise;
+    beforeEach(function () {
+        exercise = new Exercise("This is an example", "xxxxx");
+    });
+
+    describe('Exercise.getKey()', function () {
+        it('should return the key\'s default value', function () {
+            const obj = new Exercise("sentence", "authorIdValue");
             expect(obj.getKey()).to.equal("-1");
         });
     });
 
-    context("set a new key\'s value", function () {
-        it('should return the key\'s set value', function() {
-            const obj=new Exercise("sentence", "authorIdValue");
-            obj.setKey("key");
-            expect(obj.getKey()).to.equal("key");
-        });
-    });
-
-    context("read a database's exercise's key", function () {
-       it("should return the database's key" , async function () {
-           let objDb=new FirebaseExerciseManager();
-           let objKey= await objDb.search("sentence");
-           let obj=await objDb.read(objKey);
-           expect(obj.getKey()).to.equal(objKey);
-       })
-    })
-});
-
-describe('getSentence()', function () {
-    context("input sentence", function () {
+    /* //TODO: inserire nei test di integrazione
+        context("read a database's exercise's key", function () {
+           it("should return the database's key" , async function () {
+               let objDb=new FirebaseExerciseManager();
+               let objKey= await objDb.search("sentence");
+               let obj=await objDb.read(objKey);
+               expect(obj.getKey()).to.equal(objKey);
+           })
+        })
+    */
+    describe('Exercise.getSentence()', function () {
         it('should return the sentence', function() {
-            const obj=new Exercise("sentence", "authorIdValue");
-            expect(obj.getSentence()).to.equal("sentence");
+            expect(exercise.getSentence()).to.equal("This is an example");
         });
-    });
-
-    context("read a database's exercise's sentence", function () {
-        it("should return the database's sentence" , async function () {
-            let objDb=new FirebaseExerciseManager();
-            let objKey= await objDb.search("sentence");
-            let obj=await objDb.read(objKey);
-            expect(obj.getSentence()).to.equal("sentence");
+        /* //TODO:inserire nei test di integrazione
+        context("read a database's exercise's sentence", function () {
+            it("should return the database's sentence" , async function () {
+                let objDb=new FirebaseExerciseManager();
+                let objKey= await objDb.search("sentence");
+                let obj=await objDb.read(objKey);
+                expect(obj.getSentence()).to.equal("sentence");
+            })
         })
-    })
-});
-
-describe('getAuthorId()', function () {
-    context('input AuthorID', function() {
-        it('should return the authorID', function() {
-            const obj=new Exercise("sentence", "authorIdValue");
-            expect(obj.getAuthorId()).to.equal("authorIdValue");
-        });
+        */
     });
 
-    context("read a database's exercise's authorIdValue", function () {
-        it("should return the database's sentence" , async function () {
-            let objDb=new FirebaseExerciseManager();
-            let objKey= await objDb.search("sentence");
-            let obj=await objDb.read(objKey);
-            expect(obj.getAuthorId()).to.equal("authorIdValue");
-        })
-    })
-
-});
-
-
-/*
-describe('#getMethods', function() {
-    const obj= new Exercise("sentence", "user");
-
-
-    context('ExerciseTest.getAuthorID()', function() {
-        it('should return the authorID', function() {
-            expect(obj.getAuthorId()).to.equal("user");
-        });
-    });
-
-    context('ExerciseTest.getPOSManager()', function() {
+    describe('ExerciseTest.getPOSManager()', function() {
         it('should not return a new POS Manager', function() {
-            let hunpos = new HunposManager();
-            expect(obj.getPOSManager()).not.equal(hunpos);
+            expect(exercise.getPOSManager()).to.be.an.instanceof(HunposManager);
         });
     });
 
-    context('ExerciseTest.getSolutions()', function() {
-        it('should return a empty Solution array', function() {
-            expect(obj.getSolutions().length).to.equal(0);
+    describe('Exercise.getAuthorId()', function () {
+        context('input AuthorID', function() {
+            it('should return the authorID', function() {
+                expect(exercise.getAuthorId()).to.equal("xxxxx");
+            });
         });
+        /*  //TODO:inserire nei test di integrazione
+            context("read a database's exercise's authorIdValue", function () {
+                it("should return the database's sentence" , async function () {
+                    let objDb=new FirebaseExerciseManager();
+                    let objKey= await objDb.search("sentence");
+                    let obj=await objDb.read(objKey);
+                    expect(obj.getAuthorId()).to.equal("authorIdValue");
+                })
+            })
+        */
     });
 
-    context('ExerciseTest.getNewSolution', function() {
-        it('should return null', function() {
-            expect(obj.getNewSolution()).to.equal(null);
-        });
-    });
-
-    context('ExerciseTest.getSentenceSplitted', function() {
-        it('should return an array with the split sentence', function() {
-
-            expect(obj.getSenteceSplitted()).eql(obj.getSentence().split(" "));
-            //expect(obj.getSenteceSplitted().every((snap)=>(obj.getSentence().split(" ")).indexOf(snap)!==-1));
-        });
-    });
-});
-
-describe('#setMethods', function() {
-    let obj= new Exercise("sentence", "user");
-
-    context('ExerciseTest.setSentence()', function() {
-        it('should return a new sentence', function() {
-            obj.setSentence("newSentence");
-            expect(obj.getSentence()).to.equal("newSentence");
-        });
-    });
-
-    context('ExerciseTest.setKey()', function() {
+    describe('Exercise.setKey()', function() {
         it('should return a new key', function() {
-            obj.setKey("-2");
-            expect(obj.getKey()).to.equal("-2");
+            exercise.setKey("-2");
+            expect(exercise.getKey()).to.equal("-2");
         });
     });
 
-    context('ExerciseTest.setSolution()', function() {
-        it('should return a no-null solution', function() {
-            expect(obj.setSolution("solverId", ["tag"], ["topic"], 2)).not.equal(null);
+    describe('Exercise.setSentence()', function() {
+        it('should return a new sentence', function() {
+            exercise.setSentence("newSentence");
+            expect(exercise.getSentence()).to.equal("newSentence");
         });
+    });
+
+    describe('Exercise.setSolution()',function () {
+        it('exercise should have a new solution', function () {
+            exercise.setSolution("1", [], [], 5);
+            expect(exercise.getNewSolution()).to.be.an.instanceof(Solution);
+        });
+    });
+
+    describe('Exercise.addSolution()', function () {
+        it('should add a solution', function() {
+            exercise.addSolution("xxx","1",[],[],5,new Map<string,number>(),1);
+            expect(exercise.getSolutions()[0]).eql(new Solution("xxx","1",[],[],5,new Map<string,number>(),1));
+        });
+    });
+
+    describe('Exercise.getSolutions()', function() {
+        it('should have a empty list of solutions', function() {
+            expect(exercise.getSolutions()).empty;
+        });
+
+        it('should have a non-empty list of solutions', function() {
+            exercise.addSolution("xxx", "1", [], [], 5, new Map<string, number>(), 1);
+            expect(exercise.getSolutions()).not.empty;
+        });
+    });
+
+    describe('Exercise.addValutation',function () {
+        let solution : Solution | null;
+        let valutations : Map<string,number> | null;
+
+        it('should throw exception',function () {
+            expect(() => exercise.addValutation("",2)).to.throw(Error,"Nessuna soluzione proposta");
+        });
+
+        before(function () {
+            exercise.setSolution('xxx',[],[],5);
+            solution = exercise.getNewSolution();
+            exercise.addValutation('1',10);
+            if (solution) {
+                valutations = solution.getValutations();
+            }
+        });
+
+        it('should add a valutation to new solution',function () {
+            if (valutations)
+                expect(valutations.get('1')).equals(10);
+            else
+                expect(valutations).to.be.not.null;
+        });
+    });
+
+    describe('Exercise.getNewSolution', function() {
+        it('should return null', function() {
+            expect(exercise.getNewSolution()).to.equal(null);
+        });
+
+        it('should return the new solution', function () {
+            exercise.setSolution("1",[],[],5);
+            expect(exercise.getNewSolution()).eql(new Solution(undefined,"1",[],[],5));
+        });
+    });
+
+    describe('Exercise.autosolve()', function() {
+        it('should return a no-null solution', function () {
+            let autosolution = exercise.autosolve();
+            expect(autosolution).not.equal(null) && expect(autosolution).not.eql([]);
+        });
+    });
+
+    describe('Exercise.getSplitSentence', function() {
+        it('should return an array with the split sentence', function() {
+            expect(exercise.getSplitSentence()).eql(["This","is","an","example"]);
+        });
+    });
+
+    describe('Exercise.evaluate()', function() {
+        it('evaluation using hunpos', function() {
+            exercise.setSolution("1",['a','a','a','a'],[],5);
+            let autovalutation = exercise.evaluate();
+            expect(autovalutation).gte(0) && expect(autovalutation).lte(10);
+        });
+
+        beforeEach(function () {
+            exercise.addSolution("","teacher1",['a','a','a','a'],[],5,new Map<string,number>(),0);
+            exercise.addSolution("","teacher2",['b','b','b','b'],[],5,new Map<string,number>(),0);
+        });
+
+        context('evaluation using a teacher solution', function() {
+            it('with a correct solution', function () {
+                exercise.setSolution("1", ['a', 'a', 'a', 'a'], [], 5);
+                let autovalutation = exercise.evaluate("teacher1");
+                expect(autovalutation).equals(10);
+            });
+
+            it('with an incorrect solution', function () {
+                exercise.setSolution("1", ['a', 'a', 'a', 'a'], [], 5);
+                let autovalutation = exercise.evaluate("teacher2");
+                expect(autovalutation).equals(0);
+            });
+
+            it('with an half correct solution', function () {
+                exercise.setSolution("1", ['a', 'a', 'b', 'b'], [], 5);
+                let autovalutation = exercise.evaluate("teacher2");
+                expect(autovalutation).equals(5);
+            });
+
+            it('with an almost correct solution', function () {
+                exercise.setSolution("1", ['a', 'b', 'b', 'b'], [], 5);
+                let autovalutation = exercise.evaluate("teacher2");
+                expect(autovalutation).equals(7.5);
+            });
+
+            it('without his valutation',function () {
+                exercise.setSolution("1", ['a', 'a', 'a', 'b'], [], 5);
+                expect(() => exercise.evaluate("teacherN")).to.throw(Error,"ID non trovato");
+            });
+
+            it('without a solution set',function () {
+                expect(exercise.evaluate()).equals(-1);
+            });
+        });
+
+    });
+
+    describe("Exercise.toJSON",function () {
+       it ("should return 1",function () {
+           expect(exercise.toJSON()).equals(1);
+       });
     });
 });
-
-describe("#propertyClassMethods", function () {
-    const obj= new Exercise("sentence sentence", "user");
-    context('ExerciseTest.autosolve()', function() {
-        it('should return a no-null solution', function() {
-            expect(obj.autosolve()).not.equal(null);
-        });
-    });
-
-    context('ExerciseTest.evaluate()', function() {
-        it('should return', function() {
-            expect(obj.evaluate("teacherId")).not.equal(null);
-        });
-    });
-});
-*/
-/*
-context('ExerciseTest.', function() {
-        it('should return', function() {
-            expect(obj.()).to.equal();
-        });
-    });
-*/

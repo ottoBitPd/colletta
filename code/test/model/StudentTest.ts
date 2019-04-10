@@ -14,43 +14,43 @@ describe('Student',function() {
         test = new Student("3", "gioperry15", "ciao", "giovanni", "Peron", "Castelfranco", "Unipd");
     });
 
-    describe('getUsername()', function () {
+    describe('Student.getUsername()', function () {
         it('should return the username', function () {
             expect(obj.getUsername()).to.equal("gioperry15");
         });
     });
 
-    describe('StudentTest.getName()', function () {
+    describe('Student.getName()', function () {
         it('should return the username', function () {
             expect(obj.getName()).to.equal("giovanni");
         });
     });
 
-    describe('StudentTest.getLastName()', function () {
+    describe('Student.getLastName()', function () {
         it('should return the last name', function () {
             expect(obj.getLastName()).to.equal("Peron");
         });
     });
 
-    describe('StudentTest.getCity()', function () {
+    describe('Student.getCity()', function () {
         it('should return the city', function () {
             expect(obj.getCity()).to.equal("Castelfranco");
         });
     });
 
-    describe('StudentTest.getSchool()', function () {
+    describe('Student.getSchool()', function () {
         it('should return the school', function () {
             expect(obj.getSchool()).to.equal("Unipd");
         });
     });
 
-    describe('StudentTest.getPassword()', function () {
+    describe('Student.getPassword()', function () {
         it('should return the password', function () {
             expect(obj.getPassword()).to.equal("ciao");
         });
     });
 
-    describe('StudentTest.samePassword()', function () {
+    describe('Student.samePassword()', function () {
         it('should return true if passwords match', function () {
             expect(obj.samePassword("ciao")).to.equal(true);
         });
@@ -60,13 +60,13 @@ describe('Student',function() {
         })
     });
 
-    describe('StudentTest.getID()', function () {
+    describe('Student.getID()', function () {
         it('should return id', function () {
             expect(test.getID()).to.equal("3");
         });
     });
 
-    describe('StudentTest.setID()', function () {
+    describe('Student.setID()', function () {
         it('should return set id', function () {
             let student = new test.DatabaseUserInfo("15", "gioperry15", "giovanni", "Peron", "Castelfranco"," Unipd");
             test.setID("15");
@@ -74,14 +74,14 @@ describe('Student',function() {
         });
     });
 
-    describe('StudentTest.isTeacher()', function () {
+    describe('Student.isTeacher()', function () {
         it('should return is teacher', function () {
 
             expect(obj.isTeacher()).to.equal(false);
         });
     });
 
-    describe('StudentTest.getClasses()', function () {
+    describe('Student.getClasses()', function () {
         it('should return classes of student', function () {
             const clase = new Class("name", "description","1234",["st1","st2"],["es1", "es2"]);
             let student= new Student("1","gian","gianni","Gianmarco","Pettenuzzo","Castelfranco","Unipd");
@@ -93,7 +93,7 @@ describe('Student',function() {
     });
 
 
-    describe('StudentTest.getAverage()', function () {
+    describe('Student.getAverage()', function () {
 
         it('should return avarage of 3 exercises', function () {
             let student= new Student("1","gian","gianni","Gianmarco","Pettenuzzo","Castelfranco","Unipd");

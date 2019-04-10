@@ -52,13 +52,18 @@ class Exercise implements Data{
                 difficulty: number, valutations : Map<string,number>,time : number): void {
         this.solutions.push(new Solution(key,solverId, solutionTags, topics, difficulty, valutations, time));
     }
+
     getSolutions() : Solution []{
         return this.solutions;
     }
+
     addValutation(teacherID : string, mark : number) {
         if (this.newSolution)
             this.newSolution.addNewMark(teacherID,mark);
+        else
+            throw new Error("Nessuna soluzione proposta");
     }
+
     getNewSolution() : Solution | null{
         return this.newSolution;
     }
@@ -77,18 +82,17 @@ class Exercise implements Data{
 
     //da un voto alla soluzione corrente(newSolution) rispetto a solution con quel teacherID
     evaluate(teacherID?: string) : number {
-        const mySolution:Solution|null=this.getNewSolution();
-        if(mySolution===null){
+        if(this.newSolution===null){
             return -1;
         }
         else{
             let tags:string [] = [];
             const solutions= this.getSolutions();
-            if(teacherID!==null){
+            if(teacherID!==undefined){
                 const teacherSolution=solutions.find(function(element){
                     return element.getSolverId()===teacherID;
                 });
-                if(typeof(teacherSolution)==='undefined'){
+                if(teacherSolution===undefined){
                     throw new Error("ID non trovato");
                 }
                 else{
@@ -101,7 +105,7 @@ class Exercise implements Data{
                     tags.push(hunposSolution.sentence[i].label);
                 }
             }
-            return mySolution.evaluateSolution(tags);
+            return this.newSolution.evaluateSolution(tags);
         }
     }
 

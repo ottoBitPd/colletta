@@ -4,48 +4,48 @@ import 'mocha';
 
 
 
-describe('#getMethods', function() {
+describe('Class', function() {
     let obj= new Class("name", "description","1234",["st1", "st2"],["es1", "es2"]);
     let student= new Class("name", "description","1234",["st1", "st2"],["es1", "es2"]);
     let exercise= new Class("name", "description","1234",["st1", "st2"],["es1", "es2"]);
 
-    context('ClassTest.getName()', function() {
+    describe('Class.getName()', function() {
         it('should return the name', function() {
             expect(obj.getName()).to.equal("name");
         });
     });
 
-    context('ClassTest.getDescription()', function() {
+    describe('Class.getDescription()', function() {
       it('should return the description', function() {
           expect(obj.getDescription()).to.equal("description");
       });
     });
 
-    context('ClassTest.getTeacherID()', function() {
+    describe('Class.getTeacherID()', function() {
         it('should return the teacherID', function() {
             expect(obj.getTeacherID()).to.equal("1234");
         });
     });
 
-    context('ClassTest.getStudents()', function() {
+    describe('Class.getStudents()', function() {
         it('should return the student', function() {
             expect(obj.getStudents().every((snap)=> (["st1","st2"].indexOf(snap)!==-1)));
         });
     });
 
-    context('ClassTest.getExercises()', function() {
+    describe('Class.getExercises()', function() {
         it('should return the exercise', function() {
             expect(obj.getExercises().every((snap)=> (["es1, es2"].indexOf(snap)!==-1)));
         });
     });
 
-    context('ClassTest.getNumberOfStudents()', function() {
+    describe('Class.getNumberOfStudents()', function() {
         it('should return the numbers of students', function() {
             expect(obj.getNumberOfStudents()).to.equal(2);
         });
     });
 
-    context('ClassTest.deleteStudent()', function() {
+    describe('Class.deleteStudent()', function() {
         it('should return delete students', function() {
             const array=["st2","st1"];
             array.pop();
@@ -55,7 +55,7 @@ describe('#getMethods', function() {
         });
     });
 
-    context('ClassTest.deleteExercise()', function() {
+    describe('Class.deleteExercise()', function() {
         it('should return delete exercise', function() {
             const array = ["es1", "es2"];
             obj.deleteExercise("es1");
@@ -64,7 +64,7 @@ describe('#getMethods', function() {
         });
     });
 
-    context('ClassTest.addStudent()', function() {
+    describe('Class.addStudent()', function() {
         it('should return add Student', function() {
             const array=["st1","st2"];
             array.push("st3");
@@ -74,7 +74,7 @@ describe('#getMethods', function() {
         });
     });
 
-    context('ClassTest.addExercise()', function() {
+    describe('Class.addExercise()', function() {
         it('should return add exercise', function() {
             const array=["es1","es2"];
             array.push("es3");
@@ -84,7 +84,7 @@ describe('#getMethods', function() {
         });
     });
 
-    context('ClassTest.findStudent()', function() {
+    describe('Class.findStudent()', function() {
         it('should return find student', function() {
             expect(student.findStudent("st2")).to.equal(true);
 

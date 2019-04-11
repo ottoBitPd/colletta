@@ -1,0 +1,105 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{color,colortbl}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage{tabularx}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\pagestyle{fancy}
+\lhead{\includegraphics[scale=0.07]{../images/logo.png}}
+
+\definecolor{LightBlue}{rgb}{0,0,0.5}
+\definecolor{Gray}{gray}{0.8}
+\definecolor{LightGray}{gray}{0.9}
+
+\usepackage{lipsum}
+\begin{document}
+	\begin{titlepage}
+  \centering
+	\scshape
+	
+	\vspace*{2cm}
+	\includegraphics[scale=0.7]{../images/logo.png}
+	\rule{\linewidth}{0.2mm}\\[0.37cm]
+	{\Huge Verbale 2019-03-21}\\
+	\rule{\linewidth}{0.2mm}\\[1cm]
+	{\LARGE\bfseries Progetto Colletta - Gruppo OttoBit}\\[1cm]
+	
+	
+	
+	\begin{tabular}{>{\columncolor{Gray}}r | >{\normalfont}l}
+		\rowcolor{LightBlue}		
+		\multicolumn{2}{c}{\color{white}{Informazioni sul documento}}\\
+		Redazione & Michele Bortone \\
+ 		Responsabile & Giovanni Bergo\\
+ 		Uso & Interno\\
+ 																 		& Prof. Tullio Vardanega\\
+ 																		& Prof. Riccardo Cardin\\
+ 		\multirow[t]{-3}{*}{Destinatari}	& MIVOQ s.r.l\\
+ 		\hline
+	\end{tabular}
+\end{titlepage}
+
+	\newpage	
+	
+	\section{Informazioni sulla riunione}
+	\begin{itemize}
+		\item Luogo: Aula 1C150, Aula Luf1
+		\item Data: 2019-03-21;
+		\item Ora: 10.30-15.30;
+		\item Partecipanti del team:
+			\begin{itemize}
+				\item Giovanni Bergo;
+				\item Michele Bortone;
+				\item Benedetto Cosentino;
+				\item Enrico Marcato;
+				\item Eleonora Peagno;
+				\item Giovanni Peron;
+				\item Gianmarco Pettenuzzo.
+				
+			\end{itemize}
+	\end{itemize}
+	
+	\section{Ordine del Giorno}
+	Sono riportati i punti relativi all'ordine del giorno:
+	\begin{itemize}
+		\item Discussione progettazione
+		\item  Scelta requisiti da implementare
+		\item Discussione test di unità.
+		\item Aggiornamento rischi.
+	\end{itemize}
+	
+	\section{Resoconto}
+
+	\subsection{Discussione progettazione}
+	\begin{enumerate}
+		\item Dopo aver discusso dei vantaggi che il pattern MVP avrebbe portato rispetto al pattern MVC, il gruppo ha deciso di adottarlo.
+		\item Considerato il pattern MVP sono state apportate le opportune modifiche ai diagrammi.
+		
+
+	\end{enumerate}
+	
+	\subsection{Aggiornamento rischi}
+	\begin{enumerate}
+	\item Secondo quanto detto durante il ricevimento con il Prof. il gruppo ha aggiornato la tabella dei rischi contenuti nel Piano di Progetto.
+	\end{enumerate}
+	
+		\subsection{Scelta requisiti da implementare}
+	\begin{enumerate}
+		\item Il gruppo dà la priorità ai requisiti obbligatori, considerando alcuni requisiti desiderabili già implementati.
+	\end{enumerate}
+	\subsection{Discussione test di unità}
+	\begin{enumerate}
+		\item Il gruppo definisce come e su quali classi devono essere effettuati i relativi test di unità
+
+	\end{enumerate}
+	
+\end{document}

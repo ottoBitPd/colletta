@@ -217,6 +217,26 @@ Nella tabella seguente vengono riportati i risultati delle verifiche eseguite su
 		\hline
 		\caption{Resoconto attività di verifica per la revisione di progettazione}
 	\end{longtable}
+	
+	\begin{longtable}{>{\centering\arraybackslash}m{5cm} >{\centering\arraybackslash}m{4cm} >{\centering\arraybackslash}m{5cm} >{\centering\arraybackslash}m{2cm}}
+		\rowcolor{LightBlue}
+		\textbf{\textcolor{white}{Documento}}
+		& \textbf{\textcolor{white}{Indice Gulpease}}
+		& \textbf{\textcolor{white}{Esito}}\\
+		\textit{StudioDiFattibilità\_v1.0.0} & 60 & Accettato\\
+		\hline
+		\rowcolor{LightGray}
+		\textit{AnalisiDeiRequisiti\_v3.0.0} & 80 & Accettato\\
+		\hline
+		\textit{NormeDiProgetto\_v3.0.0} & 68 & Accettato\\
+		\hline
+		\rowcolor{LightGray}
+		\textit{PianoDiQualifica\_v3.0.0} & 74 & Accettato\\
+		\hline
+		\textit{PianoDiProgetto\_v3.0.0} & 65 & Accettato\\
+		\hline
+		\caption{Resoconto attività di verifica per la revisione di qualifica}
+	\end{longtable}
 
 
 \subsubsection{Software}
@@ -283,8 +303,8 @@ Riportiamo di seguito i grafici rappresentanti il livello raggiunto alla data di
 	\caption{Valori ISO/IEC 15504 - Codifica}	
 \end{figure}
 
-\paragraph{Revisione di progetto\\}
-Durante il periodo di Revisione di progetto abbiamo individuato periodicamente tutti i cambiamenti apportati ai requisiti del progetto. Questo ci ha permesso di determinare la stabilità dei requisiti nel tempo grazie all'utilizzo della metrica MPC2.
+\subsubsection{Valori indice RSI - MPC2\\}
+Durante lo sviluppo del progetto abbiamo individuato periodicamente tutti i cambiamenti apportati ai requisiti del progetto. Questo ci ha permesso di determinare la stabilità dei requisiti nel tempo grazie all'utilizzo della metrica MPC2.
 Riportiamo di seguito i calcoli e le varie rilevazioni effettuate.
 
 \begin{longtable}{>{\centering\arraybackslash}m{3cm} >{\centering\arraybackslash}m{4cm} >{\centering\arraybackslash}m{5cm} >{\centering\arraybackslash}m{2cm}}
@@ -317,6 +337,26 @@ Riportiamo di seguito i calcoli e le varie rilevazioni effettuate.
 	\caption{Serie storica rilevazioni stabilità requisiti - Revisione di progetto}	
 \end{figure}
 
+
+
+\begin{longtable}{>{\centering\arraybackslash}m{3cm} >{\centering\arraybackslash}m{4cm} >{\centering\arraybackslash}m{5cm} >{\centering\arraybackslash}m{2cm}}
+	\rowcolor{LightBlue}
+	\textbf{\textcolor{white}{Data rilevazioni}}
+	& \textbf{\textcolor{white}{Requirement Stability Index (RSI)}}
+	& \textbf{\textcolor{white}{Esito}}\\
+	
+	2019-03-18 & \[1-\frac{9+0+0}{106}=0.915\] & Accettato\\
+	\hline
+	2019-03-19 & \[1-\frac{13+0+2}{115}=0.869\] & Accettato\\
+	\hline
+	\caption{Rilevazioni indice stabilità requisiti (RSI) - Revisione di qualifica}
+\end{longtable}
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=1]{images/resoconto/qualificaChart.png}
+	\caption{Serie storica rilevazioni stabilità requisiti - Revisione di qualifica}	
+\end{figure}
+
 \subsection{Esito delle revisioni - RR}
 Successivamente alla prima revisione formale, il gruppo ha apportato diverse modifiche ai documenti basandosi sulle osservazioni ricevute dai docenti. Le modifiche sono riassunte di seguito:
 	\begin{itemize}
@@ -338,7 +378,7 @@ Successivamente alla seconda revisione formale, il gruppo ha apportato diverse m
 \newpage
 \section{Copertura dei requisiti}
 Viene riportata in seguito una tabella riassuntiva dei requisiti che non è da considerarsi definitiva, verrà infatti aggiornata in seguito ad ogni avanzamento significativo. \\
-I requisiti sono indicati con il loro codice identificativo definito nel documento \textit{NormeDiProgetto\_v2.0.0} e la loro descrizione dettagliata è riportata nel documento \textit{AnalisiDeiRequisiti\_v2.0.0}.
+I requisiti sono indicati con il loro codice identificativo definito nel documento \textit{NormeDiProgetto\_v3.0.0} e la loro descrizione dettagliata è riportata nel documento \textit{AnalisiDeiRequisiti\_v3.0.0}.
 \begin{longtable}{| p{2.5cm} | p{3cm} |}
 	\rowcolor{LightBlue}
 	\color{white}\bfseries Requisito & \color{white}\bfseries Stato \\

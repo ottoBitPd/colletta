@@ -92,7 +92,10 @@
 		\rowcolor{LightBlue}
 		\color{white}\bfseries Versione & \color{white}\bfseries Data & \multicolumn{1}{c}{\color{white}\bfseries Autore}
 		& \color{white}\bfseries Ruolo & \multicolumn{1}{c}{\color{white}\bfseries Descrizione}\\[0.25cm]
-		2.0.2 & 2019-04-10 & Eleonora Peagno & Amministratore & Aggiornamento \S2.2.4.4 e \S2.2.5.2 \\ \hline
+		3.0.0 & 2019-04-11 & Giovanni Bergo & Responsabile & Approvazione per il rilascio \\ \hline
+		2.1.0 & 2019-04-11 & Michele Bortone & Verificatore & Documento \newline verificato \\ \hline
+		2.0.3 & 2019-04-10 & Eleonora Peagno & Amministratore & Aggiornamento \S2.2.4.4 e \S2.2.5.2 \\ \hline
+		2.0.2 & 2019-03-19 & Giovanni Bergo \newline Giovanni Peron & Amministratore & Correzione errori RP \\ \hline
 		2.0.1 & 2019-03-18 & Giovanni Bergo \newline Giovanni Peron & Amministratore & Correzione errori RP \\ \hline
 		2.0.0 & 2019-03-05 & Gianmarco Pettenuzzo & Responsabile & Approvazione per il rilascio \\ \hline
 		1.1.0 & 2019-03-05 & Giovanni Bergo & Verificatore & Verifica documento \\ \hline
@@ -329,6 +332,7 @@ In caso di necessità verrà fornito supporto alla proponente MivoQ s.r.l. e l'a
 
 	\paragraph{Scopo}
 	La codifica è l'attività che permette l'effettiva realizzazione del prodotto.
+	Dovrà rispettare gli obiettivi di qualità definiti all'interno del documento \textit{PianoDiQualifica\_v3.0.0} allo scopo di garantire un prodotto mantenibile e di alta qualità.
 		
 	\paragraph{Lingua utilizzata}
  
@@ -336,7 +340,7 @@ In caso di necessità verrà fornito supporto alla proponente MivoQ s.r.l. e l'a
 	
 	\paragraph{Linguaggi di codifica utilizzati:}
 	\begin{itemize}
-		\item JavaScript: Node.js per la parte back-end e routing
+		\item JavaScript: Node.js per la parte back-end e routing e Javascript per la parte dinamica del front-end
 		\item HTML e CSS: per la struttura e la presentazione del front-end
 	\end{itemize}
 	
@@ -347,59 +351,48 @@ In caso di necessità verrà fornito supporto alla proponente MivoQ s.r.l. e l'a
 		\begin{lstlisting}[caption=Installazione di TSLint,numbers=none]
 			$ npm install tslint typescript
 		\end{lstlisting}
-	\end{minipage}		
+	\end{minipage}	
+	
+	Per fare in modo che TSLint funzioni correttamente è necessario configurarlo utilizzando il file tsconfig.json presente all'interno della cartella principale del sorgente dell'applicazione. È possibile quindi settare l'impostazione ``Configutation file'' su Automated search* o specificare manualmente il percorso del file appena citato.
 	
 	\paragraph{Lunghezza delle linee di codice} Le linee di codice non dovranno superare i 79 caratteri. In ogni caso l'IDE che abbiamo scelto mette a disposizione una linea limite da non superare.
 	
 	\paragraph{Nomenclatura codice}
 	I nomi di classi, variabili e metodi dovranno avere un nome esplicativo per evitare il più possibile ambiguità di comprensione.
 	\begin{itemize}
-		\item \textbf{Classi}: per i nomi delle classi verrà utilizzata la notazione Upper Camel Case; cioè inizieranno con la prima lettera maiuscola e, nel caso sia composte da più parole successive, queste cominceranno con la lettera maiuscola.
+		\item \textbf{Classi}: per i nomi delle classi verrà utilizzata la notazione Upper Camel Case*; cioè inizieranno con la prima lettera maiuscola e, nel caso sia composte da più parole successive, queste cominceranno con la lettera maiuscola.
 	
 		\begin{multicols}{2}
 			
-			\begin{lstlisting}[caption=Esempio Corretto]
+			\begin{lstlisting}[caption=nome classe corretto]
 		class DataBaseManager(){
 			...
 		}
 			\end{lstlisting}
 			
-			\begin{lstlisting}[caption=Esempio Scorretto]
+			\begin{lstlisting}[caption=nome classe scorretto]
 			class databasemanager(){
 				...
 			}
 			\end{lstlisting}
 		\end{multicols}
 		
-		\item \textbf{Costanti}: i nomi delle costanti verranno scritti usando solo maiuscole.
 		
-		\begin{multicols}{2}
-			
-			\begin{lstlisting}[caption=Esempio Corretto]
-			var MAXLENGTH = 100;
-			\end{lstlisting}
-			
-			\begin{lstlisting}[caption=Esempio Scorretto]
-			var MaxLenght = 100;
-			\end{lstlisting}
-		\end{multicols}
-		
-		\item \textbf{Metodi}: per i nomi dei metodi verrà utilizzata la notazione Lower Camel Case; cioè inizieranno con la prima lettera minuscola e, nel caso sia composte da più parole successive, queste cominceranno con la lettera maiuscola.
+		\item \textbf{Metodi}: per i nomi dei metodi verrà utilizzata la notazione Lower Camel Case*; cioè inizieranno con la prima lettera minuscola e, nel caso sia composte da più parole successive, queste cominceranno con la lettera maiuscola.
 	
 
 \begin{multicols}{2}
-	
-	\begin{lstlisting}[caption=Esempio Corretto]
+	\begin{lstlisting}[caption=nome metodo corretto]
 	thisIsAnExample();
 	\end{lstlisting}
 
-	\begin{lstlisting}[caption=Esempio Scorretto]
+	\begin{lstlisting}[caption=nome metodo scorretto]
  	ThisIsAnExample();
 	\end{lstlisting}
 \end{multicols}
 
 
-		\item \textbf{Altro}: variabili di istanza, variabili locali, parametri, nomi dei metodi; devono iniziare con una lettera minuscola
+		\item \textbf{Altro}: variabili di istanza, variabili locali, costanti, parametri, nomi dei metodi; devono iniziare con una lettera minuscola
 	\end{itemize}
 	
 	\paragraph{Commenti al codice}
@@ -407,25 +400,69 @@ In caso di necessità verrà fornito supporto alla proponente MivoQ s.r.l. e l'a
 	I commenti devono permettere la comprensione del codice, non
 	devono quindi descrivere la sintassi del linguaggio di programmazione in uso, ma piuttosto descrivere lo scopo di tutti quei blocchi di codice la cui comprensione non sia già resa immediata da una corretta scelta della nomenclatura.
 	
-	\begin{lstlisting}[caption=Esempio di commento ad un metodo]
-	/**
-	* This method writes a sentence in the database.
-	* @param sentence - the sentence to write
-	* @returns {number} returns the key of the sentence written
-	*/
-	writeSentence(sentence){
-		...
-	}
-	
-	\end{lstlisting}
+	\paragraph{Uso di JSDoc}
+	Al fine di generare in modo automatico una documentazione del prodotto in stile JavaDoc, sarà usato JSDoc.
+	Prevediamo di utilizzare questo strumento per documentare principalmente classi e metodi dell'applicazione, nel seguente modo:
+	\begin{itemize}
+		\item \textbf{Commento alle classi}: Tutte le classi dovranno essere precedute da un commento che indichi se la classe è astratta o se estende qualche altra classe. Di seguito vengono riportati degli esempi alcuni più esplicativi:
+		\begin{lstlisting}[caption=Commento ad una classe semplice]
+		/**
+		* Class that provides the hunpos service to the application
+		*/
+		class HunposAdapter{
+			...
+		}
+		\end{lstlisting}
+			\begin{lstlisting}[caption=Commento ad una classe che ne estende un altra]
+		/**
+		* Class to manage the databases.
+		* @extends DatabaseManager
+		*/
+		class FirebaseAdapter extends DatabaseManager {
+			...
+		}
+		\end{lstlisting}
+		\begin{lstlisting}[caption=Commento ad una classe astratta]
+		/**
+		* Class to manage the database.
+		* @abstract
+		*/
+		class DatabaseManager{
+			...
+		}
+		\end{lstlisting}
+		\item \textbf{Commento ai costruttori}:
+		Tutti i costuttori dovranno essere preceduti da un commento che li descriva. 
+		\begin{lstlisting}[caption=Commento ad una classe astratta]
+		/**
+		* Initializes all attributes needed to HunposAdapter object.
+		*/
+		constructor(){
+			...
+		}
+		\end{lstlisting}
+		\item \textbf{Commento ai metodi}:
+		Tutti i metodi dovranno essere preceduti da un commento che li descriva e che indichi i parametri e il tipo di ritorno, nel caso sia necessario.
+		\begin{lstlisting}[caption=Commento ad un metodo]
+		/**
+		* This method writes a sentence in the database.
+		* @param sentence - the sentence to write
+		* @returns {number} returns the key of the sentence written
+		*/
+		writeSentence(sentence){
+			...
+		}
+		
+		\end{lstlisting}
+	\end{itemize}
 	
 	\subsubsection{Strumenti}
-	\paragraph{WebStorm} \noindent \\
+	\paragraph{WebStorm\\} 
 	È un IDE di JetBrains per lo sviluppo di applicazioni di Web application, che supporta Javasctipt, Node.js, HTML e CSS.
 	L'editor offre varie funzionalità, tra cui:
 	\begin{itemize}
 		\item Node.js Debugger
-		\item JSHint
+		\item TSLint
 	\end{itemize}
 
 	\paragraph{TypeDoc}
@@ -444,10 +481,9 @@ In caso di necessità verrà fornito supporto alla proponente MivoQ s.r.l. e l'a
 		\begin{lstlisting}[caption=Installazione di TSLint,numbers=none]
 			$ typedoc -- out docs ./ src
 		\end{lstlisting}
-	\end{minipage}		
+	\end{minipage}			
 	
-	
-		\section{Processi di Supporto}
+	\section{Processi di Supporto}
 	\subsection{Documentazione}
 	In questa sezione esamineremo dettagliatamente i processi utilizzati per stesura, verifica e mantenimento di tutta la documentazione prodotta dal gruppo Ottobit.
 	Lo scopo è quello di fornire una descrizione accurata di tutte le norme, convenzioni e vincoli rispettati per ottenere documentazione efficace, coerente e formale.
@@ -478,7 +514,7 @@ In caso di necessità verrà fornito supporto alla proponente MivoQ s.r.l. e l'a
 	La prima pagina di ogni documento dovrà seguire questa struttura:
 	\begin{itemize}
 		\item \textbf{Logo}
-		\item \textbf{Nome Documento}
+		\item \textbf{Nome Documento}: La lettera della prima parola del nome del documento sarà maiuscola, mentre le altre parole minuscole. Es: Norme di progetto
 		\item \textbf{Nome Progetto - Gruppo}
 		\item \textbf{Informazioni sul documento} composto da:
 		\begin{itemize}
@@ -503,6 +539,7 @@ In caso di necessità verrà fornito supporto alla proponente MivoQ s.r.l. e l'a
 		\item \textbf{Breve descrizione}
 	\end{itemize}
 	
+	N.B: Se è necessario fare riferimento ad una specifica sezione del documento, seguire le norme descritte al \S\ 3.1.3.1.
 	\paragraph{Indice\\}
 	L'indice del documento inizia nelle pagine successive a quelle del registro delle modifiche, ogni sezione e sottosezione sarà etichettata con un numero progressivo a partire dal numero 1 e permetterà il collegamento ipertestuale direttamente alla pagina corrispondente. Inoltre saranno presenti altri due elenchi:
 	
@@ -616,12 +653,11 @@ In caso di necessità verrà fornito supporto alla proponente MivoQ s.r.l. e l'a
 	
 	\paragraph{\LaTeX\\}
 	 Per la produzione della documentazione si è fatto uso del formato \LaTeX\ perché permette un migliore stile di codifica.\\
-	Per la produzione di codice \LaTeX\ è stato utilizzato Texmaker$^*$.
+	Per la produzione di codice \LaTeX\ è stato utilizzato Texmaker$^*$ e TeXstudio.
 	
 	\subsubsection{Mantenimento}
 	
 	\paragraph{Versionamento\\}
-	Ogni documento o componente del codice, eccetto i verbali, soggetto a versionamento, è versionato tramite lo strumento GitLab$^*$ ed organizzato mediante la metodologia GitFlow.\\
 	La definizione di una versione avviene seguendo questa forma:
 	\begin{center}
 		X . Y . Z
@@ -632,6 +668,8 @@ In caso di necessità verrà fornito supporto alla proponente MivoQ s.r.l. e l'a
 		\item \textbf{Y:} numero di verifiche al documento. Si azzera ad ogni incremento di X;
 		\item \textbf{Z:} numero di modifiche al documento. Si azzera ad ogni incremento di Y o X;
 	\end{itemize}
+	
+	
 	
 	\paragraph{Nomenclatura}
 	
@@ -657,6 +695,34 @@ In caso di necessità verrà fornito supporto alla proponente MivoQ s.r.l. e l'a
 	\end{itemize}
 	
 	\newpage
+
+\subsection{Gestione della configurazione}
+\subsubsection{Scopo}
+La gestione della configurazione ha come obbiettivo l'identificazione, la registrazione, l'analisi e la verifica di tutti i cambiamenti apportati alla documentazione e al software.
+\subsubsection{Versionamento}
+\paragraph{Repository}
+Si è scelto di utilizzare come strumento di versionamento GitLab. Questo strumento permette la creazione di repository.
+L'Amministratore ha il compito di gestire e organizzare la repository, in modo che siano accessibili a tutti i componenti del gruppo.
+È previsto l'utilizzo di un'unica repository denominata colletta contenente sia tutta la documentazione del progetto che l'applicazione stessa.
+\paragraph{Norme sui file consentiti}
+All'interno della repository vengono effettuate delle restrizioni relativi alle estensioni dei file attraverso il file .gitignore.
+Tuttavia rispetto alle restrizioni standard, per quanto riguarda i documenti, abbiamo scelto di consentire i seguenti tipi di file: 
+\begin{itemize}
+	\item .tex;
+	\item .pdf;
+	\item .jpg;
+	\item .png;
+\end{itemize}
+
+\paragraph{Norme sui branches}
+I branches sono creati e gestiti tramite le estensioni Git-Flow
+\footnote{\url{https://danielkummer.github.io/git-flow-cheatsheet/}}. 
+Questo ci consente di avere a disposizione delle funzionalità ad alto livello per quanto riguarda la gestione dei branches. 
+
+\paragraph{Norme sui commit}
+Ogni commit deve essere accompagnato da una sensata descrizione, che permetta facilmente di capire a tutti i membri del gruppo che cosa quella modifica riguarda e la coinvolge.
+
+
 
 	\subsection{Verifica}
 	
@@ -781,6 +847,11 @@ In caso di necessità verrà fornito supporto alla proponente MivoQ s.r.l. e l'a
 
 	\end{itemize}
 	
+	\subsubsection{Strumenti}
+	Per il calcolo dell'indice di Gulpease è stato utilizzato lo strumento online reperibile a questo indirizzo: \begin{center}
+		\url{https://farfalla-project.org/readability_static/}
+	\end{center}
+	
 	\subsubsection{Analisi}
 	\paragraph{Analisi statica\\}
 	L'analisi statica `e un metodo in grado di rilevare problemi sia all'interno dei documenti che del codice sorgente del progetto. Per facilitarne la corretta esecuzione nel corso del tempo verrà svolta attraverso due metodi:
@@ -802,7 +873,7 @@ In caso di necessità verrà fornito supporto alla proponente MivoQ s.r.l. e l'a
 		
 	\subsubsection{Strumenti}	
 	\paragraph{Verifica ortografica\\}
-	la verifica ortografica è effettuata tramite Texmaker, attraverso il quale gli errori ortografici vengono sottolineati in rosso, permettendo un controllo rapido ed efficiente.
+	la verifica ortografica è effettuata tramite Texmaker e TeXstudio, attraverso il quale gli errori ortografici vengono sottolineati in rosso, permettendo un controllo rapido ed efficiente.
 	\paragraph{Analisi dinamica locale\\}
 	Son stati scelti per la verifica \textit{Mocha} e la libreria \textit{Chai}. 
 	\paragraph{Analisi statica locale\\}
@@ -811,6 +882,11 @@ In caso di necessità verrà fornito supporto alla proponente MivoQ s.r.l. e l'a
 	Inoltre, si utilizzerà \textit{Istanbul} per analizzare staticamente il codice TypeScript da eventuali bug.
 	
 	\subsection{Validazione}
+	\subsubsection{Test}
+	I test di unità, integrazione, sistema e validazione sono definiti secondo le definizioni date dal professore Vardanega nelle slide: \begin{center}
+		\url{https://www.math.unipd.it/~tullio/IS-1/2018/Dispense/L16.pdf}
+	\end{center}
+	
 	\subsubsection{Denominazione test}
 	Volendo associare un identificatore univoco per ogni test menzionato, si \`e deciso di utilizzare il seguente formato:
 	\begin{center}
@@ -877,6 +953,28 @@ In caso di necessità verrà fornito supporto alla proponente MivoQ s.r.l. e l'a
 		\item \textbf{Individuazione dei rischi e loro analisi:} si considerano tutti i possibili rischi che possono sorgere a causa di fattori interni e fattori esterni. Ad ognuno si deve associare una probabilità di incidenza ed una stima di influenza sulla corretta esecuzione del processo;
 		\item \textbf{Preventivo e stima dei costi:} si esegue una stima delle risorse da assegnare a ciascuna attività, assegnando a ciascuna di esse un valore secondo la quantità di lavoro necessaria per portarla a termine.
 	\end{enumerate}
+
+\paragraph{Gestione della comunicazione\\}
+\noindent\\
+\textbf{Comunicazioni Interne}: le comunicazioni interne vengono gestite attraverso Telegram, un'app di messaggistica
+istantanea multi-piattaforma. Inoltre, per l'assegnazione dei vari task, viene fatto uso di GitLab, una board online
+che permette in modo molto semplice di avere una panoramica sui lavori svolti, in corso di svolgimento e da svolgere.
+Viene, inoltre, utilizzata la piattaforma Slack per la comunicazione tra i vari componenti a cui e stato assegnato
+lo stesso ruolo.\noindent\\\\
+\textbf{Comunicazioni Esterne}: le comunicazioni esterne avvengono prevalentemente usando la casella di posta
+elettronica ottobit.pd@gmail.com , gestita dal Responsabile di Progetto ma configurata per fare un inoltro automatico delle email a ciascun componente del gruppo.
+
+\paragraph{Gestione riunione\\}
+\noindent\\
+\textbf{Riunioni Esterne}: è compito del Responsabile di progetto organizzare eventuali riunioni esterne. Ciascun
+membro del gruppo, indipendentemente dal ruolo che sta assumendo, ha diritto di effettuare una richiesta di
+riunione esterna  al Responsabile di progetto, il quale e tenuto ad esaminare le
+motivazioni di tale richiesta e, se ritenute valide, a fissare la riunione. Fatto ciò, il Responsabile di progetto e tenuto a comunicare luogo e data della riunione ai componenti del gruppo, attraverso i mezzi di comunicazione preposti.
+Infine, lo stesso Responsabile di progetto e tenuto ad incaricare un componente del gruppo a redigere il verbale. \noindent\\\\
+\textbf{Riunioni Interne}: è compito del Responsabile di progetto organizzare riunioni interne. Esso, su eventuale proposta dei membri del gruppo, è incaricato di scegliere luogo, data e orario della riunione e comunicarlo attraverso i canali di comunicazione interni agli altri membri del gruppo. Sarà compito del Responsabile di progetto assicurarsi della presenza di tutti i componenti del gruppo. Inoltre, analogamente a quanto avviene per le riunioni esterne, è compito del Responsabile di progetto incaricare un componente del gruppo a stilare il verbale.
+
+
+
 	
 	\subsubsection{Analisi dei rischi}
 	
@@ -908,7 +1006,9 @@ In caso di necessità verrà fornito supporto alla proponente MivoQ s.r.l. e l'a
 	
 	\subsubsection{Ruoli di progetto}
 	I ruoli di progetto sono definiti secondo le definizioni date dal professore Vardanega nelle slide:
-	\url{https://www.math.unipd.it/~tullio/IS-1/2018/Dispense/L06.pdf}
+	\begin{center}
+		\url{https://www.math.unipd.it/~tullio/IS-1/2018/Dispense/L06.pdf}
+	\end{center}
 	\subsubsection{Strumenti}
 	
 	\paragraph{Slack (app)\\}
@@ -919,6 +1019,12 @@ In caso di necessità verrà fornito supporto alla proponente MivoQ s.r.l. e l'a
 	È un software di controllo versione in cui gli sviluppatori possono caricare il proprio codice e gestire le modifiche alle varie versioni in contemporanea al lavoro di più persone.
 	Il Responsabile di progetto crea una issue$^*$ per ogni attività e le assegna ai componenti del gruppo. Il soggetto designato aprirà un nuovo branch$^*$ identificato con il codice issue.
 	Una volta finito lo stato di elaborazione (Doing), la issue passa allo stato di verifica. Se il Verificatore la considera idonea, la issue viene chiusa (Closed) e approvata dal Responsabile di progetto, altrimenti ritorna nello stato di elaborazione (Doing) in attese di aggiornamenti.
+	
+	\paragraph{Telegram\\}
+
+	Telegram è un'applicazione di instant messaging cross platfrom che può essere utilizzata su diversi dispositivi
+	anche contemporaneamente. Telegram, inoltre, permette la creazione di gruppi, lo scambio di file di qualsiasi tipo
+	e anche chiamate vocali tra due persone.
 	
 	\subsection{Gestione della Qualità}
 	\subsubsection{Pianificazione della qualità}

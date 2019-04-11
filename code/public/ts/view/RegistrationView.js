@@ -42,11 +42,12 @@ class RegistrationView extends PageView_1.PageView {
                 "<input type=\"text\" class=\"form-control my-2\" id=\"surname\" name=\"surname\" placeholder=\"Inserisci il tuo cognome\" required/>" +
                 "<input type=\"text\" class=\"form-control my-2\" id=\"city\" name=\"city\" placeholder=\"Inserisci la tua città\" required/>" +
                 "<input type=\"text\" class=\"form-control my-2\" id=\"school\" name=\"school\" placeholder=\"Inserisci la tua scuola\" required/>" +
-                "<select class='form-control my-2' name=\"role\" id='role' onchange=\"myFunction() required\">" +
+                "<select class='form-control my-2' name=\"role\" id='role' onchange=\"myFunction()\" required>" +
                 "   <option value=\"student\">Allievo</option>" +
                 "   <option value=\"teacher\">Insegnante</option>" +
                 "</select>" +
                 "<input type=\"text\" class='form-control my-2' style=\"display: none;\" id=\"inps\" name=\"inps\" placeholder=\"Inserisci il tuo codice inps\" required/>" +
+                "<input type=\"text\" class='form-control my-2' id=\"email\" name=\"email\" placeholder=\"Inserisci la tua email\" required/> " +
                 "<input type=\"text\" class='form-control my-2' id=\"username\" name=\"username\" placeholder=\"Inserisci la tua username\" required/> " +
                 "<input type=\"password\" class='form-control my-2' id=\"password\" name=\"password\" placeholder=\"Inserisci la tua password\" required/> " +
                 "<input type=\"password\" class='form-control my-2' id=\"checkpassword\" name=\"checkpassword\" placeholder=\"Conferma la tua password\" oninput=\"checkPassword()\" required/> " +

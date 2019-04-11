@@ -8,66 +8,105 @@ class ProfileView extends PageView_1.PageView {
         this.profileController = new ProfilePresenter_1.ProfilePresenter(this);
         this.profileController.update(app);
         this.userData = undefined;
+        this.error = undefined;
     }
     setUserData(obj) {
         this.userData = obj;
+    }
+    setError(error) {
+        this.error = error;
     }
     getPage() {
         let ret = this.getHead();
         ret += this.getMenu();
         ret += "<div class=\"container\">" +
-            "\t<h1 class ='text-center mb-5'>Informazioni profilo:</h1>\n" +
-            "\t<ul class=\"list-group\">\n" +
+            "\t<h1 class ='text-center mb-5'>Informazioni profilo:</h1>\n";
+        if (this.error !== undefined) {
+            ret += "\t<p class ='text-center h5 text-dander'>" + this.error + "</p>\n";
+        }
+        ret += "\t<ul class=\"list-group\">\n" +
             "\t<li class=\"list-group-item\">\n" +
             "<form method='post' action='/update'>" +
             "\t\t<div class= \"row\">\n" +
             "\t\t\t<div class = \"col-sm-6\">\n" +
-            "\t\t\t\t<p class= \"font-weight-bold\"> Nome:</p> \n" +
+            "\t\t\t\t<p class= \"font-weight-bold\"> Nome: " + this.userData.name + "</p> \n" +
             "\t\t\t</div>\n" +
             "\t\t\t<div class = \"col-sm-6\">\n" +
-            "\t\t\t\t<input class=\"form-control\" name='name' value='" + this.userData.name + "'/>\n" +
-            "\t\t\t</div>\n" +
-            "\t\t</div>\n" +
-            "\t\t\n" +
-            "\t\t<div class= \"row\">\n" +
-            "\t\t\t<div class = \"col-sm-6\">\n" +
-            "\t\t\t\t<p class= \"font-weight-bold\"> Cognome: </p> \n" +
-            "\t\t\t</div>\n" +
-            "\t\t\t<div class = \"col-sm-6\">\n" +
-            "\t\t\t\t<input class=\"form-control\" name='lastname' value='" + this.userData.lastname + "'/>\n" +
+            "\t\t\t\t<input class=\"form-control\" name='name'/>\n" +
             "\t\t\t</div>\n" +
             "\t\t</div>\n" +
             "\t\t\n" +
             "\t\t<div class= \"row\">\n" +
             "\t\t\t<div class = \"col-sm-6\">\n" +
-            "\t\t\t\t<p class= \"font-weight-bold\"> Città: </p> \n" +
+            "\t\t\t\t<p class= \"font-weight-bold\"> Cognome: " + this.userData.lastname + "</p> \n" +
             "\t\t\t</div>\n" +
             "\t\t\t<div class = \"col-sm-6\">\n" +
-            "\t\t\t\t<input class=\"form-control\" name='city' value='" + this.userData.city + "'/>\n" +
+            "\t\t\t\t<input class=\"form-control\" name='lastname'/>\n" +
             "\t\t\t</div>\n" +
             "\t\t</div>\n" +
             "\t\t\n" +
             "\t\t<div class= \"row\">\n" +
             "\t\t\t<div class = \"col-sm-6\">\n" +
-            "\t\t\t\t<p class= \"font-weight-bold\"> Scuola: </p> \n" +
+            "\t\t\t\t<p class= \"font-weight-bold\"> Città: " + this.userData.city + "</p> \n" +
             "\t\t\t</div>\n" +
             "\t\t\t<div class = \"col-sm-6\">\n" +
-            "\t\t\t\t<input class=\"form-control\" name='school' value='" + this.userData.school + "'/>\n" +
+            "\t\t\t\t<input class=\"form-control\" name='city'/>\n" +
+            "\t\t\t</div>\n" +
+            "\t\t</div>\n" +
+            "\t\t\n" +
+            "\t\t<div class= \"row\">\n" +
+            "\t\t\t<div class = \"col-sm-6\">\n" +
+            "\t\t\t\t<p class= \"font-weight-bold\"> Scuola: " + this.userData.school + "</p> \n" +
+            "\t\t\t</div>\n" +
+            "\t\t\t<div class = \"col-sm-6\">\n" +
+            "\t\t\t\t<input class=\"form-control\" name='school'/>\n" +
             "\t\t\t</div>\n" +
             "\t\t</div>\n";
         if (this.userKind == PageView_1.UserKind.teacher) {
             ret += "\t\t<div class= \"row\">\n" +
                 "\t\t\t<div class = \"col-sm-6\">\n" +
-                "\t\t\t\t<p class= \" font-weight-bold\"> Matricola INPS: </p> \n" +
+                "\t\t\t\t<p class= \" font-weight-bold\"> Matricola INPS: " + this.userData.inps + "</p> \n" +
                 "\t\t\t</div>\n" +
                 "\t\t\t<div class = \"col-sm-6\">\n" +
-                "\t\t\t\t<input class=\"form-control\" name='inps' value='" + this.userData.inps + "'/>\n" +
+                "\t\t\t\t<input class=\"form-control\" name='inps'/>\n" +
                 "\t\t\t</div>\n" +
                 "\t\t</div>";
         }
+        ret += "\t\t<div class= \"row\">\n" +
+            "\t\t\t<div class = \"col-sm-6\">\n" +
+            "\t\t\t\t<p class= \"font-weight-bold\"> Email: " + this.userData.email + "</p> \n" +
+            "\t\t\t</div>\n" +
+            "\t\t\t<div class = \"col-sm-6\">\n" +
+            "\t\t\t\t<input class=\"form-control\" type='email' name='email'/>\n" +
+            "\t\t\t</div>\n" +
+            "\t\t</div>\n" +
+            "\t\t<div class= \"row\">\n" +
+            "\t\t\t<div class = \"col-sm-6\">\n" +
+            "\t\t\t\t<p class= \"font-weight-bold\"> Username: " + this.userData.username + "</p> \n" +
+            "\t\t\t</div>\n" +
+            "\t\t\t<div class = \"col-sm-6\">\n" +
+            "\t\t\t\t<input class=\"form-control\" name='username'/>\n" +
+            "\t\t\t</div>\n" +
+            "\t\t</div>\n" +
+            "\t\t<div class= \"row\">\n" +
+            "\t\t\t<div class = \"col-sm-6\">\n" +
+            "\t\t\t\t<p class= \"font-weight-bold\"> Vecchia password: </p> \n" +
+            "\t\t\t</div>\n" +
+            "\t\t\t<div class = \"col-sm-6\">\n" +
+            "\t\t\t\t<input class=\"form-control\" type='password' name='oldpassword'/>\n" +
+            "\t\t\t</div>\n" +
+            "\t\t</div>\n" +
+            "\t\t<div class= \"row\">\n" +
+            "\t\t\t<div class = \"col-sm-6\">\n" +
+            "\t\t\t\t<p class= \"font-weight-bold\"> Nuova password: </p> \n" +
+            "\t\t\t</div>\n" +
+            "\t\t\t<div class = \"col-sm-6\">\n" +
+            "\t\t\t\t<input class=\"form-control\" type='password' name='password'/>\n" +
+            "\t\t\t</div>\n" +
+            "\t\t</div>\n";
         ret += "" +
             "\t\t\t<div class = \"col-sm-12 text-center mt-3\">\n" +
-            "\t\t\t\t<button class='btn btn-primary btn-sm' type='submit'>Modifica</button> \n" +
+            "\t\t\t\t<button class='btn btn-primary btn-sm' id='btnsubmit' type='submit'>Modifica</button> \n" +
             "\t\t\t</div>\n" +
             "</form>" +
             "\t</li>\n" +
@@ -174,7 +213,7 @@ class ProfileView extends PageView_1.PageView {
                 "\t</div>";
         }*/
         ret += "</div>";
-        ret += this.getFoot("");
+        ret += this.getFoot(this.getScript());
         return ret;
     }
     getMenu() {
@@ -237,6 +276,22 @@ class ProfileView extends PageView_1.PageView {
                 "        </form>";
             return ret;
         }
+    }
+    getScript() {
+        return "" +
+            "function a(){\n" +
+            "alert('ocio');\n" +
+            "}\n" +
+            "function fupdate(value){\n" +
+            "   var submit = document.getElementById('btnsubmit');\n" +
+            "alert('value: '+value);\n" +
+            "   if(value.match([^\\s])){\n" +
+            "       submit.removeAttribute('disabled','');\n" +
+            "   }\n" +
+            "   else{\n" +
+            "       submit.setAttribute('disabled','');\n" +
+            "   }\n" +
+            "}\n";
     }
 }
 exports.ProfileView = ProfileView;

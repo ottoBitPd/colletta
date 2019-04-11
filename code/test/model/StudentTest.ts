@@ -10,8 +10,8 @@ describe('Student',function() {
     let obj : Student;
     let test : Student;
     beforeEach(function() {
-        obj = new Student("11", "gioperry15", "ciao", "giovanni", "Peron", "Castelfranco", "Unipd");
-        test = new Student("3", "gioperry15", "ciao", "giovanni", "Peron", "Castelfranco", "Unipd");
+        obj = new Student("11", "gioperry15", "ciao", "giovanni", "Peron", "Castelfranco", "Unipd","giov.anni@gmail.com");
+        test = new Student("3", "gioperry15", "ciao", "giovanni", "Peron", "Castelfranco", "Unipd","giov.anni@gmail.com");
     });
 
     describe('Student.getUsername()', function () {
@@ -68,7 +68,7 @@ describe('Student',function() {
 
     describe('Student.setID()', function () {
         it('should return set id', function () {
-            let student = new test.DatabaseUserInfo("15", "gioperry15", "giovanni", "Peron", "Castelfranco"," Unipd");
+            let student = new test.DatabaseUserInfo("15", "gioperry15", "giovanni", "Peron", "Castelfranco"," Unipd","giov.anni@gmail.com");
             test.setID("15");
             expect(test.getID()).to.equal(student.id);
         });
@@ -84,7 +84,7 @@ describe('Student',function() {
     describe('Student.getClasses()', function () {
         it('should return classes of student', function () {
             const clase = new Class("name", "description","1234",["st1","st2"],["es1", "es2"]);
-            let student= new Student("1","gian","gianni","Gianmarco","Pettenuzzo","Castelfranco","Unipd");
+            let student= new Student("1","gian","gianni","Gianmarco","Pettenuzzo","Castelfranco","Unipd","giov.anni@gmail.com");
 
             const clase1 = new Class("carlo", "bo","1111",["st3"],["es5"]);
 
@@ -96,7 +96,7 @@ describe('Student',function() {
     describe('Student.getAverage()', function () {
 
         it('should return avarage of 3 exercises', function () {
-            let student= new Student("1","gian","gianni","Gianmarco","Pettenuzzo","Castelfranco","Unipd");
+            let student= new Student("1","gian","gianni","Gianmarco","Pettenuzzo","Castelfranco","Unipd","giov.anni@gmail.com");
             const take:Exercise[]=[];
             take.push(new Exercise("Ciao", "1"));
             take.push(new Exercise("Ciao ciao", "3"));

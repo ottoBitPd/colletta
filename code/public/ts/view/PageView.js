@@ -4,6 +4,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
  * PageView is an abstract class that represents the view
  * for all the application pages
  */
+var UserKind;
+(function (UserKind) {
+    UserKind[UserKind["user"] = 0] = "user";
+    UserKind[UserKind["student"] = 1] = "student";
+    UserKind[UserKind["teacher"] = 2] = "teacher";
+})(UserKind || (UserKind = {}));
+exports.UserKind = UserKind;
 class PageView {
     /**
      * PageView is an abstract class and it cannot have objects
@@ -11,12 +18,19 @@ class PageView {
     constructor() {
         this.menuList = null;
         this.title = null;
+        this.userKind = 0;
     }
     setTitle(value) {
         this.title = value;
     }
     setMenuList(value) {
         this.menuList = value;
+    }
+    setUserKind(usr) {
+        this.userKind = usr;
+    }
+    getUserKind() {
+        return this.userKind;
     }
     getHead(style) {
         let ret = "<!DOCTYPE html>" +

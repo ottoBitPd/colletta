@@ -19,7 +19,7 @@ class AuthenticationPresenter extends PagePresenter {
             delete session.errUsername;
             delete session.username;
             delete session.password;
-            response.redirect('/home');
+            response.redirect('/');
         });
         app.get('/profile', (request: any, response: any) => {
             response.send("Login avvenuto con successo sei nel tuo profilo"+session.username);
@@ -40,10 +40,10 @@ class AuthenticationPresenter extends PagePresenter {
                     app.use(session({secret: 'colletta',resave: false, saveUninitialized: true}));
                     session.username = request.body.username;
                     session.password = request.body.password;
-                    response.redirect("/profile");
+                    response.redirect("/");
                 }
                 else {
-                    response.redirect("/home?mess=invalidLogin");
+                    response.redirect("/?mess=invalidLogin");
                 }
             }
         });
@@ -63,12 +63,12 @@ class AuthenticationPresenter extends PagePresenter {
                 if (req.body.username !== "admin" && req.body.role === "student" && exist === "false") {
                     userClient.insertStudent(req.body.username, hashedPassword, req.body.name, req.body.surname, req.body.city, req.body.school);
                     //console.log("studente registrato con successo");
-                    res.redirect("/home");
+                    res.redirect("/");
 
                 } else if (req.body.username !== "admin" && req.body.role === "teacher" && userClient !== undefined) {
                     userClient.insertTeacher(req.body.username, hashedPassword, req.body.name, req.body.surname, req.body.city, req.body.school, req.body.inps);
                     //console.log("teacher registrato con successo");
-                    res.redirect("/home");
+                    res.redirect("/");
                 } else {
                     //console.log("username già utilizzato");
                     res.redirect("/registration?mess=errUsername");

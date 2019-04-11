@@ -71,5 +71,24 @@ class UserClient{
     async search(username:string) : Promise<string> {
         return await this.dbUserManager.search(username);
     }
+
+    public async getUserData(id:string) : Promise<any> {
+        const user : Data= await this.dbUserManager.read(id);
+        let userData = (<User> user).toJSON();
+        if((<User> user).isTeacher()){
+            userData.inps = (<Teacher> user).getINPS();
+        }
+        return userData;
+    }
+    public async updateUser(username:string, userUpdateData : any){
+        const id = await this.dbUserManager.search(username);
+        this.dbUserManager.update('data/users/'+id+'/name',userUpdateData.name);
+        this.dbUserManager.update('data/users/'+id+'/lastname',userUpdateData.lastname);
+        this.dbUserManager.update('data/users/'+id+'/city',userUpdateData.city);
+        this.dbUserManager.update('data/users/'+id+'/school',userUpdateData.school);
+        if(userUpdateData.inps !==undefined){
+            this.dbUserManager.update('data/users/'+id+'/INPScode',userUpdateData.inps);
+        }
+    }
 }
 export{UserClient}

@@ -76,7 +76,17 @@ abstract class User implements Data{
     }
 
     public toJSON() : any{
-        return 1;
+        let user: any = {
+            "username": this.username,
+            "id" : this.databaseInfo.id,
+            "password" : this.databaseInfo.password,
+            "name" : this.databaseInfo.name,
+            "lastname" : this.databaseInfo.lastName,
+            "city" : this.databaseInfo.city,
+            "school" : this.databaseInfo.school
+        };
+        return user;
     }
+
 }
 export {User};

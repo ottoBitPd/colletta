@@ -8,25 +8,6 @@ class InsertPageView extends PageView_1.PageView {
         this.exercisePresenter = new InsertPresenter_1.InsertPresenter(this);
         this.exercisePresenter.update(app);
     }
-    /*getPage() {
-        return "<!DOCTYPE html> " +
-            "<html lang=\"it\"> " +
-            "<head> " +
-            "<meta charset=\"UTF-8\"> " +
-            "<title>Inserimento frase</title> " +
-            "<link rel=\"stylesheet\" href=\"/style.css\"> " +
-            "</head> " +
-            "<body> " +
-            "<div id=\"back\"> " +
-            "<h1>NUOVO ESERCIZIO</h1>" +
-            "<form method=\"POST\" action=\"/exercise\"> " +
-            "<label for=\"sentence\">Inserisci una frase</label> " +
-            "<input type=\"text\" id=\"sentence\" name=\"sentence\"/> " +
-            "<input type=\"submit\" value=\"invia\"/> </form> " +
-            "</div> " +
-            "</body> " +
-            "</html>";
-    }*/
     getPage() {
         let ret = this.getHead();
         ret += this.getMenu();
@@ -70,7 +51,8 @@ class InsertPageView extends PageView_1.PageView {
             return "" +
                 "        <form class='form-inline my-2 my-lg-0' action='/logout'>\n" +
                 "           <div class=\"form-group\">" +
-                "               <button type=\"submit\" class=\"btn btn-primary my-2 my-sm-0\">Logout</button>" +
+                "               <a class=\"btn btn-default btn-circle btn-sm mr-4 pt-2\" href=\"/profile\" role=\"button\"><i class=\"fas fa-user-circle\" style=\"color: white; font-size:26px\"></i></a>\n" +
+                "               <button type=\"submit\" class=\"btn btn-primary my-2 my-sm-0\">Logout</button>\n" +
                 "           </div>\n" +
                 "        </form>\n";
         }

@@ -16,14 +16,15 @@ class InsertPresenter extends PagePresenter{
     }
 
     private insertExercise(app : any) : void{
-        app.get('/', (request: any, response: any) => {
+        app.get('/', async (request: any, response: any) => {
             session.invalidLogin = request.query.mess==="invalidLogin";
-            /*let exerciseClient = this.client.getExerciseClient();
+            let exerciseClient = this.client.getExerciseClient();
             let userClient = this.client.getUserClient();
             if(exerciseClient && userClient){
                 //console.log("session.username: ", session.username);
                 if(session.username!== undefined && await userClient.isTeacher(session.username)) {
                     //loggato come insegnante
+
                 }
                 else if(session.username!== undefined && !(await userClient.isTeacher(session.username))){
                     //loggato come studente
@@ -31,7 +32,7 @@ class InsertPresenter extends PagePresenter{
                 else{
                     //non loggato
                 }
-            }*/
+            }
             let menuList :any;
             menuList= {
                 0 :{"link":"/searchexercise","name":"Ricerca esercizio"}

@@ -38,18 +38,18 @@ class RegistrationView extends PageView_1.PageView {
             "<form method='post' action='/saveuser'>\n" +
                 "<div class=\"form-group\">\n" +
                 "<label class='h5' for=\"sentence\">Inserisci i tuoi dati</label>\n " +
-                "<input type=\"text\" class=\"form-control my-2\" id=\"name\" name=\"name\" placeholder=\"Inserisci il tuo nome\"/>" +
-                "<input type=\"text\" class=\"form-control my-2\" id=\"surname\" name=\"surname\" placeholder=\"Inserisci il tuo cognome\"/>" +
-                "<input type=\"text\" class=\"form-control my-2\" id=\"city\" name=\"city\" placeholder=\"Inserisci la tua città\"/>" +
-                "<input type=\"text\" class=\"form-control my-2\" id=\"school\" name=\"school\" placeholder=\"Inserisci la tua scuola\"/>" +
-                "<select class='form-control my-2' name=\"role\" id='role' onchange=\"myFunction()\">" +
+                "<input type=\"text\" class=\"form-control my-2\" id=\"name\" name=\"name\" placeholder=\"Inserisci il tuo nome\" required/>" +
+                "<input type=\"text\" class=\"form-control my-2\" id=\"surname\" name=\"surname\" placeholder=\"Inserisci il tuo cognome\" required/>" +
+                "<input type=\"text\" class=\"form-control my-2\" id=\"city\" name=\"city\" placeholder=\"Inserisci la tua città\" required/>" +
+                "<input type=\"text\" class=\"form-control my-2\" id=\"school\" name=\"school\" placeholder=\"Inserisci la tua scuola\" required/>" +
+                "<select class='form-control my-2' name=\"role\" id='role' onchange=\"myFunction() required\">" +
                 "   <option value=\"student\">Allievo</option>" +
                 "   <option value=\"teacher\">Insegnante</option>" +
                 "</select>" +
-                "<input type=\"text\" class='form-control my-2' style=\"display: none;\" id=\"inps\" name=\"inps\" placeholder=\"Inserisci il tuo codice inps\"/>" +
-                "<input type=\"text\" class='form-control my-2' id=\"username\" name=\"username\" placeholder=\"Inserisci la tua username\"/> " +
-                "<input type=\"password\" class='form-control my-2' id=\"password\" name=\"password\" placeholder=\"Inserisci la tua password\"/> " +
-                "<input type=\"password\" class='form-control my-2' id=\"checkpassword\" name=\"checkpassword\" placeholder=\"Conferma la tua password\" oninput=\"checkPassword()\"/> " +
+                "<input type=\"text\" class='form-control my-2' style=\"display: none;\" id=\"inps\" name=\"inps\" placeholder=\"Inserisci il tuo codice inps\" required/>" +
+                "<input type=\"text\" class='form-control my-2' id=\"username\" name=\"username\" placeholder=\"Inserisci la tua username\" required/> " +
+                "<input type=\"password\" class='form-control my-2' id=\"password\" name=\"password\" placeholder=\"Inserisci la tua password\" required/> " +
+                "<input type=\"password\" class='form-control my-2' id=\"checkpassword\" name=\"checkpassword\" placeholder=\"Conferma la tua password\" oninput=\"checkPassword()\" required/> " +
                 "<p id='messPassword'></p>" +
                 "<button type=\"submit\" id='btnsubmit' class=\"btn btn-primary my-2 my-sm-0 w-25\">Invia</button>" +
                 "</div>\n" +
@@ -99,7 +99,7 @@ class RegistrationView extends PageView_1.PageView {
             "    <div class=\"collapse navbar-collapse\" id=\"collapsibleNavbar\">" +
             "       <ul class=\"navbar-nav mr-auto\">" +
             "           <li class=\"nav-item\">" +
-            "               <a class=\"nav-link\" href=\"home\">Torna alla home</a>" +
+            "               <a class=\"nav-link\" href=\"/\">Torna alla home</a>" +
             "           </li>" +
             "       </ul>" +
             "    </div>" +

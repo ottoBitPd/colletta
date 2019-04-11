@@ -3,9 +3,9 @@
  * for all the application pages
  */
 enum UserKind {
-    user=0,
-    student= 1,
-    teacher=2
+    user =0,
+    student = 1,
+    teacher =2
 }
 
 abstract class PageView {

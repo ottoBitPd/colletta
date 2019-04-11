@@ -13,21 +13,35 @@ class ProfilePresenter extends PagePresenter{
     }
 
     update(app : any){
-
-        app.get('/profile', async (request: any, response: any) => {
-            //session.invalidLogin = request.query.mess==="invalidLogin";
-
-            //this.view.setMainList("Login avvenuto con successo sei nel tuo profilo"+session.username);
-
-            let menuList :any;
-            menuList= {
-                0 :{"link":"link1","name":"name1"},
-                1 :{"link":"link2","name":"name2"}
-            }
-            this.view.setMenuList(menuList);
-            //this.viewProfile.setMainList(["class1","class2","class3","class4","class5","class6","class7","class8"]);
+        app.post('/update', async (request: any, response: any) => {
             let userClient = this.client.getUserClient();
             if (userClient){
+                let userUpdateData : any = {
+                    "name" : request.body.name,
+                    "lastname" : request.body.lastname,
+                    "city" : request.body.city,
+                    "school" : request.body.school
+                }
+                if (await userClient.isTeacher(session.username)){
+                    //console.log("teacher");
+                    userUpdateData.inps= request.body.inps;
+                    this.view.setUserKind(UserKind.teacher);
+                } else {
+                    //console.log("student");
+                    this.view.setUserKind(UserKind.student);
+                }
+                await userClient.updateUser(session.username,userUpdateData);
+            }
+            response.redirect('/profile');
+        });
+
+        app.get('/profile', async (request: any, response: any) => {
+            let userClient = this.client.getUserClient();
+            if (userClient){
+                const id = await userClient.search(session.username);
+                const userData = await userClient.getUserData(id);
+                //console.log("userData: ",userData);
+                this.view.setUserData(userData);
                 if (await userClient.isTeacher(session.username)){
                     //console.log("teacher");
                     this.view.setUserKind(UserKind.teacher);

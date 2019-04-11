@@ -11,6 +11,7 @@ class ExerciseView extends PageView_1.PageView {
         this.exercisePresenter = new ExercisePresenter_1.ExercisePresenter(this);
         this.exercisePresenter.update(app);
         this.fileSystem = require('fs');
+        this.corrections = [];
     }
     setSentence(value) {
         this.sentence = value;
@@ -20,6 +21,9 @@ class ExerciseView extends PageView_1.PageView {
     }
     setPosTags(value) {
         this.posTags = value;
+    }
+    setCorrections(value) {
+        this.corrections = value;
     }
     getPage() {
         const words = this.sentence.split(" ");
@@ -36,15 +40,22 @@ class ExerciseView extends PageView_1.PageView {
         if (this.posTags) {
             ret += "<input type=\"hidden\" name=\"hunposTags\" value='" + JSON.stringify(this.posTags) + "'/>";
         }
-        ret += "   <br/>" +
-            "            <input type=\"text\" class='form-control' name=\"topics\"/>" +
-            "            <select class='form-control' name=\"difficulty\">" +
-            "                <option value=\"1\">Molto facile</option>" +
-            "                <option value=\"2\">Facile</option>" +
-            "                <option value=\"3\">Medio</option>" +
-            "                <option value=\"4\">Difficile</option>" +
-            "                <option value=\"5\">Molto difficile</option>" +
-            "            </select>" +
+        ret +=
+            "   <br/>" +
+                "            <input type=\"text\" class='form-control' name=\"topics\"/>" +
+                "            <select class='form-control' name=\"difficulty\">" +
+                "                <option value=\"1\">Molto facile</option>" +
+                "                <option value=\"2\">Facile</option>" +
+                "                <option value=\"3\">Medio</option>" +
+                "                <option value=\"4\">Difficile</option>" +
+                "                <option value=\"5\">Molto difficile</option>" +
+                "            </select>" +
+                "            <div class='col-sm-4'>Scegli il professore per la correzione</div>" +
+                "            <select class='form-control' name='correction'>";
+        for (let i in this.corrections) {
+            ret += "<option value='1'>" + this.corrections[i].id + "</option>";
+        }
+        ret += "            </select>" +
             "            <div id=\"submit\"><input type=\"submit\" value=\"Invia\"/></div>" +
             "        </form>" +
             "    </div>" +
@@ -72,7 +83,7 @@ class ExerciseView extends PageView_1.PageView {
             "<div class='col-sm-4'>" +
             "FRASE" +
             "</div>";
-        if (this.posTranslation) {
+        if (this.userKind === PageView_1.UserKind.teacher) {
             table += "" +
                 "<div class='col-sm-4'>" +
                 "CORREZIONE AUTOGENERATA" +
@@ -90,19 +101,19 @@ class ExerciseView extends PageView_1.PageView {
                 "<div class='col-sm-4'>" +
                 words[i] +
                 "</div>";
-            if (this.posTranslation) {
+            if (this.userKind === PageView_1.UserKind.teacher) {
                 table += "" +
                     "<div class='col-sm-4'>" +
                     this.posTranslation[i] +
                     "</div>";
             }
-            table += "" +
+            table +=
                 "<div class='row'>" +
-                "<div class='col-sm-4'>" +
-                this.getSelect(i) +
-                "</div>" +
-                "</div>" +
-                "</li>";
+                    "<div class='col-sm-4'>" +
+                    this.getSelect(i) +
+                    "</div>" +
+                    "</div>" +
+                    "</li>";
         }
         return table + "</ul>";
     }

@@ -287,6 +287,5 @@ class ExercisePresenter extends PagePresenter{
         }
         return result;
     }
-
 }
 export {ExercisePresenter};

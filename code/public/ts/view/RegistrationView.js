@@ -51,7 +51,7 @@ class RegistrationView extends PageView_1.PageView {
                 "<input type=\"password\" class='form-control my-2' id=\"password\" name=\"password\" placeholder=\"Inserisci la tua password\"/> " +
                 "<input type=\"password\" class='form-control my-2' id=\"checkpassword\" name=\"checkpassword\" placeholder=\"Conferma la tua password\" oninput=\"checkPassword()\"/> " +
                 "<p id='messPassword'></p>" +
-                "<button type=\"submit\" class=\"btn btn-primary my-2 my-sm-0 w-25\">Invia</button>" +
+                "<button type=\"submit\" id='btnsubmit' class=\"btn btn-primary my-2 my-sm-0 w-25\">Invia</button>" +
                 "</div>\n" +
                 "</form>\n " +
                 "</div>\n" +
@@ -75,14 +75,17 @@ class RegistrationView extends PageView_1.PageView {
             "function checkPassword(){\n" +
             "   var password = document.getElementById('password').value;\n" +
             "   var checkpassword = document.getElementById('checkpassword').value;\n" +
+            "   var submit = document.getElementById('btnsubmit');\n" +
             "   var p =document.getElementById('messPassword');\n" +
             "   if(password===checkpassword){\n" +
             "       p.innerHTML = 'Password confermata';\n" +
             "       p.style.color='lime';\n" +
+            "       submit.removeAttribute('disabled','');\n" +
             "   }\n" +
             "   else{\n" +
             "       p.innerHTML = 'Password diversa da quella inserita';\n" +
             "       p.style.color='red';\n" +
+            "       submit.setAttribute('disabled','');\n" +
             "   }\n" +
             "}\n";
     }

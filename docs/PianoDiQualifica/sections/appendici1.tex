@@ -177,6 +177,11 @@ Per ogni test viene specificato il suo codice univoco, la descrizione e lo stato
 \section{Resoconto attività di verifica}
 \subsection{Prodotto}
 \subsubsection{Documentazione}
+\paragraph{Controllo ortografico - MPD1\\}
+A seguito delle verifiche eseguite, non sono presenti errori ortografici nei documenti. Il numero di errori rilevati dall'editor Texmaker sono pari a 0.\\
+L'obbiettivo OPD2 si ritiene superato.
+
+\paragraph{Indice di Gullpease - MPD2\\}
 Nella tabella seguente vengono riportati i risultati delle verifiche eseguite sui documenti. Il resoconto contiene le verifiche sia dei documenti esterni, cioè utili al committente, sia interni, utili invece al team Ottobit.\\
 	\begin{longtable}{>{\centering\arraybackslash}m{5cm} >{\centering\arraybackslash}m{4cm} >{\centering\arraybackslash}m{5cm} >{\centering\arraybackslash}m{2cm}}
 		\rowcolor{LightBlue}
@@ -240,7 +245,116 @@ Nella tabella seguente vengono riportati i risultati delle verifiche eseguite su
 
 
 \subsubsection{Software}
-Le metriche per il software non vengono calcolate fino all'inizio dell'attività di codifica. Nei processi precedenti, nonostante si sia iniziato a scrivere del codice (in funzione dello sviluppo di un \textit{Proof of Concept}$^*$), questo non viene considerato nel calcolo delle metriche.
+\paragraph{Percentuale di superamento test - MPS1}
+\subparagraph{Codifica al 2019-04-05}
+In questo periodo dell'attività di codifica, sono stati implementati 16 test di unità. Tutti questi test vengono superati, quindi la percentuale di superamento test rispetto a quelli implementati è pari al 100%.
+
+\subparagraph{Codifica al 2019-04-12}
+In questo periodo dell'attività di codifica, sono stati implementati 22 test di unità e 4 test di integrazione. Tutti questi test vengono superati, quindi la percentuale di superamento test rispetto a quelli implementati è pari al 100%.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.6]{images/resoconto/MPS1Chart.pdf}
+	\caption{Serie storica percentuale di superamento test}	
+\end{figure}
+
+\paragraph{Numero di parametri per metodo - MPS2}
+\subparagraph{Codifica al 2019-04-05}
+In questo periodo dell'attività di codifica, la media di parametri per metodo equivale a 1. Infatti sono stati implementati 75 metodi con un totale di 95 parametri.
+
+\subparagraph{Codifica al 2019-04-12}
+In questo periodo dell'attività di codifica, la media di parametri per metodo è inferiore a 1. Infatti sono stati implementati 74 metodi con un totale di 44 parametri.
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.6]{images/resoconto/MPS2Chart.pdf}
+	\caption{Serie storica numero di parametri per metodo}	
+\end{figure}
+
+\paragraph{Numero di attributi per classe - MPS3}
+\subparagraph{Codifica al 2019-04-05}
+In questo periodo dell'attività di codifica, la media di attributi per classe equivale a 2. Infatti sono stati implementate 23 classi con un totale di 37 attributi.
+
+\subparagraph{Codifica al 2019-04-12}
+In questo periodo dell'attività di codifica, la media di attributi per classe equivale a 1. Infatti sono stati implementate 10 classi con un totale di 7 attributi.
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.6]{images/resoconto/MPS3Chart.pdf}
+	\caption{Serie storica numero di attributi per classe}	
+\end{figure}
+
+\paragraph{Numero di metodi per classe - MPS4}
+\subparagraph{Codifica al 2019-04-05}
+In questo periodo dell'attività di codifica, la media di attributi per classe equivale a 3. Infatti sono stati implementate 23 classi con un totale di 75 metodi.
+
+\subparagraph{Codifica al 2019-04-12}
+In questo periodo dell'attività di codifica, la media di attributi per classe equivale a 7. Infatti sono stati implementate 10 classi con un totale di 74 metodi.
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.6]{images/resoconto/MPS4Chart.pdf}
+	\caption{Serie storica rilevazioni numero di metodi per classe}	
+\end{figure}
+
+\paragraph{Complessità ciclomatica media - MPS5}
+
+\paragraph{Implementazione dei requisiti obbligatori - MPS6}
+\subparagraph{Codifica al 2019-04-05}
+In questo periodo dell'attività di codifica, sono stati soddisfatti 26 requisiti obbligatori, ovvero il 56,52\% dei requisiti obbligatori totali.
+Nonostante non raggiunga il livello di accettazione della
+metrica, questo risultato è ritenuto sufficiente a questo punto del progetto poiché sono previsti altri incrementi alla codifica che porteranno al soddisfacimento di altri requisiti.
+
+\subparagraph{Codifica al 2019-04-12}
+In questo periodo dell'attività di codifica, sono stati soddisfatti 12 requisiti obbligatori, per un totale di 38, ovvero l'82,60\% dei requisiti obbligatori totali.
+Nonostante non raggiunga il livello di accettazione della
+metrica, questo risultato è ritenuto sufficiente a questo punto del progetto poiché sono previsti altri incrementi alla codifica che porteranno al soddisfacimento di altri requisiti.
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.6]{images/resoconto/MPS6Chart.pdf}
+	\caption{Serie storica percentuale di requisiti obbligatori soddisfatti}	
+\end{figure}
+
+\paragraph{Implementazione dei requisiti desiderabili - MPS7}
+\subparagraph{Codifica al 2019-04-05}
+In questo periodo dell'attività di codifica, sono stati soddisfatti 6 requisiti desiderabili, ovvero il 13,63\% dei requisiti desiderabili totali.
+Nonostante non raggiunga il livello di accettazione della
+metrica, questo risultato è ritenuto sufficiente a questo punto del progetto poiché sono previsti altri incrementi alla codifica che porteranno al soddisfacimento di altri requisiti.
+
+\subparagraph{Codifica al 2019-04-12}
+In questo periodo dell'attività di codifica, sono stati soddisfatti 4 requisiti desiderabili, per un totale di 10, ovvero il 22,72\% dei requisiti desiderabili totali.
+Nonostante non raggiunga il livello di accettazione della
+metrica, questo risultato è ritenuto sufficiente a questo punto del progetto poiché sono previsti altri incrementi alla codifica che porteranno al soddisfacimento di altri requisiti.
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.6]{images/resoconto/MPS7Chart.pdf}
+	\caption{Serie storica percentuale di requisiti desiderabili soddisfatti}	
+\end{figure}
+
+\paragraph{Copertura dei test sul codice - MPS8}
+
+\paragraph{Implementazione dei requisiti opzionali - MPS9}
+\subparagraph{Codifica al 2019-04-05}
+In questo periodo dell'attività di codifica, sono stati soddisfatti 0 requisiti opzionali. Il valore della metrica rimane a 0.
+
+\subparagraph{Codifica al 2019-04-12}
+In questo periodo dell'attività di codifica, sono stati soddisfatti 2 requisiti opzionali, ovvero il 6,25\% dei requisiti opzionali totali.
+Nonostante non raggiunga il livello di accettazione della
+metrica, questo risultato è ritenuto sufficiente a questo punto del progetto poiché sono previsti altri incrementi alla codifica che porteranno al soddisfacimento di altri requisiti.
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.6]{images/resoconto/MPS9Chart.pdf}
+	\caption{Serie storica percentuale di requisiti opzionali soddisfatti}	
+\end{figure}
+
+\paragraph{Numero di linee di codice di una procedura - MPS10}
+\subparagraph{Codifica al 2019-04-05}
+In questo periodo dell'attività di codifica, la media di linee di codice per procedura equivale a 20. Infatti sono stati implementati 75 metodi con un totale di circa 1500 linee di codice.
+
+\subparagraph{Codifica al 2019-04-12}
+In questo periodo dell'attività di codifica, la media di linee di codice per procedura equivale a 13. Infatti sono stati implementati 74 metodi con un totale di circa 1000 linee di codice.
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.6]{images/resoconto/MPS10Chart.pdf}
+	\caption{Serie storica linee di codice per procedura}	
+\end{figure}
 
 \subsection{Processi}
 \subsubsection{Valori ISO/IEC 15504 - MPC1}
@@ -331,13 +445,6 @@ Riportiamo di seguito i calcoli e le varie rilevazioni effettuate.
 	\hline\\
 	\caption{Rilevazioni indice stabilità requisiti (RSI) - Revisione di progetto}
 \end{longtable}
-\begin{figure}[H]
-	\centering
-	\includegraphics[scale=0.6]{images/resoconto/requisitiChart.pdf}
-	\caption{Serie storica rilevazioni stabilità requisiti - Revisione di progetto}	
-\end{figure}
-
-
 
 \begin{longtable}{>{\centering\arraybackslash}m{3cm} >{\centering\arraybackslash}m{4cm} >{\centering\arraybackslash}m{5cm} >{\centering\arraybackslash}m{2cm}}
 	\rowcolor{LightBlue}
@@ -351,11 +458,23 @@ Riportiamo di seguito i calcoli e le varie rilevazioni effettuate.
 	\hline
 	\caption{Rilevazioni indice stabilità requisiti (RSI) - Revisione di qualifica}
 \end{longtable}
+
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=1]{images/resoconto/qualificaChart.png}
-	\caption{Serie storica rilevazioni stabilità requisiti - Revisione di qualifica}	
+	\includegraphics[scale=0.6]{images/resoconto/requisitiChart.pdf}
+	\caption{Serie storica rilevazioni stabilità requisiti - Revisione di progetto}	
 \end{figure}
+
+
+\subsubsection{Violazione dello stile di codifica - MPC3}
+
+\subsubsection{Test di integrazione implementati - MPC4}
+
+\subsubsection{Test di sistema implementati - MPC5}
+
+\subsubsection{Test di unità implementati - MPC6}
+
+\subsubsection{Test di accettazione implementati - MPC7}
 
 \subsection{Esito delle revisioni - RR}
 Successivamente alla prima revisione formale, il gruppo ha apportato diverse modifiche ai documenti basandosi sulle osservazioni ricevute dai docenti. Le modifiche sono riassunte di seguito:

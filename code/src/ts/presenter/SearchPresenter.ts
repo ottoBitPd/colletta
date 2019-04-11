@@ -30,7 +30,7 @@ class SearchPresenter extends PagePresenter {
                 if(exerciseClient) {
                     let map = await exerciseClient.searchExercise(request.body.sentence);//returns map<idEsercizio, sentence>
                     this.view.setResultList(map);
-                    response.redirect("/home");
+                    response.redirect("/searchExercise");
                 }
         });
     }

@@ -129,7 +129,7 @@ class FirebaseUserManager extends FirebaseManager {
     public async update (path:string, value: any) {
         let splittedPath =path.split("/");
         let position : number = splittedPath.length -1;
-        let field : string=splittedPath[position];
+        let field : string = splittedPath[position];
         console.log(field);
         switch (field) {
             case "password": await this.updateField(path, value); break;

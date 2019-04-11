@@ -6,6 +6,7 @@ class ExerciseView extends PageView{
     private posTranslation : any;
     private posTags : any;
     private fileSystem : any;
+    private corrections : any[];
     //@ts-ignore
     private exercisePresenter : ExercisePresenter;
     constructor(app : any){
@@ -16,6 +17,7 @@ class ExerciseView extends PageView{
         this.exercisePresenter = new ExercisePresenter(this);
         this.exercisePresenter.update(app);
         this.fileSystem = require('fs');
+        this.corrections = [];
     }
 
 
@@ -29,6 +31,10 @@ class ExerciseView extends PageView{
 
     setPosTags(value : string[]) {
         this.posTags = value;
+    }
+
+    setCorrections(value : any[]){
+        this.corrections = value;
     }
 
     getPage() {
@@ -47,20 +53,27 @@ class ExerciseView extends PageView{
                 if(this.posTags) {
                     ret += "<input type=\"hidden\" name=\"hunposTags\" value='" + JSON.stringify(this.posTags) + "'/>";
                 }
-            ret+="   <br/>" +
-            "            <input type=\"text\" class='form-control' name=\"topics\"/>" +
-            "            <select class='form-control' name=\"difficulty\">" +
-            "                <option value=\"1\">Molto facile</option>" +
-            "                <option value=\"2\">Facile</option>" +
-            "                <option value=\"3\">Medio</option>" +
-            "                <option value=\"4\">Difficile</option>" +
-            "                <option value=\"5\">Molto difficile</option>" +
-            "            </select>" +
-            "            <div id=\"submit\"><input type=\"submit\" value=\"Invia\"/></div>" +
-            "        </form>" +
-            "    </div>" +
-            "    </body>" +
-            "    <script>";
+            ret+=
+                "   <br/>" +
+                "            <input type=\"text\" class='form-control' name=\"topics\"/>" +
+                "            <select class='form-control' name=\"difficulty\">" +
+                "                <option value=\"1\">Molto facile</option>" +
+                "                <option value=\"2\">Facile</option>" +
+                "                <option value=\"3\">Medio</option>" +
+                "                <option value=\"4\">Difficile</option>" +
+                "                <option value=\"5\">Molto difficile</option>" +
+                "            </select>" +
+                "            <div class='col-sm-4'>Scegli il professore per la correzione</div>"+
+                "            <select class='form-control' name='correction'>";
+                for (let i in this.corrections){
+                    ret+= "<option value='1'>"+this.corrections[i].id+"</option>";
+                }
+                ret+="            </select>"+
+                "            <div id=\"submit\"><input type=\"submit\" value=\"Invia\"/></div>" +
+                "        </form>" +
+                "    </div>" +
+                "    </body>" +
+                "    <script>";
             ret+=this.getScript();
             ret+="    </script>" +
             "</html>";
@@ -107,13 +120,13 @@ class ExerciseView extends PageView{
                         this.posTranslation[i] +
                     "</div>";
                 }
-            table+=""+
+            table+=
                 "<div class='row'>" +
                 "<div class='col-sm-4'>" +
                 this.getSelect(i) +
                 "</div>"+
-            "</div>" +
-            "</li>";
+                "</div>" +
+                "</li>";
         }
         return table + "</ul>";
     }

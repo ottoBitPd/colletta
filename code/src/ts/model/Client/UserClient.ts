@@ -44,12 +44,28 @@ class UserClient{
     async isTeacher(username:string) : Promise<boolean> {
         const id = await this.dbUserManager.search(username);
         const user = await this.dbUserManager.read(id);
-        console.log((<User>user));
-        console.log((<User>user).getUsername());
+        //console.log((<User>user));
+        //console.log((<User>user).getUsername());
         if (user !== undefined)
             return (<User>user).isTeacher();
         else
             return false;
+    }
+
+    async teacherList() : Promise<string[]> {
+        const teacherMap = await this.dbUserManager.elements();
+        console.log(teacherMap);
+        let list : string[] = [];
+
+        teacherMap.forEach(async (value, key) => {
+            const condition = await this.isTeacher(value);
+            if (condition){
+                list.push(key);
+            }
+        });
+
+        console.log(list);
+        return list;
     }
 
     async search(username:string) : Promise<string> {

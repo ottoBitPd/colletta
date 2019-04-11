@@ -16,7 +16,7 @@ class InsertPresenter extends PagePresenter{
     }
 
     private insertExercise(app : any) : void{
-        app.get('/home', (request: any, response: any) => {
+        app.get('/', (request: any, response: any) => {
             session.invalidLogin = request.query.mess==="invalidLogin";
             /*let exerciseClient = this.client.getExerciseClient();
             let userClient = this.client.getUserClient();

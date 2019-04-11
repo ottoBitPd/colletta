@@ -1,3 +1,5 @@
-ciao	Smn	
-giovanotti	Smp	
+mi	PC1ns	
+chiamo	Sms	
+Benedetto	SP	
+Cosentino	SP	
 

@@ -34,9 +34,6 @@ class ExerciseClient{
                 mapToReturn.set(key,value);
             }
         });
-        if(mapToReturn.size===0){//if no exercise corresponds with the substring
-            mapToReturn.set("false","false");
-        }
         return mapToReturn;
         /*
         //old version bisogna ritornare una mappa
@@ -59,7 +56,17 @@ class ExerciseClient{
         return await this.dbExerciseManager.read(id);
     }*/
 
-    async searchSolution(sentence:string) : Promise<Map<string,string>>{
+    /**
+     * @param sentence
+     * @param solverID
+     * @return a JSON of this form
+     *          {
+     *              "id" : solverID,
+     *              "tags" : solutionTags,
+     *              "time" : solutionTime
+     *          }
+     */
+    async searchSolution(sentence:string,solverID: string) : Promise<any[]>{/*
         var mapToReturn = new Map<string, string>();
         var exerciseKey = await this.dbExerciseManager.search(sentence);
         //console.log("exerciseKey: ",exerciseKey);
@@ -78,12 +85,30 @@ class ExerciseClient{
         }
         //console.log("nessun esercizio trovato");
         mapToReturn.set("false","false");//nessun esercizio trovato
-        return mapToReturn;
+        return mapToReturn;*/
+
+        let result : any[] = [];
+        let exerciseKey = await this.dbExerciseManager.search(sentence);
+        //console.log("exerciseKey: ",exerciseKey);
+        if(exerciseKey !== "false") {
+            let exercise: Data = await this.dbExerciseManager.read(exerciseKey);
+            //console.log("Exercise: ",exercise);
+            let solutions = (<Exercise>exercise).getSolutions();
+            solutions.filter((value) => value.getSolverId() == solverID).forEach((value) => {
+                result.push(
+                    {
+                        "id" : value.getSolverId(),
+                        "tags" : value.getSolutionTags(),
+                        "time" : value.getTime()
+                    });
+            });
+        }
+        return result;
     }
 
     public async getSentence(id: string): Promise<string> {
         var exercise : Data = await this.dbExerciseManager.read(id);
-        console.log(exercise);
+        //console.log(exercise);
         return (<Exercise>exercise).getSentence();
     }
 }

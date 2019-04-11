@@ -65,7 +65,7 @@ abstract class User implements Data{
         this.databaseInfo.id= id;
     }
 
-    public isTeacher () {
+    public isTeacher () :boolean {
         return false;
     }
 

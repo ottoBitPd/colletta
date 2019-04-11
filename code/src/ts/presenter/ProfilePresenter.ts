@@ -29,10 +29,10 @@ class ProfilePresenter extends PagePresenter{
             let userClient = this.client.getUserClient();
             if (userClient){
                 if (await userClient.isTeacher(session.username)){
-                    console.log("teacher");
+                    //console.log("teacher");
                     this.view.setUserKind(UserKind.teacher);
                 } else {
-                    console.log("student");
+                    //console.log("student");
                     this.view.setUserKind(UserKind.student);
                 }
             }
@@ -43,7 +43,7 @@ class ProfilePresenter extends PagePresenter{
 
 
         app.post('/deleteClass', async (request: any, response: any) => {
-            console.log("post: ",request.body);
+            //console.log("post: ",request.body);
             response.send("elimino la classe "+request.body.classToDelete);
         });
     }

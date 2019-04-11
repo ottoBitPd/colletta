@@ -92,6 +92,8 @@
 		\rowcolor{LightBlue}
 		\color{white}\bfseries Versione & \color{white}\bfseries Data & \multicolumn{1}{c}{\color{white}\bfseries Autore}
 		& \color{white}\bfseries Ruolo & \multicolumn{1}{c}{\color{white}\bfseries Descrizione}\\[0.25cm]
+		3.0.0 & 2019-04-11 & Giovanni Bergo & Responsabile & Approvazione per il rilascio \\ \hline
+		2.1.0 & 2019-04-11 & Michele Bortone & Verificatore & Documento \newline verificato \\ \hline
 		2.0.2 & 2019-03-19 & Giovanni Bergo \newline Giovanni Peron & Amministratore & Correzione errori RP \\ \hline
 		2.0.1 & 2019-03-18 & Giovanni Bergo \newline Giovanni Peron & Amministratore & Correzione errori RP \\ \hline
 		2.0.0 & 2019-03-05 & Gianmarco Pettenuzzo & Responsabile & Approvazione per il rilascio \\ \hline
@@ -343,14 +345,14 @@ In caso di necessità verrà fornito supporto alla proponente MivoQ s.r.l. e l'a
 	
 	\paragraph{Uso di TSLint}
 	Al fine di evitare errori di stile del codice, in WebStorm dovrà essere abilitato TSLint, nel seguente modo: Settings | Languages \& Frameworks | TypeScript | TSLint.
-	Per fare in modo che TSLint funzioni correttamente è necessario configurarlo utilizzando il file tsconfig.json presente all'interno della cartella principale del sorgente dell'applicazione. È possibile quindi settare l'impostazione ``Configutation file'' su Automated search o specificare manualmente il percorso del file appena citato.
+	Per fare in modo che TSLint funzioni correttamente è necessario configurarlo utilizzando il file tsconfig.json presente all'interno della cartella principale del sorgente dell'applicazione. È possibile quindi settare l'impostazione ``Configutation file'' su Automated search* o specificare manualmente il percorso del file appena citato.
 	
 	\paragraph{Lunghezza delle linee di codice} Le linee di codice non dovranno superare i 79 caratteri. In ogni caso l'IDE che abbiamo scelto mette a disposizione una linea limite da non superare.
 	
 	\paragraph{Nomenclatura codice}
 	I nomi di classi, variabili e metodi dovranno avere un nome esplicativo per evitare il più possibile ambiguità di comprensione.
 	\begin{itemize}
-		\item \textbf{Classi}: per i nomi delle classi verrà utilizzata la notazione Upper Camel Case; cioè inizieranno con la prima lettera maiuscola e, nel caso sia composte da più parole successive, queste cominceranno con la lettera maiuscola.
+		\item \textbf{Classi}: per i nomi delle classi verrà utilizzata la notazione Upper Camel Case*; cioè inizieranno con la prima lettera maiuscola e, nel caso sia composte da più parole successive, queste cominceranno con la lettera maiuscola.
 	
 		\begin{multicols}{2}
 			
@@ -367,19 +369,8 @@ In caso di necessità verrà fornito supporto alla proponente MivoQ s.r.l. e l'a
 			\end{lstlisting}
 		\end{multicols}
 		
-		\item \textbf{Costanti}: i nomi delle costanti verranno scritti usando solo maiuscole.
 		
-		\begin{multicols}{2}	
-			\begin{lstlisting}[caption=nome costante corretto]
-			var MAXLENGTH = 100;
-			\end{lstlisting}
-			
-			\begin{lstlisting}[caption=nome costante scorretto]
-			var MaxLenght = 100;
-			\end{lstlisting}
-		\end{multicols}
-		
-		\item \textbf{Metodi}: per i nomi dei metodi verrà utilizzata la notazione Lower Camel Case; cioè inizieranno con la prima lettera minuscola e, nel caso sia composte da più parole successive, queste cominceranno con la lettera maiuscola.
+		\item \textbf{Metodi}: per i nomi dei metodi verrà utilizzata la notazione Lower Camel Case*; cioè inizieranno con la prima lettera minuscola e, nel caso sia composte da più parole successive, queste cominceranno con la lettera maiuscola.
 	
 
 \begin{multicols}{2}
@@ -393,7 +384,7 @@ In caso di necessità verrà fornito supporto alla proponente MivoQ s.r.l. e l'a
 \end{multicols}
 
 
-		\item \textbf{Altro}: variabili di istanza, variabili locali, parametri, nomi dei metodi; devono iniziare con una lettera minuscola
+		\item \textbf{Altro}: variabili di istanza, variabili locali, costanti, parametri, nomi dei metodi; devono iniziare con una lettera minuscola
 	\end{itemize}
 	
 	\paragraph{Commenti al codice}
@@ -443,7 +434,7 @@ In caso di necessità verrà fornito supporto alla proponente MivoQ s.r.l. e l'a
 		}
 		\end{lstlisting}
 		\item \textbf{Commento ai metodi}:
-		Tutti i metodi dovranno essere preceduti da un commento che li descriva e che indichi i parametri e il tipo di ritorno., nel caso sia necessario.
+		Tutti i metodi dovranno essere preceduti da un commento che li descriva e che indichi i parametri e il tipo di ritorno, nel caso sia necessario.
 		\begin{lstlisting}[caption=Commento ad un metodo]
 		/**
 		* This method writes a sentence in the database.

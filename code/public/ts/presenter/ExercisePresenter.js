@@ -10,12 +10,19 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const PagePresenter_1 = require("./PagePresenter");
 const Client_1 = require("../model/Client/Client");
+<<<<<<< HEAD
 const fileSystem = require("fs");
+=======
+>>>>>>> feature/ManualeSviluppatore
 var session = require('express-session');
 class ExercisePresenter extends PagePresenter_1.PagePresenter {
     constructor(view) {
         super(view);
         this.client = (new Client_1.Client.builder()).buildExerciseClient().buildUserClient().build();
+<<<<<<< HEAD
+=======
+        this.fileSystem = require('fs');
+>>>>>>> feature/ManualeSviluppatore
     }
     update(app) {
         this.listenExercise(app);
@@ -119,8 +126,13 @@ class ExercisePresenter extends PagePresenter_1.PagePresenter {
      * @returns {string} a string containing the italian translation of the tag
      */
     translateTag(tag) {
+<<<<<<< HEAD
         const content = fileSystem.readFileSync("./src/ts/presenter/vocabolario.json");
         const jsonContent = JSON.parse(content.toString());
+=======
+        var content = this.fileSystem.readFileSync("./src/ts/presenter/vocabolario.json");
+        var jsonContent = JSON.parse(content);
+>>>>>>> feature/ManualeSviluppatore
         var lowercase = tag.split(/[A-Z]{1,2}/);
         var uppercase = tag.split(/[a-z0-9]+/);
         var result = "";

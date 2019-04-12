@@ -51,7 +51,7 @@ class InsertPageView extends PageView_1.PageView {
                 "        <form class='form-inline my-2 my-lg-0' action='/logout'>\n" +
                 "           <div class=\"form-group\">" +
                 "               <a class=\"btn btn-default btn-circle btn-sm mr-4 pt-2\" href=\"/profile\" role=\"button\"><i class=\"fas fa-user-circle\" style=\"color: white; font-size:26px\"></i></a>\n" +
-                "               <button type=\"submit\" class=\"btn btn-primary my-2 my-sm-0\">Logout</button>\n" +
+                "               <button type=\"submit\" class=\"btn-sm btn-primary my-2 my-sm-0\">Logout</button>\n" +
                 "           </div>\n" +
                 "        </form>\n";
         }

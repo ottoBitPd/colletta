@@ -1,19 +1,19 @@
 import {PageView} from "./PageView";
-import {ClassPresenter} from "../presenter/ClassPresenter";
+import {ClassesPresenter} from "../presenter/ClassesPresenter";
 
-class ClassView extends PageView {
+class ClassesView extends PageView {
 
-    private classPresenter : ClassPresenter;
-    private studentsList: any;
+    private classPresenter : ClassesPresenter;
+    private classesList: any;
     constructor(app : any){
         super();
-        this.classPresenter =  new ClassPresenter(this);
+        this.classPresenter =  new ClassesPresenter(this);
         this.classPresenter.update(app);
-        this.studentsList = null;
+        this.classesList = null;
     }
 
-    public setStudentsList(value: any) {
-        this.studentsList = value;
+    public setClassesList(value: any) {
+        this.classesList = value;
     }
 
     getPage() {
@@ -26,8 +26,8 @@ class ClassView extends PageView {
             "<a class=\"btn-sm btn btn-primary my-3\" href=\"/class/insert\" role=\"button\">Aggiungi una nuova classe</a>" +
             "</div>\n";
 
-        ret+=this.printList();
-        ret+="\t\t</div>" +
+            ret+=this.printList();
+            ret+="\t\t</div>" +
             "\t</div>";
         ret+=this.getFoot("");
         return ret;
@@ -88,10 +88,10 @@ class ClassView extends PageView {
         }
     }
     private printList() {
-        if(this.studentsList===null){
+        if(this.classesList===null){
             return "";//resultList is not set yet, cause nobody searched yet
         }
-        if(this.studentsList.size<=0){
+        if(this.classesList.size<=0){
             return "<h2 class='h5 text-danger text-center'>Nessun risultato</h2>";//resultList is not set yet, cause nobody searched yet
         }
         else {
@@ -104,21 +104,21 @@ class ClassView extends PageView {
                 "<div class='col-sm-4 mx-auto'></div>\n" +
                 "</div>\n" +
                 "</li>\n";
-            this.studentsList.forEach((value: string, key: string) => {
+            this.classesList.forEach((value: string, key: string) => {
                 ret+="<li class='list-group-item'>\n" +
-                    "<div class='row'>\n" +
-                    "<div class='col-sm-4 mx-auto'>\n" +
-                    "<form method='post' action='/class'>" +
-                    "<button class='btn btn-link btn-sm' name='key' value='"+key+"' type='submit'>"+value+"</button>\n" +
-                    "</form>" +
-                    "</div>\n" +
-                    "<div class='col-sm-4 mx-auto text-center'>\n" +
-                    "<form method='post' action='/deleteclass'>" +
-                    "<button class='btn btn-danger btn-sm' name='key' value='"+key+"' type='submit'>Elimina</button>\n" +
-                    "</form>" +
-                    "</div>\n" +
-                    "</div>\n" +
-                    "</li>\n";
+                "<div class='row'>\n" +
+                "<div class='col-sm-4 mx-auto'>\n" +
+                "<form method='post' action='/class'>" +
+                "<button class='btn btn-link btn-sm' name='key' value='"+key+"' type='submit'>"+value+"</button>\n" +
+                "</form>" +
+                "</div>\n" +
+                "<div class='col-sm-4 mx-auto text-center'>\n" +
+                "<form method='post' action='/deleteclass'>" +
+                "<button class='btn btn-danger btn-sm' name='key' value='"+key+"' type='submit'>Elimina</button>\n" +
+                "</form>" +
+                "</div>\n" +
+                "</div>\n" +
+                "</li>\n";
             });
             ret+="</ul>" +
                 "</div>";
@@ -126,4 +126,4 @@ class ClassView extends PageView {
         }
     }
 }
-export {ClassView};
+export {ClassesView};

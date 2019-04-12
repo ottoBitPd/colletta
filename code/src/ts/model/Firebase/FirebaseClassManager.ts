@@ -48,6 +48,10 @@ class FirebaseClassManager extends FirebaseManager {
         });
     }
 
+    /**
+     * this methos returns a map which has entries containing  the id of a class as key and the id of the class' teacher
+     * as value. the will contains all the classes that are in the db.
+     */
     public async elements () : Promise<Map<string, string>> {
         let container = new Map<string, string>();
         return new Promise(function (resolve) {
@@ -55,7 +59,10 @@ class FirebaseClassManager extends FirebaseManager {
                 .once("value", function (snapshot: any) {
                     if (snapshot.exists()) {
                         snapshot.forEach(function (data: any) {
-                            container.set(data.key, data.val().name);
+                            //container.set(data.key, data.val().name);
+                            //siccome mi sembrava un metodo mai utlizzato e a me serviva idClass, idTeacher
+                            //ho cambiato la mappa ritornata dal metodo Perry15
+                            container.set(data.key, data.val().teacherID);
                         });
                         //console.log("non esiste");
                         return resolve(container);

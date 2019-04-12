@@ -15,27 +15,28 @@ const ExerciseView_1 = require("./ts/view/ExerciseView");
 const ProfileView_1 = require("./ts/view/ProfileView");
 const RegistrationView_1 = require("./ts/view/RegistrationView");
 const SearchView_1 = require("./ts/view/SearchView");
+const ClassView_1 = require("./ts/view/ClassView");
 const app = express();
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(__dirname));
 new InsertPageView_1.InsertPageView(app);
-//const insertPage = new InsertPagePresenter(insertPageView);
-//insertPage.update(app);
 new ProfileView_1.ProfileView(app);
 new RegistrationView_1.RegistrationView(app);
 new SaveView_1.SaveView(app);
 new ExerciseView_1.ExerciseView(app);
 new SearchView_1.SearchView(app);
+new ClassView_1.ClassView(app);
 /*
+//OLD STYLE
 const exercisePage = new ExercisePresenter(exerciseView, savePageView);
-exercisePage.update(app);*/
-/*const loginView  = new LoginView();
+exercisePage.update(app);
+
+const loginView  = new LoginView();
 const registrationView : any= new RegistrationView();
 const LoginPage = new AuthenticationPresenter(loginView,registrationView);
-LoginPage.update(app);*/
-/*registrationPage.update(app)
-profilePage.update(app);*/
+LoginPage.update(app);
+*/
 app.listen(8080, function () {
     return __awaiter(this, void 0, void 0, function* () {
         const host = "127.0.0.1";

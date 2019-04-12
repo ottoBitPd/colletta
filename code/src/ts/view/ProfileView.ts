@@ -24,7 +24,7 @@ class ProfileView extends PageView{
         ret += "<div class=\"container\">" +
             "\t<h1 class ='text-center mb-5'>Informazioni profilo:</h1>\n";
             if (this.error !== undefined){
-            ret += "\t<p class ='text-center h5 text-dander'>" + this.error + "</p>\n";
+            ret += "\t<p class ='text-center h5 text-danger'>" + this.error + "</p>\n";
             }
         ret += "\t<ul class=\"list-group\">\n" +
             "\t<li class=\"list-group-item\">\n" +
@@ -239,7 +239,7 @@ class ProfileView extends PageView{
             else{//insegnante
                 ret += ""+
                     "\t\t\t<li class=\"nav-item\">\n" +
-                    "\t\t\t\t<a href= \"#\" class=\"nav-link\" >Area classi</a>\n" +
+                    "\t\t\t\t<a href= \"/classes\" class=\"nav-link\" >Area classi</a>\n" +
                     "\t\t\t</li>\n"+
                     "<li class=\"nav-item\">\n" +
                     //href= "/exercise/insert" credo
@@ -260,27 +260,28 @@ class ProfileView extends PageView{
             return "" +
                 "        <form class='form-inline' action='/logout'>" +
                 "           <div class=\"form-group\">" +
-                "               <button type=\"submit\" class=\"btn btn-primary btn-block\">Logout</button>" +
+                "               <button type=\"submit\" class=\"btn-sm btn btn-primary my-2 my-sm-0\">Logout</button>" +
                 "           </div>" +
                 "        </form>";
         }
         else{
             let ret ="";
             ret += "" +
-                "        <form class='form-inline my-2 my-lg-0' method ='post' action='/checklogin'>";
+                "\t\t<form class='form-inline my-2 my-lg-0' method ='post' action='/checklogin'>\n";
             if(this.profileController.isLoginInvalid()){
-                ret+="<p class='text-danger m-1 p-1'>username o password invalidi</p>";
+                ret+="\t\t\t<p class='text-danger m-1 p-1'>username o password invalidi</p>\n";
             }
-            ret+="           <div class=\"form-group\">" +
-                "               <input type=\"text\" class=\"form-control mr-sm-2\" name='username' placeholder=\"Username\" required=\"required\">" +
-                "           </div>" +
-                "           <div class=\"form-group\">" +
-                "               <input type=\"password\" class=\"form-control mr-sm-2\" name='password' placeholder=\"Password\" required=\"required\">" +
-                "           </div>" +
-                "           <div class=\"form-group\">" +
-                "               <button type=\"submit\" class=\"btn btn-outline-success my-2 my-sm-0\">Login</button>" +
-                "           </div>" +
-                "        </form>";
+            ret+="\t\t\t<div class=\"form-group\">\n" +
+                "\t\t\t\t<input type=\"text\" class=\"form-control mr-sm-2\" name='username' placeholder=\"Username\" required=\"required\">\n" +
+                "\t\t\t</div>\n" +
+                "\t\t\t<div class=\"form-group\">\n" +
+                "\t\t\t\t<input type=\"password\" class=\"form-control mr-sm-2\" name='password' placeholder=\"Password\" required=\"required\">\n" +
+                "\t\t\t</div>\n" +
+                "\t\t\t<div class=\"form-group\">\n" +
+                "\t\t\t\t<button type=\"submit\" class=\"btn-sm btn btn-primary my-2 my-sm-0 mr-2\">Accedi</button>\n" +
+                "\t\t\t\t<a class=\"btn-sm btn btn-primary my-2 my-sm-0\" href=\"/registration\" role=\"button\">Registrati</a>\n"+
+                "\t\t\t</div>\n" +
+                "\t\t</form>\n";
             return ret;
         }
     }

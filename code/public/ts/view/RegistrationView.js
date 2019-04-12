@@ -11,52 +11,50 @@ class RegistrationView extends PageView_1.PageView {
     getPage() {
         let ret = "" +
             "<!DOCTYPE html>\n" +
-            "   <html lang=\"it\">\n" +
-            "   <head>\n" +
-            "       <meta charset=\"UTF-8\">\n" +
-            "       <title>" + this.title + "</title>\n" +
-            "       <link rel=\"stylesheet\" type=\"text/css\" href=\"/style.css\">\n" +
-            "       <!--bootstrap-->" +
-            "       <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css\">" +
-            "       <link rel=\"stylesheet\" href=\"https://use.fontawesome.com/releases/v5.7.0/css/all.css\" integrity=\"sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ\" crossorigin=\"anonymous\">" +
-            "       <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\"></script>\n" +
-            "       <script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js\"></script>\n" +
-            "       <script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js\"></script>\n" +
-            "       </head>\n" +
-            "       <body>\n";
+            "<html lang=\"it\">\n" +
+            "\t<head>\n" +
+            "\t\t<meta charset=\"UTF-8\">\n" +
+            "\t\t<title>" + this.title + "</title>\n" +
+            "\t\t<link rel=\"stylesheet\" type=\"text/css\" href=\"/style.css\">\n" +
+            "\t\t<!--bootstrap-->" +
+            "\t\t<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css\">" +
+            "\t\t<link rel=\"stylesheet\" href=\"https://use.fontawesome.com/releases/v5.7.0/css/all.css\" integrity=\"sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ\" crossorigin=\"anonymous\">" +
+            "\t\t<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\"></script>\n" +
+            "\t\t<script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js\"></script>\n" +
+            "\t\t<script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js\"></script>\n" +
+            "\t</head>\n" +
+            "<body>\n";
         ret += this.getMenu();
         ret += "" +
-            "           <div class=\"row\">\n" +
-            "               <div class=\"col-sm-8 mx-auto text-center\">\n" +
-            "                   <h1 class='h2'>Registrazione</h1>\n";
-        //"               </div>\n" +
-        //"               <div class=\"col-sm-8 mx-auto\">\n";
+            "\t<div class='row container mx-auto'>\n" +
+            "\t\t<div class=\"col-sm-8 mx-auto text-center\">\n" +
+            "\t\t\t<h1 class='h2'>Registrazione</h1>\n";
         if (this.authPresenter.isUsernameInvalid()) {
-            ret += "                     <p class='text-danger'>username già utilizzata, scegli un'altra username</p>\n";
+            ret += "\t\t\t<p class='text-danger'>username già utilizzata, scegli un'altra username</p>\n";
         }
-        ret +=
-            "<form method='post' action='/saveuser'>\n" +
-                "<div class=\"form-group\">\n" +
-                "<label class='h5' for=\"sentence\">Inserisci i tuoi dati</label>\n " +
-                "<input type=\"text\" class=\"form-control my-2\" id=\"name\" name=\"name\" placeholder=\"Inserisci il tuo nome\" required/>" +
-                "<input type=\"text\" class=\"form-control my-2\" id=\"surname\" name=\"surname\" placeholder=\"Inserisci il tuo cognome\" required/>" +
-                "<input type=\"text\" class=\"form-control my-2\" id=\"city\" name=\"city\" placeholder=\"Inserisci la tua città\" required/>" +
-                "<input type=\"text\" class=\"form-control my-2\" id=\"school\" name=\"school\" placeholder=\"Inserisci la tua scuola\" required/>" +
-                "<select class='form-control my-2' name=\"role\" id='role' onchange=\"myFunction()\" required>" +
-                "   <option value=\"student\">Allievo</option>" +
-                "   <option value=\"teacher\">Insegnante</option>" +
-                "</select>" +
-                "<input type=\"text\" class='form-control my-2' style=\"display: none;\" id=\"inps\" name=\"inps\" placeholder=\"Inserisci il tuo codice inps\" required/>" +
-                "<input type=\"text\" class='form-control my-2' id=\"email\" name=\"email\" placeholder=\"Inserisci la tua email\" required/> " +
-                "<input type=\"text\" class='form-control my-2' id=\"username\" name=\"username\" placeholder=\"Inserisci la tua username\" required/> " +
-                "<input type=\"password\" class='form-control my-2' id=\"password\" name=\"password\" placeholder=\"Inserisci la tua password\" required/> " +
-                "<input type=\"password\" class='form-control my-2' id=\"checkpassword\" name=\"checkpassword\" placeholder=\"Conferma la tua password\" oninput=\"checkPassword()\" required/> " +
-                "<p id='messPassword'></p>" +
-                "<button type=\"submit\" id='btnsubmit' class=\"btn btn-primary my-2 my-sm-0 w-25\">Invia</button>" +
-                "</div>\n" +
-                "</form>\n " +
-                "</div>\n" +
-                "</div>\n";
+        ret += "" +
+            "\t\t\t<form method='post' action='/saveuser'>\n" +
+            "\t\t\t\t<div class=\"form-group\">\n" +
+            "\t\t\t\t\t<label class='h5' for=\"sentence\">Inserisci i tuoi dati</label>\n " +
+            "\t\t\t\t\t<input type=\"text\" class=\"form-control my-2\" id=\"name\" name=\"name\" placeholder=\"Inserisci il tuo nome\" required/>" +
+            "\t\t\t\t\t<input type=\"text\" class=\"form-control my-2\" id=\"surname\" name=\"surname\" placeholder=\"Inserisci il tuo cognome\" required/>" +
+            "\t\t\t\t\t<input type=\"text\" class=\"form-control my-2\" id=\"city\" name=\"city\" placeholder=\"Inserisci la tua città\" required/>" +
+            "\t\t\t\t\t<input type=\"text\" class=\"form-control my-2\" id=\"school\" name=\"school\" placeholder=\"Inserisci la tua scuola\" required/>" +
+            "\t\t\t\t\t<select class='form-control my-2' name=\"role\" id='role' onchange=\"myFunction()\" required>" +
+            "\t\t\t\t\t<option value=\"student\">Allievo</option>" +
+            "\t\t\t\t\t<option value=\"teacher\">Insegnante</option>" +
+            "\t\t\t\t\t</select>" +
+            "\t\t\t\t\t<input type=\"text\" class='form-control my-2' style=\"display: none;\" id=\"inps\" name=\"inps\" placeholder=\"Inserisci il tuo codice inps\" required/>" +
+            "\t\t\t\t\t<input type=\"text\" class='form-control my-2' id=\"email\" name=\"email\" placeholder=\"Inserisci la tua email\" required/> " +
+            "\t\t\t\t\t<input type=\"text\" class='form-control my-2' id=\"username\" name=\"username\" placeholder=\"Inserisci la tua username\" required/> " +
+            "\t\t\t\t\t<input type=\"password\" class='form-control my-2' id=\"password\" name=\"password\" placeholder=\"Inserisci la tua password\" required/> " +
+            "\t\t\t\t\t<input type=\"password\" class='form-control my-2' id=\"checkpassword\" name=\"checkpassword\" placeholder=\"Conferma la tua password\" oninput=\"checkPassword()\" required/> " +
+            "\t\t\t\t\t<p id='messPassword'></p>" +
+            "\t\t\t\t\t<button type=\"submit\" id='btnsubmit' class=\"btn btn-primary my-2 my-sm-0 w-25\">Invia</button>" +
+            "\t\t\t\t</div>\n" +
+            "\t\t\t</form>\n " +
+            "\t\t</div>\n" +
+            "\t</div>\n";
         ret += this.getFoot(this.getScript());
         return ret;
     }

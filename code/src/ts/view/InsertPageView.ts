@@ -17,7 +17,6 @@ class InsertPageView extends PageView {
             "<h1 class ='text-center mb-5'>Inserisci frase</h1>" +
             "<form method ='post' action='/exercise'>"+
             "   <div class=\"form-group\">" +
-            "       <label for=\"sentence\">Frase</label>"+
             "       <input type=\"text\" class=\"form-control\" id='sentence' name='sentence' placeholder=\"Inserisci una frase\" required=\"required\">" +
             "   </div>" +
             "   <div class=\"form-group text-center\">" +

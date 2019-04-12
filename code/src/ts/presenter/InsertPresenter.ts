@@ -35,7 +35,7 @@ class InsertPresenter extends PagePresenter{
             }
             let menuList :any;
             menuList= {
-                0 :{"link":"/searchexercise","name":"Ricerca esercizio"}
+                0 :{"link":"/exercise/search","name":"Ricerca esercizio"}
             }
             this.view.setTitle("Homepage");
             this.view.setMenuList(menuList);

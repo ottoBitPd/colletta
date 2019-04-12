@@ -54,7 +54,9 @@ class ExerciseView extends PageView{
                     ret += "<input type=\"hidden\" name=\"hunposTags\" value='" + JSON.stringify(this.posTags) + "'/>";
                 }
             ret+=
-                "   <br/>" +
+                "   <br/>";
+                if (this.userKind === UserKind.teacher)
+                    ret+=
                 "            <input type=\"text\" class='form-control' name=\"topics\"/>" +
                 "            <select class='form-control' name=\"difficulty\">" +
                 "                <option value=\"1\">Molto facile</option>" +
@@ -62,8 +64,9 @@ class ExerciseView extends PageView{
                 "                <option value=\"3\">Medio</option>" +
                 "                <option value=\"4\">Difficile</option>" +
                 "                <option value=\"5\">Molto difficile</option>" +
-                "            </select>" +
-                "            <div class='col-sm-4'>Scegli il professore per la correzione</div>"+
+                "            </select>";
+                if (this.userKind !== UserKind.teacher)
+                    ret+="            <div class='col-sm-4'>Scegli il professore per la correzione</div>"+
                 "            <select class='form-control' name='correction'>";
                 for (let i in this.corrections){
                     ret+= "<option value='1'>"+this.corrections[i].id+"</option>";

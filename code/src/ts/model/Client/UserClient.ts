@@ -53,16 +53,15 @@ class UserClient{
     }
 
     async teacherList() : Promise<string[]> {
-        const teacherMap = await this.dbUserManager.elements();
+        let teacherMap = await this.dbUserManager.elements();
         console.log(teacherMap);
         let list : string[] = [];
 
-        teacherMap.forEach(async (value, key) => {
-            const condition = await this.isTeacher(value);
-            if (condition){
-                list.push(key);
-            }
-        });
+        for (let teacher of teacherMap){
+            let condition = await  this.isTeacher(teacher[1]);
+            if (condition)
+                list.push(teacher[0]);
+        }
 
         console.log(list);
         return list;

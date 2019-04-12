@@ -202,7 +202,7 @@ class ProfileView extends PageView{
                     "\t\t\t</li>\n"+
                     "<li class=\"nav-item\">\n" +
                     //href= "/exercise/insert" credo
-                    "\t\t\t\t<a href= \"#\" class=\"nav-link\" >Crea esercizio</a>\n" +
+                    "\t\t\t\t<a href= \"#\" class=\"nav-link\" onclick='document.getElementById(\"insertExerciseForm\").classList.toggle(\"d-none\")'>Crea esercizio</a>\n" +
                     "\t\t\t</li>\n";
             }
         ret+="\t\t</ul>";
@@ -210,6 +210,13 @@ class ProfileView extends PageView{
         ret+=this.getLoginArea();
         ret+="\t</div>" +
             "</nav>";
+        ret +=
+            "<form method='post' action='/exercise/insert' id='insertExerciseForm' class='d-none'>" +
+            "   <div>" +
+            "       <input type='text' name='sentence'/>" +
+            "       <button type='submit'>Invia</button>" +
+            "   </div>" +
+            "</form>";
         return ret;
     }
 

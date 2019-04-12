@@ -7,9 +7,9 @@ abstract class User implements Data{
     public databaseInfo : any;
 
 
-    constructor(id : string, username : string, password: string, name : string, lastname:string, city:string, school : string) {
+    constructor(id : string, username : string, password: string, name : string, lastname:string, city:string, school : string, email : string) {
         this.username= username;
-        this.databaseInfo= new this.DatabaseUserInfo(id, password, name, lastname, city, school);
+        this.databaseInfo= new this.DatabaseUserInfo(id, password, name, lastname, city, school, email);
     }
 
     public DatabaseUserInfo = class {
@@ -19,14 +19,16 @@ abstract class User implements Data{
         public lastName : string;
         public city : string;
         public school : string;
+        public email : string;
 
-        constructor(id : string, psw : string, name : string, lN : string, city : string, sc : string){
+        constructor(id : string, psw : string, name : string, lN : string, city : string, sc : string, email : string){
             this.id = id;
             this.password = psw;
             this.name = name;
             this.lastName = lN;
             this.city = city;
             this.school = sc;
+            this.email = email;
         }
     };
 
@@ -53,6 +55,10 @@ abstract class User implements Data{
 
     public getPassword() : string {
         return this.databaseInfo.password;
+    }
+
+    public getEmail() : string {
+        return this.databaseInfo.email;
     }
 
     public samePassword(otherPassword : string) : boolean {
@@ -83,7 +89,9 @@ abstract class User implements Data{
             "name" : this.databaseInfo.name,
             "lastname" : this.databaseInfo.lastName,
             "city" : this.databaseInfo.city,
-            "school" : this.databaseInfo.school
+            "school" : this.databaseInfo.school,
+            "email" : this.databaseInfo.email
+
         };
         return user;
     }

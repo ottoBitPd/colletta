@@ -8,7 +8,7 @@ import {Class} from "../../src/ts/model/Data/Class";
 
 describe('Teacher', function() {
 
-    let learn = new Teacher("1","Bortolone", "ciao", "Michele", "Bortone", "Scorze", "Venezia", "A110");
+    let learn = new Teacher("1","Bortolone", "ciao", "Michele", "Bortone", "Scorze", "Venezia", "A110", "borto.lone@gmail.com");
 
     describe('Teacher.getUsername()', function () {
         it('should return the username', function () {
@@ -62,7 +62,7 @@ describe('Teacher', function() {
     describe('Teacher.getClasses()', function () {
         it('should return classes', function () {
 
-            var teacher1=new Teacher("1","Bortolone", "ciao", "Michele", "Bortone", "Scorze", "Venezia", "A110");
+            var teacher1=new Teacher("1","Bortolone", "ciao", "Michele", "Bortone", "Scorze", "Venezia", "A110","borto.lone@gmail.com");
           //  var teacher2=new Teacher("3","Perry15", "ciao", "Perry", "Peron", "Scorze", "Venezia", "A111");
             let uno= new Class("name", "description","1",["st1", "st2"],["es1", "es2"]);
             let due= new Class("name", "description","1",["st1", "st2"],["es1", "es2"]);

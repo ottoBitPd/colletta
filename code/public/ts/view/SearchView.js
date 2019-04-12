@@ -93,7 +93,7 @@ class SearchView extends PageView_1.PageView {
             "<ul class=\"list-group\">\n";
         this.resultList.forEach((value, key) => {
             ret += "<li class=\"list-group-item\"><p class='d-inline pr-1'>" + value + "</p>" +
-                "<button class='btn btn-primary btn-sm float-right' name='key' value='" + key + "' type='submit'>Esegui esercizio</button>" +
+                "<button class='btn btn-primary btn-sm float-right' name='sentence' value='" + value + "' type='submit'>Esegui esercizio</button>" +
                 "</li>\n";
         });
         return "</ul></form>\n" + ret;

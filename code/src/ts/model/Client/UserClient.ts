@@ -11,11 +11,11 @@ class UserClient{
         this.dbUserManager = new DatabaseUserManager();
     }
 
-    async insertStudent(username : string, password : string, name : string, surname : string, city : string, school : string) : Promise<boolean>{
-        return await this.dbUserManager.insert(new Student("0",username, password, name, surname, city, school));
+    async insertStudent(username : string, password : string, name : string, surname : string, city : string, school : string, email : string) : Promise<boolean>{
+        return await this.dbUserManager.insert(new Student("0",username, password, name, surname, city, school, email));
     }
-    async insertTeacher(username : string, password : string, name : string, surname : string, city : string, school : string, inps:string) : Promise<boolean>{
-        return await this.dbUserManager.insert(new Teacher("0",username, password, name, surname, city, school, inps));
+    async insertTeacher(username : string, password : string, name : string, surname : string, city : string, school : string, inps:string, email : string) : Promise<boolean>{
+        return await this.dbUserManager.insert(new Teacher("0",username, password, name, surname, city, school, inps, email));
     }
     async verifyUser(username: string, insertedPassword : string) : Promise<boolean>{
         const idUser = await this.dbUserManager.search(username);
@@ -23,13 +23,7 @@ class UserClient{
             const user: Data | null = await this.dbUserManager.read(idUser);
             if (user !== null) {
                 const password = (<User>user).getPassword();
-                if (this.passwordHash.compareSync(insertedPassword, password)) {
-                    //console.log("password match");
-                    return true;
-                } else {
-                    //console.log("password dont match")
-                    return false;
-                }
+                return this.checkPassword(insertedPassword,password);
             } else {
                 //console.log("password dont match")
                 return false;
@@ -39,6 +33,15 @@ class UserClient{
             return false;
         }
 
+    }
+    public checkPassword(insertedPassword:string,password:string) : boolean{
+        if (this.passwordHash.compareSync(insertedPassword, password)) {
+            //console.log("password match");
+            return true;
+        } else {
+            //console.log("password dont match")
+            return false;
+        }
     }
 
     async isTeacher(username:string) : Promise<boolean> {
@@ -72,7 +75,7 @@ class UserClient{
     }
 
     public async getUserData(id:string) : Promise<any> {
-        const user : Data= await this.dbUserManager.read(id);
+        const user : Data = await this.dbUserManager.read(id);
         let userData = (<User> user).toJSON();
         if((<User> user).isTeacher()){
             userData.inps = (<Teacher> user).getINPS();
@@ -85,9 +88,15 @@ class UserClient{
         this.dbUserManager.update('data/users/'+id+'/lastname',userUpdateData.lastname);
         this.dbUserManager.update('data/users/'+id+'/city',userUpdateData.city);
         this.dbUserManager.update('data/users/'+id+'/school',userUpdateData.school);
+        this.dbUserManager.update('data/users/'+id+'/email',userUpdateData.email);
+        this.dbUserManager.update('data/users/'+id+'/username',userUpdateData.username);
+        this.dbUserManager.update('data/users/'+id+'/password',userUpdateData.password);
         if(userUpdateData.inps !==undefined){
             this.dbUserManager.update('data/users/'+id+'/INPScode',userUpdateData.inps);
         }
+    }
+    public hashPassword(plain :string){
+        return this.passwordHash.hashSync(plain,10);
     }
 }
 export{UserClient}

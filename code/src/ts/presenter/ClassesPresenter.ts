@@ -32,9 +32,6 @@ class ClassesPresenter extends PagePresenter {
                     this.view.setClassesList(map);
                 }
             }
-            else{
-                this.view.setClassesList(new Map());
-            }
             response.send(this.view.getPage());
         });
     }

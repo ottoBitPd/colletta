@@ -21,20 +21,34 @@ class ClassClient{
         students.splice(indexToRemove,1);
         await this.dbClassManager.update("data/classes/"+ classId + "/students", students);
     }
-    public async addStudent(studentID:string,classId:string){
+    public async addStudent(studentId:string,classId:string){
         var _class:Data=await this.dbClassManager.read(classId);
-        var students:string []= (<Class>_class).getStudents();
-        students.push(studentID);
-        await this.dbClassManager.update("data/classes/"+ classId + "/students", students);
+        var students : string []= (<Class>_class).getStudents();
+        if(students[0]!=="n") {//if the class already has some students
+            console.log("aggiungo studente");
+            students.push(studentId);
+        }
+        else {//if there are no students
+            console.log("primo studente");
+            students[0]=studentId;
+        }
+        await this.dbClassManager.update("data/classes/" + classId + "/students", students);
     }
     public async addClass(name:string, description:string, teacherId:string):Promise<boolean>{
-        var _class = new Class(name, description,teacherId,[],[]);
+        var _class = new Class(name, description,teacherId,["n"],["n"]);
         return await this.dbClassManager.insert(_class);
     }
-    public async addExercize(exerciseId:string, classId:string){
+    public async addExercise(exerciseId:string, classId:string){
         var _class : Data = await this.dbClassManager.read(classId);
-        var exercises:string [] = (<Class>_class).getStudents();
-        exercises.push(exerciseId);
+        var exercises:string [] = (<Class>_class).getExercises();
+        if(exercises[0]!=="n") {//if the class already has some exercises
+            console.log("aggiungo studente");
+            exercises.push(exerciseId);
+        }
+        else {//if there are no exercises
+            console.log("primo studente");
+            exercises[0]=exerciseId;
+        }
         await this.dbClassManager.update("data/classes/"+ classId + "/exercises", exercises);
     }
 
@@ -44,8 +58,7 @@ class ClassClient{
     }
     public async getExercises(classId:string):Promise<string[]>{
         var _class : Data = await this.dbClassManager.read(classId);
-        return (<Class>_class).getStudents();
-
+        return (<Class>_class).getExercises();
     }
     /**
     This method returns a amp of entries string, string where the first string is the Id of the class and the second

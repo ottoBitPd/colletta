@@ -83,10 +83,10 @@ describe('Student',function() {
 
     describe('Student.getClasses()', function () {
         it('should return classes of student', function () {
-            const clase = new Class("name", "description","1234",["st1","st2"],["es1", "es2"]);
+            const clase = new Class("0","name", "description","1234",["st1","st2"],["es1", "es2"]);
             let student= new Student("1","gian","gianni","Gianmarco","Pettenuzzo","Castelfranco","Unipd","giov.anni@gmail.com");
 
-            const clase1 = new Class("carlo", "bo","1111",["st3"],["es5"]);
+            const clase1 = new Class("0","carlo", "bo","1111",["st3"],["es5"]);
 
             expect(obj.getClasses([clase])).eql(student.getClasses([clase1]));
         });

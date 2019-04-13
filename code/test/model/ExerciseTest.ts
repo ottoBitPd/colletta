@@ -206,7 +206,13 @@ describe('Exercise', function() {
 
     describe("Exercise.toJSON",function () {
        it ("should return 1",function () {
-           expect(exercise.toJSON()).equals(1);
+           let obj: any = {
+               "sentence": exercise.getSentence(),
+               "authorId" : exercise.getAuthorId(),
+               "key" : exercise.getKey()
+           };
+           console.log("obj: ",obj);
+           expect(exercise.toJSON()).eql({ sentence: 'This is an example', authorId: 'xxxxx', key: '-1'});
        });
     });
 });

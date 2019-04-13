@@ -35,7 +35,7 @@ class ClassClient{
         await this.dbClassManager.update("data/classes/" + classId + "/students", students);
     }
     public async addClass(name:string, description:string, teacherId:string):Promise<boolean>{
-        var _class = new Class(name, description,teacherId,["n"],["n"]);
+        var _class = new Class("0",name, description,teacherId,["n"],["n"]);
         return await this.dbClassManager.insert(_class);
     }
     public async addExercise(exerciseId:string, classId:string){
@@ -81,7 +81,11 @@ class ClassClient{
         //console.log("mapToReturn: ",mapToReturn);
         return mapToReturn;
     }
-
+    public async getClassData(id:string) : Promise<any> {
+        const _class : Data = await this.dbClassManager.read(id);
+        let _classData = (<Class> _class).toJSON();
+        return _classData;
+    }
 
 }
 export{ClassClient}

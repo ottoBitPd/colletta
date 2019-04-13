@@ -87,7 +87,7 @@ class FirebaseClassManager extends FirebaseManager {
                 .once('value', function (snapshot : any) {
                     if (snapshot.exists()) {
                         const readData: any = snapshot.val();
-                        const _class = new Class(readData.name, readData.description, readData.teacherID,
+                        const _class = new Class(id,readData.name, readData.description, readData.teacherID,
                             readData.students, readData.exercises);
                         return resolve(_class);
                     }

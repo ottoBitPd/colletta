@@ -110,7 +110,13 @@ class Exercise implements Data{
     }
 
     toJSON() : any{
-        return 1;
+        //Do I have to add solutions too? - Perry15
+        let exercise: any = {
+            "sentence": this.sentence,
+            "authorId" : this.authorId,
+            "key" : this.key
+        };
+        return exercise;
     }
 
 }

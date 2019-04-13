@@ -22,9 +22,12 @@ class ClassesView extends PageView {
         ret +="\t<div class=\"container\">" +
             "\t\t<div class='col-sm-10 mx-auto'>"+
             "\t\t\t<h1 class='text-center mb-5'>Le tue classi</h1>" +
-            "<div class='col-sm-12 text-right'>\n" +
-            "<a class=\"btn-sm btn btn-primary my-3\" href=\"/class/insert\" role=\"button\">Aggiungi una nuova classe</a>" +
-            "</div>\n";
+            "\t\t\t<div class='col-sm-12 text-right'>\n" +
+            "\t\t\t<a class=\"btn btn-primary my-3\" href=\"/class/insert\" role=\"button\">Aggiungi una nuova classe</a>" +
+            /*"\t\t\t\t<form method='post' action='/class/insert'>\n" +
+            "\t\t\t\t\t<button class='btn btn-primary' name='key' value='"+this.+"' type='submit'>Aggiungi una nuova classe</button>\n" +
+            "\t\t\t\t</form>" +*/
+            "\t\t\t</div>\n";
 
             ret+=this.printList();
             ret+="\t\t</div>" +
@@ -92,7 +95,7 @@ class ClassesView extends PageView {
             return "";//resultList is not set yet, cause nobody searched yet
         }
         if(this.classesList.size<=0){
-            return "<h2 class='h5 text-danger text-center'>Nessun risultato</h2>";//resultList is not set yet, cause nobody searched yet
+            return "<h2 class='h5 text-danger text-center'>Non hai classi</h2>";//resultList is not set yet, cause nobody searched yet
         }
         else {
             let ret = "" +

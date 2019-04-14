@@ -4,19 +4,19 @@ import {ClassesPresenter} from "../presenter/ClassesPresenter";
 class ClassesView extends PageView {
 
     private classPresenter : ClassesPresenter;
-    private classesList: any;
+    //private classesList: any;
     constructor(app : any){
         super();
         this.classPresenter =  new ClassesPresenter(this);
         this.classPresenter.update(app);
-        this.classesList = null;
+        //this.classesList = null;
     }
 
-    public setClassesList(value: any) {
+    /*public setClassesList(value: any) {
         this.classesList = value;
-    }
+    }*/
 
-    getPage() {
+    async getPage() {
         let ret = this.getHead();
         ret +=this.getMenu();
         ret +="\t<div class=\"container\">" +
@@ -26,7 +26,7 @@ class ClassesView extends PageView {
             "\t\t\t<a class=\"btn btn-primary my-3\" href=\"javascript:showInsertClassForm()\" role=\"button\">Aggiungi una nuova classe</a>\n";
             ret+=this.insertClass();
             ret+="\t\t\t</div>\n";
-            ret+=this.printList();
+            ret+= await this.printList();
             ret+="\t\t</div>" +
             "\t</div>";
         ret+=this.getFoot(this.getScript());
@@ -87,11 +87,12 @@ class ClassesView extends PageView {
             return ret;
         }
     }
-    private printList() {
-        if(this.classesList===null){
+    private async printList() {
+        let classes = await this.classPresenter.getClasses();
+        if(classes === null){
             return "";//resultList is not set yet, cause nobody searched yet
         }
-        if(this.classesList.size<=0){
+        if(classes.size<=0){
             return "<h2 class='h5 text-danger text-center'>Non hai classi</h2>";//resultList is not set yet, cause nobody searched yet
         }
         else {
@@ -104,7 +105,7 @@ class ClassesView extends PageView {
                 "<div class='col-sm-4 mx-auto'></div>\n" +
                 "</div>\n" +
                 "</li>\n";
-            this.classesList.forEach((value: string, key: string) => {
+            classes.forEach((value: string, key: string) => {
                 ret+="<li class='list-group-item'>\n" +
                 "<div class='row'>\n" +
                 "<div class='col-sm-4 mx-auto'>\n" +
@@ -139,8 +140,8 @@ class ClassesView extends PageView {
     private insertClass() {
         let ret=""+
         "\t\t\t<form method='post' id='insertClassForm' action='/insertclass' style='display:none'>\n" +
-        "\t\t\t\t<div class=\"form-group\">\n" +
-        "\t\t\t\t\t<label class='h5' for=\"sentence\">Inserisci i tuoi dati</label>\n " +
+        "\t\t\t\t<div class=\"form-group text-center\">\n" +
+        "\t\t\t\t\t<label class='h5' for=\"sentence\">Inserisci i dati della classe</label>\n " +
         "\t\t\t\t\t<input type=\"text\" class=\"form-control my-2\" name=\"classname\" placeholder=\"Inserisci il nome della classe\" required/>" +
         "\t\t\t\t\t<input type=\"text\" class=\"form-control my-2\" name=\"description\" placeholder=\"Inserisci una descrizione della classe\" required/>" +
         "\t\t\t\t\t<button type=\"submit\" class=\"btn btn-primary my-2 my-sm-0 w-25\" onclick='hideInsertClassForm()'>Crea classe</button>" +

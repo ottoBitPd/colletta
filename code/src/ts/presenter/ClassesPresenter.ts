@@ -23,17 +23,8 @@ class ClassesPresenter extends PagePresenter {
             }
 
             this.view.setMenuList(menuList);
-            let classClient = this.client.getClassClient();
-            let userClient = this.client.getUserClient();
-            if(classClient && userClient) {
-                //console.log("username: "+session.username);
-                let id = await userClient.search(session.username);
-                if(id !== "false") {
-                    let map = await classClient.getClassesByTeacher(id);//returns map<idClasse, className>
-                    this.view.setClassesList(map);
-                }
-            }
-            response.send(this.view.getPage());
+
+            response.send(await this.view.getPage());
         });
     }
     private insertClass(app: any) {
@@ -58,6 +49,19 @@ class ClassesPresenter extends PagePresenter {
             }
             response.redirect('/classes');
         });
+    }
+    public async getClasses(){
+        let classClient = this.client.getClassClient();
+        let userClient = this.client.getUserClient();
+        if(classClient && userClient) {
+            //console.log("username: "+session.username);
+            let id = await userClient.search(session.username);
+            if(id !== "false") {
+                let map = await classClient.getClassesByTeacher(id);//returns map<idClasse, className>
+                return map;
+            }
+        }
+        return new Map();
     }
 }
 export {ClassesPresenter}

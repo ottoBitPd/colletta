@@ -10,7 +10,7 @@ class InsertPageView extends PageView {
         this.exercisePresenter.update(app);
     }
 
-    getPage() {
+    async getPage() {
         let ret = this.getHead();
         ret +=this.getMenu();
         ret +="<div class=\"container\" style=\"margin-top: 10%\">" +

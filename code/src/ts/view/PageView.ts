@@ -62,7 +62,7 @@ abstract class PageView {
     }
 
 
-    abstract getPage() : string;
+    abstract async getPage() : Promise<string>;
 
 
 

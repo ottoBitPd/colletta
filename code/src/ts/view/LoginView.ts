@@ -9,7 +9,7 @@ class LoginView extends PageView{
     setError(error:string){
         this.error=error;
     }
-    getPage() {
+    async getPage() {
         return "<!DOCTYPE html> " +
             "<html lang=\"it\"> " +
             "<head> " +

@@ -9,7 +9,7 @@ class RegistrationView extends PageView {
         this.authPresenter.update(app);
     }
 
-    getPage() {
+    async getPage() {
         let ret = "" +
             "<!DOCTYPE html>\n" +
             "<html lang=\"it\">\n" +

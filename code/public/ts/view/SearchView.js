@@ -1,4 +1,12 @@
 "use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const PageView_1 = require("./PageView");
 const SearchPresenter_1 = require("../presenter/SearchPresenter");
@@ -13,21 +21,23 @@ class SearchView extends PageView_1.PageView {
         this.resultList = value;
     }
     getPage() {
-        let ret = this.getHead();
-        ret += this.getMenu();
-        ret += "<div class=\"container\">\n" +
-            "\t<h1 class ='text-center mb-5'>" + this.title + "</h1>\n" +
-            "\t<form method ='post' action='/searchexercise'>\n" +
-            "\t\t<div class=\"form-group\">\n" +
-            "\t\t\t<input type=\"text\" class=\"form-control\" id='sentence' name='sentence' placeholder=\"Inserisci una frase\" required=\"required\">" +
-            "\t\t</div>" +
-            "\t\t<div class=\"form-group text-center\">" +
-            "\t\t\t<button type=\"submit\" class=\"btn btn-primary my-2 my-sm-0 w-25\">Cerca</button>" +
-            "\t\t</div>" +
-            "\t</form>";
-        ret += this.printList();
-        ret += "</div>" + this.getFoot("");
-        return ret;
+        return __awaiter(this, void 0, void 0, function* () {
+            let ret = this.getHead();
+            ret += this.getMenu();
+            ret += "<div class=\"container\">\n" +
+                "\t<h1 class ='text-center mb-5'>" + this.title + "</h1>\n" +
+                "\t<form method ='post' action='/searchexercise'>\n" +
+                "\t\t<div class=\"form-group\">\n" +
+                "\t\t\t<input type=\"text\" class=\"form-control\" id='sentence' name='sentence' placeholder=\"Inserisci una frase\" required=\"required\">" +
+                "\t\t</div>" +
+                "\t\t<div class=\"form-group text-center\">" +
+                "\t\t\t<button type=\"submit\" class=\"btn btn-primary my-2 my-sm-0 w-25\">Cerca</button>" +
+                "\t\t</div>" +
+                "\t</form>";
+            ret += this.printList();
+            ret += "</div>" + this.getFoot("");
+            return ret;
+        });
     }
     getMenu() {
         let ret = "<nav class=\"navbar navbar-expand-sm bg-dark navbar-dark\">" +

@@ -100,7 +100,7 @@ class ProfilePresenter extends PagePresenter{
                 }
             }
 
-            response.send(this.view.getPage());
+            response.send(await this.view.getPage());
         });
     }
 

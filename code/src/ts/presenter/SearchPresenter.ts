@@ -19,7 +19,7 @@ class SearchPresenter extends PagePresenter {
          */
     }
     private exerciseSearchPage(app : any){
-        app.get('/exercise/search', (request: any, response: any) => {
+        app.get('/exercise/search', async (request: any, response: any) => {
             session.invalidLogin = request.query.mess==="invalidLogin";
             let menuList :any;
             menuList= {
@@ -29,7 +29,7 @@ class SearchPresenter extends PagePresenter {
             this.view.setTitle("Ricerca esercizio");
             this.view.setMenuList(menuList);
             //this.viewProfile.setMainList(["class1","class2","class3","class4","class5","class6","class7","class8"]);
-            response.send(this.view.getPage());
+            response.send(await this.view.getPage());
         });
     }
     private searchExercise(app : any) {

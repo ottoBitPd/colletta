@@ -40,7 +40,7 @@ class InsertPresenter extends PagePresenter{
             this.view.setTitle("Homepage");
             this.view.setMenuList(menuList);
             //this.viewProfile.setMainList(["class1","class2","class3","class4","class5","class6","class7","class8"]);
-            response.send(this.view.getPage());
+            response.send(await this.view.getPage());
         });
     }
 }

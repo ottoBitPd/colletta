@@ -1,10 +1,10 @@
 import {PagePresenter} from "./PagePresenter"
 import {Client} from "../model/Client/Client";
 
-//var session = require('express-session');
+var session = require('express-session');
 
 class ClassPresenter extends PagePresenter {
-
+    private classId : any;
     constructor(view: any) {
         super(view);
         this.client = (new Client.builder()).buildClassClient().buildUserClient().buildExerciseClient().build();
@@ -15,23 +15,31 @@ class ClassPresenter extends PagePresenter {
         this.deleteStudent(app);
         this.deleteExercise(app);
     }
+
+    private setClassId( value : string){
+        this.classId = value;
+    }
+    public getClassId(){
+        return this.classId
+    }
     private class(app : any){
         app.get('/class', async (request: any, response: any) => {
             let menuList :any;
             menuList= {
                 0 :{"link":"/","name":"Homepage"}
             }
+            this.setClassId(request.query.classId);
             this.view.setTitle("Classe");
             this.view.setMenuList(menuList);
-            console.log("Id della classe: "+request.query.classId);
+            /*console.log("Id della classe: "+request.query.classId);
             this.view.setClass(await this.getClassData(request.query.classId));
             let students = await this.getStudents(request.query.classId);
             console.log("Studenti: ",students);
             this.view.setStudentsList(students);
             let exercises = await this.getExercises(request.query.classId);
             console.log("Exercises: ",exercises);
-            this.view.setExercisesList(exercises);
-            response.send(this.view.getPage());
+            this.view.setExercisesList(exercises);*/
+            response.send(await this.view.getPage());
         });
     }
 
@@ -40,11 +48,11 @@ class ClassPresenter extends PagePresenter {
      * identified by the id passed as paramater of the method
      * @param classId
      */
-    private async getStudents(classId : string) : Promise<any>{
+    public async getStudents() : Promise<any>{
         let classClient = this.client.getClassClient();
         let userClient = this.client.getUserClient();
         if(classClient && userClient) {
-            let studentsId = await classClient.getStudents(classId);
+            let studentsId = await classClient.getStudents(this.classId);
             if (studentsId.length > 0 && studentsId[0]!=="n") {//it there are students in the class
                 let students = new Array();//array di json student
                 for (let i in studentsId) {
@@ -61,11 +69,11 @@ class ClassPresenter extends PagePresenter {
      * @param classId
      */
     //@ts-ignore
-    private async getExercises(classId : string) : Promise<any>{
+    public async getExercises() : Promise<any>{
         let classClient = this.client.getClassClient();
         let exerciseClient = this.client.getExerciseClient();
         if(classClient && exerciseClient) {
-            let exercisesId = await classClient.getExercises(classId);
+            let exercisesId = await classClient.getExercises(this.classId);
             if (exercisesId.length > 0 && exercisesId[0]!=="n") {//it there are students in the class
                 let exercises = new Array();//array di json student
                 for (let i in exercisesId) {
@@ -76,10 +84,10 @@ class ClassPresenter extends PagePresenter {
             }
         }
     }
-    private async getClassData(classId : string) : Promise<any>{
+    public async getClass() : Promise<any>{
         let classClient = this.client.getClassClient();
         if(classClient) {
-            let _class = await classClient.getClassData(classId);
+            let _class = await classClient.getClassData(this.classId);
             return _class;
         }
     }
@@ -105,5 +113,32 @@ class ClassPresenter extends PagePresenter {
             //response.redirect(307, '/class');
         });
     }
+
+    public async getStudentNumber() {
+        let classClient = this.client.getClassClient();
+        let userClient = this.client.getUserClient();
+        if(classClient && userClient) {
+            let studentsId = await classClient.getStudents(this.classId);
+            if (studentsId[0]==="n") {//it there are students in the class
+                return 0;
+            }
+            return studentsId.length;
+        }
+        return -1;
+    }
+    public async getClasses(){
+        let classClient = this.client.getClassClient();
+        let userClient = this.client.getUserClient();
+        if(classClient && userClient) {
+            //console.log("username: "+session.username);
+            let id = await userClient.search(session.username);
+            if(id !== "false") {
+                let map = await classClient.getClassesByTeacher(id);//returns map<idClasse, className>
+                return map;
+            }
+        }
+        return new Map();
+    }
+
 }
 export {ClassPresenter};

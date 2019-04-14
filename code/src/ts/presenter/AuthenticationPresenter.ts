@@ -24,14 +24,14 @@ class AuthenticationPresenter extends PagePresenter {
         app.get('/profile', (request: any, response: any) => {
             response.send("Login avvenuto con successo sei nel tuo profilo"+session.username);
         });
-        app.get('/login', (request: any, response: any) => {
+        app.get('/login', async (request: any, response: any) => {
             if(request.query.mess==="invalidLogin") {
                 this.view.setError("username o password invalidi");
             }
             else{
                 this.view.setError("");
             }
-            response.send(this.view.getPage());
+            response.send(await this.view.getPage());
         });
         app.post('/checklogin', async (request: any, response: any) => {
             let userClient = this.client.getUserClient();
@@ -47,10 +47,10 @@ class AuthenticationPresenter extends PagePresenter {
                 }
             }
         });
-        app.get('/registration', (request: any, response: any) => {
+        app.get('/registration', async (request: any, response: any) => {
             session.errUsername = request.query.mess === "errUsername";
 
-            response.send(this.view.getPage());
+            response.send(await this.view.getPage());
         });
 
         app.post("/saveuser", async (req:any,res:any) => {

@@ -16,7 +16,7 @@ class SearchView extends PageView{
         this.resultList = value;
     }
 
-    getPage() {
+    async getPage() {
         let ret = this.getHead();
         ret +=this.getMenu();
         ret +="<div class=\"container\">\n" +

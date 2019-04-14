@@ -1,7 +1,6 @@
 import * as express from "express";
 
 import {InsertPageView} from './ts/view/InsertPageView';
-import {SaveView} from "./ts/view/SaveView";
 import {ExerciseView} from "./ts/view/ExerciseView";
 import {ProfileView} from "./ts/view/ProfileView";
 import {RegistrationView} from "./ts/view/RegistrationView";
@@ -18,7 +17,6 @@ app.use(express.static(__dirname));
 new InsertPageView(app);
 new ProfileView(app);
 new RegistrationView(app);
-new SaveView(app);
 new ExerciseView(app);
 new SearchView(app);
 new ClassesView(app);

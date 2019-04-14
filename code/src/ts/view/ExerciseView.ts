@@ -37,7 +37,7 @@ class ExerciseView extends PageView{
         this.corrections = value;
     }
 
-    getPage() {
+    async getPage() {
         const words = this.sentence.split(" ");
         let ret = this.getHead(this.buildCss(words));
         ret +=this.getMenu();

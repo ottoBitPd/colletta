@@ -18,7 +18,7 @@ class ProfileView extends PageView{
     public setError(error : string){
         this.error=error;
     }
-    public getPage() {
+    public async getPage() {
         let ret = this.getHead();
         ret += this.getMenu();
         ret += "<div class=\"container\">" +

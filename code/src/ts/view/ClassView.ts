@@ -162,7 +162,8 @@ class ClassView extends PageView {
                     "\t\t\t\t\t<div class='col-sm-3 mx-auto'>"+this.studentsList[i].username+"</div>\n" +
                     "\t\t\t\t\t<div class='col-sm-3 mx-auto'>"+
                     "\t\t\t\t\t\t<form method='post' action='/deletestudent'>" +
-                    "\t\t\t\t\t\t\t<button class='btn btn-danger btn-sm' name='key' value='"+this.studentsList[i].id+"' type='submit'>Elimina</button>\n" +
+                    "\t\t\t\t\t\t\t<input  name='classId' value='"+this._class.id+"' type='hidden'/>\n" +
+                    "\t\t\t\t\t\t\t<button class='btn btn-danger btn-sm' name='studentId' value='"+this.studentsList[i].id+"' type='submit'>Elimina</button>\n" +
                     "\t\t\t\t\t\t</form>" +
                     "\t\t\t\t\t</div>\n" +
                     "\t\t\t\t</div>\n" +
@@ -195,7 +196,8 @@ class ClassView extends PageView {
                     "\t\t\t\t\t<div class='col-sm-9 mx-auto'>"+this.exercisesList[i].sentence+"</div>\n" +
                     "\t\t\t\t\t<div class='col-sm-3 mx-auto'>"+
                     "\t\t\t\t\t\t<form method='post' action='/deleteexercise'>" +
-                    "\t\t\t\t\t\t\t<button class='btn btn-danger btn-sm' name='key' value='"+this.exercisesList[i].key+"' type='submit'>Elimina</button>\n" +
+                    "\t\t\t\t\t\t\t<input  name='classId' value='"+this._class.id+"' type='hidden'/>\n" +
+                    "\t\t\t\t\t\t\t<button class='btn btn-danger btn-sm' name='exerciseId' value='"+this.exercisesList[i].key+"' type='submit'>Elimina</button>\n" +
                     "\t\t\t\t\t\t</form>" +
                     "\t\t\t\t\t</div>\n" +
                     "\t\t\t\t</div>\n" +

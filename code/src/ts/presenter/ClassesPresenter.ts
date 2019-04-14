@@ -12,7 +12,8 @@ class ClassesPresenter extends PagePresenter {
 
     update(app: any) {
         this.classes(app);
-
+        this.insertClass(app);
+        this.deleteClass(app);
     }
     private classes(app : any){
         app.get('/classes', async (request: any, response: any) => {
@@ -25,7 +26,7 @@ class ClassesPresenter extends PagePresenter {
             let classClient = this.client.getClassClient();
             let userClient = this.client.getUserClient();
             if(classClient && userClient) {
-                console.log("username: "+session.username);
+                //console.log("username: "+session.username);
                 let id = await userClient.search(session.username);
                 if(id !== "false") {
                     let map = await classClient.getClassesByTeacher(id);//returns map<idClasse, className>
@@ -35,5 +36,29 @@ class ClassesPresenter extends PagePresenter {
             response.send(this.view.getPage());
         });
     }
+    private insertClass(app: any) {
+        app.post('/insertclass', async (request: any, response: any) => {
+            let classClient = this.client.getClassClient();
+            let userClient = this.client.getUserClient();
+            if(classClient && userClient) {
+                let id = await userClient.search(session.username);
+                if(id !== "false") {
+                    classClient.addClass(request.body.classname, request.body.description, id);
+                }
+            }
+            response.redirect('/classes');
+        });
+    }
+    private deleteClass(app: any) {
+        app.post('/deleteclass', async (request: any, response: any) => {
+            let classClient = this.client.getClassClient();
+            if(classClient) {
+                await classClient.deleteClass(request.body.key);
+                //ritorna boolean per gestione errore
+            }
+            response.redirect('/classes');
+        });
+    }
 }
-export {ClassesPresenter};
+export {ClassesPresenter}
+

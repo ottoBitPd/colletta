@@ -23,16 +23,13 @@ class ClassesView extends PageView {
             "\t\t<div class='col-sm-10 mx-auto'>"+
             "\t\t\t<h1 class='text-center mb-5'>Le tue classi</h1>" +
             "\t\t\t<div class='col-sm-12 text-right'>\n" +
-            "\t\t\t<a class=\"btn btn-primary my-3\" href=\"/class/insert\" role=\"button\">Aggiungi una nuova classe</a>" +
-            /*"\t\t\t\t<form method='post' action='/class/insert'>\n" +
-            "\t\t\t\t\t<button class='btn btn-primary' name='key' value='"+this.+"' type='submit'>Aggiungi una nuova classe</button>\n" +
-            "\t\t\t\t</form>" +*/
-            "\t\t\t</div>\n";
-
+            "\t\t\t<a class=\"btn btn-primary my-3\" href=\"javascript:showInsertClassForm()\" role=\"button\">Aggiungi una nuova classe</a>\n";
+            ret+=this.insertClass();
+            ret+="\t\t\t</div>\n";
             ret+=this.printList();
             ret+="\t\t</div>" +
             "\t</div>";
-        ret+=this.getFoot("");
+        ret+=this.getFoot(this.getScript());
         return ret;
     }
     private getMenu() : string {
@@ -111,9 +108,10 @@ class ClassesView extends PageView {
                 ret+="<li class='list-group-item'>\n" +
                 "<div class='row'>\n" +
                 "<div class='col-sm-4 mx-auto'>\n" +
-                "<form method='post' action='/class'>" +
+                /*"<form method='post' action='/class?classId="+key+"'>" +
                 "<button class='btn btn-link btn-sm' name='key' value='"+key+"' type='submit'>"+value+"</button>\n" +
-                "</form>" +
+                "</form>" +*/
+                "<a class='btn btn-link btn-sm' href='/class?classId="+key+"'>"+value+"</a>\n"+
                 "</div>\n" +
                 "<div class='col-sm-4 mx-auto text-center'>\n" +
                 "<form method='post' action='/deleteclass'>" +
@@ -127,6 +125,28 @@ class ClassesView extends PageView {
                 "</div>";
             return ret;
         }
+    }
+    private getScript() {
+        return "" +
+        "function showInsertClassForm(){\n" +
+        "\tdocument.getElementById('insertClassForm').style.display = 'block';\n" +
+        "}\n" +
+        "function hideInsertClassForm(){\n" +
+        "\tdocument.getElementById('insertClassForm').style.display = 'none';\n" +
+        "}\n";
+    }
+
+    private insertClass() {
+        let ret=""+
+        "\t\t\t<form method='post' id='insertClassForm' action='/insertclass' style='display:none'>\n" +
+        "\t\t\t\t<div class=\"form-group\">\n" +
+        "\t\t\t\t\t<label class='h5' for=\"sentence\">Inserisci i tuoi dati</label>\n " +
+        "\t\t\t\t\t<input type=\"text\" class=\"form-control my-2\" name=\"classname\" placeholder=\"Inserisci il nome della classe\" required/>" +
+        "\t\t\t\t\t<input type=\"text\" class=\"form-control my-2\" name=\"description\" placeholder=\"Inserisci una descrizione della classe\" required/>" +
+        "\t\t\t\t\t<button type=\"submit\" class=\"btn btn-primary my-2 my-sm-0 w-25\" onclick='hideInsertClassForm()'>Crea classe</button>" +
+        "\t\t\t\t</div>\n" +
+        "\t\t\t</form>\n ";
+        return ret;
     }
 }
 export {ClassesView};

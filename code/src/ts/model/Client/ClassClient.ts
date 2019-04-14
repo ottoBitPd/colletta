@@ -17,9 +17,30 @@ class ClassClient{
     public async deleteStudent(classId:string, studentId:string){
         var _class: Data = await this.dbClassManager.read(classId);
         var students:string []  = (<Class>_class).getStudents();
-        var indexToRemove:number = students.indexOf(studentId);
-        students.splice(indexToRemove,1);
-        await this.dbClassManager.update("data/classes/"+ classId + "/students", students);
+        if(students[0]!=="n") {//if there are students to remove
+            if(students.length===1){//if it is the last exercise
+                students = ["n"];
+            }
+            else {
+                var indexToRemove: number = students.indexOf(studentId);
+                students.splice(indexToRemove, 1);
+            }
+            await this.dbClassManager.update("data/classes/" + classId + "/students", students);
+        }
+    }
+    public async deleteExercise(classId:string, exerciseId:string){
+        var _class: Data = await this.dbClassManager.read(classId);
+        var exercises:string []  = (<Class>_class).getExercises();
+        if(exercises[0]!=="n") {//if there are exercises to remove
+            if(exercises.length===1){//if it is the last exercise
+                exercises = ["n"];
+            }
+            else {
+                var indexToRemove: number = exercises.indexOf(exerciseId);
+                exercises.splice(indexToRemove, 1);
+            }
+            await this.dbClassManager.update("data/classes/" + classId + "/exercises", exercises);
+        }
     }
     public async addStudent(studentId:string,classId:string){
         var _class:Data=await this.dbClassManager.read(classId);

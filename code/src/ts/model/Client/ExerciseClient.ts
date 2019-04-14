@@ -1,4 +1,3 @@
-
 import {DatabaseExerciseManager} from "../DatabaseManager/DatabaseExerciseManager";
 import {Exercise} from "../Data/Exercise";
 import {Data} from "../Data/Data";
@@ -110,6 +109,11 @@ class ExerciseClient{
         var exercise : Data = await this.dbExerciseManager.read(id);
         //console.log(exercise);
         return (<Exercise>exercise).getSentence();
+    }
+    public async getExerciseData(id:string) : Promise<any> {
+        const exercise : Data = await this.dbExerciseManager.read(id);
+        let exerciseData = (<Exercise>exercise).toJSON();
+        return exerciseData;
     }
 }
 export{ExerciseClient}

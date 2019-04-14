@@ -102,13 +102,6 @@ class ProfilePresenter extends PagePresenter{
 
             response.send(this.view.getPage());
         });
-
-
-
-        app.post('/deleteClass', async (request: any, response: any) => {
-            //console.log("post: ",request.body);
-            response.send("elimino la classe "+request.body.classToDelete);
-        });
     }
 
 }

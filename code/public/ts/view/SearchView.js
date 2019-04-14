@@ -16,7 +16,7 @@ class SearchView extends PageView_1.PageView {
         let ret = this.getHead();
         ret += this.getMenu();
         ret += "<div class=\"container\">\n" +
-            "\t<h1 class ='text-center mb-5'>Ricerca esercizio</h1>\n" +
+            "\t<h1 class ='text-center mb-5'>" + this.title + "</h1>\n" +
             "\t<form method ='post' action='/searchexercise'>\n" +
             "\t\t<div class=\"form-group\">\n" +
             "\t\t\t<input type=\"text\" class=\"form-control\" id='sentence' name='sentence' placeholder=\"Inserisci una frase\" required=\"required\">" +

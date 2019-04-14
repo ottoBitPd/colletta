@@ -4,32 +4,33 @@ import {SearchPresenter} from "../presenter/SearchPresenter";
 class SearchView extends PageView{
 
     private searchPresenter : SearchPresenter;
-    private resultList : any;
     constructor(app : any){
         super();
-        this.resultList = null;
         this.searchPresenter= new SearchPresenter(this);
         this.searchPresenter.update(app);
-    }
-
-    public setResultList(value: any) {
-        this.resultList = value;
     }
 
     async getPage() {
         let ret = this.getHead();
         ret +=this.getMenu();
-        ret +="<div class=\"container\">\n" +
-            "\t<h1 class ='text-center mb-5'>"+this.title+"</h1>\n" +
-            "\t<form method ='post' action='/searchexercise'>\n"+
-            "\t\t<div class=\"form-group\">\n"+
+        ret +="<div class=\"container\">\n";
+        if(this.searchPresenter.getSearchType()==="exercise" || this.searchPresenter.getSearchType()==="classExercise") {
+            ret += "\t<h1 class ='text-center mb-5'>Ricerca esercizio</h1>\n" +
+                "\t<form method ='post' action='/searchexercise'>\n";
+        }
+        if(this.searchPresenter.getSearchType()==="student") {
+            ret += "\t<h1 class ='text-center mb-5'>Ricerca studente</h1>\n" +
+            "\t<form method ='post' action='/searchstudent'>\n";
+        }
+
+        ret+="\t\t<div class=\"form-group\">\n"+
             "\t\t\t<input type=\"text\" class=\"form-control\" id='sentence' name='sentence' placeholder=\"Inserisci una frase\" required=\"required\">" +
             "\t\t</div>" +
             "\t\t<div class=\"form-group text-center\">" +
             "\t\t\t<button type=\"submit\" class=\"btn btn-primary my-2 my-sm-0 w-25\">Cerca</button>" +
             "\t\t</div>" +
             "\t</form>";
-            ret+=this.printList();
+            ret+= this.printList();
         ret+="</div>"+this.getFoot("");
         return ret;
     }
@@ -90,19 +91,36 @@ class SearchView extends PageView{
     }
 
     private printList() {
-        if(this.resultList===null){
+        let results = this.searchPresenter.getResults();
+        if(results===undefined){
             return "";//resultList is not set yet, cause nobody searched yet
         }
-        if(this.resultList.size<=0){
+        if(results.size<=0){
             return "<h2 class='h5 text-danger text-center'>Nessun risultato</h2>";//resultList is not set yet, cause nobody searched yet
         }
-        let ret="<h2>Esercizi: </h2>\n" +
-            "<form method='post' action='/exercise'>" +
-            "<ul class=\"list-group\">\n";
-        this.resultList.forEach((value: string, key: string) => {
-            ret+="<li class=\"list-group-item\"><p class='d-inline pr-1'>" + value + "</p>" +
-            "<button class='btn btn-primary btn-sm float-right' name='sentence' value='"+value+"' type='submit'>Esegui esercizio</button>" +
-            "</li>\n";
+        let ret="<h2>Esercizi: </h2>\n";
+        if(this.searchPresenter.getSearchType()==="exercise") {
+            ret+="<form method='post' action='/exercise'>";
+        }
+        if(this.searchPresenter.getSearchType()==="classExercise") {
+            ret+="<form method='post' action='/addexercise'>";
+        }
+        if(this.searchPresenter.getSearchType()==="student") {
+            ret+="<form method='post' action='/addstudent'>";
+        }
+        ret+="<ul class=\"list-group\">\n";
+        results.forEach((value: string, key: string) => {
+            ret+="<li class=\"list-group-item\"><p class='d-inline pr-1'>" + value + "</p>";
+            if(this.searchPresenter.getSearchType()==="exercise") {
+                ret+="<button class='btn btn-primary btn-sm float-right' name='sentence' value='" + value + "' type='submit'>Esegui esercizio</button>";
+            }
+            if(this.searchPresenter.getSearchType()==="classExercise") {
+                ret+="<button class='btn btn-primary btn-sm float-right' name='exerciseId' value='" + key + "' type='submit'>Aggiungi esercizio alla classe</button>";
+            }
+            if(this.searchPresenter.getSearchType()==="student") {
+                ret+="<button class='btn btn-primary btn-sm float-right' name='studentId' value='" + key + "' type='submit'>Aggiungi alla classe</button>";
+            }
+            ret+="</li>\n";
         });
         return "</ul></form>\n"+ret;
     }

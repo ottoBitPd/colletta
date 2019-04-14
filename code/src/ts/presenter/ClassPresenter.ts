@@ -14,13 +14,15 @@ class ClassPresenter extends PagePresenter {
         this.class(app);
         this.deleteStudent(app);
         this.deleteExercise(app);
+        this.addStudent(app);
+        this.addExercise(app);
     }
 
     private setClassId( value : string){
         this.classId = value;
     }
     public getClassId(){
-        return this.classId
+        return this.classId;
     }
     private class(app : any){
         app.get('/class', async (request: any, response: any) => {
@@ -28,6 +30,7 @@ class ClassPresenter extends PagePresenter {
             menuList= {
                 0 :{"link":"/","name":"Homepage"}
             }
+            console.log("IDCLASSE: "+request.query.classId)
             this.setClassId(request.query.classId);
             this.view.setTitle("Classe");
             this.view.setMenuList(menuList);
@@ -53,6 +56,9 @@ class ClassPresenter extends PagePresenter {
         let userClient = this.client.getUserClient();
         if(classClient && userClient) {
             let studentsId = await classClient.getStudents(this.classId);
+            for (let i in studentsId) {
+                console.log("students: ", studentsId[i]);
+            }
             if (studentsId.length > 0 && studentsId[0]!=="n") {//it there are students in the class
                 let students = new Array();//array di json student
                 for (let i in studentsId) {
@@ -140,5 +146,29 @@ class ClassPresenter extends PagePresenter {
         return new Map();
     }
 
+    private addStudent(app: any) {
+        app.post('/addstudent', async (request: any, response: any) => {
+            let classClient = this.client.getClassClient();
+            if(classClient) {
+                console.log("studentId: "+request.body.studentId+"classId: "+this.classId);
+                await classClient.addStudent(request.body.studentId,this.classId);
+                //ritorna boolean per gestione errore
+            }
+            response.redirect('/class?classId='+this.classId);
+            //response.redirect(307, '/class');
+        });
+    }
+
+    private addExercise(app: any) {
+        app.post('/addexercise', async (request: any, response: any) => {
+            let classClient = this.client.getClassClient();
+            if(classClient) {
+                await classClient.addExercise(request.body.exerciseId,this.classId);
+                //ritorna boolean per gestione errore
+            }
+            response.redirect('/class?classId='+this.classId);
+            //response.redirect(307, '/class');
+        });
+    }
 }
 export {ClassPresenter};

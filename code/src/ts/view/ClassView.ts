@@ -24,7 +24,7 @@ class ClassView extends PageView {
         ret += "" +
         "\t<h1 class=\"text-center mt-5\">Studenti di questa classe</h1>\n" +
         "\t\t<div class='col-sm-12 text-right'>\n" +
-        "\t\t\t<form method='post' action='/class/insert'>\n" +
+        "\t\t\t<form method='post' action='/student/insert'>\n" +
         "\t\t\t\t<button class='btn btn-primary my-3' name='key' value='"+_class.id+"' type='submit'>Aggiungi uno studente</button>\n" +
         "\t\t\t</form>\n" +
         "\t\t</div>\n";
@@ -35,7 +35,7 @@ class ClassView extends PageView {
         ret += "" +
         "\t<h1 class=\"text-center mt-5\">Esercizi assegnati alla classe</h1>\n" +
         "\t\t<div class='col-sm-12 text-right'>\n" +
-        "\t\t\t<form method='post' action='/class/insert'>\n" +
+        "\t\t\t<form method='post' action='/class/exercise/search'>\n" +
         "\t\t\t\t<button class='btn btn-primary my-3' name='key' value='"+_class.id+"' type='submit'>Assegna un nuovo esercizio</button>\n" +
         "\t\t\t</form>\n" +
         "\t\t</div>\n";

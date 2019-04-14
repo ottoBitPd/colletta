@@ -33,7 +33,7 @@ class ExercisePresenter extends PagePresenter{
                 this.view.setPosTranslation(posTranslation);
                 this.view.setPosTags(posTags);
                 this.view.setUserKind(UserKind.teacher);
-                response.send(this.view.getPage());
+                response.send(await this.view.getPage());
             }
         });
     }
@@ -54,7 +54,7 @@ class ExercisePresenter extends PagePresenter{
                     //not logged
                     this.view.setUserKind(UserKind.user);
                 }
-                response.send(this.view.getPage());
+                response.send(await this.view.getPage());
             }
         });
     }

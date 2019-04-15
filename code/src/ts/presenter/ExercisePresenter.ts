@@ -252,7 +252,7 @@ class ExercisePresenter extends PagePresenter{
      * @returns {Array} an array containing the tags of the solution suggested by the user
      */
     private correctionToTags(wordsnumber : number, dataCorrection : any) : string []{
-        //console.log("dataCorrection: "+require('util').inspect(dataCorrection));
+        console.log("dataCorrection: "+require('util').inspect(dataCorrection));
         let optionsIndex=0, wordIndex=0;//optionsIndex counter for options of the first select input field
         let tagsCorrection = [];
         tagsCorrection.length = wordsnumber;
@@ -262,11 +262,27 @@ class ExercisePresenter extends PagePresenter{
             if(i !== 'sentence' && i !== 'wordsnumber' && i!=='key' && i!=='hunposTags'){
                 if (dataCorrection[i] !== '-') {//se è stato settato qualcosa
                     //invalid tags or tags that must be set in the second input field
-                    if(dataCorrection[i]==='A' || (dataCorrection[i]==='B' && i===('general'+ wordIndex)) || (dataCorrection[i]==='E' && i===('general'+ wordIndex)) || (dataCorrection[i]==='S' && i===('general'+ wordIndex)) || (dataCorrection[i]==='V' && i===('general'+ wordIndex))) {
+                    /*
+                    if(dataCorrection[i]==='A')  {
                         actualTag += "";
+                    } else if (['B','E','P','S','V'].indexOf(dataCorrection[i]) !== -1){ //dataCorrection[i] !== 'A' && condition
+                        if (i===('general'+ wordIndex))
+                            actualTag += "";
+                        else
+                            actualTag += dataCorrection[i];
                     }
-                    else{
+                    else{ //datacorrection[i] !== 'A' && ['B','E','P','S','V'].indexOf(dataCorrection[i]) === -1
                         actualTag += dataCorrection[i];
+                    }
+                    */
+
+                    if (dataCorrection[i] !== 'A') {
+                        if (['B', 'E', 'P', 'S', 'V'].indexOf(dataCorrection[i]) !== -1) {
+                            if (i !== ('general' + wordIndex))
+                                actualTag += dataCorrection[i];
+                        } else {
+                            actualTag += dataCorrection[i];
+                        }
                     }
                 }
 

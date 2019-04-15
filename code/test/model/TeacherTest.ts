@@ -64,9 +64,9 @@ describe('Teacher', function() {
 
             var teacher1=new Teacher("1","Bortolone", "ciao", "Michele", "Bortone", "Scorze", "Venezia", "A110","borto.lone@gmail.com");
           //  var teacher2=new Teacher("3","Perry15", "ciao", "Perry", "Peron", "Scorze", "Venezia", "A111");
-            let uno= new Class("name", "description","1",["st1", "st2"],["es1", "es2"]);
-            let due= new Class("name", "description","1",["st1", "st2"],["es1", "es2"]);
-            let tre= new Class("name", "description","3",["st1", "st2"],["es1", "es2"]);
+            let uno= new Class("0","name", "description","1",["st1", "st2"],["es1", "es2"]);
+            let due= new Class("0","name", "description","1",["st1", "st2"],["es1", "es2"]);
+            let tre= new Class("0","name", "description","3",["st1", "st2"],["es1", "es2"]);
 
             expect(teacher1.getClasses([uno,due,tre])).eql([uno,due]);
         });

@@ -2,18 +2,24 @@ import {Data} from "./Data";
 
 class Class implements Data {
 
+    private id : string;
     private name : string;
     private description : string;
     private teacherID : string;
     private students : string[];
     private exercises : string[];
 
-    constructor(name : string, description : string, teacherID : string, students : string[], exercises : string[]){
+    constructor(id:string, name : string, description : string, teacherID : string, students : string[], exercises : string[]){
+        this.id = id;
         this.name = name;
         this.description = description;
         this.teacherID = teacherID;
         this.students = students;
         this.exercises = exercises;
+    }
+
+    public getId() :string {
+        return this.id;
     }
 
     public getName() : string {
@@ -67,6 +73,7 @@ class Class implements Data {
 
     public toJSON() : any {
         let _class: any = {
+            "id" : this.id,
             "name": this.name,
             "description": this.description,
             "teacherID": this.teacherID,

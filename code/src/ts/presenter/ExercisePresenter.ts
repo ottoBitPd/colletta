@@ -7,9 +7,22 @@ var session = require('express-session');
 
 class ExercisePresenter extends PagePresenter{
 
+    private userSolution : string[];
+    private correction : any | null;
+
     constructor(view : PageView){
         super(view);
         this.client =(new Client.builder()).buildExerciseClient().buildUserClient().build();
+        this.userSolution=[];
+        this.correction=null;
+    }
+
+    getUserSolution() : any {
+        return this.userSolution;
+    }
+
+    getCorrection() : any | null {
+        return this.correction;
     }
 
     update(app : any){
@@ -20,6 +33,7 @@ class ExercisePresenter extends PagePresenter{
 
     private insertExercise(app : any) : void {
         app.post('/exercise/insert', async (request: any, response: any) => {
+            this.correction = null;
             let exerciseClient = this.client.getExerciseClient();
             if (exerciseClient) {
                 //sending the sentence to hunpos which will provide a solution
@@ -33,13 +47,14 @@ class ExercisePresenter extends PagePresenter{
                 this.view.setPosTranslation(posTranslation);
                 this.view.setPosTags(posTags);
                 this.view.setUserKind(UserKind.teacher);
-                response.send(this.view.getPage());
+                response.send(await this.view.getPage());
             }
         });
     }
 
     private listenExercise(app :any) : void {
         app.post('/exercise', async (request: any, response: any) => {
+            this.correction = null;
             let exerciseClient = this.client.getExerciseClient();
             if(exerciseClient){
                 // console.log("key arrivata: ",request.body.sentence);
@@ -54,7 +69,7 @@ class ExercisePresenter extends PagePresenter{
                     //not logged
                     this.view.setUserKind(UserKind.user);
                 }
-                response.send(this.view.getPage());
+                response.send(await this.view.getPage());
             }
         });
     }
@@ -86,6 +101,9 @@ class ExercisePresenter extends PagePresenter{
                             0: ID,
                             1: 10
                         };
+
+                        this.userSolution = solution[1];
+
                          exerciseClient.insertExercise(request.body.sentence, ID, solution, valutation);
                         //exerciseClient.addValutation(request.body.sentence, "sessionauthorId","teacherIdValue", 10);//valori di prova
                         //await exerciseClient.insertExercise(request.body.sentence, "authorIdValue",);
@@ -109,11 +127,14 @@ class ExercisePresenter extends PagePresenter{
                                 0: corrections[0].userID,
                                 1: await exerciseClient.evaluate(solution["1"],ID,corrections[0].topics,request.body.sentence,corrections[0].difficulty,corrections[0].userID)
                             };
-                            if ((await exerciseClient.searchExercise(request.body.sentence)).size > 0)
+                            if ((await exerciseClient.searchExercise(request.body.sentence)).size > 0){
                                 await exerciseClient.insertExercise(request.body.sentence, ID, solution, valutation);
+                                this.userSolution = solution[1];
+                                this.correction = {"mark" : valutation[1], "tags" : corrections[0].tags};
+                            }
                         } else {
                             solution = {
-                                0: undefined,
+                                0: ID,
                                 1: this.correctionToTags(wordsnumber,request.body),
                                 2: [],
                                 3: -1
@@ -122,12 +143,12 @@ class ExercisePresenter extends PagePresenter{
                                 0: null,
                                 1: await exerciseClient.evaluate(solution["1"],"",[],request.body.sentence,-1)
                             };
+                            this.userSolution = solution[1];
+                            this.correction = {"mark" : valutation[1], "tags" : await exerciseClient.autosolve(request.body.sentence,ID)};
                         }
-                        console.log(solution);
-                        console.log(valutation);
+
                     }
                 } else {
-
                     let solution : any;
                     let valutation : any;
                     if (request.body.correction !== 'auto'){
@@ -156,11 +177,11 @@ class ExercisePresenter extends PagePresenter{
                         };
                     }
 
-                    console.log(solution);
-                    console.log(valutation);
+                    this.userSolution = solution[1];
+                    this.correction = {"mark" : valutation[1], "tags" : await exerciseClient.autosolve(request.body.sentence,"")};
                 }
 
-                response.redirect('/');
+                response.send(await this.view.getPage());
             }
         });
     }
@@ -189,7 +210,7 @@ class ExercisePresenter extends PagePresenter{
      * @param tag - a string containg the tag to convert
      * @returns {string} a string containing the italian translation of the tag
      */
-    private translateTag(tag : string){
+    public translateTag(tag : string){
         const content = fileSystem.readFileSync("./src/ts/presenter/vocabolario.json");
         const jsonContent = JSON.parse(content.toString());
 
@@ -354,6 +375,15 @@ class ExercisePresenter extends PagePresenter{
             }
         }
         return result;
+    }
+
+    async findSolution(sentence : string, solverID : string, time : number) : Promise<any> {
+        let exerciseClient = this.client.getExerciseClient();
+        if (exerciseClient){
+            let solutions = await exerciseClient.searchSolution(sentence,solverID);
+            return solutions.find((sol) => sol.time === time);
+        }
+        return null;
     }
 }
 export {ExercisePresenter};

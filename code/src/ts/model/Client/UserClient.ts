@@ -92,6 +92,36 @@ class UserClient{
             this.dbUserManager.update('data/users/'+id+'/INPScode',userUpdateData.inps);
         }
     }
+
+    /**
+     *
+     * @param substring
+     * @param teacher - false if you want to search student only, true if you want to search teacher only
+     */
+    public async searchUser(substring : string, teacher : boolean) : Promise<Map<string, string>> {
+        var regex = new RegExp(substring, "i");
+        var elements = await this.dbUserManager.elements();//returns a map<id,sentence> of all exercises in the db
+        var mapToReturn = new Map<string, string>();
+        console.log("User: ", elements);
+
+        for (let entry of Array.from(elements.entries())) {
+            let key = entry[0];
+            let value = entry[1];
+            let user: Data = await this.dbUserManager.read(key);
+            if (teacher && (<User>user).isTeacher()) {
+                if (value.search(regex) >= 0) {
+                    mapToReturn.set(key, value);
+                }
+            }
+            else if (!teacher && !(<User>user).isTeacher()){
+                if (value.search(regex) >= 0) {
+                    mapToReturn.set(key, value);
+                }
+            }
+        }
+
+        return mapToReturn;
+    }
     public hashPassword(plain :string){
         return this.passwordHash.hashSync(plain,10);
     }

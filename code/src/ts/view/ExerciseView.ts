@@ -37,13 +37,16 @@ class ExerciseView extends PageView{
         this.corrections = value;
     }
 
-    getPage() {
+    async getPage() {
         const words = this.sentence.split(" ");
         let ret = this.getHead(this.buildCss(words));
         ret +=this.getMenu();
         ret +="<div class=\"container\">";
 
-        ret+=this.showExercise(words);
+        if (this.exercisePresenter.getCorrection() === null)
+            ret+=this.showExercise(words);
+        else
+            ret+=this.showExerciseEvaluation(words);
 
         ret += "  </div>" +
                 "</body>" +
@@ -95,11 +98,51 @@ class ExerciseView extends PageView{
             ret+= "<option value='" + this.corrections[i].id + "'>" + this.corrections[i].username + "</option>";
         }
         ret+="            </select>"+
-            "            <button id=\"submit\"><input type=\"submit\" />Invia</button>" +
+            "            <button id=\"submit\">Invia</button>" +
             "        </form>" +
             "    </div>";
         return ret;
     }
+
+
+
+    private showExerciseEvaluation(words : string[]) : string{
+        let ret = "<h1 class=\"text-center mb-4\">Valutazione</h1>\n" +
+            "    <div id=\"esercizio\" class='text-center'>\n" +
+            "        <ul class='list-group text-center'>\n" +
+            "            <li class='list-group-item active'>\n" +
+            "                <div class='row'>\n" +
+            "                    <div class='col-sm-4 mx-auto'>FRASE</div>\n" +
+            "                    <div class='col-sm-4 mx-auto'>LA TUA SOLUZIONE</div>\n" +
+            "                    <div class='col-sm-4 mx-auto'>CORREZIONE</div>\n" +
+            "                </div>\n" +
+            "            </li>\n";
+
+        let solution = this.exercisePresenter.getUserSolution();
+        let correction = this.exercisePresenter.getCorrection();
+        console.log(solution);
+        console.log(correction);
+        if (correction){
+            for (let i = 0; i < words.length; ++i){
+                ret +=
+                    "            <li class='list-group-item'>\n" +
+                    "                <div class='row "+ (solution[i] === correction.tags[i] ? "text-success" : "text-danger")+ "'>\n" +
+                    "                    <p class='col-sm-4 mx-auto'>"+words[i]+"</p>\n" +
+                    "                    <p class='col-sm-4 mx-auto'>"+this.exercisePresenter.translateTag(solution[i])+"</p>\n" +
+                    "                    <p class='col-sm-4 mx-auto'>"+this.exercisePresenter.translateTag(correction.tags[i])+"</p>\n " +
+                    "                </div>\n" +
+                    "            </li>\n";
+            }
+        }
+
+        ret +=
+            "       </ul>\n" +
+            "       <a href='/' class='btn btn-primary my-2 px-4'>Torna alla home</a>\n"+
+            "    </div>";
+
+        return ret;
+    }
+
 
     private buildTable(words : string[]){
         let table=""+

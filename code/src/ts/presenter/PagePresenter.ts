@@ -1,6 +1,7 @@
 import {Client} from "../model/Client/Client";
 
 var session = require('express-session');
+
 abstract class PagePresenter{
     protected view: any;
     protected client : Client;

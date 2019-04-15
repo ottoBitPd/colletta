@@ -5,9 +5,9 @@ import 'mocha';
 
 
 describe('Class', function() {
-    let obj= new Class("name", "description","1234",["st1", "st2"],["es1", "es2"]);
-    let student= new Class("name", "description","1234",["st1", "st2"],["es1", "es2"]);
-    let exercise= new Class("name", "description","1234",["st1", "st2"],["es1", "es2"]);
+    let obj= new Class("0","name", "description","1234",["st1", "st2"],["es1", "es2"]);
+    let student= new Class("0","name", "description","1234",["st1", "st2"],["es1", "es2"]);
+    let exercise= new Class("0","name", "description","1234",["st1", "st2"],["es1", "es2"]);
 
     describe('Class.getName()', function() {
         it('should return the name', function() {

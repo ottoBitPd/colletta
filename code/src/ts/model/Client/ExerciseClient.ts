@@ -1,4 +1,3 @@
-
 import {DatabaseExerciseManager} from "../DatabaseManager/DatabaseExerciseManager";
 import {Exercise} from "../Data/Exercise";
 import {Data} from "../Data/Data";
@@ -11,7 +10,12 @@ class ExerciseClient{
 
     public async autosolve(sentence: string, authorId :string) : Promise<string[]>{
         let exercise = new Exercise(sentence,authorId);
-        return exercise.autosolve();
+        let autosolution = exercise.autosolve();
+        let result = [];
+        for (let value of autosolution.sentence){
+            result.push(value.label);
+        }
+        return result;
     }
 
     public getSplitSentence(sentence:string) : string []{
@@ -117,13 +121,21 @@ class ExerciseClient{
     }
 
     public async evaluate(newSolution : string[],solverID : string,topics : string[], sentence : string, difficulty : number ,teacherID? : string) : Promise<number> {
-        let exercise : Exercise;
+        let exercise: Exercise;
+
         if (teacherID !== undefined)
             exercise = <Exercise>(await this.dbExerciseManager.read(await this.dbExerciseManager.search(sentence)));
         else
-            exercise = new Exercise(sentence,solverID);
-        exercise.setSolution(solverID,newSolution,topics,difficulty);
+            exercise = new Exercise(sentence, solverID);
+
+        exercise.setSolution(solverID, newSolution, topics, difficulty);
         return exercise.evaluate(teacherID);
+    }
+
+    public async getExerciseData(id:string) : Promise<any> {
+        const exercise : Data = await this.dbExerciseManager.read(id);
+        let exerciseData = (<Exercise>exercise).toJSON();
+        return exerciseData;
     }
 }
 export{ExerciseClient}

@@ -57,7 +57,6 @@ class UserClient{
 
     async teacherList() : Promise<string[]> {
         let teacherMap = await this.dbUserManager.elements();
-        console.log(teacherMap);
         let list : string[] = [];
 
         for (let teacher of teacherMap){
@@ -65,8 +64,6 @@ class UserClient{
             if (condition)
                 list.push(teacher[0]);
         }
-
-        console.log(list);
         return list;
     }
 

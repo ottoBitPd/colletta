@@ -41,46 +41,17 @@ class ExerciseView extends PageView{
         const words = this.sentence.split(" ");
         let ret = this.getHead(this.buildCss(words));
         ret +=this.getMenu();
-        ret +="<div class=\"container\">" +
-            "    <div id=\"esercizio\">" +
-            "        <form method=\"POST\" action=\"/saveExercise\">";
+        ret +="<div class=\"container\">";
 
-                            ret+=this.buildTable(words);
-            //si esegue un passaggio alla OttoBit (^o^)
-            ret+="" +
-            "            <input type=\"hidden\" name=\"wordsnumber\" value=\"*wordsnumber*\"/>" +
-            "            <input type=\"hidden\" name=\"sentence\" value=\""+this.sentence+"\"/>";
-                if(this.posTags) {
-                    ret += "<input type=\"hidden\" name=\"hunposTags\" value='" + JSON.stringify(this.posTags) + "'/>";
-                }
-            ret+=
-                "   <br/>";
-                if (this.userKind === UserKind.teacher)
-                    ret+=
-                "            <input type=\"text\" class='form-control' name=\"topics\"/>" +
-                "            <select class='form-control' name=\"difficulty\">" +
-                "                <option value=\"1\">Molto facile</option>" +
-                "                <option value=\"2\">Facile</option>" +
-                "                <option value=\"3\">Medio</option>" +
-                "                <option value=\"4\">Difficile</option>" +
-                "                <option value=\"5\">Molto difficile</option>" +
-                "            </select>";
-                if (this.userKind !== UserKind.teacher)
-                    ret+="            <div class='col-sm-4'>Scegli il professore per la correzione</div>"+
-                "            <select class='form-control' name='correction'>";
-                for (let i in this.corrections){
-                    ret+= "<option value='1'>"+this.corrections[i].id+"</option>";
-                }
-                ret+="            </select>"+
-                "            <div id=\"submit\"><input type=\"submit\" value=\"Invia\"/></div>" +
-                "        </form>" +
-                "    </div>" +
-                "    </body>" +
+        ret+=this.showExercise(words);
+
+        ret += "  </div>" +
+                "</body>" +
                 "    <script>";
-            ret+=this.getScript();
-            ret+="    </script>" +
-            "</html>";
-            return ret;
+        ret+=this.getScript();
+        ret+="    </script>" +
+        "</html>";
+        return ret;
         // let data =  this.fileSystem.readFileSync('./public/exercise.html').toString();
         //
         // data=data.replace(/\*table\*/g, this.buildForm(words));
@@ -91,6 +62,45 @@ class ExerciseView extends PageView{
         // data=data.replace(/\*hunposTags\*/g, JSON.stringify(this.hunposTags));
         // return data;
     }
+
+    private showExercise(words : string[]) : string {
+        let ret ="    <div id=\"esercizio\">" +
+        "        <form method=\"POST\" action=\"/exercise/save\">";
+
+        ret+=this.buildTable(words);
+        //si esegue un passaggio alla OttoBit (^o^)
+        ret+="" +
+            "            <input type=\"hidden\" name=\"wordsnumber\" value=\"*wordsnumber*\"/>" +
+            "            <input type=\"hidden\" name=\"sentence\" value=\""+this.sentence+"\"/>";
+        if(this.posTags) {
+            ret += "<input type=\"hidden\" name=\"hunposTags\" value='" + JSON.stringify(this.posTags) + "'/>";
+        }
+        ret+=
+            "   <br/>";
+        if (this.userKind === UserKind.teacher)
+            ret+=
+                "            <input type=\"text\" class='form-control' name=\"topics\"/>" +
+                "            <select class='form-control' name=\"difficulty\">" +
+                "                <option value=\"1\">Molto facile</option>" +
+                "                <option value=\"2\">Facile</option>" +
+                "                <option value=\"3\">Medio</option>" +
+                "                <option value=\"4\">Difficile</option>" +
+                "                <option value=\"5\">Molto difficile</option>" +
+                "            </select>";
+        if (this.userKind !== UserKind.teacher)
+            ret+="            <p class='col-sm-4'>Scegli il professore per la correzione</p>"+
+                "            <select class='form-control' name='correction'>" +
+                "               <option value='auto'>Correzione generata automaticamente</option>";
+        for (let i in this.corrections){
+            ret+= "<option value='" + this.corrections[i].id + "'>" + this.corrections[i].username + "</option>";
+        }
+        ret+="            </select>"+
+            "            <button id=\"submit\"><input type=\"submit\" />Invia</button>" +
+            "        </form>" +
+            "    </div>";
+        return ret;
+    }
+
     private buildTable(words : string[]){
         let table=""+
             "<ul class='list-group'>" +

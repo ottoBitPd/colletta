@@ -224,10 +224,10 @@ class ProfileView extends PageView{
     private getMenu() : string {
         let ret =""+
             "<nav class=\"navbar navbar-expand-sm bg-dark navbar-dark\">" +
-            "\t<div class=\"navbar-brand\">Colletta</div>" +
-            "\t\t<button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#collapsibleNavbar\">" +
-            "\t\t\t<span class=\"navbar-toggler-icon\"></span>" +
-            "\t\t</button>" +
+            "\t<a href='/' class=\"navbar-brand\">Colletta</a>" +
+            "\t<button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#collapsibleNavbar\">" +
+            "\t\t<span class=\"navbar-toggler-icon\"></span>" +
+            "\t</button>" +
             "\t<div class=\"collapse navbar-collapse\" id=\"collapsibleNavbar\">"+
             "\t\t<ul class=\"navbar-nav mr-auto\">";
             if(this.userKind===UserKind.student) {
@@ -253,9 +253,9 @@ class ProfileView extends PageView{
             "</nav>";
         ret +=
             "<form method='post' action='/exercise/insert' id='insertExerciseForm' class='d-none'>" +
-            "   <div>" +
-            "       <input type='text' name='sentence'/>" +
-            "       <button type='submit'>Invia</button>" +
+            "   <div class=\"input-group col-sm-4 py-2 bg-dark\">" +
+            "       <input type=\"text\" name=\"sentence\" class=\"form-control\">" +
+            "       <button type=\"submit\" class=\"btn btn-primary\">Invia</button>" +
             "   </div>" +
             "</form>";
         return ret;

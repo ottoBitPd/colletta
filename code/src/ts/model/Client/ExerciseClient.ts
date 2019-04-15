@@ -94,14 +94,18 @@ class ExerciseClient{
             let exercise: Data = await this.dbExerciseManager.read(exerciseKey);
             //console.log("Exercise: ",exercise);
             let solutions = (<Exercise>exercise).getSolutions();
-            solutions.filter((value) => value.getSolverId() == solverID).forEach((value) => {
-                result.push(
-                    {
-                        "id" : value.getSolverId(),
-                        "tags" : value.getSolutionTags(),
-                        "time" : value.getTime()
-                    });
-            });
+            for(let value of solutions) {
+                if (value.getSolverId() === solverID)
+                    result.push(
+                        {
+                            "id" : value.getKey(),
+                            "userID" : value.getSolverId(),
+                            "tags" : value.getSolutionTags(),
+                            "time" : value.getTime(),
+                            "difficulty" : value.getDifficulty(),
+                            "topics" : value.getTopics()
+                        });
+            }
         }
         return result;
     }
@@ -110,6 +114,16 @@ class ExerciseClient{
         var exercise : Data = await this.dbExerciseManager.read(id);
         //console.log(exercise);
         return (<Exercise>exercise).getSentence();
+    }
+
+    public async evaluate(newSolution : string[],solverID : string,topics : string[], sentence : string, difficulty : number ,teacherID? : string) : Promise<number> {
+        let exercise : Exercise;
+        if (teacherID !== undefined)
+            exercise = <Exercise>(await this.dbExerciseManager.read(await this.dbExerciseManager.search(sentence)));
+        else
+            exercise = new Exercise(sentence,solverID);
+        exercise.setSolution(solverID,newSolution,topics,difficulty);
+        return exercise.evaluate(teacherID);
     }
 }
 export{ExerciseClient}

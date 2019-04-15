@@ -60,7 +60,7 @@ class ExercisePresenter extends PagePresenter{
     }
 
     private saveExercise(app : any) : any{
-        app.post('/saveExercise', async (request : any, response : any) => {
+        app.post('/exercise/save', async (request : any, response : any) => {
             let exerciseClient = this.client.getExerciseClient();
             let userClient = this.client.getUserClient();
             if(exerciseClient && userClient){
@@ -94,33 +94,72 @@ class ExercisePresenter extends PagePresenter{
                         //this.model.writeSolution(sentence.split(" "), finalTags, sentence, key);
                     } else {
 
-                        let solution = {
-                            0: ID,
-                            1: this.correctionToTags(wordsnumber, words),
-                            2: this.splitTopics(request.body.topics),
-                            3: request.body.difficulty
-                        };
-                        let valutation = {
-                            0: ID, //TODO:inserire tendina correzioni
-                            1: 0
-                        };
-                        if ((await exerciseClient.searchExercise(request.body.sentence)).size > 0)
-                            exerciseClient.insertExercise(request.body.sentence, "sessionAuthorId", solution, valutation);
+                        let solution : any;
+                        let valutation : any;
+                        if (request.body.correction !== 'auto'){
+                            let corrections = await this.teacherSolutions(request.body.sentence);
+                            corrections = corrections.filter((value) => value.id === request.body.correction);
+                            solution = {
+                                0: ID,
+                                1: this.correctionToTags(wordsnumber,request.body),
+                                2: corrections[0].tags,
+                                3: corrections[0].difficulty
+                            };
+                            valutation = {
+                                0: corrections[0].userID,
+                                1: await exerciseClient.evaluate(solution["1"],ID,corrections[0].topics,request.body.sentence,corrections[0].difficulty,corrections[0].userID)
+                            };
+                            if ((await exerciseClient.searchExercise(request.body.sentence)).size > 0)
+                                await exerciseClient.insertExercise(request.body.sentence, ID, solution, valutation);
+                        } else {
+                            solution = {
+                                0: undefined,
+                                1: this.correctionToTags(wordsnumber,request.body),
+                                2: [],
+                                3: -1
+                            };
+                            valutation = {
+                                0: null,
+                                1: await exerciseClient.evaluate(solution["1"],"",[],request.body.sentence,-1)
+                            };
+                        }
+                        console.log(solution);
+                        console.log(valutation);
                     }
                 } else {
-                    let solution = {
-                        0: undefined,
-                        1: this.correctionToTags(wordsnumber,request.body),
-                        2: this.splitTopics(request.body.topics),
-                        3: request.body.difficulty
-                    };
-                    let valutation = {
-                        0: "teacherIdValue",
-                        1: 0
-                    };
+
+                    let solution : any;
+                    let valutation : any;
+                    if (request.body.correction !== 'auto'){
+                        let corrections = await this.teacherSolutions(request.body.sentence);
+                        corrections = corrections.filter((value) => value.id === request.body.correction);
+                        solution = {
+                            0: undefined,
+                            1: this.correctionToTags(wordsnumber,request.body),
+                            2: corrections[0].tags,
+                            3: corrections[0].difficulty
+                        };
+                        valutation = {
+                            0: corrections[0].userID,
+                            1: await exerciseClient.evaluate(solution["1"],"",[],request.body.sentence,corrections[0].difficulty,corrections[0].userID)
+                        };
+                    } else {
+                        solution = {
+                            0: undefined,
+                            1: this.correctionToTags(wordsnumber,request.body),
+                            2: [],
+                            3: -1
+                        };
+                        valutation = {
+                            0: null,
+                            1: await exerciseClient.evaluate(solution["1"],"",[],request.body.sentence,-1)
+                        };
+                    }
+
                     console.log(solution);
                     console.log(valutation);
                 }
+
                 response.redirect('/');
             }
         });
@@ -280,10 +319,23 @@ class ExercisePresenter extends PagePresenter{
         let userClient = this.client.getUserClient();
         if (userClient){
             let teacherList = await userClient.teacherList();
-            teacherList.forEach(async (value) => {
-                if (exerciseClient)
-                    result.concat(await exerciseClient.searchSolution(sentence,value));
-            });
+            for (let teacher of teacherList) {
+                if (exerciseClient){
+                    let solutions = await exerciseClient.searchSolution(sentence,teacher);
+                    for (let sol of solutions){
+                        sol = {
+                            "id" : sol.id,
+                            "userID" : sol.userID,
+                            "username" : (await userClient.getUserData(sol.userID)).username,
+                            "tags" : sol.tags,
+                            "time" : sol.time,
+                            "difficulty": sol.difficulty,
+                            "topics" : sol.topics
+                         };
+                        result.push(sol);
+                    }
+                }
+            }
         }
         return result;
     }

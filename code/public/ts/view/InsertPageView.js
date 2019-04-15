@@ -1,4 +1,12 @@
 "use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const PageView_1 = require("./PageView");
 const InsertPresenter_1 = require("../presenter/InsertPresenter");
@@ -9,21 +17,22 @@ class InsertPageView extends PageView_1.PageView {
         this.exercisePresenter.update(app);
     }
     getPage() {
-        let ret = this.getHead();
-        ret += this.getMenu();
-        ret += "<div class=\"container\" style=\"margin-top: 10%\">" +
-            "<h1 class ='text-center mb-5'>Inserisci frase</h1>" +
-            "<form method ='post' action='/exercise'>" +
-            "   <div class=\"form-group\">" +
-            "       <label for=\"sentence\">Frase</label>" +
-            "       <input type=\"text\" class=\"form-control\" id='sentence' name='sentence' placeholder=\"Inserisci una frase\" required=\"required\">" +
-            "   </div>" +
-            "   <div class=\"form-group text-center\">" +
-            "       <button type=\"submit\" class=\"btn btn-primary my-2 my-sm-0 w-25\">Invia</button>" +
-            "   </div>" +
-            "</form>";
-        ret += "</div>" + this.getFoot("");
-        return ret;
+        return __awaiter(this, void 0, void 0, function* () {
+            let ret = this.getHead();
+            ret += this.getMenu();
+            ret += "<div class=\"container\" style=\"margin-top: 10%\">" +
+                "<h1 class ='text-center mb-5'>Inserisci frase</h1>" +
+                "<form method ='post' action='/exercise'>" +
+                "   <div class=\"form-group\">" +
+                "       <input type=\"text\" class=\"form-control\" id='sentence' name='sentence' placeholder=\"Inserisci una frase\" required=\"required\">" +
+                "   </div>" +
+                "   <div class=\"form-group text-center\">" +
+                "       <button type=\"submit\" class=\"btn btn-primary my-2 my-sm-0 w-25\">Invia</button>" +
+                "   </div>" +
+                "</form>";
+            ret += "</div>" + this.getFoot("");
+            return ret;
+        });
     }
     getMenu() {
         let ret = "<nav class=\"navbar navbar-expand-sm bg-dark navbar-dark\">" +
@@ -52,7 +61,7 @@ class InsertPageView extends PageView_1.PageView {
                 "        <form class='form-inline my-2 my-lg-0' action='/logout'>\n" +
                 "           <div class=\"form-group\">" +
                 "               <a class=\"btn btn-default btn-circle btn-sm mr-4 pt-2\" href=\"/profile\" role=\"button\"><i class=\"fas fa-user-circle\" style=\"color: white; font-size:26px\"></i></a>\n" +
-                "               <button type=\"submit\" class=\"btn btn-primary my-2 my-sm-0\">Logout</button>\n" +
+                "               <button type=\"submit\" class=\"btn-sm btn-primary my-2 my-sm-0\">Logout</button>\n" +
                 "           </div>\n" +
                 "        </form>\n";
         }

@@ -1,1 +1,0 @@
-{"version":3,"file":"ExerciseClient.js","sourceRoot":"","sources":["../../../src/ts/model/ExerciseClient.ts"],"names":[],"mappings":";;AAAA,uEAAkE;AAElE,MAAM,cAAc;IAEhB;QACI,IAAI,CAAC,iBAAiB,GAAE,IAAI,iDAAuB,EAAE,CAAC;IAC1D,CAAC;IAED,oBAAoB;QAChB,OAAO,IAAI,CAAC,iBAAiB,CAAC;IAClC,CAAC;CACJ;AACM,wCAAc"}

@@ -4,36 +4,33 @@ import {SearchPresenter} from "../presenter/SearchPresenter";
 class SearchView extends PageView{
 
     private searchPresenter : SearchPresenter;
-    private searchTitle : string;
-    private resultList : any;
     constructor(app : any){
         super();
-        this.searchTitle="esercizio";
-        this.resultList = null;
         this.searchPresenter= new SearchPresenter(this);
         this.searchPresenter.update(app);
     }
 
-    public setResultList(value: any) {
-        this.resultList = value;
-    }
-
-    getPage() {
+    async getPage() {
         let ret = this.getHead();
         ret +=this.getMenu();
-        ret +="<div class=\"container\">" +
-            "<h1>RICERCA "+this.searchTitle.toUpperCase()+"</h1>" +
-            "<form method ='post' action='/searchExercise'>"+
-            "   <div class=\"form-group\">" +
-            "       <label for=\"sentence\">Frase</label>"+
-            "       <input type=\"text\" class=\"form-control\" id='sentence' name='sentence' placeholder=\"Inserisci una frase\" required=\"required\">" +
-            "   </div>" +
-            "   <div class=\"form-group\">" +
-            "       <button type=\"submit\" class=\"btn btn-primary btn-block\">Cerca</button>" +
-            "   </div>" +
-            "</form>";
-            ret+=this.printList();
+        ret +="<div class=\"container\">\n";
+        if(this.searchPresenter.getSearchType()==="exercise" || this.searchPresenter.getSearchType()==="classExercise") {
+            ret += "\t<h1 class ='text-center mb-5'>Ricerca esercizio</h1>\n" +
+                "\t<form method ='post' action='/searchexercise'>\n";
+        }
+        if(this.searchPresenter.getSearchType()==="student") {
+            ret += "\t<h1 class ='text-center mb-5'>Ricerca studente</h1>\n" +
+            "\t<form method ='post' action='/searchstudent'>\n";
+        }
 
+        ret+="\t\t<div class=\"form-group\">\n"+
+            "\t\t\t<input type=\"text\" class=\"form-control\" id='sentence' name='sentence' placeholder=\"Inserisci una frase\" required=\"required\">" +
+            "\t\t</div>" +
+            "\t\t<div class=\"form-group text-center\">" +
+            "\t\t\t<button type=\"submit\" class=\"btn btn-primary my-2 my-sm-0 w-25\">Cerca</button>" +
+            "\t\t</div>" +
+            "\t</form>";
+            ret+= this.printList();
         ret+="</div>"+this.getFoot("");
         return ret;
     }
@@ -66,45 +63,64 @@ class SearchView extends PageView{
             return "" +
                 "        <form class='form-inline my-2 my-lg-0' action='/logout'>\n" +
                 "           <div class=\"form-group\">" +
-                "               <button type=\"submit\" class=\"btn btn-primary my-2 my-sm-0\">Logout</button>" +
+                "               <a class=\"btn btn-default btn-circle btn-sm mr-4 pt-2\" href=\"/profile\" role=\"button\"><i class=\"fas fa-user-circle\" style=\"color: white; font-size:26px\"></i></a>\n" +
+                "               <button type=\"submit\" class=\"btn-sm btn btn-primary my-2 my-sm-0\">Logout</button>\n" +
                 "           </div>\n" +
                 "        </form>\n";
         }
         else{
             let ret ="";
             ret += "" +
-                "        <form class='form-inline my-2 my-lg-0' method ='post' action='/checklogin'>\n";
+                "\t\t<form class='form-inline my-2 my-lg-0' method ='post' action='/checklogin'>\n";
             if(this.searchPresenter.isLoginInvalid()){
-                ret+="<p class='text-danger m-1 p-1'>username o password invalidi</p>";
+                ret+="\t\t\t<p class='text-danger m-1 p-1'>username o password invalidi</p>\n";
             }
-            ret+="           <div class=\"form-group\">" +
-                "               <input type=\"text\" class=\"form-control mr-sm-2\" name='username' placeholder=\"Username\" required=\"required\">" +
-                "           </div>\n" +
-                "           <div class=\"form-group\">" +
-                "               <input type=\"password\" class=\"form-control mr-sm-2\" name='password' placeholder=\"Password\" required=\"required\">" +
-                "           </div>\n" +
-                "           <div class=\"form-group\">" +
-                "               <button type=\"submit\" class=\"btn btn-primary my-2 my-sm-0\">Login</button>" +
-                "           </div>\n" +
-                "        </form>\n";
+            ret+="\t\t\t<div class=\"form-group\">\n" +
+                "\t\t\t\t<input type=\"text\" class=\"form-control mr-sm-2\" name='username' placeholder=\"Username\" required=\"required\">\n" +
+                "\t\t\t</div>\n" +
+                "\t\t\t<div class=\"form-group\">\n" +
+                "\t\t\t\t<input type=\"password\" class=\"form-control mr-sm-2\" name='password' placeholder=\"Password\" required=\"required\">\n" +
+                "\t\t\t</div>\n" +
+                "\t\t\t<div class=\"form-group\">\n" +
+                "\t\t\t\t<button type=\"submit\" class=\"btn-sm btn btn-primary my-2 my-sm-0 mr-2\">Accedi</button>\n" +
+                "\t\t\t\t<a class=\"btn-sm btn btn-primary my-2 my-sm-0\" href=\"/registration\" role=\"button\">Registrati</a>\n"+
+                "\t\t\t</div>\n" +
+                "\t\t</form>\n";
             return ret;
         }
     }
 
     private printList() {
-        if(this.resultList===null){
+        let results = this.searchPresenter.getResults();
+        if(results===undefined){
             return "";//resultList is not set yet, cause nobody searched yet
         }
-        if(this.resultList.has("false")){
-            return "Nessun risultato";//resultList is not set yet, cause nobody searched yet
+        if(results.size<=0){
+            return "<h2 class='h5 text-danger text-center'>Nessun risultato</h2>";//resultList is not set yet, cause nobody searched yet
         }
-        let ret="<h2>Esercizi: </h2>\n" +
-            "<form method='post' action='/exercise'>" +
-            "<ul class=\"list-group\">\n";
-        this.resultList.forEach((value: string, key: string) => {
-            ret+="<li class=\"list-group-item\"><p class='d-inline pr-1'>" + value + "</p>" +
-            "<button class='btn btn-primary btn-sm float-right' name='key' value='"+key+"' type='submit'>Esegui esercizio</button>" +
-            "</li>\n";
+        let ret="<h2>Esercizi: </h2>\n";
+        if(this.searchPresenter.getSearchType()==="exercise") {
+            ret+="<form method='post' action='/exercise'>";
+        }
+        if(this.searchPresenter.getSearchType()==="classExercise") {
+            ret+="<form method='post' action='/addexercise'>";
+        }
+        if(this.searchPresenter.getSearchType()==="student") {
+            ret+="<form method='post' action='/addstudent'>";
+        }
+        ret+="<ul class=\"list-group\">\n";
+        results.forEach((value: string, key: string) => {
+            ret+="<li class=\"list-group-item\"><p class='d-inline pr-1'>" + value + "</p>";
+            if(this.searchPresenter.getSearchType()==="exercise") {
+                ret+="<button class='btn btn-primary btn-sm float-right' name='sentence' value='" + value + "' type='submit'>Esegui esercizio</button>";
+            }
+            if(this.searchPresenter.getSearchType()==="classExercise") {
+                ret+="<button class='btn btn-primary btn-sm float-right' name='exerciseId' value='" + key + "' type='submit'>Aggiungi esercizio alla classe</button>";
+            }
+            if(this.searchPresenter.getSearchType()==="student") {
+                ret+="<button class='btn btn-primary btn-sm float-right' name='studentId' value='" + key + "' type='submit'>Aggiungi alla classe</button>";
+            }
+            ret+="</li>\n";
         });
         return "</ul></form>\n"+ret;
     }

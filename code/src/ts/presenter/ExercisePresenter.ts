@@ -7,9 +7,22 @@ var session = require('express-session');
 
 class ExercisePresenter extends PagePresenter{
 
+    private userSolution : string[];
+    private correction : any | null;
+
     constructor(view : PageView){
         super(view);
         this.client =(new Client.builder()).buildExerciseClient().buildUserClient().build();
+        this.userSolution=[];
+        this.correction=null;
+    }
+
+    getUserSolution() : any {
+        return this.userSolution;
+    }
+
+    getCorrection() : any | null {
+        return this.correction;
     }
 
     update(app : any){
@@ -20,6 +33,7 @@ class ExercisePresenter extends PagePresenter{
 
     private insertExercise(app : any) : void {
         app.post('/exercise/insert', async (request: any, response: any) => {
+            this.correction = null;
             let exerciseClient = this.client.getExerciseClient();
             if (exerciseClient) {
                 //sending the sentence to hunpos which will provide a solution
@@ -33,13 +47,14 @@ class ExercisePresenter extends PagePresenter{
                 this.view.setPosTranslation(posTranslation);
                 this.view.setPosTags(posTags);
                 this.view.setUserKind(UserKind.teacher);
-                response.send(this.view.getPage());
+                response.send(await this.view.getPage());
             }
         });
     }
 
     private listenExercise(app :any) : void {
         app.post('/exercise', async (request: any, response: any) => {
+            this.correction = null;
             let exerciseClient = this.client.getExerciseClient();
             if(exerciseClient){
                 // console.log("key arrivata: ",request.body.sentence);
@@ -54,13 +69,13 @@ class ExercisePresenter extends PagePresenter{
                     //not logged
                     this.view.setUserKind(UserKind.user);
                 }
-                response.send(this.view.getPage());
+                response.send(await this.view.getPage());
             }
         });
     }
 
     private saveExercise(app : any) : any{
-        app.post('/saveExercise', async (request : any, response : any) => {
+        app.post('/exercise/save', async (request : any, response : any) => {
             let exerciseClient = this.client.getExerciseClient();
             let userClient = this.client.getUserClient();
             if(exerciseClient && userClient){
@@ -86,6 +101,9 @@ class ExercisePresenter extends PagePresenter{
                             0: ID,
                             1: 10
                         };
+
+                        this.userSolution = solution[1];
+
                          exerciseClient.insertExercise(request.body.sentence, ID, solution, valutation);
                         //exerciseClient.addValutation(request.body.sentence, "sessionauthorId","teacherIdValue", 10);//valori di prova
                         //await exerciseClient.insertExercise(request.body.sentence, "authorIdValue",);
@@ -94,34 +112,76 @@ class ExercisePresenter extends PagePresenter{
                         //this.model.writeSolution(sentence.split(" "), finalTags, sentence, key);
                     } else {
 
-                        let solution = {
-                            0: ID,
-                            1: this.correctionToTags(wordsnumber, words),
-                            2: this.splitTopics(request.body.topics),
-                            3: request.body.difficulty
-                        };
-                        let valutation = {
-                            0: ID, //TODO:inserire tendina correzioni
-                            1: 0
-                        };
-                        if ((await exerciseClient.searchExercise(request.body.sentence)).size > 0)
-                            exerciseClient.insertExercise(request.body.sentence, "sessionAuthorId", solution, valutation);
+                        let solution : any;
+                        let valutation : any;
+                        if (request.body.correction !== 'auto'){
+                            let corrections = await this.teacherSolutions(request.body.sentence);
+                            corrections = corrections.filter((value) => value.id === request.body.correction);
+                            solution = {
+                                0: ID,
+                                1: this.correctionToTags(wordsnumber,request.body),
+                                2: corrections[0].tags,
+                                3: corrections[0].difficulty
+                            };
+                            valutation = {
+                                0: corrections[0].userID,
+                                1: await exerciseClient.evaluate(solution["1"],ID,corrections[0].topics,request.body.sentence,corrections[0].difficulty,corrections[0].userID)
+                            };
+                            if ((await exerciseClient.searchExercise(request.body.sentence)).size > 0){
+                                await exerciseClient.insertExercise(request.body.sentence, ID, solution, valutation);
+                                this.userSolution = solution[1];
+                                this.correction = {"mark" : valutation[1], "tags" : corrections[0].tags};
+                            }
+                        } else {
+                            solution = {
+                                0: ID,
+                                1: this.correctionToTags(wordsnumber,request.body),
+                                2: [],
+                                3: -1
+                            };
+                            valutation = {
+                                0: null,
+                                1: await exerciseClient.evaluate(solution["1"],"",[],request.body.sentence,-1)
+                            };
+                            this.userSolution = solution[1];
+                            this.correction = {"mark" : valutation[1], "tags" : await exerciseClient.autosolve(request.body.sentence,ID)};
+                        }
+
                     }
                 } else {
-                    let solution = {
-                        0: undefined,
-                        1: this.correctionToTags(wordsnumber,request.body),
-                        2: this.splitTopics(request.body.topics),
-                        3: request.body.difficulty
-                    };
-                    let valutation = {
-                        0: "teacherIdValue",
-                        1: 0
-                    };
-                    console.log(solution);
-                    console.log(valutation);
+                    let solution : any;
+                    let valutation : any;
+                    if (request.body.correction !== 'auto'){
+                        let corrections = await this.teacherSolutions(request.body.sentence);
+                        corrections = corrections.filter((value) => value.id === request.body.correction);
+                        solution = {
+                            0: undefined,
+                            1: this.correctionToTags(wordsnumber,request.body),
+                            2: corrections[0].tags,
+                            3: corrections[0].difficulty
+                        };
+                        valutation = {
+                            0: corrections[0].userID,
+                            1: await exerciseClient.evaluate(solution["1"],"",[],request.body.sentence,corrections[0].difficulty,corrections[0].userID)
+                        };
+                    } else {
+                        solution = {
+                            0: undefined,
+                            1: this.correctionToTags(wordsnumber,request.body),
+                            2: [],
+                            3: -1
+                        };
+                        valutation = {
+                            0: null,
+                            1: await exerciseClient.evaluate(solution["1"],"",[],request.body.sentence,-1)
+                        };
+                    }
+
+                    this.userSolution = solution[1];
+                    this.correction = {"mark" : valutation[1], "tags" : await exerciseClient.autosolve(request.body.sentence,"")};
                 }
-                response.redirect('/');
+
+                response.send(await this.view.getPage());
             }
         });
     }
@@ -150,7 +210,7 @@ class ExercisePresenter extends PagePresenter{
      * @param tag - a string containg the tag to convert
      * @returns {string} a string containing the italian translation of the tag
      */
-    private translateTag(tag : string){
+    public translateTag(tag : string){
         const content = fileSystem.readFileSync("./src/ts/presenter/vocabolario.json");
         const jsonContent = JSON.parse(content.toString());
 
@@ -213,7 +273,7 @@ class ExercisePresenter extends PagePresenter{
      * @returns {Array} an array containing the tags of the solution suggested by the user
      */
     private correctionToTags(wordsnumber : number, dataCorrection : any) : string []{
-        //console.log("dataCorrection: "+require('util').inspect(dataCorrection));
+        console.log("dataCorrection: "+require('util').inspect(dataCorrection));
         let optionsIndex=0, wordIndex=0;//optionsIndex counter for options of the first select input field
         let tagsCorrection = [];
         tagsCorrection.length = wordsnumber;
@@ -223,11 +283,27 @@ class ExercisePresenter extends PagePresenter{
             if(i !== 'sentence' && i !== 'wordsnumber' && i!=='key' && i!=='hunposTags'){
                 if (dataCorrection[i] !== '-') {//se è stato settato qualcosa
                     //invalid tags or tags that must be set in the second input field
-                    if(dataCorrection[i]==='A' || (dataCorrection[i]==='B' && i===('general'+ wordIndex)) || (dataCorrection[i]==='E' && i===('general'+ wordIndex)) || (dataCorrection[i]==='S' && i===('general'+ wordIndex)) || (dataCorrection[i]==='V' && i===('general'+ wordIndex))) {
+                    /*
+                    if(dataCorrection[i]==='A')  {
                         actualTag += "";
+                    } else if (['B','E','P','S','V'].indexOf(dataCorrection[i]) !== -1){ //dataCorrection[i] !== 'A' && condition
+                        if (i===('general'+ wordIndex))
+                            actualTag += "";
+                        else
+                            actualTag += dataCorrection[i];
                     }
-                    else{
+                    else{ //datacorrection[i] !== 'A' && ['B','E','P','S','V'].indexOf(dataCorrection[i]) === -1
                         actualTag += dataCorrection[i];
+                    }
+                    */
+
+                    if (dataCorrection[i] !== 'A') {
+                        if (['B', 'E', 'P', 'S', 'V'].indexOf(dataCorrection[i]) !== -1) {
+                            if (i !== ('general' + wordIndex))
+                                actualTag += dataCorrection[i];
+                        } else {
+                            actualTag += dataCorrection[i];
+                        }
                     }
                 }
 
@@ -280,12 +356,34 @@ class ExercisePresenter extends PagePresenter{
         let userClient = this.client.getUserClient();
         if (userClient){
             let teacherList = await userClient.teacherList();
-            teacherList.forEach(async (value) => {
-                if (exerciseClient)
-                    result.concat(await exerciseClient.searchSolution(sentence,value));
-            });
+            for (let teacher of teacherList) {
+                if (exerciseClient){
+                    let solutions = await exerciseClient.searchSolution(sentence,teacher);
+                    for (let sol of solutions){
+                        sol = {
+                            "id" : sol.id,
+                            "userID" : sol.userID,
+                            "username" : (await userClient.getUserData(sol.userID)).username,
+                            "tags" : sol.tags,
+                            "time" : sol.time,
+                            "difficulty": sol.difficulty,
+                            "topics" : sol.topics
+                         };
+                        result.push(sol);
+                    }
+                }
+            }
         }
         return result;
+    }
+
+    async findSolution(sentence : string, solverID : string, time : number) : Promise<any> {
+        let exerciseClient = this.client.getExerciseClient();
+        if (exerciseClient){
+            let solutions = await exerciseClient.searchSolution(sentence,solverID);
+            return solutions.find((sol) => sol.time === time);
+        }
+        return null;
     }
 }
 export {ExercisePresenter};

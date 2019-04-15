@@ -1,4 +1,12 @@
 "use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const PageView_1 = require("./PageView");
 const ExercisePresenter_1 = require("../presenter/ExercisePresenter");
@@ -26,54 +34,56 @@ class ExerciseView extends PageView_1.PageView {
         this.corrections = value;
     }
     getPage() {
-        const words = this.sentence.split(" ");
-        let ret = this.getHead(this.buildCss(words));
-        ret += this.getMenu();
-        ret += "<div class=\"container\">" +
-            "    <div id=\"esercizio\">" +
-            "        <form method=\"POST\" action=\"/saveExercise\">";
-        ret += this.buildTable(words);
-        //si esegue un passaggio alla OttoBit (^o^)
-        ret += "" +
-            "            <input type=\"hidden\" name=\"wordsnumber\" value=\"*wordsnumber*\"/>" +
-            "            <input type=\"hidden\" name=\"sentence\" value=\"" + this.sentence + "\"/>";
-        if (this.posTags) {
-            ret += "<input type=\"hidden\" name=\"hunposTags\" value='" + JSON.stringify(this.posTags) + "'/>";
-        }
-        ret +=
-            "   <br/>" +
-                "            <input type=\"text\" class='form-control' name=\"topics\"/>" +
-                "            <select class='form-control' name=\"difficulty\">" +
-                "                <option value=\"1\">Molto facile</option>" +
-                "                <option value=\"2\">Facile</option>" +
-                "                <option value=\"3\">Medio</option>" +
-                "                <option value=\"4\">Difficile</option>" +
-                "                <option value=\"5\">Molto difficile</option>" +
-                "            </select>" +
-                "            <div class='col-sm-4'>Scegli il professore per la correzione</div>" +
-                "            <select class='form-control' name='correction'>";
-        for (let i in this.corrections) {
-            ret += "<option value='1'>" + this.corrections[i].id + "</option>";
-        }
-        ret += "            </select>" +
-            "            <div id=\"submit\"><input type=\"submit\" value=\"Invia\"/></div>" +
-            "        </form>" +
-            "    </div>" +
-            "    </body>" +
-            "    <script>";
-        ret += this.getScript();
-        ret += "    </script>" +
-            "</html>";
-        return ret;
-        // let data =  this.fileSystem.readFileSync('./public/exercise.html').toString();
-        //
-        // data=data.replace(/\*table\*/g, this.buildForm(words));
-        // data=data.replace(/\*script\*/g, this.getScript());
-        // data=data.replace(/\*css\*/g, this.buildCss(words));
-        // //data=data.replace(/\*wordsnumber\*/g, words.length);
-        // data=data.replace(/\*sentence\*/g, this.sentence);
-        // data=data.replace(/\*hunposTags\*/g, JSON.stringify(this.hunposTags));
-        // return data;
+        return __awaiter(this, void 0, void 0, function* () {
+            const words = this.sentence.split(" ");
+            let ret = this.getHead(this.buildCss(words));
+            ret += this.getMenu();
+            ret += "<div class=\"container\">" +
+                "    <div id=\"esercizio\">" +
+                "        <form method=\"POST\" action=\"/saveExercise\">";
+            ret += this.buildTable(words);
+            //si esegue un passaggio alla OttoBit (^o^)
+            ret += "" +
+                "            <input type=\"hidden\" name=\"wordsnumber\" value=\"*wordsnumber*\"/>" +
+                "            <input type=\"hidden\" name=\"sentence\" value=\"" + this.sentence + "\"/>";
+            if (this.posTags) {
+                ret += "<input type=\"hidden\" name=\"hunposTags\" value='" + JSON.stringify(this.posTags) + "'/>";
+            }
+            ret +=
+                "   <br/>" +
+                    "            <input type=\"text\" class='form-control' name=\"topics\"/>" +
+                    "            <select class='form-control' name=\"difficulty\">" +
+                    "                <option value=\"1\">Molto facile</option>" +
+                    "                <option value=\"2\">Facile</option>" +
+                    "                <option value=\"3\">Medio</option>" +
+                    "                <option value=\"4\">Difficile</option>" +
+                    "                <option value=\"5\">Molto difficile</option>" +
+                    "            </select>" +
+                    "            <div class='col-sm-4'>Scegli il professore per la correzione</div>" +
+                    "            <select class='form-control' name='correction'>";
+            for (let i in this.corrections) {
+                ret += "<option value='1'>" + this.corrections[i].id + "</option>";
+            }
+            ret += "            </select>" +
+                "            <div id=\"submit\"><input type=\"submit\" value=\"Invia\"/></div>" +
+                "        </form>" +
+                "    </div>" +
+                "    </body>" +
+                "    <script>";
+            ret += this.getScript();
+            ret += "    </script>" +
+                "</html>";
+            return ret;
+            // let data =  this.fileSystem.readFileSync('./public/exercise.html').toString();
+            //
+            // data=data.replace(/\*table\*/g, this.buildForm(words));
+            // data=data.replace(/\*script\*/g, this.getScript());
+            // data=data.replace(/\*css\*/g, this.buildCss(words));
+            // //data=data.replace(/\*wordsnumber\*/g, words.length);
+            // data=data.replace(/\*sentence\*/g, this.sentence);
+            // data=data.replace(/\*hunposTags\*/g, JSON.stringify(this.hunposTags));
+            // return data;
+        });
     }
     buildTable(words) {
         let table = "" +

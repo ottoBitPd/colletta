@@ -5,8 +5,8 @@ class Teacher extends User {
 
     private INPS : string;
 
-    constructor (id:string, username : string, password: string, name : string, lastname:string, city:string, school : string, inps : string){
-        super(id,username, password, name, lastname, city, school);
+    constructor (id:string, username : string, password: string, name : string, lastname:string, city:string, school : string, inps : string, email : string){
+        super(id,username, password, name, lastname, city, school, email);
         this.INPS = inps;
     }
 
@@ -22,7 +22,7 @@ class Teacher extends User {
 
     public getINPS() {
             return this.INPS;
-        }
+    }
 
     public isTeacher(): boolean {
         return true;

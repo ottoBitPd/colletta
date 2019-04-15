@@ -24,14 +24,14 @@ class AuthenticationPresenter extends PagePresenter {
         app.get('/profile', (request: any, response: any) => {
             response.send("Login avvenuto con successo sei nel tuo profilo"+session.username);
         });
-        app.get('/login', (request: any, response: any) => {
+        app.get('/login', async (request: any, response: any) => {
             if(request.query.mess==="invalidLogin") {
                 this.view.setError("username o password invalidi");
             }
             else{
                 this.view.setError("");
             }
-            response.send(this.view.getPage());
+            response.send(await this.view.getPage());
         });
         app.post('/checklogin', async (request: any, response: any) => {
             let userClient = this.client.getUserClient();
@@ -47,10 +47,10 @@ class AuthenticationPresenter extends PagePresenter {
                 }
             }
         });
-        app.get('/registration', (request: any, response: any) => {
+        app.get('/registration', async (request: any, response: any) => {
             session.errUsername = request.query.mess === "errUsername";
 
-            response.send(this.view.getPage());
+            response.send(await this.view.getPage());
         });
 
         app.post("/saveuser", async (req:any,res:any) => {
@@ -61,12 +61,12 @@ class AuthenticationPresenter extends PagePresenter {
             if(userClient !== undefined){
                 const exist = await userClient.search(req.body.username);
                 if (req.body.username !== "admin" && req.body.role === "student" && exist === "false") {
-                    userClient.insertStudent(req.body.username, hashedPassword, req.body.name, req.body.surname, req.body.city, req.body.school);
+                    userClient.insertStudent(req.body.username, hashedPassword, req.body.name, req.body.surname, req.body.city, req.body.school, req.body.email);
                     //console.log("studente registrato con successo");
                     res.redirect("/");
 
                 } else if (req.body.username !== "admin" && req.body.role === "teacher" && userClient !== undefined) {
-                    userClient.insertTeacher(req.body.username, hashedPassword, req.body.name, req.body.surname, req.body.city, req.body.school, req.body.inps);
+                    userClient.insertTeacher(req.body.username, hashedPassword, req.body.name, req.body.surname, req.body.city, req.body.school, req.body.inps, req.body.email);
                     //console.log("teacher registrato con successo");
                     res.redirect("/");
                 } else {

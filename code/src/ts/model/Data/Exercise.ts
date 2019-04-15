@@ -87,9 +87,8 @@ class Exercise implements Data{
         }
         else{
             let tags:string [] = [];
-            const solutions= this.getSolutions();
             if(teacherID!==undefined){
-                const teacherSolution=solutions.find(function(element){
+                const teacherSolution=this.solutions.find(function(element){
                     return element.getSolverId()===teacherID;
                 });
                 if(teacherSolution===undefined){
@@ -110,7 +109,13 @@ class Exercise implements Data{
     }
 
     toJSON() : any{
-        return 1;
+        //Do I have to add solutions too? - Perry15
+        let exercise: any = {
+            "sentence": this.sentence,
+            "authorId" : this.authorId,
+            "key" : this.key
+        };
+        return exercise;
     }
 
 }

@@ -19,14 +19,16 @@ class FirebaseUserManager extends FirebaseManager {
                     const teacher= <Teacher>obj;
                     FirebaseManager.database.ref('data/users').push({name: teacher.getName(),
                         password: teacher.getPassword(), lastname: teacher.getLastName(), username: teacher.getUsername(),
-                        city: teacher.getCity(), school: teacher.getSchool(), INPScode: teacher.getINPS()
+                        city: teacher.getCity(), school: teacher.getSchool(), INPScode: teacher.getINPS(),
+                        email: teacher.getEmail()
                     });
                 }
                 else {
                     FirebaseManager.database.ref('data/users').push({
                         //let student= <Student>obj;
                         name: user.getName(), password: user.getPassword(), lastname: user.getLastName(),
-                        username: user.getUsername(), city: user.getCity(), school: user.getSchool()
+                        username: user.getUsername(), city: user.getCity(), school: user.getSchool(),
+                        email: user.getEmail()
                     });
                 }
                 return resolve(true);
@@ -92,11 +94,11 @@ class FirebaseUserManager extends FirebaseManager {
                         let user;
                         if (readData.INPScode) {
                              user = new Teacher(id,readData.username, readData.password, readData.name,
-                                readData.lastname, readData.city, readData.school, readData.INPScode);
+                                readData.lastname, readData.city, readData.school, readData.INPScode, readData.email);
                         }
                         else {
                              user = new Student(id,readData.username, readData.password, readData.name,
-                                readData.lastname, readData.city, readData.school);
+                                readData.lastname, readData.city, readData.school, readData.email);
                         }
                         resolve(user);
                     }
@@ -129,7 +131,7 @@ class FirebaseUserManager extends FirebaseManager {
     public async update (path:string, value: any) {
         let splittedPath =path.split("/");
         let position : number = splittedPath.length -1;
-        let field : string=splittedPath[position];
+        let field : string = splittedPath[position];
         console.log(field);
         switch (field) {
             case "password": await this.updateField(path, value); break;
@@ -139,6 +141,7 @@ class FirebaseUserManager extends FirebaseManager {
             case "school": await this.updateField(path, value); break;
             case "username": await this.updateField(path, value); break;
             case "INPScode": await this.updateField(path, value); break;
+            case "email": await this.updateField(path, value); break;
             default : console.log("field doesn't exists"); return;
         }
     }

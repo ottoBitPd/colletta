@@ -4,42 +4,108 @@ import {Client} from "../model/Client/Client";
 var session = require('express-session');
 
 class SearchPresenter extends PagePresenter {
-
+    private searchType : any;
+    private results : any;
     constructor(view: any) {
         super(view);
-        this.client = (new Client.builder()).buildExerciseClient().build();
+        this.client = (new Client.builder()).buildExerciseClient().buildUserClient().build();
     }
-
+    private setSearchType(value : string){
+        //this.setResults(undefined);
+        this.searchType=value;
+    }
+    public getSearchType(){
+        return this.searchType;
+    }
     update(app: any) {
-        app.get('/searchexercise', (request: any, response: any) => {
+        this.exerciseSearchPage(app);
+        this.searchExercise(app);
+        this.studentSearchPage(app);
+        this.searchStudent(app);
+        this.classExerciseSearchPage(app);
+    }
+    private exerciseSearchPage(app : any){
+        app.get('/exercise/search', async (request: any, response: any) => {
             session.invalidLogin = request.query.mess==="invalidLogin";
             let menuList :any;
             menuList= {
-                0 :{"link":"link1","name":"name1"},
-                1 :{"link":"link2","name":"name2"}
+                0 :{"link":"/","name":"Homepage"}
             }
-
-            this.view.setTitle("Ricerca esercizio");
+            this.setSearchType("exercise");
+            /*this.view.setTitle("Ricerca esercizio");*/
             this.view.setMenuList(menuList);
             //this.viewProfile.setMainList(["class1","class2","class3","class4","class5","class6","class7","class8"]);
-            response.send(this.view.getPage());
-        });
-        app.post('/searchExercise', async (request: any, response: any) => {
-                //console.log("frase da cercare : "+request.body.sentence);
-                let exerciseClient = this.client.getExerciseClient();
-                if(exerciseClient) {
-                    let map = await exerciseClient.searchExercise(request.body.sentence);//returns map<idEsercizio, sentence>
-                    this.view.setResultList(map);
-                    response.redirect("/home");
-                }
+            response.send(await this.view.getPage());
         });
     }
-    //@ts-ignore
-    private async searchExercises(sentence: string) {
-        let exerciseClient = this.client.getExerciseClient();
-        if(exerciseClient) {
-            await exerciseClient.searchExercise(sentence);
-        }
+    private searchExercise(app : any) {
+        app.post('/searchexercise', async (request: any, response: any) => {
+            //console.log("frase da cercare : "+request.body.sentence);
+            let exerciseClient = this.client.getExerciseClient();
+            if(exerciseClient) {
+                let map = await exerciseClient.searchExercise(request.body.sentence);//returns map<idEsercizio, sentence>
+                this.setResults(map);
+                if(this.searchType==="exercise")
+                    response.redirect("/exercise/search");
+                if(this.searchType==="classExercise")
+                    response.redirect(307,"/class/exercise/search");
+            }
+            else{
+                this.setResults(new Map());
+                if(this.searchType==="exercise")
+                    response.redirect("/exercise/search");
+                if(this.searchType==="classExercise")
+                    response.redirect(307,"/class/exercise/search");
+            }
+        });
+    }
+    private studentSearchPage(app: any) {
+        app.post('/student/insert', async (request: any, response: any) => {
+            let menuList :any;
+            menuList= {
+                0 :{"link":"/","name":"Homepage"}
+            }
+            this.setSearchType("student");
+           /* this.view.setTitle("Ricerca studente");*/
+            this.view.setMenuList(menuList);
+            response.send(await this.view.getPage());
+        });
+    }
+
+    private searchStudent(app: any) {
+        app.post('/searchstudent', async (request: any, response: any) => {
+            //console.log("frase da cercare : "+request.body.sentence);
+            let userClient = this.client.getUserClient();
+            if(userClient) {
+                let map = await userClient.searchUser(request.body.sentence, false);//returns map<idEsercizio, sentence>
+                this.setResults(map);
+                response.redirect(307,"/student/insert");
+            }
+            else{
+                this.setResults(new Map());
+                response.redirect(307,"/student/insert");
+            }
+        });
+    }
+
+    private setResults(map: any) {
+        this.results=map;
+    }
+    public getResults() {
+        return this.results;
+    }
+
+    private classExerciseSearchPage(app: any) {
+        app.post('/class/exercise/search', async (request: any, response: any) => {
+            let menuList :any;
+            menuList= {
+                0 :{"link":"/","name":"Homepage"}
+            }
+            this.setSearchType("classExercise");
+            /* this.view.setTitle("Ricerca studente");*/
+            this.view.setMenuList(menuList);
+            response.send(await this.view.getPage());
+        });
     }
 }
 export {SearchPresenter};

@@ -16,21 +16,70 @@ class ProfilePresenter extends PagePresenter{
         app.post('/update', async (request: any, response: any) => {
             let userClient = this.client.getUserClient();
             if (userClient){
-                let userUpdateData : any = {
-                    "name" : request.body.name,
-                    "lastname" : request.body.lastname,
-                    "city" : request.body.city,
-                    "school" : request.body.school
+                const id = await userClient.search(session.username);
+                const userData = await userClient.getUserData(id);
+                let check : boolean =false;
+                if(request.body.oldpassword==="" && request.body.password==="") {
+                    console.log("pwd non cambia");
+                    check = true;
                 }
-                if (await userClient.isTeacher(session.username)){
-                    //console.log("teacher");
-                    userUpdateData.inps= request.body.inps;
-                    this.view.setUserKind(UserKind.teacher);
-                } else {
-                    //console.log("student");
-                    this.view.setUserKind(UserKind.student);
+                if(request.body.oldpassword!=="" && request.body.password!=="") {
+                    if (userClient.checkPassword(request.body.oldpassword,userData.password)) {
+                        console.log("nuova password: "+request.body.password);
+                        request.body.password = userClient.hashPassword(request.body.password);
+                        check = true;
+                        this.view.setError("Password modificata");
+                    }
+                    else {
+                        console.log("pwd errata");
+                        check = false;
+                        this.view.setError("Modifica abortita username esistente o password errata");
+                    }
                 }
-                await userClient.updateUser(session.username,userUpdateData);
+                if(check===true && request.body.username==="") {
+                    console.log("username non cambia");
+                    check = true;
+                }
+                else {
+                    if(check===true && await userClient.search(request.body.username)==="false") {
+                        console.log("username cambia e ok");
+                        check=true;
+                    }
+                    else {
+                        console.log("username esistente o password errata");
+                        check=false;
+                        this.view.setError("Modifica abortita username esistente o password errata");
+                    }
+                }
+                if(check) {
+                    this.view.setError("");
+                    let userUpdateData: any = {};
+                    console.log("POST: ",request.body);
+                    for (let i in request.body) {
+                        if (i !== "oldpassword" && i!=="inps"){
+                            if (request.body[i]!=="") {
+                                console.log('cambio');
+                                userUpdateData[i] = request.body[i];
+                            }
+                            else
+                                userUpdateData[i] = userData[i];
+                        }
+                    }
+                    console.log("POST: ",userUpdateData);
+                    if (await userClient.isTeacher(session.username)) {
+                        //console.log("teacher");
+                        if (/^[^\s]$/.test(request.body.inps))
+                            userUpdateData.inps = request.body.inps;
+                        else
+                            userUpdateData.inps = userData.inps;
+                        this.view.setUserKind(UserKind.teacher);
+                    } else {
+                        //console.log("student");
+                        this.view.setUserKind(UserKind.student);
+                    }
+                    await userClient.updateUser(session.username, userUpdateData);
+                    session.username = userUpdateData.username;
+                }
             }
             response.redirect('/profile');
         });
@@ -51,14 +100,7 @@ class ProfilePresenter extends PagePresenter{
                 }
             }
 
-            response.send(this.view.getPage());
-        });
-
-
-
-        app.post('/deleteClass', async (request: any, response: any) => {
-            //console.log("post: ",request.body);
-            response.send("elimino la classe "+request.body.classToDelete);
+            response.send(await this.view.getPage());
         });
     }
 

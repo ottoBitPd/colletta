@@ -4,71 +4,112 @@ import {ProfilePresenter} from "../presenter/ProfilePresenter";
 class ProfileView extends PageView{
     private userData : any;
     private profileController :ProfilePresenter;
+    private error : any;
     constructor(app : any){
         super();
         this.profileController= new ProfilePresenter(this);
         this.profileController.update(app);
         this.userData=undefined;
+        this.error=undefined;
     }
     public setUserData(obj : any){
         this.userData=obj;
     }
-    public getPage() {
+    public setError(error : string){
+        this.error=error;
+    }
+    public async getPage() {
         let ret = this.getHead();
-            ret +=this.getMenu();
-        ret +="<div class=\"container\">" +
-            "\t<h1 class ='text-center mb-5'>Informazioni profilo:</h1>\n" +
-            "\t<ul class=\"list-group\">\n" +
+        ret += this.getMenu();
+        ret += "<div class=\"container\">" +
+            "\t<h1 class ='text-center mb-5'>Informazioni profilo:</h1>\n";
+            if (this.error !== undefined){
+            ret += "\t<p class ='text-center h5 text-danger'>" + this.error + "</p>\n";
+            }
+        ret += "\t<ul class=\"list-group\">\n" +
             "\t<li class=\"list-group-item\">\n" +
             "<form method='post' action='/update'>" +
             "\t\t<div class= \"row\">\n" +
             "\t\t\t<div class = \"col-sm-6\">\n" +
-            "\t\t\t\t<p class= \"font-weight-bold\"> Nome:</p> \n" +
+            "\t\t\t\t<p class= \"font-weight-bold\"> Nome: "+this.userData.name+"</p> \n" +
             "\t\t\t</div>\n" +
             "\t\t\t<div class = \"col-sm-6\">\n" +
-            "\t\t\t\t<input class=\"form-control\" name='name' value='"+this.userData.name+"'/>\n" +
-            "\t\t\t</div>\n" +
-            "\t\t</div>\n" +
-            "\t\t\n" +
-            "\t\t<div class= \"row\">\n" +
-            "\t\t\t<div class = \"col-sm-6\">\n" +
-            "\t\t\t\t<p class= \"font-weight-bold\"> Cognome: </p> \n" +
-            "\t\t\t</div>\n" +
-            "\t\t\t<div class = \"col-sm-6\">\n" +
-            "\t\t\t\t<input class=\"form-control\" name='lastname' value='"+this.userData.lastname+"'/>\n" +
+            "\t\t\t\t<input class=\"form-control\" name='name'/>\n" +
             "\t\t\t</div>\n" +
             "\t\t</div>\n" +
             "\t\t\n" +
             "\t\t<div class= \"row\">\n" +
             "\t\t\t<div class = \"col-sm-6\">\n" +
-            "\t\t\t\t<p class= \"font-weight-bold\"> Città: </p> \n" +
+            "\t\t\t\t<p class= \"font-weight-bold\"> Cognome: "+this.userData.lastname+"</p> \n" +
             "\t\t\t</div>\n" +
             "\t\t\t<div class = \"col-sm-6\">\n" +
-            "\t\t\t\t<input class=\"form-control\" name='city' value='"+this.userData.city+"'/>\n" +
+            "\t\t\t\t<input class=\"form-control\" name='lastname'/>\n" +
             "\t\t\t</div>\n" +
             "\t\t</div>\n" +
             "\t\t\n" +
             "\t\t<div class= \"row\">\n" +
             "\t\t\t<div class = \"col-sm-6\">\n" +
-            "\t\t\t\t<p class= \"font-weight-bold\"> Scuola: </p> \n" +
+            "\t\t\t\t<p class= \"font-weight-bold\"> Città: "+this.userData.city+"</p> \n" +
             "\t\t\t</div>\n" +
             "\t\t\t<div class = \"col-sm-6\">\n" +
-            "\t\t\t\t<input class=\"form-control\" name='school' value='"+this.userData.school+"'/>\n" +
+            "\t\t\t\t<input class=\"form-control\" name='city'/>\n" +
+            "\t\t\t</div>\n" +
+            "\t\t</div>\n" +
+            "\t\t\n" +
+            "\t\t<div class= \"row\">\n" +
+            "\t\t\t<div class = \"col-sm-6\">\n" +
+            "\t\t\t\t<p class= \"font-weight-bold\"> Scuola: "+this.userData.school+"</p> \n" +
+            "\t\t\t</div>\n" +
+            "\t\t\t<div class = \"col-sm-6\">\n" +
+            "\t\t\t\t<input class=\"form-control\" name='school'/>\n" +
             "\t\t\t</div>\n" +
             "\t\t</div>\n";
-            if(this.userKind == UserKind.teacher) {
-                ret+="\t\t<div class= \"row\">\n" +
+        if(this.userKind == UserKind.teacher) {
+            ret+="\t\t<div class= \"row\">\n" +
                 "\t\t\t<div class = \"col-sm-6\">\n" +
-                "\t\t\t\t<p class= \" font-weight-bold\"> Matricola INPS: </p> \n" +
+                "\t\t\t\t<p class= \" font-weight-bold\"> Matricola INPS: "+this.userData.inps+"</p> \n" +
                 "\t\t\t</div>\n" +
                 "\t\t\t<div class = \"col-sm-6\">\n" +
-                "\t\t\t\t<input class=\"form-control\" name='inps' value='"+this.userData.inps+"'/>\n" +
+                "\t\t\t\t<input class=\"form-control\" name='inps'/>\n" +
                 "\t\t\t</div>\n" +
                 "\t\t</div>";
-            }
+        }
+            ret += "\t\t<div class= \"row\">\n" +
+            "\t\t\t<div class = \"col-sm-6\">\n" +
+            "\t\t\t\t<p class= \"font-weight-bold\"> Email: "+this.userData.email+"</p> \n" +
+            "\t\t\t</div>\n" +
+            "\t\t\t<div class = \"col-sm-6\">\n" +
+            "\t\t\t\t<input class=\"form-control\" type='email' name='email'/>\n" +
+            "\t\t\t</div>\n" +
+            "\t\t</div>\n" +
+            "\t\t<div class= \"row\">\n" +
+            "\t\t\t<div class = \"col-sm-6\">\n" +
+            "\t\t\t\t<p class= \"font-weight-bold\"> Username: "+this.userData.username+"</p> \n" +
+            "\t\t\t</div>\n" +
+            "\t\t\t<div class = \"col-sm-6\">\n" +
+            "\t\t\t\t<input class=\"form-control\" name='username'/>\n" +
+            "\t\t\t</div>\n" +
+            "\t\t</div>\n" +
+            "\t\t<div class= \"row\">\n" +
+            "\t\t\t<div class = \"col-sm-6\">\n" +
+            "\t\t\t\t<p class= \"font-weight-bold\"> Vecchia password: </p> \n" +
+            "\t\t\t</div>\n" +
+            "\t\t\t<div class = \"col-sm-6\">\n" +
+            "\t\t\t\t<input class=\"form-control\" type='password' name='oldpassword'/>\n" +
+            "\t\t\t</div>\n" +
+            "\t\t</div>\n" +
+            "\t\t<div class= \"row\">\n" +
+            "\t\t\t<div class = \"col-sm-6\">\n" +
+            "\t\t\t\t<p class= \"font-weight-bold\"> Nuova password: </p> \n" +
+            "\t\t\t</div>\n" +
+            "\t\t\t<div class = \"col-sm-6\">\n" +
+            "\t\t\t\t<input class=\"form-control\" type='password' name='password'/>\n" +
+            "\t\t\t</div>\n" +
+            "\t\t</div>\n";
+
             ret+="" +
                 "\t\t\t<div class = \"col-sm-12 text-center mt-3\">\n" +
-                "\t\t\t\t<button class='btn btn-primary btn-sm' type='submit'>Modifica</button> \n" +
+                "\t\t\t\t<button class='btn btn-primary btn-sm' id='btnsubmit' type='submit'>Modifica</button> \n" +
                 "\t\t\t</div>\n" +
                 "</form>" +
                 "\t</li>\n" +
@@ -175,7 +216,7 @@ class ProfileView extends PageView{
                     "\t</div>";
             }*/
             ret+="</div>";
-            ret+=this.getFoot("");
+            ret+=this.getFoot(this.getScript());
             return ret;
     }
 
@@ -183,10 +224,10 @@ class ProfileView extends PageView{
     private getMenu() : string {
         let ret =""+
             "<nav class=\"navbar navbar-expand-sm bg-dark navbar-dark\">" +
-            "\t<div class=\"navbar-brand\">Colletta</div>" +
-            "\t\t<button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#collapsibleNavbar\">" +
-            "\t\t\t<span class=\"navbar-toggler-icon\"></span>" +
-            "\t\t</button>" +
+            "\t<a href='/' class=\"navbar-brand\">Colletta</a>" +
+            "\t<button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#collapsibleNavbar\">" +
+            "\t\t<span class=\"navbar-toggler-icon\"></span>" +
+            "\t</button>" +
             "\t<div class=\"collapse navbar-collapse\" id=\"collapsibleNavbar\">"+
             "\t\t<ul class=\"navbar-nav mr-auto\">";
             if(this.userKind===UserKind.student) {
@@ -198,11 +239,11 @@ class ProfileView extends PageView{
             else{//insegnante
                 ret += ""+
                     "\t\t\t<li class=\"nav-item\">\n" +
-                    "\t\t\t\t<a href= \"#\" class=\"nav-link\" >Area classi</a>\n" +
+                    "\t\t\t\t<a href= \"/classes\" class=\"nav-link\" >Area classi</a>\n" +
                     "\t\t\t</li>\n"+
                     "<li class=\"nav-item\">\n" +
                     //href= "/exercise/insert" credo
-                    "\t\t\t\t<a href= \"#\" class=\"nav-link\" >Crea esercizio</a>\n" +
+                    "\t\t\t\t<a href= \"#\" class=\"nav-link\" onclick='document.getElementById(\"insertExerciseForm\").classList.toggle(\"d-none\")'>Crea esercizio</a>\n" +
                     "\t\t\t</li>\n";
             }
         ret+="\t\t</ul>";
@@ -210,6 +251,13 @@ class ProfileView extends PageView{
         ret+=this.getLoginArea();
         ret+="\t</div>" +
             "</nav>";
+        ret +=
+            "<form method='post' action='/exercise/insert' id='insertExerciseForm' class='d-none'>" +
+            "   <div class=\"input-group col-sm-4 py-2 bg-dark\">" +
+            "       <input type=\"text\" name=\"sentence\" class=\"form-control\">" +
+            "       <button type=\"submit\" class=\"btn btn-primary\">Invia</button>" +
+            "   </div>" +
+            "</form>";
         return ret;
     }
 
@@ -219,29 +267,47 @@ class ProfileView extends PageView{
             return "" +
                 "        <form class='form-inline' action='/logout'>" +
                 "           <div class=\"form-group\">" +
-                "               <button type=\"submit\" class=\"btn btn-primary btn-block\">Logout</button>" +
+                "               <button type=\"submit\" class=\"btn-sm btn btn-primary my-2 my-sm-0\">Logout</button>" +
                 "           </div>" +
                 "        </form>";
         }
         else{
             let ret ="";
             ret += "" +
-                "        <form class='form-inline my-2 my-lg-0' method ='post' action='/checklogin'>";
+                "\t\t<form class='form-inline my-2 my-lg-0' method ='post' action='/checklogin'>\n";
             if(this.profileController.isLoginInvalid()){
-                ret+="<p class='text-danger m-1 p-1'>username o password invalidi</p>";
+                ret+="\t\t\t<p class='text-danger m-1 p-1'>username o password invalidi</p>\n";
             }
-            ret+="           <div class=\"form-group\">" +
-                "               <input type=\"text\" class=\"form-control mr-sm-2\" name='username' placeholder=\"Username\" required=\"required\">" +
-                "           </div>" +
-                "           <div class=\"form-group\">" +
-                "               <input type=\"password\" class=\"form-control mr-sm-2\" name='password' placeholder=\"Password\" required=\"required\">" +
-                "           </div>" +
-                "           <div class=\"form-group\">" +
-                "               <button type=\"submit\" class=\"btn btn-outline-success my-2 my-sm-0\">Login</button>" +
-                "           </div>" +
-                "        </form>";
+            ret+="\t\t\t<div class=\"form-group\">\n" +
+                "\t\t\t\t<input type=\"text\" class=\"form-control mr-sm-2\" name='username' placeholder=\"Username\" required=\"required\">\n" +
+                "\t\t\t</div>\n" +
+                "\t\t\t<div class=\"form-group\">\n" +
+                "\t\t\t\t<input type=\"password\" class=\"form-control mr-sm-2\" name='password' placeholder=\"Password\" required=\"required\">\n" +
+                "\t\t\t</div>\n" +
+                "\t\t\t<div class=\"form-group\">\n" +
+                "\t\t\t\t<button type=\"submit\" class=\"btn-sm btn btn-primary my-2 my-sm-0 mr-2\">Accedi</button>\n" +
+                "\t\t\t\t<a class=\"btn-sm btn btn-primary my-2 my-sm-0\" href=\"/registration\" role=\"button\">Registrati</a>\n"+
+                "\t\t\t</div>\n" +
+                "\t\t</form>\n";
             return ret;
         }
     }
+    private getScript(){
+        return"" +
+            "function a(){\n" +
+            "alert('ocio');\n" +
+            "}\n" +
+            "function fupdate(value){\n" +
+            "   var submit = document.getElementById('btnsubmit');\n" +
+            "alert('value: '+value);\n"+
+            "   if(value.match([^\\s])){\n" +
+            "       submit.removeAttribute('disabled','');\n" +
+            "   }\n" +
+            "   else{\n" +
+            "       submit.setAttribute('disabled','');\n" +
+            "   }\n"+
+            "}\n";
+    }
+
 }
 export {ProfileView};

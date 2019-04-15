@@ -37,21 +37,27 @@ class Solution {
     getKey(): string | null{
         return this.key;
     }
+
     getSolverId(): string {
         return this.solverId;
     }
+
     getTopics(): string[] | null {
         return this.topics;
     }
+
     getDifficulty() : number | null{
         return this.difficulty;
     }
+
     getSolutionTags() : string []{
         return this.solutionTags;
     }
+
     getValutations(): Map<string, number> | null {
         return this.valutations;
     }
+
     JSONValutations() : any {
         let result = "{";
         if (this.valutations){
@@ -59,16 +65,16 @@ class Solution {
                 result += '"' + key +'" : '+value+",";
             });
          }
-        console.log(result);
         if (result !== "{")
             result = result.substr(0,result.length-1);
         result += "}";
-        console.log(result);
         return JSON.parse(result);
     }
+
     getTime(): number | null{
         return this.time;
     }
+
     addNewMark(teacherID : string, mark : number) {
         if (!this.valutations)
             this.valutations = new Map<string, number>();

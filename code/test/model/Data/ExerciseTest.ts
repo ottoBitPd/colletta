@@ -1,8 +1,8 @@
-import {Exercise} from '../../src/ts/model/Data/Exercise';
+import {Exercise} from '../../../src/ts/model/Data/Exercise';
 import {expect} from 'chai';
 import 'mocha';
-import {HunposManager} from "../../src/ts/model/POSManager/HunposManager";
-import {Solution} from "../../src/ts/model/Data/Solution";
+import {HunposManager} from "../../../src/ts/model/POSManager/HunposManager";
+import {Solution} from "../../../src/ts/model/Data/Solution";
 
 describe('Exercise', function() {
     let exercise : Exercise;

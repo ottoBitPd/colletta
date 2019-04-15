@@ -1,13 +1,24 @@
-import {Class} from "../../src/ts/model/Data/Class";
+import {Class} from "../../../src/ts/model/Data/Class";
 import {expect} from 'chai';
 import 'mocha';
 
 
 
 describe('Class', function() {
-    let obj= new Class("0","name", "description","1234",["st1", "st2"],["es1", "es2"]);
-    let student= new Class("0","name", "description","1234",["st1", "st2"],["es1", "es2"]);
-    let exercise= new Class("0","name", "description","1234",["st1", "st2"],["es1", "es2"]);
+    let obj : Class;
+    let student : Class;
+    let exercise : Class;
+    beforeEach(function() {
+        obj= new Class("0","name", "description","1234",["st1", "st2"],["es1", "es2"]);
+        student= new Class("0","name", "description","1234",["st1", "st2"],["es1", "es2"]);
+        exercise= new Class("0","name", "description","1234",["st1", "st2"],["es1", "es2"]);
+    });
+
+    describe ("Class.getID()", function () {
+        it('should return 0', function() {
+            expect(obj.getId()).to.equals("0");
+        });
+    });
 
     describe('Class.getName()', function() {
         it('should return the name', function() {
@@ -85,11 +96,26 @@ describe('Class', function() {
     });
 
     describe('Class.findStudent()', function() {
-        it('should return find student', function() {
+        it('should return true', function() {
             expect(student.findStudent("st2")).to.equal(true);
+        });
 
+        it('should return false',function () {
+           expect(student.findStudent("cccc")).to.be.equal(false);
         });
     });
 
-
+    describe('Class.toJSON()', function () {
+        it('should return a json', function() {
+            let json = obj.toJSON();
+            expect(json).to.eql({
+                "id" : "0",
+                "name": "name",
+                "description": "description",
+                "teacherID": "1234",
+                "students": ["st1", "st2"],
+                "exercises": ["es1", "es2"]
+            });
+        });
+    });
 });

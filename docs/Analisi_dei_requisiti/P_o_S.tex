@@ -1,0 +1,32 @@
+\section{Tecniche di apprendimento automatico supervisionato}
+Lo sviluppo della piattaforma dovrà includere l'uso di tecniche di apprendimento automatico, in particolare per la realizzazione del sistema di Part-of-Speech tagging$^*$. 
+\subsection{Apprendimento automatico}
+L'apprendimento automatico supervisionato prevede due fasi principali: una fase di training ed una di testing. \\
+Nella fase di training, al sistema viene fornito un insieme di coppie input-output sulla base delle quali (il sistema) adatta il proprio stato interno per classificare correttamente i dati ricevuti. Così facendo, viene creata una funzione (o modello) che determinerà gli output che la macchina fornirà in fase di utilizzo. \\
+Nella fase di testing, invece, al sistema viene fornito un insieme di input di cui si conosce l'output corretto. Si verifica quindi se i risultati dati dal sistema corrispondono a quelli attesi. \\
+A queste due fasi ne viene a volte aggiunta una terza, intermedia, di validazione: il sistema viene testato ad intervalli fissati per verificarne la curva di apprendimento, permettendo così di interrompere un training che non sta dando buoni risultati (early stopping). \\
+Una volta concluse queste fasi, il modello ricavato è pronto per l'esecuzione e può essere quindi utilizzato per fornire output corretti partendo da una serie di input. \\
+L'apprendimento supervisionato si può dividere in due tipologie, sulla base dell'output fornito: si parla di apprendimento per classificazione quando i valori di output possibili sono un insieme discreto e limitato, per regressione quando si ha un insieme di output continuo. \\
+Nel caso della piattaforma richiesta in questo capitolato, parleremo di apprendimento per classificazione: si hanno, infatti, una serie limitata di output possibili, corrispondente all'insieme delle classi grammaticali previste dalla lingua in uso. 
+
+\subsection{Part-of-Speech tagging}
+Per Part-of-Speech tagging si intende l'etichettatura delle parti del discorso con etichette riferite alle classi grammaticali della lingua di riferimento (ad esempio: nomi, verbi, aggettivi, articoli) ed è una delle problematiche più si adatta all'utilizzo delle tecniche di apprendimento automatico. \\
+
+Questa operazione consiste nel far corrispondere ad ogni parola della frase in analisi, un codice. Questo codice, che può variare a seconda del software utilizzato, specifica a che classe grammaticale appartiene la parola, indicando tempo, persona o numero a seconda della specifica classe. \\
+Per esplicitare la corrispondenza con l'apprendimento automatico, le parole della frase da analizzare corrispondono all'input ed il codice ad esse associato all'output. Segue un esempio. 
+\medskip
+
+\begin{table}[h]
+\centering
+\begin{tabular}{| c | c | c |}
+		\rowcolor{LightBlue}
+		\color{white}\bfseries Input & \color{white}\bfseries Output atteso & \color{white}\bfseries Descrizione \\[0.25cm]
+		 Chi & Code & Pronome interrogativo singolare \\
+		 conosce & Code & Verbo indicativo presente 3 persona singolare \\
+		 l' & Code & Articolo determinativo maschile singolare \\
+		 apprendimento & Code & Sostantivo maschile singolare \\
+		 automatico & Code & Aggettivo maschile singolare \\ 
+		 ? & Code & Punto interrogativo \\ \hline
+\end{tabular}
+		\caption{Esempio pos-tag}
+\end{table}

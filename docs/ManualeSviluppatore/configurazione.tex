@@ -1,0 +1,89 @@
+\subsection{Scopo del capitolo}
+Questo capitolo è rivolto a chiunque desideri contribuire allo sviluppo dell'applicazione mantenendeo lo stesso ambiente di sviluppo utilizzato dai creatori del progetto.
+L'obiettivo di questo capitolo è quindi quello di illustrare il procedimento per configurare l'ambiente di sviluppo in modo tale che possa essere esattamente equivalente a quello utilizzato dal gruppo Ottobit per lo sviluppo di Colletta.
+
+\subsection{WebStorm}
+Webstorm è un IDE di JetBrains per lo sviluppo di Web application, che supporta tutti i linguaggi scelti per lo sviluppo dell'applicazione Colletta, ovvero Javascript, Node.js, HTML e CSS.
+L'editor offre varie funzionalità, tra cui:
+\begin{itemize}
+	\item Node.js Debugger
+	\item TSLint
+\end{itemize}
+È disponibile sia per Windows, che per Linux come per MacOS.
+Può essere scaricato ed installato gratuitamente registrandosi nel \footnote{\url{https://www.jetbrains.com/webstorm/}}sito ufficiale utilizzando un e-mail universitaria.
+
+\subsection{TSLint}
+Al fine di evitare errori di stile del codice, in WebStorm dovrà essere abilitato TSLint, nel seguente modo: Settings | Languages \& Frameworks | TypeScript | TSLint.
+
+Utilizzate il seguente comando per installare TSLint:
+\begin{center}
+		\begin{minipage}{0.5\textwidth}
+			\begin{lstlisting}[caption=Installazione per l'analisi statica,numbers=none]			
+		$ npm install tslint typescript
+			\end{lstlisting}
+		\end{minipage}
+\end{center}
+Per configurare correttamente TSLint è necessario impostare il percorso di installazione dello stesso, nell'area di Webstorm sovracitata.
+Inoltre per fare in modo che TSLint funzioni correttamente è necessario configurarlo, selezionando nell'impostazione ``Configutation file'' il file tsconfig.json, presente all'interno della cartella principale del sorgente dell'applicazione. È possibile quindi settare l'impostazione ``Configutation file'' su Automated search o specificare manualmente il percorso del file appena citato.
+
+\subsection{TypeDoc}
+Per la generazione automatica della documentazione in stile JavaDoc, è stato utilizzato il software TypeDoc. 
+Per essere utilizzato TypeDoc necessita di essere installato tramite npm nel vostro sistema. Al fine di effettuare tale operazione utilizzate il seguente comando:
+
+\begin{center}
+		\begin{minipage}{0.5\textwidth}
+		\begin{lstlisting}[caption=Installazione di TypeDoc per la generazione della documentazione,numbers=none]
+		$ npm install --global typedoc
+			\end{lstlisting}		
+		\end{minipage}
+\end{center}
+
+Ricordiamo al lettore che il codice dovrà essere commentato in modo esaustivo e conciso. I commenti non dovranno essere una descrizione della sintassi del linguaggio di programmazione in uso e dovranno essere in inglese. Di seguito riportiamo anche un esempio:
+
+\begin{lstlisting}[caption=Esempio di commento ad un metodo]
+/**
+* This method writes a sentence in the database.
+* @param sentence - the sentence to write
+* @returns {number} returns the key of the sentence written
+*/
+writeSentence(sentence){
+...
+}
+\end{lstlisting}
+
+Per utilizzare TypeDoc e produrre la documentazione automatica basata sui commenti introdotti nel sorgente prodotto, è necessario invocare il seguente comando dalla cartella principale dell'applicazione:
+
+\begin{center}
+	\begin{minipage}{0.5\textwidth}
+		\begin{lstlisting}[caption=Comandi per la generazione della documentazione,numbers=none]
+			$ typedoc --out docs ./src
+		\end{lstlisting}
+	\end{minipage}
+\end{center}
+	
+\subsection{Test}
+All'interno della directory test presente nella cartella principale dell'applicazione, potrete trovare tutti i sorgenti relativi ai test effettuati sull'applicazione.
+Per invocare manualmente la procedura di esecuzione dei test è necessario intallare le librerie Mocha\footnote{\url{https://www.npmjs.com/package/mocha}} e Chai\footnote{\url{https://www.npmjs.com/package/chai}}, utilizzando i seguenti comandi:
+
+
+\begin{center}
+	\begin{minipage}{0.5\textwidth}
+		\begin{lstlisting}[caption=Comandi per l'esecuzione dei test,numbers=none]
+			$ npm i --global mocha
+			$ npm install chai
+			$ npm install --global nyc
+		\end{lstlisting}
+	\end{minipage}
+\end{center}
+\noindent
+Una volta implementato il codice dei test desiderati questi verranno automaticamente eseguiti dalla deployment pipeline ma, se desiderate eseguirli manualmente, potrete utilizzare il seguente comando:
+\begin{center}
+	\begin{minipage}{0.5\textwidth}
+		\begin{lstlisting}[caption=Comandi per l'esecuzione dei test,numbers=none]
+			$ npm test
+		\end{lstlisting}
+	\end{minipage}
+\end{center}
+
+\newpage
+

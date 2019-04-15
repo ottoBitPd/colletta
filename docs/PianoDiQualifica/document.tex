@@ -1,0 +1,85 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{multirow}
+\usepackage{color,colortbl}
+\usepackage{hyperref}
+\hypersetup{colorlinks,urlcolor=blue,linkcolor=black}
+\usepackage{fancyhdr}
+\usepackage{tabularx}
+\usepackage{csquotes}
+\usepackage{enumitem}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=3cm]{geometry}
+\usepackage{longtable}
+\usepackage{ltablex}
+\usepackage{titlesec}
+\usepackage{lastpage}
+\setcounter{secnumdepth}{4}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\includegraphics[scale=0.07]{images/logo.png}}
+
+\definecolor{LightBlue}{rgb}{0,0,0.5}
+\definecolor{Gray}{gray}{0.8}
+\definecolor{LightGray}{gray}{0.9}
+
+\renewcommand {\footrulewidth}{0.2mm}
+\lfoot {Piano di Qualifica}
+\rfoot{Pagina \thepage\ di \pageref{LastPage}}
+
+\usepackage{lipsum}
+\begin{document}
+	\input{frontpage/frontpage.tex}
+	\newpage
+	{\def\arraystretch{2}\tabcolsep=10pt
+	
+	\section*{\centering Registro delle modifiche}
+	\begin{tabularx}{\textwidth}{ c | c | p{3.5cm} | c | X }
+		\rowcolor{LightBlue}
+		\color{white}\bfseries Versione & \color{white}\bfseries Data & \color{white}\bfseries Autore & \color{white}\bfseries Ruolo & \multicolumn{1}{c}{\color{white}\bfseries Descrizione}\\[0.25cm]
+		2.0.1 & 2019-03-18 & Eleonora Peagno & Verificatore & Correzione secondo indicazioni esito RP \\ \hline
+		2.0.0 & 2019-03-06 & Gianmarco Pettenuzzo & Responsabile & Approvazione per il rilascio \\ \hline
+		1.1.0 & 2019-03-06 & Benedetto Cosentino & Verificatore & Revisione finale del documento \\ \hline
+		1.0.6 & 2019-03-05 & Eleonora Peagno & Verificatore & Aggiunte appendici "esito delle revisioni" e "copertura dei requisiti", aggiunta nota sulle metriche software. Correzioni e modifiche varie \\ \hline
+		1.0.5 & 2019-03-04 & Giovanni Bergo \newline Eleonora Peagno & Verificatore & Aggiunti test di validazione \\ \hline
+		1.0.4 & 2019-03-04 & Eleonora Peagno & Verificatore & Aggiunti test di integrazione e appendice sulle metriche \\ \hline
+		1.0.3 & 2019-02-22 & Eleonora Peagno & Verificatore & Aggiunta tabella degli obiettivi \\ \hline
+		1.0.2 & 2019-02-18 & Giovanni Bergo & Amministratore & Classificazione obbiettivi\\ \hline
+		1.0.1 & 2019-02-15 & Eleonora Peagno & Verificatore & Eliminazione capitoli 2 e 3 v1.0.0, stesura nuovo capitolo 2, aggiunta sezione sul ciclo di Demming in appendice, revisione generale del documento, struttura e contenuti. \\ \hline
+		1.0.0 & 2019-01-11 & Benedetto Cosentino & Responsabile & Approvazione documento\\ \hline
+		0.2.0 & 2019-01-11 & Giovanni Bergo & Verificatore & Verifica documento\\ \hline
+		0.1.3 & 2019-01-10 & Michele Bortone & Amministratore & Incremento \S\ 2.6\\ \hline
+		0.1.2 & 2019-01-08 & Giovanni Peron & Amministratore & Incremento \S\ appendice A, stesura \S\  4.1.2\\ \hline
+		0.1.1 & 2019-01-02 & Michele Bortone & Amministratore & Risoluzione errori\\ \hline
+		0.1.0 & 2018-12-27 & Giovanni Bergo & Verificatore & Verifica documento\\ \hline
+		0.0.8 & 2018-12-26 & Michele Bortone & Amministratore & Avanzamento \S\ 3\\ \hline
+		0.0.6 & 2018-12-19 & Michele Bortone & Amministratore & Incremento \S\ 2.6\\ \hline
+		0.0.5 & 2018-12-19 & Giovanni Peron & Amministratore & Avanzamento \S\  2.5, 2.6, tabelle \S\ 4.\\ \hline
+		0.0.4 & 2018-12-18 & Giovanni Peron & Amministratore & Tabella sezione \S\ 4 e stesura \S\ 2.4, 2.5, 2.6.\\ \hline
+		0.0.3 & 2018-12-16 & Michele Bortone & Amministratore & Aggiornamento struttura documento\\ \hline
+		0.0.2 & 2018-12-13 & Michele Bortone & Amministratore & Stesura sezione\S\ 2.2  e \S\ appendice B\\ \hline
+		0.0.1 & 2018-12-13 & Giovanni Peron & Amministratore & Stesura sezione\S\ 2.1 e \S\ appendice A \\ \hline
+		0.0.0 & 2018-12-06 & Giovanni Peron & Amministratore & Creazione documento e \newline sezione introduzione \\ \hline
+	\end{tabularx}
+	\newpage
+	
+	\tableofcontents
+	\newpage
+	\listoffigures
+	\listoftables
+	
+	\newpage
+	\input{sections/introduzione.tex}	
+	\newpage
+	\input{sections/cap2.tex}
+	\newpage
+	\input{sections/appendici.tex}	
+	
+\end{document}

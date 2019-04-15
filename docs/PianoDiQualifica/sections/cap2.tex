@@ -1,0 +1,96 @@
+\section{Obiettivi di qualità}
+In questo capitolo vengono definiti gli obiettivi che il gruppo OttoBit si impegna a raggiungere in termini di qualità di processo e di prodotto, garantendoli nella realizzazione della piattaforma "Colletta". Ad ogni obiettivo sono associate una o più metriche$^*$ che permetteranno di effettuare una valutazione quantitativa. \\
+Sia gli obiettivi che le metriche sono identificati univocamente da un codice alfanumerico, il quale permetterà di tracciarli facilmente e di controllarli costantemente. Le metriche adottate sono definite nelle \textit{NormeDiProgetto\_v3.0.0}.
+
+\subsection{Classificazione degli obiettivi}
+La classificazione degli obiettivi rispetta la seguente notazione:
+\begin{center}
+	O[Ambito][Codice identificativo]
+\end{center}
+
+Dove:
+\begin{itemize}
+	\item Ambito: indica se l'obiettivo si riferisce a processi, prodotto documento oppure prodotto software, e può assumere i seguenti valori:
+	\begin{itemize}
+		\item PC: per indicare un obiettivo per il processo
+		\item PD: per indicare un obiettivo per il documento
+		\item PS: per indicare un obiettivo per il software
+	\end{itemize}
+	
+	\item Codice Identificativo: intero incrementale a partire da 1.
+	
+\end{itemize}
+
+\subsection{Processo}
+Al fine di definire degli obiettivi di qualità di processo, il gruppo ha deciso di adottare lo standard ISO/IEC 15504 - noto anche come SPICE$^*$. Questo standard fornisce gli strumenti utili a valutare la qualità di processo e verrà utilizzato in associazione al ciclo di Deming o PDCA$^*$. Tale ciclo definisce un metodo di controllo mirato al miglioramento continuo del livello di qualità di processo evitando possibili regressioni. 
+Le descrizioni dello standard e del ciclo sono disponibili all'interno del documento \textit{NormeDiProgetto\_v3.0.0}.
+L'uso del ciclo di Deming in aggiunta allo standard SPICE permetterà di garantire:
+\begin{itemize}
+	\item monitoraggio e misurazione costante delle performance dei processi;
+	\item persecuzione di un miglioramento continuo dei processi stessi.
+\end{itemize}
+
+\subsection{Prodotto}
+Lo standard adottato per definire e delineare gli obiettivi è lo standard ISO/IEC 9126:200$^*$, il quale fornisce i criteri di applicazione delle metriche.
+Man mano che si proseguirà con lo svolgimento del progetto, verranno realizzate due tipologie di prodotto, le quali dovranno rispettare determinati requisiti:
+\begin{itemize}
+	\item Documenti: devono essere leggibili, comprensibili e corretti;
+	\item Software: 
+	\begin{itemize}
+		\item la piattaforma "Colletta" rispetta i requisiti obbligatori, desiderabili ed opzionali nelle percentuali indicati nella sezione \S2.4;
+		\item la piattaforma "Colletta" supera i test nella percentuale riportata nella sezione \S2.4;
+		\item il codice di "Colletta" è comprensibile, ben commentato e mantenibile.
+	\end{itemize}
+\end{itemize}
+
+\newpage
+
+\subsection{Soglie di accettabilità}
+Riportiamo nella seguente tabella le soglie minime di accettabilità legate ad ogni metrica.
+
+\begin{longtable}{| c | p{8cm} | p{2.5cm} |}
+	\rowcolor{LightBlue}
+	\color{white}\bfseries Metrica & \color{white}\bfseries Descrizione &\color{white}\bfseries Soglia di \newline Accettabilità \\
+	MPC1 & ISO/IEC 15504 & Livello 2 \\ \hline
+	MPC2 & Indice RSI$^*$ & $> 0.6$ \\ \hline
+	MPC3 & Violazioni stile codifica & $< 10$ \\ \hline
+	MPC4 & Rapporto tra test di integrazione implementati e quelli totali & $> 90\%$\\ \hline
+	MPC5 & Test di sistema implementati & $> 90\%$\\ \hline
+	MPC6 & Test di unità implementati & $> 90\%$\\ \hline
+	MPC7 & Test di accettazione implementati & $> 90\%$\\ \hline
+	MPD2 & Indice di Gulpease$^*$ & $> 40$\\ \hline
+	MPD1 & Errori ortografici & $= 0$\\ \hline
+	MPS6 & Copertura requisiti obbligatori & $= 100\%$\\ \hline
+	MPS7 & Copertura requisiti desiderabili & $> 30\%$\\ \hline
+	MPS9 & Copertura requisiti opzionali & $> 10\%$\\ \hline
+	MPS8 & Copertura dei test sul codice & $> 50\%$\\ \hline
+	MPS10 & Numero di linee di codice per procedura & $< 30$ \\ \hline
+	MPS1 & Percentuale di superamento dei test & $> 85\%$\\ \hline
+	MPS2 & Numero di parametri per metodo & $< 5$\\ \hline
+	MPS3 & Numero di attributi per classe & $< 10$\\ \hline
+	MPS4 & Numero di metodi per classe & $< 15$\\ \hline
+	MPS5 & Complessità ciclomatica & $< 10$ \\ \hline
+	\caption{Tabella delle soglie di accettazione}
+\end{longtable}
+
+
+\subsection{Tabella degli obiettivi}
+
+\begin{longtable}{| c | p{3cm} | p{5cm} | p{2cm} | p{3cm} |}
+	\rowcolor{LightBlue}
+	\color{white}\bfseries ID & \color{white}\bfseries Obiettivo & \color{white}\bfseries Descrizione & \color{white}\bfseries Metrica \\[0.25cm]
+	OPC1 & Miglioramento continuo & Attività incessante e continua di miglioramento della performance dei processi. & MPC1\\ \hline
+	OPC2 & Stabilità dei requisiti & Capacità di individuare tutti e soli i requisisti adeguati. & MPC2  \\ \hline
+	OPC3 & Qualità del sorgente & Efficienza nell'uso delle norme stilistiche di codifica. & MPC3 \\ \hline
+	OPC4 & Implementazione della verifica & Quantificazione dei test per la verifica implementati. & MPC4 \newline MPC5 \newline MPC6 \newline MPC7 \\ \hline
+	OPD1 & Leggibilità dei documenti & Quantificazione tramite indice di Gulpease della leggibilità dei documenti. & MPD2 \\ \hline
+	OPD2 & Correttezza dei documenti & Quantificazione degli errori ortografici presenti nei documenti. & MPD1  \\ \hline
+	OPS1 & Implementazione requisiti obbligatori & Indice di soddisfazione dei requisiti obbligatori & MPS6 \\ \hline
+	OPS2 & Implementazione requisiti desiderabili & Indice di soddisfazione dei requisiti desiderabili & MPS7 \\ \hline
+	OPS6 & Implementazione requisiti opzionali & Indice di soddisfazione dei requisiti opzionali & MPS9 \\ \hline
+	OPS7 & Codice per procedura & Numero di righe di codice dedicate ad ogni procedura & MPS10 \\ \hline
+	OPS3 & Copertura del codice & Indice della quantità di righe controllate tramite i test & MPS8 \\ \hline
+	OPS4 & Superamento dei test & Indice della quantità di test superati & MPS1 \\ \hline
+	OPS5 & Manutenibilità del codice & Il prodotto software deve poter essere espanso o modificato agevolmente. & MPS2 \newline MPS3 \newline MPS4 \newline MPS5\\ \hline 
+	\caption{Tabella degli obiettivi} 
+\end{longtable}

@@ -92,7 +92,7 @@ class Exercise implements Data{
                     return element.getSolverId()===teacherID;
                 });
                 if(teacherSolution===undefined){
-                    throw new Error("ID "+teacherID+" non trovato");
+                    throw new Error("ID non trovato");
                 }
                 else{
                     tags=teacherSolution.getSolutionTags();

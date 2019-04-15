@@ -137,6 +137,9 @@ class ExerciseView extends PageView{
 
         ret +=
             "       </ul>\n" +
+            "       <div class='row py-3 mx-auto text-white "+ (correction.mark > 5 ? "bg-success" : "bg-danger") +"'>"+
+            (correction ? "<p class='col-sm-10 my-0 mx-auto'>Voto:  " + correction.mark + "</p>" : "")+
+            "       </div>"+
             "       <a href='/' class='btn btn-primary my-2 px-4'>Torna alla home</a>\n"+
             "    </div>";
 

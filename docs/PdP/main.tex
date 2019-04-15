@@ -1,0 +1,126 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern,textcomp}
+\usepackage[italian]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{color,colortbl}
+\usepackage{hyperref}
+\hypersetup{colorlinks,urlcolor=blue,linkcolor=black}
+\usepackage{fancyhdr}
+\usepackage{tabularx}
+\usepackage{enumitem}
+\usepackage{lastpage}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=3cm]{geometry}
+\usepackage{ltablex}
+\usepackage{float}
+\usepackage{titlesec}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\includegraphics[scale=0.07]{images/logo.png}}
+
+\renewcommand {\footrulewidth}{0.2mm}
+\lfoot {Piano di Progetto}
+\rfoot{Pagina \thepage\ di \pageref{LastPage}}
+
+
+\usepackage{appendix}
+\usepackage{longtable}
+
+\definecolor{LightBlue}{rgb}{0,0,0.5}
+\definecolor{Gray}{gray}{0.8}
+\definecolor{LightGray}{gray}{0.9}
+
+
+\setcounter{tocdepth}{3}
+\setcounter{secnumdepth}{3}
+
+\titlespacing*{\subsection}{0pt}{8ex plus 1ex minus .2ex}{2.3ex plus .2ex}
+\titlespacing*{\subsubsection}{0pt}{8ex plus 1ex minus .2ex}{2.3ex plus .2ex}
+
+\begin{document}
+	\input{frontpage/frontpage.tex}
+	{\def\arraystretch{2}\tabcolsep=10pt
+	\newpage
+	\section*{\centering Registro delle modifiche}
+	%{\def\arraystretch{2}\tabcolsep=10pt
+	\begin{tabularx}{\textwidth}{ c | c | c | c | X }
+		\rowcolor{LightBlue}
+		\color{white}\bfseries Versione & 
+		\color{white}\bfseries Data & 
+		\color{white}\bfseries Autore & 
+		\color{white}\bfseries Ruolo & 
+		\multicolumn{1}{c}{\color{white}\bfseries Descrizione}\\[0.25cm]
+		3.0.0 & 2019-04-11 & Giovanni Bergo & Responsabile & Approvazione per il rilascio\\ \hline
+		2.1.0 & 2019-04-11 & Giovanni Peron & Verificatore &	Documento \newline verificato\\ \hline
+		2.0.5 & 2019-04-10 & Giovanni Bergo & Responsabile &	Consuntivo fase 3, preventivo fase 4\\ \hline
+		2.0.4 & 2019-04-09 & Giovanni Bergo & Responsabile & Consuntivo fase 3\\ \hline
+		2.0.3 & 2019-03-21 & Michele Bortone & Responsabile & Realizzazione diagrammi di Gantt e piccole modifiche\\ \hline
+		2.0.2 & 2019-03-20 & Michele Bortone & Responsabile & Ripianificazione fase 3 e 4 secondo problemi riscontrati dopo fase 2\\ \hline
+		2.0.1 & 2019-03-18 & Michele Bortone & Responsabile & Correzione §1\\ \hline
+		2.0.0 & 2019-03-06 & Gianmarco Pettenuzzo & Responsabile & Approvazione per il rilascio\\ \hline
+		1.1.0 & 2019-03-05 & Eleonora Peagno & Verificatore & Documento\newline verificato\\ \hline
+		1.0.4 & 2019-03-04 & Gianmarco Pettenuzzo & Responsabile & Completamento \newline consuntivo\\ \hline
+		1.0.3 & 2019-02-28 & Enrico Marcato & Amministratore & Bozza consuntivo\\ \hline
+		1.0.2 & 2019-02-07 & Enrico Marcato & Amministratore & Aggiunta dettagli\newline ripianificazione\\ \hline
+		1.0.1 & 2019-02-01 & Giovanni Peron & Responsabile & Ripianificazione\\ \hline
+		1.0.0 & 2019-01-11 & Benedetto Cosentino & Responsabile & Approvazione\newline documento\\ \hline
+		0.4.0 & 2019-01-11 & Giovanni Peron & Verificatore & Documento\newline verificato\\ \hline
+		0.3.1 & 2019-01-11 & Benedetto Cosentino & Responsabile & Correzione degli errori riscontrati durante la verifica \\ \hline
+		0.3.0 & 2019-01-10 & Giovanni Peron & Verificatore & Verifica documento\\ \hline
+		0.2.10 & 2019-01-09 & Benedetto Cosentino & Responsabile & Aggiunta del\newline consuntivo\\ \hline
+		0.2.9 & 2019-01-09 & Benedetto Cosentino & Responsabile & Correzione del\newline preventivo\\ \hline
+		0.2.8 & 2019-01-08 & Benedetto Cosentino & Responsabile & Inserimento dell'organigramma \\ \hline
+		0.2.7 & 2019-01-08 & Benedetto Cosentino & Responsabile & Completamento preventivo \\ \hline	
+		0.2.6 & 2018-12-23 & Enrico Marcato & Responsabile & Aggiunta tabella di assegnazione per la progettazione\\ \hline
+		0.2.5 & 2018-12-23 & Benedetto Cosentino & Responsabile & Aggiunta tabella di assegnazione per la realizzazione e preventivo\\ \hline
+		0.2.4 & 2018-12-22 & Benedetto Cosentino & Responsabile & Aggiunti rendicontazione, preventivo e tabelle di assegnazione \\ \hline
+		0.2.3 & 2018-12-22 & Enrico Marcato &  & Aggiunta la pianificazione della validazione\\ \hline
+		0.2.2 & 2018-12-21 & Enrico Marcato &  & Aggiunta la pianificazione della progettazione\\ \hline
+		0.2.1 & 2018-12-21 & Benedetto Cosentino & Responsabile & Aggiunte immagini dei diagrammi di Gantt e pianificazione della realizzazione\\ \hline
+		0.2.0 & 2018-12-18 & Giovanni Peron & Verificatore & Documento verificato\\ \hline
+		0.1.2 & 2018-12-22 & Enrico Marcato &  & Aggiunta della pianificazione della progettazione e della validazione\\ \hline
+		0.1.1 & 2018-12-18 & Benedetto Cosentino & Responsabile & Correzione degli errori riscontrati durante la verifica\\ \hline
+		0.1.0 & 2018-12-15 & Giovanni Peron & Verificatore & Verifica documento\\ \hline
+		0.0.3 & 2018-12-15 & Benedetto Cosentino & Responsabile & Aggiunta della pianificazione dell'analisi dei requisiti\\ \hline
+		0.0.2 & 2018-12-14 & Benedetto Cosentino & Responsabile & Aggiunta del modello di sviluppo e migliorie alle sezioni precedenti\\ \hline
+		0.0.1 & 2018-12-12 & Benedetto Cosentino & Responsabile & Creazione dello scheletro e aggiunta dell'introduzione e dell'analisi dei rischi\\ \hline
+	\end{tabularx}
+	\newpage
+	\tableofcontents
+	\listoffigures
+	\listoftables
+	\newpage	
+	\section{Introduzione}
+		\input{intro.tex}	
+		\newpage	
+	
+	\section{Analisi dei rischi}
+		\input{analisi_rischi.tex}
+		\newpage	
+
+	\section{Modello di sviluppo}
+		\input{modello.tex}
+		\newpage	
+
+	\section{Pianificazione}
+		\input{pianificazione.tex}
+		\newpage
+				
+	\section{Preventivo}
+		\input{preventivo.tex}
+		\newpage
+		
+	\section{Consuntivo di periodo}
+		\input{consuntivo.tex}
+		\newpage
+
+	\section{Organigramma}
+		\input{appendixA.tex}
+		\newpage
+\end{document}

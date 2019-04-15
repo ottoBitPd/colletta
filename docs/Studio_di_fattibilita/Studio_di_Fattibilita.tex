@@ -1,0 +1,206 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{color,colortbl}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage{tabularx}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{lastpage}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\includegraphics[scale=0.07]{images/logo.png}}
+
+\renewcommand {\footrulewidth}{0.2mm}
+\lfoot {Studio di fattibilità}
+\rfoot{Pagina \thepage\ di \pageref{LastPage}}
+
+\definecolor{LightBlue}{rgb}{0,0,0.5}
+\definecolor{Gray}{gray}{0.8}
+\definecolor{LightGray}{gray}{0.9}
+
+\usepackage{lipsum}
+\begin{document}
+	\input{frontpage/frontpage.tex}
+	
+	\newpage
+	\section*{\centering Registro delle modifiche}
+	\begin{tabularx}{\textwidth}{ c | c | X | c | X }
+		\rowcolor{LightBlue}
+		\color{white}\bfseries Versione & \color{white}\bfseries Data & \multicolumn{1}{c}{\color{white}\bfseries Autore} & \color{white}\bfseries Ruolo & \multicolumn{1}{c}{\color{white}\bfseries Descrizione}\\[0.25cm]
+		1.0.0 & 2018-12-14 & Benedetto Cosentino & Responsabile & Approvazione documento\\ \hline
+		0.1.0 & 2018-12-10 & Michele Bortone & Verificatore & Prima verifica del documento\\ \hline
+		0.0.6 & 2018-12-07 & Eleonora Peagno & Analista & Stesura sezione capitolato C5\\ \hline
+		0.0.5 & 2018-12-06 & Benedetto Cosentino & Analista & Stesura sezione capitolato C2\\ \hline
+		0.0.4 & 2018-12-06 & Enrico Marcato\newline Benedetto Cosentino & Analista & Stesura sezione capitolato C2\\ \hline
+		0.0.3 & 2018-12-06 & Giovanni Bergo & Analista & Stesura sezione capitolato C1\\ \hline
+		0.0.2 & 2018-12-05 & Gianmarco Pettenuzzo & Analista & Stesura sezione capitolato C4\\ \hline
+		0.0.1 & 2018-12-05 & Giovanni Peron & Analista & Stesura sezioni capitolati C3 e C6\\ \hline
+		
+		
+		0.1.1 & 2018-12-07 & Eleonora Peagno & Analista & Stesura della parte introduttiva\\ \hline
+		
+	\end{tabularx}
+	\newpage
+	\tableofcontents
+	\newpage
+	\section{Introduzione}
+	\subsection{Scopo del documento}
+	Questo documento ha lo scopo di raccogliere le analisi e le opinioni del gruppo sui vari capitolati proposti. Nello specifico, per ogni capitolato, è riportata una descrizione generale dello scopo e dell'ambito di utilizzo del prodotto, un elenco delle principali tecnologie che verrebbero impiegate nello sviluppo ed una conclusione elaborata in collaborazione con tutti i membri del gruppo.\\
+Con ciò si vorrebbe giustificare la scelta del gruppo di sviluppare il capitolato C2, proposto dall'azienda MIVOQ.
+	\subsection{Riferimenti}
+		\subsubsection{Normativi}
+		\begin{itemize}
+		\item Norme di progetto vx.y.z
+		\end{itemize}
+		\subsubsection{Informativi}
+		\begin{itemize}
+		\item\textbf{Capitolato 1 - Butterfly}: monitor per processi CI/CD;
+		\item\textbf{Capitolato 2 - Colletta}: piattaforma di raccolta dati di analisi di testo;
+		\item\textbf{Capitolato 3 - Grafana \& Bayes}: monitoraggio intelligente dei processi DevOps;
+		\item\textbf{Capitolato 4 - Amazon Alexa}: arricchitore di skill per Amazon Alexa;
+		\item\textbf{Capitolato 5 - GaiaGo}: piattaforma di peer-to-peer car sharing;
+		\item\textbf{Capitolato 6 - Soldino}: piattaforma Ethereum per pagamenti IVA. 
+		\end{itemize}
+	
+	\newpage	
+	\section{Capitolato C1}
+	\subsection{Descrizione generale}
+	Il primo capitolato prevede la creazione di un sistema distribuito per la gestione automatizzata e personalizzabile, da parte del destinatario, delle segnalazioni di diverse interfacce. Tutto questo realizzato attraverso un pattern di tipo Publisher/Subscriber. \\
+	Il progetto$^*$ Butterfly deve essere in grado di interfacciarsi con diversi strumenti, recuperando ed intercettando le segnalazioni e provvedendo a riportarle nella forma desiderata dall'utilizzatore finale. Deve accentrare e standardizzare queste segnalazioni per essere il più flessibile possibile.\\
+	\'E composto da 4 componenti:
+	\begin{itemize}
+		\item \textbf{Producers}: hanno il compito di recuperare le segnalazioni e pubblicarle, sotto forma di messaggi, all'interno dei Topic adeguati;
+		\item \textbf{Broker}: strumento per istanziare e gestire i Topic;
+		\item \textbf{Consumers}: i componenti consumer avranno il compito di abbonarsi ai Topic adeguati, recuperarne i	messaggi e procedere al loro invio verso i destinatari finali;
+		\item \textbf{Componente custom specifico}: per componente custom specifico si intende un componente mirato a risolvere un'esigenza specifica dell'azienda. 
+	\end{itemize}
+	\subsection{Tecnologia interessate}
+	\begin{itemize}
+		\item \textbf{Java}: sistema per lo sviluppo di software;
+		\item \textbf{Python}: linguaggio di programmazione per sviluppare applicazioni distribuite;
+		\item \textbf{Node.js}: piattaforma Open source event-driven per l'esecuzione di codice JavaScript, costruita sul motore JavaScript V8 di Google;
+		\item \textbf{Apache Kafka}: piattaforma open source di stream processing, per la gestione di feed dati in tempo reale;		
+		\item \textbf{Docker}: è una tecnologia di containerizzazione.
+	\end{itemize}
+	\subsection{Conclusione}
+	Dopo alcune riflessioni il gruppo ha concluso che le tecnologie da utilizzare fossero interessanti.
+	Tuttavia lo scopo generale del progetto e i vincoli obbligatori da soddisfare hanno contribuito alla
+	scelta di dedicarsi ad un altro capitolato.
+	\newpage
+	\section{Capitolato C2: capitolato scelto}
+	\subsection{Descrizione generale}
+	Si chiede di realizzare una piattaforma nella quale degli studenti possano svolgere esercizi grammaticali non necessariamente complessi. La piattaforma deve permettere agli insegnanti l'inserimento di esercizi con la corrispondente soluzione. L'obiettivo è raccogliere i dati generati dai risultati e disporli in modo che un elaboratore, attraverso tecniche di apprendimento automatico$^*$, possa svolgere altri esercizi della stessa tipologia. Gli esercizi riguardano l'analisi grammaticale, altre proposte necessitano di un confronto con la proponente. I dati devono essere accessibili e scaricabili dagli sviluppatori, che hanno l'interesse di conoscerne anche lo storico. È necessario tener traccia delle varie correzioni degli insegnanti e il registro delle modifiche deve essere ricostruibile a partire dai primi dati immagazzinati. Gli utenti con l'utilizzo della piattaforma contribuiscono implicitamente all'obiettivo finale della raccolta dati. La proponente, Mivoq, è un'azienda che si occupa di sintesi vocale allo scopo di fornire ad ogni singolo utente la propria voce digitale. Per questo motivo hanno realizzato un sistema di apprendimento automatico supervisionato (HunPos) che riceve in input una lista di stringhe e produce in output una lista di etichette che codificano informazioni di tipo grammaticale.
+	\subsection{Tecnologie impiegate}
+	Il capitolato C2 lascia molta libertà al fornitore riguardo alle tecnologie impiegate. La proponente richiede che l'applicazione da sviluppare usi:
+	\begin{itemize}
+		\item un servizio esistente per l'immagazzinamento dei dati;
+		\item un software opensource di apprendimento automatico per lo svolgimento degli esercizi.
+	\end{itemize}
+	
+	L'idea di base è mettere in comunicazione tra loro i dati immagazzinati e il software di apprendimento automatico, in modo da usare i dati immessi dagli utenti per l'addestramento del sistema. In questo modo, il software di apprendimento riesce a migliorare la precisione delle proprie risposte.
+	\subsubsection{Immagazzinamento dati}
+		Viene consigliato Google Firebase\footnote{\url{https://firebase.google.com/}}, una piattaforma con un ampio spettro di funzionalità. Possiede strumenti di:
+		\begin{itemize}
+			\item analytics: permettono il tracciamento in-app dell'uso della piattaforma, integrandosi con le altre funzionalità;
+			\item sviluppo: fornisce servizi di hosting, storage, autenticazione, database in real time e test; 
+			\item promozionali: permettono la gestione ``social" del progetto;
+			\item monetizzazione: permettono di guadagnare sul progetto utilizzando advertising.
+		\end{itemize}	 
+	
+		Firebase rende più semplice l'hosting della propria applicazione web e di un database$^*$. In particolare, gli strumenti di sviluppo di Firebase semplificano molto l'installazione e la manutenzione della base di dati. Firebase memorizza i dati usando JSON e Node.js. Risulta quindi necessario maturare una certa conoscenza del linguaggio JavaScript.
+	Firebase è orientato fortemente verso il mondo mobile e permette il testing di applicazioni sia per Android che per iOS.
+	
+	\subsubsection{Apprendimento automatico}
+		Viene consigliato l'uso di HunPos\footnote{\url{https://github.com/mivoq/hunpos}} (MIVOQ) o di FreeLing\footnote{\url{ http://nlp.lsi.upc.edu/freeling/node/12}} (TALP Research Center, UPC). Entrambi impiegano l'apprendimento automatico supervisionato per il PoS (\textit{Part-of-Speech}) tagging. Ovvero sono software che si occupano di associare delle etichette riferite a classi grammaticali a parti del discorso. 
+		\subsection{Conclusione}
+		Già dopo la presentazione questo capitolato ha suscitato particolare interesse nel gruppo. La presentazione svolta dalla proponente è piaciuta molto ai membri. La presenza di vincoli non particolarmente restrittivi sulle tecnologie da utilizzare è stata vista positivamente, poichè lascia un ampio margine di scelta su come raggiungere lo scopo. In particolare l'apprendimento automatico rientra tra le tecnologie che i membri vogliono approfondire. Durante lo studio di fattibilità queste considerazioni sono state confermate e di conseguenza è stato scelto questo capitolato con la totale approvazione del gruppo. 
+		\newpage
+		\section{Capitolato C3}
+	\subsection{Descrizione generale}
+Il capitolato C3, G\&B, richiede la realizzazione di un plug-in per lo strumento di monitoraggio Grafana che applichi reti Bayesiane al flusso dei dati ricevuti per allarmi o segnalazioni tra gli operatori del servizio Cloud e la linea di produzione del software.
+Principalmente il progetto richiede di associare i dati di un flusso di monitoraggio ai vari nodi di una rete Bayesiana, definiti in un file JSON, e ricalcolare le probabilità della rete seguendo delle regole temporali prestabilite.
+Dopodichè sarà necessario fornire i risultati dei nodi della rete scollegati dal flusso di monitoraggio al sistema Grafana e renderli disponibili per la visualizzazione attraverso grafici e dashboard.
+Inoltre il principale requisito opzionale prevede la generazione di messaggi di allerta nel caso in cui i risultati dei calcoli effettuati sulla rete Bayesiana superino determinati valori critici.
+\subsection{Tecnologie interessate}
+\begin{itemize}
+\item \textbf{Javascript};
+\item \textbf{Grafana}: sistema open-source per il monitoraggio del flusso di dati;
+\item \textbf{JSON}: formato di file per lo scambio dati;
+\item \textbf{Rete Bayesiana}: modello probabilistico usato per rappresentare la probabilità congiunta di un inseme di variabili;
+\item \textbf{jsbayes\footnote{\url{https://github.com/vangj/jsbayes}}}: libreria open-source che consente la gestione dei calcoli della rete Bayesiana.
+\end{itemize}
+
+\subsection{Conclusioni}
+	Il progetto è stato ritenuto abbastanza intrigante, soprattutto per le tecnologie proposte necessarie a realizzarlo. Le reti Bayesiane sono state ritenute un argomento stimolante dalla maggior parte dei membri del gruppo, più dello scopo stesso del progetto. Proprio per questo motivo ha suscitato scarsa curiosità e
+	ciò ha contribuito a deviare la scelta verso un capitolato alternativo.
+	\newpage
+\section{Capitolato C4}
+	\subsection{Descrizione generale}
+L'obiettivo del capitolato è quello di sviluppare un servizio Web e mobile-app per iOS e Android, in grado di creare delle routine personalizzate gestibili tramite l'assistente vocale Amazon Alexa.
+\\ 
+La routine creata dovrà eseguire una sequenza di micro-funzioni già utilizzabili, singolarmente, dall'assistente personale.
+\\
+L'utente registrato nella piattaforma avrà a disposizione dei connettori che potrà inserire all'interno di un Workflow. Questi saranno eseguiti tramite comando vocale, in modo semplice, con frasi di iterazione generali e di facile memorizzazione.
+\\
+L'applicativo sviluppato si presenterà come una piattaforma multilingua, con la possibilità di creare una routine univoca per ogni utente.
+
+\subsection{Tecnologie interessate}
+\begin{itemize}
+\item \textbf{Amazon Web Services}: piattaforma di servizi cloud. In particolare:
+	\begin{itemize}
+	\item \textbf{API Gateway}: servizio per la creazione, la pubblicazione, la manutenzione, il monitoraggio e la protezione delle API;
+	\item \textbf{Lambda}: servizio che consente di eseguire codice senza dover gestire server;
+	\item  \textbf{DynamoDB}: servizio di database.
+	\end{itemize}
+\item \textbf{NodeJS}: piattaforma per il motore javascript V8;
+\item \textbf{HTML5, CSS3, Javascript e Bootstrap}: tecnologie di base per la gestione dell'interfaccia web;
+\item \textbf{Swift/Kotlin}: linguaggi per lo sviluppo di app iOS/Android rispettivamente.
+\end{itemize}
+\subsection{Conclusioni}
+In generale, questa proposta di progetto è risultata stimolante ma le tecnologie da applicare non hanno suscitato particolare interesse, per il fatto che molte di esse erano già conosciute dai membri del gruppo. Questo ha spostato l'attenzione verso altri capitolati.
+\newpage
+\section{Capitolato C5}
+\subsection{Descrizione generale}
+Il quinto capitolato propone la creazione di una piattaforma peer-to-peer di car sharing, atta ad agevolare la condivisione della propria automobile nei momenti di inutilizzo. L'idea è quella di permettere di usufruire di questi momenti in cui il mezzo resterebbe fermo per averne un guadagno economico o, dal lato opposto, sfruttarli per noleggiare un'auto ``ad un prezzo conveniente" per il periodo di interesse.  
+Lo scopo finale del progetto è quello di poter sfruttare al meglio il proprio mezzo mettendolo a disposizione di persone residenti nello stesso edificio (nel caso di un condominio, ad esempio) o nelle vicinanze, tramite un'applicazione per smartphone. 
+Si possono individuare due tipologie di utenti ai quali è rivolto questo sistema: coloro che possiedono un'auto spesso inutilizzata e coloro che non possiedono un'auto e ne hanno bisogno per brevi periodi.
+In particolare, si richiede di fornire la possibilità agli offerenti di indicare su un calendario le date in cui la propria auto può essere condivisa e, agli utenti in cerca, la possibilità di vedere quali auto sono disponibili nei giorni di interesse. Questi ultimi devono poter, eventualmente, contattare il proprietario per accordare lo scambio a mano delle chiavi. 
+\subsection{Tecnologie interessate}
+\begin{itemize}
+\item \textbf{Henshing Movens Platform}: supporto per il car sharing;
+\item \textbf{Octalysis}: framework per la gamification, atta ad utilizzare elementi di game design per rendere più attraente l'applicazione;
+\item \textbf{Google Maps}: supporto per la geolocalizzazione.
+\end{itemize}
+\subsection{Conclusioni}
+Lo scopo finale di questo progetto è stato valutato dal gruppo in modo poco positivo, principalmente perchè il progetto spinge molto sul lato di progettazione dal punto di vista della gamification e sulla affiliazione dei clienti. I membri del gruppo hanno ritenuto poco interessante questo ambito ai fini del progetto didattico. Inoltre la presentazione del progetto non è risultata particolarmente convincente.
+\newpage
+\section{Capitolato C6}
+\subsection{Descrizione generale}
+Il capitolato C6 pone come obiettivo lo sviluppo di Soldino, una piattaforma per la gestione della
+VAT basata sulla rete Ethereum attraverso l'uso di smart contract.
+Lo scopo finale di Soldino è di implementare il tracciamento automatico di ogni operazione legata
+alla VAT (Value Added Tax).
+Gli utilizzatori di questo sistema saranno imprenditori, governo e cittadini. L'imprenditore può
+registrare la sua attività sulla piattaforma e tramite essa potrà pagare le tasse inerenti. Il governo ha la responsabilità di coniare una moneta chiamata Qubit, che viene
+redistribuita ai cittadini con la quale potranno acquistare beni e pagare le tasse. Ogni tipo di
+interazione tra i tre utilizzatori deve essere implementato attraverso l'uso di smart contract.
+\subsection{Tecnologie interessate}
+\begin{itemize}
+\item \textbf{Ethereum}: piattaforma decentralizzata e basata su blockchain, utilizzata per la creazione e pubblicazione peer-to-peer di smart contracts, cioè una forma di contratto digitale la cui immutabilità è garantita tramite crittografia;
+\item \textbf{Truffle}: framework per lo sviluppo, gestione e testing di ambienti basati su Ethereum;
+\item \textbf{Metamask}: plug-in per broswer utilizzato per un accesso facile e sicuro alla rete Ethereum;
+\item \textbf{React}: libreria Javasript open source per lo sviluppo di interfacce utente.
+\end{itemize}
+\subsection{Conclusioni}
+Questo capitolato è stato giudicato dal team poco interessante principalmente per la scarsa chiarezza della presentazione e inoltre, il rappresentante dell'azienda proponente non ha ispirato fiducia ad alcuni componenti del gruppo. Le tecnologie richieste, seppur innovative, hanno suscitato poca curiosità e alla fine il capitolato è stato scartato.
+	
+
+\end{document}

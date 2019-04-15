@@ -1,0 +1,103 @@
+La seguente analisi dei rischi ha lo scopo di identificarli, indicare il loro grado di rischio, indicare i modi di rilevamento e un piano per il loro contenimento. Questa analisi è da considerarsi dinamica, in quanto i rischi e la probabilità che essi si verifichino possono essere aggiornati durante lo svolgimento del progetto.
+\paragraph*{Classificazione\\} Ogni rischio viene classificato e viene associato a un codice. Tale codice è così composto:
+	\begin{center}
+		\textbf{[Tipo][ID]}
+	\end{center}
+dove [Tipo] è una lettera e [ID] un numero identificativo.
+\paragraph*{Tipi di rischio\\} Esamineremo quattro principali tipologie di rischi:
+	\begin{itemize}
+		\item Rischi correlati al gruppo OttoBit, a cui viene associata la lettera \textbf{G}
+		\item Rischi correlati alle tecnologie e ai mezzi tecnologici, a cui viene associata la lettera \textbf{T}
+		\item Rischi correlati all'organizzazione del lavoro, a cui viene associata la lettera \textbf{O}
+		\item Rischi correlati ai requisiti, a cui viene associata la lettera \textbf{R}
+	\end{itemize}
+	
+\subsection{Tabella dei rischi}
+I seguenti rischi sono stati ordinati in base al loro grado in ordine decrescente.\\
+\begin{longtable}{>{\bfseries}p{2.5cm} p{4.5cm} p{4.5cm} p{2.5cm}}
+	\rowcolor{LightBlue}
+		\multirow{1}{2cm}{\textbf{\textcolor{white}{Codice\\ Nome}}}
+		& \textbf{\textcolor{white}{Descrizione}}
+		& \textbf{\textcolor{white}{Rilevamento}} 
+		&  \textbf{\textcolor{white}{Grado}} \\[0.5cm]
+
+		G01\newline Inesperienza
+		&	Nessuno all'interno del gruppo è stato coinvolto in progetti di questo calibro. L'inesperienza potrebbe causare ritardi ed errori 
+		& Ogni componente del gruppo renderà noto al Responsabile di progetto le difficoltà incontrate
+		& Probabilità: alta\newline Pericolo: alto\\
+		\rowcolor{LightGray}
+		Piano di contenimento:
+		&	\multicolumn{3}{p{12.5cm}}{I compiti e le attività con difficoltà maggiore saranno assegnati o a più membri o a quelli più esperti}\\[0.5cm]
+		
+		\hline
+		O01\newline Superamento dei costi
+		&	La pianificazione viene svolta dai membri. Essi non hanno alcuna esperienza nella gestione di progetto e i costi effettivi potrebbero superare quelli previsti a causa di sforamenti dei tempi. 
+		& Il Responsabile dovrà monitorare regolarmente le attività, in modo da evitare ritardi.
+		& Probabilità: basso \newline Pericolo: medio \\
+		 \rowcolor{LightGray} 	\hspace{3cm} 
+		 Piano di contenimento: 
+		& \multicolumn{3}{p{12.5cm}}{Se il ritardo di un'attività supera lo slack time$^*$, il Responsabile dovrà modificare il piano di progetto e dovrà redistribuire il lavoro tra i membri del gruppo in modo che le milestone$^*$ vengano rispettate}\\[0.5cm]
+		
+		\hline
+		G03\newline Problemi di comunicazione
+		&	I membri del gruppo non sono abituati a utilizzare i mezzi di comunicazione in modo professionale. \`E possibile, dunque, che il loro mancato uso (o magari errato) incida sui tempi previsti durante la pianificazione e conseguentemente sui costi. 
+		& Il Responsabile dovrà monitorare regolarmente l'uso dei mezzi di comunicazione, facendo attenzione alla correttezza e alla frequenza con cui vengono usati.
+		& Probabilità: basso \newline Pericolo: alto \\
+		\rowcolor{LightGray}
+		Piano di contenimento: 
+		& \multicolumn{3}{p{12.5cm}}{Se gli strumenti non vengono usati o non vengono usati a dovere, il Responsabile dovrà stimolarne l'uso corretto e abituale. Nel caso in cui tale misura non sortisca alcun effetto, sarà opportuno valutare un cambiamento degli strumenti di comunicazione adottati, adattandosi meglio alle esigenze del gruppo}\\[0.5cm]
+
+		\hline
+		R01\newline Mancata comprensione dei requisiti 
+		& I requisiti potrebbero essere male interpretati, causando la creazione di un prodotto non soddisfacente per la proponente
+		& Bisognerà collaborare con la proponente al fine di chiarire il più possibile i requisiti da concordare &
+		  Probabilità: medio-bassa \newline Pericolo: alto \\
+		\rowcolor{LightGray}
+		Piano di contenimento: 
+		& \multicolumn{3}{p{12.5cm}}{Il piano di progetto deve prevedere più incrementi per l'analisi dei requisiti, in modo da avere un maggior numero di occasioni in cui correggere i requisiti}\\[0.5cm]
+
+		\hline
+		T01\newline Tecnologie da applicare
+		& Il progetto richiede l'uso di tecnologie innovative non note ai membri del gruppo. I tempi di formazione e apprendimento potrebbero causare rallentamenti e, quindi, sforamenti dei tempi 
+		& Il Responsabile dovrà controllare che i membri si siano sufficientemente preparati al compito a loro assegnato 
+		& Probabilità: medio-alta \newline Pericolo: medio-basso \\
+		\rowcolor{LightGray}
+		Piano di contenimento: 
+		& \multicolumn{3}{p{12.5cm}}{Il Responsabile si occuperà di trovare ulteriori fonti da cui poter apprendere l'uso della tecnologia in questione. Nel caso questo non fosse sufficiente, il componente del gruppo verrà affiancato dallo stesso responsabile nel corso dell'apprendimento.}\\[0.5cm]
+
+		\hline
+		G02\newline Contrasti nel team
+		& I membri del gruppo non si conoscono tra di loro e, quindi, è possibile che nascano delle tensioni. 
+		&  Il Responsabile dovrà controllare regolarmente che i membri collaborino
+		& Probabilità: bassa \newline Pericolo: alto \\
+		\rowcolor{LightGray}
+		Piano di contenimento: 
+		& \multicolumn{3}{p{12.5cm}}{Il Responsabile assegnerà i compiti cercando di minimizzare i contatti tra i membri che sono in contrasto}\\[0.5cm]
+
+		\hline
+		R02\newline Richieste di modifica dei requisiti
+		& La proponente potrebbe decidere di cambiare i requisiti dopo il completamento dell'analisi. Ciò darebbe vita alla necessità dello svolgimento di una nuova analisi dei requisiti, causando una grande perdita di tempo e risorse impiegate.
+		& Bisognerà collaborare il più possibile con la proponente al fine di chiarire il più possibile i requisiti da concordare
+		& Probabilità: medio-bassa \newline Pericolo: alto \\
+		\rowcolor{LightGray}
+		Piano di contenimento:
+		& \multicolumn{3}{p{12.5cm}}{I nuovi requisiti dovranno essere oggetto di nuova negoziazione tra il gruppo OttoBit e la proponente}\\[0.5cm]
+
+		\hline
+		T03\newline Problemi software
+		& Il gruppo usa piattaforme e tecnologie appartenenti a terzi. \`E possibile che tali servizi non siano sempre disponibili o che presentino malfunzionamenti. Ciò potrebbe causare perdita di dati o di tempo.
+		& La causa è esterna e non è possibile un rilevamento preventivo
+		& Probabilità: bassa \newline Pericolo: medio \\
+		\rowcolor{LightGray}
+		Piano di contenimento: 
+		& \multicolumn{3}{p{12.5cm}}{Verrà effettuato ogni settimana il backup dei file presenti su tali piattaforme e applicazioni}\\[0.5cm]
+
+		\hline
+		T02\newline Problemi hardware
+		& I computer usati per lo sviluppo sono i PC dei membri del gruppo e potrebbero incorrere in guasti o malfunzionamenti più o meno gravi, causando perdita di dati o di tempo. 
+		& Ogni membro dovrà avvisare gli altri nel caso in cui il proprio PC presenti delle anomalie
+		& Probabilità: bassa \newline Pericolo: medio-basso \\
+		\rowcolor{LightGray}
+		Piano di contenimento: 
+		& \multicolumn{3}{p{12.5cm}}{Ogni membro è tenuto a effettuare un backup settimanale di tutti i file riguardanti il progetto}\\[0.5cm]
+\end{longtable}

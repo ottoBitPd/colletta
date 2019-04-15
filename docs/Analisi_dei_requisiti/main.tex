@@ -1,0 +1,108 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{color,colortbl}
+\usepackage{hyperref}
+\hypersetup{colorlinks,urlcolor=blue,linkcolor=black}
+\usepackage{fancyhdr}
+\usepackage{tabularx}
+\usepackage{enumitem}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=3cm]{geometry}
+\usepackage{ltablex}
+\usepackage{listings}
+\usepackage{lastpage}
+\usepackage{titlesec}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\includegraphics[scale=0.07]{images/logo.png}}
+
+\renewcommand {\footrulewidth}{0.2mm}
+\lfoot {Analisi dei requisiti}
+\rfoot{Pagina \thepage\ di \pageref{LastPage}}
+
+
+\usepackage{appendix}
+\usepackage{longtable}
+
+\definecolor{LightBlue}{rgb}{0,0,0.5}
+\definecolor{Gray}{gray}{0.8}
+\definecolor{LightGray}{gray}{0.9}
+
+
+\setcounter{tocdepth}{4}
+\setcounter{secnumdepth}{4}
+
+\titlespacing*{\subsection}{0pt}{8ex plus 1ex minus .2ex}{2.3ex plus .2ex}
+\titlespacing*{\subsubsection}{0pt}{8ex plus 1ex minus .2ex}{2.3ex plus .2ex}
+
+\begin{document}
+	\input{frontpage/frontpage.tex}
+	{\def\arraystretch{2}\tabcolsep=10pt
+	\newpage
+	\section*{\centering Registro delle modifiche}
+	\begin{tabularx}{\textwidth}{ c | c | c | c | X }
+		\rowcolor{LightBlue}
+		\color{white}\bfseries Versione & \color{white}\bfseries Data & \color{white}\bfseries Autore & \color{white}\bfseries Ruolo & \multicolumn{1}{c}{\color{white}\bfseries Descrizione}\\[0.25cm]
+		3.0.0 & 2019-04-11 & Giovanni Bergo & Responsabile & Approvazione documento\\ \hline
+		2.1.0 & 2019-04-11 & Michele Bortone & Verificatore & Verifica documento\\ \hline
+		2.0.2 & 2019-03-19 & Benedetto Cosentino & Analista & Tracciamento casi d'uso e requisiti funzionali\\ \hline
+		2.0.1 & 2019-03-18 & Gianmarco Pettenuzzo & Analista & Rinominato casi d'uso, aggiunti diagrammi UML\\ \hline
+		2.0.0 & 2019-03-06 & Gianmarco Pettenuzzo & Responsabile & Approvazione per il rilascio\\ \hline
+		1.1.0 & 2019-03-06 & Enrico Marcato & Verificatore & Documento verificato\\ \hline
+		1.0.11 & 2019-03-05 & Benedetto Cosentino & Analista & Aggiunti RDQ4 e RDQ5 e sostituito RDQ2\\ \hline
+		1.0.10 & 2019-03-05 & Gianmarco Pettenuzzo & Analista & Raffinamento UC-1, UC-2, UC-3 \\ \hline
+		1.0.9 & 2019-03-04 & Benedetto Cosentino & Analista & Aggiunta descrizione delle funzionalità del prodotto\\ \hline
+		1.0.8 & 2019-03-04 & Gianmarco Pettenuzzo & Analista & Aggiunti UC-59 e UC-60 e requisiti associati \\ \hline
+		1.0.7 & 2019-02-27 & Gianmarco Pettenuzzo & Analista & Tolto React dai casi requisiti di vincolo\\ \hline
+		1.0.6 & 2019-02-25 & Gianmarco Pettenuzzo & Analista & Aggiunto casi d'uso UC-58 e UC-33, aggiornato UC-1\\ \hline
+		1.0.5 & 2019-02-22 & Benedetto Cosentino & Analista & Aggiunta e revisione dei casi d'uso, inserimento dei nuovi requisiti\\ \hline
+		1.0.4 & 2019-02-22 & Gianmarco Pettenuzzo & Analista & Aggiunte al tracciamento e sostituzioni dei diagrammi UC-13 e UC-6\\ \hline
+		1.0.3 & 2019-02-21 & Gianmarco Pettenuzzo & Analista & Sistemato tracciamento e aggiunta immagine attori\\ \hline
+		1.0.2 & 2019-02-20 & Gianmarco Pettenuzzo & Analista & Correzione a tracciamento e aggiunte a requisiti\\ \hline
+		1.0.1 & 2019-02-15 & Benedetto Cosentino & Analista & Correzioni e aggiunte di nuovi casi d'uso \\ \hline
+		1.0.0 & 2019-01-12 & Benedetto Cosentino & Responsabile & Approvazione documento \\ \hline
+		0.1.0 & 2019-01-11 & Gianmarco Pettenuzzo & Verificatore & Verifica documento \\ \hline
+		0.0.13 & 2019-01-10 & Eleonora Peagno & Analista & Stesura sezione "Tecniche di apprendimento automatico" \\ \hline
+		0.0.12 & 2019-01-10 & Giovanni Bergo & Analista & Stesura casi d'uso UC-32 \\ \hline
+		0.0.11 & 2019-01-09 & Eleonora Peagno & Analista & Individuazione, stesura e tracciamento dei requisiti \\ \hline
+		0.0.10 & 2019-01-08 & Enrico Marcato & Analista & Aggiunta delle immagini per i casi d'uso dell'allievo\\ \hline
+		0.0.9 & 2019-01-08 & Giovanni Peron & Analista & Aggiunta delle immagini per i casi d'uso dell'insegnante\\ \hline
+		0.0.8 & 2019-01-08 & Benedetto Cosentino & Analista & Aggiunta delle immagini per i casi d'uso dello sviluppatore\\ \hline
+		0.0.7 & 2019-01-04 & Eleonora Peagno & Analista & Stesura introduzione e descrizione generale\\ \hline
+		0.0.6 & 2019-01-02 & Enrico Marcato & Analista & Stesura dei casi d'uso dell'attore allievo\\ \hline
+		0.0.5 & 2018-12-28 & Eleonora Peagno & Analista & Stesura UC-3, UC-4 e UC-5 dell'attore insegnante\\ \hline
+		0.0.4 & 2018-12-28 & Giovanni Peron & Analista & Avanzamento casi d'uso UC-1 UC-2 dell'attore insegnante\\ \hline
+		0.0.3 & 2018-12-28 & Benedetto Cosentino & Analista & Stesura dei casi d'uso dell'attore sviluppatore\\ \hline
+		0.0.2 & 2018-12-26 & Giovanni Peron & Analista & Stesura UC-1 e UC-2 cap3\\ \hline
+		0.0.1 & 2018-12-24 & Giovanni Peron & Analista & Creazione documento\\ \hline
+	\end{tabularx}
+	\newpage
+	\tableofcontents
+	\listoffigures
+	\listoftables
+	\newpage	
+	\section{Introduzione}
+		\input{intro.tex}	
+		\newpage	
+	\section{Descrizione generale}
+		\input{cap2.tex}
+		\newpage	
+	\section{Casi d'uso}
+		\input{casi1.tex}
+		\input{casi3.tex}
+		\newpage	
+	\section{Requisiti}
+		\input{cap4.tex}
+		\input{tabella_riepilogo.tex}
+		\newpage
+		\appendix
+		\input{P_o_S.tex}
+		
+\end{document}

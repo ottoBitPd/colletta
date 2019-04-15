@@ -1,0 +1,22 @@
+\noindent Il routing è realizzato dal framework Express e le richieste HTTP vengono smistate tra i vari presenter dell'applicazione, secondo il pattern Model-View-Presenter, ovvero:
+\begin{enumerate}
+	\item le routes inviano le richieste dell'utente che vengono realizzate da uno specifico presenter;
+	\item i presenters operano sul modello, ottengono i dati necessari alla visualizzazione delle pagine e le costruiscono;
+	\item le views sono passive e definiscono come sono costituite le varie pagine che verranno visualizzate dall'utente.
+\end{enumerate}
+
+\subparagraph*{Routes di visualizzazione}
+\begin{itemize}
+	\item \texttt{/home}: visualizza la vista principale dell'applicazione, con una barra di input di testo per lo svolgimento di un esercizio;
+	\item \texttt{/profile}: visualizza il profilo dell'utente autenticato;
+	\item \texttt{/exercise}: visualizza un form per lo svolgimento di un esercizio;
+	\item \texttt{/exercise/insert}: visualizza un form per l'inserimento di un esercizio;
+	\item \texttt{/registration}: visualizza un form per la registrazione alla piattaforma.
+\end{itemize}
+
+\subparagraph*{Routes di utilità}
+\begin{itemize}
+\item \texttt{/checklogin}: permette di controllare l'identità di un utente che ha richiesto l'autenticazione;
+\item \texttt{/saveuser}: permette la scrittura delle credenziali di un utente nel database;
+\item \texttt{/saveexercise}: permette la scrittura dei dati di un esercizio nel database.
+\end{itemize}

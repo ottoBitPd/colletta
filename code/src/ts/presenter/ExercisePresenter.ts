@@ -47,6 +47,9 @@ class ExercisePresenter extends PagePresenter{
                 this.view.setPosTranslation(posTranslation);
                 this.view.setPosTags(posTags);
                 this.view.setUserKind(UserKind.teacher);
+                console.log(posSolution);
+                console.log(posTranslation);
+                console.log(posTags);
                 response.send(await this.view.getPage());
             }
         });
@@ -103,13 +106,14 @@ class ExercisePresenter extends PagePresenter{
                         };
 
                         this.userSolution = solution[1];
-
-                         exerciseClient.insertExercise(request.body.sentence, ID, solution, valutation);
+                        this.correction = null;
+                        exerciseClient.insertExercise(request.body.sentence, ID, solution, valutation);
                         //exerciseClient.addValutation(request.body.sentence, "sessionauthorId","teacherIdValue", 10);//valori di prova
                         //await exerciseClient.insertExercise(request.body.sentence, "authorIdValue",);
 
                         //saving in the database the final solution for the exercise
                         //this.model.writeSolution(sentence.split(" "), finalTags, sentence, key);
+                        response.redirect('/');
                     } else {
 
                         let solution : any;
@@ -146,7 +150,6 @@ class ExercisePresenter extends PagePresenter{
                             this.userSolution = solution[1];
                             this.correction = {"mark" : valutation[1], "tags" : await exerciseClient.autosolve(request.body.sentence,ID)};
                         }
-
                     }
                 } else {
                     let solution : any;
@@ -180,15 +183,14 @@ class ExercisePresenter extends PagePresenter{
                     this.userSolution = solution[1];
                     this.correction = {"mark" : valutation[1], "tags" : await exerciseClient.autosolve(request.body.sentence,"")};
                 }
-
                 response.send(await this.view.getPage());
             }
         });
     }
     private extractTags(objSolution: any) {
         let tags = [];
-        for (let i in objSolution.sentence) {
-            tags.push(objSolution.sentence[i].label);
+        for (let i in objSolution) {
+            tags.push(objSolution[i]);
         }
         return tags;
     }

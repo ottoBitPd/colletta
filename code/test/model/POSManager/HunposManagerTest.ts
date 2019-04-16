@@ -16,7 +16,7 @@ describe('HunposManager', function () {
             expect(hunposManager).have.property("modelFilePath","src/ts/presenter/hunpos/other_model");
         });
     });
-
+    /* Da usare solo in locale (sulla repo mancano i file di hunpos)
     describe('HunposManager.getSolution()', function () {
         it('should set the model', function () {
             let solution = hunposManager.getSolution("ciao a tutti");
@@ -27,7 +27,7 @@ describe('HunposManager', function () {
         });
     });
 
-    /* Da usare solo in locale (sulla repo mancano i file di hunpos)
+
     // Integrazione?
     describe('HunposManager.train()', function () {
         it('should train the ML software', function () {

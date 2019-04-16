@@ -67,7 +67,7 @@ class ExerciseView extends PageView{
     }
 
     private showExercise(words : string[]) : string {
-        let ret ="    <div id=\"esercizio\">" +
+        let ret ="    <div class='text-center col-sm-12' id=\"esercizio\">" +
         "        <form method=\"POST\" action=\"/exercise/save\">";
 
         ret+=this.buildTable(words);
@@ -91,7 +91,7 @@ class ExerciseView extends PageView{
                 "                <option value=\"5\">Molto difficile</option>" +
                 "            </select>";
         if (this.userKind !== UserKind.teacher){
-            ret+="            <p class='col-sm-4'>Scegli il professore per la correzione</p>"+
+            ret+="            <p class='col-sm-12'>Scegli il professore per la correzione</p>"+
                 "            <select class='form-control' name='correction'>" +
                 "               <option value='auto'>Correzione generata automaticamente</option>";
             for (let i in this.corrections){
@@ -99,7 +99,7 @@ class ExerciseView extends PageView{
             }
         }
         ret+="            </select>"+
-            "            <button id=\"submit\">Invia</button>" +
+            "            <button class='btn btn-primary my-2' id=\"submit\">Invia</button>" +
             "        </form>" +
             "    </div>";
         return ret;
@@ -121,8 +121,8 @@ class ExerciseView extends PageView{
 
         let solution = this.exercisePresenter.getUserSolution();
         let correction = this.exercisePresenter.getCorrection();
-        console.log(solution);
-        console.log(correction);
+        //console.log("solution: ",solution);
+        //console.log("correction: ",correction);
         if (correction){
             for (let i = 0; i < words.length; ++i){
                 ret +=
@@ -149,11 +149,12 @@ class ExerciseView extends PageView{
 
 
     private buildTable(words : string[]){
+        let n = (this.userKind == UserKind.teacher ? "4" : "6");
         let table=""+
-            "<ul class='list-group'>" +
+            "<ul class='list-group text-center'>" +
             "<li class='list-group-item active'>" +
             "<div class='row'>" +
-                "<div class='col-sm-4'>" +
+                "<div class='col-sm-"+n+"'>" +
                 "FRASE" +
                 "</div>";
             if(this.userKind === UserKind.teacher) {
@@ -162,7 +163,7 @@ class ExerciseView extends PageView{
                 "CORREZIONE AUTOGENERATA" +
                 "</div>";
             }
-        table +="<div class='col-sm-4'>" +
+        table +="<div class='col-sm-"+n+"'>" +
                 "CORREZIONE" +
                 "</div>" +
             "</div>" +
@@ -171,7 +172,7 @@ class ExerciseView extends PageView{
             table += ""+
             "<li class='list-group-item'>" +
                 "<div class='row'>" +
-                    "<div class='col-sm-4'>" +
+                    "<div class='col-sm-"+n+"'>" +
                         words[i] +
                     "</div>";
                 if(this.userKind === UserKind.teacher) {
@@ -181,10 +182,8 @@ class ExerciseView extends PageView{
                     "</div>";
                 }
             table+=
-                "<div class='row'>" +
-                "<div class='col-sm-4'>" +
+                "<div class='col-sm-"+n+"'>" +
                 this.getSelect(i) +
-                "</div>"+
                 "</div>" +
                 "</li>";
         }

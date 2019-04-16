@@ -58,7 +58,7 @@ class HunposManager implements POSManager{
 
     getSolution(sentence:string):any{
         this.buildInputFile(sentence);
-        //this.train();
+        this.train();
         this.tag();
         return this.buildSolution();
     };

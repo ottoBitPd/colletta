@@ -213,6 +213,7 @@ class ExercisePresenter extends PagePresenter{
      * @returns {string} a string containing the italian translation of the tag
      */
     public translateTag(tag : string){
+        console.log("arriva: "+tag);
         const content = fileSystem.readFileSync("./src/ts/presenter/vocabolario.json");
         const jsonContent = JSON.parse(content.toString());
 
@@ -240,6 +241,7 @@ class ExercisePresenter extends PagePresenter{
                 result+=jsonContent[x];
             }
         }
+        console.log("esce: "+result);
         return result;
     }
 
@@ -307,6 +309,7 @@ class ExercisePresenter extends PagePresenter{
                             actualTag += dataCorrection[i];
                         }
                     }
+
                 }
 
                 optionsIndex++;

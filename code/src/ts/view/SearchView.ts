@@ -99,30 +99,44 @@ class SearchView extends PageView{
             return "<h2 class='h5 text-danger text-center'>Nessun risultato</h2>";//resultList is not set yet, cause nobody searched yet
         }
         let ret="<h2>Esercizi: </h2>\n";
+        let form :string, title :string;
+        title="FRASE";
         if(this.searchPresenter.getSearchType()==="exercise") {
-            ret+="<form method='post' action='/exercise'>";
+            form="\t\t\t\t\t\t<form method='post' action='/exercise'>\n";
         }
         if(this.searchPresenter.getSearchType()==="classExercise") {
-            ret+="<form method='post' action='/addexercise'>";
+            form="\t\t\t\t\t\t<form method='post' action='/addexercise'>\n";
         }
         if(this.searchPresenter.getSearchType()==="student") {
-            ret+="<form method='post' action='/addstudent'>";
+            form="\t\t\t\t\t\t<form method='post' action='/addstudent'>\n";
+            title="USERNAME";
         }
-        ret+="<ul class=\"list-group\">\n";
+        ret+="\t<div class=\"col-sm-12\">" +
+            "\t\t<ul class=\"list-group\">\n"+
+            "\t\t\t<li class='list-group-item active'>" +
+            "\t\t\t\t<div class='row'>" +
+            "\t\t\t\t\t<div class='col-sm-9 mx-auto'>"+title+"</div>" +
+            "\t\t\t\t\t<div class='col-sm-3 mx-auto'></div>" +
+            "\t\t\t\t</div>" +
+            "\t\t\t</li>";
         results.forEach((value: string, key: string) => {
-            ret+="<li class=\"list-group-item\"><p class='d-inline pr-1'>" + value + "</p>";
+            ret+="\t\t\t<li class=\"list-group-item\">" +
+                "\t\t\t\t<div class='row'>" +
+                "\t\t\t\t\t<div class='col-sm-9 mx-auto'>"+value+"</div>\n"+
+                "\t\t\t\t\t<div class='col-sm-3 mx-auto text-center'>\n" +
+                form;
             if(this.searchPresenter.getSearchType()==="exercise") {
-                ret+="<button class='btn btn-primary btn-sm float-right' name='sentence' value='" + value + "' type='submit'>Esegui esercizio</button>";
+                ret+="\t\t\t\t\t\t\t<button class='btn btn-primary btn-sm' name='sentence' value='" + value + "' type='submit'>Esegui esercizio</button>\n</form>\n</div>\n</div>";
             }
             if(this.searchPresenter.getSearchType()==="classExercise") {
-                ret+="<button class='btn btn-primary btn-sm float-right' name='exerciseId' value='" + key + "' type='submit'>Aggiungi esercizio alla classe</button>";
+                ret+="\t\t\t\t\t\t\t<button class='btn btn-primary btn-sm' name='exerciseId' value='" + key + "' type='submit'>Aggiungi esercizio alla classe</button>\n</form>\n</div>\n</div>";
             }
             if(this.searchPresenter.getSearchType()==="student") {
-                ret+="<button class='btn btn-primary btn-sm float-right' name='studentId' value='" + key + "' type='submit'>Aggiungi alla classe</button>";
+                ret+="\t\t\t\t\t\t\t<button class='btn btn-primary btn-sm' name='studentId' value='" + key + "' type='submit'>Aggiungi alla classe</button>\n\t\t\t\t\t\t</form>\n\t\t\t\t\t</div>\n\t\t\t\t</div>";
             }
-            ret+="</li>\n";
+            ret+="\t\t\t</li>\n";
         });
-        return "</ul></form>\n"+ret;
+        return "\t\t</ul>\n"+ret;
     }
 }
 export {SearchView};

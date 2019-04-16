@@ -87,9 +87,8 @@ class Exercise implements Data{
         }
         else{
             let tags:string [] = [];
-            const solutions= this.getSolutions();
             if(teacherID!==undefined){
-                const teacherSolution=solutions.find(function(element){
+                const teacherSolution=this.solutions.find(function(element){
                     return element.getSolverId()===teacherID;
                 });
                 if(teacherSolution===undefined){

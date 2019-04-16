@@ -1,1 +1,0 @@
-{"version":3,"file":"UserClient.js","sourceRoot":"","sources":["../../../src/ts/model/UserClient.ts"],"names":[],"mappings":";;AAAA,+DAA0D;AAG1D,MAAM,UAAU;IAEZ;QACI,IAAI,CAAC,aAAa,GAAE,IAAI,yCAAmB,EAAE,CAAC;IAClD,CAAC;IAED;;OAEG;IAEH,MAAM,CAAC,IAAW;QACd,OAAO,IAAI,CAAC,aAAa,CAAC,MAAM,CAAC,IAAI,CAAC,CAAC;IAC3C,CAAC;CACJ;AACM,gCAAU"}

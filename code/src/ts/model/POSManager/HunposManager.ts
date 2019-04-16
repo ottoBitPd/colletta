@@ -23,10 +23,10 @@ class HunposManager implements POSManager{
     }
 
     setModel(modelFilePath:string):void{
-        //this.modelFilePath=modelFilePath;
+        this.modelFilePath=modelFilePath;
     };
 
-    buildInputFile(sentence:string):void{
+    private buildInputFile(sentence:string):void{
         var words = sentence.split(" ");
 
         fileSystem.writeFile(this.inputFilePath,'',() => console.log('done'));
@@ -40,7 +40,7 @@ class HunposManager implements POSManager{
         }
     };
 
-    buildSolution():any{
+    private buildSolution():any{
         var wordSolArray = fileSystem.readFileSync(this.outputFilePath).toString().split("\n");
         console.log("arr: "+wordSolArray);
         let obj : any= {
@@ -56,8 +56,8 @@ class HunposManager implements POSManager{
         return obj;
     };
 
-    getSolution(modelFilePath:string):any{
-        this.buildInputFile(modelFilePath);
+    getSolution(sentence:string):any{
+        this.buildInputFile(sentence);
         //this.train();
         this.tag();
         return this.buildSolution();
@@ -70,13 +70,13 @@ class HunposManager implements POSManager{
         //scommentare per mac/linux
         shell.exec('./src/ts/presenter/hunpos/hunpos-train ' + this.modelFilePath + '< ./src/ts/presenter/hunpos/train');
     };
+
     tag():void{
         const shell = require('shelljs');
         //scommentare per windows
         //shell.exec('src\\ts\\presenter\\hunpos\\hunpos-tag ' + this.modelFilePath + '< ' + this.inputFilePath + '>' + this.outputFilePath);
         //scommentare per mac/linux
         shell.exec('./src/ts/presenter/hunpos/hunpos-tag ' + this.modelFilePath + '< ' + this.inputFilePath + '>' + this.outputFilePath);
-
     };
 }
 

@@ -41,7 +41,7 @@
   "mp" : "maschile plurale",
   "mn" : "maschile non specificato",
 
-  "fileSystem": "femminile singolare",
+  "fs": "femminile singolare",
   "fp" : "femminile plurale",
   "fn" : "femminile non specificato",
 

@@ -44,22 +44,22 @@ class RegistrationView extends PageView_1.PageView {
             ret += "" +
                 "\t\t\t<form method='post' action='/saveuser'>\n" +
                 "\t\t\t\t<div class=\"form-group\">\n" +
-                "\t\t\t\t\t<label class='h5' for=\"sentence\">Inserisci i tuoi dati</label>\n " +
-                "\t\t\t\t\t<input type=\"text\" class=\"form-control my-2\" id=\"name\" name=\"name\" placeholder=\"Inserisci il tuo nome\" required/>" +
-                "\t\t\t\t\t<input type=\"text\" class=\"form-control my-2\" id=\"surname\" name=\"surname\" placeholder=\"Inserisci il tuo cognome\" required/>" +
-                "\t\t\t\t\t<input type=\"text\" class=\"form-control my-2\" id=\"city\" name=\"city\" placeholder=\"Inserisci la tua città\" required/>" +
-                "\t\t\t\t\t<input type=\"text\" class=\"form-control my-2\" id=\"school\" name=\"school\" placeholder=\"Inserisci la tua scuola\" required/>" +
-                "\t\t\t\t\t<select class='form-control my-2' name=\"role\" id='role' onchange=\"myFunction()\" required>" +
-                "\t\t\t\t\t<option value=\"student\">Allievo</option>" +
-                "\t\t\t\t\t<option value=\"teacher\">Insegnante</option>" +
-                "\t\t\t\t\t</select>" +
-                "\t\t\t\t\t<input type=\"text\" class='form-control my-2' style=\"display: none;\" id=\"inps\" name=\"inps\" placeholder=\"Inserisci il tuo codice inps\" required/>" +
-                "\t\t\t\t\t<input type=\"text\" class='form-control my-2' id=\"email\" name=\"email\" placeholder=\"Inserisci la tua email\" required/> " +
-                "\t\t\t\t\t<input type=\"text\" class='form-control my-2' id=\"username\" name=\"username\" placeholder=\"Inserisci la tua username\" required/> " +
-                "\t\t\t\t\t<input type=\"password\" class='form-control my-2' id=\"password\" name=\"password\" placeholder=\"Inserisci la tua password\" required/> " +
-                "\t\t\t\t\t<input type=\"password\" class='form-control my-2' id=\"checkpassword\" name=\"checkpassword\" placeholder=\"Conferma la tua password\" oninput=\"checkPassword()\" required/> " +
-                "\t\t\t\t\t<p id='messPassword'></p>" +
-                "\t\t\t\t\t<button type=\"submit\" id='btnsubmit' class=\"btn btn-primary my-2 my-sm-0 w-25\">Invia</button>" +
+                "\t\t\t\t\t<label class='h5' for=\"sentence\">Inserisci i tuoi dati</label>\n" +
+                "\t\t\t\t\t<input type=\"text\" class=\"form-control my-2\" id=\"name\" name=\"name\" placeholder=\"Inserisci il tuo nome\" required/>\n " +
+                "\t\t\t\t\t<input type=\"text\" class=\"form-control my-2\" id=\"surname\" name=\"surname\" placeholder=\"Inserisci il tuo cognome\" required/>\n " +
+                "\t\t\t\t\t<input type=\"text\" class=\"form-control my-2\" id=\"city\" name=\"city\" placeholder=\"Inserisci la tua città\" required/>\n " +
+                "\t\t\t\t\t<input type=\"text\" class=\"form-control my-2\" id=\"school\" name=\"school\" placeholder=\"Inserisci la tua scuola\" required/>\n " +
+                "\t\t\t\t\t<select class='form-control my-2' name=\"role\" id='role' onchange=\"myFunction()\" required>\n " +
+                "\t\t\t\t\t<option value=\"student\">Allievo</option>\n " +
+                "\t\t\t\t\t<option value=\"teacher\">Insegnante</option>\n " +
+                "\t\t\t\t\t</select>\n" +
+                "\t\t\t\t\t<input type=\"text\" class='form-control my-2' style=\"display: none;\" id=\"inps\" name=\"inps\" value=\"n\" placeholder=\"Inserisci il tuo codice inps\" required/>\n" +
+                "\t\t\t\t\t<input type=\"text\" class='form-control my-2' id=\"email\" name=\"email\" placeholder=\"Inserisci la tua email\" required/>\n" +
+                "\t\t\t\t\t<input type=\"text\" class='form-control my-2' id=\"username\" name=\"username\" placeholder=\"Inserisci la tua username\" required/>\n" +
+                "\t\t\t\t\t<input type=\"password\" class='form-control my-2' id=\"password\" name=\"password\" placeholder=\"Inserisci la tua password\" required/>\n" +
+                "\t\t\t\t\t<input type=\"password\" class='form-control my-2' id=\"checkpassword\" name=\"checkpassword\" placeholder=\"Conferma la tua password\" oninput=\"checkPassword()\" required/>\n" +
+                "\t\t\t\t\t<p id='messPassword'></p>\n" +
+                "\t\t\t\t\t<button type=\"submit\" id='btnsubmit' class=\"btn btn-primary my-2 my-sm-0 w-25\">Invia</button>\n" +
                 "\t\t\t\t</div>\n" +
                 "\t\t\t</form>\n " +
                 "\t\t</div>\n" +

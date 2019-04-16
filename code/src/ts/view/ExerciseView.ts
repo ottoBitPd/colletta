@@ -90,12 +90,13 @@ class ExerciseView extends PageView{
                 "                <option value=\"4\">Difficile</option>" +
                 "                <option value=\"5\">Molto difficile</option>" +
                 "            </select>";
-        if (this.userKind !== UserKind.teacher)
+        if (this.userKind !== UserKind.teacher){
             ret+="            <p class='col-sm-4'>Scegli il professore per la correzione</p>"+
                 "            <select class='form-control' name='correction'>" +
                 "               <option value='auto'>Correzione generata automaticamente</option>";
-        for (let i in this.corrections){
-            ret+= "<option value='" + this.corrections[i].id + "'>" + this.corrections[i].username + "</option>";
+            for (let i in this.corrections){
+                ret+= "<option value='" + this.corrections[i].id + "'>" + this.corrections[i].username + "</option>";
+            }
         }
         ret+="            </select>"+
             "            <button id=\"submit\">Invia</button>" +

@@ -95,10 +95,10 @@ class SearchView extends PageView{
         if(results===undefined){
             return "";//resultList is not set yet, cause nobody searched yet
         }
-        if(results.size<=0){
+        if(results.size===0){
             return "<h2 class='h5 text-danger text-center'>Nessun risultato</h2>";//resultList is not set yet, cause nobody searched yet
         }
-        let ret="<h2>Esercizi: </h2>\n";
+        let ret="";
         let form :string, title :string;
         title="FRASE";
         if(this.searchPresenter.getSearchType()==="exercise") {
@@ -111,14 +111,16 @@ class SearchView extends PageView{
             form="\t\t\t\t\t\t<form method='post' action='/addstudent'>\n";
             title="USERNAME";
         }
-        ret+="\t<div class=\"col-sm-12\">" +
-            "\t\t<ul class=\"list-group\">\n"+
-            "\t\t\t<li class='list-group-item active'>" +
-            "\t\t\t\t<div class='row'>" +
-            "\t\t\t\t\t<div class='col-sm-9 mx-auto'>"+title+"</div>" +
-            "\t\t\t\t\t<div class='col-sm-3 mx-auto'></div>" +
-            "\t\t\t\t</div>" +
-            "\t\t\t</li>";
+        if(results.size>0) {
+            ret += "\t<div class=\"col-sm-12\">" +
+                "\t\t<ul class=\"list-group\">\n" +
+                "\t\t\t<li class='list-group-item active'>" +
+                "\t\t\t\t<div class='row'>" +
+                "\t\t\t\t\t<div class='col-sm-9 mx-auto'>" + title + "</div>" +
+                "\t\t\t\t\t<div class='col-sm-3 mx-auto'></div>" +
+                "\t\t\t\t</div>" +
+                "\t\t\t</li>";
+        }
         results.forEach((value: string, key: string) => {
             ret+="\t\t\t<li class=\"list-group-item\">" +
                 "\t\t\t\t<div class='row'>" +

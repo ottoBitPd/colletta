@@ -26,11 +26,15 @@ class SearchPresenter extends PagePresenter {
     }
     private exerciseSearchPage(app : any){
         app.get('/exercise/search', async (request: any, response: any) => {
+            //console.log("sentence: ",request.body.sentence);
+            if(request.query.s === undefined){
+                this.setResults([]);
+            }
             session.invalidLogin = request.query.mess==="invalidLogin";
             let menuList :any;
             menuList= {
                 0 :{"link":"/","name":"Homepage"}
-            }
+            };
             this.setSearchType("exercise");
             /*this.view.setTitle("Ricerca esercizio");*/
             this.view.setMenuList(menuList);
@@ -46,25 +50,28 @@ class SearchPresenter extends PagePresenter {
                 let map = await exerciseClient.searchExercise(request.body.sentence);//returns map<idEsercizio, sentence>
                 this.setResults(map);
                 if(this.searchType==="exercise")
-                    response.redirect("/exercise/search");
+                    response.redirect("/exercise/search?s="+encodeURIComponent(request.body.sentence));
                 if(this.searchType==="classExercise")
-                    response.redirect(307,"/class/exercise/search");
+                    response.redirect(307,"/class/exercise/search?s="+encodeURIComponent(request.body.sentence));
             }
             else{
                 this.setResults(new Map());
                 if(this.searchType==="exercise")
                     response.redirect("/exercise/search");
                 if(this.searchType==="classExercise")
-                    response.redirect(307,"/class/exercise/search");
+                    response.redirect(307,"/class/exercise/search?s="+encodeURIComponent(request.body.sentence));
             }
         });
     }
     private studentSearchPage(app: any) {
         app.post('/student/insert', async (request: any, response: any) => {
+            if(request.query.s === undefined){
+                this.setResults([]);
+            }
             let menuList :any;
             menuList= {
                 0 :{"link":"/","name":"Homepage"}
-            }
+            };
             this.setSearchType("student");
            /* this.view.setTitle("Ricerca studente");*/
             this.view.setMenuList(menuList);
@@ -79,11 +86,11 @@ class SearchPresenter extends PagePresenter {
             if(userClient) {
                 let map = await userClient.searchUser(request.body.sentence, false);//returns map<idEsercizio, sentence>
                 this.setResults(map);
-                response.redirect(307,"/student/insert");
+                response.redirect(307,"/student/insert?s="+encodeURIComponent(request.body.sentence));
             }
             else{
                 this.setResults(new Map());
-                response.redirect(307,"/student/insert");
+                response.redirect(307,"/student/insert?s="+encodeURIComponent(request.body.sentence));
             }
         });
     }
@@ -97,6 +104,9 @@ class SearchPresenter extends PagePresenter {
 
     private classExerciseSearchPage(app: any) {
         app.post('/class/exercise/search', async (request: any, response: any) => {
+            if(request.query.s === undefined){
+                this.setResults([]);
+            }
             let menuList :any;
             menuList= {
                 0 :{"link":"/","name":"Homepage"}

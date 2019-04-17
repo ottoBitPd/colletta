@@ -5,8 +5,13 @@ import {Solution} from "./Solution";
 
 class Student extends User {
 
-    constructor (id : string, username : string, password: string, name : string, lastname:string, city:string, school : string, email : string){
+    private classId : any;
+    constructor (id : string, username : string, password: string, name : string, lastname:string, city:string, school : string, email : string, classId? :string){
         super(id, username, password, name, lastname, city, school, email);
+        if(classId)
+            this.classId=classId;
+        else
+            this.classId="undefined";
     }
 
     public getClasses(classList: Class[]): Class[] {
@@ -47,6 +52,13 @@ class Student extends User {
             });
 
         return averageMap;
+    }
+    public isStudent(): boolean {
+        return true;
+    }
+
+    public getClassId() {
+        return this.classId;
     }
 }
 export {Student}

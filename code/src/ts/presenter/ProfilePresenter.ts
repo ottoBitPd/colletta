@@ -103,6 +103,15 @@ class ProfilePresenter extends PagePresenter{
             response.send(await this.view.getPage());
         });
     }
+    public async getStudentClass () {
+        let userClient= this.client.getUserClient();
+        if(userClient){
+            const id = await userClient.search(session.username);
+            const userData = await userClient.getUserData(id);
+            console.log("userData: ",userData.classId);
+            return userData.classId;
+        }
+    }
 
 }
 export {ProfilePresenter};

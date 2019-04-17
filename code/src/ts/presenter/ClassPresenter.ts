@@ -1,5 +1,6 @@
 import {PagePresenter} from "./PagePresenter"
 import {Client} from "../model/Client/Client";
+import {UserKind} from "../view/PageView";
 
 var session = require('express-session');
 
@@ -30,10 +31,17 @@ class ClassPresenter extends PagePresenter {
             menuList= {
                 0 :{"link":"/","name":"Homepage"}
             }
-            console.log("IDCLASSE: "+request.query.classId)
             this.setClassId(request.query.classId);
             this.view.setTitle("Classe");
             this.view.setMenuList(menuList);
+            let userClient= this.client.getUserClient();
+            if(userClient){
+                if(await userClient.isTeacher(session.username))
+                    this.view.setUserKind(UserKind.teacher);
+                else
+                    this.view.setUserKind(UserKind.student);
+            }
+
             /*console.log("Id della classe: "+request.query.classId);
             this.view.setClass(await this.getClassData(request.query.classId));
             let students = await this.getStudents(request.query.classId);
@@ -149,10 +157,12 @@ class ClassPresenter extends PagePresenter {
     private addStudent(app: any) {
         app.post('/addstudent', async (request: any, response: any) => {
             let classClient = this.client.getClassClient();
-            if(classClient) {
-                console.log("studentId: "+request.body.studentId+"classId: "+this.classId);
+            let userClient = this.client.getUserClient();
+            if(classClient && userClient) {
+                console.log("studentId: "+request.body.studentId+" classId: "+this.classId);
                 await classClient.addStudent(request.body.studentId,this.classId);
                 //ritorna boolean per gestione errore
+                await userClient.addClassToStudent(request.body.studentId,this.classId);
             }
             response.redirect('/class?classId='+this.classId);
             //response.redirect(307, '/class');

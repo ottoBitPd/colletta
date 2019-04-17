@@ -75,6 +75,10 @@ abstract class User implements Data{
         return false;
     }
 
+    public isStudent() :boolean {
+        return false;
+    }
+
     public abstract getClasses(classList : Class[]) : Class[];
 
     public getID() {

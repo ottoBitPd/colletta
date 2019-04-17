@@ -1,4 +1,4 @@
-import {PageView} from "./PageView";
+import {PageView, UserKind} from "./PageView";
 import {ClassPresenter} from "../presenter/ClassPresenter";
 
 class ClassView extends PageView {
@@ -21,25 +21,32 @@ class ClassView extends PageView {
         ret += this.getMenu();
         ret += "\t<div class=\"container\">";
         ret += await this.printClassInfo();
-        ret += "" +
-        "\t<h1 class=\"text-center mt-5\">Studenti di questa classe</h1>\n" +
-        "\t\t<div class='col-sm-12 text-right'>\n" +
-        "\t\t\t<form method='post' action='/student/insert'>\n" +
-        "\t\t\t\t<button class='btn btn-primary my-3' name='key' value='"+_class.id+"' type='submit'>Aggiungi uno studente</button>\n" +
-        "\t\t\t</form>\n" +
-        "\t\t</div>\n";
-        "\t\t<div class='col-sm-12 text-right'>\n" +
-        //"\t\t\t<button class='btn btn-primary my-3' name='key' value='-LbqtnBcdB6IPyvIcfMf' type='submit'>Aggiungi uno studente</button>\n" +
-        "\t\t</div>\n";
-        ret += await this.printStudentsList();
-        ret += "" +
-        "\t<h1 class=\"text-center mt-5\">Esercizi assegnati alla classe</h1>\n" +
-        "\t\t<div class='col-sm-12 text-right'>\n" +
-        "\t\t\t<form method='post' action='/class/exercise/search'>\n" +
-        "\t\t\t\t<button class='btn btn-primary my-3' name='key' value='"+_class.id+"' type='submit'>Assegna un nuovo esercizio</button>\n" +
-        "\t\t\t</form>\n" +
-        "\t\t</div>\n";
+        if(this.userKind===UserKind.teacher) {
+            ret += "" +
+                "\t<h1 class=\"text-center mt-5\">Studenti di questa classe</h1>\n" +
+                "\t\t<div class='col-sm-12 text-right'>\n" +
+                "\t\t\t<form method='post' action='/student/insert'>\n" +
+                "\t\t\t\t<button class='btn btn-primary my-3' name='key' value='" + _class.id + "' type='submit'>Aggiungi uno studente</button>\n" +
+                "\t\t\t</form>\n" +
+                "\t\t</div>\n";
+            "\t\t<div class='col-sm-12 text-right'>\n" +
+            //"\t\t\t<button class='btn btn-primary my-3' name='key' value='-LbqtnBcdB6IPyvIcfMf' type='submit'>Aggiungi uno studente</button>\n" +
+            "\t\t</div>\n";
+            ret += await this.printStudentsList();
+            ret += "" +
+                "\t<h1 class=\"text-center mt-5\">Esercizi assegnati alla classe</h1>\n" +
+                "\t\t<div class='col-sm-12 text-right'>\n" +
+                "\t\t\t<form method='post' action='/class/exercise/search'>\n" +
+                "\t\t\t\t<button class='btn btn-primary my-3' name='key' value='" + _class.id + "' type='submit'>Assegna un nuovo esercizio</button>\n" +
+                "\t\t\t</form>\n" +
+                "\t\t</div>\n";
+        }
+        else{
+            ret += "" +
+                "\t<h1 class=\"text-center mt-5\">Esercizi assegnati alla classe</h1>\n";
+        }
         ret += await this.printExercisesList();
+
         ret += "\t</div>";
         ret += this.getFoot("");
         return ret;
@@ -188,12 +195,19 @@ class ClassView extends PageView {
                 ret+="\t\t\t<li class='list-group-item'>\n" +
                     "\t\t\t\t<div class='row'>\n" +
                     "\t\t\t\t\t<div class='col-sm-9 mx-auto'>"+exercises[i].sentence+"</div>\n" +
-                    "\t\t\t\t\t<div class='col-sm-3 mx-auto'>"+
-                    "\t\t\t\t\t\t<form method='post' action='/deleteexercise'>" +
-                    "\t\t\t\t\t\t\t<input  name='classId' value='"+this.classPresenter.getClassId()+"' type='hidden'/>\n" +
-                    "\t\t\t\t\t\t\t<button class='btn btn-danger btn-sm' name='exerciseId' value='"+exercises[i].key+"' type='submit'>Elimina</button>\n" +
-                    "\t\t\t\t\t\t</form>" +
-                    "\t\t\t\t\t</div>\n" +
+                    "\t\t\t\t\t<div class='col-sm-3 mx-auto'>";
+                    if( this.userKind === UserKind.teacher) {
+                        ret+="\t\t\t\t\t\t<form method='post' action='/deleteexercise'>" +
+                        "\t\t\t\t\t\t\t<input  name='classId' value='" + this.classPresenter.getClassId() + "' type='hidden'/>\n" +
+                        "\t\t\t\t\t\t\t<button class='btn btn-danger btn-sm' name='exerciseId' value='" + exercises[i].key + "' type='submit'>Elimina</button>\n" +
+                        "\t\t\t\t\t\t</form>";
+                    }
+                    else{
+                        ret+="\t\t\t\t\t\t<form method='post' action='/exercise'>" +
+                        "\t\t\t\t\t\t\t<button class='btn btn-primary btn-sm' name='sentence' value='" + exercises[i].sentence + "' type='submit'>Esegui Esercizio</button>\n" +
+                        "\t\t\t\t\t\t</form>";
+                    }
+                    ret+="\t\t\t\t\t</div>\n" +
                     "\t\t\t\t</div>\n" +
                     "\t\t\t</li>\n";
             };

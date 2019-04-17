@@ -27,7 +27,7 @@ class ProfileView extends PageView_1.PageView {
     getPage() {
         return __awaiter(this, void 0, void 0, function* () {
             let ret = this.getHead();
-            ret += this.getMenu();
+            ret += yield this.getMenu();
             ret += "<div class=\"container\">" +
                 "\t<h1 class ='text-center mb-5'>Informazioni profilo:</h1>\n";
             if (this.error !== undefined) {
@@ -227,43 +227,52 @@ class ProfileView extends PageView_1.PageView {
         });
     }
     getMenu() {
-        let ret = "" +
-            "<nav class=\"navbar navbar-expand-sm bg-dark navbar-dark\">" +
-            "\t<a href='/' class=\"navbar-brand\">Colletta</a>" +
-            "\t<button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#collapsibleNavbar\">" +
-            "\t\t<span class=\"navbar-toggler-icon\"></span>" +
-            "\t</button>" +
-            "\t<div class=\"collapse navbar-collapse\" id=\"collapsibleNavbar\">" +
-            "\t\t<ul class=\"navbar-nav mr-auto\">";
-        if (this.userKind === PageView_1.UserKind.student) {
-            ret += "" +
-                "\t\t\t<li class=\"nav-item\">\n" +
-                "\t\t\t\t<a id=\"toProgress\" href= \"#progress\" class=\"nav-link\" >I tuoi progressi</a>\n" +
-                "\t\t\t</li>\n";
-        }
-        else { //insegnante
-            ret += "" +
-                "\t\t\t<li class=\"nav-item\">\n" +
-                "\t\t\t\t<a href= \"/classes\" class=\"nav-link\" >Area classi</a>\n" +
-                "\t\t\t</li>\n" +
-                "<li class=\"nav-item\">\n" +
-                //href= "/exercise/insert" credo
-                "\t\t\t\t<a href= \"#\" class=\"nav-link\" onclick='document.getElementById(\"insertExerciseForm\").classList.toggle(\"d-none\")'>Crea esercizio</a>\n" +
-                "\t\t\t</li>\n";
-        }
-        ret += "\t\t</ul>";
-        //aggiungo login o logout
-        ret += this.getLoginArea();
-        ret += "\t</div>" +
-            "</nav>";
-        ret +=
-            "<form method='post' action='/exercise/insert' id='insertExerciseForm' class='d-none'>" +
-                "   <div class=\"input-group col-sm-4 py-2 bg-dark\">" +
-                "       <input type=\"text\" name=\"sentence\" class=\"form-control\">" +
-                "       <button type=\"submit\" class=\"btn btn-primary\">Invia</button>" +
-                "   </div>" +
-                "</form>";
-        return ret;
+        return __awaiter(this, void 0, void 0, function* () {
+            let ret = "" +
+                "<nav class=\"navbar navbar-expand-sm bg-dark navbar-dark\">" +
+                "\t<a href='/' class=\"navbar-brand\">Colletta</a>" +
+                "\t<button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#collapsibleNavbar\">" +
+                "\t\t<span class=\"navbar-toggler-icon\"></span>" +
+                "\t</button>" +
+                "\t<div class=\"collapse navbar-collapse\" id=\"collapsibleNavbar\">" +
+                "\t\t<ul class=\"navbar-nav mr-auto\">";
+            if (this.userKind === PageView_1.UserKind.student) {
+                ret += "" +
+                    "\t\t\t<li class=\"nav-item\">\n" +
+                    "\t\t\t\t<a id=\"toProgress\" href= \"#progress\" class=\"nav-link\" >I tuoi progressi</a>\n" +
+                    "\t\t\t</li>\n";
+                let classId = yield this.profileController.getStudentClass();
+                console.log("classIdView: ", classId);
+                if (classId !== "undefined") {
+                    ret += "\t\t\t<li class=\"nav-item\">\n" +
+                        "\t\t\t\t<a href= \"/class?classId=" + classId + "\" class=\"nav-link\" >La tua classe</a>\n" +
+                        "\t\t\t</li>\n";
+                }
+            }
+            else { //insegnante
+                ret += "" +
+                    "\t\t\t<li class=\"nav-item\">\n" +
+                    "\t\t\t\t<a href= \"/classes\" class=\"nav-link\" >Area classi</a>\n" +
+                    "\t\t\t</li>\n" +
+                    "<li class=\"nav-item\">\n" +
+                    //href= "/exercise/insert" credo
+                    "\t\t\t\t<a href= \"#\" class=\"nav-link\" onclick='document.getElementById(\"insertExerciseForm\").classList.toggle(\"d-none\")'>Crea esercizio</a>\n" +
+                    "\t\t\t</li>\n";
+            }
+            ret += "\t\t</ul>";
+            //aggiungo login o logout
+            ret += this.getLoginArea();
+            ret += "\t</div>" +
+                "</nav>";
+            ret +=
+                "<form method='post' action='/exercise/insert' id='insertExerciseForm' class='d-none'>" +
+                    "   <div class=\"input-group col-sm-4 py-2 bg-dark\">" +
+                    "       <input type=\"text\" name=\"sentence\" class=\"form-control\">" +
+                    "       <button type=\"submit\" class=\"btn btn-primary\">Invia</button>" +
+                    "   </div>" +
+                    "</form>";
+            return ret;
+        });
     }
     getLoginArea() {
         if (this.profileController.isLoggedIn()) {

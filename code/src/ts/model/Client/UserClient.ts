@@ -44,7 +44,7 @@ class UserClient{
         }
     }
 
-    async isTeacher(username:string) : Promise<boolean> {
+    public async isTeacher(username:string) : Promise<boolean> {
         const id = await this.dbUserManager.search(username);
         const user = await this.dbUserManager.read(id);
         //console.log((<User>user));
@@ -77,19 +77,22 @@ class UserClient{
         if((<User> user).isTeacher()){
             userData.inps = (<Teacher> user).getINPS();
         }
+        else if((<User> user).isStudent()){
+            userData.classId = (<Student> user).getClassId();
+        }
         return userData;
     }
     public async updateUser(username:string, userUpdateData : any){
         const id = await this.dbUserManager.search(username);
-        this.dbUserManager.update('data/users/'+id+'/name',userUpdateData.name);
-        this.dbUserManager.update('data/users/'+id+'/lastname',userUpdateData.lastname);
-        this.dbUserManager.update('data/users/'+id+'/city',userUpdateData.city);
-        this.dbUserManager.update('data/users/'+id+'/school',userUpdateData.school);
-        this.dbUserManager.update('data/users/'+id+'/email',userUpdateData.email);
-        this.dbUserManager.update('data/users/'+id+'/username',userUpdateData.username);
-        this.dbUserManager.update('data/users/'+id+'/password',userUpdateData.password);
+        await this.dbUserManager.update('data/users/'+id+'/name',userUpdateData.name);
+        await this.dbUserManager.update('data/users/'+id+'/lastname',userUpdateData.lastname);
+        await this.dbUserManager.update('data/users/'+id+'/city',userUpdateData.city);
+        await this.dbUserManager.update('data/users/'+id+'/school',userUpdateData.school);
+        await this.dbUserManager.update('data/users/'+id+'/email',userUpdateData.email);
+        await this.dbUserManager.update('data/users/'+id+'/username',userUpdateData.username);
+        await this.dbUserManager.update('data/users/'+id+'/password',userUpdateData.password);
         if(userUpdateData.inps !==undefined){
-            this.dbUserManager.update('data/users/'+id+'/INPScode',userUpdateData.inps);
+            await this.dbUserManager.update('data/users/'+id+'/INPScode',userUpdateData.inps);
         }
     }
 
@@ -125,5 +128,10 @@ class UserClient{
     public hashPassword(plain :string){
         return this.passwordHash.hashSync(plain,10);
     }
+
+    public async addClassToStudent(studentId: any, classId: any) {
+        await this.dbUserManager.update('data/users/'+studentId+'/classId',classId);
+    }
+
 }
 export{UserClient}

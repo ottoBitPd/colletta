@@ -20,7 +20,7 @@ class ProfileView extends PageView{
     }
     public async getPage() {
         let ret = this.getHead();
-        ret += this.getMenu();
+        ret += await this.getMenu();
         ret += "<div class=\"container\">" +
             "\t<h1 class ='text-center mb-5'>Informazioni profilo:</h1>\n";
             if (this.error !== undefined){
@@ -221,7 +221,7 @@ class ProfileView extends PageView{
     }
 
 
-    private getMenu() : string {
+    private async getMenu() : Promise<string> {
         let ret =""+
             "<nav class=\"navbar navbar-expand-sm bg-dark navbar-dark\">" +
             "\t<a href='/' class=\"navbar-brand\">Colletta</a>" +
@@ -235,6 +235,13 @@ class ProfileView extends PageView{
                     "\t\t\t<li class=\"nav-item\">\n" +
                     "\t\t\t\t<a id=\"toProgress\" href= \"#progress\" class=\"nav-link\" >I tuoi progressi</a>\n" +
                     "\t\t\t</li>\n";
+                let classId = await this.profileController.getStudentClass()
+                console.log("classIdView: ",classId)
+                    if(classId!=="undefined") {
+                        ret += "\t\t\t<li class=\"nav-item\">\n" +
+                        "\t\t\t\t<a href= \"/class?classId="+classId+"\" class=\"nav-link\" >La tua classe</a>\n" +
+                        "\t\t\t</li>\n";
+                    }
             }
             else{//insegnante
                 ret += ""+

@@ -23,12 +23,13 @@ class FirebaseUserManager extends FirebaseManager {
                         email: teacher.getEmail()
                     });
                 }
-                else {
+                else if (user.isStudent()===true){
+                    const student= <Student>obj;
                     FirebaseManager.database.ref('data/users').push({
                         //let student= <Student>obj;
-                        name: user.getName(), password: user.getPassword(), lastname: user.getLastName(),
-                        username: user.getUsername(), city: user.getCity(), school: user.getSchool(),
-                        email: user.getEmail()
+                        name: student.getName(), password: student.getPassword(), lastname: student.getLastName(),
+                        username: student.getUsername(), city: student.getCity(), school: student.getSchool(),
+                        email: student.getEmail(), classId: student.getClassId()
                     });
                 }
                 return resolve(true);
@@ -98,7 +99,7 @@ class FirebaseUserManager extends FirebaseManager {
                         }
                         else {
                              user = new Student(id,readData.username, readData.password, readData.name,
-                                readData.lastname, readData.city, readData.school, readData.email);
+                                readData.lastname, readData.city, readData.school, readData.email, readData.classId);
                         }
                         resolve(user);
                     }
@@ -132,7 +133,7 @@ class FirebaseUserManager extends FirebaseManager {
         let splittedPath =path.split("/");
         let position : number = splittedPath.length -1;
         let field : string = splittedPath[position];
-        console.log(field);
+        console.log("field: "+field, " value: "+value);
         switch (field) {
             case "password": await this.updateField(path, value); break;
             case "name": await this.updateField(path, value); break;
@@ -142,6 +143,7 @@ class FirebaseUserManager extends FirebaseManager {
             case "username": await this.updateField(path, value); break;
             case "INPScode": await this.updateField(path, value); break;
             case "email": await this.updateField(path, value); break;
+            case "classId": await this.updateField(path, value); break;
             default : console.log("field doesn't exists"); return;
         }
     }

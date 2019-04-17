@@ -111,8 +111,6 @@ class ExerciseView extends PageView_1.PageView {
             "            </li>\n";
         let solution = this.exercisePresenter.getUserSolution();
         let correction = this.exercisePresenter.getCorrection();
-        //console.log("solution: ",solution);
-        //console.log("correction: ",correction);
         if (correction) {
             for (let i = 0; i < words.length; ++i) {
                 ret +=

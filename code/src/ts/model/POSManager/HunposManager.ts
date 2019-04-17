@@ -28,7 +28,7 @@ class HunposManager implements POSManager{
 
     private buildInputFile(sentence:string):void{
         var words = sentence.split(" ");
-
+        console.log("words: ",words);
         fileSystem.writeFile(this.inputFilePath,'',() => console.log('done'));
         for(let i = 0; i < words.length; i++) {
             fileSystem.appendFileSync( this.inputFilePath, words[i] + "\n");
@@ -42,7 +42,7 @@ class HunposManager implements POSManager{
 
     private buildSolution():any{
         var wordSolArray = fileSystem.readFileSync(this.outputFilePath).toString().split("\n");
-        console.log("arr: "+wordSolArray);
+        //console.log("arr: "+wordSolArray);
         let obj : any= {
             sentence: []
         };
@@ -53,12 +53,13 @@ class HunposManager implements POSManager{
             i++;
         }
         fileSystem.writeFileSync(this.inputFilePath, "");
+        console.log("obj: ",obj);
         return obj;
     };
 
     getSolution(sentence:string):any{
         this.buildInputFile(sentence);
-        this.train();
+        //this.train();
         this.tag();
         return this.buildSolution();
     };

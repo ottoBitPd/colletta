@@ -47,9 +47,10 @@ class ExercisePresenter extends PagePresenter{
                 this.view.setPosTranslation(posTranslation);
                 this.view.setPosTags(posTags);
                 this.view.setUserKind(UserKind.teacher);
-                console.log(posSolution);
-                console.log(posTranslation);
-                console.log(posTags);
+                console.log("hunpos: ",posSolution);
+                console.log("tags extracted: ",posTags);
+                console.log("tags translated: ",posTranslation);
+
                 response.send(await this.view.getPage());
             }
         });
@@ -221,7 +222,7 @@ class ExercisePresenter extends PagePresenter{
         var uppercase=tag.split(/[a-z0-9]+/);
         var result="";
         //console.log("uppercase[0]: "+uppercase[0]);
-        if(uppercase[0]!=='V' && uppercase[0]!=='PE' && uppercase[0]!=='PC'){
+        if(uppercase[0]!=='V' && uppercase[0]!=='PE' && uppercase[0]!=='PC' && uppercase[0]!=='VA' && uppercase[0]!='VM'){
             for(var i in jsonContent){
                 if(i===uppercase[0]){
                     result+=jsonContent[i];
@@ -241,7 +242,6 @@ class ExercisePresenter extends PagePresenter{
                 result+=jsonContent[x];
             }
         }
-        console.log("esce: "+result);
         return result;
     }
 
@@ -277,7 +277,7 @@ class ExercisePresenter extends PagePresenter{
      * @returns {Array} an array containing the tags of the solution suggested by the user
      */
     private correctionToTags(wordsnumber : number, dataCorrection : any) : string []{
-        console.log("dataCorrection: "+require('util').inspect(dataCorrection));
+        //console.log("dataCorrection: "+require('util').inspect(dataCorrection));
         let optionsIndex=0, wordIndex=0;//optionsIndex counter for options of the first select input field
         let tagsCorrection = [];
         tagsCorrection.length = wordsnumber;
@@ -301,14 +301,14 @@ class ExercisePresenter extends PagePresenter{
                     }
                     */
 
-                    if (dataCorrection[i] !== 'A') {
-                        if (['B', 'E', 'P', 'S', 'V'].indexOf(dataCorrection[i]) !== -1) {
+                    //if (dataCorrection[i] !== 'A') {
+                        if (['B', 'E', 'P', 'S', 'V','A'].indexOf(dataCorrection[i]) !== -1) {
                             if (i !== ('general' + wordIndex))
                                 actualTag += dataCorrection[i];
                         } else {
                             actualTag += dataCorrection[i];
                         }
-                    }
+                    //}
 
                 }
 

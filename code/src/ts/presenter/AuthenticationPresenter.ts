@@ -49,7 +49,7 @@ class AuthenticationPresenter extends PagePresenter {
         });
         app.get('/registration', async (request: any, response: any) => {
             session.errUsername = request.query.mess === "errUsername";
-
+            this.view.setTitle("Registrati");
             response.send(await this.view.getPage());
         });
 

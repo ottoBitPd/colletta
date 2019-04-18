@@ -53,7 +53,7 @@ class RegistrationView extends PageView_1.PageView {
                 "\t\t\t\t\t<option value=\"student\">Allievo</option>\n " +
                 "\t\t\t\t\t<option value=\"teacher\">Insegnante</option>\n " +
                 "\t\t\t\t\t</select>\n" +
-                "\t\t\t\t\t<input type=\"text\" class='form-control my-2' style=\"display: none;\" id=\"inps\" name=\"inps\" value=\"n\" placeholder=\"Inserisci il tuo codice inps\" required/>\n" +
+                "\t\t\t\t\t<input type=\"text\" class='form-control my-2' style=\"display: none;\" id=\"inps\" name=\"inps\" value=\"\" placeholder=\"Inserisci il tuo codice inps\" required/>\n" +
                 "\t\t\t\t\t<input type=\"text\" class='form-control my-2' id=\"email\" name=\"email\" placeholder=\"Inserisci la tua email\" required/>\n" +
                 "\t\t\t\t\t<input type=\"text\" class='form-control my-2' id=\"username\" name=\"username\" placeholder=\"Inserisci la tua username\" required/>\n" +
                 "\t\t\t\t\t<input type=\"password\" class='form-control my-2' id=\"password\" name=\"password\" placeholder=\"Inserisci la tua password\" required/>\n" +
@@ -76,9 +76,11 @@ class RegistrationView extends PageView_1.PageView {
             //"alert('valore: '+x);"+
             "   if (x==='teacher') {\n" +
             "       elem.style.display='inline';\n" +
+            "       elem.value='';" +
             "   }\n" +
             "   else{\n" +
             "       elem.style.display='none';\n" +
+            "       elem.value='n'\n" +
             "   }\n" +
             "}\n" +
             "function checkPassword(){\n" +

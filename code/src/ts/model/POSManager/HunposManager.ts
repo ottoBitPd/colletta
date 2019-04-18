@@ -31,6 +31,7 @@ class HunposManager implements POSManager{
         console.log("words: ",words);
         fileSystem.writeFile(this.inputFilePath,'',() => console.log('done'));
         for(let i = 0; i < words.length; i++) {
+            console.log("scrivo: ",words[i]);
             fileSystem.appendFileSync( this.inputFilePath, words[i] + "\n");
             /*if(i<(words.length-1)){
                 fileSystem.appendFileSync('input.txt', '\n', (err) => {    //controllo per non far mettere l'ultimo invio
@@ -42,7 +43,7 @@ class HunposManager implements POSManager{
 
     private buildSolution():any{
         var wordSolArray = fileSystem.readFileSync(this.outputFilePath).toString().split("\n");
-        //console.log("arr: "+wordSolArray);
+        console.log("leggo: "+wordSolArray);
         let obj : any= {
             sentence: []
         };
@@ -58,6 +59,7 @@ class HunposManager implements POSManager{
     };
 
     getSolution(sentence:string):any{
+        console.log("sentenceHunpos: ",sentence);
         this.buildInputFile(sentence);
         //this.train();
         this.tag();

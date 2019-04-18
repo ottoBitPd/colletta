@@ -23,7 +23,7 @@ class ClassesPresenter extends PagePresenter {
             }
 
             this.view.setMenuList(menuList);
-
+            this.view.setTitle("Le tue classi");
             response.send(await this.view.getPage());
         });
     }

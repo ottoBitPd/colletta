@@ -35,8 +35,9 @@ class SearchPresenter extends PagePresenter {
             menuList= {
                 0 :{"link":"/","name":"Homepage"}
             };
+
             this.setSearchType("exercise");
-            /*this.view.setTitle("Ricerca esercizio");*/
+            this.view.setTitle("Ricerca esercizio");
             this.view.setMenuList(menuList);
             //this.viewProfile.setMainList(["class1","class2","class3","class4","class5","class6","class7","class8"]);
             response.send(await this.view.getPage());
@@ -72,8 +73,9 @@ class SearchPresenter extends PagePresenter {
             menuList= {
                 0 :{"link":"/","name":"Homepage"}
             };
+
             this.setSearchType("student");
-           /* this.view.setTitle("Ricerca studente");*/
+            this.view.setTitle("Ricerca studente");
             this.view.setMenuList(menuList);
             response.send(await this.view.getPage());
         });

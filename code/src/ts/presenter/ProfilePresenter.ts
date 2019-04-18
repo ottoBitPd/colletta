@@ -99,7 +99,7 @@ class ProfilePresenter extends PagePresenter{
                     this.view.setUserKind(UserKind.student);
                 }
             }
-
+            this.view.setTitle("Profilo");
             response.send(await this.view.getPage());
         });
     }

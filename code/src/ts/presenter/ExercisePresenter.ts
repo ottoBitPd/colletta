@@ -37,6 +37,7 @@ class ExercisePresenter extends PagePresenter{
             let exerciseClient = this.client.getExerciseClient();
             if (exerciseClient) {
                 //sending the sentence to hunpos which will provide a solution
+                console.log("primo autosolve");
                 var posSolution = await exerciseClient.autosolve(request.body.sentence, "authorIdValue");
                 //creation of the array containing tags provided from hunpos solution
                 var posTags = this.extractTags(posSolution);
@@ -47,6 +48,7 @@ class ExercisePresenter extends PagePresenter{
                 this.view.setPosTranslation(posTranslation);
                 this.view.setPosTags(posTags);
                 this.view.setUserKind(UserKind.teacher);
+                this.view.setTitle("Esercizio");
                 console.log("hunpos: ",posSolution);
                 console.log("tags extracted: ",posTags);
                 console.log("tags translated: ",posTranslation);
@@ -85,9 +87,11 @@ class ExercisePresenter extends PagePresenter{
             if(exerciseClient && userClient){
                 let words = exerciseClient.getSplitSentence(request.body.sentence);
                 let wordsnumber = words.length;
-                if(session.username!== undefined){
+                if(session.username!== undefined){//if somebody is logged in
+                    console.log("passoA");
                     let ID = await userClient.search(session.username);
                     if(this.view.getUserKind() === UserKind.teacher) {
+                        console.log("passoA1");
                         //console.log("post: ",request.body);
                         let hunposTags = JSON.parse(request.body.hunposTags);
                         let tagsCorrection = this.correctionToTags(wordsnumber, request.body);
@@ -116,10 +120,11 @@ class ExercisePresenter extends PagePresenter{
                         //this.model.writeSolution(sentence.split(" "), finalTags, sentence, key);
                         response.redirect('/');
                     } else {
-
+                        console.log("passoA2");
                         let solution : any;
                         let valutation : any;
                         if (request.body.correction !== 'auto'){
+                            console.log("passoAB1");
                             let corrections = await this.teacherSolutions(request.body.sentence);
                             corrections = corrections.filter((value) => value.id === request.body.correction);
                             solution = {
@@ -138,6 +143,7 @@ class ExercisePresenter extends PagePresenter{
                                 this.correction = {"mark" : valutation[1], "tags" : corrections[0].tags};
                             }
                         } else {
+                            console.log("passoAB2");
                             solution = {
                                 0: ID,
                                 1: this.correctionToTags(wordsnumber,request.body),
@@ -152,7 +158,7 @@ class ExercisePresenter extends PagePresenter{
                             this.correction = {"mark" : valutation[1], "tags" : await exerciseClient.autosolve(request.body.sentence,ID)};
                         }
                     }
-                } else {
+                } else {//if is a no logged in user
                     let solution : any;
                     let valutation : any;
                     if (request.body.correction !== 'auto'){
@@ -168,7 +174,7 @@ class ExercisePresenter extends PagePresenter{
                             0: corrections[0].userID,
                             1: await exerciseClient.evaluate(solution["1"],"",[],request.body.sentence,corrections[0].difficulty,corrections[0].userID)
                         };
-                    } else {
+                    } else {//if he has chosen autocorrection
                         solution = {
                             0: undefined,
                             1: this.correctionToTags(wordsnumber,request.body),
@@ -182,8 +188,12 @@ class ExercisePresenter extends PagePresenter{
                     }
 
                     this.userSolution = solution[1];
+                    console.log("secondo autosolve");
                     this.correction = {"mark" : valutation[1], "tags" : await exerciseClient.autosolve(request.body.sentence,"")};
+                    console.log("userSolution: ",this.userSolution);
+                    console.log("correction : ",this.correction );
                 }
+                this.view.setTitle("Risultati");
                 response.send(await this.view.getPage());
             }
         });

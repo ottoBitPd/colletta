@@ -42,7 +42,8 @@
     "shelljs": "^0.8.3",
     "sonarqube-scanner": "^2.4.0",
     "ts-complex": "^1.0.0",
-    "ts-complexity": "0.0.3"
+    "ts-complexity": "0.0.3",
+    "ts-sinon": "^1.0.17"
   },
   "devDependencies": {
     "@types/chai": "^4.1.7",

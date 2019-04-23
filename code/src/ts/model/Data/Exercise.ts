@@ -72,15 +72,66 @@ class Exercise implements Data{
         return this.getPOSManager().getSolution(this.getSentence());
     };
 
+    /**
+     * This method splits a sentence on spaces and punctuation
+     * @returns string [] - an array containing the split sentence
+     */
     getSplitSentence() : string []{
-        //TODO splittare anche punteggiatura ma no apostrofo
-        //creare un espressione regolare ed usarla per inserire uno spazio prima dei simboli e di punteggiatura dopo
-        //gli apostrofi,
-        //poi splittare in base allo spazio.
-        return this.sentence.split(" ");
+        this.myReplace();//adding spaces to split punctation
+        let arr = this.sentence.split(new RegExp(" |(?<=')"));
+        arr = arr.filter(Boolean);//remove empty string like ''
+        return arr;
     }
 
-    //da un voto alla soluzione corrente(newSolution) rispetto a solution con quel teacherID
+    /**
+     * This method adds spaces to the exercise sentence before and after every punctation symbol
+     * @param sentence - a string on which apply replace
+     */
+    private myReplace() {
+        this.sentence = this.sentence.replace(/\-/g," - ");
+        this.sentence = this.sentence.replace(/\!/g," ! ");
+        this.sentence = this.sentence.replace(/\?/g," ? ");
+        this.sentence = this.sentence.replace(/,/g," , ");
+        this.sentence = this.sentence.replace(/:/g," : ");
+        this.sentence = this.sentence.replace(/;/g," ; ");
+        this.sentence = this.sentence.replace(/\//g," / ");
+        this.sentence = this.sentence.replace(/\*/g," * ");
+        this.sentence = this.sentence.replace(/\(/g," ( ");
+        this.sentence = this.sentence.replace(/\)/g," ) ");
+        this.sentence = this.sentence.replace(/\[/g," [ ");
+        this.sentence = this.sentence.replace(/\]/g," ] ");
+        this.sentence = this.sentence.replace(/{/g," { ");
+        this.sentence = this.sentence.replace(/}/g," } ");
+        this.sentence = this.sentence.replace(/_/g," _ ");
+        this.sentence = this.sentence.replace(/`/g," ` ");
+        this.sentence = this.sentence.replace(/‘/g," ‘ ");
+        this.sentence = this.sentence.replace(/’/g," ’ ");
+        this.sentence = this.sentence.replace(/\"/g," \" ");
+        this.sentence = this.sentence.replace(/“/g," “ ");
+        this.sentence = this.sentence.replace(/”/g," ” ");
+        this.sentence = this.sentence.replace(/«/g," « ");
+        this.sentence = this.sentence.replace(/»/g," » ");
+        this.sentence  = this.sentence.replace(/\s+/g, ' ');//if there are multiple spaces
+        this.sentence  = this.sentence.replace(/\s+'/g, '\'');//if there are spaces before '
+        let arr = this.sentence.split("");
+        for( let i=0; i<arr.length; i++){
+            if(i <= arr.length-3 && arr[i]==="." && arr[i+1]==="." && arr[i+2]==="."){
+                arr[i]=" ... ";
+                arr[i+1]=arr[i+2]=" ";
+
+            }
+            else if(arr[i]==="."){
+                arr[i] = " . ";
+            }
+        }
+        this.sentence = arr.join("");
+    }
+
+    /**
+     * This method provides a valutation to the current solution (newSolution) comparing the latter with
+     * the solution of the teacherId passed
+     * @param teacherID - the id of the teacher who provide the solution which will be compared the current solution
+     */
     evaluate(teacherID?: string) : number {
         if(this.newSolution===null){
             return -1;

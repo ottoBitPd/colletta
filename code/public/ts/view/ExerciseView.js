@@ -35,7 +35,7 @@ class ExerciseView extends PageView_1.PageView {
     }
     getPage() {
         return __awaiter(this, void 0, void 0, function* () {
-            const words = this.sentence.split(" ");
+            const words = this.splitSentence();
             let ret = this.getHead(this.buildCss(words));
             ret += this.getMenu();
             ret += "<div class=\"container\">";
@@ -240,6 +240,51 @@ class ExerciseView extends PageView_1.PageView {
                 "        </form>\n";
             return ret;
         }
+    }
+    /**
+     * This method splits a sentence on spaces and punctuation
+     * @returns string [] - an array containing the split sentence
+     */
+    splitSentence() {
+        this.sentence = this.sentence.replace(/\-/g, " - ");
+        this.sentence = this.sentence.replace(/\!/g, " ! ");
+        this.sentence = this.sentence.replace(/\?/g, " ? ");
+        this.sentence = this.sentence.replace(/,/g, " , ");
+        this.sentence = this.sentence.replace(/:/g, " : ");
+        this.sentence = this.sentence.replace(/;/g, " ; ");
+        this.sentence = this.sentence.replace(/\//g, " / ");
+        this.sentence = this.sentence.replace(/\*/g, " * ");
+        this.sentence = this.sentence.replace(/\(/g, " ( ");
+        this.sentence = this.sentence.replace(/\)/g, " ) ");
+        this.sentence = this.sentence.replace(/\[/g, " [ ");
+        this.sentence = this.sentence.replace(/\]/g, " ] ");
+        this.sentence = this.sentence.replace(/{/g, " { ");
+        this.sentence = this.sentence.replace(/}/g, " } ");
+        this.sentence = this.sentence.replace(/_/g, " _ ");
+        this.sentence = this.sentence.replace(/`/g, " ` ");
+        this.sentence = this.sentence.replace(/‘/g, " ‘ ");
+        this.sentence = this.sentence.replace(/’/g, " ’ ");
+        this.sentence = this.sentence.replace(/\"/g, " \" ");
+        this.sentence = this.sentence.replace(/“/g, " “ ");
+        this.sentence = this.sentence.replace(/”/g, " ” ");
+        this.sentence = this.sentence.replace(/«/g, " « ");
+        this.sentence = this.sentence.replace(/»/g, " » ");
+        this.sentence = this.sentence.replace(/\s+/g, ' '); //if there are multiple spaces
+        this.sentence = this.sentence.replace(/\s+'/g, '\''); //if there are spaces before '
+        let arr = this.sentence.split("");
+        for (let i = 0; i < arr.length; i++) {
+            if (i <= arr.length - 3 && arr[i] === "." && arr[i + 1] === "." && arr[i + 2] === ".") {
+                arr[i] = " ... ";
+                arr[i + 1] = arr[i + 2] = " ";
+            }
+            else if (arr[i] === ".") {
+                arr[i] = " . ";
+            }
+        }
+        this.sentence = arr.join("");
+        arr = this.sentence.split(new RegExp(" |(?<=')"));
+        arr = arr.filter(Boolean); //remove empty string like ''
+        return arr;
     }
 }
 exports.ExerciseView = ExerciseView;

@@ -20,8 +20,13 @@ class ExerciseClient{
         return result;
     }
 
+    /**
+     * This method
+     * @param sentence
+     */
     public getSplitSentence(sentence:string) : string []{
-        return sentence.split(" ");
+        let tmp = new Exercise(sentence,"xxx");
+        return tmp.getSplitSentence();
     }
 
     public insertExercise(sentence: string , authorId :string, solution : any, valutation :any) : void {

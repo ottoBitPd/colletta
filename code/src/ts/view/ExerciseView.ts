@@ -38,7 +38,7 @@ class ExerciseView extends PageView{
     }
 
     async getPage() {
-        const words = this.sentence.split(" ");
+        const words = this.splitSentence();
         let ret = this.getHead(this.buildCss(words));
         ret +=this.getMenu();
         ret +="<div class=\"container\">";
@@ -261,6 +261,54 @@ class ExerciseView extends PageView{
                 "        </form>\n";
             return ret;
         }
+    }
+    /**
+     * This method splits a sentence on spaces and punctuation
+     * @returns string [] - an array containing the split sentence
+     */
+    private splitSentence() : string []{
+        let arr =this.sentence.split("");
+        for( let i=0; i<arr.length; i++){
+            switch(arr[i]){
+                case '-': arr[i] = ' - ';break;
+                case '!': arr[i] = ' ! ';break;
+                case '?': arr[i] = ' ? ';break;
+                case ',': arr[i] = ' , ';break;
+                case '.':
+                    if(arr[i+1]==='.' && arr[i+2]==='.'){
+                        arr[i] = ' ... ';arr[i+1] = ' ';arr[i+2] = ' ';
+                    }
+                    else{
+                        arr[i] = ' . ';
+                    }
+                    break;
+                case ':': arr[i] = ' : ';break;
+                case ';': arr[i] = ' ; ';break;
+                case '/': arr[i] = ' / ';break;
+                case '*': arr[i] = ' * ';break;
+                case '(': arr[i] = ' ( ';break;
+                case ')': arr[i] = ' ) ';break;
+                case '[': arr[i] = ' [ ';break;
+                case ']': arr[i] = ' ] ';break;
+                case '{': arr[i] = ' { ';break;
+                case '}': arr[i] = ' } ';break;
+                case '_': arr[i] = ' _ ';break;
+                case '`': arr[i] = ' ` ';break;
+                case '‘': arr[i] = ' ‘ ';break;
+                case '’': arr[i] = ' ’ ';break;
+                case '"': arr[i] = ' " ';break;
+                case '“': arr[i] = ' “ ';break;
+                case '”': arr[i] = ' ” ';break;
+                case '«': arr[i] = ' « ';break;
+                case '»': arr[i] = ' » ';break;
+            }
+        }
+        this.sentence = arr.join("");
+        this.sentence  = this.sentence.replace(/\s+/g, ' ');//trim
+        this.sentence  = this.sentence.replace(/\s+'/g, '\'');//if there are spaces before '
+        arr = this.sentence.split(new RegExp(" |(?<=')"));
+        arr = arr.filter(Boolean);//remove empty string like ''
+        return arr;
     }
 }
 export {ExerciseView};

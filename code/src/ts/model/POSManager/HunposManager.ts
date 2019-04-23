@@ -27,7 +27,7 @@ class HunposManager implements POSManager{
     };
 
     private buildInputFile(sentence:string):void{
-        var words = sentence.split(" ");
+        var words = this.splitSentence(sentence);
         console.log("words: ",words);
         fileSystem.writeFile(this.inputFilePath,'',() => console.log('done'));
         for(let i = 0; i < words.length; i++) {
@@ -81,6 +81,56 @@ class HunposManager implements POSManager{
         //scommentare per mac/linux
         shell.exec('./src/ts/presenter/hunpos/hunpos-tag ' + this.modelFilePath + '< ' + this.inputFilePath + '>' + this.outputFilePath);
     };
+
+    /**
+     * This method splits a sentence on spaces and punctuation
+     * @returns string [] - an array containing the split sentence
+     */
+    private splitSentence(sentence: string) : string []{
+        let arr =sentence.split("");
+        for( let i=0; i<arr.length; i++){
+            switch(arr[i]){
+                case '-': arr[i] = ' - ';break;
+                case '!': arr[i] = ' ! ';break;
+                case '?': arr[i] = ' ? ';break;
+                case ',': arr[i] = ' , ';break;
+                case '.':
+                    if(arr[i+1]==='.' && arr[i+2]==='.'){
+                        arr[i] = ' ... ';arr[i+1] = ' ';arr[i+2] = ' ';
+                    }
+                    else{
+                        arr[i] = ' . ';
+                    }
+                    break;
+                case ':': arr[i] = ' : ';break;
+                case ';': arr[i] = ' ; ';break;
+                case '/': arr[i] = ' / ';break;
+                case '*': arr[i] = ' * ';break;
+                case '(': arr[i] = ' ( ';break;
+                case ')': arr[i] = ' ) ';break;
+                case '[': arr[i] = ' [ ';break;
+                case ']': arr[i] = ' ] ';break;
+                case '{': arr[i] = ' { ';break;
+                case '}': arr[i] = ' } ';break;
+                case '_': arr[i] = ' _ ';break;
+                case '`': arr[i] = ' ` ';break;
+                case '‘': arr[i] = ' ‘ ';break;
+                case '’': arr[i] = ' ’ ';break;
+                case '"': arr[i] = ' " ';break;
+                case '“': arr[i] = ' “ ';break;
+                case '”': arr[i] = ' ” ';break;
+                case '«': arr[i] = ' « ';break;
+                case '»': arr[i] = ' » ';break;
+            }
+        }
+        let ret = arr.join("");
+        ret  = ret.replace(/\s+/g, ' ');//trim
+        ret = ret.replace(/\s+'/g, '\'');//if there are spaces before '
+        arr = ret.split(new RegExp(" |(?<=')"));
+        arr = arr.filter(Boolean);//remove empty string like ''
+        return arr;
+    }
+
 }
 
 export {HunposManager};

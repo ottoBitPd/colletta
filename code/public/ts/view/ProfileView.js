@@ -120,107 +120,110 @@ class ProfileView extends PageView_1.PageView {
                 "</form>" +
                 "\t</li>\n" +
                 "\t</ul>";
-            /*if(this.userKind === UserKind.student){
-                //TODO controllare questo codice renderlo dinamico
-                ret+="<div class=\"row\" style=\"margin-top: 15%; margin-bottom:10%\">\n" +
-                    "\t\t<div id= \"progress\" class = \" anchor col-sm-6 mx-auto\">\n" +
-                    "\t\t\t<h1 class ='text-center mb-5'>I tuoi progressi:</h1>\n" +
-                    "\t\t\t<ul class=\"list-group\">\n" +
-                    "\t\t\t\t<li class=\"list-group-item\">\n" +
-                    "\t\t\t\t\t<div class= \"row\">\n" +
-                    "\t\t\t\t\t\t<div class = \"col-sm-4\">\n" +
-                    "\t\t\t\t\t\t\t<p class= \"font-weight-bold\"> Esercizi svolti:</p> \n" +
-                    "\t\t\t\t\t\t</div>\n" +
-                    "\t\t\t\t\t\t<div class = \"col-sm-4\">\n" +
-                    "\t\t\t\t\t\t\t<p class=\"font-weight-light\"> 10 </p> \n" +
-                    "\t\t\t\t\t\t</div>\n" +
-                    "\t\t\t\t\t</div>\n" +
-                    "\t\t\t\t\t<div class= \"row\">\n" +
-                    "\t\t\t\t\t\t<div class = \"col-sm-4\">\n" +
-                    "\t\t\t\t\t\t\t<p class= \"font-weight-bold\"> Media valutazioni:</p> \n" +
-                    "\t\t\t\t\t\t</div>\n" +
-                    "\t\t\t\t\t\t<div class = \"col-sm-4\">\n" +
-                    "\t\t\t\t\t\t\t<p class=\"font-weight-light\"> 6.53 </p> \n" +
-                    "\t\t\t\t\t\t</div>\n" +
-                    "\t\t\t\t\t\t\t<div class=\"mt-2\" id=\"chartdiv\" style=\"width: 100%; height: 400px; background-color: #FFFFFF;\" ></div>\n" +
-                    "\t\t\t\t\t</div>\n" +
-                    "\t\t\t\t</li>\n" +
-                    "\t\t\t</ul>\n" +
-                    "\t\t\t\n" +
-                    "\t\t</div>\n" +
-                    "\t\t\n" +
-                    "\t<div class = \"col-sm-6 mx-auto\">\n" +
-                    "\t\t<h1 class ='text-center mb-5'>Media per argomenti trattati:</h1>\n" +
-                    "\t\t<ul class=\"list-group\">\n" +
-                    "\t\t\t<li class=\"list-group-item\">\n" +
-                    "\t\t\t\t<div class= \"row\">\n" +
-                    "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
-                    "\t\t\t\t\t\t<p class= \"font-weight-bold\"> Aggettivi:</p> \n" +
-                    "\t\t\t\t\t</div>\n" +
-                    "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
-                    "\t\t\t\t\t\t<p class=\"font-weight-light\"> 6 </p> \n" +
-                    "\t\t\t\t\t</div>\n" +
-                    "\t\t\t\t</div>\n" +
-                    "\t\t\t\t<div class= \"row\">\n" +
-                    "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
-                    "\t\t\t\t\t\t<p class= \"font-weight-bold\"> Avverbi:</p> \n" +
-                    "\t\t\t\t\t</div>\n" +
-                    "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
-                    "\t\t\t\t\t\t<p class=\"font-weight-light\"> 5.24 </p> \n" +
-                    "\t\t\t\t\t</div>\n" +
-                    "\t\t\t\t</div>\n" +
-                    "\t\t\t\t<div class= \"row\">\n" +
-                    "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
-                    "\t\t\t\t\t\t<p class= \"font-weight-bold\"> Verbi:</p> \n" +
-                    "\t\t\t\t\t</div>\n" +
-                    "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
-                    "\t\t\t\t\t\t<p class=\"font-weight-light\"> 9.3 </p> \n" +
-                    "\t\t\t\t\t</div>\n" +
-                    "\t\t\t\t</div>\n" +
-                    "\t\t\t\t<div class= \"row\">\n" +
-                    "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
-                    "\t\t\t\t\t\t<p class= \"font-weight-bold\"> Nomi:</p> \n" +
-                    "\t\t\t\t\t</div>\n" +
-                    "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
-                    "\t\t\t\t\t\t<p class=\"font-weight-light\"> 6.1 </p> \n" +
-                    "\t\t\t\t\t</div>\n" +
-                    "\t\t\t\t</div>\n" +
-                    "\t\t\t\t<div class= \"row\">\n" +
-                    "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
-                    "\t\t\t\t\t\t<p class= \"font-weight-bold\"> Preposizioni:</p> \n" +
-                    "\t\t\t\t\t</div>\n" +
-                    "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
-                    "\t\t\t\t\t\t<p class=\"font-weight-light\"> 4.2 </p> \n" +
-                    "\t\t\t\t\t</div>\n" +
-                    "\t\t\t\t</div>\n" +
-                    "\t\t\t\t<div class= \"row\">\n" +
-                    "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
-                    "\t\t\t\t\t\t<p class= \"font-weight-bold\"> Articoli:</p> \n" +
-                    "\t\t\t\t\t</div>\n" +
-                    "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
-                    "\t\t\t\t\t\t<p class=\"font-weight-light\"> 7 </p> \n" +
-                    "\t\t\t\t\t</div>\n" +
-                    "\t\t\t\t</div>\n" +
-                    "\t\t\t\t<div class= \"row\">\n" +
-                    "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
-                    "\t\t\t\t\t\t<p class= \"font-weight-bold\"> Congiunzioni:</p> \n" +
-                    "\t\t\t\t\t</div>\n" +
-                    "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
-                    "\t\t\t\t\t\t<p class=\"font-weight-light\"> 6.02 </p> \n" +
-                    "\t\t\t\t\t</div>\n" +
-                    "\t\t\t\t</div>\n" +
-                    "\t\t\t\t<div class= \"row\">\n" +
-                    "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
-                    "\t\t\t\t\t\t<p class= \"font-weight-bold\"> Pronomi:</p> \n" +
-                    "\t\t\t\t\t</div>\n" +
-                    "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
-                    "\t\t\t\t\t\t<p class=\"font-weight-light\"> 4 </p> \n" +
-                    "\t\t\t\t\t</div>\n" +
-                    "\t\t\t\t</div>\n" +
-                    "\t\t\t</li>\n" +
-                    "\t\t</ul>\n" +
-                    "\t</div>";
-            }*/
+            if (this.userKind === PageView_1.UserKind.student) {
+                let result = yield this.profileController.getAverageInfo();
+                if (result.size > 0) {
+                    let n = result.size;
+                    ret += "<div class=\"row\" style=\"margin-top: 15%; margin-bottom:10%\">\n" +
+                        "\t\t<div id= \"progress\" class = \" anchor col-sm-6 mx-auto\">\n" +
+                        "\t\t\t<h1 class ='text-center mb-5'>I tuoi progressi:</h1>\n" +
+                        "\t\t\t<ul class=\"list-group\">\n" +
+                        "\t\t\t\t<li class=\"list-group-item\">\n" +
+                        "\t\t\t\t\t<div class= \"row\">\n" +
+                        "\t\t\t\t\t\t<div class = \"col-sm-4\">\n" +
+                        "\t\t\t\t\t\t\t<p class= \"font-weight-bold\"> Esercizi svolti:</p> \n" +
+                        "\t\t\t\t\t\t</div>\n";
+                    ret += "\t\t\t\t\t\t<div class = \"col-sm-4\">\n" +
+                        "\t\t\t\t\t\t\t<p class=\"font-weight-light\">" + n + "</p> \n" +
+                        "\t\t\t\t\t\t</div>\n" +
+                        "\t\t\t\t\t</div>\n" +
+                        "\t\t\t\t\t<div class= \"row\">\n" +
+                        "\t\t\t\t\t\t<div class = \"col-sm-4\">\n" +
+                        "\t\t\t\t\t\t\t<p class= \"font-weight-bold\"> Media valutazioni:</p> \n" +
+                        "\t\t\t\t\t\t</div>\n" +
+                        "\t\t\t\t\t\t<div class = \"col-sm-4\">\n" +
+                        "\t\t\t\t\t\t\t<p class=\"font-weight-light\">9.16</p> \n" +
+                        "\t\t\t\t\t\t</div>\n" +
+                        "\t\t\t\t\t\t\t<div class=\"mt-2\" id=\"chartdiv\" style=\"width: 100%; height: 400px; background-color: #FFFFFF;\" ></div>\n" +
+                        "\t\t\t\t\t</div>\n" +
+                        "\t\t\t\t</li>\n" +
+                        "\t\t\t</ul>\n" +
+                        "\t\t\t\n" +
+                        "\t\t</div>\n" +
+                        "\t\t\n" +
+                        "\t<div class = \"col-sm-6 mx-auto\">\n" +
+                        "\t\t<h1 class ='text-center mb-5'>Media per argomenti trattati:</h1>\n" +
+                        "\t\t<ul class=\"list-group\">\n" +
+                        "\t\t\t<li class=\"list-group-item\">\n" +
+                        "\t\t\t\t<div class= \"row\">\n" +
+                        "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
+                        "\t\t\t\t\t\t<p class= \"font-weight-bold\"> Aggettivi:</p> \n" +
+                        "\t\t\t\t\t</div>\n" +
+                        "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
+                        "\t\t\t\t\t\t<p class=\"font-weight-light\"> 6 </p> \n" +
+                        "\t\t\t\t\t</div>\n" +
+                        "\t\t\t\t</div>\n" +
+                        "\t\t\t\t<div class= \"row\">\n" +
+                        "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
+                        "\t\t\t\t\t\t<p class= \"font-weight-bold\"> Avverbi:</p> \n" +
+                        "\t\t\t\t\t</div>\n" +
+                        "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
+                        "\t\t\t\t\t\t<p class=\"font-weight-light\"> 5.24 </p> \n" +
+                        "\t\t\t\t\t</div>\n" +
+                        "\t\t\t\t</div>\n" +
+                        "\t\t\t\t<div class= \"row\">\n" +
+                        "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
+                        "\t\t\t\t\t\t<p class= \"font-weight-bold\"> Verbi:</p> \n" +
+                        "\t\t\t\t\t</div>\n" +
+                        "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
+                        "\t\t\t\t\t\t<p class=\"font-weight-light\"> 9.3 </p> \n" +
+                        "\t\t\t\t\t</div>\n" +
+                        "\t\t\t\t</div>\n" +
+                        "\t\t\t\t<div class= \"row\">\n" +
+                        "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
+                        "\t\t\t\t\t\t<p class= \"font-weight-bold\"> Nomi:</p> \n" +
+                        "\t\t\t\t\t</div>\n" +
+                        "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
+                        "\t\t\t\t\t\t<p class=\"font-weight-light\"> 6.1 </p> \n" +
+                        "\t\t\t\t\t</div>\n" +
+                        "\t\t\t\t</div>\n" +
+                        "\t\t\t\t<div class= \"row\">\n" +
+                        "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
+                        "\t\t\t\t\t\t<p class= \"font-weight-bold\"> Preposizioni:</p> \n" +
+                        "\t\t\t\t\t</div>\n" +
+                        "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
+                        "\t\t\t\t\t\t<p class=\"font-weight-light\"> 4.2 </p> \n" +
+                        "\t\t\t\t\t</div>\n" +
+                        "\t\t\t\t</div>\n" +
+                        "\t\t\t\t<div class= \"row\">\n" +
+                        "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
+                        "\t\t\t\t\t\t<p class= \"font-weight-bold\"> Articoli:</p> \n" +
+                        "\t\t\t\t\t</div>\n" +
+                        "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
+                        "\t\t\t\t\t\t<p class=\"font-weight-light\"> 7 </p> \n" +
+                        "\t\t\t\t\t</div>\n" +
+                        "\t\t\t\t</div>\n" +
+                        "\t\t\t\t<div class= \"row\">\n" +
+                        "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
+                        "\t\t\t\t\t\t<p class= \"font-weight-bold\"> Congiunzioni:</p> \n" +
+                        "\t\t\t\t\t</div>\n" +
+                        "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
+                        "\t\t\t\t\t\t<p class=\"font-weight-light\"> 6.02 </p> \n" +
+                        "\t\t\t\t\t</div>\n" +
+                        "\t\t\t\t</div>\n" +
+                        "\t\t\t\t<div class= \"row\">\n" +
+                        "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
+                        "\t\t\t\t\t\t<p class= \"font-weight-bold\"> Pronomi:</p> \n" +
+                        "\t\t\t\t\t</div>\n" +
+                        "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
+                        "\t\t\t\t\t\t<p class=\"font-weight-light\"> 4 </p> \n" +
+                        "\t\t\t\t\t</div>\n" +
+                        "\t\t\t\t</div>\n" +
+                        "\t\t\t</li>\n" +
+                        "\t\t</ul>\n" +
+                        "\t</div>";
+                }
+            }
             ret += "</div>";
             ret += this.getFoot(this.getScript());
             return ret;

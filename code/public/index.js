@@ -43,7 +43,7 @@ app.listen(8080, function () {
         const host = "127.0.0.1";
         const port = "8080";
         console.log("Example app listening at http://%s:%s", host, port);
-        let ex = new Exercise_1.Exercise("Ciao-gino. l'albero! e, extra-gina ...", "yyyy");
+        let ex = new Exercise_1.Exercise("Ciao! Ciao-gino. l'albero! e, extra-gina ...", "yyyy");
         console.log("splitSent: ", ex.getSplitSentence());
     });
 });

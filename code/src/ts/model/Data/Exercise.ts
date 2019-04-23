@@ -87,47 +87,44 @@ class Exercise implements Data{
      * This method adds spaces to the exercise sentence before and after every punctation symbol
      * @param sentence - a string on which apply replace
      */
-
     private myReplace() {
-        let arr =this.sentence.split("");
+        this.sentence = this.sentence.replace(/\-/g," - ");
+        this.sentence = this.sentence.replace(/\!/g," ! ");
+        this.sentence = this.sentence.replace(/\?/g," ? ");
+        this.sentence = this.sentence.replace(/,/g," , ");
+        this.sentence = this.sentence.replace(/:/g," : ");
+        this.sentence = this.sentence.replace(/;/g," ; ");
+        this.sentence = this.sentence.replace(/\//g," / ");
+        this.sentence = this.sentence.replace(/\*/g," * ");
+        this.sentence = this.sentence.replace(/\(/g," ( ");
+        this.sentence = this.sentence.replace(/\)/g," ) ");
+        this.sentence = this.sentence.replace(/\[/g," [ ");
+        this.sentence = this.sentence.replace(/\]/g," ] ");
+        this.sentence = this.sentence.replace(/{/g," { ");
+        this.sentence = this.sentence.replace(/}/g," } ");
+        this.sentence = this.sentence.replace(/_/g," _ ");
+        this.sentence = this.sentence.replace(/`/g," ` ");
+        this.sentence = this.sentence.replace(/‘/g," ‘ ");
+        this.sentence = this.sentence.replace(/’/g," ’ ");
+        this.sentence = this.sentence.replace(/\"/g," \" ");
+        this.sentence = this.sentence.replace(/“/g," “ ");
+        this.sentence = this.sentence.replace(/”/g," ” ");
+        this.sentence = this.sentence.replace(/«/g," « ");
+        this.sentence = this.sentence.replace(/»/g," » ");
+        this.sentence  = this.sentence.replace(/\s+/g, ' ');//if there are multiple spaces
+        this.sentence  = this.sentence.replace(/\s+'/g, '\'');//if there are spaces before '
+        let arr = this.sentence.split("");
         for( let i=0; i<arr.length; i++){
-            switch(arr[i]){
-                case '-': arr[i] = ' - ';break;
-                case '!': arr[i] = ' ! ';break;
-                case '?': arr[i] = ' ? ';break;
-                case ',': arr[i] = ' , ';break;
-                case '.':
-                    if(arr[i+1]==='.' && arr[i+2]==='.'){
-                        arr[i] = ' ... ';arr[i+1] = ' ';arr[i+2] = ' ';
-                    }
-                    else{
-                        arr[i] = ' . ';
-                    }
-                    break;
-                case ':': arr[i] = ' : ';break;
-                case ';': arr[i] = ' ; ';break;
-                case '/': arr[i] = ' / ';break;
-                case '*': arr[i] = ' * ';break;
-                case '(': arr[i] = ' ( ';break;
-                case ')': arr[i] = ' ) ';break;
-                case '[': arr[i] = ' [ ';break;
-                case ']': arr[i] = ' ] ';break;
-                case '{': arr[i] = ' { ';break;
-                case '}': arr[i] = ' } ';break;
-                case '_': arr[i] = ' _ ';break;
-                case '`': arr[i] = ' ` ';break;
-                case '‘': arr[i] = ' ‘ ';break;
-                case '’': arr[i] = ' ’ ';break;
-                case '"': arr[i] = ' " ';break;
-                case '“': arr[i] = ' “ ';break;
-                case '”': arr[i] = ' ” ';break;
-                case '«': arr[i] = ' « ';break;
-                case '»': arr[i] = ' » ';break;
+            if(i <= arr.length-3 && arr[i]==="." && arr[i+1]==="." && arr[i+2]==="."){
+                arr[i]=" ... ";
+                arr[i+1]=arr[i+2]=" ";
+
+            }
+            else if(arr[i]==="."){
+                arr[i] = " . ";
             }
         }
         this.sentence = arr.join("");
-        this.sentence  = this.sentence.replace(/\s+/g, ' ');//trim
-        this.sentence  = this.sentence.replace(/\s+'/g, '\'');//if there are spaces before '
     }
 
     /**

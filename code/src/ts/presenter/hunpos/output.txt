@@ -1,11 +1,5 @@
-Ciao	SP	
-gino	Ams	
-.	FS	
-L'	RDns	
-amore	Sms	
-e	CC	
-l'	RDns	
-amicizia	Sfs	
-!	FS	
-...	FS	
+This	SP	
+is	SWnn	
+an	SWnn	
+example	Vip3s	
 

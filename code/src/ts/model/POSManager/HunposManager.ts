@@ -87,45 +87,44 @@ class HunposManager implements POSManager{
      * @returns string [] - an array containing the split sentence
      */
     private splitSentence(sentence: string) : string []{
-        let arr =sentence.split("");
+        let ret = sentence;
+        ret = ret.replace(/\-/g," - ");
+        ret = ret.replace(/\!/g," ! ");
+        ret = ret.replace(/\?/g," ? ");
+        ret = ret.replace(/,/g," , ");
+        ret = ret.replace(/:/g," : ");
+        ret = ret.replace(/;/g," ; ");
+        ret = ret.replace(/\//g," / ");
+        ret = ret.replace(/\*/g," * ");
+        ret = ret.replace(/\(/g," ( ");
+        ret = ret.replace(/\)/g," ) ");
+        ret = ret.replace(/\[/g," [ ");
+        ret = ret.replace(/\]/g," ] ");
+        ret = ret.replace(/{/g," { ");
+        ret = ret.replace(/}/g," } ");
+        ret = ret.replace(/_/g," _ ");
+        ret = ret.replace(/`/g," ` ");
+        ret = ret.replace(/‘/g," ‘ ");
+        ret = ret.replace(/’/g," ’ ");
+        ret = ret.replace(/\"/g," \" ");
+        ret = ret.replace(/“/g," “ ");
+        ret = ret.replace(/”/g," ” ");
+        ret = ret.replace(/«/g," « ");
+        ret = ret.replace(/»/g," » ");
+        ret = ret.replace(/\s+/g, ' ');//if there are multiple spaces
+        ret = ret.replace(/\s+'/g, '\'');//if there are spaces before '
+        let arr = ret.split("");
         for( let i=0; i<arr.length; i++){
-            switch(arr[i]){
-                case '-': arr[i] = ' - ';break;
-                case '!': arr[i] = ' ! ';break;
-                case '?': arr[i] = ' ? ';break;
-                case ',': arr[i] = ' , ';break;
-                case '.':
-                    if(arr[i+1]==='.' && arr[i+2]==='.'){
-                        arr[i] = ' ... ';arr[i+1] = ' ';arr[i+2] = ' ';
-                    }
-                    else{
-                        arr[i] = ' . ';
-                    }
-                    break;
-                case ':': arr[i] = ' : ';break;
-                case ';': arr[i] = ' ; ';break;
-                case '/': arr[i] = ' / ';break;
-                case '*': arr[i] = ' * ';break;
-                case '(': arr[i] = ' ( ';break;
-                case ')': arr[i] = ' ) ';break;
-                case '[': arr[i] = ' [ ';break;
-                case ']': arr[i] = ' ] ';break;
-                case '{': arr[i] = ' { ';break;
-                case '}': arr[i] = ' } ';break;
-                case '_': arr[i] = ' _ ';break;
-                case '`': arr[i] = ' ` ';break;
-                case '‘': arr[i] = ' ‘ ';break;
-                case '’': arr[i] = ' ’ ';break;
-                case '"': arr[i] = ' " ';break;
-                case '“': arr[i] = ' “ ';break;
-                case '”': arr[i] = ' ” ';break;
-                case '«': arr[i] = ' « ';break;
-                case '»': arr[i] = ' » ';break;
+            if(i <= arr.length-3 && arr[i]==="." && arr[i+1]==="." && arr[i+2]==="."){
+                arr[i]=" ... ";
+                arr[i+1]=arr[i+2]=" ";
+
+            }
+            else if(arr[i]==="."){
+                arr[i] = " . ";
             }
         }
-        let ret = arr.join("");
-        ret  = ret.replace(/\s+/g, ' ');//trim
-        ret = ret.replace(/\s+'/g, '\'');//if there are spaces before '
+        ret = arr.join("");
         arr = ret.split(new RegExp(" |(?<=')"));
         arr = arr.filter(Boolean);//remove empty string like ''
         return arr;

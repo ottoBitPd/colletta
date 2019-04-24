@@ -94,9 +94,9 @@ describe('DatabaseClassManager', function() {
 
             describe('DatabaseClassManager.elements()', function () {
                 it('should return elements database', async function() {
-let now=new Map<string,string>();
-now.set("key","teacherID");
-                    expect(await test1.elements()).eql(now);
+                 let now=new Map<string,string>();
+            now.set("key","teacherID");
+                       expect(await test1.elements()).eql(now);
 
                 });
             });

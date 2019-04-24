@@ -66,6 +66,12 @@ describe('Student',function() {
         });
     });
 
+    describe('Student.getID()', function () {
+        it('should return id', function () {
+            expect(student2.getID()).to.equal("st2");
+        });
+    });
+
     describe('Student.setID()', function () {
         it('should set the id', function () {
             let student = new student2.DatabaseUserInfo("15", "gioperry15", "giovanni", "Peron", "Castelfranco"," Unipd","giov.anni@gmail.com");
@@ -77,6 +83,12 @@ describe('Student',function() {
     describe('Student.isTeacher()', function () {
         it('should return false', function () {
             expect(student1.isTeacher()).to.be.false;
+        });
+    });
+
+    describe('Student.isStudent()', function () {
+        it('should return true', function () {
+            expect(student1.isStudent()).to.be.true;
         });
     });
 

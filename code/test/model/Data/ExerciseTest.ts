@@ -111,7 +111,8 @@ describe('Exercise', function() {
         let valutations : Map<string,number> | null;
 
         it('should throw exception',function () {
-            expect(() => exercise.addValutation("",2)).to.throw(Error,"Nessuna soluzione proposta");
+            expect(() => exercise.addValutation("",2))
+                .to.throw(Error,"Nessuna soluzione proposta");
         });
 
         before(function () {
@@ -208,12 +209,11 @@ describe('Exercise', function() {
 
     describe("Exercise.toJSON",function () {
        it ("should return 1",function () {
-           let obj: any = {
+           /*let obj: any = {
                "sentence": exercise.getSentence(),
                "authorId" : exercise.getAuthorId(),
                "key" : exercise.getKey()
-           };
-           console.log("obj: ",obj);
+           };*/
            expect(exercise.toJSON()).eql({ sentence: 'This is an example', authorId: 'xxxxx', key: '-1'});
        });
     });

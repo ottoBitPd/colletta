@@ -10,7 +10,6 @@ class ExerciseClient{
     }
 
     public async autosolve(sentence: string, authorId :string) : Promise<string[]>{
-        console.log("sentence: ",sentence);
         let exercise = new Exercise(sentence,authorId);
         let autosolution = exercise.autosolve();
         let result = [];
@@ -153,7 +152,7 @@ class ExerciseClient{
      */
     private async getExercisesByStudent(id :string) :Promise<Exercise[]>{
         var elements = await this.dbExerciseManager.elements();//returns a map<id,sentence> of all exercises in the db
-        var toReturn = new Array();
+        var toReturn = [];
         for (let entry of Array.from(elements.entries())) {
             let key = entry[0];
             //let value = entry[1];
@@ -169,7 +168,7 @@ class ExerciseClient{
     }
     /**
      * This method receives an array of exercises and calculate the average of all valutations obtained by the student
-     * @param exercises - an array of exercises
+     * @param studentId - a string representing the ID of a student
      * @returns Map<number,number> - a map containing the date of the solution given and the valutation obtained
      */
     public async getStudentAverage(studentId: string) : Promise<Map<number,number>> {
@@ -181,8 +180,14 @@ class ExerciseClient{
         });
         let  sumTotal = 0; var i = 0;
         //sort solutions
-        //@ts-ignore
-        solutions.sort((a,b)=>{return a.getTime()-b.getTime()});
+        solutions.sort((a,b)=>{
+            let x = a.getTime();
+            let y = b.getTime();
+            if (x && y)
+                return x - y;
+            return 0;
+        });
+
         solutions.forEach((currentValue: Solution, index: number) => {
             let sumSingleSolution = 0;
             currentValue.getValutations()!.forEach((value: number,key: string) => {

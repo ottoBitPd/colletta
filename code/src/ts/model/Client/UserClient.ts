@@ -77,9 +77,6 @@ class UserClient{
         if((<User> user).isTeacher()){
             userData.inps = (<Teacher> user).getINPS();
         }
-        else if((<User> user).isStudent()){
-            userData.classId = (<Student> user).getClassId();
-        }
         return userData;
     }
     public async updateUser(username:string, userUpdateData : any){
@@ -129,8 +126,6 @@ class UserClient{
         return this.passwordHash.hashSync(plain,10);
     }
 
-    public async addClassToStudent(studentId: any, classId: any) {
-        await this.dbUserManager.update('data/users/'+studentId+'/classId',classId);
-    }
+
 }
 export{UserClient}

@@ -8,7 +8,12 @@ class ExerciseClient{
     constructor(){
         this.dbExerciseManager= new DatabaseExerciseManager();
     }
-
+    /**
+     * This method returns an array of exercises done by a student whose id has passed
+     * @param sentence - the sentence that must to be solve
+     * @param authorId - the author's id who write the sentence
+     * @returns Promise<string[]> - array containing the result
+     */
     public async autosolve(sentence: string, authorId :string) : Promise<string[]>{
         let exercise = new Exercise(sentence,authorId);
         let autosolution = exercise.autosolve();
@@ -20,8 +25,9 @@ class ExerciseClient{
     }
 
     /**
-     * This method
-     * @param sentence
+     * This method splits a sentence on spaces and punctuation
+     * @param sentence - a sentence that must to be splitted
+     * @returns string [] - an array containing the split sentence
      */
     public getSplitSentence(sentence:string) : string []{
         let tmp = new Exercise(sentence,"xxx");

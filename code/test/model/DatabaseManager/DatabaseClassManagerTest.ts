@@ -41,7 +41,6 @@ describe('DatabaseClassManager', function() {
              async elements() : Promise<Map<string, string>> {
                  let now=new Map<string,string>();
                  now.set("key","teacherID");
-                 console.log(now);
                  return now;
              }
 

@@ -132,6 +132,5 @@ class UserClient{
     public async addClassToStudent(studentId: any, classId: any) {
         await this.dbUserManager.update('data/users/'+studentId+'/classId',classId);
     }
-
 }
 export{UserClient}

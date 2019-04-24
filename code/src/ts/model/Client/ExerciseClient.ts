@@ -1,6 +1,7 @@
 import {DatabaseExerciseManager} from "../DatabaseManager/DatabaseExerciseManager";
 import {Exercise} from "../Data/Exercise";
 import {Data} from "../Data/Data";
+import {Solution} from "../Data/Solution";
 
 class ExerciseClient{
     private dbExerciseManager : DatabaseExerciseManager;
@@ -19,8 +20,13 @@ class ExerciseClient{
         return result;
     }
 
+    /**
+     * This method
+     * @param sentence
+     */
     public getSplitSentence(sentence:string) : string []{
-        return sentence.split(" ");
+        let tmp = new Exercise(sentence,"xxx");
+        return tmp.getSplitSentence();
     }
 
     public insertExercise(sentence: string , authorId :string, solution : any, valutation :any) : void {
@@ -62,6 +68,7 @@ class ExerciseClient{
     }*/
 
     /**
+     *
      * @param sentence
      * @param solverID
      * @return a JSON of this form
@@ -138,5 +145,56 @@ class ExerciseClient{
         let exerciseData = (<Exercise>exercise).toJSON();
         return exerciseData;
     }
+
+    /**
+     * This method returns an array of exercises done by a student whose id has passed
+     * @param id - the id of the student
+     * @returns Exercise[] - array containing the result
+     */
+    private async getExercisesByStudent(id :string) :Promise<Exercise[]>{
+        var elements = await this.dbExerciseManager.elements();//returns a map<id,sentence> of all exercises in the db
+        var toReturn = new Array();
+        for (let entry of Array.from(elements.entries())) {
+            let key = entry[0];
+            //let value = entry[1];
+            let e = await this.dbExerciseManager.read(key);
+            let s = await (<Exercise> e).getSolutions();
+            for(let i in s){
+                if(s[i].getSolverId()===id){
+                    toReturn.push((<Exercise> e));
+                }
+            }
+        }
+        return toReturn;
+    }
+    /**
+     * This method receives an array of exercises and calculate the average of all valutations obtained by the student
+     * @param exercises - an array of exercises
+     * @returns Map<number,number> - a map containing the date of the solution given and the valutation obtained
+     */
+    public async getStudentAverage(studentId: string) : Promise<Map<number,number>> {
+        let averageMap = new Map<number, number>();
+        let solutions: Solution[] = [];
+        let exercises = await this.getExercisesByStudent(studentId);
+        exercises.forEach((currentValue: Exercise, index: number) => {
+            solutions=solutions.concat(currentValue.getSolutions().filter((sol) => sol.getSolverId() === studentId));
+        });
+        let  sumTotal = 0; var i = 0;
+        //sort solutions
+        //@ts-ignore
+        solutions.sort((a,b)=>{return a.getTime()-b.getTime()});
+        solutions.forEach((currentValue: Solution, index: number) => {
+            let sumSingleSolution = 0;
+            currentValue.getValutations()!.forEach((value: number,key: string) => {
+                sumSingleSolution+=value;
+                i++;
+            });
+            sumTotal+=sumSingleSolution;
+            let media=sumTotal/i;
+            averageMap.set(currentValue.getTime()!, media);
+        });
+        return averageMap;
+    }
+
 }
 export{ExerciseClient}

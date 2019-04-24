@@ -1,7 +1,7 @@
 import {User} from "./User";
 import {Class} from "./Class";
-import {Exercise} from "./Exercise";
-import {Solution} from "./Solution";
+/*import {Exercise} from "./Exercise";
+import {Solution} from "./Solution";*/
 
 class Student extends User {
 
@@ -25,7 +25,12 @@ class Student extends User {
         return list;
     }
 
-
+    /**
+     * This method receives an array of exercises and calculate the average of all valutations obtained by the student
+     * @param exercises - an array of exercises
+     */
+    /*
+    //spostato in ExerciseClient
     public getAverage(exercises : Exercise[]) : Map<number,number> {
         let averageMap = new Map<number, number>();
         let solutions: Solution[] = [];
@@ -52,7 +57,7 @@ class Student extends User {
             });
 
         return averageMap;
-    }
+    }*/
     public isStudent(): boolean {
         return true;
     }

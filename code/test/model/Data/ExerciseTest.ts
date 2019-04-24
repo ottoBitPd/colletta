@@ -151,7 +151,9 @@ describe('Exercise', function() {
 
     describe('Exercise.getSplitSentence', function() {
         it('should return an array with the split sentence', function() {
-            expect(exercise.getSplitSentence()).eql(["This","is","an","example"]);
+            let ex = new Exercise("Ciao-gino. l'albero! e, extra-gina ...", "xxxxx");
+            //Ciao Gino. L'amore e l  ' amicizia! ... altra frase difficile
+            expect(ex.getSplitSentence()).eql([ 'Ciao', '-', 'gino', '.', 'l\'', 'albero', '!', 'e', ',', 'extra', '-', 'gina', '...' ]);
         });
     });
 

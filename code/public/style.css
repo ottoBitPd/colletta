@@ -8,6 +8,10 @@
 .container{
     margin-top:10%;
 }
+#chartdiv {
+    width: 100%;
+    height: 500px;
+}
 /*
 //secondo perry15 questo vecchio css si può anche l'eliminare nel frattempo lo commmento
 html{

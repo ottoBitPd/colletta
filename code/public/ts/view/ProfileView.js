@@ -120,109 +120,112 @@ class ProfileView extends PageView_1.PageView {
                 "</form>" +
                 "\t</li>\n" +
                 "\t</ul>";
-            /*if(this.userKind === UserKind.student){
-                //TODO controllare questo codice renderlo dinamico
-                ret+="<div class=\"row\" style=\"margin-top: 15%; margin-bottom:10%\">\n" +
-                    "\t\t<div id= \"progress\" class = \" anchor col-sm-6 mx-auto\">\n" +
-                    "\t\t\t<h1 class ='text-center mb-5'>I tuoi progressi:</h1>\n" +
-                    "\t\t\t<ul class=\"list-group\">\n" +
-                    "\t\t\t\t<li class=\"list-group-item\">\n" +
-                    "\t\t\t\t\t<div class= \"row\">\n" +
-                    "\t\t\t\t\t\t<div class = \"col-sm-4\">\n" +
-                    "\t\t\t\t\t\t\t<p class= \"font-weight-bold\"> Esercizi svolti:</p> \n" +
-                    "\t\t\t\t\t\t</div>\n" +
-                    "\t\t\t\t\t\t<div class = \"col-sm-4\">\n" +
-                    "\t\t\t\t\t\t\t<p class=\"font-weight-light\"> 10 </p> \n" +
-                    "\t\t\t\t\t\t</div>\n" +
-                    "\t\t\t\t\t</div>\n" +
-                    "\t\t\t\t\t<div class= \"row\">\n" +
-                    "\t\t\t\t\t\t<div class = \"col-sm-4\">\n" +
-                    "\t\t\t\t\t\t\t<p class= \"font-weight-bold\"> Media valutazioni:</p> \n" +
-                    "\t\t\t\t\t\t</div>\n" +
-                    "\t\t\t\t\t\t<div class = \"col-sm-4\">\n" +
-                    "\t\t\t\t\t\t\t<p class=\"font-weight-light\"> 6.53 </p> \n" +
-                    "\t\t\t\t\t\t</div>\n" +
-                    "\t\t\t\t\t\t\t<div class=\"mt-2\" id=\"chartdiv\" style=\"width: 100%; height: 400px; background-color: #FFFFFF;\" ></div>\n" +
-                    "\t\t\t\t\t</div>\n" +
-                    "\t\t\t\t</li>\n" +
-                    "\t\t\t</ul>\n" +
-                    "\t\t\t\n" +
-                    "\t\t</div>\n" +
-                    "\t\t\n" +
-                    "\t<div class = \"col-sm-6 mx-auto\">\n" +
-                    "\t\t<h1 class ='text-center mb-5'>Media per argomenti trattati:</h1>\n" +
-                    "\t\t<ul class=\"list-group\">\n" +
-                    "\t\t\t<li class=\"list-group-item\">\n" +
-                    "\t\t\t\t<div class= \"row\">\n" +
-                    "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
-                    "\t\t\t\t\t\t<p class= \"font-weight-bold\"> Aggettivi:</p> \n" +
-                    "\t\t\t\t\t</div>\n" +
-                    "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
-                    "\t\t\t\t\t\t<p class=\"font-weight-light\"> 6 </p> \n" +
-                    "\t\t\t\t\t</div>\n" +
-                    "\t\t\t\t</div>\n" +
-                    "\t\t\t\t<div class= \"row\">\n" +
-                    "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
-                    "\t\t\t\t\t\t<p class= \"font-weight-bold\"> Avverbi:</p> \n" +
-                    "\t\t\t\t\t</div>\n" +
-                    "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
-                    "\t\t\t\t\t\t<p class=\"font-weight-light\"> 5.24 </p> \n" +
-                    "\t\t\t\t\t</div>\n" +
-                    "\t\t\t\t</div>\n" +
-                    "\t\t\t\t<div class= \"row\">\n" +
-                    "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
-                    "\t\t\t\t\t\t<p class= \"font-weight-bold\"> Verbi:</p> \n" +
-                    "\t\t\t\t\t</div>\n" +
-                    "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
-                    "\t\t\t\t\t\t<p class=\"font-weight-light\"> 9.3 </p> \n" +
-                    "\t\t\t\t\t</div>\n" +
-                    "\t\t\t\t</div>\n" +
-                    "\t\t\t\t<div class= \"row\">\n" +
-                    "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
-                    "\t\t\t\t\t\t<p class= \"font-weight-bold\"> Nomi:</p> \n" +
-                    "\t\t\t\t\t</div>\n" +
-                    "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
-                    "\t\t\t\t\t\t<p class=\"font-weight-light\"> 6.1 </p> \n" +
-                    "\t\t\t\t\t</div>\n" +
-                    "\t\t\t\t</div>\n" +
-                    "\t\t\t\t<div class= \"row\">\n" +
-                    "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
-                    "\t\t\t\t\t\t<p class= \"font-weight-bold\"> Preposizioni:</p> \n" +
-                    "\t\t\t\t\t</div>\n" +
-                    "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
-                    "\t\t\t\t\t\t<p class=\"font-weight-light\"> 4.2 </p> \n" +
-                    "\t\t\t\t\t</div>\n" +
-                    "\t\t\t\t</div>\n" +
-                    "\t\t\t\t<div class= \"row\">\n" +
-                    "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
-                    "\t\t\t\t\t\t<p class= \"font-weight-bold\"> Articoli:</p> \n" +
-                    "\t\t\t\t\t</div>\n" +
-                    "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
-                    "\t\t\t\t\t\t<p class=\"font-weight-light\"> 7 </p> \n" +
-                    "\t\t\t\t\t</div>\n" +
-                    "\t\t\t\t</div>\n" +
-                    "\t\t\t\t<div class= \"row\">\n" +
-                    "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
-                    "\t\t\t\t\t\t<p class= \"font-weight-bold\"> Congiunzioni:</p> \n" +
-                    "\t\t\t\t\t</div>\n" +
-                    "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
-                    "\t\t\t\t\t\t<p class=\"font-weight-light\"> 6.02 </p> \n" +
-                    "\t\t\t\t\t</div>\n" +
-                    "\t\t\t\t</div>\n" +
-                    "\t\t\t\t<div class= \"row\">\n" +
-                    "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
-                    "\t\t\t\t\t\t<p class= \"font-weight-bold\"> Pronomi:</p> \n" +
-                    "\t\t\t\t\t</div>\n" +
-                    "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
-                    "\t\t\t\t\t\t<p class=\"font-weight-light\"> 4 </p> \n" +
-                    "\t\t\t\t\t</div>\n" +
-                    "\t\t\t\t</div>\n" +
-                    "\t\t\t</li>\n" +
-                    "\t\t</ul>\n" +
-                    "\t</div>";
-            }*/
+            if (this.userKind === PageView_1.UserKind.student) {
+                let result = yield this.profileController.getAverageInfo();
+                if (result.size > 0) {
+                    let n = result.size;
+                    ret += "<div class=\"row\" style=\"margin-top: 15%; margin-bottom:10%\">\n" +
+                        "\t\t<div id= \"progress\" class = \" anchor col-sm-6 mx-auto\">\n" +
+                        "\t\t\t<h1 class ='text-center mb-5'>I tuoi progressi:</h1>\n" +
+                        "\t\t\t<ul class=\"list-group\">\n" +
+                        "\t\t\t\t<li class=\"list-group-item\">\n" +
+                        "\t\t\t\t\t<div class= \"row\">\n" +
+                        "\t\t\t\t\t\t<div class = \"col-sm-4\">\n" +
+                        "\t\t\t\t\t\t\t<p class= \"font-weight-bold\"> Esercizi svolti:</p> \n" +
+                        "\t\t\t\t\t\t</div>\n";
+                    ret += "\t\t\t\t\t\t<div class = \"col-sm-4\">\n" +
+                        "\t\t\t\t\t\t\t<p class=\"font-weight-light\">" + n + "</p> \n" +
+                        "\t\t\t\t\t\t</div>\n" +
+                        "\t\t\t\t\t</div>\n" +
+                        "\t\t\t\t\t<div class= \"row\">\n" +
+                        "\t\t\t\t\t\t<div class = \"col-sm-4\">\n" +
+                        "\t\t\t\t\t\t\t<p class= \"font-weight-bold\"> Media valutazioni:</p> \n" +
+                        "\t\t\t\t\t\t</div>\n" +
+                        "\t\t\t\t\t\t<div class = \"col-sm-4\">\n" +
+                        "\t\t\t\t\t\t\t<p class=\"font-weight-light\">" + result.get(Math.max.apply(null, Array.from(result.keys()))) + "</p> \n" +
+                        "\t\t\t\t\t\t</div>\n" +
+                        "\t\t\t\t\t\t\t<div class=\"mt-2\" id=\"chartdiv\" style=\"width: 100%; height: 400px; background-color: #FFFFFF;\" ></div>\n" +
+                        "\t\t\t\t\t</div>\n" +
+                        "\t\t\t\t</li>\n" +
+                        "\t\t\t</ul>\n" +
+                        "\t\t\t\n" +
+                        "\t\t</div>\n" +
+                        "\t\t\n" +
+                        "\t<div class = \"col-sm-6 mx-auto\">\n" +
+                        "\t\t<h1 class ='text-center mb-5'>Media per argomenti trattati:</h1>\n" +
+                        "\t\t<ul class=\"list-group\">\n" +
+                        "\t\t\t<li class=\"list-group-item\">\n" +
+                        "\t\t\t\t<div class= \"row\">\n" +
+                        "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
+                        "\t\t\t\t\t\t<p class= \"font-weight-bold\"> Aggettivi:</p> \n" +
+                        "\t\t\t\t\t</div>\n" +
+                        "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
+                        "\t\t\t\t\t\t<p class=\"font-weight-light\"> 6 </p> \n" +
+                        "\t\t\t\t\t</div>\n" +
+                        "\t\t\t\t</div>\n" +
+                        "\t\t\t\t<div class= \"row\">\n" +
+                        "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
+                        "\t\t\t\t\t\t<p class= \"font-weight-bold\"> Avverbi:</p> \n" +
+                        "\t\t\t\t\t</div>\n" +
+                        "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
+                        "\t\t\t\t\t\t<p class=\"font-weight-light\"> 5.24 </p> \n" +
+                        "\t\t\t\t\t</div>\n" +
+                        "\t\t\t\t</div>\n" +
+                        "\t\t\t\t<div class= \"row\">\n" +
+                        "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
+                        "\t\t\t\t\t\t<p class= \"font-weight-bold\"> Verbi:</p> \n" +
+                        "\t\t\t\t\t</div>\n" +
+                        "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
+                        "\t\t\t\t\t\t<p class=\"font-weight-light\"> 9.3 </p> \n" +
+                        "\t\t\t\t\t</div>\n" +
+                        "\t\t\t\t</div>\n" +
+                        "\t\t\t\t<div class= \"row\">\n" +
+                        "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
+                        "\t\t\t\t\t\t<p class= \"font-weight-bold\"> Nomi:</p> \n" +
+                        "\t\t\t\t\t</div>\n" +
+                        "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
+                        "\t\t\t\t\t\t<p class=\"font-weight-light\"> 6.1 </p> \n" +
+                        "\t\t\t\t\t</div>\n" +
+                        "\t\t\t\t</div>\n" +
+                        "\t\t\t\t<div class= \"row\">\n" +
+                        "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
+                        "\t\t\t\t\t\t<p class= \"font-weight-bold\"> Preposizioni:</p> \n" +
+                        "\t\t\t\t\t</div>\n" +
+                        "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
+                        "\t\t\t\t\t\t<p class=\"font-weight-light\"> 4.2 </p> \n" +
+                        "\t\t\t\t\t</div>\n" +
+                        "\t\t\t\t</div>\n" +
+                        "\t\t\t\t<div class= \"row\">\n" +
+                        "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
+                        "\t\t\t\t\t\t<p class= \"font-weight-bold\"> Articoli:</p> \n" +
+                        "\t\t\t\t\t</div>\n" +
+                        "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
+                        "\t\t\t\t\t\t<p class=\"font-weight-light\"> 7 </p> \n" +
+                        "\t\t\t\t\t</div>\n" +
+                        "\t\t\t\t</div>\n" +
+                        "\t\t\t\t<div class= \"row\">\n" +
+                        "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
+                        "\t\t\t\t\t\t<p class= \"font-weight-bold\"> Congiunzioni:</p> \n" +
+                        "\t\t\t\t\t</div>\n" +
+                        "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
+                        "\t\t\t\t\t\t<p class=\"font-weight-light\"> 6.02 </p> \n" +
+                        "\t\t\t\t\t</div>\n" +
+                        "\t\t\t\t</div>\n" +
+                        "\t\t\t\t<div class= \"row\">\n" +
+                        "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
+                        "\t\t\t\t\t\t<p class= \"font-weight-bold\"> Pronomi:</p> \n" +
+                        "\t\t\t\t\t</div>\n" +
+                        "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
+                        "\t\t\t\t\t\t<p class=\"font-weight-light\"> 4 </p> \n" +
+                        "\t\t\t\t\t</div>\n" +
+                        "\t\t\t\t</div>\n" +
+                        "\t\t\t</li>\n" +
+                        "\t\t</ul>\n" +
+                        "\t</div>";
+                }
+            }
             ret += "</div>";
-            ret += this.getFoot(this.getScript());
+            ret += this.getFoot(yield this.insertChartScript());
             return ret;
         });
     }
@@ -304,21 +307,209 @@ class ProfileView extends PageView_1.PageView {
             return ret;
         }
     }
-    getScript() {
-        return "" +
-            "function a(){\n" +
-            "alert('ocio');\n" +
-            "}\n" +
-            "function fupdate(value){\n" +
-            "   var submit = document.getElementById('btnsubmit');\n" +
-            "alert('value: '+value);\n" +
-            "   if(value.match([^\\s])){\n" +
-            "       submit.removeAttribute('disabled','');\n" +
-            "   }\n" +
-            "   else{\n" +
-            "       submit.setAttribute('disabled','');\n" +
-            "   }\n" +
-            "}\n";
+    /*private async insertChartScript(){
+        let ret="" +
+            "\t\t<!-- amCharts javascript code -->\n" +
+            "\t\t\tAmCharts.makeChart(\"chartdiv\",\n" +
+            "\t\t\t\t{\n" +
+            "\t\t\t\t\t\"type\": \"serial\",\n" +
+            "\t\t\t\t\t\"categoryField\": \"category\",\n" +
+            "\t\t\t\t\t\"startDuration\": 1,\n" +
+            "\t\t\t\t\t\"backgroundAlpha\": 0.8,\n" +
+            "\t\t\t\t\t\"categoryAxis\": {\n" +
+            "\t\t\t\t\t\t\"gridPosition\": \"start\"\n" +
+            "\t\t\t\t\t},\n" +
+            "\t\t\t\t\t\"trendLines\": [],\n" +
+            "\t\t\t\t\t\"graphs\": [\n" +
+            "\t\t\t\t\t\t{\n" +
+            "\t\t\t\t\t\t\t\"balloonText\": \"[[title]] of [[category]]:[[value]]\",\n" +
+            "\t\t\t\t\t\t\t\"bullet\": \"round\",\n" +
+            "\t\t\t\t\t\t\t\"id\": \"AmGraph-1\",\n" +
+            "\t\t\t\t\t\t\t\"title\": \"Variazione della media\",\n" +
+            "\t\t\t\t\t\t\t\"valueField\": \"column-1\"\n" +
+            "\t\t\t\t\t\t},\n" +
+            "\t\t\t\t\t\t\n" +
+            "\t\t\t\t\t],\n" +
+            "\t\t\t\t\t\"guides\": [],\n" +
+            "\t\t\t\t\t\"valueAxes\": [\n" +
+            "\t\t\t\t\t\t{\n" +
+            "\t\t\t\t\t\t\t\"id\": \"ValueAxis-1\",\n" +
+            "\t\t\t\t\t\t\t\"title\": \"Valutazioni\"\n" +
+            "\t\t\t\t\t\t}\n" +
+            "\t\t\t\t\t],\n" +
+            "\t\t\t\t\t\"allLabels\": [],\n" +
+            "\t\t\t\t\t\"balloon\": {},\n" +
+            "\t\t\t\t\t\"legend\": {\n" +
+            "\t\t\t\t\t\t\"enabled\": true,\n" +
+            "\t\t\t\t\t\t\"useGraphSettings\": true\n" +
+            "\t\t\t\t\t},\n" +
+            "\t\t\t\t\t\"titles\": [\n" +
+            "\t\t\t\t\t\t{\n" +
+            "\t\t\t\t\t\t\t\"id\": \"Title-1\",\n" +
+            "\t\t\t\t\t\t\t\"size\": 15,\n" +
+            "\t\t\t\t\t\t\t\"text\": \"Media nel tempo\"\n" +
+            "\t\t\t\t\t\t}\n" +
+            "\t\t\t\t\t],\n" +
+            "\t\t\t\t\t\"dataProvider\": [\n";
+            ret+="{\n" +
+                "\t\t\t\t\t\t\t\"category\": \"23/4/2019 20:29\",\n" +
+                "\t\t\t\t\t\t\t\"column-1\": \"8.333333333333334\"\n" +
+                "\t\t\t\t\t\t}," +
+                "{\n" +
+                "\t\t\t\t\t\t\t\"category\": \"23/4/2019 20:29\",\n" +
+                "\t\t\t\t\t\t\t\"column-1\": \"8.333333333333334\"\n" +
+                "\t\t\t\t\t\t}," +
+                "{\n" +
+                "\t\t\t\t\t\t\t\"category\": \"23/4/2019 20:29\",\n" +
+                "\t\t\t\t\t\t\t\"column-1\": \"8.333333333333334\"\n" +
+                "\t\t\t\t\t\t}," +
+                "{\n" +
+                "\t\t\t\t\t\t\t\"category\": \"23/4/2019 20:29\",\n" +
+                "\t\t\t\t\t\t\t\"column-1\": \"8.333333333333334\"\n" +
+                "\t\t\t\t\t\t}," +
+                "{\n" +
+                "\t\t\t\t\t\t\t\"category\": \"23/4/2019 20:29\",\n" +
+                "\t\t\t\t\t\t\t\"column-1\": \"8.333333333333334\"\n" +
+                "\t\t\t\t\t\t}," +
+                "{\n" +
+                "\t\t\t\t\t\t\t\"category\": \"23/4/2019 20:29\",\n" +
+                "\t\t\t\t\t\t\t\"column-1\": \"8.333333333333334\"\n" +
+                "\t\t\t\t\t\t}," +
+                "{\n" +
+                "\t\t\t\t\t\t\t\"category\": \"23/4/2019 20:29\",\n" +
+                "\t\t\t\t\t\t\t\"column-1\": \"8.333333333333334\"\n" +
+                "\t\t\t\t\t\t}," +
+                "{\n" +
+                "\t\t\t\t\t\t\t\"category\": \"23/4/2019 20:29\",\n" +
+                "\t\t\t\t\t\t\t\"column-1\": \"8.333333333333334\"\n" +
+                "\t\t\t\t\t\t},";
+            let result = await this.profileController.getAverageInfo();
+            if(result.size>0) {
+                let i=0;
+                for (let entry of Array.from(result.entries())) {
+                    let datetime = new Date(entry[0]);
+                    let date = datetime.getDate()+"/"+(datetime.getMonth()+1)+"/"+datetime.getFullYear()+" "+datetime.getHours()+":"+datetime.getMinutes();
+                    let mark = entry[1];
+                    ret+="\t\t\t\t\t\t{\n" +
+                        "\t\t\t\t\t\t\t\"category\": \""+date+"\",\n" +
+                        "\t\t\t\t\t\t\t\"column-1\": \""+mark+"\"\n" +
+                        "\t\t\t\t\t\t}";
+                    if(i!==result.size-1){
+                        ret+=",\n";
+                    }
+                    else{
+                        ret+="\n";
+                    }
+                    i++;
+                }
+            }
+
+            ret+="\t\t\t\t\t]\n" +
+            "\t\t\t\t}\n" +
+            "\t\t\t);";
+            return ret;
+    }*/
+    insertChartScript() {
+        return __awaiter(this, void 0, void 0, function* () {
+            let ret = "";
+            ret += "" +
+                "am4core.ready(function() {\n" +
+                "\n" +
+                "// Themes begin\n" +
+                "am4core.useTheme(am4themes_animated);\n" +
+                "// Themes end\n" +
+                "\n" +
+                "// Create chart instance\n" +
+                "var chart = am4core.create(\"chartdiv\", am4charts.XYChart);\n" +
+                "\n" +
+                "var title = chart.titles.create();\n" +
+                "title.text = \"Media nel tempo\";\n" +
+                "title.fontSize = 25;\n" +
+                "title.marginBottom = 30;" +
+                "// Add data\n" +
+                "chart.data = [";
+            let result = yield this.profileController.getAverageInfo();
+            if (result.size > 0) {
+                let i = 0;
+                for (let entry of Array.from(result.entries())) {
+                    let datetime = new Date(entry[0]);
+                    let date = datetime.getDate() + "-" + (datetime.getMonth() + 1) + "-" + datetime.getFullYear() + ", " + datetime.getHours() + ":" + datetime.getMinutes();
+                    let mark = entry[1];
+                    ret += "{\n" +
+                        "  \"date\": \"" + date + "\",\n" +
+                        "  \"value\": " + mark + "\n" +
+                        "}";
+                    if (i !== result.size - 1) {
+                        ret += ",\n";
+                    }
+                    else {
+                        ret += "\n";
+                    }
+                    i++;
+                }
+            }
+            ret += "];\n" +
+                "\n" +
+                "// Set input format for the dates\n" +
+                "chart.dateFormatter.inputDateFormat = \"dd-MM-yyyy, HH:mm\";\n" +
+                "\n" +
+                "// Create axes\n" +
+                "var dateAxis = chart.xAxes.push(new am4charts.DateAxis());\n" +
+                "dateAxis.baseInterval = {\n" +
+                "  \"timeUnit\": \"minute\",\n" +
+                "  \"count\": 1\n" +
+                "};" +
+                "var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());\n" +
+                "\n" +
+                "// Create series\n" +
+                "var series = chart.series.push(new am4charts.LineSeries());\n" +
+                "series.dataFields.valueY = \"value\";\n" +
+                "series.dataFields.dateX = \"date\";\n" +
+                "series.tooltipText = \"{value}\"\n" +
+                "series.strokeWidth = 2;\n" +
+                "series.minBulletDistance = 15;\n" +
+                "\n" +
+                "// Drop-shaped tooltips\n" +
+                "series.tooltip.background.cornerRadius = 20;\n" +
+                "series.tooltip.background.strokeOpacity = 0;\n" +
+                "series.tooltip.pointerOrientation = \"vertical\";\n" +
+                "series.tooltip.label.minWidth = 40;\n" +
+                "series.tooltip.label.minHeight = 40;\n" +
+                "series.tooltip.label.textAlign = \"middle\";\n" +
+                "series.tooltip.label.textValign = \"middle\";\n" +
+                "\n" +
+                "// Make bullets grow on hover\n" +
+                "var bullet = series.bullets.push(new am4charts.CircleBullet());\n" +
+                "bullet.circle.strokeWidth = 2;\n" +
+                "bullet.circle.radius = 4;\n" +
+                "bullet.circle.fill = am4core.color(\"#fff\");\n" +
+                "\n" +
+                "var bullethover = bullet.states.create(\"hover\");\n" +
+                "bullethover.properties.scale = 1.3;\n" +
+                "\n" +
+                "// Make a panning cursor\n" +
+                "chart.cursor = new am4charts.XYCursor();\n" +
+                "chart.cursor.behavior = \"panXY\";\n" +
+                "chart.cursor.xAxis = dateAxis;\n" +
+                "chart.cursor.snapToSeries = series;\n" +
+                "\n" +
+                "// Create vertical scrollbar and place it before the value axis\n" +
+                "chart.scrollbarY = new am4core.Scrollbar();\n" +
+                "chart.scrollbarY.parent = chart.leftAxesContainer;\n" +
+                "chart.scrollbarY.toBack();\n" +
+                "\n" +
+                "// Create a horizontal scrollbar with previe and place it underneath the date axis\n" +
+                "chart.scrollbarX = new am4charts.XYChartScrollbar();\n" +
+                "chart.scrollbarX.series.push(series);\n" +
+                "chart.scrollbarX.parent = chart.bottomAxesContainer;\n" +
+                "\n" +
+                "chart.events.on(\"ready\", function () {\n" +
+                "  dateAxis.zoom({start:0.79, end:1});\n" +
+                "});\n" +
+                "\n" +
+                "}); // end am4core.ready()";
+            return ret;
+        });
     }
 }
 exports.ProfileView = ProfileView;

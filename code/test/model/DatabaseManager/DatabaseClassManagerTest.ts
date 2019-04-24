@@ -6,11 +6,13 @@ import {Class} from "../../../src/ts/model/Data/Class";
 import {DatabaseClassManager} from "../../../src/ts/model/DatabaseManager/DatabaseClassManager";
 
 
+
 describe('DatabaseClassManager', function() {
 
     let prova :any;
 
     let test1=new DatabaseClassManager();
+
 
     beforeEach(function () {
          prova= new Class("1","Benedetto","Ciao","111",["st1"],["es1"]);
@@ -41,7 +43,6 @@ describe('DatabaseClassManager', function() {
              async elements() : Promise<Map<string, string>> {
                  let now=new Map<string,string>();
                  now.set("key","teacherID");
-                 console.log(now);
                  return now;
              }
 
@@ -87,7 +88,7 @@ describe('DatabaseClassManager', function() {
             describe('DatabaseClassManager.update()', function () {
                 it('should return update database', async function() {
 
-                    expect(await test1.update("/data/classes/-Ld9ae0AXaB9_KbZ-sGJ/exercises/0","es3")).to.equal(true);
+                    expect(await test1.update("/data/classes/-Ld9ae0AXaB9_KbZ-sGJ/exercises",["es3"])).to.equal(true);
 
                 });
             });

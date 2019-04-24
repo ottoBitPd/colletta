@@ -57,7 +57,9 @@ class Solution {
     getValutations(): Map<string, number> | null {
         return this.valutations;
     }
-
+    /**
+    *
+     */
     JSONValutations() : any {
         let result = "{";
         if (this.valutations){

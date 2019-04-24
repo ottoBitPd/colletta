@@ -52,7 +52,7 @@
     "chai": "^4.2.0",
     "complexity-report": "^2.0.0-alpha",
     "express": "^4.16.4",
-    "mocha": "^6.1.2",
+    "mocha": "^6.1.4",
     "mocha-sonarqube-reporter": "^1.0.1",
     "sonar-scanner": "^3.1.0",
     "ts-node": "^8.0.3",

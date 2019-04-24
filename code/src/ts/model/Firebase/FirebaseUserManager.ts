@@ -29,7 +29,7 @@ class FirebaseUserManager extends FirebaseManager {
                         //let student= <Student>obj;
                         name: student.getName(), password: student.getPassword(), lastname: student.getLastName(),
                         username: student.getUsername(), city: student.getCity(), school: student.getSchool(),
-                        email: student.getEmail(), classId: student.getClassId()
+                        email: student.getEmail()
                     });
                 }
                 return resolve(true);
@@ -131,9 +131,9 @@ class FirebaseUserManager extends FirebaseManager {
 
     public async update (path:string, value: any) {
         let splittedPath =path.split("/");
-        let position : number = splittedPath.length -1;
+        let position : number = splittedPath.length-1;
         let field : string = splittedPath[position];
-        console.log("field: "+field, " value: "+value);
+        console.log("update user - field: "+field, " value: "+value);
         switch (field) {
             case "password": await this.updateField(path, value); break;
             case "name": await this.updateField(path, value); break;
@@ -143,7 +143,6 @@ class FirebaseUserManager extends FirebaseManager {
             case "username": await this.updateField(path, value); break;
             case "INPScode": await this.updateField(path, value); break;
             case "email": await this.updateField(path, value); break;
-            case "classId": await this.updateField(path, value); break;
             default : console.log("field doesn't exists"); return;
         }
     }

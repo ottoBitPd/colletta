@@ -63,11 +63,11 @@ class ClassClient{
         var _class : Data = await this.dbClassManager.read(classId);
         var exercises:string [] = (<Class>_class).getExercises();
         if(exercises[0]!=="n") {//if the class already has some exercises
-            console.log("aggiungo studente");
+            console.log("aggiungo esercizio");
             exercises.push(exerciseId);
         }
         else {//if there are no exercises
-            console.log("primo studente");
+            console.log("primo esercizio");
             exercises[0]=exerciseId;
         }
         await this.dbClassManager.update("data/classes/"+ classId + "/exercises", exercises);
@@ -102,6 +102,29 @@ class ClassClient{
         //console.log("mapToReturn: ",mapToReturn);
         return mapToReturn;
     }
+
+    /**
+     *
+     * @param studentId
+     */
+    public async getClassesByStudent(studentId:string){
+        var elements = await this.dbClassManager.elements();
+        var mapToReturn = new Map<string, string>();
+        //N.B. forEach(async (...)) doesn't work
+        for (let entry of Array.from(elements.entries())) {
+            let key = entry[0];
+            let _class = await this.dbClassManager.read(key);
+            let students = (<Class> _class).getStudents()
+            for(let i in students){
+                if(students[i]===studentId){
+                    mapToReturn.set(key,(<Class>_class).getName());
+                }
+            }
+        }
+        //console.log("mapToReturn: ",mapToReturn);
+        return mapToReturn;
+    }
+
     public async getClassData(id:string) : Promise<any> {
         const _class : Data = await this.dbClassManager.read(id);
         let _classData = (<Class> _class).toJSON();

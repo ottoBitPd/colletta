@@ -5,15 +5,14 @@ import {Solution} from "./Solution";*/
 
 class Student extends User {
 
-    private classId : any;
     constructor (id : string, username : string, password: string, name : string, lastname:string, city:string, school : string, email : string, classId? :string){
         super(id, username, password, name, lastname, city, school, email);
-        if(classId)
-            this.classId=classId;
-        else
-            this.classId="undefined";
     }
 
+    /**
+     * This method receives an array of classes and returns only the classes of the student
+     * @param classList
+     */
     public getClasses(classList: Class[]): Class[] {
         let list : Class[] =[];
         classList.forEach((_class) => {
@@ -62,8 +61,5 @@ class Student extends User {
         return true;
     }
 
-    public getClassId() {
-        return this.classId;
-    }
 }
 export {Student}

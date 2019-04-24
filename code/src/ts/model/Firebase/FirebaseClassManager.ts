@@ -118,9 +118,9 @@ class FirebaseClassManager extends FirebaseManager {
 
     public async update (path:string, value: any) {
         const splittedPath =path.split("/");
-        const position : number = splittedPath.length -2;
+        const position : number = splittedPath.length -1;
         const field : string=splittedPath[position];
-        //console.log(field+ "path: " + path +" value: "+value);
+        console.log(field+ " path: " + path +" value: "+value);
         switch (field) {
             case "exercises": await this.updateField(path, value); break;
             case "students": await this.updateField(path, value); break;

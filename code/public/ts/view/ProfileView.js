@@ -125,7 +125,7 @@ class ProfileView extends PageView_1.PageView {
                 if (result.size > 0) {
                     let n = result.size;
                     ret += "<div class=\"row\" style=\"margin-top: 15%; margin-bottom:10%\">\n" +
-                        "\t\t<div id= \"progress\" class = \" anchor col-sm-6 mx-auto\">\n" +
+                        "\t\t<div id= \"progress\" class = \" anchor col-sm-10 mx-auto\">\n" +
                         "\t\t\t<h1 class ='text-center mb-5'>I tuoi progressi:</h1>\n" +
                         "\t\t\t<ul class=\"list-group\">\n" +
                         "\t\t\t\t<li class=\"list-group-item\">\n" +
@@ -149,79 +149,7 @@ class ProfileView extends PageView_1.PageView {
                         "\t\t\t\t</li>\n" +
                         "\t\t\t</ul>\n" +
                         "\t\t\t\n" +
-                        "\t\t</div>\n" +
-                        "\t\t\n" +
-                        "\t<div class = \"col-sm-6 mx-auto\">\n" +
-                        "\t\t<h1 class ='text-center mb-5'>Media per argomenti trattati:</h1>\n" +
-                        "\t\t<ul class=\"list-group\">\n" +
-                        "\t\t\t<li class=\"list-group-item\">\n" +
-                        "\t\t\t\t<div class= \"row\">\n" +
-                        "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
-                        "\t\t\t\t\t\t<p class= \"font-weight-bold\"> Aggettivi:</p> \n" +
-                        "\t\t\t\t\t</div>\n" +
-                        "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
-                        "\t\t\t\t\t\t<p class=\"font-weight-light\"> 6 </p> \n" +
-                        "\t\t\t\t\t</div>\n" +
-                        "\t\t\t\t</div>\n" +
-                        "\t\t\t\t<div class= \"row\">\n" +
-                        "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
-                        "\t\t\t\t\t\t<p class= \"font-weight-bold\"> Avverbi:</p> \n" +
-                        "\t\t\t\t\t</div>\n" +
-                        "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
-                        "\t\t\t\t\t\t<p class=\"font-weight-light\"> 5.24 </p> \n" +
-                        "\t\t\t\t\t</div>\n" +
-                        "\t\t\t\t</div>\n" +
-                        "\t\t\t\t<div class= \"row\">\n" +
-                        "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
-                        "\t\t\t\t\t\t<p class= \"font-weight-bold\"> Verbi:</p> \n" +
-                        "\t\t\t\t\t</div>\n" +
-                        "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
-                        "\t\t\t\t\t\t<p class=\"font-weight-light\"> 9.3 </p> \n" +
-                        "\t\t\t\t\t</div>\n" +
-                        "\t\t\t\t</div>\n" +
-                        "\t\t\t\t<div class= \"row\">\n" +
-                        "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
-                        "\t\t\t\t\t\t<p class= \"font-weight-bold\"> Nomi:</p> \n" +
-                        "\t\t\t\t\t</div>\n" +
-                        "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
-                        "\t\t\t\t\t\t<p class=\"font-weight-light\"> 6.1 </p> \n" +
-                        "\t\t\t\t\t</div>\n" +
-                        "\t\t\t\t</div>\n" +
-                        "\t\t\t\t<div class= \"row\">\n" +
-                        "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
-                        "\t\t\t\t\t\t<p class= \"font-weight-bold\"> Preposizioni:</p> \n" +
-                        "\t\t\t\t\t</div>\n" +
-                        "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
-                        "\t\t\t\t\t\t<p class=\"font-weight-light\"> 4.2 </p> \n" +
-                        "\t\t\t\t\t</div>\n" +
-                        "\t\t\t\t</div>\n" +
-                        "\t\t\t\t<div class= \"row\">\n" +
-                        "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
-                        "\t\t\t\t\t\t<p class= \"font-weight-bold\"> Articoli:</p> \n" +
-                        "\t\t\t\t\t</div>\n" +
-                        "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
-                        "\t\t\t\t\t\t<p class=\"font-weight-light\"> 7 </p> \n" +
-                        "\t\t\t\t\t</div>\n" +
-                        "\t\t\t\t</div>\n" +
-                        "\t\t\t\t<div class= \"row\">\n" +
-                        "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
-                        "\t\t\t\t\t\t<p class= \"font-weight-bold\"> Congiunzioni:</p> \n" +
-                        "\t\t\t\t\t</div>\n" +
-                        "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
-                        "\t\t\t\t\t\t<p class=\"font-weight-light\"> 6.02 </p> \n" +
-                        "\t\t\t\t\t</div>\n" +
-                        "\t\t\t\t</div>\n" +
-                        "\t\t\t\t<div class= \"row\">\n" +
-                        "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
-                        "\t\t\t\t\t\t<p class= \"font-weight-bold\"> Pronomi:</p> \n" +
-                        "\t\t\t\t\t</div>\n" +
-                        "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
-                        "\t\t\t\t\t\t<p class=\"font-weight-light\"> 4 </p> \n" +
-                        "\t\t\t\t\t</div>\n" +
-                        "\t\t\t\t</div>\n" +
-                        "\t\t\t</li>\n" +
-                        "\t\t</ul>\n" +
-                        "\t</div>";
+                        "\t\t</div>\n";
                 }
             }
             ret += "</div>";
@@ -248,7 +176,7 @@ class ProfileView extends PageView_1.PageView {
                 console.log("classIdView: ", classId);
                 if (classId !== "undefined") {
                     ret += "\t\t\t<li class=\"nav-item\">\n" +
-                        "\t\t\t\t<a href= \"/class?classId=" + classId + "\" class=\"nav-link\" >La tua classe</a>\n" +
+                        "\t\t\t\t<a href= \"/classes\" class=\"nav-link\" >Le tue classi</a>\n" +
                         "\t\t\t</li>\n";
                 }
             }
@@ -307,108 +235,9 @@ class ProfileView extends PageView_1.PageView {
             return ret;
         }
     }
-    /*private async insertChartScript(){
-        let ret="" +
-            "\t\t<!-- amCharts javascript code -->\n" +
-            "\t\t\tAmCharts.makeChart(\"chartdiv\",\n" +
-            "\t\t\t\t{\n" +
-            "\t\t\t\t\t\"type\": \"serial\",\n" +
-            "\t\t\t\t\t\"categoryField\": \"category\",\n" +
-            "\t\t\t\t\t\"startDuration\": 1,\n" +
-            "\t\t\t\t\t\"backgroundAlpha\": 0.8,\n" +
-            "\t\t\t\t\t\"categoryAxis\": {\n" +
-            "\t\t\t\t\t\t\"gridPosition\": \"start\"\n" +
-            "\t\t\t\t\t},\n" +
-            "\t\t\t\t\t\"trendLines\": [],\n" +
-            "\t\t\t\t\t\"graphs\": [\n" +
-            "\t\t\t\t\t\t{\n" +
-            "\t\t\t\t\t\t\t\"balloonText\": \"[[title]] of [[category]]:[[value]]\",\n" +
-            "\t\t\t\t\t\t\t\"bullet\": \"round\",\n" +
-            "\t\t\t\t\t\t\t\"id\": \"AmGraph-1\",\n" +
-            "\t\t\t\t\t\t\t\"title\": \"Variazione della media\",\n" +
-            "\t\t\t\t\t\t\t\"valueField\": \"column-1\"\n" +
-            "\t\t\t\t\t\t},\n" +
-            "\t\t\t\t\t\t\n" +
-            "\t\t\t\t\t],\n" +
-            "\t\t\t\t\t\"guides\": [],\n" +
-            "\t\t\t\t\t\"valueAxes\": [\n" +
-            "\t\t\t\t\t\t{\n" +
-            "\t\t\t\t\t\t\t\"id\": \"ValueAxis-1\",\n" +
-            "\t\t\t\t\t\t\t\"title\": \"Valutazioni\"\n" +
-            "\t\t\t\t\t\t}\n" +
-            "\t\t\t\t\t],\n" +
-            "\t\t\t\t\t\"allLabels\": [],\n" +
-            "\t\t\t\t\t\"balloon\": {},\n" +
-            "\t\t\t\t\t\"legend\": {\n" +
-            "\t\t\t\t\t\t\"enabled\": true,\n" +
-            "\t\t\t\t\t\t\"useGraphSettings\": true\n" +
-            "\t\t\t\t\t},\n" +
-            "\t\t\t\t\t\"titles\": [\n" +
-            "\t\t\t\t\t\t{\n" +
-            "\t\t\t\t\t\t\t\"id\": \"Title-1\",\n" +
-            "\t\t\t\t\t\t\t\"size\": 15,\n" +
-            "\t\t\t\t\t\t\t\"text\": \"Media nel tempo\"\n" +
-            "\t\t\t\t\t\t}\n" +
-            "\t\t\t\t\t],\n" +
-            "\t\t\t\t\t\"dataProvider\": [\n";
-            ret+="{\n" +
-                "\t\t\t\t\t\t\t\"category\": \"23/4/2019 20:29\",\n" +
-                "\t\t\t\t\t\t\t\"column-1\": \"8.333333333333334\"\n" +
-                "\t\t\t\t\t\t}," +
-                "{\n" +
-                "\t\t\t\t\t\t\t\"category\": \"23/4/2019 20:29\",\n" +
-                "\t\t\t\t\t\t\t\"column-1\": \"8.333333333333334\"\n" +
-                "\t\t\t\t\t\t}," +
-                "{\n" +
-                "\t\t\t\t\t\t\t\"category\": \"23/4/2019 20:29\",\n" +
-                "\t\t\t\t\t\t\t\"column-1\": \"8.333333333333334\"\n" +
-                "\t\t\t\t\t\t}," +
-                "{\n" +
-                "\t\t\t\t\t\t\t\"category\": \"23/4/2019 20:29\",\n" +
-                "\t\t\t\t\t\t\t\"column-1\": \"8.333333333333334\"\n" +
-                "\t\t\t\t\t\t}," +
-                "{\n" +
-                "\t\t\t\t\t\t\t\"category\": \"23/4/2019 20:29\",\n" +
-                "\t\t\t\t\t\t\t\"column-1\": \"8.333333333333334\"\n" +
-                "\t\t\t\t\t\t}," +
-                "{\n" +
-                "\t\t\t\t\t\t\t\"category\": \"23/4/2019 20:29\",\n" +
-                "\t\t\t\t\t\t\t\"column-1\": \"8.333333333333334\"\n" +
-                "\t\t\t\t\t\t}," +
-                "{\n" +
-                "\t\t\t\t\t\t\t\"category\": \"23/4/2019 20:29\",\n" +
-                "\t\t\t\t\t\t\t\"column-1\": \"8.333333333333334\"\n" +
-                "\t\t\t\t\t\t}," +
-                "{\n" +
-                "\t\t\t\t\t\t\t\"category\": \"23/4/2019 20:29\",\n" +
-                "\t\t\t\t\t\t\t\"column-1\": \"8.333333333333334\"\n" +
-                "\t\t\t\t\t\t},";
-            let result = await this.profileController.getAverageInfo();
-            if(result.size>0) {
-                let i=0;
-                for (let entry of Array.from(result.entries())) {
-                    let datetime = new Date(entry[0]);
-                    let date = datetime.getDate()+"/"+(datetime.getMonth()+1)+"/"+datetime.getFullYear()+" "+datetime.getHours()+":"+datetime.getMinutes();
-                    let mark = entry[1];
-                    ret+="\t\t\t\t\t\t{\n" +
-                        "\t\t\t\t\t\t\t\"category\": \""+date+"\",\n" +
-                        "\t\t\t\t\t\t\t\"column-1\": \""+mark+"\"\n" +
-                        "\t\t\t\t\t\t}";
-                    if(i!==result.size-1){
-                        ret+=",\n";
-                    }
-                    else{
-                        ret+="\n";
-                    }
-                    i++;
-                }
-            }
-
-            ret+="\t\t\t\t\t]\n" +
-            "\t\t\t\t}\n" +
-            "\t\t\t);";
-            return ret;
-    }*/
+    /**
+     * This method returns the javascript code to show the average chart
+     */
     insertChartScript() {
         return __awaiter(this, void 0, void 0, function* () {
             let ret = "";

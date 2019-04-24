@@ -162,7 +162,7 @@ class ClassPresenter extends PagePresenter {
                 console.log("studentId: "+request.body.studentId+" classId: "+this.classId);
                 await classClient.addStudent(request.body.studentId,this.classId);
                 //ritorna boolean per gestione errore
-                await userClient.addClassToStudent(request.body.studentId,this.classId);
+                //await userClient.addClassToStudent(request.body.studentId,this.classId);
             }
             response.redirect('/class?classId='+this.classId);
             //response.redirect(307, '/class');
@@ -173,6 +173,7 @@ class ClassPresenter extends PagePresenter {
         app.post('/addexercise', async (request: any, response: any) => {
             let classClient = this.client.getClassClient();
             if(classClient) {
+                console.log("presenter: aggiungo esercizio");
                 await classClient.addExercise(request.body.exerciseId,this.classId);
                 //ritorna boolean per gestione errore
             }

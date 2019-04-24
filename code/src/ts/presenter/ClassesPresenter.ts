@@ -54,11 +54,16 @@ class ClassesPresenter extends PagePresenter {
         let classClient = this.client.getClassClient();
         let userClient = this.client.getUserClient();
         if(classClient && userClient) {
-            //console.log("username: "+session.username);
             let id = await userClient.search(session.username);
-            if(id !== "false") {
-                let map = await classClient.getClassesByTeacher(id);//returns map<idClasse, className>
-                return map;
+            if (id !== "false") {
+                if (await userClient.isTeacher(session.username)) {
+                    //console.log("username: "+session.username);
+                    let map = await classClient.getClassesByTeacher(id);//returns map<idClasse, className>
+                    return map;
+                } else {//is a student
+                    let map = await classClient.getClassesByStudent(id);//returns map<idClasse, className>
+                    return map;
+                }
             }
         }
         return new Map();

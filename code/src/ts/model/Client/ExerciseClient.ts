@@ -13,7 +13,6 @@ class ExerciseClient{
         console.log("sentence: ",sentence);
         let exercise = new Exercise(sentence,authorId);
         let autosolution = exercise.autosolve();
-        console.log("autosolution: ",autosolution);
         let result = [];
         for (let value of autosolution.sentence){
             result.push(value.label);

@@ -46,11 +46,9 @@ class ClassClient{
         var _class:Data=await this.dbClassManager.read(classId);
         var students : string []= (<Class>_class).getStudents();
         if(students[0]!=="n") {//if the class already has some students
-            console.log("aggiungo studente");
             students.push(studentId);
         }
         else {//if there are no students
-            console.log("primo studente");
             students[0]=studentId;
         }
         await this.dbClassManager.update("data/classes/" + classId + "/students", students);
@@ -63,11 +61,9 @@ class ClassClient{
         var _class : Data = await this.dbClassManager.read(classId);
         var exercises:string [] = (<Class>_class).getExercises();
         if(exercises[0]!=="n") {//if the class already has some exercises
-            console.log("aggiungo studente");
             exercises.push(exerciseId);
         }
         else {//if there are no exercises
-            console.log("primo studente");
             exercises[0]=exerciseId;
         }
         await this.dbClassManager.update("data/classes/"+ classId + "/exercises", exercises);

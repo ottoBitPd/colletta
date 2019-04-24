@@ -136,7 +136,7 @@ class ProfileView extends PageView{
                         "\t\t\t\t\t\t\t<p class= \"font-weight-bold\"> Media valutazioni:</p> \n" +
                         "\t\t\t\t\t\t</div>\n" +
                         "\t\t\t\t\t\t<div class = \"col-sm-4\">\n" +
-                        "\t\t\t\t\t\t\t<p class=\"font-weight-light\">9.16</p> \n" +
+                        "\t\t\t\t\t\t\t<p class=\"font-weight-light\">"+result.get(Math.max.apply(null, Array.from(result.keys())))+"</p> \n" +
                         "\t\t\t\t\t\t</div>\n" +
                         "\t\t\t\t\t\t\t<div class=\"mt-2\" id=\"chartdiv\" style=\"width: 100%; height: 400px; background-color: #FFFFFF;\" ></div>\n" +
                         "\t\t\t\t\t</div>\n" +
@@ -219,7 +219,8 @@ class ProfileView extends PageView{
                 }
             }
             ret+="</div>";
-            ret+=this.getFoot(this.getScript());
+
+            ret+=this.getFoot(await this.insertChartScript());
             return ret;
     }
 
@@ -302,21 +303,109 @@ class ProfileView extends PageView{
             return ret;
         }
     }
-    private getScript(){
-        return"" +
-            "function a(){\n" +
-            "alert('ocio');\n" +
-            "}\n" +
-            "function fupdate(value){\n" +
-            "   var submit = document.getElementById('btnsubmit');\n" +
-            "alert('value: '+value);\n"+
-            "   if(value.match([^\\s])){\n" +
-            "       submit.removeAttribute('disabled','');\n" +
-            "   }\n" +
-            "   else{\n" +
-            "       submit.setAttribute('disabled','');\n" +
-            "   }\n"+
-            "}\n";
+
+    /**
+     * This method returns the javascript code to show the average chart
+     */
+    private async insertChartScript(){
+        let ret="";
+        ret+="" +
+            "am4core.ready(function() {\n" +
+            "\n" +
+            "// Themes begin\n" +
+            "am4core.useTheme(am4themes_animated);\n" +
+            "// Themes end\n" +
+            "\n" +
+            "// Create chart instance\n" +
+            "var chart = am4core.create(\"chartdiv\", am4charts.XYChart);\n" +
+            "\n" +
+            "var title = chart.titles.create();\n" +
+            "title.text = \"Media nel tempo\";\n" +
+            "title.fontSize = 25;\n" +
+            "title.marginBottom = 30;" +
+            "// Add data\n" +
+            "chart.data = [";
+        let result = await this.profileController.getAverageInfo();
+        if(result.size>0) {
+            let i=0;
+            for (let entry of Array.from(result.entries())) {
+                let datetime = new Date(entry[0]);
+                let date = datetime.getDate()+"-"+(datetime.getMonth()+1)+"-"+datetime.getFullYear()+", "+datetime.getHours()+":"+datetime.getMinutes();
+                let mark = entry[1];
+                ret+="{\n" +
+                    "  \"date\": \""+date+"\",\n" +
+                    "  \"value\": "+mark+"\n" +
+                    "}";
+                if(i!==result.size-1){
+                    ret+=",\n";
+                }
+                else{
+                    ret+="\n";
+                }
+                i++;
+            }
+        }
+         ret+="];\n" +
+            "\n" +
+            "// Set input format for the dates\n" +
+            "chart.dateFormatter.inputDateFormat = \"dd-MM-yyyy, HH:mm\";\n" +
+            "\n" +
+            "// Create axes\n" +
+            "var dateAxis = chart.xAxes.push(new am4charts.DateAxis());\n" +
+            "dateAxis.baseInterval = {\n" +
+            "  \"timeUnit\": \"minute\",\n" +
+            "  \"count\": 1\n" +
+            "};" +
+            "var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());\n" +
+            "\n" +
+            "// Create series\n" +
+            "var series = chart.series.push(new am4charts.LineSeries());\n" +
+            "series.dataFields.valueY = \"value\";\n" +
+            "series.dataFields.dateX = \"date\";\n" +
+            "series.tooltipText = \"{value}\"\n" +
+            "series.strokeWidth = 2;\n" +
+            "series.minBulletDistance = 15;\n" +
+            "\n" +
+            "// Drop-shaped tooltips\n" +
+            "series.tooltip.background.cornerRadius = 20;\n" +
+            "series.tooltip.background.strokeOpacity = 0;\n" +
+            "series.tooltip.pointerOrientation = \"vertical\";\n" +
+            "series.tooltip.label.minWidth = 40;\n" +
+            "series.tooltip.label.minHeight = 40;\n" +
+            "series.tooltip.label.textAlign = \"middle\";\n" +
+            "series.tooltip.label.textValign = \"middle\";\n" +
+            "\n" +
+            "// Make bullets grow on hover\n" +
+            "var bullet = series.bullets.push(new am4charts.CircleBullet());\n" +
+            "bullet.circle.strokeWidth = 2;\n" +
+            "bullet.circle.radius = 4;\n" +
+            "bullet.circle.fill = am4core.color(\"#fff\");\n" +
+            "\n" +
+            "var bullethover = bullet.states.create(\"hover\");\n" +
+            "bullethover.properties.scale = 1.3;\n" +
+            "\n" +
+            "// Make a panning cursor\n" +
+            "chart.cursor = new am4charts.XYCursor();\n" +
+            "chart.cursor.behavior = \"panXY\";\n" +
+            "chart.cursor.xAxis = dateAxis;\n" +
+            "chart.cursor.snapToSeries = series;\n" +
+            "\n" +
+            "// Create vertical scrollbar and place it before the value axis\n" +
+            "chart.scrollbarY = new am4core.Scrollbar();\n" +
+            "chart.scrollbarY.parent = chart.leftAxesContainer;\n" +
+            "chart.scrollbarY.toBack();\n" +
+            "\n" +
+            "// Create a horizontal scrollbar with previe and place it underneath the date axis\n" +
+            "chart.scrollbarX = new am4charts.XYChartScrollbar();\n" +
+            "chart.scrollbarX.series.push(series);\n" +
+            "chart.scrollbarX.parent = chart.bottomAxesContainer;\n" +
+            "\n" +
+            "chart.events.on(\"ready\", function () {\n" +
+            "  dateAxis.zoom({start:0.79, end:1});\n" +
+            "});\n" +
+            "\n" +
+            "}); // end am4core.ready()";
+        return ret;
     }
 
 }

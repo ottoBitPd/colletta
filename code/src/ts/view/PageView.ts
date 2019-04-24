@@ -44,6 +44,12 @@ abstract class PageView {
         "\t\t<meta charset=\"UTF-8\">\n" +
         "\t\t<title>"+this.title+"</title>\n" +
         "\t\t<link rel=\"stylesheet\" type=\"text/css\" href=\"/style.css\">\n"+
+        "<!-- Resources -->\n" +
+        "<script src=\"https://www.amcharts.com/lib/4/core.js\"></script>\n" +
+        "<script src=\"https://www.amcharts.com/lib/4/charts.js\"></script>\n" +
+        "<script src=\"https://www.amcharts.com/lib/4/themes/animated.js\"></script>" +
+
+
         "\t\t<!--bootstrap-->" +
         "\t\t<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css\">" +
         "\t\t<link rel=\"stylesheet\" href=\"https://use.fontawesome.com/releases/v5.7.0/css/all.css\" integrity=\"sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ\" crossorigin=\"anonymous\">" +

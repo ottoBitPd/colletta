@@ -2,7 +2,7 @@ import {expect} from 'chai';
 import 'mocha';
 
 import {Student} from "../../../src/ts/model/Data/Student";
-import {Exercise} from "../../../src/ts/model/Data/Exercise";
+//import {Exercise} from "../../../src/ts/model/Data/Exercise";
 import {Class} from "../../../src/ts/model/Data/Class";
 
 describe('Student',function() {
@@ -94,7 +94,7 @@ describe('Student',function() {
         });
     });
 
-
+/*
     describe('Student.getAverage()', function () {
 
         it('should return avarage of 3 exercises', function () {
@@ -133,5 +133,5 @@ describe('Student',function() {
 
         });
     });
-
+*/
 });

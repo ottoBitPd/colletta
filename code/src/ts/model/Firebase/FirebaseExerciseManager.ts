@@ -5,6 +5,7 @@ import {Exercise} from "../Data/Exercise";
 class FirebaseExerciseManager extends FirebaseManager {
 
     public constructor() {
+
         super();
         FirebaseManager.registerInstance("FirebaseExerciseManager", this);
     }
@@ -159,10 +160,15 @@ class FirebaseExerciseManager extends FirebaseManager {
     public async update (path:string, value: any) {
         let splittedPath =path.split("/");
         let position : number = splittedPath.length -1;
+        let position_1: number =splittedPath.length -2;
         let field : string=splittedPath[position];
-        console.log(field);
+        let field_1 : string=splittedPath[position_1];
+      // console.log(field);
         switch (field) {
             case "difficulty": await this.updateField(path, value); break;
+
+        }
+        switch (field_1){
             case "tags": await this.updateField(path, value); break;
             case "topics":await this.updateField(path, value); break;
             default : await console.log("field doesn't exists"); return;
@@ -172,11 +178,14 @@ class FirebaseExerciseManager extends FirebaseManager {
 
 
     private async updateField(path : string, value:any) {
-        const ref=FirebaseManager.database.ref(path);
-        ref.once('value',function (snapshot:any) {
+        console.log(path);
+        let refi=FirebaseManager.database.ref(path);
+
+        refi.once('value',function (snapshot:any) {
+            console.log(snapshot.exists());
             if (snapshot.exists()) {
-                ref.set(value);
-            }
+                refi.set(value);
+            }else console.log("cancaro");
         });
     }
 

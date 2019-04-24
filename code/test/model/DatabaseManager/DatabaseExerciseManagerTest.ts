@@ -4,10 +4,12 @@ import {DatabaseExerciseManager} from "../../../src/ts/model/DatabaseManager/Dat
 import {Exercise} from "../../../src/ts/model/Data/Exercise";
 import {Class} from "../../../src/ts/model/Data/Class";
 
+
 describe('DatabaseExerciseManager', function() {
 
      let prova:any;
     let test1=new DatabaseExerciseManager();
+
 
     beforeEach(function () {
         prova= new Exercise("This is an example", "xxxxx");
@@ -82,7 +84,7 @@ describe('DatabaseExerciseManager', function() {
     describe('DatabaseExerciseManager.update()', function () {
         it('should return update database', async function() {
 
-            expect(await test1.update("/data/sentences/-LdARKQF3qrbhXacKH0J/solutions/-LdARKQLQqOQDeHS_vMU/tags/0","RTL")).to.equal(true);
+            expect(await test1.update("/data/sentences/-LdARKQF3qrbhXacKH0J/solutions/-LdARKQLQqOQDeHS_vMU/tags",["RTL","Agg"])).to.equal(true);
 
         });
     });

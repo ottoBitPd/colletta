@@ -160,15 +160,12 @@ class FirebaseExerciseManager extends FirebaseManager {
     public async update (path:string, value: any) {
         let splittedPath =path.split("/");
         let position : number = splittedPath.length -1;
-        let position_1: number =splittedPath.length -2;
+
         let field : string=splittedPath[position];
-        let field_1 : string=splittedPath[position_1];
-      // console.log(field);
+
+       console.log(field);
         switch (field) {
             case "difficulty": await this.updateField(path, value); break;
-
-        }
-        switch (field_1){
             case "tags": await this.updateField(path, value); break;
             case "topics":await this.updateField(path, value); break;
             default : await console.log("field doesn't exists"); return;

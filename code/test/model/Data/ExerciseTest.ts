@@ -145,7 +145,7 @@ describe('Exercise', function() {
     describe('Exercise.autosolve()', function() {
         it('should return a no-null solution', function () {
             let autosolution = exercise.autosolve();
-            expect(autosolution).not.equal(null) && expect(autosolution).not.eql([]);
+            expect(autosolution).not.equal(null) && expect(autosolution).not.eql({sentence : []});
         });
     });
 

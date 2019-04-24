@@ -74,6 +74,7 @@ class Exercise implements Data{
 
     /**
      * This method splits a sentence on spaces and punctuation
+     * @param sentence - a sentence that must to be splitted
      * @returns string [] - an array containing the split sentence
      */
     getSplitSentence() : string []{
@@ -131,6 +132,7 @@ class Exercise implements Data{
      * This method provides a valutation to the current solution (newSolution) comparing the latter with
      * the solution of the teacherId passed
      * @param teacherID - the id of the teacher who provide the solution which will be compared the current solution
+     * @returns number - the grade calculated
      */
     evaluate(teacherID?: string) : number {
         if(this.newSolution===null){
@@ -158,7 +160,11 @@ class Exercise implements Data{
             return this.newSolution.evaluateSolution(tags);
         }
     }
-
+    /**
+     * This method provides to
+     * @param teacherID - the id of the teacher who provide the solution which will be compared the current solution
+     * @returns number - the grade calculated
+     */
     toJSON() : any{
         //Do I have to add solutions too? - Perry15
         let exercise: any = {

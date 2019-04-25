@@ -125,7 +125,7 @@ class ProfileView extends PageView_1.PageView {
                 if (result.size > 0) {
                     let n = result.size;
                     ret += "<div class=\"row\" style=\"margin-top: 15%; margin-bottom:10%\">\n" +
-                        "\t\t<div id= \"progress\" class = \" anchor col-sm-6 mx-auto\">\n" +
+                        "\t\t<div id= \"progress\" class = \" anchor col-sm-10 mx-auto\">\n" +
                         "\t\t\t<h1 class ='text-center mb-5'>I tuoi progressi:</h1>\n" +
                         "\t\t\t<ul class=\"list-group\">\n" +
                         "\t\t\t\t<li class=\"list-group-item\">\n" +
@@ -149,79 +149,7 @@ class ProfileView extends PageView_1.PageView {
                         "\t\t\t\t</li>\n" +
                         "\t\t\t</ul>\n" +
                         "\t\t\t\n" +
-                        "\t\t</div>\n" +
-                        "\t\t\n" +
-                        "\t<div class = \"col-sm-6 mx-auto\">\n" +
-                        "\t\t<h1 class ='text-center mb-5'>Media per argomenti trattati:</h1>\n" +
-                        "\t\t<ul class=\"list-group\">\n" +
-                        "\t\t\t<li class=\"list-group-item\">\n" +
-                        "\t\t\t\t<div class= \"row\">\n" +
-                        "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
-                        "\t\t\t\t\t\t<p class= \"font-weight-bold\"> Aggettivi:</p> \n" +
-                        "\t\t\t\t\t</div>\n" +
-                        "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
-                        "\t\t\t\t\t\t<p class=\"font-weight-light\"> 6 </p> \n" +
-                        "\t\t\t\t\t</div>\n" +
-                        "\t\t\t\t</div>\n" +
-                        "\t\t\t\t<div class= \"row\">\n" +
-                        "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
-                        "\t\t\t\t\t\t<p class= \"font-weight-bold\"> Avverbi:</p> \n" +
-                        "\t\t\t\t\t</div>\n" +
-                        "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
-                        "\t\t\t\t\t\t<p class=\"font-weight-light\"> 5.24 </p> \n" +
-                        "\t\t\t\t\t</div>\n" +
-                        "\t\t\t\t</div>\n" +
-                        "\t\t\t\t<div class= \"row\">\n" +
-                        "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
-                        "\t\t\t\t\t\t<p class= \"font-weight-bold\"> Verbi:</p> \n" +
-                        "\t\t\t\t\t</div>\n" +
-                        "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
-                        "\t\t\t\t\t\t<p class=\"font-weight-light\"> 9.3 </p> \n" +
-                        "\t\t\t\t\t</div>\n" +
-                        "\t\t\t\t</div>\n" +
-                        "\t\t\t\t<div class= \"row\">\n" +
-                        "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
-                        "\t\t\t\t\t\t<p class= \"font-weight-bold\"> Nomi:</p> \n" +
-                        "\t\t\t\t\t</div>\n" +
-                        "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
-                        "\t\t\t\t\t\t<p class=\"font-weight-light\"> 6.1 </p> \n" +
-                        "\t\t\t\t\t</div>\n" +
-                        "\t\t\t\t</div>\n" +
-                        "\t\t\t\t<div class= \"row\">\n" +
-                        "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
-                        "\t\t\t\t\t\t<p class= \"font-weight-bold\"> Preposizioni:</p> \n" +
-                        "\t\t\t\t\t</div>\n" +
-                        "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
-                        "\t\t\t\t\t\t<p class=\"font-weight-light\"> 4.2 </p> \n" +
-                        "\t\t\t\t\t</div>\n" +
-                        "\t\t\t\t</div>\n" +
-                        "\t\t\t\t<div class= \"row\">\n" +
-                        "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
-                        "\t\t\t\t\t\t<p class= \"font-weight-bold\"> Articoli:</p> \n" +
-                        "\t\t\t\t\t</div>\n" +
-                        "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
-                        "\t\t\t\t\t\t<p class=\"font-weight-light\"> 7 </p> \n" +
-                        "\t\t\t\t\t</div>\n" +
-                        "\t\t\t\t</div>\n" +
-                        "\t\t\t\t<div class= \"row\">\n" +
-                        "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
-                        "\t\t\t\t\t\t<p class= \"font-weight-bold\"> Congiunzioni:</p> \n" +
-                        "\t\t\t\t\t</div>\n" +
-                        "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
-                        "\t\t\t\t\t\t<p class=\"font-weight-light\"> 6.02 </p> \n" +
-                        "\t\t\t\t\t</div>\n" +
-                        "\t\t\t\t</div>\n" +
-                        "\t\t\t\t<div class= \"row\">\n" +
-                        "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
-                        "\t\t\t\t\t\t<p class= \"font-weight-bold\"> Pronomi:</p> \n" +
-                        "\t\t\t\t\t</div>\n" +
-                        "\t\t\t\t\t<div class = \"col-sm-4\">\n" +
-                        "\t\t\t\t\t\t<p class=\"font-weight-light\"> 4 </p> \n" +
-                        "\t\t\t\t\t</div>\n" +
-                        "\t\t\t\t</div>\n" +
-                        "\t\t\t</li>\n" +
-                        "\t\t</ul>\n" +
-                        "\t</div>";
+                        "\t\t</div>\n";
                 }
             }
             ret += "</div>";
@@ -248,7 +176,7 @@ class ProfileView extends PageView_1.PageView {
                 console.log("classIdView: ", classId);
                 if (classId !== "undefined") {
                     ret += "\t\t\t<li class=\"nav-item\">\n" +
-                        "\t\t\t\t<a href= \"/class?classId=" + classId + "\" class=\"nav-link\" >La tua classe</a>\n" +
+                        "\t\t\t\t<a href= \"/classes\" class=\"nav-link\" >Le tue classi</a>\n" +
                         "\t\t\t</li>\n";
                 }
             }

@@ -1,32 +1,33 @@
 import {expect} from 'chai';
 import 'mocha';
-import {Student} from "../../../src/ts/model/Data/Student";
+import {FirebaseClassManager} from "../../../src/ts/model/Firebase/FirebaseClassManager";
+import {Class} from "../../../src/ts/model/Data/Class";
 import {Data} from "../../../src/ts/model/Data/Data";
-import {FirebaseUserManager} from "../../../src/ts/model/Firebase/FirebaseUserManager";
 
-describe('FirebaseUserManager', function() {
+describe('FirebaseClassManager', function() {
 
-    let student:any;
+    let prova :any;
 
-    let test=new FirebaseUserManager() ;
+    let test=new FirebaseClassManager();
 
     beforeEach(function () {
 
-        student = new Student("st1", "gioperry15", "ciao", "giovanni", "Peron", "Castelfranco", "Unipd","giov.anni@gmail.com");
+        prova= new Class("1","Benedetto","Ciao","111",["st1"],["es1"]);
 
         //@ts-ignore
         test={
-
-            async insert(obj: Data): Promise<boolean> {
-                    return true;
+            async insert(obj:Data):Promise<boolean>
+            {
+                return true;
             },
+
             async remove(obj:string):Promise<boolean>
             {
                 return true;
             },
             async read(id:string):Promise<any>
             {
-                return "user"
+                return "classe"
             },
             async search(id:string):Promise<string>
             {
@@ -38,59 +39,58 @@ describe('FirebaseUserManager', function() {
             },
             async elements() : Promise<Map<string, string>> {
                 let now=new Map<string,string>();
-                now.set("key","username");
+                now.set("key","teacherID");
                 return now;
             }
+
         }
 
     });
 
-    describe('FirebaseUserManager.insert()', function () {
+    describe('FirebaseClassManager.insert()', function () {
         it('should return the insert user in database', async function() {
 
-            expect(await test.insert(student)).to.equal(true);
+            expect(await test.insert(prova)).to.equal(true);
 
         });
     });
 
-
-    describe('FirebaseUserManager.remove()', function () {
+    describe('FirebaseClassManager.remove()', function () {
         it('should return the remove obj in database', async function() {
 
-            expect(await test.remove('key')).to.equal(true);
+            expect(await test.remove('ciao')).to.equal(true);
 
         });
     });
 
-    describe('FirebaseUserManager.read()', function () {
+    describe('FirebaseClassManager.read()', function () {
         it('should return read obj in database', async function() {
 
-            expect(await test.read('key')).to.equal("user");
+            expect(await test.read('id')).to.equal("classe");
 
         });
     });
 
-    describe('FirebaseUserManager.search()', function () {
+    describe('FirebaseClassManager.search()', function () {
         it('should return search obj in database', async function() {
 
-            expect(await test.search('genna')).to.equal("key");
+            expect(await test.search('nome')).to.equal("key");
 
         });
     });
 
-    describe('FirebaseUserManager.update()', function () {
+    describe('FirebaseClassManager.update()', function () {
         it('should return update database', async function() {
 
-            expect(await test.update("/data/users/-LckWHuNmk_1uKGc9oPV/city","Ibiza")).to.equal(true);
+            expect(await test.update("/data/classes/-Ld9ae0AXaB9_KbZ-sGJ/exercises",["es3"])).to.equal(true);
 
         });
     });
 
-    describe('FirebaseUserManager.elements()', function () {
+    describe('FirebaseClassManager.elements()', function () {
         it('should return elements database', async function() {
             let now=new Map<string,string>();
-            now.set("key","username");
-
+            now.set("key","teacherID");
             expect(await test.elements()).eql(now);
 
         });

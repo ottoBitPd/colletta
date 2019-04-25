@@ -76,7 +76,11 @@ class ExerciseView extends PageView_1.PageView {
             "   <br/>";
         if (this.userKind === PageView_1.UserKind.teacher)
             ret +=
-                "            <input type=\"text\" class='form-control' name=\"topics\"/>" +
+                "            <select class='form-control' name=\"public\">" +
+                    "                <option value=\"true\" default>Soluzione pubblica</option>" +
+                    "                <option value=\"false\">Soluzione privata</option>" +
+                    "            </select>" +
+                    "            <input type=\"text\" class='form-control' name=\"topics\" placeholder=\"Argometni dell'esercizio\"/>" +
                     "            <select class='form-control' name=\"difficulty\">" +
                     "                <option value=\"1\">Molto facile</option>" +
                     "                <option value=\"2\">Facile</option>" +

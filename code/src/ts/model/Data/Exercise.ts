@@ -44,13 +44,13 @@ class Exercise implements Data{
         this.sentence=sentence;
     }
 
-    setSolution(solverId: string, solutionTags: string[],topics : string[], difficulty : number) : void {
-        this.newSolution = new Solution(undefined,solverId,solutionTags,topics,difficulty);
+    setSolution(solverId: string, solutionTags: string[],topics : string[], difficulty : number, _public?: boolean) : void {
+        this.newSolution = new Solution(undefined,solverId,solutionTags,topics,difficulty,_public||false);
     }
 
     addSolution(key : string, solverId: string, solutionTags: string[], topics: string[],
-                difficulty: number, valutations : Map<string,number>,time : number): void {
-        this.solutions.push(new Solution(key,solverId, solutionTags, topics, difficulty, valutations, time));
+                difficulty: number, valutations : Map<string,number>,time : number, _public? : boolean): void {
+        this.solutions.push(new Solution(key,solverId, solutionTags, topics, difficulty, _public, valutations, time ));
     }
 
     getSolutions() : Solution []{

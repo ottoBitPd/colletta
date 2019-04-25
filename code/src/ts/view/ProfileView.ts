@@ -21,132 +21,128 @@ class ProfileView extends PageView{
     public async getPage() {
         let ret = this.getHead();
         ret += await this.getMenu();
-        ret += "<div class=\"container\">" +
-            "\t<h1 class ='text-center mb-5'>Informazioni profilo:</h1>\n";
+        ret += "\t\t<div class=\"container\">" +
+            "\t\t\t<h1 class ='text-center mb-5'>Informazioni profilo:</h1>\n";
             if (this.error !== undefined){
-            ret += "\t<p class ='text-center h5 text-danger'>" + this.error + "</p>\n";
+            ret += "\t\t\t<p class ='text-center h5 text-danger'>" + this.error + "</p>\n";
             }
-        ret += "\t<ul class=\"list-group\">\n" +
-            "\t<li class=\"list-group-item\">\n" +
-            "<form method='post' action='/update'>" +
-            "\t\t<div class= \"row\">\n" +
-            "\t\t\t<div class = \"col-sm-6\">\n" +
-            "\t\t\t\t<p class= \"font-weight-bold\"> Nome: "+this.userData.name+"</p> \n" +
-            "\t\t\t</div>\n" +
-            "\t\t\t<div class = \"col-sm-6\">\n" +
-            "\t\t\t\t<input class=\"form-control\" name='name'/>\n" +
-            "\t\t\t</div>\n" +
-            "\t\t</div>\n" +
-            "\t\t\n" +
-            "\t\t<div class= \"row\">\n" +
-            "\t\t\t<div class = \"col-sm-6\">\n" +
-            "\t\t\t\t<p class= \"font-weight-bold\"> Cognome: "+this.userData.lastname+"</p> \n" +
-            "\t\t\t</div>\n" +
-            "\t\t\t<div class = \"col-sm-6\">\n" +
-            "\t\t\t\t<input class=\"form-control\" name='lastname'/>\n" +
-            "\t\t\t</div>\n" +
-            "\t\t</div>\n" +
-            "\t\t\n" +
-            "\t\t<div class= \"row\">\n" +
-            "\t\t\t<div class = \"col-sm-6\">\n" +
-            "\t\t\t\t<p class= \"font-weight-bold\"> Città: "+this.userData.city+"</p> \n" +
-            "\t\t\t</div>\n" +
-            "\t\t\t<div class = \"col-sm-6\">\n" +
-            "\t\t\t\t<input class=\"form-control\" name='city'/>\n" +
-            "\t\t\t</div>\n" +
-            "\t\t</div>\n" +
-            "\t\t\n" +
-            "\t\t<div class= \"row\">\n" +
-            "\t\t\t<div class = \"col-sm-6\">\n" +
-            "\t\t\t\t<p class= \"font-weight-bold\"> Scuola: "+this.userData.school+"</p> \n" +
-            "\t\t\t</div>\n" +
-            "\t\t\t<div class = \"col-sm-6\">\n" +
-            "\t\t\t\t<input class=\"form-control\" name='school'/>\n" +
-            "\t\t\t</div>\n" +
-            "\t\t</div>\n";
+        ret += "\t\t\t<ul class=\"list-group\">\n" +
+            "\t\t\t\t<li class=\"list-group-item\">\n" +
+            "\t\t\t\t\t<form method='post' action='/update'>" +
+            "\t\t\t\t\t\t<div class= \"row\">\n" +
+            "\t\t\t\t\t\t\t<div class = \"col-sm-6\">\n" +
+            "\t\t\t\t\t\t\t\t<p class= \"font-weight-bold\"> Nome: "+this.userData.name+"</p> \n" +
+            "\t\t\t\t\t\t\t</div>\n" +
+            "\t\t\t\t\t\t\t<div class = \"col-sm-6\">\n" +
+            "\t\t\t\t\t\t\t\t<input class=\"form-control\" name='name'/>\n" +
+            "\t\t\t\t\t\t\t</div>\n" +
+            "\t\t\t\t\t\t</div>\n" +
+            "\t\t\t\t\t\t<div class= \"row\">\n" +
+            "\t\t\t\t\t\t\t<div class = \"col-sm-6\">\n" +
+            "\t\t\t\t\t\t\t\t<p class= \"font-weight-bold\"> Cognome: "+this.userData.lastname+"</p> \n" +
+            "\t\t\t\t\t\t\t</div>\n" +
+            "\t\t\t\t\t\t\t<div class = \"col-sm-6\">\n" +
+            "\t\t\t\t\t\t\t\t<input class=\"form-control\" name='lastname'/>\n" +
+            "\t\t\t\t\t\t\t</div>\n" +
+            "\t\t\t\t\t\t</div>\n" +
+            "\t\t\t\t\t\t<div class= \"row\">\n" +
+            "\t\t\t\t\t\t\t<div class = \"col-sm-6\">\n" +
+            "\t\t\t\t\t\t\t\t<p class= \"font-weight-bold\"> Città: "+this.userData.city+"</p> \n" +
+            "\t\t\t\t\t\t\t</div>\n" +
+            "\t\t\t\t\t\t\t<div class = \"col-sm-6\">\n" +
+            "\t\t\t\t\t\t\t\t<input class=\"form-control\" name='city'/>\n" +
+            "\t\t\t\t\t\t\t</div>\n" +
+            "\t\t\t\t\t\t</div>\n" +
+            "\t\t\t\t\t\t<div class= \"row\">\n" +
+            "\t\t\t\t\t\t\t<div class = \"col-sm-6\">\n" +
+            "\t\t\t\t\t\t\t\t<p class= \"font-weight-bold\"> Scuola: "+this.userData.school+"</p> \n" +
+            "\t\t\t\t\t\t\t</div>\n" +
+            "\t\t\t\t\t\t\t<div class = \"col-sm-6\">\n" +
+            "\t\t\t\t\t\t\t\t<input class=\"form-control\" name='school'/>\n" +
+            "\t\t\t\t\t\t\t</div>\n" +
+            "\t\t\t\t\t\t</div>\n";
         if(this.userKind == UserKind.teacher) {
-            ret+="\t\t<div class= \"row\">\n" +
-                "\t\t\t<div class = \"col-sm-6\">\n" +
-                "\t\t\t\t<p class= \" font-weight-bold\"> Matricola INPS: "+this.userData.inps+"</p> \n" +
-                "\t\t\t</div>\n" +
-                "\t\t\t<div class = \"col-sm-6\">\n" +
-                "\t\t\t\t<input class=\"form-control\" name='inps'/>\n" +
-                "\t\t\t</div>\n" +
-                "\t\t</div>";
+            ret+="\t\t\t\t\t\t<div class= \"row\">\n" +
+                "\t\t\t\t\t\t\t<div class = \"col-sm-6\">\n" +
+                "\t\t\t\t\t\t\t\t<p class= \" font-weight-bold\"> Matricola INPS: "+this.userData.inps+"</p> \n" +
+                "\t\t\t\t\t\t\t</div>\n" +
+                "\t\t\t\t\t\t\t<div class = \"col-sm-6\">\n" +
+                "\t\t\t\t\t\t\t\t<input class=\"form-control\" name='inps'/>\n" +
+                "\t\t\t\t\t\t\t</div>\n" +
+                "\t\t\t\t\t\t</div>";
         }
-            ret += "\t\t<div class= \"row\">\n" +
-            "\t\t\t<div class = \"col-sm-6\">\n" +
-            "\t\t\t\t<p class= \"font-weight-bold\"> Email: "+this.userData.email+"</p> \n" +
-            "\t\t\t</div>\n" +
-            "\t\t\t<div class = \"col-sm-6\">\n" +
-            "\t\t\t\t<input class=\"form-control\" type='email' name='email'/>\n" +
-            "\t\t\t</div>\n" +
-            "\t\t</div>\n" +
-            "\t\t<div class= \"row\">\n" +
-            "\t\t\t<div class = \"col-sm-6\">\n" +
-            "\t\t\t\t<p class= \"font-weight-bold\"> Username: "+this.userData.username+"</p> \n" +
-            "\t\t\t</div>\n" +
-            "\t\t\t<div class = \"col-sm-6\">\n" +
-            "\t\t\t\t<input class=\"form-control\" name='username'/>\n" +
-            "\t\t\t</div>\n" +
-            "\t\t</div>\n" +
-            "\t\t<div class= \"row\">\n" +
-            "\t\t\t<div class = \"col-sm-6\">\n" +
-            "\t\t\t\t<p class= \"font-weight-bold\"> Vecchia password: </p> \n" +
-            "\t\t\t</div>\n" +
-            "\t\t\t<div class = \"col-sm-6\">\n" +
-            "\t\t\t\t<input class=\"form-control\" type='password' name='oldpassword'/>\n" +
-            "\t\t\t</div>\n" +
-            "\t\t</div>\n" +
-            "\t\t<div class= \"row\">\n" +
-            "\t\t\t<div class = \"col-sm-6\">\n" +
-            "\t\t\t\t<p class= \"font-weight-bold\"> Nuova password: </p> \n" +
-            "\t\t\t</div>\n" +
-            "\t\t\t<div class = \"col-sm-6\">\n" +
-            "\t\t\t\t<input class=\"form-control\" type='password' name='password'/>\n" +
-            "\t\t\t</div>\n" +
-            "\t\t</div>\n";
+            ret += "\t\t\t\t\t\t<div class= \"row\">\n" +
+            "\t\t\t\t\t\t\t<div class = \"col-sm-6\">\n" +
+            "\t\t\t\t\t\t\t\t<p class= \"font-weight-bold\"> Email: "+this.userData.email+"</p> \n" +
+            "\t\t\t\t\t\t\t</div>\n" +
+            "\t\t\t\t\t\t\t<div class = \"col-sm-6\">\n" +
+            "\t\t\t\t\t\t\t\t<input class=\"form-control\" type='email' name='email'/>\n" +
+            "\t\t\t\t\t\t\t</div>\n" +
+            "\t\t\t\t\t\t</div>\n" +
+            "\t\t\t\t\t\t<div class= \"row\">\n" +
+            "\t\t\t\t\t\t\t<div class = \"col-sm-6\">\n" +
+            "\t\t\t\t\t\t\t\t<p class= \"font-weight-bold\"> Username: "+this.userData.username+"</p> \n" +
+            "\t\t\t\t\t\t\t</div>\n" +
+            "\t\t\t\t\t\t\t<div class = \"col-sm-6\">\n" +
+            "\t\t\t\t\t\t\t\t<input class=\"form-control\" name='username'/>\n" +
+            "\t\t\t\t\t\t\t</div>\n" +
+            "\t\t\t\t\t\t</div>\n" +
+            "\t\t\t\t\t\t<div class= \"row\">\n" +
+            "\t\t\t\t\t\t\t<div class = \"col-sm-6\">\n" +
+            "\t\t\t\t\t\t\t\t<p class= \"font-weight-bold\"> Vecchia password: </p> \n" +
+            "\t\t\t\t\t\t\t</div>\n" +
+            "\t\t\t\t\t\t\t<div class = \"col-sm-6\">\n" +
+            "\t\t\t\t\t\t\t\t<input class=\"form-control\" type='password' name='oldpassword'/>\n" +
+            "\t\t\t\t\t\t\t</div>\n" +
+            "\t\t\t\t\t\t</div>\n" +
+            "\t\t\t\t\t\t<div class= \"row\">\n" +
+            "\t\t\t\t\t\t\t<div class = \"col-sm-6\">\n" +
+            "\t\t\t\t\t\t\t\t<p class= \"font-weight-bold\"> Nuova password: </p> \n" +
+            "\t\t\t\t\t\t\t</div>\n" +
+            "\t\t\t\t\t\t\t<div class = \"col-sm-6\">\n" +
+            "\t\t\t\t\t\t\t\t<input class=\"form-control\" type='password' name='password'/>\n" +
+            "\t\t\t\t\t\t\t</div>\n" +
+            "\t\t\t\t\t\t</div>\n";
 
             ret+="" +
-                "\t\t\t<div class = \"col-sm-12 text-center mt-3\">\n" +
-                "\t\t\t\t<button class='btn btn-primary btn-sm' id='btnsubmit' type='submit'>Modifica</button> \n" +
-                "\t\t\t</div>\n" +
-                "</form>" +
-                "\t</li>\n" +
-            "\t</ul>";
+                "\t\t\t\t\t\t<div class = \"col-sm-12 text-center mt-3\">\n" +
+                "\t\t\t\t\t\t\t<button class='btn btn-primary btn-sm' id='btnsubmit' type='submit'>Modifica</button> \n" +
+                "\t\t\t\t\t\t</div>\n" +
+                "\t\t\t\t\t</form>" +
+                "\t\t\t\t</li>\n" +
+            "\t\t\t</ul>\n";
             if(this.userKind === UserKind.student){
                 let result = await this.profileController.getAverageInfo();
                 if(result.size>0) {
                     let n = result.size;
-                    ret += "<div class=\"row\" style=\"margin-top: 15%; margin-bottom:10%\">\n" +
-                        "\t\t<div id= \"progress\" class = \" anchor col-sm-10 mx-auto\">\n" +
-                        "\t\t\t<h1 class ='text-center mb-5'>I tuoi progressi:</h1>\n" +
-                        "\t\t\t<ul class=\"list-group\">\n" +
-                        "\t\t\t\t<li class=\"list-group-item\">\n" +
-                        "\t\t\t\t\t<div class= \"row\">\n" +
-                        "\t\t\t\t\t\t<div class = \"col-sm-4\">\n" +
-                        "\t\t\t\t\t\t\t<p class= \"font-weight-bold\"> Esercizi svolti:</p> \n" +
-                        "\t\t\t\t\t\t</div>\n";
-                    ret += "\t\t\t\t\t\t<div class = \"col-sm-4\">\n" +
-                        "\t\t\t\t\t\t\t<p class=\"font-weight-light\">"+n+"</p> \n" +
-                        "\t\t\t\t\t\t</div>\n" +
-                        "\t\t\t\t\t</div>\n" +
-                        "\t\t\t\t\t<div class= \"row\">\n" +
-                        "\t\t\t\t\t\t<div class = \"col-sm-4\">\n" +
-                        "\t\t\t\t\t\t\t<p class= \"font-weight-bold\"> Media valutazioni:</p> \n" +
-                        "\t\t\t\t\t\t</div>\n" +
-                        "\t\t\t\t\t\t<div class = \"col-sm-4\">\n" +
-                        "\t\t\t\t\t\t\t<p class=\"font-weight-light\">"+result.get(Math.max.apply(null, Array.from(result.keys())))+"</p> \n" +
-                        "\t\t\t\t\t\t</div>\n" +
-                        "\t\t\t\t\t\t\t<div class=\"mt-2\" id=\"chartdiv\" style=\"width: 100%; height: 400px; background-color: #FFFFFF;\" ></div>\n" +
-                        "\t\t\t\t\t</div>\n" +
-                        "\t\t\t\t</li>\n" +
-                        "\t\t\t</ul>\n" +
-                        "\t\t\t\n" +
-                        "\t\t</div>\n";
+                    ret += "\t\t\t<div class=\"row\" style=\"margin-top: 15%; margin-bottom:10%\">\n" +
+                        "\t\t\t\t<div id= \"progress\" class = \" anchor col-sm-10 mx-auto\">\n" +
+                        "\t\t\t\t\t<h1 class ='text-center mb-5'>I tuoi progressi:</h1>\n" +
+                        "\t\t\t\t\t<ul class=\"list-group\">\n" +
+                        "\t\t\t\t\t\t<li class=\"list-group-item\">\n" +
+                        "\t\t\t\t\t\t\t<div class= \"row\">\n" +
+                        "\t\t\t\t\t\t\t\t<div class = \"col-sm-4\">\n" +
+                        "\t\t\t\t\t\t\t\t\t<p class= \"font-weight-bold\"> Esercizi svolti:</p> \n" +
+                        "\t\t\t\t\t\t\t\t</div>\n"+
+                        "\t\t\t\t\t\t\t\t<div class = \"col-sm-4\">\n" +
+                        "\t\t\t\t\t\t\t\t\t<p class=\"font-weight-light\">"+n+"</p> \n" +
+                        "\t\t\t\t\t\t\t\t</div>\n" +
+                        "\t\t\t\t\t\t\t</div>\n" +
+                        "\t\t\t\t\t\t\t<div class= \"row\">\n" +
+                        "\t\t\t\t\t\t\t\t<div class = \"col-sm-4\">\n" +
+                        "\t\t\t\t\t\t\t\t\t<p class= \"font-weight-bold\"> Media valutazioni:</p> \n" +
+                        "\t\t\t\t\t\t\t\t</div>\n" +
+                        "\t\t\t\t\t\t\t\t<div class = \"col-sm-4\">\n" +
+                        "\t\t\t\t\t\t\t\t\t<p class=\"font-weight-light\">"+result.get(Math.max.apply(null, Array.from(result.keys())))+"</p> \n" +
+                        "\t\t\t\t\t\t\t\t</div>\n" +
+                        "\t\t\t\t\t\t\t\t\t<div class=\"mt-2\" id=\"chartdiv\" style=\"width: 100%; height: 400px; background-color: #FFFFFF;\" ></div>\n" +
+                        "\t\t\t\t\t\t\t</div>\n" +
+                        "\t\t\t\t\t\t</li>\n" +
+                        "\t\t\t\t\t</ul>\n" +
+                        "\t\t\t\t</div>\n";
                 }
             }
-            ret+="</div>";
+            ret+="\t\t\t</div>\n\t\t</div>\n";
 
             ret+=this.getFoot(await this.insertChartScript());
             return ret;
@@ -284,6 +280,8 @@ class ProfileView extends PageView{
             "  \"timeUnit\": \"minute\",\n" +
             "  \"count\": 1\n" +
             "};" +
+            "dateAxis.skipEmptyPeriods = true;\n" +
+            "dateAxis.tooltipDateFormat = \"HH:mm, d MMMM\";\n" +
             "var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());\n" +
             "\n" +
             "// Create series\n" +

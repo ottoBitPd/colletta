@@ -34,9 +34,9 @@ class ExerciseClient{
         return tmp.getSplitSentence();
     }
 
-    public insertExercise(sentence: string , authorId :string, solution : any, valutation :any) : void {
+    public insertExercise(sentence: string , authorId :string, solution : any, valutation :any, _public? : boolean) : void {
         let exercise = new Exercise(sentence, authorId);
-        exercise.setSolution(solution[0],solution[1],solution[2],solution[3]);
+        exercise.setSolution(solution[0],solution[1],solution[2],solution[3],_public||false);
         exercise.addValutation(valutation[0], valutation[1]);
         this.dbExerciseManager.insert(exercise);
     }
@@ -120,7 +120,8 @@ class ExerciseClient{
                             "tags" : value.getSolutionTags(),
                             "time" : value.getTime(),
                             "difficulty" : value.getDifficulty(),
-                            "topics" : value.getTopics()
+                            "topics" : value.getTopics(),
+                            "_public" : value.getPublic()
                         });
             }
         }

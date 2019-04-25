@@ -34,7 +34,8 @@ class FirebaseExerciseManager extends FirebaseManager {
                     "topics": wrsolution.getTopics(),
                     "difficulty": wrsolution.getDifficulty(),
                     "valutations": wrsolution.JSONValutations(),
-                    "time": Date.now()
+                    "time": Date.now(),
+                    "public": wrsolution.getPublic()
                 });
                 resolve(true);
             }
@@ -45,7 +46,8 @@ class FirebaseExerciseManager extends FirebaseManager {
                     "topics": wrsolution.getTopics(),
                     "difficulty": wrsolution.getDifficulty(),
                     "valutations": wrsolution.JSONValutations(),
-                    "time": Date.now()
+                    "time": Date.now(),
+                    "public": wrsolution.getPublic()
                 });
                 resolve(true);
             }
@@ -125,7 +127,7 @@ class FirebaseExerciseManager extends FirebaseManager {
                         //console.log("solutionKey: ",sol);
                         exercise.addSolution(
                             sol,readData.solutions[sol].solverId,readData.solutions[sol].tags,
-                            readData.solutions[sol].topics,readData.solutions[sol].difficulty,vals,readData.solutions[sol].time);
+                            readData.solutions[sol].topics,readData.solutions[sol].difficulty,vals,readData.solutions[sol].time,readData.solutions[sol].public);
                     }
 
 

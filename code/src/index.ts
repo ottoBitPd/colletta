@@ -7,7 +7,6 @@ import {RegistrationView} from "./ts/view/RegistrationView";
 import {SearchView} from "./ts/view/SearchView";
 import {ClassesView} from "./ts/view/ClassesView";
 import {ClassView} from "./ts/view/ClassView";
-import {Client} from "./ts/model/Client/Client";
 
 
 const app = express();
@@ -40,6 +39,8 @@ app.listen(8080, async function () {
     const port = "8080";
     console.log("Example app listening at http://%s:%s", host, port);
 
+    /*
+    //prove per media
     let exerciseClient = (new Client.builder()).buildUserClient().buildExerciseClient().build().getExerciseClient();
     if(exerciseClient) {
         let result = await exerciseClient.getStudentAverage("-LcfF2c3ksUjdj0jXLZi");
@@ -52,5 +53,7 @@ app.listen(8080, async function () {
         let average = result.get(Math.max.apply(null, Array.from(result.keys())));
         console.log("average: ",average);
     }
+    */
+
 });
 

@@ -88,7 +88,9 @@ describe('ExerciseClient', function() {
                         "tags": [],
                         "time": 1,
                         "topics": [],
-                        "userID": "0"
+                        "userID": "0",
+                        "_public": false
+
                     },
                     {
                         "difficulty": 3,
@@ -96,7 +98,8 @@ describe('ExerciseClient', function() {
                         "tags": [],
                         "time": 2,
                         "topics": [],
-                        "userID": "0"
+                        "userID": "0",
+                        "_public": false
                     },
                     {
                         "difficulty": 3,
@@ -104,7 +107,8 @@ describe('ExerciseClient', function() {
                         "tags": [],
                         "time": 3,
                         "topics": [],
-                        "userID": "0"
+                        "userID": "0",
+                        "_public": false
                     }
                 ]
             );

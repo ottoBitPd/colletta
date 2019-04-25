@@ -33,19 +33,19 @@ class PageView {
         return this.userKind;
     }
     getHead(style) {
-        let ret = "<!DOCTYPE html>" +
+        let ret = "<!DOCTYPE html>\n" +
             "<html lang=\"it\">\n" +
             "\t<head>\n" +
             "\t\t<meta charset=\"UTF-8\">\n" +
             "\t\t<title>" + this.title + "</title>\n" +
             "\t\t<link rel=\"stylesheet\" type=\"text/css\" href=\"/style.css\">\n" +
-            "<!-- Resources -->\n" +
-            "<script src=\"https://www.amcharts.com/lib/4/core.js\"></script>\n" +
-            "<script src=\"https://www.amcharts.com/lib/4/charts.js\"></script>\n" +
-            "<script src=\"https://www.amcharts.com/lib/4/themes/animated.js\"></script>" +
-            "\t\t<!--bootstrap-->" +
-            "\t\t<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css\">" +
-            "\t\t<link rel=\"stylesheet\" href=\"https://use.fontawesome.com/releases/v5.7.0/css/all.css\" integrity=\"sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ\" crossorigin=\"anonymous\">" +
+            "\t\t<!-- Resources -->\n" +
+            "\t\t<script src=\"https://www.amcharts.com/lib/4/core.js\"></script>\n" +
+            "\t\t<script src=\"https://www.amcharts.com/lib/4/charts.js\"></script>\n" +
+            "\t\t<script src=\"https://www.amcharts.com/lib/4/themes/animated.js\"></script>\n" +
+            "\t\t<!--bootstrap-->\n" +
+            "\t\t<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css\">\n" +
+            "\t\t<link rel=\"stylesheet\" href=\"https://use.fontawesome.com/releases/v5.7.0/css/all.css\" integrity=\"sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ\" crossorigin=\"anonymous\">\n" +
             "\t\t<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\"></script>\n" +
             "\t\t<script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js\"></script>\n" +
             "\t\t<script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js\"></script>\n";
@@ -53,12 +53,12 @@ class PageView {
             ret += style;
         }
         ret += "\t</head>\n" +
-            "<body>\n";
+            "\t<body>\n";
         return ret;
     }
     getFoot(script) {
-        return "</body>" +
-            "\t<script>" + script + "</script>" +
+        return "\t</body>\n" +
+            "\t<script>\n" + script + "\t</script>\n" +
             "</html>";
     }
 }

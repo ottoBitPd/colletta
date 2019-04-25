@@ -91,7 +91,7 @@ describe('Exercise', function() {
     describe('Exercise.addSolution()', function () {
         it('should add a solution', function() {
             exercise.addSolution("xxx","1",[],[],5,new Map<string,number>(),1);
-            expect(exercise.getSolutions()[0]).eql(new Solution("xxx","1",[],[],5,new Map<string,number>(),1));
+            expect(exercise.getSolutions()[0]).eql(new Solution("xxx","1",[],[],5,false, new Map<string,number>(),1));
         });
     });
 

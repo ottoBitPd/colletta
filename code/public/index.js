@@ -16,7 +16,6 @@ const RegistrationView_1 = require("./ts/view/RegistrationView");
 const SearchView_1 = require("./ts/view/SearchView");
 const ClassesView_1 = require("./ts/view/ClassesView");
 const ClassView_1 = require("./ts/view/ClassView");
-const Client_1 = require("./ts/model/Client/Client");
 const app = express();
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -43,18 +42,21 @@ app.listen(8080, function () {
         const host = "127.0.0.1";
         const port = "8080";
         console.log("Example app listening at http://%s:%s", host, port);
-        let exerciseClient = (new Client_1.Client.builder()).buildUserClient().buildExerciseClient().build().getExerciseClient();
-        if (exerciseClient) {
-            let result = yield exerciseClient.getStudentAverage("-LcfF2c3ksUjdj0jXLZi");
-            let myMap = new Map();
+        /*
+        //prove per media
+        let exerciseClient = (new Client.builder()).buildUserClient().buildExerciseClient().build().getExerciseClient();
+        if(exerciseClient) {
+            let result = await exerciseClient.getStudentAverage("-LcfF2c3ksUjdj0jXLZi");
+            let myMap= new Map();
             for (let entry of Array.from(result.entries())) {
                 myMap.set(new Date(entry[0]), entry[1]);
             }
-            console.log("result: ", result);
-            console.log("myMap: ", myMap);
+            console.log("result: ",result);
+            console.log("myMap: ",myMap);
             let average = result.get(Math.max.apply(null, Array.from(result.keys())));
-            console.log("average: ", average);
+            console.log("average: ",average);
         }
+        */
     });
 });
 //# sourceMappingURL=index.js.map

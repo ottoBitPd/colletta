@@ -1,25 +1,25 @@
 import {expect} from 'chai';
 import 'mocha';
-import {DatabaseUserManager} from "../../../src/ts/model/DatabaseManager/DatabaseUserManager";
 import {Student} from "../../../src/ts/model/Data/Student";
 import {Data} from "../../../src/ts/model/Data/Data";
+import {FirebaseUserManager} from "../../../src/ts/model/Firebase/FirebaseUserManager";
 
-describe('DatabaseUserManager', function() {
+describe('FirebaseUserManager', function() {
 
-    let student :any;
+    let student:any;
 
-    let test1=new DatabaseUserManager();
+    let test=new FirebaseUserManager() ;
 
     beforeEach(function () {
+
         student = new Student("st1", "gioperry15", "ciao", "giovanni", "Peron", "Castelfranco", "Unipd","giov.anni@gmail.com");
 
         //@ts-ignore
-        test1.firebaseManager={
-            async insert(obj:Data):Promise<boolean>
-            {
-                return true;
-            },
+        test={
 
+            async insert(obj: Data): Promise<boolean> {
+                    return true;
+            },
             async remove(obj:string):Promise<boolean>
             {
                 return true;
@@ -32,7 +32,7 @@ describe('DatabaseUserManager', function() {
             {
                 return "key"
             },
-            async update(path:string, value: any)
+            async update(path:string, value: any):Promise<any>
             {
                 return true;
             },
@@ -41,61 +41,59 @@ describe('DatabaseUserManager', function() {
                 now.set("key","username");
                 return now;
             }
-
         }
 
     });
 
-    describe('DatabaseUserManager.insert()', function () {
+    describe('FirebaseUserManager.insert()', function () {
         it('should return the insert user in database', async function() {
 
-            expect(await test1.insert(student)).to.equal(true);
+            expect(await test.insert(student)).to.equal(true);
 
         });
     });
 
-    describe('DatabaseUserManager.remove()', function () {
+
+    describe('FirebaseUserManager.remove()', function () {
         it('should return the remove obj in database', async function() {
 
-            expect(await test1.remove('ciao')).to.equal(true);
+            expect(await test.remove('key')).to.equal(true);
 
         });
     });
 
-    describe('DatabaseUserManager.read()', function () {
+    describe('FirebaseUserManager.read()', function () {
         it('should return read obj in database', async function() {
 
-            expect(await test1.read('ciao')).to.equal("user");
+            expect(await test.read('key')).to.equal("user");
 
         });
     });
 
-    describe('DatabaseUserManager.search()', function () {
+    describe('FirebaseUserManager.search()', function () {
         it('should return search obj in database', async function() {
 
-            expect(await test1.search('genna')).to.equal("key");
+            expect(await test.search('genna')).to.equal("key");
 
         });
     });
 
-    describe('DatabaseUserManager.update()', function () {
+    describe('FirebaseUserManager.update()', function () {
         it('should return update database', async function() {
 
-            expect(await test1.update("/data/users/-LckWHuNmk_1uKGc9oPV/city","Ibiza")).to.equal(true);
+            expect(await test.update("/data/users/-LckWHuNmk_1uKGc9oPV/city","Ibiza")).to.equal(true);
 
         });
     });
 
-    describe('DatabaseUserManager.elements()', function () {
+    describe('FirebaseUserManager.elements()', function () {
         it('should return elements database', async function() {
             let now=new Map<string,string>();
             now.set("key","username");
 
-            expect(await test1.elements()).eql(now);
+            expect(await test.elements()).eql(now);
 
         });
     });
-
-
-
+    
 });

@@ -1,49 +1,37 @@
 //<reference path="POSManager.ts"/>
 
 import {POSManager} from "./POSManager";
-import * as fileSystem from "fs";
-
+import {spawn} from 'child_process';
 
 class HunposManager implements POSManager{
     private modelFilePath:string;
-    private inputFilePath:string;
-    private outputFilePath:string;
 
     constructor() {
         //this.train();
 
         //scommentare per mac/linux
-        this.inputFilePath='src/ts/presenter/hunpos/input.txt';
-        this.outputFilePath='src/ts/presenter/hunpos/output.txt';
         this.modelFilePath='src/ts/presenter/hunpos/italian_model';
         //scommentare per windows
-        /*this.inputFilePath='src\\ts\\presenter\\hunpos\\input.txt';
-        this.outputFilePath='src\\ts\\presenter\\hunpos\\output.txt';
-        this.modelFilePath='src\\ts\\presenter\\hunpos\\italian_model';*/
+        //this.modelFilePath='src\\ts\\presenter\\hunpos\\italian_model';
     }
 
     setModel(modelFilePath:string):void{
         this.modelFilePath=modelFilePath;
     };
 
-    private buildInputFile(sentence:string):void{
-        var words = this.splitSentence(sentence);
-        //console.log("words: ",words);
-        fileSystem.writeFile(this.inputFilePath,'',() => console.log('done'));
-        for(let i = 0; i < words.length; i++) {
-            //console.log("scrivo: ",words[i]);
-            fileSystem.appendFileSync( this.inputFilePath, words[i] + "\n");
-            /*if(i<(words.length-1)){
-                fileSystem.appendFileSync('input.txt', '\n', (err) => {    //controllo per non far mettere l'ultimo invio
-                    if (err) throw err;
-                });
-            }*/
-        }
+    private buildInput(sentence:string):string{
+        //console.log(`sentence: ${sentence}`);
+        let words = this.splitSentence(sentence);
+        let result = "";
+        for (let word of words)
+            result += word + "\n";
+        //console.log(`hunposInput: ${result}`);
+        return result + "\n";
     };
 
-    private buildSolution():any{
-        var wordSolArray = fileSystem.readFileSync(this.outputFilePath).toString().split("\n");
-        //console.log("leggo: "+wordSolArray);
+    private buildSolution(posOutput : string):any{
+        var wordSolArray = posOutput.split("\n");
+        //console.log("hunposOutput: " + wordSolArray);
         let obj : any= {
             sentence: []
         };
@@ -53,17 +41,15 @@ class HunposManager implements POSManager{
             obj.sentence.push({word: wordLab[0], label: wordLab[1]});
             i++;
         }
-        fileSystem.writeFileSync(this.inputFilePath, "");
         //console.log("obj: ",obj);
         return obj;
     };
 
-    getSolution(sentence:string):any{
+    async getSolution(sentence:string):Promise<any>{
         //console.log("sentenceHunpos: ",sentence);
-        this.buildInputFile(sentence);
         //this.train();
-        this.tag();
-        return this.buildSolution();
+        return this.buildSolution(await this.tag(this.buildInput(sentence)));
+
     };
 
     train():void{
@@ -74,12 +60,23 @@ class HunposManager implements POSManager{
         shell.exec('./src/ts/presenter/hunpos/hunpos-train ' + this.modelFilePath + '< ./src/ts/presenter/hunpos/train');
     };
 
-    tag():void{
-        const shell = require('shelljs');
+    public async tag(input : string): Promise<string>{
         //scommentare per windows
-        //shell.exec('src\\ts\\presenter\\hunpos\\hunpos-tag ' + this.modelFilePath + '< ' + this.inputFilePath + '>' + this.outputFilePath);
+        //const hunpos = spawn('src\\ts\\presenter\\hunpos\\hunpos-tag', [this.modelFilePath]);
         //scommentare per mac/linux
-        shell.exec('./src/ts/presenter/hunpos/hunpos-tag ' + this.modelFilePath + '< ' + this.inputFilePath + '>' + this.outputFilePath);
+        const hunpos = spawn('./src/ts/presenter/hunpos/hunpos-tag', [this.modelFilePath]);
+
+        process.stdin.pipe(hunpos.stdin);
+
+        let hunposOutput = new Promise( function(resolve) {
+            hunpos.stdout.on('data', function(data : any) {
+                return resolve(data);
+            });
+        });
+
+        hunpos.stdin.write(input);
+
+        return (await hunposOutput).toString();
     };
 
     /**

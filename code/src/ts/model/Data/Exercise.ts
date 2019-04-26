@@ -68,8 +68,8 @@ class Exercise implements Data{
         return this.newSolution;
     }
 
-    autosolve(): any{
-        return this.getPOSManager().getSolution(this.getSentence());
+    async autosolve(): Promise<any>{
+        return await this.getPOSManager().getSolution(this.getSentence());
     };
 
     /**
@@ -134,7 +134,7 @@ class Exercise implements Data{
      * @param teacherID - the id of the teacher who provide the solution which will be compared the current solution
      * @returns number - the grade calculated
      */
-    evaluate(teacherID?: string) : number {
+    async evaluate(teacherID?: string) : Promise<number> {
         if(this.newSolution===null){
             return -1;
         }
@@ -152,7 +152,7 @@ class Exercise implements Data{
                 }
             }
             else{
-                const hunposSolution=this.autosolve();
+                const hunposSolution=await this.autosolve();
                 for (let i in hunposSolution.sentence) {
                     tags.push(hunposSolution.sentence[i].label);
                 }

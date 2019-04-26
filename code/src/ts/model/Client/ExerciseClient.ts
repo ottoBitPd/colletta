@@ -16,7 +16,7 @@ class ExerciseClient{
      */
     public async autosolve(sentence: string, authorId :string) : Promise<string[]>{
         let exercise = new Exercise(sentence,authorId);
-        let autosolution = exercise.autosolve();
+        let autosolution = await exercise.autosolve();
         let result = [];
         for (let value of autosolution.sentence){
             result.push(value.label);
@@ -143,7 +143,7 @@ class ExerciseClient{
             exercise = new Exercise(sentence, solverID);
 
         exercise.setSolution(solverID, newSolution, topics, difficulty);
-        return exercise.evaluate(teacherID);
+        return await exercise.evaluate(teacherID);
     }
 
     public async getExerciseData(id:string) : Promise<any> {

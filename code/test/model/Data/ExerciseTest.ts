@@ -159,9 +159,9 @@ describe('Exercise', function() {
     });
 
     describe('Exercise.evaluate()', function() {
-        it('evaluation using hunpos', function() {
+        it('evaluation using hunpos', async function() {
             exercise.setSolution("1",['a','a','a','a'],[],5);
-            let autovalutation = exercise.evaluate();
+            let autovalutation = await exercise.evaluate();
             expect(autovalutation).gte(0) && expect(autovalutation).lte(10);
         });
 
@@ -171,37 +171,44 @@ describe('Exercise', function() {
         });
 
         context('evaluation using a teacher solution', function() {
-            it('with a correct solution', function () {
+            it('with a correct solution', async function () {
                 exercise.setSolution("1", ['a', 'a', 'a', 'a'], [], 5);
-                let autovalutation = exercise.evaluate("teacher1");
-                expect(autovalutation).equals(10);
+                let valutation = await exercise.evaluate("teacher1");
+                expect(valutation).equals(10);
             });
 
-            it('with an incorrect solution', function () {
+            it('with an incorrect solution',async  function () {
                 exercise.setSolution("1", ['a', 'a', 'a', 'a'], [], 5);
-                let autovalutation = exercise.evaluate("teacher2");
-                expect(autovalutation).equals(0);
+                let valutation = await exercise.evaluate("teacher2");
+                expect(valutation).equals(0);
             });
 
-            it('with an half correct solution', function () {
+            it('with an half correct solution', async function () {
                 exercise.setSolution("1", ['a', 'a', 'b', 'b'], [], 5);
-                let autovalutation = exercise.evaluate("teacher2");
-                expect(autovalutation).equals(5);
+                let valutation =await exercise.evaluate("teacher2");
+                expect(valutation).equals(5);
             });
 
-            it('with an almost correct solution', function () {
+            it('with an almost correct solution', async function () {
                 exercise.setSolution("1", ['a', 'b', 'b', 'b'], [], 5);
-                let autovalutation = exercise.evaluate("teacher2");
-                expect(autovalutation).equals(7.5);
+                let valutation = await exercise.evaluate("teacher2");
+                expect(valutation).equals(7.5);
             });
 
-            it('without his valutation',function () {
+            it('without his valutation', async function () {
                 exercise.setSolution("1", ['a', 'a', 'a', 'b'], [], 5);
-                expect(() => exercise.evaluate("teacherN")).to.throw(Error,"ID non trovato");
+                let error : Error = new Error("");
+                try {
+                    await exercise.evaluate("teacherN");
+                } catch (e) {
+                    error = e;
+                }
+
+                expect(error.message).to.be.equals("ID non trovato");
             });
 
-            it('without a solution set',function () {
-                expect(exercise.evaluate()).equals(-1);
+            it('without a solution set', async function () {
+                expect(await exercise.evaluate()).equals(-1);
             });
         });
 

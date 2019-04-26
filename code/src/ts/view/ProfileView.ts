@@ -3,7 +3,7 @@ import {ProfilePresenter} from "../presenter/ProfilePresenter";
 
 class ProfileView extends PageView{
     private userData : any;
-    private profileController :ProfilePresenter;
+    private profileController : ProfilePresenter;
     private error : any;
     constructor(app : any){
         super();

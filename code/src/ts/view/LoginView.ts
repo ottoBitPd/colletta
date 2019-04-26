@@ -1,5 +1,9 @@
 import {PageView} from "./PageView";
 
+/**
+ *   Class to display the login page
+ *   @extends PageView
+ */
 class LoginView extends PageView{
     private error :string;
     constructor(app : any){
@@ -9,6 +13,11 @@ class LoginView extends PageView{
     setError(error:string){
         this.error=error;
     }
+
+    /**
+     * This method is used to display the page body structure
+     * @return {string} the HTML source
+     */
     async getPage() {
         return "<!DOCTYPE html> " +
             "<html lang=\"it\"> " +

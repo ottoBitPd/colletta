@@ -1,14 +1,14 @@
 import {User} from "./User";
 import {Class} from "./Class";
 
-/*
+/**
 *   Class to create and manage "Teacher" objects
 *   @extends User
 */
 class Teacher extends User {
 
     private INPS : string;
-    /*
+    /**
     *   Initializes all attributes needed to Teacher object.
     */
     constructor (id:string, username : string, password: string, name : string, lastname:string, city:string, school : string, inps : string, email : string){
@@ -16,7 +16,7 @@ class Teacher extends User {
         this.INPS = inps;
     }
 
-    /*
+    /**
     * This method returns the iist of classes created by a specific teacher.
     * @param classList - the list of all the available classes
     * @returns { Class[]} returns the list of classes.
@@ -30,7 +30,7 @@ class Teacher extends User {
 
         return lista;
     }
-    /*
+    /**
     * This method returns the teacher INPS code.
     * @returns { string } returns the INPS code.
     */
@@ -38,7 +38,7 @@ class Teacher extends User {
             return this.INPS;
     }
 
-    /*
+    /**
     * This method returns checks if a user is a teacher.
     * @returns { boolean } returns "true" if the user is a teacher.
     */

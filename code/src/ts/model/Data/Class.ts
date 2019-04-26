@@ -15,7 +15,7 @@ class Class implements Data {
     private exercises : string[];
 
 
-    /*
+    /**
     *   Initializes all attributes needed to Class object.
     */
 
@@ -28,7 +28,7 @@ class Class implements Data {
         this.exercises = exercises;
     }
 
-    /*
+    /**
     * This method returns the Id of a class.
     * @returns { string } returns the class Id.
     */
@@ -36,7 +36,7 @@ class Class implements Data {
         return this.id;
     }
 
-    /*
+    /**
     * This method returns the name of a class.
     * @returns { string } returns the class name.
     */
@@ -44,7 +44,7 @@ class Class implements Data {
         return this.name;
     }
 
-    /*
+    /**
     * This method returns the description of a class.
     * @returns { string } returns the class description.
     */
@@ -52,7 +52,7 @@ class Class implements Data {
         return this.description;
     }
 
-    /*
+    /**
     * This method returns the Id of the teacher who created the class.
     * @returns { string } returns the class teacher Id.
     */
@@ -60,7 +60,7 @@ class Class implements Data {
         return this.teacherID;
     }
 
-    /*
+    /**
     * This method returns the student list of a class.
     * @returns { string[] } returns a list of students.
     */
@@ -68,7 +68,7 @@ class Class implements Data {
         return this.students;
     }
 
-    /*
+    /**
     * This method returns the exercise list assigned to a class.
     * @returns { string[] } returns a list of exercises.
     */
@@ -76,7 +76,7 @@ class Class implements Data {
         return this.exercises;
     }
 
-    /*
+    /**
     * This method returns the number of students signed up to a class.
     * @returns { number } returns the number of members.
     */
@@ -84,7 +84,7 @@ class Class implements Data {
         return this.students.length;
     }
 
-    /*
+    /**
     * This method removes a student from the class student list.
     * @param student - the student to delete
     */
@@ -92,7 +92,7 @@ class Class implements Data {
         this.students = this.students.filter(s => s !== student);
     }
 
-    /*
+    /**
     * This method removes an exercise from the class exercise list.
     * @param exerKey - the key of the exercise to delete
     */
@@ -100,7 +100,7 @@ class Class implements Data {
         this.exercises = this.exercises.filter(e => e !== exerKey);
     }
 
-    /*
+    /**
     * This method adds a student to the class student list.
     * @param student - the student to add
     */
@@ -108,7 +108,7 @@ class Class implements Data {
         this.students.push(student);
     }
 
-    /*
+    /**
     * This method adds an exercise to the class exercise list.
     * @param exercise - the exercise to add
     */
@@ -116,7 +116,7 @@ class Class implements Data {
         this.exercises.push(exercise);
     }
 
-    /*
+    /**
     * This method checks if a student is in the class student list.
     * @param student - the student to check
     * @returns { boolean } returns true if the student is signed up to the class.

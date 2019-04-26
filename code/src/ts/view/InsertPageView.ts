@@ -1,6 +1,10 @@
 import {PageView} from "./PageView";
 import {InsertPresenter} from "../presenter/InsertPresenter";
 
+/**
+ *   Class to display the page to insert a new exercise
+ *   @extends PageView
+ */
 class InsertPageView extends PageView {
 
     private exercisePresenter : InsertPresenter;
@@ -10,6 +14,10 @@ class InsertPageView extends PageView {
         this.exercisePresenter.update(app);
     }
 
+    /**
+     * This method is used to display the page body structure
+     * @return {string} the HTML source
+     */
     async getPage() {
         let ret = this.getHead();
         ret +=this.getMenu();
@@ -27,6 +35,11 @@ class InsertPageView extends PageView {
         ret+="</div>"+this.getFoot("");
         return ret;
     }
+
+    /**
+     * This method is used to display the page menù
+     * @return {string} the HTML source
+     */
     private getMenu() : string {
         let ret ="<nav class=\"navbar navbar-expand-sm bg-dark navbar-dark\">" +
             "    <div class=\"navbar-brand\">Colletta</div>" +
@@ -49,6 +62,10 @@ class InsertPageView extends PageView {
         return ret;
     }
 
+    /**
+     * This method is used to display the page login area
+     * @return {string} the HTML source
+     */
     private getLoginArea() : string {
 
         if(this.exercisePresenter.isLoggedIn()){

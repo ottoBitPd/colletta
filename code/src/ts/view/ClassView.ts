@@ -1,6 +1,10 @@
 import {PageView} from "./PageView";
 import {ClassPresenter} from "../presenter/ClassPresenter";
 
+/**
+ *   Class to display the class data page
+ *   @extends PageView
+ */
 class ClassView extends PageView {
 
     private classPresenter : ClassPresenter;
@@ -15,6 +19,10 @@ class ClassView extends PageView {
         this._class = value;
     }*/
 
+    /**
+     * This method is used to display the page body structure
+     * @return {string} the HTML source
+     */
     async getPage() {
         let _class = await this.classPresenter.getClass();
         let ret = this.getHead();
@@ -44,6 +52,11 @@ class ClassView extends PageView {
         ret += this.getFoot("");
         return ret;
     }
+
+    /**
+     * This method is used to display the class informations
+     * @return {string} the HTML source
+     */
     private async printClassInfo(){
         let _class = await this.classPresenter.getClass();
         let ret = "" +
@@ -71,6 +84,11 @@ class ClassView extends PageView {
         "\t\t</div>";
         return ret;
     }
+
+    /**
+     * This method is used to display the page menù
+     * @return {string} the HTML source
+     */
     private getMenu() : string {
         let ret =""+
             "\t<nav class=\"navbar navbar-expand-sm bg-dark navbar-dark\">" +
@@ -94,6 +112,10 @@ class ClassView extends PageView {
         return ret;
     }
 
+    /**
+     * This method is used to display the page login area
+     * @return {string} the HTML source
+     */
     private getLoginArea() : string {
 
         if(this.classPresenter.isLoggedIn()){
@@ -126,6 +148,11 @@ class ClassView extends PageView {
             return ret;
         }
     }
+
+    /**
+     * This method is used to display the class student list
+     * @return {string} the HTML source
+     */
     private async printStudentsList() {
         let students = await this.classPresenter.getStudents();
         let _class = await this.classPresenter.getClass();
@@ -166,6 +193,11 @@ class ClassView extends PageView {
             return ret;
         }
     }
+
+    /**
+     * This method is used to display the class exercises list
+     * @return {string} the HTML source
+     */
     private async printExercisesList() {
         let exercises = await this.classPresenter.getExercises()
         if(exercises===undefined){

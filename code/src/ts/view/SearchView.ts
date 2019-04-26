@@ -1,6 +1,10 @@
 import {PageView} from "./PageView";
 import {SearchPresenter} from "../presenter/SearchPresenter";
 
+/**
+ *   Class to display the search bar and search results
+ *   @extends PageView
+ */
 class SearchView extends PageView{
 
     private searchPresenter : SearchPresenter;
@@ -10,6 +14,10 @@ class SearchView extends PageView{
         this.searchPresenter.update(app);
     }
 
+    /**
+     * This method is used to display the page body structure
+     * @return {string} the HTML source
+     */
     async getPage() {
         let ret = this.getHead();
         ret +=this.getMenu();
@@ -35,6 +43,10 @@ class SearchView extends PageView{
         return ret;
     }
 
+    /**
+     * This method is used to display the page menù
+     * @return {string} the HTML source
+     */
     private getMenu() : string {
         let ret ="<nav class=\"navbar navbar-expand-sm bg-dark navbar-dark\">" +
             "    <div class=\"navbar-brand\">Colletta</div>" +
@@ -57,6 +69,10 @@ class SearchView extends PageView{
         return ret;
     }
 
+    /**
+     * This method is used to display the page login area
+     * @return {string} the HTML source
+     */
     private getLoginArea() : string {
 
         if(this.searchPresenter.isLoggedIn()){
@@ -90,6 +106,10 @@ class SearchView extends PageView{
         }
     }
 
+    /**
+     * This method is used to display the list of search results
+     * @return {string} the HTML source
+     */
     private printList() {
         let results = this.searchPresenter.getResults();
         if(results===undefined){

@@ -5,7 +5,8 @@
 enum UserKind {
     user =0,
     student = 1,
-    teacher =2
+    teacher =2,
+    developer=3
 }
 
 abstract class PageView {

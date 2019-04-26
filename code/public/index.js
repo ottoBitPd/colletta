@@ -16,6 +16,7 @@ const RegistrationView_1 = require("./ts/view/RegistrationView");
 const SearchView_1 = require("./ts/view/SearchView");
 const ClassesView_1 = require("./ts/view/ClassesView");
 const ClassView_1 = require("./ts/view/ClassView");
+const DeveloperView_1 = require("./ts/view/DeveloperView");
 const app = express();
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -27,6 +28,7 @@ new ExerciseView_1.ExerciseView(app);
 new SearchView_1.SearchView(app);
 new ClassesView_1.ClassesView(app);
 new ClassView_1.ClassView(app);
+new DeveloperView_1.DeveloperView(app);
 /*
 //OLD STYLE
 const exercisePage = new ExercisePresenter(exerciseView, savePageView);

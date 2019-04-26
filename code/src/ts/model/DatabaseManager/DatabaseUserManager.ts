@@ -27,5 +27,11 @@ class DatabaseUserManager extends DatabaseManager{
     async elements() : Promise<Map<string, string>> {
         return await this.getDatabase().elements();
     }
+    /*
+    //TODO:
+    async readDeveloper() : Promise<string> {
+        return await this.getDatabase().readDeveloper();
+    }
+    */
 }
 export {DatabaseUserManager}

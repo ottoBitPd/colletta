@@ -157,6 +157,20 @@ class FirebaseUserManager extends FirebaseManager {
             }
         });
     }
+    /*
+    TODO:
+    public async readDeveloper() : Promise<string> {
+        const ref = FirebaseManager.database.ref("data/developer");
+        return new Promise<string>(function (resolve) {
+            ref.once('value', function (snapshot: any) {
+                if (snapshot.exists()) {
+                    let readedData = snapshot.val();
+                    return resolve(readedData);
+                }
+            })
+        })
+    }
+    */
 }
 
 export {FirebaseUserManager}

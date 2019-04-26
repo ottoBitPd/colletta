@@ -9,6 +9,7 @@ var UserKind;
     UserKind[UserKind["user"] = 0] = "user";
     UserKind[UserKind["student"] = 1] = "student";
     UserKind[UserKind["teacher"] = 2] = "teacher";
+    UserKind[UserKind["developer"] = 3] = "developer";
 })(UserKind || (UserKind = {}));
 exports.UserKind = UserKind;
 class PageView {

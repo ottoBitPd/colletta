@@ -7,6 +7,7 @@ import {RegistrationView} from "./ts/view/RegistrationView";
 import {SearchView} from "./ts/view/SearchView";
 import {ClassesView} from "./ts/view/ClassesView";
 import {ClassView} from "./ts/view/ClassView";
+import {DeveloperView} from "./ts/view/DeveloperView";
 
 
 const app = express();
@@ -21,6 +22,7 @@ new ExerciseView(app);
 new SearchView(app);
 new ClassesView(app);
 new ClassView(app);
+new DeveloperView(app);
 /*
 //OLD STYLE
 const exercisePage = new ExercisePresenter(exerciseView, savePageView);

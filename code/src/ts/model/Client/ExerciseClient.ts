@@ -21,7 +21,8 @@ class ExerciseClient{
     }
 
     public getSplitSentence(sentence:string) : string []{
-        return sentence.split(" ");
+       let tmp = new Exercise(sentence, "xxx");
+       return tmp.getSplitSentence();
     }
 
     public insertExercise(sentence: string , authorId :string, solution : any, valutation :any) : void {
@@ -72,6 +73,7 @@ class ExerciseClient{
      *              "time" : solutionTime
      *          }
      */
+
     async searchSolution(sentence:string,solverID: string) : Promise<any[]>{/*
         var mapToReturn = new Map<string, string>();
         var exerciseKey = await this.dbExerciseManager.search(sentence);
@@ -104,17 +106,53 @@ class ExerciseClient{
                 if (value.getSolverId() === solverID)
                     result.push(
                         {
-                            "id" : value.getKey(),
-                            "userID" : value.getSolverId(),
-                            "tags" : value.getSolutionTags(),
-                            "time" : value.getTime(),
-                            "difficulty" : value.getDifficulty(),
-                            "topics" : value.getTopics()
+                            "id": value.getKey(),
+                            "userID": value.getSolverId(),
+                            "tags": value.getSolutionTags(),
+                            "time": value.getTime(),
+                            "difficulty": value.getDifficulty(),
+                            "topics": value.getTopics()
                         });
             }
         }
         return result;
     }
+
+    // @ts-ignore
+    async searchAllSolution(sentence:string) : Promise<any[]> {
+        let result: any[] = [];
+        var regex= new RegExp(sentence, "i");
+        var elements = await this.dbExerciseManager.elements();
+        for (let entry of Array.from(elements)) {
+            let key=entry[0];
+            let value = entry[1];
+
+            if(value.search(regex)>=0){
+                let exercise: Data = await this.dbExerciseManager.read(key);
+                let phrase = (<Exercise>exercise).getSentence();
+                let solutions = (<Exercise>exercise).getSolutions();
+                for (let sol of solutions) {
+                    let val = "";
+                    // @ts-ignore
+                    for (let vals of sol.getValutations().entries()) {
+                        val = val + vals[0] + "=>" + vals[1];
+                    }
+                    result.push(
+                        {
+                            "sentence": phrase,
+                            "solverID": sol.getSolverId(),
+                            "tags": sol.getSolutionTags(),
+                            "time": sol.getTime(),
+                            "difficulty": sol.getDifficulty(),
+                            "topics": sol.getTopics(),
+                            "valutations": val
+                        });
+                }
+            }
+        }
+        return result;
+    }
+
 
     public async getSentence(id: string): Promise<string> {
         var exercise : Data = await this.dbExerciseManager.read(id);

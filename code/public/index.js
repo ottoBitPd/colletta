@@ -39,26 +39,16 @@ const registrationView : any= new RegistrationView();
 const LoginPage = new AuthenticationPresenter(loginView,registrationView);
 LoginPage.update(app);
 */
-app.listen(8080, function () {
+app.listen(5050, function () {
     return __awaiter(this, void 0, void 0, function* () {
         const host = "127.0.0.1";
-        const port = "8080";
+        const port = "5050";
         console.log("Example app listening at http://%s:%s", host, port);
-        /*
-        //prove per media
-        let exerciseClient = (new Client.builder()).buildUserClient().buildExerciseClient().build().getExerciseClient();
-        if(exerciseClient) {
-            let result = await exerciseClient.getStudentAverage("-LcfF2c3ksUjdj0jXLZi");
-            let myMap= new Map();
-            for (let entry of Array.from(result.entries())) {
-                myMap.set(new Date(entry[0]), entry[1]);
-            }
-            console.log("result: ",result);
-            console.log("myMap: ",myMap);
-            let average = result.get(Math.max.apply(null, Array.from(result.keys())));
-            console.log("average: ",average);
-        }
-        */
+        /*let exerciseClient =(new Client.builder()).buildExerciseClient().build().getExerciseClient();
+        if(exerciseClient){
+            let exercise = await exerciseClient.getExerciseData("-LdJfwbWT_e7V-xjLJse");
+            console.log("exercise: ",exercise);
+        }*/
     });
 });
 //# sourceMappingURL=index.js.map

@@ -96,5 +96,17 @@ class Solution {
         }
         return ((rightTagsNumber*10)/mySolutionTags.length);
     }
+    toJSON() : any {
+        let solution : any = {};
+        solution.key= this.key;
+        solution.solverId= this.solverId;
+        solution.solutionTags= this.solutionTags;
+        solution.topics= this.topics;
+        solution.difficulty= this.difficulty;
+        solution.valutations= this.valutations;
+        solution.time= this.time;
+        solution._public= this._public;
+        return solution;
+    }
 }
 export {Solution};

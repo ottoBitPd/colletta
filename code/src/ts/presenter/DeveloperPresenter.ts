@@ -60,7 +60,6 @@ class DeveloperPresenter extends PagePresenter{
         let exerciseClient = this.client.getExerciseClient();
         if (exerciseClient) {
             let an= await exerciseClient.searchAllSolution(sentence);
-            console.log(an);
             return an;
         }
     }
@@ -112,6 +111,27 @@ class DeveloperPresenter extends PagePresenter{
     }
     public getMessage(){
         return this.message;
+    }
+
+    /**
+     * This method returns a map with all the exercises
+     */
+    public async getResults(){
+        let exerciseClient = this.client.getExerciseClient();
+        let ret = [];
+        if(exerciseClient) {
+            let map = await exerciseClient.searchExercise("");//returns map<idEsercizio, sentence>
+            //console.log("map: ",map);
+            for(let entry of Array.from(map.entries())) {
+                let key = entry[0];
+                let exercise = await exerciseClient.getExerciseData(key);
+                //console.log("exercise: ",exercise);
+                ret.push(exercise);
+
+            }
+            return ret;
+        }
+        return [];
     }
 }
 export {DeveloperPresenter}

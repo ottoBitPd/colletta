@@ -9,7 +9,7 @@ class DeveloperView extends PageView {
         this.devPresenter.update(app);
     }
 
-    async getPage() {
+    public async getPage() {
         let ret = "" +
             "<!DOCTYPE html>\n" +
             "<html lang=\"it\">\n" +
@@ -41,13 +41,10 @@ class DeveloperView extends PageView {
                 "\t\t</div>\n\t</div>\n";
         }
         else{//developer is loggedIn
-            // @ts-ignore
+            ret+= await this.printList();
+            //download
             let annot = await this.devPresenter.getAllAnnotation("");
             let csv = await this.devPresenter.createCsvFromAnnotations(annot);
-            //let csvContent =
-            //let s=(JSON.stringify(annot)).replace(/"/g,'\\"');
-            //let s='ciao"gino"ciao';
-            //let s=csv.replace(/"/g,'\\"');
             let s=escape(csv);
             ret+="<button onclick='download_csv(\""+s+"\")' class=\"btn btn-primary my-2 my-sm-0 w-25\">Download</button>";
         }
@@ -55,6 +52,41 @@ class DeveloperView extends PageView {
         ret+=this.getFoot(this.getScript());
 
         return ret;
+    }
+    private async printList() {
+        let results = await this.devPresenter.getResults();
+        console.log("results: ", results);
+        if(results===undefined){
+            return "";//resultList is not set yet, cause nobody searched yet
+        }
+        if(results.length===0){
+            return "<h2 class='h5 text-danger text-center'>Nessun risultato</h2>";//resultList is not set yet, cause nobody searched yet
+        }
+        let ret="";
+
+        if(results.length>0) {
+            ret += "\t<div class=\"col-sm-12\">" +
+                "\t\t<ul class=\"list-group\">\n" +
+                "\t\t\t<li class='list-group-item active'>" +
+                "\t\t\t\t<div class='row'>" +
+                "\t\t\t\t\t<div class='col-sm-8'>Esercizi</div>"+
+                "\t\t\t\t\t<div class='col-sm-4'>Data</div>"+
+                "\t\t\t\t</div>" +
+                "\t\t\t</li>";
+
+            for (let i in results) {
+                for (let y in results[i].solutions) {
+                    ret += "\t\t\t<li class=\"list-group-item\">" +
+                        "\t\t\t\t<div class='row'>" +
+                        "\t\t\t\t\t<div class='col-sm-8'>" + results[i].sentence + "</div>\n";
+                    let date = new Date(results[i].solutions[y].time);
+                    ret += "\t\t\t\t\t<div class='col-sm-4'>" + date.getDate() + "-" + date.getMonth() + "-" + date.getFullYear() + "</div>" +
+                        "\t\t\t\t</div>\n" +
+                        "\t\t\t</li>\n";
+                }
+            }
+        }
+        return "\t\t</ul>\n"+ret;
     }
     private getScript(){
         return"" +

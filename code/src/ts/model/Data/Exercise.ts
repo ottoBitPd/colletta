@@ -166,12 +166,14 @@ class Exercise implements Data{
      * @returns number - the grade calculated
      */
     toJSON() : any{
-        //Do I have to add solutions too? - Perry15
-        let exercise: any = {
-            "sentence": this.sentence,
-            "authorId" : this.authorId,
-            "key" : this.key
-        };
+        let exercise : any = {};
+        exercise.sentence=this.sentence;
+        exercise.authorId=this.authorId;
+        exercise.key=this.key;
+        exercise.solutions=[];
+        for(let i in this.solutions){
+            exercise.solutions.push(this.solutions[i].toJSON());
+        }
         return exercise;
     }
 

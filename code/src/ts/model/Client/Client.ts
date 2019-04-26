@@ -8,13 +8,11 @@ class Client {
     private exerciseClient: ExerciseClient | undefined;
     private classClient: ClassClient | undefined;
 
-
     private constructor(userClient: UserClient | undefined, exerciseClient: ExerciseClient | undefined, classClient: ClassClient | undefined) {
         this.userClient = userClient;
         this.exerciseClient = exerciseClient;
         this.classClient = classClient;
     }
-
 
     getUserClient(): UserClient | undefined {
         return this.userClient;
@@ -54,33 +52,5 @@ class Client {
         }
     }
 }
-/*
-    export class ClientBuilder {
-        private dbClassManager: ClassClient | undefined;
-        private dbExerciseManager: ExerciseClient | undefined;
-        private dbUserManager: UserClient | undefined;
-
-        buildClassClient(): ClientBuilder {
-            this.dbClassManager = new ClassClient();
-            return this;
-        }
-
-        buildExerciseClient(): ClientBuilder {
-            this.dbExerciseManager = new ExerciseClient();
-            return this;
-
-        }
-
-        buildUserClient(): ClientBuilder {
-            this.dbUserManager = new UserClient();
-            return this;
-        }
-
-        build() {
-            return new Client(this.dbClassManager, this.dbExerciseManager, this.dbUserManager);
-        }
-
-    }
-}*/
 
 export {Client}

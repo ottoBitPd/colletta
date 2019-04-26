@@ -88,10 +88,9 @@ class ExercisePresenter extends PagePresenter{
                 let words = exerciseClient.getSplitSentence(request.body.sentence);
                 let wordsnumber = words.length;
                 if(session.username!== undefined){//if somebody is logged in
-                    console.log("passoA");
                     let ID = await userClient.search(session.username);
                     if(this.view.getUserKind() === UserKind.teacher) {
-                        console.log("passoA1");
+                        console.log("salvo es di un teacher");
                         //console.log("post: ",request.body);
                         let hunposTags = JSON.parse(request.body.hunposTags);
                         let tagsCorrection = this.correctionToTags(wordsnumber, request.body);
@@ -112,7 +111,7 @@ class ExercisePresenter extends PagePresenter{
 
                         this.userSolution = solution[1];
                         this.correction = null;
-                        exerciseClient.insertExercise(request.body.sentence, ID, solution, valutation);
+                        exerciseClient.insertExercise(request.body.sentence, ID, solution, valutation,request.body.public);
                         //exerciseClient.addValutation(request.body.sentence, "sessionauthorId","teacherIdValue", 10);//valori di prova
                         //await exerciseClient.insertExercise(request.body.sentence, "authorIdValue",);
 
@@ -120,11 +119,11 @@ class ExercisePresenter extends PagePresenter{
                         //this.model.writeSolution(sentence.split(" "), finalTags, sentence, key);
                         response.redirect('/');
                     } else {
-                        console.log("passoA2");
+                        console.log("salvo es di un studente");
                         let solution : any;
                         let valutation : any;
                         if (request.body.correction !== 'auto'){
-                            console.log("passoAB1");
+                            console.log("salvo es di studente con correzione auto");
                             let corrections = await this.teacherSolutions(request.body.sentence);
                             corrections = corrections.filter((value) => value.id === request.body.correction);
                             solution = {
@@ -143,7 +142,7 @@ class ExercisePresenter extends PagePresenter{
                                 this.correction = {"mark" : valutation[1], "tags" : corrections[0].tags};
                             }
                         } else {
-                            console.log("passoAB2");
+                            console.log("salvo es di studente con correzione teacher");
                             solution = {
                                 0: ID,
                                 1: this.correctionToTags(wordsnumber,request.body),
@@ -365,6 +364,11 @@ class ExercisePresenter extends PagePresenter{
         return false;
     }
 
+    /**
+     * This method returns all the public teacher solutions avaiable for an exercise
+     * @param sentence - the sentence of the exercise
+     * @returns any[] - an arry of json containing the public teacher solutions of the exercise
+     */
     async teacherSolutions(sentence : string) : Promise<any[]> {
         let result : any[] = [];
         let exerciseClient = this.client.getExerciseClient();
@@ -375,16 +379,20 @@ class ExercisePresenter extends PagePresenter{
                 if (exerciseClient){
                     let solutions = await exerciseClient.searchSolution(sentence,teacher);
                     for (let sol of solutions){
-                        sol = {
-                            "id" : sol.id,
-                            "userID" : sol.userID,
-                            "username" : (await userClient.getUserData(sol.userID)).username,
-                            "tags" : sol.tags,
-                            "time" : sol.time,
-                            "difficulty": sol.difficulty,
-                            "topics" : sol.topics
-                         };
-                        result.push(sol);
+                        console.log("solution: ",sol);
+                        console.log("_public: ",sol._public);
+                        if(sol._public==='true') {//only if the teacher set solution as public
+                            sol = {
+                                "id": sol.id,
+                                "userID": sol.userID,
+                                "username": (await userClient.getUserData(sol.userID)).username,
+                                "tags": sol.tags,
+                                "time": sol.time,
+                                "difficulty": sol.difficulty,
+                                "topics": sol.topics
+                            };
+                            result.push(sol);
+                        }
                     }
                 }
             }
@@ -400,5 +408,7 @@ class ExercisePresenter extends PagePresenter{
         }
         return null;
     }
+
+
 }
 export {ExercisePresenter};

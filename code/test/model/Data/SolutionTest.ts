@@ -6,7 +6,7 @@ describe('Solution',function () {
     let solution : Solution;
     beforeEach(function () {
         solution = new Solution("0","s0",["a","b","c"],["t1","t2"],
-            5,new Map<string,number>(),0);
+            5,false,new Map<string,number>(),0);
         solution.addNewMark("teacher1",10);
         solution.addNewMark("teacher2",5);
     });
@@ -33,7 +33,7 @@ describe('Solution',function () {
         let solutionNullTopics : Solution;
         beforeEach(function () {
             solutionNullTopics = new Solution("0","s0",["a","b","c"],undefined,
-                5,new Map<string,number>(),0);
+                5,false,new Map<string,number>(),0);
         });
 
         context('when the solution hasn\'t topics', function(){
@@ -53,7 +53,7 @@ describe('Solution',function () {
         let solutionNullDifficulty : Solution;
         beforeEach(function () {
             solutionNullDifficulty = new Solution("0","s0",["a","b","c"],["t1","t2"],
-                undefined,new Map<string,number>(),0);
+                undefined,false,new Map<string,number>(),0);
         });
 
         context('when the solution has the difficulty',function(){
@@ -67,6 +67,19 @@ describe('Solution',function () {
                 expect(solutionNullDifficulty.getDifficulty()).to.be.null;
             });
         });
+    });
+
+    describe('Solution.getPublic()', function () {
+        it("should return the public state of the solution",function () {
+            expect(solution.getPublic()).to.eql(false);
+        })
+    });
+
+    describe('Solution.setPublic()', function () {
+        it("should return the public state of the solution changed to true",function () {
+            solution.setPublic(true);
+            expect(solution.getPublic()).to.eql(true);
+        })
     });
 
     describe('Solution.getSolutionTags()', function () {
@@ -99,7 +112,7 @@ describe('Solution',function () {
         context('when the solution hasn\'t any valutation',function () {
             beforeEach(function () {
                 solution = new Solution("0","s0",["a","b","c"],["t1","t2"],
-                    5,new Map<string,number>(),0);
+                    5,false,new Map<string,number>(),0);
             });
 
             it('should return an empty JSON',function () {

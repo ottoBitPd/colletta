@@ -1,19 +1,18 @@
 import {User} from "./User";
 import {Class} from "./Class";
-import {Exercise} from "./Exercise";
-import {Solution} from "./Solution";
+/*import {Exercise} from "./Exercise";
+import {Solution} from "./Solution";*/
 
 class Student extends User {
 
-    private classId : any;
     constructor (id : string, username : string, password: string, name : string, lastname:string, city:string, school : string, email : string, classId? :string){
         super(id, username, password, name, lastname, city, school, email);
-        if(classId)
-            this.classId=classId;
-        else
-            this.classId="undefined";
     }
 
+    /**
+     * This method receives an array of classes and returns only the classes of the student
+     * @param classList
+     */
     public getClasses(classList: Class[]): Class[] {
         let list : Class[] =[];
         classList.forEach((_class) => {
@@ -25,7 +24,12 @@ class Student extends User {
         return list;
     }
 
-
+    /**
+     * This method receives an array of exercises and calculate the average of all valutations obtained by the student
+     * @param exercises - an array of exercises
+     */
+    /*
+    //spostato in ExerciseClient
     public getAverage(exercises : Exercise[]) : Map<number,number> {
         let averageMap = new Map<number, number>();
         let solutions: Solution[] = [];
@@ -52,13 +56,10 @@ class Student extends User {
             });
 
         return averageMap;
-    }
+    }*/
     public isStudent(): boolean {
         return true;
     }
 
-    public getClassId() {
-        return this.classId;
-    }
 }
 export {Student}

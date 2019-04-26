@@ -120,7 +120,7 @@ class FirebaseClassManager extends FirebaseManager {
         const splittedPath =path.split("/");
         const position : number = splittedPath.length -1;
         const field : string=splittedPath[position];
-        //console.log(field+ "path: " + path +" value: "+value);
+        console.log(field+ " path: " + path +" value: "+value);
         switch (field) {
             case "exercises": await this.updateField(path, value); break;
             case "students": await this.updateField(path, value); break;

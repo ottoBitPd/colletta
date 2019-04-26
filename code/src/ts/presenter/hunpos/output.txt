@@ -1,4 +1,5 @@
-La	RDfs	
-macchina	Sfs	
-rossa	Afs	
+This	SP	
+is	SWnn	
+an	Smp	
+example	Sfs	
 

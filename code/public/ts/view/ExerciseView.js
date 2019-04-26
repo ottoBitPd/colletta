@@ -35,7 +35,7 @@ class ExerciseView extends PageView_1.PageView {
     }
     getPage() {
         return __awaiter(this, void 0, void 0, function* () {
-            const words = this.sentence.split(" ");
+            const words = this.splitSentence();
             let ret = this.getHead(this.buildCss(words));
             ret += this.getMenu();
             ret += "<div class=\"container\">";
@@ -76,7 +76,11 @@ class ExerciseView extends PageView_1.PageView {
             "   <br/>";
         if (this.userKind === PageView_1.UserKind.teacher)
             ret +=
-                "            <input type=\"text\" class='form-control' name=\"topics\"/>" +
+                "            <select class='form-control' name=\"public\">" +
+                    "                <option value=\"true\" default>Soluzione pubblica</option>" +
+                    "                <option value=\"false\">Soluzione privata</option>" +
+                    "            </select>" +
+                    "            <input type=\"text\" class='form-control' name=\"topics\" placeholder=\"Argometni dell'esercizio\"/>" +
                     "            <select class='form-control' name=\"difficulty\">" +
                     "                <option value=\"1\">Molto facile</option>" +
                     "                <option value=\"2\">Facile</option>" +
@@ -240,6 +244,51 @@ class ExerciseView extends PageView_1.PageView {
                 "        </form>\n";
             return ret;
         }
+    }
+    /**
+     * This method splits a sentence on spaces and punctuation
+     * @returns string [] - an array containing the split sentence
+     */
+    splitSentence() {
+        this.sentence = this.sentence.replace(/\-/g, " - ");
+        this.sentence = this.sentence.replace(/\!/g, " ! ");
+        this.sentence = this.sentence.replace(/\?/g, " ? ");
+        this.sentence = this.sentence.replace(/,/g, " , ");
+        this.sentence = this.sentence.replace(/:/g, " : ");
+        this.sentence = this.sentence.replace(/;/g, " ; ");
+        this.sentence = this.sentence.replace(/\//g, " / ");
+        this.sentence = this.sentence.replace(/\*/g, " * ");
+        this.sentence = this.sentence.replace(/\(/g, " ( ");
+        this.sentence = this.sentence.replace(/\)/g, " ) ");
+        this.sentence = this.sentence.replace(/\[/g, " [ ");
+        this.sentence = this.sentence.replace(/\]/g, " ] ");
+        this.sentence = this.sentence.replace(/{/g, " { ");
+        this.sentence = this.sentence.replace(/}/g, " } ");
+        this.sentence = this.sentence.replace(/_/g, " _ ");
+        this.sentence = this.sentence.replace(/`/g, " ` ");
+        this.sentence = this.sentence.replace(/‘/g, " ‘ ");
+        this.sentence = this.sentence.replace(/’/g, " ’ ");
+        this.sentence = this.sentence.replace(/\"/g, " \" ");
+        this.sentence = this.sentence.replace(/“/g, " “ ");
+        this.sentence = this.sentence.replace(/”/g, " ” ");
+        this.sentence = this.sentence.replace(/«/g, " « ");
+        this.sentence = this.sentence.replace(/»/g, " » ");
+        this.sentence = this.sentence.replace(/\s+/g, ' '); //if there are multiple spaces
+        this.sentence = this.sentence.replace(/\s+'/g, '\''); //if there are spaces before '
+        let arr = this.sentence.split("");
+        for (let i = 0; i < arr.length; i++) {
+            if (i <= arr.length - 3 && arr[i] === "." && arr[i + 1] === "." && arr[i + 2] === ".") {
+                arr[i] = " ... ";
+                arr[i + 1] = arr[i + 2] = " ";
+            }
+            else if (arr[i] === ".") {
+                arr[i] = " . ";
+            }
+        }
+        this.sentence = arr.join("");
+        arr = this.sentence.split(new RegExp(" |(?<=')"));
+        arr = arr.filter(Boolean); //remove empty string like ''
+        return arr;
     }
 }
 exports.ExerciseView = ExerciseView;

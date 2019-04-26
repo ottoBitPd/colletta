@@ -9,7 +9,7 @@ class ProfilePresenter extends PagePresenter{
 
     constructor(view : any){
         super(view);
-        this.client = (new Client.builder()).buildUserClient().build();
+        this.client = (new Client.builder()).buildUserClient().buildExerciseClient().build();
     }
 
     update(app : any){
@@ -117,5 +117,18 @@ class ProfilePresenter extends PagePresenter{
         }
     }
 
+    /**
+     * This method provides all the info related to the exercise's valutation of a student
+     */
+    public async getAverageInfo() : Promise<Map<number,number>>{
+        let userClient= this.client.getUserClient();
+        let exerciseClient= this.client.getExerciseClient();
+        if(userClient && exerciseClient) {
+            let id = await userClient.search(session.username);
+            let result = await exerciseClient.getStudentAverage(id);
+            return result;
+        }
+        return new Map();
+    }
 }
 export {ProfilePresenter};

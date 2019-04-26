@@ -13,9 +13,10 @@ class Solution {
     private difficulty: Difficulty | null;//la difficoltà dell'esercizio
     private valutations : Map<string,number> | null; // coppie di valutazioni con chiave insegnante e valore la valutazione ottenuta
     private time : number | null;
+    private _public : boolean;
 
     // @ts-ignore
-    constructor(key? : string, solverId: string, solutionTags: string[], topics? : string[], difficulty? : Difficulty, valutations? : Map<string,number>, time? : number) {
+    constructor(key? : string, solverId: string, solutionTags: string[], topics? : string[], difficulty? : Difficulty, _public? : boolean, valutations? : Map<string,number>, time? : number) {
         this.key = key || null;
         this.solverId = solverId;
         this.solutionTags = solutionTags;
@@ -23,17 +24,11 @@ class Solution {
         this.difficulty = difficulty|| null;
         this.valutations = valutations|| null;
         this.time = time || null;
+        this._public = _public || false;
     }
     // @ts-ignore
     constructor();
-    /*constructor() {
-        this.solverId = "-1";
-        this.solutionTags = [];
-        this.correctionTags = [];
-        this.teacherId = "-1";
-        this.topics = [];
-        this.difficulty = 1;
-    }*/
+
     getKey(): string | null{
         return this.key;
     }
@@ -50,6 +45,10 @@ class Solution {
         return this.difficulty;
     }
 
+    getPublic() : boolean {
+        return this._public;
+    }
+
     getSolutionTags() : string []{
         return this.solutionTags;
     }
@@ -58,6 +57,12 @@ class Solution {
         return this.valutations;
     }
 
+    public setPublic(value:boolean){
+        this._public=value;
+    }
+    /**
+    *
+     */
     JSONValutations() : any {
         let result = "{";
         if (this.valutations){

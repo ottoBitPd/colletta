@@ -214,7 +214,7 @@ describe('Exercise', function() {
                "authorId" : exercise.getAuthorId(),
                "key" : exercise.getKey()
            };*/
-           expect(exercise.toJSON()).eql({ sentence: 'This is an example', authorId: 'xxxxx', key: '-1'});
+           expect(exercise.toJSON()).eql({ sentence: 'This is an example', authorId: 'xxxxx', key: '-1', solutions : []});
        });
     });
 });

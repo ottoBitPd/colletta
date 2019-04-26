@@ -1,6 +1,10 @@
 import {PageView, UserKind} from "./PageView";
 import {ExercisePresenter} from "../presenter/ExercisePresenter";
 
+/**
+ *   Class to display the exercise page
+ *   @extends PageView
+ */
 class ExerciseView extends PageView{
     private sentence : any;
     private posTranslation : any;
@@ -37,6 +41,10 @@ class ExerciseView extends PageView{
         this.corrections = value;
     }
 
+    /**
+     * This method is used to display the page body structure
+     * @return {string} the HTML source
+     */
     async getPage() {
         const words = this.splitSentence();
         let ret = this.getHead(this.buildCss(words));
@@ -66,6 +74,11 @@ class ExerciseView extends PageView{
         // return data;
     }
 
+    /**
+     * This method is used to display the exercise form
+     * @param words - the exercise sentence
+     * @return {string} the HTML source
+     */
     private showExercise(words : string[]) : string {
         let ret ="    <div class='text-center col-sm-12' id=\"esercizio\">" +
         "        <form method=\"POST\" action=\"/exercise/save\">";
@@ -109,8 +122,11 @@ class ExerciseView extends PageView{
         return ret;
     }
 
-
-
+    /**
+     * This method is used to display the exercise evaluation
+     * @param words - the exercise sentence
+     * @return {string} the HTML source
+     */
     private showExerciseEvaluation(words : string[]) : string{
         let ret = "<h1 class=\"text-center mb-4\">Valutazione</h1>\n" +
             "    <div id=\"esercizio\" class='text-center'>\n" +
@@ -150,7 +166,11 @@ class ExerciseView extends PageView{
         return ret;
     }
 
-
+    /**
+     * This method is used to create an exercise table of results
+     * @param words - the exercise sentence
+     * @return {string} the HTML source
+     */
     private buildTable(words : string[]){
         let n = (this.userKind == UserKind.teacher ? "4" : "6");
         let table=""+
@@ -210,10 +230,19 @@ class ExerciseView extends PageView{
         return this.fileSystem.readFileSync('./public/jsSelect.js').toString();
     }
 
+    /**
+     * This method is used to apply css
+     * @param index -
+     */
     private getCss(index : number){
         const input =  this.fileSystem.readFileSync('./public/cssSelect.css').toString();
         return input.replace(/\*i\*/g,index);
     }
+
+    /**
+     * This method is used to display the page menù
+     * @return {string} the HTML source
+     */
     private getMenu() : string {
         let ret ="<nav class=\"navbar navbar-expand-sm bg-dark navbar-dark\">" +
             "    <div class=\"navbar-brand\">Colletta</div>" +
@@ -236,6 +265,10 @@ class ExerciseView extends PageView{
         return ret;
     }
 
+    /**
+     * This method is used to display the page login area
+     * @return {string} the HTML source
+     */
     private getLoginArea() : string {
 
         if(this.exercisePresenter.isLoggedIn()){

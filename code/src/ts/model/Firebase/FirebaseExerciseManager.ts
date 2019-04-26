@@ -2,6 +2,10 @@ import {FirebaseManager} from "./FirebaseManager";
 import {Data} from "../Data/Data";
 import {Exercise} from "../Data/Exercise";
 
+/**
+ *   Class to manage exercises into the database
+ *   @extends FirebaseManager
+ */
 class FirebaseExerciseManager extends FirebaseManager {
 
     public constructor() {
@@ -10,7 +14,11 @@ class FirebaseExerciseManager extends FirebaseManager {
         FirebaseManager.registerInstance("FirebaseExerciseManager", this);
     }
 
-
+    /**
+     *   This method adds a new exercise into the database
+     *   @param obj - the object to insert
+     *   @returns { boolean } returns "true" if the operation is successful
+     */
     public async insert(obj: Data): Promise<boolean> {
         let exercise = <Exercise>obj;
         let exists : string= await this.search(exercise.getSentence());
@@ -103,12 +111,21 @@ class FirebaseExerciseManager extends FirebaseManager {
         });
     }
 
+    /**
+     *   This method reads exercises informations from the database
+     *   @param id - the id of the exercise to read
+     */
     public async read(id: string): Promise<Exercise> {
         const ProData: Promise <Exercise> = this.getExerciseById(id);
         const read = await ProData;
         return read;
     }
 
+    /**
+     *   This method returns an exercise from the database
+     *   @param id - the id of the exercise to return
+     *   @returns { Exercise } the Exercise object
+     */
     private async getExerciseById(id : string) : Promise<Exercise> {
 
         return new Promise<Exercise>(function (resolve) {
@@ -138,6 +155,11 @@ class FirebaseExerciseManager extends FirebaseManager {
         });
     }
 
+    /**
+     *   This method removes an exercise from the database
+     *   @param id - the id of the exercise to remove
+     *   @returns { boolean } returns "true" if the operation is successful
+     */
     public async remove(id: string): Promise<boolean> {
         const ProData: Promise<boolean> = this.removeFromId(id);
         const removed = await ProData;

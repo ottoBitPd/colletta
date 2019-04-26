@@ -1,6 +1,10 @@
 import {PageView, UserKind} from "./PageView";
 import {ProfilePresenter} from "../presenter/ProfilePresenter";
 
+/**
+ *   Class to display the users's profile page
+ *   @extends PageView
+ */
 class ProfileView extends PageView{
     private userData : any;
     private profileController :ProfilePresenter;
@@ -12,12 +16,22 @@ class ProfileView extends PageView{
         this.userData=undefined;
         this.error=undefined;
     }
+
+    /**
+     * This method modifies user data
+     * @param obj - data to modify
+     */
     public setUserData(obj : any){
         this.userData=obj;
     }
     public setError(error : string){
         this.error=error;
     }
+
+    /**
+     * This method is used to display the page body structure
+     * @return {string} the HTML source
+     */
     public async getPage() {
         let ret = this.getHead();
         ret += await this.getMenu();
@@ -153,7 +167,10 @@ class ProfileView extends PageView{
         return ret;
     }
 
-
+    /**
+     * This method is used to display the page menù
+     * @return {string} the HTML source
+     */
     private async getMenu() : Promise<string> {
         let ret =""+
             "<nav class=\"navbar navbar-expand-sm bg-dark navbar-dark\">" +
@@ -201,6 +218,10 @@ class ProfileView extends PageView{
         return ret;
     }
 
+    /**
+     * This method is used to display the page login area
+     * @return {string} the HTML source
+     */
     private getLoginArea() : string {
 
         if(this.profileController.isLoggedIn()){

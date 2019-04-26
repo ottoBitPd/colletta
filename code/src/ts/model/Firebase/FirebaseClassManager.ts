@@ -2,12 +2,21 @@ import {FirebaseManager} from "./FirebaseManager";
 import {Data} from "../Data/Data";
 import {Class} from "../Data/Class";
 
+/**
+ *   Class to manage classes into the database
+ *   @extends FirebaseManager
+ */
 class FirebaseClassManager extends FirebaseManager {
     constructor() {
         super();
         FirebaseManager.registerInstance("FirebaseClassManager", this);
     }
 
+    /**
+     *   This method adds a new class into the database
+     *   @param obj - the class to insert
+     *   @returns { boolean } returns "true" if the operation is successful
+     */
     public async insert(obj: Data): Promise<boolean> {
         const _class = <Class>obj;
         const exists : string = await this.search(_class.getName());
@@ -28,6 +37,11 @@ class FirebaseClassManager extends FirebaseManager {
         });
     }
 
+    /**
+     *   This method looks for classes into the database
+     *   @param id - the id of the class to search
+     *   @returns (string) - returns the class key if exists
+     */
     public async search(name:string): Promise<string> {
         return new Promise(function (resolve) {
             FirebaseManager.database.ref('data/classes/')
@@ -75,12 +89,22 @@ class FirebaseClassManager extends FirebaseManager {
         });
     }
 
+    /**
+     *   This method reads class informations from the database
+     *   @param id - the id of the class to read
+     *   @returns { Data } returns the class object
+     */
     public async read(id: string): Promise<Data> {
         const ProData: Promise <Class> = this.getClassById(id);
         const readed = await ProData;
         return readed;
     }
 
+    /**
+     *   This method returns an class from the database
+     *   @param id - the id of the class to return
+     *   @returns { Class } the Class object
+     */
     private async getClassById(id : string) : Promise<Class> {
         return new Promise<Class>(function (resolve) {
             FirebaseManager.database.ref("data/classes/" + id)
@@ -96,6 +120,11 @@ class FirebaseClassManager extends FirebaseManager {
         });
     }
 
+    /**
+     *   This method removes a class from the database
+     *   @param id - the id of the class to remove
+     *   @returns { boolean } returns "true" if the operation is successful
+     */
     public async remove(id: string): Promise<boolean> {
         const ProData: Promise<boolean> = this.removeFromId(id);
         const removed = await ProData;
@@ -116,6 +145,11 @@ class FirebaseClassManager extends FirebaseManager {
         });
     }
 
+    /**
+     *   This method modifies class informations into the database
+     *   @param path - the path of the class to modify
+     *   @param value - the new value
+     */
     public async update (path:string, value: any) {
         const splittedPath =path.split("/");
         const position : number = splittedPath.length -1;

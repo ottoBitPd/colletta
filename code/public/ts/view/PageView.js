@@ -12,6 +12,10 @@ var UserKind;
     UserKind[UserKind["developer"] = 3] = "developer";
 })(UserKind || (UserKind = {}));
 exports.UserKind = UserKind;
+/**
+ * Class to represent the view for all the application pages
+ * @abstract
+ */
 class PageView {
     /**
      * PageView is an abstract class and it cannot have objects
@@ -21,18 +25,38 @@ class PageView {
         this.title = null;
         this.userKind = 0;
     }
+    /**
+     * This method modifies the page title
+     * @param value - the new page title
+     */
     setTitle(value) {
         this.title = value;
     }
+    /**
+     * This method modifies the page list
+     * @param value - the new list value
+     */
     setMenuList(value) {
         this.menuList = value;
     }
+    /**
+     * This method modifies the type of an user
+     * @param user - the new user type
+     */
     setUserKind(usr) {
         this.userKind = usr;
     }
+    /**
+     * This method returns the type of an user
+     * @return { UserKind } the kind of the user
+     */
     getUserKind() {
         return this.userKind;
     }
+    /**
+     * This method is used to display the page header
+     * @return {string} the HTML source
+     */
     getHead(style) {
         let ret = "<!DOCTYPE html>\n" +
             "<html lang=\"it\">\n" +
@@ -57,6 +81,10 @@ class PageView {
             "\t<body>\n";
         return ret;
     }
+    /**
+     * This method is used to display the page footer
+     * @return {string} the HTML source
+     */
     getFoot(script) {
         return "\t</body>\n" +
             "\t<script>\n" + script + "\t</script>\n" +

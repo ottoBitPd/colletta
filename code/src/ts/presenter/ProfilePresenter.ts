@@ -92,10 +92,10 @@ class ProfilePresenter extends PagePresenter{
                 //console.log("userData: ",userData);
                 this.view.setUserData(userData);
                 if (await userClient.isTeacher(session.username)){
-                    //console.log("teacher");
+                    console.log("teacher");
                     this.view.setUserKind(UserKind.teacher);
                 } else {
-                    //console.log("student");
+                    console.log("student");
                     this.view.setUserKind(UserKind.student);
                 }
             }

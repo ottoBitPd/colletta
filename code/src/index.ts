@@ -36,9 +36,9 @@ LoginPage.update(app);
 
 
 
-app.listen(5050, async function () {
+app.listen(8080, async function () {
     const host = "127.0.0.1";
-    const port = "5050";
+    const port = "8080";
     console.log("Example app listening at http://%s:%s", host, port);
 
     /*let exerciseClient =(new Client.builder()).buildExerciseClient().build().getExerciseClient();

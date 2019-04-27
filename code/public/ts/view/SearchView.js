@@ -10,12 +10,20 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const PageView_1 = require("./PageView");
 const SearchPresenter_1 = require("../presenter/SearchPresenter");
+/**
+ *   Class to display the search bar and search results
+ *   @extends PageView
+ */
 class SearchView extends PageView_1.PageView {
     constructor(app) {
         super();
         this.searchPresenter = new SearchPresenter_1.SearchPresenter(this);
         this.searchPresenter.update(app);
     }
+    /**
+     * This method is used to display the page body structure
+     * @return {string} the HTML source
+     */
     getPage() {
         return __awaiter(this, void 0, void 0, function* () {
             let ret = this.getHead();
@@ -41,6 +49,10 @@ class SearchView extends PageView_1.PageView {
             return ret;
         });
     }
+    /**
+     * This method is used to display the page menù
+     * @return {string} the HTML source
+     */
     getMenu() {
         let ret = "<nav class=\"navbar navbar-expand-sm bg-dark navbar-dark\">" +
             "    <div class=\"navbar-brand\">Colletta</div>" +
@@ -62,6 +74,10 @@ class SearchView extends PageView_1.PageView {
             "</nav>";
         return ret;
     }
+    /**
+     * This method is used to display the page login area
+     * @return {string} the HTML source
+     */
     getLoginArea() {
         if (this.searchPresenter.isLoggedIn()) {
             return "" +
@@ -93,6 +109,10 @@ class SearchView extends PageView_1.PageView {
             return ret;
         }
     }
+    /**
+     * This method is used to display the list of search results
+     * @return {string} the HTML source
+     */
     printList() {
         let results = this.searchPresenter.getResults();
         if (results === undefined) {

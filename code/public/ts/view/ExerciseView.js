@@ -10,6 +10,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const PageView_1 = require("./PageView");
 const ExercisePresenter_1 = require("../presenter/ExercisePresenter");
+/**
+ *   Class to display the exercise page
+ *   @extends PageView
+ */
 class ExerciseView extends PageView_1.PageView {
     constructor(app) {
         super();
@@ -33,6 +37,10 @@ class ExerciseView extends PageView_1.PageView {
     setCorrections(value) {
         this.corrections = value;
     }
+    /**
+     * This method is used to display the page body structure
+     * @return {string} the HTML source
+     */
     getPage() {
         return __awaiter(this, void 0, void 0, function* () {
             const words = this.splitSentence();
@@ -61,6 +69,11 @@ class ExerciseView extends PageView_1.PageView {
             // return data;
         });
     }
+    /**
+     * This method is used to display the exercise form
+     * @param words - the exercise sentence
+     * @return {string} the HTML source
+     */
     showExercise(words) {
         let ret = "    <div class='text-center col-sm-12' id=\"esercizio\">" +
             "        <form method=\"POST\" action=\"/exercise/save\">";
@@ -102,6 +115,11 @@ class ExerciseView extends PageView_1.PageView {
             "    </div>";
         return ret;
     }
+    /**
+     * This method is used to display the exercise evaluation
+     * @param words - the exercise sentence
+     * @return {string} the HTML source
+     */
     showExerciseEvaluation(words) {
         let ret = "<h1 class=\"text-center mb-4\">Valutazione</h1>\n" +
             "    <div id=\"esercizio\" class='text-center'>\n" +
@@ -136,6 +154,11 @@ class ExerciseView extends PageView_1.PageView {
                 "    </div>";
         return ret;
     }
+    /**
+     * This method is used to create an exercise table of results
+     * @param words - the exercise sentence
+     * @return {string} the HTML source
+     */
     buildTable(words) {
         let n = (this.userKind == PageView_1.UserKind.teacher ? "4" : "6");
         let table = "" +
@@ -191,10 +214,18 @@ class ExerciseView extends PageView_1.PageView {
     getScript() {
         return this.fileSystem.readFileSync('./public/jsSelect.js').toString();
     }
+    /**
+     * This method is used to apply css
+     * @param index -
+     */
     getCss(index) {
         const input = this.fileSystem.readFileSync('./public/cssSelect.css').toString();
         return input.replace(/\*i\*/g, index);
     }
+    /**
+     * This method is used to display the page menù
+     * @return {string} the HTML source
+     */
     getMenu() {
         let ret = "<nav class=\"navbar navbar-expand-sm bg-dark navbar-dark\">" +
             "    <div class=\"navbar-brand\">Colletta</div>" +
@@ -216,6 +247,10 @@ class ExerciseView extends PageView_1.PageView {
             "</nav>";
         return ret;
     }
+    /**
+     * This method is used to display the page login area
+     * @return {string} the HTML source
+     */
     getLoginArea() {
         if (this.exercisePresenter.isLoggedIn()) {
             return "" +

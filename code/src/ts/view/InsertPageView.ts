@@ -1,4 +1,4 @@
-import {PageView} from "./PageView";
+import {PageView, UserKind} from "./PageView";
 import {InsertPresenter} from "../presenter/InsertPresenter";
 
 /**
@@ -42,23 +42,45 @@ class InsertPageView extends PageView {
      */
     private getMenu() : string {
         let ret ="<nav class=\"navbar navbar-expand-sm bg-dark navbar-dark\">" +
-            "    <div class=\"navbar-brand\">Colletta</div>" +
-            "    <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#collapsibleNavbar\">" +
-            "        <span class=\"navbar-toggler-icon\"></span>" +
-            "    </button>" +
-            "    <div class=\"collapse navbar-collapse\" id=\"collapsibleNavbar\">"+
-            "<ul class=\"navbar-nav mr-auto\">";
-        for(let i in this.menuList) {
-            ret += ""+
-                "<li class=\"nav-item\">" +
-                "   <a class=\"nav-link\" href=\""+this.menuList[i].link+"\">"+this.menuList[i].name+"</a>" +
-                "</li>";
+            "\t<div class=\"navbar-brand\">Colletta</div>\n" +
+            "\t<button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#collapsibleNavbar\">\n" +
+            "\t\t<span class=\"navbar-toggler-icon\"></span>\n" +
+            "\t</button>\n" +
+            "\t\t<div class=\"collapse navbar-collapse\" id=\"collapsibleNavbar\">\n"+
+            "\t\t<ul class=\"navbar-nav mr-auto\">\n"+
+            "\t\t\t<li class=\"nav-item\">\n" +
+            "\t\t\t\t<a id=\"toProgress\" href= \"/exercise/search\" class=\"nav-link\" >Ricerca esercizio</a>\n" +
+            "\t\t\t</li>\n";
+        if(this.userKind===UserKind.student) {
+            ret += "\t\t\t<li class=\"nav-item\">\n" +
+                "\t\t\t\t<a href= \"/classes\" class=\"nav-link\" >Le tue classi</a>\n" +
+                "\t\t\t</li>\n";
         }
-        ret+="</ul>";
+        else if (this.userKind===UserKind.teacher){//insegnante
+            ret += ""+
+                "\t\t\t<li class=\"nav-item\">\n" +
+                "\t\t\t\t<a href= \"/classes\" class=\"nav-link\" >Area classi</a>\n" +
+                "\t\t\t</li>\n"+
+                "\t\t\t<li class=\"nav-item\">\n" +
+                //href= "/exercise/insert" credo
+                "\t\t\t\t<a href= \"#\" class=\"nav-link\" onclick='document.getElementById(\"insertExerciseForm\").classList.toggle(\"d-none\")'>Crea esercizio</a>\n" +
+                "\t\t\t</li>\n"+
+                "\t\t\t<li class=\"nav-item\">\n" +
+                "\t\t\t\t<a href= \"/exercises\" class=\"nav-link\" >I tuoi esercizi</a>\n" +
+                "\t\t\t</li>\n";
+        }
+        ret+="\t\t</ul>\n";
         //aggiungo login o logout
         ret+=this.getLoginArea();
         ret+="    </div>" +
             "</nav>";
+        ret +=
+            "<form method='post' action='/exercise/insert' id='insertExerciseForm' class='d-none'>" +
+            "   <div class=\"input-group col-sm-4 py-2 bg-dark\">" +
+            "       <input type=\"text\" name=\"sentence\" class=\"form-control\">" +
+            "       <button type=\"submit\" class=\"btn btn-primary\">Invia</button>" +
+            "   </div>" +
+            "</form>";
         return ret;
     }
 

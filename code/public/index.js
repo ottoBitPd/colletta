@@ -39,10 +39,10 @@ const registrationView : any= new RegistrationView();
 const LoginPage = new AuthenticationPresenter(loginView,registrationView);
 LoginPage.update(app);
 */
-app.listen(5050, function () {
+app.listen(8080, function () {
     return __awaiter(this, void 0, void 0, function* () {
         const host = "127.0.0.1";
-        const port = "5050";
+        const port = "8080";
         console.log("Example app listening at http://%s:%s", host, port);
         /*let exerciseClient =(new Client.builder()).buildExerciseClient().build().getExerciseClient();
         if(exerciseClient){

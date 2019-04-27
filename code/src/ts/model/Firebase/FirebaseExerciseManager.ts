@@ -133,7 +133,7 @@ class FirebaseExerciseManager extends FirebaseManager {
                 .once('value', function (snapshot : any) {
                 if (snapshot.exists()) {
                     let readData: any = snapshot.val();
-                    let exercise = new Exercise(readData.sentence,readData.authorID);
+                    let exercise = new Exercise(readData.sentence,readData.authorId);
                     exercise.setKey(id);
                     for (let sol in readData.solutions){
                         let vals = new Map<string,number>();

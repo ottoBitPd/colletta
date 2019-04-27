@@ -51,26 +51,7 @@ class ExerciseClient{
             }
         });
         return mapToReturn;
-        /*
-        //old version bisogna ritornare una mappa
-        var ids:string [] = [];
-        var exercises: Exercise [] = [];
-        elements.forEach(function (value:string, key:string){
-            if(value.search(regex)>=0){
-                ids.push(key);
-            }
-        });
-        for(var i in ids){
-            exercises.push(<Exercise>await this.getExercise(ids[i]));
-        }
-        return exercises;*/
     }
-
-    /*
-    //lo usava la vecchia versione di searchExercise
-    private async getExercise(id:string):Promise<Data>{
-        return await this.dbExerciseManager.read(id);
-    }*/
 
     /**
      *
@@ -84,27 +65,7 @@ class ExerciseClient{
      *          }
      */
 
-    async searchSolution(sentence:string,solverID: string) : Promise<any[]>{/*
-        var mapToReturn = new Map<string, string>();
-        var exerciseKey = await this.dbExerciseManager.search(sentence);
-        //console.log("exerciseKey: ",exerciseKey);
-        if(exerciseKey !== "false"){
-            var exercise : Data = await this.dbExerciseManager.read(exerciseKey);
-            //console.log("Exercise: ",exercise);
-            var solutions = (<Exercise>exercise).getSolutions();
-            for(let i in solutions){
-                let key = solutions[i].getKey();
-                if(key!==null) {
-                    mapToReturn.set(key, solutions[i].getSolverId());
-                }
-            }
-            //console.log("mapToReturn: ",mapToReturn);
-            return mapToReturn;
-        }
-        //console.log("nessun esercizio trovato");
-        mapToReturn.set("false","false");//nessun esercizio trovato
-        return mapToReturn;*/
-
+    async searchSolution(sentence:string,solverID: string) : Promise<any[]>{
         let result : any[] = [];
         let exerciseKey = await this.dbExerciseManager.search(sentence);
         //console.log("exerciseKey: ",exerciseKey);
@@ -130,7 +91,6 @@ class ExerciseClient{
         return result;
     }
 
-    // @ts-ignore
     async searchAllSolution(sentence:string) : Promise<any[]> {
         let result: any[] = [];
         var regex= new RegExp(sentence, "i");
@@ -207,6 +167,25 @@ class ExerciseClient{
                 if(s[i].getSolverId()===id){
                     toReturn.push((<Exercise> e));
                 }
+            }
+        }
+        return toReturn;
+    }
+
+    /**
+     * This method returns an array of JSON representing all the exercises inserted by a user whose id it is passed as parameter
+     * @param id
+     * @returns {JSON []} - an array of JSON representing all the exercises inserted by a user
+     */
+    public async getExercisesByAuthor(id :string) :Promise<any[]>{
+        var elements = await this.dbExerciseManager.elements();//returns a map<id,sentence> of all exercises in the db
+        var toReturn = [];
+        for (let entry of Array.from(elements.entries())) {
+            let key = entry[0];
+            //let value = entry[1];
+            let e = await this.dbExerciseManager.read(key);
+            if((<Exercise> e).getAuthorId()===id){
+                toReturn.push((<Exercise> e).toJSON());
             }
         }
         return toReturn;

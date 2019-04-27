@@ -10,6 +10,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const PageView_1 = require("./PageView");
 const ProfilePresenter_1 = require("../presenter/ProfilePresenter");
+/**
+ *   Class to display the users's profile page
+ *   @extends PageView
+ */
 class ProfileView extends PageView_1.PageView {
     constructor(app) {
         super();
@@ -18,12 +22,20 @@ class ProfileView extends PageView_1.PageView {
         this.userData = undefined;
         this.error = undefined;
     }
+    /**
+     * This method modifies user data
+     * @param obj - data to modify
+     */
     setUserData(obj) {
         this.userData = obj;
     }
     setError(error) {
         this.error = error;
     }
+    /**
+     * This method is used to display the page body structure
+     * @return {string} the HTML source
+     */
     getPage() {
         return __awaiter(this, void 0, void 0, function* () {
             let ret = this.getHead();
@@ -158,37 +170,45 @@ class ProfileView extends PageView_1.PageView {
             return ret;
         });
     }
+    /**
+     * This method is used to display the page menù
+     * @return {string} the HTML source
+     */
     getMenu() {
         return __awaiter(this, void 0, void 0, function* () {
             let ret = "" +
                 "<nav class=\"navbar navbar-expand-sm bg-dark navbar-dark\">" +
-                "\t<a href='/' class=\"navbar-brand\">Colletta</a>" +
+                "\t<div class=\"navbar-brand\">Colletta</div>" +
                 "\t<button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#collapsibleNavbar\">" +
                 "\t\t<span class=\"navbar-toggler-icon\"></span>" +
                 "\t</button>" +
                 "\t<div class=\"collapse navbar-collapse\" id=\"collapsibleNavbar\">" +
-                "\t\t<ul class=\"navbar-nav mr-auto\">";
+                "\t\t<ul class=\"navbar-nav mr-auto\">" +
+                "\t\t\t<li class=\"nav-item\">\n" +
+                "\t\t\t\t<a id=\"toProgress\" href= \"/\" class=\"nav-link\" >Homepage</a>\n" +
+                "\t\t\t</li>\n" +
+                "\t\t\t<li class=\"nav-item\">\n" +
+                "\t\t\t\t<a id=\"toProgress\" href= \"/exercise/search\" class=\"nav-link\" >Ricerca esercizio</a>\n" +
+                "\t\t\t</li>\n";
             if (this.userKind === PageView_1.UserKind.student) {
                 ret += "" +
                     "\t\t\t<li class=\"nav-item\">\n" +
                     "\t\t\t\t<a id=\"toProgress\" href= \"#progress\" class=\"nav-link\" >I tuoi progressi</a>\n" +
                     "\t\t\t</li>\n";
-                let classId = yield this.profileController.getStudentClass();
-                console.log("classIdView: ", classId);
-                if (classId !== "undefined") {
-                    ret += "\t\t\t<li class=\"nav-item\">\n" +
-                        "\t\t\t\t<a href= \"/classes\" class=\"nav-link\" >Le tue classi</a>\n" +
-                        "\t\t\t</li>\n";
-                }
+                ret += "\t\t\t<li class=\"nav-item\">\n" +
+                    "\t\t\t\t<a href= \"/classes\" class=\"nav-link\" >Le tue classi</a>\n" +
+                    "\t\t\t</li>\n";
             }
-            else { //insegnante
+            else { //teacher
                 ret += "" +
                     "\t\t\t<li class=\"nav-item\">\n" +
                     "\t\t\t\t<a href= \"/classes\" class=\"nav-link\" >Area classi</a>\n" +
                     "\t\t\t</li>\n" +
                     "<li class=\"nav-item\">\n" +
-                    //href= "/exercise/insert" credo
                     "\t\t\t\t<a href= \"#\" class=\"nav-link\" onclick='document.getElementById(\"insertExerciseForm\").classList.toggle(\"d-none\")'>Crea esercizio</a>\n" +
+                    "\t\t\t</li>\n" +
+                    "\t\t\t<li class=\"nav-item\">\n" +
+                    "\t\t\t\t<a href= \"/exercises\" class=\"nav-link\" >I tuoi esercizi</a>\n" +
                     "\t\t\t</li>\n";
             }
             ret += "\t\t</ul>";
@@ -206,6 +226,10 @@ class ProfileView extends PageView_1.PageView {
             return ret;
         });
     }
+    /**
+     * This method is used to display the page login area
+     * @return {string} the HTML source
+     */
     getLoginArea() {
         if (this.profileController.isLoggedIn()) {
             return "" +

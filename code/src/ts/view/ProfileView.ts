@@ -174,34 +174,39 @@ class ProfileView extends PageView{
     private async getMenu() : Promise<string> {
         let ret =""+
             "<nav class=\"navbar navbar-expand-sm bg-dark navbar-dark\">" +
-            "\t<a href='/' class=\"navbar-brand\">Colletta</a>" +
+            "\t<div class=\"navbar-brand\">Colletta</div>" +
             "\t<button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#collapsibleNavbar\">" +
             "\t\t<span class=\"navbar-toggler-icon\"></span>" +
             "\t</button>" +
             "\t<div class=\"collapse navbar-collapse\" id=\"collapsibleNavbar\">"+
-            "\t\t<ul class=\"navbar-nav mr-auto\">";
+            "\t\t<ul class=\"navbar-nav mr-auto\">"+
+            "\t\t\t<li class=\"nav-item\">\n" +
+            "\t\t\t\t<a id=\"toProgress\" href= \"/\" class=\"nav-link\" >Homepage</a>\n" +
+            "\t\t\t</li>\n"+
+            "\t\t\t<li class=\"nav-item\">\n" +
+            "\t\t\t\t<a id=\"toProgress\" href= \"/exercise/search\" class=\"nav-link\" >Ricerca esercizio</a>\n" +
+            "\t\t\t</li>\n";
             if(this.userKind===UserKind.student) {
                 ret += ""+
                     "\t\t\t<li class=\"nav-item\">\n" +
                     "\t\t\t\t<a id=\"toProgress\" href= \"#progress\" class=\"nav-link\" >I tuoi progressi</a>\n" +
                     "\t\t\t</li>\n";
-                let classId = await this.profileController.getStudentClass()
-                console.log("classIdView: ",classId)
-                    if(classId!=="undefined") {
-                        ret += "\t\t\t<li class=\"nav-item\">\n" +
-                        "\t\t\t\t<a href= \"/classes\" class=\"nav-link\" >Le tue classi</a>\n" +
-                        "\t\t\t</li>\n";
-                    }
+                    ret += "\t\t\t<li class=\"nav-item\">\n" +
+                    "\t\t\t\t<a href= \"/classes\" class=\"nav-link\" >Le tue classi</a>\n" +
+                    "\t\t\t</li>\n";
             }
-            else{//insegnante
+            else{//teacher
                 ret += ""+
                     "\t\t\t<li class=\"nav-item\">\n" +
                     "\t\t\t\t<a href= \"/classes\" class=\"nav-link\" >Area classi</a>\n" +
                     "\t\t\t</li>\n"+
                     "<li class=\"nav-item\">\n" +
-                    //href= "/exercise/insert" credo
                     "\t\t\t\t<a href= \"#\" class=\"nav-link\" onclick='document.getElementById(\"insertExerciseForm\").classList.toggle(\"d-none\")'>Crea esercizio</a>\n" +
+                    "\t\t\t</li>\n"+
+                    "\t\t\t<li class=\"nav-item\">\n" +
+                    "\t\t\t\t<a href= \"/exercises\" class=\"nav-link\" >I tuoi esercizi</a>\n" +
                     "\t\t\t</li>\n";
+
             }
         ret+="\t\t</ul>";
         //aggiungo login o logout

@@ -107,7 +107,7 @@ describe('ClassClient', function() {
 
     describe('ClassClientTest.getClassesByTeacher()', function () {
         it('should get the classes with a specific teacher', async function () {
-            expect((await test.getClassesByTeacher("0")).size).to.be.equal(2);
+            expect((await test.getClassesByTeacher("0")).length).to.be.equal(2);
         });
     });
 

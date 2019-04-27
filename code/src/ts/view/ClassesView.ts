@@ -1,6 +1,10 @@
-import {PageView} from "./PageView";
+import {PageView, UserKind} from "./PageView";
 import {ClassesPresenter} from "../presenter/ClassesPresenter";
 
+/**
+ *   Class to display the classes page
+ *   @extends PageView
+ */
 class ClassesView extends PageView {
 
     private classPresenter : ClassesPresenter;
@@ -16,38 +20,50 @@ class ClassesView extends PageView {
         this.classesList = value;
     }*/
 
+    /**
+     * This method is used to display the page body structure
+     * @return {string} the HTML source
+     */
     async getPage() {
         let ret = this.getHead();
         ret +=this.getMenu();
         ret +="\t<div class=\"container\">" +
-            "\t\t<div class='col-sm-10 mx-auto'>"+
-            "\t\t\t<h1 class='text-center mb-5'>Le tue classi</h1>" +
-            "\t\t\t<div class='col-sm-12 text-right'>\n" +
+            "\t\t<div class='col-sm-10 mx-auto'>";
+        let s="Le tue classi";
+        if(this.classPresenter.getListType()==="exercises"){
+            s="I tuoi esercizi";
+        }
+        ret+="\t\t\t<h1 class='text-center mb-5'>"+s+"</h1>";
+        if(this.userKind===UserKind.teacher && this.classPresenter.getListType()==="classes") {
+            ret +="\t\t\t<div class='col-sm-12 text-right'>\n" +
             "\t\t\t<a class=\"btn btn-primary my-3\" href=\"javascript:showInsertClassForm()\" role=\"button\">Aggiungi una nuova classe</a>\n";
-            ret+=this.insertClass();
-            ret+="\t\t\t</div>\n";
-            ret+= await this.printList();
-            ret+="\t\t</div>" +
-            "\t</div>";
+            ret += this.insertClass();
+            ret += "\t\t\t</div>\n";
+        }
+        ret+= await this.printList();
+        ret+="\t\t</div>" +
+        "\t</div>";
         ret+=this.getFoot(this.getScript());
         return ret;
     }
+
+    /**
+     * This method is used to display the page menù
+     * @return {string} the HTML source
+     */
     private getMenu() : string {
         let ret =""+
-            "\t<nav class=\"navbar navbar-expand-sm bg-dark navbar-dark\">" +
-            "\t\t<div class=\"navbar-brand\">Colletta</div>" +
-            "\t\t<button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#collapsibleNavbar\">" +
-            "\t\t\t<span class=\"navbar-toggler-icon\"></span>" +
-            "\t\t</button>" +
-            "\t\t<div class=\"collapse navbar-collapse\" id=\"collapsibleNavbar\">"+
-            "\t\t\t<ul class=\"navbar-nav mr-auto\">";
-        for(let i in this.menuList) {
-            ret += ""+
-                "\t\t\t\t<li class=\"nav-item\">" +
-                "\t\t\t\t\t<a class=\"nav-link\" href=\""+this.menuList[i].link+"\">"+this.menuList[i].name+"</a>" +
-                "\t\t\t\t</li>";
-        }
-        ret+="\t\t\t</ul>";
+            "<nav class=\"navbar navbar-expand-sm bg-dark navbar-dark\">" +
+            "\t<div class=\"navbar-brand\">Colletta</div>" +
+            "\t<button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#collapsibleNavbar\">" +
+            "\t\t<span class=\"navbar-toggler-icon\"></span>" +
+            "\t</button>" +
+            "\t<div class=\"collapse navbar-collapse\" id=\"collapsibleNavbar\">"+
+            "\t\t<ul class=\"navbar-nav mr-auto\">"+
+            "\t\t<li class=\"nav-item\">\n" +
+            "\t\t\t<a id=\"toProgress\" href= \"/\" class=\"nav-link\" >Homepage</a>\n" +
+            "\t\t</li>\n"+
+            "\t</ul>";
         //aggiungo login o logout
         ret+=this.getLoginArea();
         ret+="\t\t</div>" +
@@ -55,6 +71,10 @@ class ClassesView extends PageView {
         return ret;
     }
 
+    /**
+     * This method is used to display the page login area
+     * @return {string} the HTML source
+     */
     private getLoginArea() : string {
 
         if(this.classPresenter.isLoggedIn()){
@@ -87,45 +107,92 @@ class ClassesView extends PageView {
             return ret;
         }
     }
+
+    /**
+     * This method is used to display the class list
+     * @return {string} the HTML source
+     */
     private async printList() {
-        let classes = await this.classPresenter.getClasses();
-        if(classes === null){
+        let elements =[];
+        console.log("listType: ",this.classPresenter.getListType());
+        let header;
+        if(this.classPresenter.getListType()==="classes") {
+            elements = await this.classPresenter.getClasses();
+            header = "<div class='row'>\n" +
+                "<div class='col-sm-2 mx-auto'>CLASSE</div>\n" +
+                "<div class='col-sm-6 mx-auto'>DESCRIZIONE</div>\n" +
+                "<div class='col-sm-4 mx-auto'></div>\n" +
+                "</div>\n";
+        }
+        if(this.classPresenter.getListType()==="exercises") {
+            elements = await this.classPresenter.getExercises();
+            header = "<div class='row'>\n" +
+                "<div class='col-sm-12 mx-auto'>ESERCIZIO</div>\n" +
+                "</div>\n";
+        }
+        console.log("elements: ",elements);
+        if(elements === null){
             return "";//resultList is not set yet, cause nobody searched yet
         }
-        if(classes.size<=0){
-            return "<h2 class='h5 text-danger text-center'>Non hai classi</h2>";//resultList is not set yet, cause nobody searched yet
+        if(elements.length<=0){
+            if(this.classPresenter.getListType()==="classes")
+                return "<h2 class='h5 text-danger text-center'>Non hai classi</h2>";//resultList is not set yet, cause nobody searched yet
+            if(this.classPresenter.getListType()==="exercises")
+                return "<h2 class='h5 text-danger text-center'>Non hai inserito alcun esercizio</h2>";
         }
         else {
             let ret = "" +
                 "<div class=\"col-sm-12\" id=\"esercizio\">\n" +
                 "<ul class='list-group text-center'>\n" +
                 "<li class='list-group-item active'>\n" +
-                "<div class='row'>\n" +
-                "<div class='col-sm-4 mx-auto'>CLASSE</div>\n" +
-                "<div class='col-sm-4 mx-auto'></div>\n" +
-                "</div>\n" +
+                header +
                 "</li>\n";
-            classes.forEach((value: string, key: string) => {
+            for(let i in elements){
                 ret+="<li class='list-group-item'>\n" +
-                "<div class='row'>\n" +
-                "<div class='col-sm-4 mx-auto'>\n" +
-                /*"<form method='post' action='/class?classId="+key+"'>" +
-                "<button class='btn btn-link btn-sm' name='key' value='"+key+"' type='submit'>"+value+"</button>\n" +
-                "</form>" +*/
-                "<a class='btn btn-link btn-sm' href='/class?classId="+key+"'>"+value+"</a>\n"+
-                "</div>\n" +
-                "<div class='col-sm-4 mx-auto text-center'>\n" +
-                "<form method='post' action='/deleteclass'>" +
-                "<button class='btn btn-danger btn-sm' name='key' value='"+key+"' type='submit'>Elimina</button>\n" +
-                "</form>" +
-                "</div>\n" +
-                "</div>\n" +
+                "<div class='row'>\n";
+                if(this.classPresenter.getListType()==="classes") {
+                    ret += "<div class='col-sm-2 mx-auto'>\n" +
+                        "<a class='btn btn-link btn-sm' href='/class?classId=" + elements[i].id + "'>" + elements[i].name + "</a>\n" +
+                        "</div>\n" +
+                        "<div class='col-sm-6 mx-auto'>\n" +
+                        elements[i].description +
+                        "</div>\n" +
+                        "<div class='col-sm-4 mx-auto text-center'>\n";
+                    console.log("this.userKind: ", this.userKind);
+                    if (this.userKind === UserKind.teacher) {
+                        ret += "<form method='post' action='/deleteclass'>" +
+                            "<button class='btn btn-danger btn-sm' name='key' value='" + elements[i].id + "' type='submit'>Elimina</button>\n" +
+                            "</form>";
+                    }
+                    ret += "</div>\n";
+                }
+                if(this.classPresenter.getListType()==="exercises") {
+                    ret += "<div class='col-sm-12 mx-auto'>\n" +
+                    "<p class='h5 font-weight-bold mb-2'>"+elements[i].sentence +"</p>\n"+
+                    "<div class='row'>\n";
+                    for(let y in elements[i].solutions) {
+                        if(elements[i].solutions[y].solverId===elements[i].authorId) {
+                            for(let z in elements[i].solutions[y].itaTags) {
+                                ret += "<div class='col-sm-4 mx-auto text-left'>\n" +
+                                    elements[i].words[z] +
+                                    "</div>\n" +
+                                    "<div class='col-sm-8 mx-auto text-left'>\n" +
+                                    elements[i].solutions[y].itaTags[z] +
+                                    "</div>\n";
+                            }
+                        }
+                    }
+                    ret+="</div>\n" +
+                    "</div>\n";
+                }
+                ret+="</div>\n" +
                 "</li>\n";
-            });
+            }
             ret+="</ul>" +
                 "</div>";
             return ret;
         }
+        return "";
     }
     private getScript() {
         return "" +
@@ -137,6 +204,10 @@ class ClassesView extends PageView {
         "}\n";
     }
 
+    /**
+     * This method is used to display the form used to create new classes
+     * @return {string} the HTML source
+     */
     private insertClass() {
         let ret=""+
         "\t\t\t<form method='post' id='insertClassForm' action='/insertclass' style='display:none'>\n" +

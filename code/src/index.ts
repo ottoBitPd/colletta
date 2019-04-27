@@ -7,6 +7,7 @@ import {RegistrationView} from "./ts/view/RegistrationView";
 import {SearchView} from "./ts/view/SearchView";
 import {ClassesView} from "./ts/view/ClassesView";
 import {ClassView} from "./ts/view/ClassView";
+import {DeveloperView} from "./ts/view/DeveloperView";
 
 
 const app = express();
@@ -21,6 +22,7 @@ new ExerciseView(app);
 new SearchView(app);
 new ClassesView(app);
 new ClassView(app);
+new DeveloperView(app);
 /*
 //OLD STYLE
 const exercisePage = new ExercisePresenter(exerciseView, savePageView);
@@ -39,21 +41,11 @@ app.listen(8080, async function () {
     const port = "8080";
     console.log("Example app listening at http://%s:%s", host, port);
 
-    /*
-    //prove per media
-    let exerciseClient = (new Client.builder()).buildUserClient().buildExerciseClient().build().getExerciseClient();
-    if(exerciseClient) {
-        let result = await exerciseClient.getStudentAverage("-LcfF2c3ksUjdj0jXLZi");
-        let myMap= new Map();
-        for (let entry of Array.from(result.entries())) {
-            myMap.set(new Date(entry[0]), entry[1]);
-        }
-        console.log("result: ",result);
-        console.log("myMap: ",myMap);
-        let average = result.get(Math.max.apply(null, Array.from(result.keys())));
-        console.log("average: ",average);
-    }
-    */
+    /*let exerciseClient =(new Client.builder()).buildExerciseClient().build().getExerciseClient();
+    if(exerciseClient){
+        let exercise = await exerciseClient.getExerciseData("-LdJfwbWT_e7V-xjLJse");
+        console.log("exercise: ",exercise);
+    }*/
 
 });
 

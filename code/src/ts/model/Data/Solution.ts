@@ -5,6 +5,10 @@ enum Difficulty {
     hard = 4,
     veryhard = 5,
 }
+
+/**
+ *   Class to create and manage "Solution" objects
+ */
 class Solution {
     private key : string | null; // chiave univoca della soluzione
     private solverId : string;//id dell'autore della soluzione
@@ -15,6 +19,9 @@ class Solution {
     private time : number | null;
     private _public : boolean;
 
+    /**
+     *   Initializes all attributes needed to Solution object.
+     */
     // @ts-ignore
     constructor(key? : string, solverId: string, solutionTags: string[], topics? : string[], difficulty? : Difficulty, _public? : boolean, valutations? : Map<string,number>, time? : number) {
         this.key = key || null;
@@ -29,34 +36,66 @@ class Solution {
     // @ts-ignore
     constructor();
 
+    /**
+     * This method returns the key of a solution.
+     * @returns { string | null } returns the solution key if exists.
+     */
     getKey(): string | null{
         return this.key;
     }
 
+    /**
+     * This method returns the Id of the solution author.
+     * @returns { string } returns the solver Id.
+     */
     getSolverId(): string {
         return this.solverId;
     }
 
+    /**
+     * This method returns the topics of the solution.
+     * @returns { string[] } returns the solution topics list.
+     */
     getTopics(): string[] | null {
         return this.topics;
     }
 
+    /**
+     * This method returns the difficulty grade of the solution.
+     * @returns { number | null } returns the solution grade of difficulty if exists.
+     */
     getDifficulty() : number | null{
         return this.difficulty;
     }
 
+    /**
+     * This method checks if the solution is public
+     * @returns { boolean } returns "true" if the solution is signed as public
+     */
     getPublic() : boolean {
         return this._public;
     }
 
+    /**
+     * This method returns the tags of the solution.
+     * @returns { string[] } returns the solution tags list.
+     */
     getSolutionTags() : string []{
         return this.solutionTags;
     }
 
+    /**
+     * This method returns the valutations of the solution.
+     * @returns { Map<string, number> | null } returns the solution valutations if exist.
+     */
     getValutations(): Map<string, number> | null {
         return this.valutations;
     }
 
+    /**
+     * This method changes the solution visibility
+     * @param value - "true" for public solution, "false" for private solution
+     */
     public setPublic(value:boolean){
         this._public=value;
     }
@@ -76,16 +115,30 @@ class Solution {
         return JSON.parse(result);
     }
 
+    /**
+     * This method returns the date of the solution.
+     * @returns { number | null } returns the solution date if exists.
+     */
     getTime(): number | null{
         return this.time;
     }
 
+    /**
+     * This method returns adds a new mark to solution.
+     * @param teacherID - the Id of the teacher who assigns the valutation
+     * @param mark - the valutation to add
+     */
     addNewMark(teacherID : string, mark : number) {
         if (!this.valutations)
             this.valutations = new Map<string, number>();
         this.valutations.set(teacherID,mark);
     }
 
+    /**
+     * This method returns a numeric valutation of the solution.
+     * @param tags - the tag list of the solution to evaluate
+     * @returns { number } returns the valutation.
+     */
     evaluateSolution(tags: string []):number{
         var rightTagsNumber=0;
         let mySolutionTags=this.getSolutionTags();
@@ -95,6 +148,18 @@ class Solution {
             }
         }
         return ((rightTagsNumber*10)/mySolutionTags.length);
+    }
+    toJSON() : any {
+        let solution : any = {};
+        solution.key= this.key;
+        solution.solverId= this.solverId;
+        solution.solutionTags= this.solutionTags;
+        solution.topics= this.topics;
+        solution.difficulty= this.difficulty;
+        solution.valutations= this.valutations;
+        solution.time= this.time;
+        solution._public= this._public;
+        return solution;
     }
 }
 export {Solution};

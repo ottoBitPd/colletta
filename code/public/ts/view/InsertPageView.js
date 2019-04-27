@@ -10,12 +10,20 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const PageView_1 = require("./PageView");
 const InsertPresenter_1 = require("../presenter/InsertPresenter");
+/**
+ *   Class to display the page to insert a new exercise
+ *   @extends PageView
+ */
 class InsertPageView extends PageView_1.PageView {
     constructor(app) {
         super();
         this.exercisePresenter = new InsertPresenter_1.InsertPresenter(this);
         this.exercisePresenter.update(app);
     }
+    /**
+     * This method is used to display the page body structure
+     * @return {string} the HTML source
+     */
     getPage() {
         return __awaiter(this, void 0, void 0, function* () {
             let ret = this.getHead();
@@ -34,27 +42,57 @@ class InsertPageView extends PageView_1.PageView {
             return ret;
         });
     }
+    /**
+     * This method is used to display the page menù
+     * @return {string} the HTML source
+     */
     getMenu() {
         let ret = "<nav class=\"navbar navbar-expand-sm bg-dark navbar-dark\">" +
-            "    <div class=\"navbar-brand\">Colletta</div>" +
-            "    <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#collapsibleNavbar\">" +
-            "        <span class=\"navbar-toggler-icon\"></span>" +
-            "    </button>" +
-            "    <div class=\"collapse navbar-collapse\" id=\"collapsibleNavbar\">" +
-            "<ul class=\"navbar-nav mr-auto\">";
-        for (let i in this.menuList) {
-            ret += "" +
-                "<li class=\"nav-item\">" +
-                "   <a class=\"nav-link\" href=\"" + this.menuList[i].link + "\">" + this.menuList[i].name + "</a>" +
-                "</li>";
+            "\t<div class=\"navbar-brand\">Colletta</div>\n" +
+            "\t<button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#collapsibleNavbar\">\n" +
+            "\t\t<span class=\"navbar-toggler-icon\"></span>\n" +
+            "\t</button>\n" +
+            "\t\t<div class=\"collapse navbar-collapse\" id=\"collapsibleNavbar\">\n" +
+            "\t\t<ul class=\"navbar-nav mr-auto\">\n" +
+            "\t\t\t<li class=\"nav-item\">\n" +
+            "\t\t\t\t<a id=\"toProgress\" href= \"/exercise/search\" class=\"nav-link\" >Ricerca esercizio</a>\n" +
+            "\t\t\t</li>\n";
+        if (this.userKind === PageView_1.UserKind.student) {
+            ret += "\t\t\t<li class=\"nav-item\">\n" +
+                "\t\t\t\t<a href= \"/classes\" class=\"nav-link\" >Le tue classi</a>\n" +
+                "\t\t\t</li>\n";
         }
-        ret += "</ul>";
+        else if (this.userKind === PageView_1.UserKind.teacher) { //insegnante
+            ret += "" +
+                "\t\t\t<li class=\"nav-item\">\n" +
+                "\t\t\t\t<a href= \"/classes\" class=\"nav-link\" >Area classi</a>\n" +
+                "\t\t\t</li>\n" +
+                "\t\t\t<li class=\"nav-item\">\n" +
+                //href= "/exercise/insert" credo
+                "\t\t\t\t<a href= \"#\" class=\"nav-link\" onclick='document.getElementById(\"insertExerciseForm\").classList.toggle(\"d-none\")'>Crea esercizio</a>\n" +
+                "\t\t\t</li>\n" +
+                "\t\t\t<li class=\"nav-item\">\n" +
+                "\t\t\t\t<a href= \"/exercises\" class=\"nav-link\" >I tuoi esercizi</a>\n" +
+                "\t\t\t</li>\n";
+        }
+        ret += "\t\t</ul>\n";
         //aggiungo login o logout
         ret += this.getLoginArea();
         ret += "    </div>" +
             "</nav>";
+        ret +=
+            "<form method='post' action='/exercise/insert' id='insertExerciseForm' class='d-none'>" +
+                "   <div class=\"input-group col-sm-4 py-2 bg-dark\">" +
+                "       <input type=\"text\" name=\"sentence\" class=\"form-control\">" +
+                "       <button type=\"submit\" class=\"btn btn-primary\">Invia</button>" +
+                "   </div>" +
+                "</form>";
         return ret;
     }
+    /**
+     * This method is used to display the page login area
+     * @return {string} the HTML source
+     */
     getLoginArea() {
         if (this.exercisePresenter.isLoggedIn()) {
             return "" +

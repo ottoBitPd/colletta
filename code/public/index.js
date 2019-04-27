@@ -16,6 +16,7 @@ const RegistrationView_1 = require("./ts/view/RegistrationView");
 const SearchView_1 = require("./ts/view/SearchView");
 const ClassesView_1 = require("./ts/view/ClassesView");
 const ClassView_1 = require("./ts/view/ClassView");
+const DeveloperView_1 = require("./ts/view/DeveloperView");
 const app = express();
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -27,6 +28,7 @@ new ExerciseView_1.ExerciseView(app);
 new SearchView_1.SearchView(app);
 new ClassesView_1.ClassesView(app);
 new ClassView_1.ClassView(app);
+new DeveloperView_1.DeveloperView(app);
 /*
 //OLD STYLE
 const exercisePage = new ExercisePresenter(exerciseView, savePageView);
@@ -42,21 +44,11 @@ app.listen(8080, function () {
         const host = "127.0.0.1";
         const port = "8080";
         console.log("Example app listening at http://%s:%s", host, port);
-        /*
-        //prove per media
-        let exerciseClient = (new Client.builder()).buildUserClient().buildExerciseClient().build().getExerciseClient();
-        if(exerciseClient) {
-            let result = await exerciseClient.getStudentAverage("-LcfF2c3ksUjdj0jXLZi");
-            let myMap= new Map();
-            for (let entry of Array.from(result.entries())) {
-                myMap.set(new Date(entry[0]), entry[1]);
-            }
-            console.log("result: ",result);
-            console.log("myMap: ",myMap);
-            let average = result.get(Math.max.apply(null, Array.from(result.keys())));
-            console.log("average: ",average);
-        }
-        */
+        /*let exerciseClient =(new Client.builder()).buildExerciseClient().build().getExerciseClient();
+        if(exerciseClient){
+            let exercise = await exerciseClient.getExerciseData("-LdJfwbWT_e7V-xjLJse");
+            console.log("exercise: ",exercise);
+        }*/
     });
 });
 //# sourceMappingURL=index.js.map

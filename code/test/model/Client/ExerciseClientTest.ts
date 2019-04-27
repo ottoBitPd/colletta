@@ -146,7 +146,8 @@ describe('ExerciseClient', function() {
                 {
                     sentence : "This is an example",
                     authorId : "0",
-                    key : "-1"
+                    key : "-1",
+                    solutions : []
                 }
             );
         });

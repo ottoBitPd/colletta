@@ -85,42 +85,44 @@ class ClassClient{
      @param teacherId - the id of the teacher
      @returns Map<string,string>
      */
-    public async getClassesByTeacher(teacherId : string) : Promise<Map<string,string>> {
+    public async getClassesByTeacher(teacherId : string) : Promise<any[]> {
         var elements = await this.dbClassManager.elements();
-        var mapToReturn = new Map<string, string>();
-        //N.B. forEach(async (...)) doesn't work
+        //var mapToReturn = new Map<string, string>();
+        let ret = [];
         for (let entry of Array.from(elements.entries())) {
             let key = entry[0];
             let value = entry[1];
             if(value===teacherId){
                 let _class : Data = await this.dbClassManager.read(key);
-                mapToReturn.set(key,(<Class>_class).getName());
+                ret.push((<Class>_class).toJSON());
+                //mapToReturn.set(key,(<Class>_class).getName());
             }
         }
         //console.log("mapToReturn: ",mapToReturn);
-        return mapToReturn;
+        return ret;
     }
 
     /**
      *
      * @param studentId
      */
-    public async getClassesByStudent(studentId:string){
+    public async getClassesByStudent(studentId:string) : Promise<any[]>{
         var elements = await this.dbClassManager.elements();
-        var mapToReturn = new Map<string, string>();
-        //N.B. forEach(async (...)) doesn't work
+        //var mapToReturn = new Map<string, string>();
+        let ret = [];
         for (let entry of Array.from(elements.entries())) {
             let key = entry[0];
             let _class = await this.dbClassManager.read(key);
             let students = (<Class> _class).getStudents()
             for(let i in students){
                 if(students[i]===studentId){
-                    mapToReturn.set(key,(<Class>_class).getName());
+                    ret.push((<Class>_class).toJSON());
+                    //mapToReturn.set(key,(<Class>_class).getName());
                 }
             }
         }
         //console.log("mapToReturn: ",mapToReturn);
-        return mapToReturn;
+        return ret;
     }
 
     public async getClassData(id:string) : Promise<any> {

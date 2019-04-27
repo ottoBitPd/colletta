@@ -10,12 +10,20 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const PageView_1 = require("./PageView");
 const AuthenticationPresenter_1 = require("../presenter/AuthenticationPresenter");
+/**
+ *   Class to display the registration page
+ *   @extends PageView
+ */
 class RegistrationView extends PageView_1.PageView {
     constructor(app) {
         super();
         this.authPresenter = new AuthenticationPresenter_1.AuthenticationPresenter(this);
         this.authPresenter.update(app);
     }
+    /**
+     * This method is used to display the page body structure
+     * @return {string} the HTML source
+     */
     getPage() {
         return __awaiter(this, void 0, void 0, function* () {
             let ret = "" +
@@ -100,6 +108,10 @@ class RegistrationView extends PageView_1.PageView {
             "   }\n" +
             "}\n";
     }
+    /**
+     * This method is used to display the page menù
+     * @return {string} the HTML source
+     */
     getMenu() {
         let ret = "" +
             "<nav class=\"navbar navbar-expand-sm bg-dark navbar-dark\">" +

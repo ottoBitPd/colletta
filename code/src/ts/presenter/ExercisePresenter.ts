@@ -209,7 +209,7 @@ class ExercisePresenter extends PagePresenter{
      * @param tags - array of tag coming from hunpos solution
      * @returns {Array} an array containing the italian translation for every tag
      */
-    private translateTags(tags : string []){
+    private translateTags(tags : string []) : string[]{
         var hunposTranslation = [];
         for(var i=0;i<tags.length;i++){
             hunposTranslation[i]=this.translateTag(tags[i]);

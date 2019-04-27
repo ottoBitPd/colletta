@@ -5,9 +5,13 @@
 enum UserKind {
     user =0,
     student = 1,
-    teacher =2
+    teacher =2,
+    developer=3
 }
-
+/**
+ * Class to represent the view for all the application pages
+ * @abstract
+ */
 abstract class PageView {
     protected title : any;
     protected menuList: any;
@@ -21,22 +25,42 @@ abstract class PageView {
         this.userKind = 0;
     }
 
+    /**
+     * This method modifies the page title
+     * @param value - the new page title
+     */
     setTitle(value: any) {
         this.title = value;
     }
 
+    /**
+     * This method modifies the page list
+     * @param value - the new list value
+     */
     setMenuList(value: any) {
         this.menuList = value;
     }
 
+    /**
+     * This method modifies the type of an user
+     * @param user - the new user type
+     */
     setUserKind(usr : UserKind) {
         this.userKind = usr;
     }
 
+    /**
+     * This method returns the type of an user
+     * @return { UserKind } the kind of the user
+     */
     getUserKind() : UserKind{
         return this.userKind;
     }
 
+    /**
+     * This method is used to display the page header
+     * @return {string} the HTML source
+     */
     getHead(style? : string) : string {
         let ret = "<!DOCTYPE html>\n" +
         "<html lang=\"it\">\n" +
@@ -59,13 +83,21 @@ abstract class PageView {
         "\t<body>\n";
         return ret;
     }
+
+    /**
+     * This method is used to display the page footer
+     * @return {string} the HTML source
+     */
     getFoot(script : string) : string {
         return "\t</body>\n" +
             "\t<script>\n"+script+"\t</script>\n" +
         "</html>";
     }
 
-
+    /**
+     * This method is used to display the page body
+     * @return {string} the HTML source
+     */
     abstract async getPage() : Promise<string>;
 
 

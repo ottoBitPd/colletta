@@ -10,6 +10,11 @@ class Teacher extends User {
         this.INPS = inps;
     }
 
+    /**
+     * This method returns the iist of classes created by a specific teacher.
+     * @param classList - the list of all the available classes
+     * @returns { Class[]} returns the list of classes.
+     */
     public getClasses(classList: Class[]): Class[] {
         let lista : Class[] =[];
         classList.forEach((_class) => {
@@ -20,10 +25,18 @@ class Teacher extends User {
         return lista;
     }
 
+    /**
+     * This method returns the teacher INPS code.
+     * @returns { string } returns the INPS code.
+     */
     public getINPS() {
             return this.INPS;
     }
 
+    /**
+     * This method  checks if a user is a teacher.
+     * @returns { boolean } returns "true" if the user is a teacher.
+     */
     public isTeacher(): boolean {
         return true;
     }

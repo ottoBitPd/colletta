@@ -33,6 +33,7 @@
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
     "escomplex": "^2.0.0-alpha",
+    "export-to-csv": "^0.2.1",
     "express-session": "^1.15.6",
     "firebase": "^5.9.1",
     "firebase-admin": "^7.0.0",

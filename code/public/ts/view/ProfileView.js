@@ -10,6 +10,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const PageView_1 = require("./PageView");
 const ProfilePresenter_1 = require("../presenter/ProfilePresenter");
+/**
+ *   Class to display the users's profile page
+ *   @extends PageView
+ */
 class ProfileView extends PageView_1.PageView {
     constructor(app) {
         super();
@@ -18,12 +22,20 @@ class ProfileView extends PageView_1.PageView {
         this.userData = undefined;
         this.error = undefined;
     }
+    /**
+     * This method modifies user data
+     * @param obj - data to modify
+     */
     setUserData(obj) {
         this.userData = obj;
     }
     setError(error) {
         this.error = error;
     }
+    /**
+     * This method is used to display the page body structure
+     * @return {string} the HTML source
+     */
     getPage() {
         return __awaiter(this, void 0, void 0, function* () {
             let ret = this.getHead();
@@ -33,157 +45,170 @@ class ProfileView extends PageView_1.PageView {
             if (this.error !== undefined) {
                 ret += "\t\t\t<p class ='text-center h5 text-danger'>" + this.error + "</p>\n";
             }
-            ret += "\t\t\t<ul class=\"list-group\">\n" +
-                "\t\t\t\t<li class=\"list-group-item\">\n" +
-                "\t\t\t\t\t<form method='post' action='/update'>" +
-                "\t\t\t\t\t\t<div class= \"row\">\n" +
-                "\t\t\t\t\t\t\t<div class = \"col-sm-6\">\n" +
-                "\t\t\t\t\t\t\t\t<p class= \"font-weight-bold\"> Nome: " + this.userData.name + "</p> \n" +
-                "\t\t\t\t\t\t\t</div>\n" +
-                "\t\t\t\t\t\t\t<div class = \"col-sm-6\">\n" +
-                "\t\t\t\t\t\t\t\t<input class=\"form-control\" name='name'/>\n" +
-                "\t\t\t\t\t\t\t</div>\n" +
-                "\t\t\t\t\t\t</div>\n" +
-                "\t\t\t\t\t\t<div class= \"row\">\n" +
-                "\t\t\t\t\t\t\t<div class = \"col-sm-6\">\n" +
-                "\t\t\t\t\t\t\t\t<p class= \"font-weight-bold\"> Cognome: " + this.userData.lastname + "</p> \n" +
-                "\t\t\t\t\t\t\t</div>\n" +
-                "\t\t\t\t\t\t\t<div class = \"col-sm-6\">\n" +
-                "\t\t\t\t\t\t\t\t<input class=\"form-control\" name='lastname'/>\n" +
-                "\t\t\t\t\t\t\t</div>\n" +
-                "\t\t\t\t\t\t</div>\n" +
-                "\t\t\t\t\t\t<div class= \"row\">\n" +
-                "\t\t\t\t\t\t\t<div class = \"col-sm-6\">\n" +
-                "\t\t\t\t\t\t\t\t<p class= \"font-weight-bold\"> Città: " + this.userData.city + "</p> \n" +
-                "\t\t\t\t\t\t\t</div>\n" +
-                "\t\t\t\t\t\t\t<div class = \"col-sm-6\">\n" +
-                "\t\t\t\t\t\t\t\t<input class=\"form-control\" name='city'/>\n" +
-                "\t\t\t\t\t\t\t</div>\n" +
-                "\t\t\t\t\t\t</div>\n" +
-                "\t\t\t\t\t\t<div class= \"row\">\n" +
-                "\t\t\t\t\t\t\t<div class = \"col-sm-6\">\n" +
-                "\t\t\t\t\t\t\t\t<p class= \"font-weight-bold\"> Scuola: " + this.userData.school + "</p> \n" +
-                "\t\t\t\t\t\t\t</div>\n" +
-                "\t\t\t\t\t\t\t<div class = \"col-sm-6\">\n" +
-                "\t\t\t\t\t\t\t\t<input class=\"form-control\" name='school'/>\n" +
-                "\t\t\t\t\t\t\t</div>\n" +
-                "\t\t\t\t\t\t</div>\n";
-            if (this.userKind == PageView_1.UserKind.teacher) {
+            if (this.userKind !== PageView_1.UserKind.developer) {
+                ret += "\t\t\t<ul class=\"list-group\">\n" +
+                    "\t\t\t\t<li class=\"list-group-item\">\n" +
+                    "\t\t\t\t\t<form method='post' action='/update'>" +
+                    "\t\t\t\t\t\t<div class= \"row\">\n" +
+                    "\t\t\t\t\t\t\t<div class = \"col-sm-6\">\n" +
+                    "\t\t\t\t\t\t\t\t<p class= \"font-weight-bold\"> Nome: " + this.userData.name + "</p> \n" +
+                    "\t\t\t\t\t\t\t</div>\n" +
+                    "\t\t\t\t\t\t\t<div class = \"col-sm-6\">\n" +
+                    "\t\t\t\t\t\t\t\t<input class=\"form-control\" name='name'/>\n" +
+                    "\t\t\t\t\t\t\t</div>\n" +
+                    "\t\t\t\t\t\t</div>\n" +
+                    "\t\t\t\t\t\t<div class= \"row\">\n" +
+                    "\t\t\t\t\t\t\t<div class = \"col-sm-6\">\n" +
+                    "\t\t\t\t\t\t\t\t<p class= \"font-weight-bold\"> Cognome: " + this.userData.lastname + "</p> \n" +
+                    "\t\t\t\t\t\t\t</div>\n" +
+                    "\t\t\t\t\t\t\t<div class = \"col-sm-6\">\n" +
+                    "\t\t\t\t\t\t\t\t<input class=\"form-control\" name='lastname'/>\n" +
+                    "\t\t\t\t\t\t\t</div>\n" +
+                    "\t\t\t\t\t\t</div>\n" +
+                    "\t\t\t\t\t\t<div class= \"row\">\n" +
+                    "\t\t\t\t\t\t\t<div class = \"col-sm-6\">\n" +
+                    "\t\t\t\t\t\t\t\t<p class= \"font-weight-bold\"> Città: " + this.userData.city + "</p> \n" +
+                    "\t\t\t\t\t\t\t</div>\n" +
+                    "\t\t\t\t\t\t\t<div class = \"col-sm-6\">\n" +
+                    "\t\t\t\t\t\t\t\t<input class=\"form-control\" name='city'/>\n" +
+                    "\t\t\t\t\t\t\t</div>\n" +
+                    "\t\t\t\t\t\t</div>\n" +
+                    "\t\t\t\t\t\t<div class= \"row\">\n" +
+                    "\t\t\t\t\t\t\t<div class = \"col-sm-6\">\n" +
+                    "\t\t\t\t\t\t\t\t<p class= \"font-weight-bold\"> Scuola: " + this.userData.school + "</p> \n" +
+                    "\t\t\t\t\t\t\t</div>\n" +
+                    "\t\t\t\t\t\t\t<div class = \"col-sm-6\">\n" +
+                    "\t\t\t\t\t\t\t\t<input class=\"form-control\" name='school'/>\n" +
+                    "\t\t\t\t\t\t\t</div>\n" +
+                    "\t\t\t\t\t\t</div>\n";
+                if (this.userKind == PageView_1.UserKind.teacher) {
+                    ret += "\t\t\t\t\t\t<div class= \"row\">\n" +
+                        "\t\t\t\t\t\t\t<div class = \"col-sm-6\">\n" +
+                        "\t\t\t\t\t\t\t\t<p class= \" font-weight-bold\"> Matricola INPS: " + this.userData.inps + "</p> \n" +
+                        "\t\t\t\t\t\t\t</div>\n" +
+                        "\t\t\t\t\t\t\t<div class = \"col-sm-6\">\n" +
+                        "\t\t\t\t\t\t\t\t<input class=\"form-control\" name='inps'/>\n" +
+                        "\t\t\t\t\t\t\t</div>\n" +
+                        "\t\t\t\t\t\t</div>";
+                }
                 ret += "\t\t\t\t\t\t<div class= \"row\">\n" +
                     "\t\t\t\t\t\t\t<div class = \"col-sm-6\">\n" +
-                    "\t\t\t\t\t\t\t\t<p class= \" font-weight-bold\"> Matricola INPS: " + this.userData.inps + "</p> \n" +
+                    "\t\t\t\t\t\t\t\t<p class= \"font-weight-bold\"> Email: " + this.userData.email + "</p> \n" +
                     "\t\t\t\t\t\t\t</div>\n" +
                     "\t\t\t\t\t\t\t<div class = \"col-sm-6\">\n" +
-                    "\t\t\t\t\t\t\t\t<input class=\"form-control\" name='inps'/>\n" +
+                    "\t\t\t\t\t\t\t\t<input class=\"form-control\" type='email' name='email'/>\n" +
                     "\t\t\t\t\t\t\t</div>\n" +
-                    "\t\t\t\t\t\t</div>";
-            }
-            ret += "\t\t\t\t\t\t<div class= \"row\">\n" +
-                "\t\t\t\t\t\t\t<div class = \"col-sm-6\">\n" +
-                "\t\t\t\t\t\t\t\t<p class= \"font-weight-bold\"> Email: " + this.userData.email + "</p> \n" +
-                "\t\t\t\t\t\t\t</div>\n" +
-                "\t\t\t\t\t\t\t<div class = \"col-sm-6\">\n" +
-                "\t\t\t\t\t\t\t\t<input class=\"form-control\" type='email' name='email'/>\n" +
-                "\t\t\t\t\t\t\t</div>\n" +
-                "\t\t\t\t\t\t</div>\n" +
-                "\t\t\t\t\t\t<div class= \"row\">\n" +
-                "\t\t\t\t\t\t\t<div class = \"col-sm-6\">\n" +
-                "\t\t\t\t\t\t\t\t<p class= \"font-weight-bold\"> Username: " + this.userData.username + "</p> \n" +
-                "\t\t\t\t\t\t\t</div>\n" +
-                "\t\t\t\t\t\t\t<div class = \"col-sm-6\">\n" +
-                "\t\t\t\t\t\t\t\t<input class=\"form-control\" name='username'/>\n" +
-                "\t\t\t\t\t\t\t</div>\n" +
-                "\t\t\t\t\t\t</div>\n" +
-                "\t\t\t\t\t\t<div class= \"row\">\n" +
-                "\t\t\t\t\t\t\t<div class = \"col-sm-6\">\n" +
-                "\t\t\t\t\t\t\t\t<p class= \"font-weight-bold\"> Vecchia password: </p> \n" +
-                "\t\t\t\t\t\t\t</div>\n" +
-                "\t\t\t\t\t\t\t<div class = \"col-sm-6\">\n" +
-                "\t\t\t\t\t\t\t\t<input class=\"form-control\" type='password' name='oldpassword'/>\n" +
-                "\t\t\t\t\t\t\t</div>\n" +
-                "\t\t\t\t\t\t</div>\n" +
-                "\t\t\t\t\t\t<div class= \"row\">\n" +
-                "\t\t\t\t\t\t\t<div class = \"col-sm-6\">\n" +
-                "\t\t\t\t\t\t\t\t<p class= \"font-weight-bold\"> Nuova password: </p> \n" +
-                "\t\t\t\t\t\t\t</div>\n" +
-                "\t\t\t\t\t\t\t<div class = \"col-sm-6\">\n" +
-                "\t\t\t\t\t\t\t\t<input class=\"form-control\" type='password' name='password'/>\n" +
-                "\t\t\t\t\t\t\t</div>\n" +
-                "\t\t\t\t\t\t</div>\n";
-            ret += "" +
-                "\t\t\t\t\t\t<div class = \"col-sm-12 text-center mt-3\">\n" +
-                "\t\t\t\t\t\t\t<button class='btn btn-primary btn-sm' id='btnsubmit' type='submit'>Modifica</button> \n" +
-                "\t\t\t\t\t\t</div>\n" +
-                "\t\t\t\t\t</form>" +
-                "\t\t\t\t</li>\n" +
-                "\t\t\t</ul>\n";
-            if (this.userKind === PageView_1.UserKind.student) {
-                let result = yield this.profileController.getAverageInfo();
-                if (result.size > 0) {
-                    let n = result.size;
-                    ret += "\t\t\t<div class=\"row\" style=\"margin-top: 15%; margin-bottom:10%\">\n" +
-                        "\t\t\t\t<div id= \"progress\" class = \" anchor col-sm-10 mx-auto\">\n" +
-                        "\t\t\t\t\t<h1 class ='text-center mb-5'>I tuoi progressi:</h1>\n" +
-                        "\t\t\t\t\t<ul class=\"list-group\">\n" +
-                        "\t\t\t\t\t\t<li class=\"list-group-item\">\n" +
-                        "\t\t\t\t\t\t\t<div class= \"row\">\n" +
-                        "\t\t\t\t\t\t\t\t<div class = \"col-sm-4\">\n" +
-                        "\t\t\t\t\t\t\t\t\t<p class= \"font-weight-bold\"> Esercizi svolti:</p> \n" +
-                        "\t\t\t\t\t\t\t\t</div>\n" +
-                        "\t\t\t\t\t\t\t\t<div class = \"col-sm-4\">\n" +
-                        "\t\t\t\t\t\t\t\t\t<p class=\"font-weight-light\">" + n + "</p> \n" +
-                        "\t\t\t\t\t\t\t\t</div>\n" +
-                        "\t\t\t\t\t\t\t</div>\n" +
-                        "\t\t\t\t\t\t\t<div class= \"row\">\n" +
-                        "\t\t\t\t\t\t\t\t<div class = \"col-sm-4\">\n" +
-                        "\t\t\t\t\t\t\t\t\t<p class= \"font-weight-bold\"> Media valutazioni:</p> \n" +
-                        "\t\t\t\t\t\t\t\t</div>\n" +
-                        "\t\t\t\t\t\t\t\t<div class = \"col-sm-4\">\n" +
-                        "\t\t\t\t\t\t\t\t\t<p class=\"font-weight-light\">" + result.get(Math.max.apply(null, Array.from(result.keys()))) + "</p> \n" +
-                        "\t\t\t\t\t\t\t\t</div>\n" +
-                        "\t\t\t\t\t\t\t\t\t<div class=\"mt-2\" id=\"chartdiv\" style=\"width: 100%; height: 400px; background-color: #FFFFFF;\" ></div>\n" +
-                        "\t\t\t\t\t\t\t</div>\n" +
-                        "\t\t\t\t\t\t</li>\n" +
-                        "\t\t\t\t\t</ul>\n" +
-                        "\t\t\t\t</div>\n";
+                    "\t\t\t\t\t\t</div>\n" +
+                    "\t\t\t\t\t\t<div class= \"row\">\n" +
+                    "\t\t\t\t\t\t\t<div class = \"col-sm-6\">\n" +
+                    "\t\t\t\t\t\t\t\t<p class= \"font-weight-bold\"> Username: " + this.userData.username + "</p> \n" +
+                    "\t\t\t\t\t\t\t</div>\n" +
+                    "\t\t\t\t\t\t\t<div class = \"col-sm-6\">\n" +
+                    "\t\t\t\t\t\t\t\t<input class=\"form-control\" name='username'/>\n" +
+                    "\t\t\t\t\t\t\t</div>\n" +
+                    "\t\t\t\t\t\t</div>\n" +
+                    "\t\t\t\t\t\t<div class= \"row\">\n" +
+                    "\t\t\t\t\t\t\t<div class = \"col-sm-6\">\n" +
+                    "\t\t\t\t\t\t\t\t<p class= \"font-weight-bold\"> Vecchia password: </p> \n" +
+                    "\t\t\t\t\t\t\t</div>\n" +
+                    "\t\t\t\t\t\t\t<div class = \"col-sm-6\">\n" +
+                    "\t\t\t\t\t\t\t\t<input class=\"form-control\" type='password' name='oldpassword'/>\n" +
+                    "\t\t\t\t\t\t\t</div>\n" +
+                    "\t\t\t\t\t\t</div>\n" +
+                    "\t\t\t\t\t\t<div class= \"row\">\n" +
+                    "\t\t\t\t\t\t\t<div class = \"col-sm-6\">\n" +
+                    "\t\t\t\t\t\t\t\t<p class= \"font-weight-bold\"> Nuova password: </p> \n" +
+                    "\t\t\t\t\t\t\t</div>\n" +
+                    "\t\t\t\t\t\t\t<div class = \"col-sm-6\">\n" +
+                    "\t\t\t\t\t\t\t\t<input class=\"form-control\" type='password' name='password'/>\n" +
+                    "\t\t\t\t\t\t\t</div>\n" +
+                    "\t\t\t\t\t\t</div>\n";
+                ret += "" +
+                    "\t\t\t\t\t\t<div class = \"col-sm-12 text-center mt-3\">\n" +
+                    "\t\t\t\t\t\t\t<button class='btn btn-primary btn-sm' id='btnsubmit' type='submit'>Modifica</button> \n" +
+                    "\t\t\t\t\t\t</div>\n" +
+                    "\t\t\t\t\t</form>" +
+                    "\t\t\t\t</li>\n" +
+                    "\t\t\t</ul>\n";
+                if (this.userKind === PageView_1.UserKind.student) {
+                    let result = yield this.profileController.getAverageInfo();
+                    if (result.size > 0) {
+                        let n = result.size;
+                        ret += "\t\t\t<div class=\"row\" style=\"margin-top: 15%; margin-bottom:10%\">\n" +
+                            "\t\t\t\t<div id= \"progress\" class = \" anchor col-sm-10 mx-auto\">\n" +
+                            "\t\t\t\t\t<h1 class ='text-center mb-5'>I tuoi progressi:</h1>\n" +
+                            "\t\t\t\t\t<ul class=\"list-group\">\n" +
+                            "\t\t\t\t\t\t<li class=\"list-group-item\">\n" +
+                            "\t\t\t\t\t\t\t<div class= \"row\">\n" +
+                            "\t\t\t\t\t\t\t\t<div class = \"col-sm-4\">\n" +
+                            "\t\t\t\t\t\t\t\t\t<p class= \"font-weight-bold\"> Esercizi svolti:</p> \n" +
+                            "\t\t\t\t\t\t\t\t</div>\n" +
+                            "\t\t\t\t\t\t\t\t<div class = \"col-sm-4\">\n" +
+                            "\t\t\t\t\t\t\t\t\t<p class=\"font-weight-light\">" + n + "</p> \n" +
+                            "\t\t\t\t\t\t\t\t</div>\n" +
+                            "\t\t\t\t\t\t\t</div>\n" +
+                            "\t\t\t\t\t\t\t<div class= \"row\">\n" +
+                            "\t\t\t\t\t\t\t\t<div class = \"col-sm-4\">\n" +
+                            "\t\t\t\t\t\t\t\t\t<p class= \"font-weight-bold\"> Media valutazioni:</p> \n" +
+                            "\t\t\t\t\t\t\t\t</div>\n" +
+                            "\t\t\t\t\t\t\t\t<div class = \"col-sm-4\">\n" +
+                            "\t\t\t\t\t\t\t\t\t<p class=\"font-weight-light\">" + result.get(Math.max.apply(null, Array.from(result.keys()))) + "</p> \n" +
+                            "\t\t\t\t\t\t\t\t</div>\n" +
+                            "\t\t\t\t\t\t\t\t\t<div class=\"mt-2\" id=\"chartdiv\" style=\"width: 100%; height: 400px; background-color: #FFFFFF;\" ></div>\n" +
+                            "\t\t\t\t\t\t\t</div>\n" +
+                            "\t\t\t\t\t\t</li>\n" +
+                            "\t\t\t\t\t</ul>\n" +
+                            "\t\t\t\t</div>\n";
+                    }
                 }
+            }
+            else { //if he is developer
+                ret += "\t\t\t\t<a class=\"btn-sm btn btn-primary my-2 my-sm-0\" href=\"/download\" role=\"button\">Registrati</a>\n";
             }
             ret += "\t\t\t</div>\n\t\t</div>\n";
             ret += this.getFoot(yield this.insertChartScript());
             return ret;
         });
     }
+    /**
+     * This method is used to display the page menù
+     * @return {string} the HTML source
+     */
     getMenu() {
         return __awaiter(this, void 0, void 0, function* () {
             let ret = "" +
                 "<nav class=\"navbar navbar-expand-sm bg-dark navbar-dark\">" +
-                "\t<a href='/' class=\"navbar-brand\">Colletta</a>" +
+                "\t<div class=\"navbar-brand\">Colletta</div>" +
                 "\t<button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#collapsibleNavbar\">" +
                 "\t\t<span class=\"navbar-toggler-icon\"></span>" +
                 "\t</button>" +
                 "\t<div class=\"collapse navbar-collapse\" id=\"collapsibleNavbar\">" +
-                "\t\t<ul class=\"navbar-nav mr-auto\">";
+                "\t\t<ul class=\"navbar-nav mr-auto\">" +
+                "\t\t\t<li class=\"nav-item\">\n" +
+                "\t\t\t\t<a id=\"toProgress\" href= \"/\" class=\"nav-link\" >Homepage</a>\n" +
+                "\t\t\t</li>\n" +
+                "\t\t\t<li class=\"nav-item\">\n" +
+                "\t\t\t\t<a id=\"toProgress\" href= \"/exercise/search\" class=\"nav-link\" >Ricerca esercizio</a>\n" +
+                "\t\t\t</li>\n";
             if (this.userKind === PageView_1.UserKind.student) {
                 ret += "" +
                     "\t\t\t<li class=\"nav-item\">\n" +
                     "\t\t\t\t<a id=\"toProgress\" href= \"#progress\" class=\"nav-link\" >I tuoi progressi</a>\n" +
                     "\t\t\t</li>\n";
-                let classId = yield this.profileController.getStudentClass();
-                console.log("classIdView: ", classId);
-                if (classId !== "undefined") {
-                    ret += "\t\t\t<li class=\"nav-item\">\n" +
-                        "\t\t\t\t<a href= \"/classes\" class=\"nav-link\" >Le tue classi</a>\n" +
-                        "\t\t\t</li>\n";
-                }
+                ret += "\t\t\t<li class=\"nav-item\">\n" +
+                    "\t\t\t\t<a href= \"/classes\" class=\"nav-link\" >Le tue classi</a>\n" +
+                    "\t\t\t</li>\n";
             }
-            else { //insegnante
+            else { //teacher
                 ret += "" +
                     "\t\t\t<li class=\"nav-item\">\n" +
                     "\t\t\t\t<a href= \"/classes\" class=\"nav-link\" >Area classi</a>\n" +
                     "\t\t\t</li>\n" +
                     "<li class=\"nav-item\">\n" +
-                    //href= "/exercise/insert" credo
                     "\t\t\t\t<a href= \"#\" class=\"nav-link\" onclick='document.getElementById(\"insertExerciseForm\").classList.toggle(\"d-none\")'>Crea esercizio</a>\n" +
+                    "\t\t\t</li>\n" +
+                    "\t\t\t<li class=\"nav-item\">\n" +
+                    "\t\t\t\t<a href= \"/exercises\" class=\"nav-link\" >I tuoi esercizi</a>\n" +
                     "\t\t\t</li>\n";
             }
             ret += "\t\t</ul>";
@@ -201,6 +226,10 @@ class ProfileView extends PageView_1.PageView {
             return ret;
         });
     }
+    /**
+     * This method is used to display the page login area
+     * @return {string} the HTML source
+     */
     getLoginArea() {
         if (this.profileController.isLoggedIn()) {
             return "" +

@@ -42,14 +42,6 @@ class ClassPresenter extends PagePresenter {
                     this.view.setUserKind(UserKind.student);
             }
 
-            /*console.log("Id della classe: "+request.query.classId);
-            this.view.setClass(await this.getClassData(request.query.classId));
-            let students = await this.getStudents(request.query.classId);
-            console.log("Studenti: ",students);
-            this.view.setStudentsList(students);
-            let exercises = await this.getExercises(request.query.classId);
-            console.log("Exercises: ",exercises);
-            this.view.setExercisesList(exercises);*/
             response.send(await this.view.getPage());
         });
     }

@@ -86,18 +86,22 @@ class ProfilePresenter extends PagePresenter{
 
         app.get('/profile', async (request: any, response: any) => {
             let userClient = this.client.getUserClient();
-            if (userClient){
+            if (userClient && session.username !== "developer"){
                 const id = await userClient.search(session.username);
                 const userData = await userClient.getUserData(id);
                 //console.log("userData: ",userData);
                 this.view.setUserData(userData);
                 if (await userClient.isTeacher(session.username)){
-                    //console.log("teacher");
+                    console.log("teacher");
                     this.view.setUserKind(UserKind.teacher);
                 } else {
-                    //console.log("student");
+                    console.log("student");
                     this.view.setUserKind(UserKind.student);
                 }
+            }
+            else {
+                //console.log("developer");
+                this.view.setUserKind(UserKind.developer);
             }
             this.view.setTitle("Profilo");
             response.send(await this.view.getPage());

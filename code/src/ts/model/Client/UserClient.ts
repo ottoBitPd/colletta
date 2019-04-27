@@ -125,7 +125,5 @@ class UserClient{
     public hashPassword(plain :string){
         return this.passwordHash.hashSync(plain,10);
     }
-
-
 }
 export{UserClient}

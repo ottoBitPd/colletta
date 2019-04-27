@@ -120,7 +120,7 @@ describe('ExerciseClient', function() {
             expect(await test.getSentence("0")).to.be.equals("This is an example");
         });
     });
-/*  //TODO: needs Hunpos
+/*    //TODO: needs Hunpos
     describe('ExerciseClient.evaluate()',function () {
         it('should throw an error', async function() {
             let error = new Error("");

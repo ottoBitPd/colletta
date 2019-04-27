@@ -157,7 +157,7 @@ describe('Exercise', function() {
             expect(ex.getSplitSentence()).eql([ 'Ciao', '-', 'gino', '.', 'l\'', 'albero', '!', 'e', ',', 'extra', '-', 'gina', '...' ]);
         });
     });
-
+/*
     describe('Exercise.evaluate()', function() {
         it('evaluation using hunpos', async function() {
             exercise.setSolution("1",['a','a','a','a'],[],5);
@@ -213,7 +213,7 @@ describe('Exercise', function() {
         });
 
     });
-
+*/
     describe("Exercise.toJSON",function () {
        it ("should return 1",function () {
            /*let obj: any = {

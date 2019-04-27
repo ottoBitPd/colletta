@@ -14,9 +14,11 @@ class UserClient{
     async insertStudent(username : string, password : string, name : string, surname : string, city : string, school : string, email : string) : Promise<boolean>{
         return await this.dbUserManager.insert(new Student("0",username, password, name, surname, city, school, email));
     }
+
     async insertTeacher(username : string, password : string, name : string, surname : string, city : string, school : string, inps:string, email : string) : Promise<boolean>{
         return await this.dbUserManager.insert(new Teacher("0",username, password, name, surname, city, school, inps, email));
     }
+
     async verifyUser(username: string, insertedPassword : string) : Promise<boolean>{
         const idUser = await this.dbUserManager.search(username);
         if(idUser!=="false") {
@@ -28,12 +30,11 @@ class UserClient{
                 //console.log("password dont match")
                 return false;
             }
-        }
-        else{
+        } else {
             return false;
         }
-
     }
+
     public checkPassword(insertedPassword:string,password:string) : boolean{
         if (this.passwordHash.compareSync(insertedPassword, password)) {
             //console.log("password match");
@@ -60,7 +61,7 @@ class UserClient{
         let list : string[] = [];
 
         for (let teacher of teacherMap){
-            let condition = await  this.isTeacher(teacher[1]);
+            let condition = await this.isTeacher(teacher[1]);
             if (condition)
                 list.push(teacher[0]);
         }
@@ -79,6 +80,7 @@ class UserClient{
         }
         return userData;
     }
+
     public async updateUser(username:string, userUpdateData : any){
         const id = await this.dbUserManager.search(username);
         await this.dbUserManager.update('data/users/'+id+'/name',userUpdateData.name);
@@ -100,9 +102,9 @@ class UserClient{
      */
     public async searchUser(substring : string, teacher : boolean) : Promise<Map<string, string>> {
         var regex = new RegExp(substring, "i");
-        var elements = await this.dbUserManager.elements();//returns a map<id,sentence> of all exercises in the db
+        var elements = await this.dbUserManager.elements();//returns a map<id,username> of all users in the db
         var mapToReturn = new Map<string, string>();
-        console.log("User: ", elements);
+        // console.log("User: ", elements);
 
         for (let entry of Array.from(elements.entries())) {
             let key = entry[0];
@@ -122,6 +124,7 @@ class UserClient{
 
         return mapToReturn;
     }
+
     public hashPassword(plain :string){
         return this.passwordHash.hashSync(plain,10);
     }

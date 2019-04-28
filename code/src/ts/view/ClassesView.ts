@@ -160,26 +160,43 @@ class ClassesView extends PageView {
                         "<div class='col-sm-4 mx-auto text-center'>\n";
                     console.log("this.userKind: ", this.userKind);
                     if (this.userKind === UserKind.teacher) {
-                        ret += "<form method='post' action='/deleteclass'>" +
+                        ret += "<form method='post' action='/deleteclass'>\n" +
                             "<button class='btn btn-danger btn-sm' name='key' value='" + elements[i].id + "' type='submit'>Elimina</button>\n" +
-                            "</form>";
+                            "</form>\n";
                     }
                     ret += "</div>\n";
                 }
                 if(this.classPresenter.getListType()==="exercises") {
                     ret += "<div class='col-sm-12 mx-auto'>\n" +
-                    "<p class='h5 font-weight-bold mb-2'>"+elements[i].sentence +"</p>\n"+
+                    "<p class='h5 font-weight-bold mb-2'>"+elements[i].sentence +"</p>\n" +
                     "<div class='row'>\n";
+                    let n=1;
                     for(let y in elements[i].solutions) {
+                        ret += "<div class='col-sm-8 mx-auto font-weight-bold py-2'>Soluzione "+n+"</div>\n";
+                        if(elements[i].solutions[y]._public==="true"){
+                            ret+="<div class='col-sm-2 mx-auto text-success py-2'>Pubblica</div>\n";
+                        }
+                        else{
+                            ret+="<div class='col-sm-2 mx-auto text-danger py-2'>Privata</div>\n";
+                        }
+                        ret+=""+
+                            "<div class='col-sm-2 mx-auto py-2'>\n" +
+                            "<form method='post' action='/exercise/insert'>\n" +
+                            "<button class='btn btn-primary btn-sm' name='sentence' value='" + elements[i].sentence + "' type='submit'>Modifica</button>\n" +
+                            "</form>\n"+
+                            "</div>\n";
                         if(elements[i].solutions[y].solverId===elements[i].authorId) {
+                            n++;
+                            //ret +="<div class='row'>\n";
                             for(let z in elements[i].solutions[y].itaTags) {
-                                ret += "<div class='col-sm-4 mx-auto text-left'>\n" +
+                                ret += "<div class='col-sm-3 mx-auto text-left'>\n" +
                                     elements[i].words[z] +
                                     "</div>\n" +
-                                    "<div class='col-sm-8 mx-auto text-left'>\n" +
+                                    "<div class='col-sm-9 mx-auto text-left'>\n" +
                                     elements[i].solutions[y].itaTags[z] +
                                     "</div>\n";
                             }
+                            //ret +="</div>\n";
                         }
                     }
                     ret+="</div>\n" +

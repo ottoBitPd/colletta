@@ -37,7 +37,6 @@ class ExercisePresenter extends PagePresenter{
             let exerciseClient = this.client.getExerciseClient();
             if (exerciseClient) {
                 //sending the sentence to hunpos which will provide a solution
-                console.log("primo autosolve");
                 var posSolution = await exerciseClient.autosolve(request.body.sentence, "authorIdValue");
                 //creation of the array containing tags provided from hunpos solution
                 var posTags = this.extractTags(posSolution);

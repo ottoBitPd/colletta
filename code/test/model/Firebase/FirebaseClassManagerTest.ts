@@ -16,6 +16,7 @@ describe('FirebaseClassManager', function() {
 
     describe('FirebaseClassManager.insert()', function () {
         it('should return the insert user in database', async function() {
+
             expect(await test.insert(prova)).to.equal(true);
 
         });

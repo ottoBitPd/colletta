@@ -1,95 +1,104 @@
-import {expect} from 'chai';
+import * as chai from 'chai';
 import 'mocha';
-
 import {InsertPresenter} from "../../src/ts/presenter/InsertPresenter";
+import {InsertPageView} from "../../src/ts/view/InsertPageView";
+import * as express from "express";
+var session = require('express-session');
+
+//@ts-ignored
+import * as chaiHttp from 'chai-http';
+
+// Configure chai
+chai.use(chaiHttp);
+chai.should();
 
 describe('InsertPresenter', function() {
 
     let test:InsertPresenter;
+    const app=express();
 
-   beforeEach(function () {
+   /* class Response {
+        send(s : string){return s;}
+    }
+*/
+    beforeEach(function () {
 
-test=new InsertPresenter(test);
-//@ts-ignored
+        session.username=undefined;
+       test = new InsertPresenter(new InsertPageView(app));
 
-       test.view={
-           setUserKind(numero:any){
-                    return true;
-                    },
+       //@ts-ignored
+  /*     app={
+           get(route : string, callback : (name : string) => any) :any {}
+       };*/
 
-           async getPage(): Promise<string>{
+       //@ts-ignored
+       test.view = {
+           setUserKind(numero: any) {
+               return true;
+           },
+
+           async getPage(): Promise<string> {
                return "Page";
+           }
+       };
+
+       //@ts-ignored
+       test.client = {
+           getUserClient(): any {
+               return {
+                   async isTeacher(username: string): Promise<any> {
+                       if ("Gian" === username)
+                           return true;
+                       else return false;
+                   }
+               }
            }
 
        };
 
-    //@ts-ignored
-    test.client={
-        getUserClient():any{
-            return {
-                async insertStudent(username : string, password : string, name : string, surname : string, city : string, school : string, email : string) : Promise<any>{
-                    return true;
-                },
-
-                async insertTeacher(username : string, password : string, name : string, surname : string, city : string, school : string, inps:string, email : string) : Promise<any>{
-                    return true;
-                },
-
-                async verifyUser(username: string, insertedPassword : string) : Promise<any>{
-                   return true;
-                },
-
-                 checkPassword(insertedPassword:string,password:string) : any{
-                return true;
-            },
-
-         async isTeacher(username:string) : Promise<any> {
-                    if ("Gian"===username)
-                        return true;
-                    else return false;
-        },
-
-            async teacherList() : Promise<string[]> {
-                return["Perry"];
-        },
-
-            async search(username:string) : Promise<string> {
-            return "id";
-        },
-
-         async getUserData(id:string) : Promise<any> {
-                    return "inps";
-        },
-
-         async updateUser(username:string, userUpdateData : any){
-return true;
-            },
-         async searchUser(substring : string, teacher : boolean) : Promise<Map<string, string>> {
-
-                    let now= new Map<string,string>();
-                    now.set("id","valore");
-                    return now;
-        },
-
-         hashPassword(plain :string){
-                    return true;
-            }
-            }
-        }
-
-        }
-
-   });
-
-
-
+    });
 
     describe('InsertPresenter.isLoggedIn()', function () {
         it('should return user', async function () {
-
-            expect(test.isLoggedIn()).to.equal(false);
+            chai.expect(test.isLoggedIn()).to.equal(false);
         });
     });
 
+    describe('InsertPresenter.update()', function () {
+        it('should return update insertExercise teacher', async function () {
+            test.update(app);
+            session.username = "Perry15";
+            chai.request(app)
+                .get('/')
+                .end((err:any, res:any) => {
+                    res.should.have.status(200);
+                    res.body.should.be.a('object');
+                    return new Promise(()=>{});
+                });
+        });
+
+        it('should return update insertExercise student', async function () {
+            test.update(app);
+            session.username = "Pino";
+            chai.request(app)
+                .get('/')
+                .end((err:any, res:any) => {
+                    res.should.have.status(200);
+                    res.body.should.be.a('object');
+                    return new Promise(()=>{});
+                });
+        });
+
+        it('should return update insertExercise developer', async function () {
+            test.update(app);
+            chai.request(app)
+                .get('/')
+                .end((err:any, res:any) => {
+                    res.should.have.status(200);
+                    res.body.should.be.a('object');
+                    return new Promise(()=>{});
+                });
+        });
+    });
 
 });

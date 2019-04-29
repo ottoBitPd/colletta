@@ -90,6 +90,26 @@ class FirebaseExerciseManager extends FirebaseManager {
         });
     }
 
+    public async cerca(sentence: string): Promise<string> {
+        return new Promise(function (resolve) {
+            FirebaseManager.database.ref('data/sentences/'+sentence+'/solutions/')
+                .once("value", function (snapshot: any) {
+                    if (snapshot.exists()) {
+                        snapshot.forEach(function (data: any) {
+                            if (data.val()) {
+                                //console.log("esiste");
+                                return resolve(data.key);
+                            }
+                        });
+                        //console.log("non esiste");
+                        return resolve("false");
+                    }
+                    //console.log("database vuoto");
+                    return resolve("false");
+                });
+        });
+    }
+
     /**
      * This method looks for all the exercises int the database
      * @returns {Map<string, string>} a map key-sentence containing all the exercises saved into the database
@@ -200,7 +220,7 @@ class FirebaseExerciseManager extends FirebaseManager {
 
         let field : string=splittedPath[position];
 
-       console.log(field);
+      // console.log(field);
         switch (field) {
             case "difficulty": await this.updateField(path, value); break;
             case "tags": await this.updateField(path, value); break;
@@ -218,14 +238,14 @@ class FirebaseExerciseManager extends FirebaseManager {
      *   @param value - the new value to insert
      */
     private async updateField(path : string, value:any) {
-        console.log(path);
+    //    console.log(path);
         let refi=FirebaseManager.database.ref(path);
 
         refi.once('value',function (snapshot:any) {
             console.log(snapshot.exists());
             if (snapshot.exists()) {
                 refi.set(value);
-            }else console.log("cancaro");
+            }
         });
     }
 

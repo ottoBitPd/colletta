@@ -64,13 +64,12 @@ class FirebaseExerciseManager extends FirebaseManager {
             }
         });
     }
+
     /**
      * This method checks if a sentence already exists in the database.
      * @param sentence - the sentence to check.
      * @returns {number} the key of the sentence if sentence already exists, -1 otherwise.
      */
-
-
     public async search(sentence: string): Promise<string> {
         return new Promise(function (resolve) {
             FirebaseManager.database.ref('data/sentences/').orderByChild('sentence')
@@ -91,6 +90,10 @@ class FirebaseExerciseManager extends FirebaseManager {
         });
     }
 
+    /**
+     * This method looks for all the exercises int the database
+     * @returns {Map<string, string>} a map key-sentence containing all the exercises saved into the database
+     */
     public async elements () : Promise<Map<string, string>> {
         let container = new Map<string, string>();
         return new Promise(function (resolve) {
@@ -166,7 +169,12 @@ class FirebaseExerciseManager extends FirebaseManager {
         return removed;
     }
 
-    private async removeFromId(id : string) {
+    /**
+     *   This method removes an exercise from the database
+     *   @param id - the id of the exercise to remove
+     *   @returns { boolean } returns "true" if the operation is successful
+     */
+    private async removeFromId(id : string): Promise<boolean> {
         const ref=FirebaseManager.database.ref("data/sentences/" + id);
         // @ts-ignore
         return new Promise<boolean>(function (resolve) {
@@ -181,6 +189,11 @@ class FirebaseExerciseManager extends FirebaseManager {
         });
     }
 
+    /**
+     *   This method modifies exercises into the database
+     *   @param path - the path of the exercise to modify
+     *   @param value - the new value to insert
+     */
     public async update (path:string, value: any) {
         let splittedPath =path.split("/");
         let position : number = splittedPath.length -1;
@@ -197,7 +210,11 @@ class FirebaseExerciseManager extends FirebaseManager {
         await this.updateTime(path);
     }
 
-
+    /**
+     *   This method modifies exercises into the database
+     *   @param path - the path of the exercise to modify
+     *   @param value - the new value to insert
+     */
     private async updateField(path : string, value:any) {
         console.log(path);
         let refi=FirebaseManager.database.ref(path);
@@ -210,6 +227,10 @@ class FirebaseExerciseManager extends FirebaseManager {
         });
     }
 
+    /**
+     *   This method sets the exercise time at now
+     *   @param path - the path of the exercise to modify
+     */
     private async updateTime(path: string)  {
         // @ts-ignore
         let ref=FirebaseManager.database.ref(path).parent.child("time");

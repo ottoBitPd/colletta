@@ -3,6 +3,9 @@
 import {POSManager} from "./POSManager";
 import {spawn} from 'child_process';
 
+/**
+ * Class to manage sentences with Hunpos
+ */
 class HunposManager implements POSManager{
     private modelFilePath:string;
 
@@ -15,10 +18,19 @@ class HunposManager implements POSManager{
         //this.modelFilePath='src\\ts\\presenter\\hunpos\\italian_model';
     }
 
+    /**
+     * This method sets the model to use
+     * @param modelFilePath - the model path
+     */
     setModel(modelFilePath:string):void{
         this.modelFilePath=modelFilePath;
     };
 
+    /**
+     * This method create an input for Hunpos based on a sentence
+     * @param sentence - the sentence to solve
+     * @return {string} the reworked input sentence
+     */
     private buildInput(sentence:string):string{
         //console.log(`sentence: ${sentence}`);
         let words = this.splitSentence(sentence);
@@ -29,6 +41,11 @@ class HunposManager implements POSManager{
         return result + "\n";
     };
 
+    /**
+     * This method create a solution for Hunpos based on a sentence
+     * @param sentence - the sentence to solve
+     * @return {string} the reworked solution for the sentence
+     */
     private buildSolution(posOutput : string):any{
         var wordSolArray = posOutput.split("\n");
         //console.log("hunposOutput: " + wordSolArray);
@@ -45,6 +62,10 @@ class HunposManager implements POSManager{
         return obj;
     };
 
+    /**
+     * This method returns the solution for a sentence
+     * @param sentence - the sentence to solve
+     */
     async getSolution(sentence:string):Promise<any>{
         //console.log("sentenceHunpos: ",sentence);
         //this.train();
@@ -52,6 +73,9 @@ class HunposManager implements POSManager{
 
     };
 
+    /**
+     * This method create a model based on the actual data
+     */
     train():void{
         const shell = require('shelljs');
         //scommentare per windows
@@ -60,6 +84,11 @@ class HunposManager implements POSManager{
         shell.exec('./src/ts/presenter/hunpos/hunpos-train ' + this.modelFilePath + '< ./src/ts/presenter/hunpos/train');
     };
 
+    /**
+     * This method assigns tags to the sentence words
+     * @param input - the sentence to tag
+     * @return {string} the reworked sentence with the Hunpos tags
+     */
     public async tag(input : string): Promise<string>{
         //scommentare per windows
         //const hunpos = spawn('src\\ts\\presenter\\hunpos\\hunpos-tag', [this.modelFilePath]);

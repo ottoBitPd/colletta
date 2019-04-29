@@ -33,6 +33,7 @@ class DatabaseExerciseManager extends DatabaseManager{
     /**
      *   This method reads exercises informations from the database
      *   @param id - the id of the exercise to read
+     *   @return {Data} returns the exercise with the corr
      */
     async read(id:string) : Promise<Data> {
         return await this.getDatabase().read(id);
@@ -47,11 +48,20 @@ class DatabaseExerciseManager extends DatabaseManager{
         return await this.getDatabase().search(sentence);
     }
 
+    /**
+     *   This method modifies exercises into the database
+     *   @param path - the path of the exercise to modify
+     *   @param value - the new value to insert
+     */
     async update(path:string, value:any): Promise<void>{
 
         return await this.getDatabase().update(path, value);
     }
 
+    /**
+     * This method looks for all the exercises into the database
+     * @returns {Map<string, string>} a map key-sentence containing all the exercises saved into the database
+     */
     async elements() : Promise<Map<string, string>> {
         return await this.getDatabase().elements();
     }

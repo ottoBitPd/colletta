@@ -2,7 +2,9 @@ import {UserClient} from "./UserClient";
 import {ExerciseClient} from "./ExerciseClient";
 import {ClassClient} from "./ClassClient";
 
-
+/**
+ * Class to use the functionality exposed into the model
+ */
 class Client {
     private userClient: UserClient | undefined;
     private exerciseClient: ExerciseClient | undefined;
@@ -14,14 +16,23 @@ class Client {
         this.classClient = classClient;
     }
 
+    /**
+     * This method returns an UserClient instance if exists
+     */
     getUserClient(): UserClient | undefined {
         return this.userClient;
     }
 
+    /**
+     * This method returns an ExerciseClient instance if exists
+     */
     getExerciseClient(): ExerciseClient | undefined {
         return this.exerciseClient;
     }
 
+    /**
+     * This method returns a ClassClient instance if exists
+     */
     getClassClient(): ClassClient | undefined {
         return this.classClient;
     }

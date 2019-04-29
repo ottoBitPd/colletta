@@ -226,10 +226,10 @@ class Exercise implements Data{
             return this.newSolution.evaluateSolution(tags);
         }
     }
+
     /**
-     * This method provides to
-     * @param teacherID - the id of the teacher who provide the solution which will be compared the current solution
-     * @returns number - the grade calculated
+     * This method returns a JSON file containing all the exercise informations
+     * @return {any} the JSON file
      */
     toJSON() : any{
         let exercise : any = {};

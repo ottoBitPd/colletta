@@ -1,6 +1,6 @@
 import {Data} from "./Data";
 
-/*
+/**
 *   Class to create and manage "Class" objects
 */
 class Class implements Data {
@@ -126,6 +126,10 @@ class Class implements Data {
         return false;
     }
 
+    /**
+     * This method returns a JSON file containing all the class informations
+     * @return {any} the JSON file
+     */
     public toJSON() : any {
         let _class: any = {
             "id" : this.id,

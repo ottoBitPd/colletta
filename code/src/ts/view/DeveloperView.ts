@@ -1,6 +1,10 @@
 import {PageView} from "./PageView";
 import {DeveloperPresenter} from "../presenter/DeveloperPresenter";
 
+/**
+ *   Class to display the developer page
+ *   @extends PageView
+ */
 class DeveloperView extends PageView {
     private devPresenter :DeveloperPresenter;
     constructor(app : any) {
@@ -9,6 +13,10 @@ class DeveloperView extends PageView {
         this.devPresenter.update(app);
     }
 
+    /**
+     * This method is used to display the page body structure
+     * @return {string} the HTML source
+     */
     public async getPage() {
         let ret = "" +
             "<!DOCTYPE html>\n" +
@@ -53,6 +61,11 @@ class DeveloperView extends PageView {
 
         return ret;
     }
+
+    /**
+     * This method is used to display the list of search results
+     * @return {string} the HTML source
+     */
     private async printList() {
         let results = await this.devPresenter.getResults();
         console.log("results: ", results);
@@ -88,6 +101,10 @@ class DeveloperView extends PageView {
         }
         return "\t\t</ul>\n"+ret;
     }
+
+    /**
+     * This method invokes all the scripts necessary to create the view
+     */
     private getScript(){
         return"" +
             "function download_csv(csvContent){" +
@@ -116,6 +133,11 @@ class DeveloperView extends PageView {
                 */
             "}";
     }
+
+    /**
+     * This method is used to display the page menù
+     * @return {string} the HTML source
+     */
     private getMenu() : string {
         let ret ="<nav class=\"navbar navbar-expand-sm bg-dark navbar-dark\">" +
             "    <div class=\"navbar-brand\">Colletta</div>" +
@@ -138,6 +160,10 @@ class DeveloperView extends PageView {
         return ret;
     }
 
+    /**
+     * This method is used to display the page login area
+     * @return {string} the HTML source
+     */
     private getLoginArea() : string {
         if(this.devPresenter.isLoggedIn()){
             return "" +

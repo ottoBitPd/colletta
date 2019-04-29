@@ -69,6 +69,9 @@ class RegistrationView extends PageView {
         return ret;
     }
 
+    /**
+     * This method invokes all the scripts necessary to create the view
+     */
     private getScript(){
         return"" +
             "function myFunction(){\n"+

@@ -5,6 +5,9 @@ import {UserKind} from "../view/PageView";
 
 var session = require('express-session');
 
+/**
+ *  Class to insert a new exercise
+ */
 class InsertPresenter extends PagePresenter{
 
     constructor(view : any){
@@ -16,6 +19,10 @@ class InsertPresenter extends PagePresenter{
         this.insertExercise(app);
     }
 
+    /**
+     * This method provides to add a new exercise
+     * @param app
+     */
     private insertExercise(app : any) : void{
         app.get('/', async (request: any, response: any) => {
             session.invalidLogin = request.query.mess==="invalidLogin";

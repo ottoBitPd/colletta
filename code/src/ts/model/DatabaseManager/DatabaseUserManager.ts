@@ -39,6 +39,11 @@ class DatabaseUserManager extends DatabaseManager{
         return await this.getDatabase().read(id);
     }
 
+    /**
+     *   This method modifies user informations into the database
+     *   @param path - the path of the user to modify
+     *   @param value - the new value
+     */
     async update(path:string, value: any): Promise<void>{
         return await this.getDatabase().update(path,value);
     }
@@ -51,6 +56,11 @@ class DatabaseUserManager extends DatabaseManager{
     async search(username:string) : Promise<string>{
         return await this.getDatabase().search(username);
     }
+
+    /**
+     * This method looks for all the users into the database
+     * @returns {Map<string, string>} a map key-username of all the users
+     */
     async elements() : Promise<Map<string, string>> {
         return await this.getDatabase().elements();
     }

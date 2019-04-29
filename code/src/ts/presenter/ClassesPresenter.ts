@@ -5,6 +5,10 @@ import * as fileSystem from "fs";
 
 var session = require('express-session');
 
+/**
+ *   Class to manage the classes of students
+ *   @extends PagePresenter
+ */
 class ClassesPresenter extends PagePresenter {
 
     private listType : any;
@@ -13,12 +17,21 @@ class ClassesPresenter extends PagePresenter {
         this.client = (new Client.builder()).buildClassClient().buildUserClient().buildExerciseClient().build();
     }
 
+    /**
+     * This method provides to
+     * @param app
+     */
     update(app: any) {
         this.classes(app);
         this.exercises(app);
         this.insertClass(app);
         this.deleteClass(app);
     }
+
+    /**
+     *  This method provides to manage classes
+     * @param app
+     */
     private classes(app : any){
         app.get('/classes', async (request: any, response: any) => {
             let userClient = this.client.getUserClient();
@@ -36,6 +49,11 @@ class ClassesPresenter extends PagePresenter {
             response.send(await this.view.getPage());
         });
     }
+
+    /**
+     *  This method provides to manage exercises
+     * @param app
+     */
     private exercises(app : any){
         app.get('/exercises', async (request: any, response: any) => {
             let userClient = this.client.getUserClient();
@@ -53,6 +71,11 @@ class ClassesPresenter extends PagePresenter {
             response.send(await this.view.getPage());
         });
     }
+
+    /**
+     * This method provides to insert a new class on database
+     * @param app
+     */
     private insertClass(app: any) {
         app.post('/insertclass', async (request: any, response: any) => {
             let classClient = this.client.getClassClient();
@@ -66,6 +89,11 @@ class ClassesPresenter extends PagePresenter {
             response.redirect('/classes');
         });
     }
+
+    /**
+     * This method provides to delete a class
+     * @param app
+     */
     private deleteClass(app: any) {
         app.post('/deleteclass', async (request: any, response: any) => {
             let classClient = this.client.getClassClient();
@@ -78,7 +106,8 @@ class ClassesPresenter extends PagePresenter {
     }
 
     /**
-     *
+     * This method provides to return an array of classes
+     * @returns Promise<any[]>
      */
     public async getClasses() : Promise<any[]>{
         let classClient = this.client.getClassClient();
@@ -102,7 +131,8 @@ class ClassesPresenter extends PagePresenter {
     }
 
     /**
-     *
+     * This method provides to return an array of exercises
+     * @returns Promise<any[]>
      */
     public async getExercises() : Promise<any[]>{
         let exerciseClient = this.client.getExerciseClient();

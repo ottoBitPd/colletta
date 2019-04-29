@@ -5,22 +5,33 @@ import {PageView, UserKind} from "../view/PageView";
 
 var session = require('express-session');
 
+/**
+ *  Class to manage a single exercise
+ */
 class ExercisePresenter extends PagePresenter{
 
     private userSolution : string[];
     private correction : any | null;
+    private updateState : boolean;
 
     constructor(view : PageView){
         super(view);
         this.client =(new Client.builder()).buildExerciseClient().buildUserClient().build();
         this.userSolution=[];
         this.correction=null;
+        this.updateState=false;
     }
 
+    /**
+     * This method returns user's solution
+     */
     getUserSolution() : any {
         return this.userSolution;
     }
 
+    /**
+     * This method returns correction of exercise
+     */
     getCorrection() : any | null {
         return this.correction;
     }
@@ -29,13 +40,18 @@ class ExercisePresenter extends PagePresenter{
         this.listenExercise(app);
         this.saveExercise(app);
         this.insertExercise(app);
+        this.updateExercise(app);
     }
 
+    /**
+     * This method provides to add a new exercise
+     * @param app
+     */
     private insertExercise(app : any) : void {
         app.post('/exercise/insert', async (request: any, response: any) => {
             this.correction = null;
             let exerciseClient = this.client.getExerciseClient();
-            if (exerciseClient) {
+            if(exerciseClient) {
                 //sending the sentence to hunpos which will provide a solution
                 var posSolution = await exerciseClient.autosolve(request.body.sentence, "authorIdValue");
                 //creation of the array containing tags provided from hunpos solution
@@ -47,13 +63,50 @@ class ExercisePresenter extends PagePresenter{
                 this.view.setPosTranslation(posTranslation);
                 this.view.setPosTags(posTags);
                 this.view.setUserKind(UserKind.teacher);
-                this.view.setTitle("Esercizio");
-                console.log("hunpos: ",posSolution);
-                console.log("tags extracted: ",posTags);
-                console.log("tags translated: ",posTranslation);
+                if (request.body.solutionKey !== "null") {
+                    //update di una vecchia soluzione
+                    this.updateState = true;
+                    this.view.setSentenceKey(request.body.exerciseKey);
+                    this.view.setSolutionKey(request.body.solutionKey);
+                    this.view.setTitle("Aggiorno Esercizio");
+                    response.send(await this.view.getPage());
+                } else {
+                    this.updateState = false;//maybe it is not need
 
-                response.send(await this.view.getPage());
+                    this.view.setTitle("Esercizio");
+                    console.log("hunpos: ", posSolution);
+                    console.log("tags extracted: ", posTags);
+                    console.log("tags translated: ", posTranslation);
+
+                    response.send(await this.view.getPage());
+                }
             }
+        });
+    }
+    private updateExercise(app : any) : void {
+        app.post('/exercise/update', async (request: any, response: any) => {
+            let exerciseClient = this.client.getExerciseClient();
+            if(exerciseClient && request.body.solutionKey!=="null" && request.body.sentenceKey!=="null"){
+                console.log("aggiorno esercizio: ",request.body.sentenceKey," soluzione: ",request.body.solutionKey);
+                let words = exerciseClient.getSplitSentence(request.body.sentence);
+                let wordsnumber = words.length;
+                console.log("frase: ",words);
+                //update di una vecchia soluzione
+                let hunposTags = JSON.parse(request.body.hunposTags);
+                let tagsCorrection = this.correctionToTags(wordsnumber, request.body);
+                //building a array merging tags coming from user corrections and hunpos solution
+                let finalTags = this.correctsPOS(hunposTags, tagsCorrection);
+                console.log("nuova sol: ",finalTags);
+                let solution = {
+                    tags :finalTags,
+                    _public: request.body.public,
+                    topics: this.splitTopics(request.body.topics),
+                    difficulty: request.body.difficulty
+                };
+                await exerciseClient.updateSolution(request.body.sentenceKey,request.body.solutionKey,solution);
+            }
+            response.redirect('/exercises');
+
         });
     }
 
@@ -79,6 +132,10 @@ class ExercisePresenter extends PagePresenter{
         });
     }
 
+    /**
+     * This method provides to save a new exercise
+     * @param app
+     */
     private saveExercise(app : any) : any{
         app.post('/exercise/save', async (request : any, response : any) => {
             let exerciseClient = this.client.getExerciseClient();
@@ -196,6 +253,12 @@ class ExercisePresenter extends PagePresenter{
             }
         });
     }
+
+    /**
+     * This method return tags used on a exercise
+     * @param objSolution
+     * @returns tags
+     */
     private extractTags(objSolution: any) {
         let tags = [];
         for (let i in objSolution) {
@@ -399,6 +462,13 @@ class ExercisePresenter extends PagePresenter{
         return result;
     }
 
+    /**
+     *  This method provides to return the solution of exercise
+     * @param sentence
+     * @param solverID
+     * @param time
+     * @returns Promise<any>
+     */
     async findSolution(sentence : string, solverID : string, time : number) : Promise<any> {
         let exerciseClient = this.client.getExerciseClient();
         if (exerciseClient){
@@ -409,5 +479,8 @@ class ExercisePresenter extends PagePresenter{
     }
 
 
+    getUpdate() {
+        return this.updateState;
+    }
 }
 export {ExercisePresenter};

@@ -63,8 +63,8 @@ class FirebaseClassManager extends FirebaseManager {
     }
 
     /**
-     * this methos returns a map which has entries containing  the id of a class as key and the id of the class' teacher
-     * as value. the will contains all the classes that are in the db.
+     * This method looks for all the classes into the database
+     * @returns {Map<string, string>} a map class key-teacher id containing all the classes saved into the database
      */
     public async elements () : Promise<Map<string, string>> {
         let container = new Map<string, string>();
@@ -131,6 +131,11 @@ class FirebaseClassManager extends FirebaseManager {
         return removed;
     }
 
+    /**
+     *   This method removes a class from the database
+     *   @param id - the id of the class to remove
+     *   @returns { boolean } returns "true" if the operation is successful
+     */
     private async removeFromId(id : string) {
         const ref=FirebaseManager.database.ref("data/classes/" + id);
         return new Promise<boolean>(function (resolve) {
@@ -162,7 +167,11 @@ class FirebaseClassManager extends FirebaseManager {
         }
     }
 
-
+    /**
+     *   This method modifies class informations into the database
+     *   @param path - the path of the class to modify
+     *   @param value - the new value
+     */
     private async updateField(path : string, value:any) {
         const ref=FirebaseManager.database.ref(path);
         ref.once('value',function (snapshot:any) {

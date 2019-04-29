@@ -41,6 +41,11 @@ abstract class FirebaseManager {
         return admin.database();
     }
 
+    /**
+     *   This method checks if the instance exists into the database
+     *   @param instanceName - the name of the instance
+     *   @return {FirebaseManager} the instance if exists
+     */
     protected static lookup(istanceName: string): FirebaseManager | null | undefined{
         if (FirebaseManager.registry.has(istanceName))
             return FirebaseManager.registry.get(istanceName);
@@ -62,6 +67,10 @@ abstract class FirebaseManager {
      */
     abstract remove(id: string): Promise<boolean>;
 
+    /**
+     * This method looks for all the elements into the database
+     * @returns {Map<string, string>} a map
+     */
     abstract elements(): Promise<Map<string, string>>;
 
     /**
@@ -76,6 +85,11 @@ abstract class FirebaseManager {
      */
     abstract read(id: string): Promise<Data>;
 
+    /**
+     *   This method modifies data informations into the database
+     *   @param path - the path of the data to modify
+     *   @param value - the new value
+     */
     abstract update(path:string, value: any): void;
 
     /**

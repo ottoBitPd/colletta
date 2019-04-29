@@ -57,6 +57,11 @@ class DatabaseClassManager extends DatabaseManager{
     async update(path:string, value: any): Promise<void> {
         return await this.getDatabase().update(path,value);
     }
+
+    /**
+     * This method looks for all the classes into the database
+     * @returns {Map<string, string>} a map class key-teacher id containing all the classes saved into the database
+     */
     async elements() : Promise<Map<string, string>> {
         return await this.getDatabase().elements();
     }

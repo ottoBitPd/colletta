@@ -6,6 +6,8 @@ import {ExercisePresenter} from "../presenter/ExercisePresenter";
  *   @extends PageView
  */
 class ExerciseView extends PageView{
+    private sentenceKey : any;
+    private solutionKey : any;
     private sentence : any;
     private posTranslation : any;
     private posTags : any;
@@ -24,21 +26,42 @@ class ExerciseView extends PageView{
         this.corrections = [];
     }
 
-
-    setSentence(value : string) {
+    /**
+     * This method modifies the exercise sentence
+     * @param value - the new exercise sentence
+     */
+    setSentence(value : string): void {
         this.sentence = value;
     }
 
-    setPosTranslation(value : string[]) {
+    /**
+     * This method modifies the PosTranslation of an exercise sentence
+     * @param value - the new Pos translation
+     */
+    setPosTranslation(value : string[]): void {
         this.posTranslation = value;
     }
 
-    setPosTags(value : string[]) {
+    /**
+     * This method modifies the tags of the exercise sentence words
+     * @param value - the new tags
+     */
+    setPosTags(value : string[]): void {
         this.posTags = value;
     }
 
-    setCorrections(value : any[]){
+    /**
+     * This method modifies the exercise correction
+     * @param value - the new exercise correction
+     */
+    setCorrections(value : any[]): void{
         this.corrections = value;
+    }
+    setSentenceKey(value : any){
+        this.sentenceKey = value;
+    }
+    setSolutionKey(value : any[]){
+        this.solutionKey = value;
     }
 
     /**
@@ -80,13 +103,19 @@ class ExerciseView extends PageView{
      * @return {string} the HTML source
      */
     private showExercise(words : string[]) : string {
+        let page="/exercise/save";
+        if(this.exercisePresenter.getUpdate()){
+            page="/exercise/update";
+        }
         let ret ="    <div class='text-center col-sm-12' id=\"esercizio\">" +
-        "        <form method=\"POST\" action=\"/exercise/save\">";
+        "        <form method=\"POST\" action=\""+page+"\">";
 
         ret+=this.buildTable(words);
         //si esegue un passaggio alla OttoBit (^o^)
         ret+="" +
             "            <input type=\"hidden\" name=\"wordsnumber\" value=\"*wordsnumber*\"/>" +
+            "            <input type=\"hidden\" name=\"sentenceKey\" value=\""+this.sentenceKey+"\"/>" +
+            "            <input type=\"hidden\" name=\"solutionKey\" value=\""+this.solutionKey+"\"/>" +
             "            <input type=\"hidden\" name=\"sentence\" value=\""+this.sentence+"\"/>";
         if(this.posTags) {
             ret += "<input type=\"hidden\" name=\"hunposTags\" value='" + JSON.stringify(this.posTags) + "'/>";
@@ -213,6 +242,10 @@ class ExerciseView extends PageView{
         return table + "</ul>";
     }
 
+    /**
+     * This method applies the css style
+     * @param value - the words of the sentence
+     */
     private buildCss(words : string[]){
         let css="<style>\n";
         for(let i=0;i < words.length;i++){
@@ -221,11 +254,18 @@ class ExerciseView extends PageView{
         return css+"</style>\n";
     }
 
+    /**
+     * This method returns the right drop down menù value
+     * @param index - the index of the right value
+     */
     private getSelect(index : number){
         const input =  this.fileSystem.readFileSync('./public/htmlSelect.html').toString();
         return input.replace(/\*i\*/g,index);
     }
 
+    /**
+     * This method invokes all the scripts necessary to create the view
+     */
     private getScript(){
         return this.fileSystem.readFileSync('./public/jsSelect.js').toString();
     }

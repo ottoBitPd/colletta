@@ -49,16 +49,35 @@ class DeveloperView extends PageView {
                 "\t\t</div>\n\t</div>\n";
         }
         else{//developer is loggedIn
+            ret += "\t\t\t<form action='/developer' method='get'>" +
+            "\t\t\t\t<input type=\"text\" class='form-control my-2' name=\"sentence\" placeholder=\"Inserisci una frase\"/>\n" +
+            "\t\t\t\t<input type=\"number\" class='form-control my-2' id= \"valutationFrom\" name=\"valutationFrom\" placeholder=\"Scegli una valutazione minima \" min='1' max='10' onchange='syncFunc()'/>\n" +
+            "\t\t\t\t<input type=\"number\" class='form-control my-2' id= \"valutationTo\" name=\"valutationTo\" placeholder=\"Scegli una valutazione massima \" min='1' max='10'/>\n" +
+
+            "<div class=\"form-group row\">\n" +
+            "  <label for=\"example-date-input\" class=\"col-2 col-form-label\">Data inizio</label>\n" +
+            "  <div class=\"col-10\">\n" +
+            "    <input class=\"form-control\" type=\"date\" name=\"dateFrom\" id=\"date\">\n" +
+            "  </div>" +
+
+            "<div class=\"form-group row\">\n" +
+            "  <label for=\"example-date-input\" class=\"col-2 col-form-label\">Data fine</label>\n" +
+            "  <div class=\"col-10\">\n" +
+            "    <input class=\"form-control\" type=\"date\" name=\"dateTo\" id=\"date\">\n" +
+            "  </div>" +
+
+            "\t\t\t\t<input type=\"text\" class='form-control my-2' name=\"user\" placeholder=\"Inserisci un user\"/>\n" +
+
+                "\t\t\t\t<button type=\"submit\" class=\"btn btn-primary my-2 my-sm-0 w-25\">Filtra</button>\n" +
+            "\t\t\t</form>";
             ret+= await this.printList();
-            //download
-            let annot = await this.devPresenter.getAllAnnotation("");
-            let csv = await this.devPresenter.createCsvFromAnnotations(annot);
+
+            let csv = await this.devPresenter.createCsvFromAnnotations();
             let s=escape(csv);
             ret+="<button onclick='download_csv(\""+s+"\")' class=\"btn btn-primary my-2 my-sm-0 w-25\">Download</button>";
         }
 
         ret+=this.getFoot(this.getScript());
-
         return ret;
     }
 
@@ -67,11 +86,7 @@ class DeveloperView extends PageView {
      * @return {string} the HTML source
      */
     private async printList() {
-        let results = await this.devPresenter.getResults();
-        console.log("results: ", results);
-        if(results===undefined){
-            return "";//resultList is not set yet, cause nobody searched yet
-        }
+        let results = await this.devPresenter.getAnnotations();
         if(results.length===0){
             return "<h2 class='h5 text-danger text-center'>Nessun risultato</h2>";//resultList is not set yet, cause nobody searched yet
         }
@@ -88,15 +103,15 @@ class DeveloperView extends PageView {
                 "\t\t\t</li>";
 
             for (let i in results) {
-                for (let y in results[i].solutions) {
+                //for (let y in results[i].solutions) {
                     ret += "\t\t\t<li class=\"list-group-item\">" +
                         "\t\t\t\t<div class='row'>" +
                         "\t\t\t\t\t<div class='col-sm-8'>" + results[i].sentence + "</div>\n";
-                    let date = new Date(results[i].solutions[y].time);
-                    ret += "\t\t\t\t\t<div class='col-sm-4'>" + date.getDate() + "-" + date.getMonth() + "-" + date.getFullYear() + "</div>" +
+                    let date = new Date(results[i].time);
+                    ret += "\t\t\t\t\t<div class='col-sm-4'>" + date.getDate() + "/" + (date.getMonth()+1) + "/" + date.getFullYear() + "</div>" +
                         "\t\t\t\t</div>\n" +
                         "\t\t\t</li>\n";
-                }
+                //}
             }
         }
         return "\t\t</ul>\n"+ret;
@@ -107,6 +122,13 @@ class DeveloperView extends PageView {
      */
     private getScript(){
         return"" +
+            "function syncFunc() {" +
+            "var val = document.getElementById('valutationFrom').value;" +
+            "document.getElementById('valutationTo').min= val;"+
+            "}" +
+
+
+
             "function download_csv(csvContent){" +
             "alert(csvContent);"+
             "csvContent=unescape(csvContent);"+

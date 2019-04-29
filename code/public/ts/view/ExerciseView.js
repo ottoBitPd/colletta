@@ -25,15 +25,31 @@ class ExerciseView extends PageView_1.PageView {
         this.fileSystem = require('fs');
         this.corrections = [];
     }
+    /**
+     * This method modifies the exercise sentence
+     * @param value - the new exercise sentence
+     */
     setSentence(value) {
         this.sentence = value;
     }
+    /**
+     * This method modifies the PosTranslation of an exercise sentence
+     * @param value - the new Pos translation
+     */
     setPosTranslation(value) {
         this.posTranslation = value;
     }
+    /**
+     * This method modifies the tags of the exercise sentence words
+     * @param value - the new tags
+     */
     setPosTags(value) {
         this.posTags = value;
     }
+    /**
+     * This method modifies the exercise correction
+     * @param value - the new exercise correction
+     */
     setCorrections(value) {
         this.corrections = value;
     }
@@ -212,6 +228,10 @@ class ExerciseView extends PageView_1.PageView {
         }
         return table + "</ul>";
     }
+    /**
+     * This method applies the css style
+     * @param value - the words of the sentence
+     */
     buildCss(words) {
         let css = "<style>\n";
         for (let i = 0; i < words.length; i++) {
@@ -219,10 +239,17 @@ class ExerciseView extends PageView_1.PageView {
         }
         return css + "</style>\n";
     }
+    /**
+     * This method returns the right drop down menù value
+     * @param index - the index of the right value
+     */
     getSelect(index) {
         const input = this.fileSystem.readFileSync('./public/htmlSelect.html').toString();
         return input.replace(/\*i\*/g, index);
     }
+    /**
+     * This method invokes all the scripts necessary to create the view
+     */
     getScript() {
         return this.fileSystem.readFileSync('./public/jsSelect.js').toString();
     }

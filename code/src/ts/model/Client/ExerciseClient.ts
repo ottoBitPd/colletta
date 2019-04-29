@@ -101,47 +101,48 @@ class ExerciseClient{
                 }
             }
         }
+        console.log("res: ", result);
         return result;
     }
 
+    async searchAllSolution() : Promise<any[]|[]> {
+        let result: any[] = [];
+        var elements = await this.dbExerciseManager.elements();
+        for (let entry of Array.from(elements)) {
+            let key = entry[0];
+            let exercise: Data = await this.dbExerciseManager.read(key);
+            let phrase = (<Exercise>exercise).getSentence();
+            let solutions = (<Exercise>exercise).getSolutions();
+            for (let sol of solutions) {
+                let val:any[] = [];
+                // @ts-ignore
+                for (let vals of sol.getValutations().entries()) {
+                    val = [vals[0], vals[1]];
+                }
+                result.push(
+                    {
+                        "sentence": phrase,
+                        "solverID": sol.getSolverId(),
+                        "tags": sol.getSolutionTags(),
+                        "time": sol.getTime(),
+                        "difficulty": sol.getDifficulty(),
+                        "topics": sol.getTopics(),
+                        "valutations": val
+                    });
+            }
+        }
+        if (result.length > 0) {
+            return result;
+        }
+        return [];
+    }
+    /*
+=======
     /**
      * This method looks for solutions into the database
      * @param sentence - the sentence of which we want the solutions
      * @returns {any[]} the list of solutions
      */
-    async searchAllSolution(sentence:string) : Promise<any[]> {
-        let result: any[] = [];
-        var regex= new RegExp(sentence, "i");
-        var elements = await this.dbExerciseManager.elements();
-        for (let entry of Array.from(elements)) {
-            let key=entry[0];
-            let value = entry[1];
-
-            if(value.search(regex)>=0){
-                let exercise: Data = await this.dbExerciseManager.read(key);
-                let phrase = (<Exercise>exercise).getSentence();
-                let solutions = (<Exercise>exercise).getSolutions();
-                for (let sol of solutions) {
-                    let val = "";
-                    // @ts-ignore
-                    for (let vals of sol.getValutations().entries()) {
-                        val = val + vals[0] + "=>" + vals[1];
-                    }
-                    result.push(
-                        {
-                            "sentence": phrase,
-                            "solverID": sol.getSolverId(),
-                            "tags": sol.getSolutionTags(),
-                            "time": sol.getTime(),
-                            "difficulty": sol.getDifficulty(),
-                            "topics": sol.getTopics(),
-                            "valutations": val
-                        });
-                }
-            }
-        }
-        return result;
-    }
 
 
     /**

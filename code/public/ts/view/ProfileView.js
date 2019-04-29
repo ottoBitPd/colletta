@@ -29,6 +29,10 @@ class ProfileView extends PageView_1.PageView {
     setUserData(obj) {
         this.userData = obj;
     }
+    /**
+     * This method modifies the error message
+     * @param error - the new message
+     */
     setError(error) {
         this.error = error;
     }

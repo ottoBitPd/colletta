@@ -224,6 +224,13 @@ class ExerciseClient{
         });
         return averageMap;
     }
+    public async updateSolution(exerciseId : string, solutionId : string, solution : any){
+
+        await this.dbExerciseManager.update('data/sentences/'+exerciseId+'/solutions/'+solutionId+'/tags', solution.tags);
+        await this.dbExerciseManager.update('data/sentences/'+exerciseId+'/solutions/'+solutionId+'/topics', solution.topics);
+        await this.dbExerciseManager.update('data/sentences/'+exerciseId+'/solutions/'+solutionId+'/public', solution._public);
+        await this.dbExerciseManager.update('data/sentences/'+exerciseId+'/solutions/'+solutionId+'/difficulty', solution.difficulty);
+    }
 
 }
 export{ExerciseClient}

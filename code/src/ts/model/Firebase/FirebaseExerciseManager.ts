@@ -192,8 +192,10 @@ class FirebaseExerciseManager extends FirebaseManager {
             case "difficulty": await this.updateField(path, value); break;
             case "tags": await this.updateField(path, value); break;
             case "topics":await this.updateField(path, value); break;
+            case "public":await this.updateField(path, value); break;
             default : await console.log("field doesn't exists"); return;
         }
+
         await this.updateTime(path);
     }
 

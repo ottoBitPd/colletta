@@ -37,6 +37,12 @@ class ExerciseView extends PageView_1.PageView {
     setCorrections(value) {
         this.corrections = value;
     }
+    setSentenceKey(value) {
+        this.sentenceKey = value;
+    }
+    setSolutionKey(value) {
+        this.solutionKey = value;
+    }
     /**
      * This method is used to display the page body structure
      * @return {string} the HTML source
@@ -75,12 +81,18 @@ class ExerciseView extends PageView_1.PageView {
      * @return {string} the HTML source
      */
     showExercise(words) {
+        let page = "/exercise/save";
+        if (this.exercisePresenter.getUpdate()) {
+            page = "/exercise/update";
+        }
         let ret = "    <div class='text-center col-sm-12' id=\"esercizio\">" +
-            "        <form method=\"POST\" action=\"/exercise/save\">";
+            "        <form method=\"POST\" action=\"" + page + "\">";
         ret += this.buildTable(words);
         //si esegue un passaggio alla OttoBit (^o^)
         ret += "" +
             "            <input type=\"hidden\" name=\"wordsnumber\" value=\"*wordsnumber*\"/>" +
+            "            <input type=\"hidden\" name=\"sentenceKey\" value=\"" + this.sentenceKey + "\"/>" +
+            "            <input type=\"hidden\" name=\"solutionKey\" value=\"" + this.solutionKey + "\"/>" +
             "            <input type=\"hidden\" name=\"sentence\" value=\"" + this.sentence + "\"/>";
         if (this.posTags) {
             ret += "<input type=\"hidden\" name=\"hunposTags\" value='" + JSON.stringify(this.posTags) + "'/>";

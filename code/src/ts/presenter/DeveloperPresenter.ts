@@ -4,6 +4,9 @@ import {PagePresenter} from "./PagePresenter";
 //import { ExportToCsv } from 'export-to-csv';
 var session = require('express-session');
 
+/**
+ * Class to manage developer's operations
+ */
 class DeveloperPresenter extends PagePresenter{
     //private client : any;
     private developer = "trave";
@@ -18,6 +21,10 @@ class DeveloperPresenter extends PagePresenter{
         this.download(app);
     }
 
+    /**
+     *
+     * @param app
+     */
     private listenDeveloper(app : any) {
         app.get('/developer', async (request: any, response: any) => {
             this.view.setTitle("Developer");
@@ -25,7 +32,10 @@ class DeveloperPresenter extends PagePresenter{
         });
     }
 
-
+    /**
+     *
+     * @param app
+     */
     private checkDeveloper(app : any) {
         app.post('/checkdeveloper', async (request: any, response: any) => {
             //prendi password dal db e checkif equal to request.body.password
@@ -44,6 +54,10 @@ class DeveloperPresenter extends PagePresenter{
         });
     }
 
+    /**
+     *  This method provides to manage the download of the data
+     * @param app
+     */
     private async download(app : any) {
         app.get('/download', async (request: any, response: any) => {
             /*let annot= await this.getAllAnnotation("La macchina è rossa");
@@ -64,6 +78,12 @@ class DeveloperPresenter extends PagePresenter{
         }
     }
 
+    /**
+     *  This methods provides to return filtered annotations by date
+     * @param annotations
+     * @param date
+     * @returns result
+     */
     filterByDate(annotations : any[], date : Date) {
         let result=annotations;
         for (let sol of result) {
@@ -74,6 +94,12 @@ class DeveloperPresenter extends PagePresenter{
         return result;
     }
 
+    /**
+     *
+     * @param annotations
+     * @param id
+     * @returns result - annotations filtered
+     */
     filterByUser(annotations : any[], id : string) {
         let result=annotations;
         for (let sol of result) {
@@ -95,7 +121,11 @@ class DeveloperPresenter extends PagePresenter{
         document.body.removeChild(link);
     }
     */
-
+    /**
+     * This method provides to convert annotations in csv format
+     * @param annotations
+     * @returns csv
+     */
     async createCsvFromAnnotations(annotations : any[]) {
         // @ts-ignore
         const replacer = (key, value) => value === null ? '' : value;
@@ -106,9 +136,18 @@ class DeveloperPresenter extends PagePresenter{
         csv = csv.join('\r\n');
         return csv;
     }
+
+    /**
+     *
+     * @param s
+     */
     private setMessage( s: string){
         this.message=s;
     }
+
+    /**
+     *
+     */
     public getMessage(){
         return this.message;
     }

@@ -2,6 +2,9 @@ import {DatabaseExerciseManager} from "../DatabaseManager/DatabaseExerciseManage
 import {Exercise} from "../Data/Exercise";
 import {Data} from "../Data/Data";
 import {Solution} from "../Data/Solution";
+/**
+ *   Class to create and manage "ExerciseClient" objects
+ */
 
 class ExerciseClient{
     private dbExerciseManager : DatabaseExerciseManager;

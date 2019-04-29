@@ -1,6 +1,6 @@
 import {Data} from "./Data";
 
-/*
+/**
 *   Class to create and manage "Class" objects
 */
 class Class implements Data {

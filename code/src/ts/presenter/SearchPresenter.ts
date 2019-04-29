@@ -3,6 +3,9 @@ import {Client} from "../model/Client/Client";
 
 var session = require('express-session');
 
+/**
+ * Class provides to manage the search
+ */
 class SearchPresenter extends PagePresenter {
     private searchType : any;
     private results : any;
@@ -10,10 +13,19 @@ class SearchPresenter extends PagePresenter {
         super(view);
         this.client = (new Client.builder()).buildExerciseClient().buildUserClient().build();
     }
+
+    /**
+     * This method provides to set search type
+     * @param value
+     */
     private setSearchType(value : string){
         //this.setResults(undefined);
         this.searchType=value;
     }
+
+    /**
+     * This method returns type search
+     */
     public getSearchType(){
         return this.searchType;
     }
@@ -24,6 +36,11 @@ class SearchPresenter extends PagePresenter {
         this.searchStudent(app);
         this.classExerciseSearchPage(app);
     }
+
+    /**
+     * This method provides to manage exercise search page
+     * @param app
+     */
     private exerciseSearchPage(app : any){
         app.get('/exercise/search', async (request: any, response: any) => {
             //console.log("sentence: ",request.body.sentence);
@@ -43,6 +60,11 @@ class SearchPresenter extends PagePresenter {
             response.send(await this.view.getPage());
         });
     }
+
+    /**
+     * This method provides to manage exercise search
+     * @param app
+     */
     private searchExercise(app : any) {
         app.post('/searchexercise', async (request: any, response: any) => {
             //console.log("frase da cercare : "+request.body.sentence);
@@ -64,6 +86,11 @@ class SearchPresenter extends PagePresenter {
             }
         });
     }
+
+    /**
+     * This method provides to manage student search page
+     * @param app
+     */
     private studentSearchPage(app: any) {
         app.post('/student/insert', async (request: any, response: any) => {
             if(request.query.s === undefined){
@@ -81,6 +108,10 @@ class SearchPresenter extends PagePresenter {
         });
     }
 
+    /**
+     *  This method provides to manage student search
+     * @param app
+     */
     private searchStudent(app: any) {
         app.post('/searchstudent', async (request: any, response: any) => {
             //console.log("frase da cercare : "+request.body.sentence);
@@ -97,13 +128,26 @@ class SearchPresenter extends PagePresenter {
         });
     }
 
+    /**
+     * This method provides to set the results
+     * @param map
+     */
     private setResults(map: any) {
         this.results=map;
     }
+
+    /**
+     * This method returns the results
+     * @returns results
+     */
     public getResults() {
         return this.results;
     }
 
+    /**
+     * This method provides to manage exercise search belong a class
+     * @param app
+     */
     private classExerciseSearchPage(app: any) {
         app.post('/class/exercise/search', async (request: any, response: any) => {
             if(request.query.s === undefined){

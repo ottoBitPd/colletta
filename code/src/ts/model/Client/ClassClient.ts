@@ -1,7 +1,9 @@
 import {DatabaseClassManager} from "../DatabaseManager/DatabaseClassManager";
 import {Class} from "../Data/Class";
 import {Data} from "../Data/Data";
-
+/**
+ *   Class to create and manage "ClassClient" objects
+ */
 class ClassClient{
     private dbClassManager : DatabaseClassManager;
     constructor(){

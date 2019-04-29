@@ -3,6 +3,10 @@ import {Client} from "../model/Client/Client";
 
 const session = require('express-session');
 
+/**
+ *   Class to create and manage the authentication of application
+ *   @extends PagePresenter
+ */
 class AuthenticationPresenter extends PagePresenter {
     private passwordHash = require('bcryptjs');
 
@@ -11,6 +15,10 @@ class AuthenticationPresenter extends PagePresenter {
         this.client = (new Client.builder()).buildUserClient().build();
     }
 
+    /**
+     * This method provides to manage the authentication on every page.
+     * @param app
+     */
     update(app: any) {
         app.get('/logout', (request: any, response: any) => {
             console.log("LOGOUT");
@@ -76,6 +84,11 @@ class AuthenticationPresenter extends PagePresenter {
             }
         });
     }
+
+    /**
+     * This method returns true if username is invalid.
+     * @return boolean
+     */
     isUsernameInvalid() : boolean {
         return  session.errUsername;
     }

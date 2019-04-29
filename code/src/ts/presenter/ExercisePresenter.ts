@@ -5,6 +5,9 @@ import {PageView, UserKind} from "../view/PageView";
 
 var session = require('express-session');
 
+/**
+ *  Class to manage a single exercise
+ */
 class ExercisePresenter extends PagePresenter{
 
     private userSolution : string[];
@@ -17,10 +20,16 @@ class ExercisePresenter extends PagePresenter{
         this.correction=null;
     }
 
+    /**
+     * This method returns user's solution
+     */
     getUserSolution() : any {
         return this.userSolution;
     }
 
+    /**
+     * This method returns correction of exercise
+     */
     getCorrection() : any | null {
         return this.correction;
     }
@@ -31,6 +40,10 @@ class ExercisePresenter extends PagePresenter{
         this.insertExercise(app);
     }
 
+    /**
+     * This method provides to add a new exercise
+     * @param app
+     */
     private insertExercise(app : any) : void {
         app.post('/exercise/insert', async (request: any, response: any) => {
             this.correction = null;
@@ -79,6 +92,10 @@ class ExercisePresenter extends PagePresenter{
         });
     }
 
+    /**
+     * This method provides to save a new exercise
+     * @param app
+     */
     private saveExercise(app : any) : any{
         app.post('/exercise/save', async (request : any, response : any) => {
             let exerciseClient = this.client.getExerciseClient();
@@ -196,6 +213,12 @@ class ExercisePresenter extends PagePresenter{
             }
         });
     }
+
+    /**
+     * This method return tags used on a exercise
+     * @param objSolution
+     * @returns tags
+     */
     private extractTags(objSolution: any) {
         let tags = [];
         for (let i in objSolution) {
@@ -399,6 +422,13 @@ class ExercisePresenter extends PagePresenter{
         return result;
     }
 
+    /**
+     *  This method provides to return the solution of exercise
+     * @param sentence
+     * @param solverID
+     * @param time
+     * @returns Promise<any>
+     */
     async findSolution(sentence : string, solverID : string, time : number) : Promise<any> {
         let exerciseClient = this.client.getExerciseClient();
         if (exerciseClient){

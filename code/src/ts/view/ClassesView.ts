@@ -182,6 +182,8 @@ class ClassesView extends PageView {
                         ret+=""+
                             "<div class='col-sm-2 mx-auto py-2'>\n" +
                             "<form method='post' action='/exercise/insert'>\n" +
+                            "<input type='hidden' name='exerciseKey' value='"+elements[i].key+"'>\n" +
+                            "<input type='hidden' name='solutionKey' value='"+elements[i].solutions[y].key+"'>\n" +
                             "<button class='btn btn-primary btn-sm' name='sentence' value='" + elements[i].sentence + "' type='submit'>Modifica</button>\n" +
                             "</form>\n"+
                             "</div>\n";

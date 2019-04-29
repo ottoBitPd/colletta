@@ -5,13 +5,20 @@ import {PagePresenter} from "./PagePresenter";
 var session = require('express-session');
 
 class DeveloperPresenter extends PagePresenter{
-    //private client : any;
+    //private client : any
+    private annotations : any[] = [];
     private developer = "trave";
     private message : any;
     constructor(view : PageView) {
         super(view);
         this.client =(new Client.builder()).buildExerciseClient().buildUserClient().build();
+
     }
+
+    async initializeAnnotations() : Promise<void>{
+        this.annotations = await this.getAllAnnotation();
+    }
+
     update(app: any) {
         this.listenDeveloper(app);
         this.checkDeveloper(app);
@@ -21,10 +28,14 @@ class DeveloperPresenter extends PagePresenter{
     private listenDeveloper(app : any) {
         app.get('/developer', async (request: any, response: any) => {
             this.view.setTitle("Developer");
+
+            await this.initializeAnnotations();
+            if (request.query)
+                this.applyFilters(request.query.sentence, request.query.dateFrom, request.query.dateTo, request.query.user,
+                    request.query.valutationFrom, request.query.valutationTo);
             response.send(await this.view.getPage());
         });
     }
-
 
     private checkDeveloper(app : any) {
         app.post('/checkdeveloper', async (request: any, response: any) => {
@@ -46,77 +57,53 @@ class DeveloperPresenter extends PagePresenter{
 
     private async download(app : any) {
         app.get('/download', async (request: any, response: any) => {
-            /*let annot= await this.getAllAnnotation("La macchina è rossa");
-            let csvFile= this.createCsvFromAnnotations(annot);
-            this.downloadCsv(csvFile);*/
             this.view.setTitle("Download");
             response.send(await this.view.getPage());
 
 
         });
     }
-    // @ts-ignore
-    async getAllAnnotation(sentence: string) : Promise<any>{
+
+    private applyFilters(sentence : string | undefined, dateFrom : number | undefined, dateTo : number| undefined,
+                         user : string| undefined, valutationFrom : number| undefined, valutationTo : number | undefined){
+        if (sentence)
+            this.filterBySentence(sentence);
+        if (dateFrom) {
+            if (dateTo)
+                this.filterByDate(new Date(dateFrom), new Date(dateTo));
+            else
+               this.filterByDate(new Date(dateFrom), new Date(Date.now()));
+        }
+        else if (!dateFrom && dateTo)
+            this.filterByDate(new Date(0), new Date((new Date(dateTo)).getTime()+86400000 ));
+
+        if (user)
+            this.filterByUser(user);
+        if(valutationFrom) {
+            if (valutationTo)
+                this.filterByValutation(valutationFrom, valutationTo);
+            else
+                this.filterByValutation(valutationFrom,10);
+        }
+        else if (!valutationFrom && valutationTo)
+            this.filterByValutation(0, valutationTo);
+    }
+
+
+
+    getAnnotations() {
+        return this.annotations;
+    }
+
+     async getAllAnnotation() : Promise<any[]> {
         let exerciseClient = this.client.getExerciseClient();
+        let an : any[] = [];
         if (exerciseClient) {
-            let an= await exerciseClient.searchAllSolution(sentence);
-            return an;
+             an = await exerciseClient.searchAllSolution();
         }
+        return an;
     }
-
-    filterByDate(annotations : any[], date : Date) {
-        let result=annotations;
-        for (let sol of result) {
-            if (sol.time < date.getTime()) {
-                result.splice(result.indexOf(sol));
-            }
-        }
-        return result;
-    }
-
-    filterByUser(annotations : any[], id : string) {
-        let result=annotations;
-        for (let sol of result) {
-            if (sol.solverID !== id) {
-                result.splice(result.indexOf(sol));
-            }
-        }
-        return result;
-    }
-
-    /*
-    downloadCsv(csv:any) {
-        let link  = document.createElement('a');
-        link.setAttribute('href', 'data:text/csv;charset=utf-8,%EF%BB%BF' + encodeURIComponent(csv));
-        link.setAttribute('download', "annotazioni");
-        link.style.visibility = 'hidden';
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-    }
-    */
-
-    async createCsvFromAnnotations(annotations : any[]) {
-        // @ts-ignore
-        const replacer = (key, value) => value === null ? '' : value;
-        const header = Object.keys(annotations[0]);
-        let csv : any = annotations.map(row => header.map(fieldName =>
-            JSON.stringify(row[fieldName], replacer)).join(';'));
-        //csv.unshift(header.join(''));
-        csv = csv.join('\r\n');
-        return csv;
-    }
-    private setMessage( s: string){
-        this.message=s;
-    }
-    public getMessage(){
-        return this.message;
-    }
-
-    /**
-     * This method returns a map with all the exercises
-     */
-    public async getResults(){
+        /*
         let exerciseClient = this.client.getExerciseClient();
         let ret = [];
         if(exerciseClient) {
@@ -132,6 +119,58 @@ class DeveloperPresenter extends PagePresenter{
             return ret;
         }
         return [];
+        */
+
+    filterBySentence(sentence : string) {
+        var regex= new RegExp(sentence, "i");
+        this.annotations =(this.annotations).filter((entry: any)=>entry.sentence.search(regex) >= 0);
+    }
+
+    filterByValutation(valutationFrom : number, valutationTo : number) {
+        this.annotations= this.annotations.filter((val : any)=>(val.valutations[1] >= valutationFrom)
+            && (val.valutations[1]<= valutationTo));
+    }
+
+    filterByDate(dateFrom : Date, dateTo : Date) {
+        this.annotations= this.annotations.filter((sol:any)=>(sol.time>=dateFrom.getTime())
+            && (sol.time<=dateTo.getTime()));
+    }
+
+    filterByUser(id : string) {
+        this.annotations=this.annotations.filter((sol:any)=>sol.solverID !==id);
+    }
+
+
+    async createCsvFromAnnotations() {
+        if ((this.annotations.length) !== 0) {
+            const replacer = (key: any, value: any) => value === null ? '' : value;
+            const header = Object.keys(this.annotations[0]);
+            let csv: any = this.annotations.map((row: any) => header.map(fieldName =>
+                JSON.stringify(row[fieldName], replacer)).join(';'));
+            //csv.unshift(header.join(''));
+            csv = csv.join('\r\n');
+            return csv;
+        }
+        else
+            return [];
+    }
+
+    async createTxtFromAnnotations() {
+        // @ts-ignore
+        const replacer = (key, value) => value === null ? '' : value;
+        const header = Object.keys(this.annotations[0]);
+        let csv : any = this.annotations.map((row:any) => header.map(fieldName =>
+            JSON.stringify(row[fieldName], replacer)).join('\t'));
+        //csv.unshift(header.join(''));
+        csv = csv.join('\r\n');
+        return csv;
+    }
+
+    private setMessage( s: string){
+        this.message=s;
+    }
+    public getMessage() {
+        return this.message;
     }
 }
 export {DeveloperPresenter}

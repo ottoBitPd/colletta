@@ -88,10 +88,43 @@ class ExerciseClient{
                 }
             }
         }
+        console.log("res: ", result);
         return result;
     }
 
-    async searchAllSolution(sentence:string) : Promise<any[]> {
+
+    async searchAllSolution() : Promise<any[]|[]> {
+        let result: any[] = [];
+        var elements = await this.dbExerciseManager.elements();
+        for (let entry of Array.from(elements)) {
+            let key = entry[0];
+            let exercise: Data = await this.dbExerciseManager.read(key);
+            let phrase = (<Exercise>exercise).getSentence();
+            let solutions = (<Exercise>exercise).getSolutions();
+            for (let sol of solutions) {
+                let val:any[] = [];
+                // @ts-ignore
+                for (let vals of sol.getValutations().entries()) {
+                    val = [vals[0], vals[1]];
+                }
+                result.push(
+                    {
+                        "sentence": phrase,
+                        "solverID": sol.getSolverId(),
+                        "tags": sol.getSolutionTags(),
+                        "time": sol.getTime(),
+                        "difficulty": sol.getDifficulty(),
+                        "topics": sol.getTopics(),
+                        "valutations": val
+                    });
+            }
+        }
+        if (result.length > 0) {
+            return result;
+        }
+        return [];
+    }
+    /*
         let result: any[] = [];
         var regex= new RegExp(sentence, "i");
         var elements = await this.dbExerciseManager.elements();
@@ -123,7 +156,9 @@ class ExerciseClient{
             }
         }
         return result;
+
     }
+    */
 
 
     public async getSentence(id: string): Promise<string> {

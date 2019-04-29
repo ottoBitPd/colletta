@@ -5,7 +5,7 @@ import {UserKind} from "../view/PageView";
 var session = require('express-session');
 
 /**
- * 
+ *
  */
 class ProfilePresenter extends PagePresenter{
     //private classClient : ClassClient | undefined;

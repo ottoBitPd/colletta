@@ -39,7 +39,18 @@ abstract class DatabaseManager{
      *   @param id - the id of the object to read
      */
     public abstract read(id:string) : Promise<Data> | null;
+
+    /**
+     *   This method modifies data informations into the database
+     *   @param path - the path of the data to modify
+     *   @param value - the new value
+     */
     public abstract update(path:string, value: any) : void;
+
+    /**
+     * This method looks for all the elements into the database
+     * @returns {Map<string, string>} a map
+     */
     public abstract elements() : Promise<Map<string, string>>;
 
     /**

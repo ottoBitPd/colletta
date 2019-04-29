@@ -99,8 +99,10 @@ class Solution {
     public setPublic(value:boolean){
         this._public=value;
     }
+
     /**
-    *
+     * This method returns a JSON file containing all the valutation informations
+     * @return {any} the JSON file
      */
     JSONValutations() : any {
         let result = "{";
@@ -149,6 +151,11 @@ class Solution {
         }
         return ((rightTagsNumber*10)/mySolutionTags.length);
     }
+
+    /**
+     * This method returns a JSON file containing all the solution informations
+     * @return {any} the JSON file
+     */
     toJSON() : any {
         let solution : any = {};
         solution.key= this.key;

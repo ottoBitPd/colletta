@@ -1,6 +1,10 @@
 import {PageView, UserKind} from "./PageView";
 import {ClassPresenter} from "../presenter/ClassPresenter";
 
+/**
+ *   Class to display the class page
+ *   @extends PageView
+ */
 class ClassView extends PageView {
 
     private classPresenter : ClassPresenter;

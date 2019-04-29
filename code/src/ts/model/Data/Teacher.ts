@@ -1,6 +1,10 @@
 import {User} from "./User";
 import {Class} from "./Class";
 
+/**
+ *   Class to create and manage "Teacher" objects
+ *   @extends User
+ */
 class Teacher extends User {
 
     private INPS : string;

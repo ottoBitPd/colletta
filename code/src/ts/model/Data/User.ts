@@ -150,6 +150,10 @@ abstract class User implements Data{
         return this.databaseInfo.id;
     }
 
+    /**
+     * This method returns a JSON file containing all the user informations
+     * @return {any} the JSON file
+     */
     public toJSON() : any{
         let user: any = {
             "username": this.username,

@@ -213,6 +213,10 @@ class ClassesView extends PageView {
         }
         return "";
     }
+
+    /**
+     * This method invokes all the scripts necessary to create the view
+     */
     private getScript() {
         return "" +
         "function showInsertClassForm(){\n" +

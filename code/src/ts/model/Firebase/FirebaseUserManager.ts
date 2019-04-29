@@ -74,6 +74,10 @@ class FirebaseUserManager extends FirebaseManager {
         });
     }
 
+    /**
+     * This method looks for all the users into the database
+     * @returns {Map<string, string>} a map key-username of all the users
+     */
     public async elements () : Promise<Map<string, string>> {
         let container = new Map<string, string>();
         return new Promise(function (resolve) {
@@ -142,6 +146,11 @@ class FirebaseUserManager extends FirebaseManager {
         return removed;
     }
 
+    /**
+     *   This method removes an user from the database
+     *   @param id - the id of the user to remove
+     *   @returns { boolean } returns "true" if the operation is successful
+     */
     private async removeFromId(id : string) {
         const ref=FirebaseManager.database.ref("data/users/" + id);
         return new Promise<boolean>(function (resolve) {
@@ -156,7 +165,11 @@ class FirebaseUserManager extends FirebaseManager {
         });
     }
 
-
+    /**
+     *   This method modifies user informations into the database
+     *   @param path - the path of the user to modify
+     *   @param value - the new value
+     */
     public async update (path:string, value: any) {
         let splittedPath =path.split("/");
         let position : number = splittedPath.length-1;
@@ -175,7 +188,11 @@ class FirebaseUserManager extends FirebaseManager {
         }
     }
 
-
+    /**
+     *   This method modifies user informations into the database
+     *   @param path - the path of the user to modify
+     *   @param value - the new value
+     */
     private async updateField(path : string, value:any) {
         const ref=FirebaseManager.database.ref(path);
         ref.once('value',function (snapshot:any) {

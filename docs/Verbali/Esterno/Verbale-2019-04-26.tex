@@ -73,24 +73,51 @@
 	
 	\section{Ordine del Giorno}
 	Sono riportati i punti relativi all'ordine del giorno:
-	\begin{enumerate}
+	\begin{itemize}
 		\item Dimostrazione funzionamento del prodotto software;
 		\item Filtri riguardanti la ricerca di dati da parte dello sviluppatore;
 		\item Eventuale utilizzo di modelli alternativi;
 		\item Eventuale utilizzo di un server remoto.
-	\end{enumerate}
+	\end{itemize}
 	
 	\section{Resoconto}
 	\subsection{Dimostrazione funzionamento prodotto software}
 	Il team presenta al rappresentante di MIVOQ s.r.l le funzionalità del prodotto implementate fino a quel momento.
 	Su richiesta vengono spiegate alcune scelte effettuate riguardanti l'utilizzo dell'apprendimento automatico Hunpos.
+	\begin{enumerate}
+		\item La navbar per come è stata organizzata risulta poco intuitiva. L'insegnante deve poter vedere appena eseguito l'accesso le voci "Area Classi" e "Crea Esercizio", attualmente presenti solamente nell'area profilo.
+		\item Durante lo svolgimento di un esercizio, i campi che devono essere compilati obbligatoriamente sono contrassegnati con *. Si consiglia di rimuovere il carattere e non lasciare la possibilità di inviare la risposta vuota impostando una risposta precompilata. 
+		\item Nella lista, non ancora implementata, degli esercizi inseriti dall'insegnante è necessario che sia possibile capire se l'esercizio è pubblico o privato e nel caso lo desiderasse modificare questa opzione.
+	\end{enumerate}
+	
 	\subsection{Filtri riguardanti la ricerca di dati da parte dello sviluppatore}
-	Viene fatta chiarezza riguardo l'interesse che lo sviluppatore ha nei dati presenti nella piattaforma. Hanno un'importanza rilevante il numero di soluzioni, corrispondenti ad un singolo esercizio, inserite dagli insegnanti. Inoltre è consigliabile che si tenga traccia degli esercizi svolti sia da utenti non autenticati sia da allievi. Questi dati attualmente non vengono salvati. Ogni dato non deve essere riconducibile a informazioni personali che potrebbero non rispettare la privacy della persona.
+	Viene fatta chiarezza riguardo l'interesse che lo sviluppatore ha nei dati presenti nella piattaforma.
+	\begin{enumerate}
+		\item Hanno un'importanza rilevante il numero di soluzioni  inserite dagli insegnanti corrispondenti ad un singolo esercizio.
+		\item Deve essere tenuto traccia degli esercizi svolti sia da utenti non autenticati sia da allievi. Questi dati attualmente non vengono salvati.
+		\item Ogni dato non deve essere riconducibile a informazioni personali che potrebbero non rispettare la privacy della persona.
+	\end{enumerate}     
 	
 	\subsection{Utilizzo di modelli alternativi}
-	La possibilità di inserire diversi modelli comporterebbe delle modifiche al prodotto troppo onerose. 
+	\begin{enumerate}
+		\item La possibilità di inserire diversi modelli comporterebbe delle modifiche al prodotto troppo onerose. 
+	\end{enumerate} 
 	
-	\subsection{Utilizzo di un server remoto.}
-	Non è richiesto che il prodotto si trovi in un server remoto, è possibile procedere con il completamento dell'implementazione con un server locale.
+	\subsection{Utilizzo di un server remoto}
+	\begin{enumerate}
+	\item Non è richiesto che il prodotto si trovi in un server remoto, è possibile procedere con il completamento dell'implementazione con un server locale.
+\end{enumerate} 
+	\section{Tracciamento delle decisioni}
+	
+	\begin{tabular}{|l|l|}\hline
+		3.1.1 & Aggiunta voci "Area Classi" e "Crea Esercizio" nella navbar\\
+		3.1.2 & Eliminare le ambiguità riguardanti i campi obbligatori durante lo svolgimento di un esercizio\\
+		3.1.3 & Visualizzare e modificare un esercizio da pubblico a privato e viceversa \\
+		3.2.1 & Lo sviluppatore vedrà la quantità di soluzioni di ogni singolo esercizio \\ 
+		3.2.2 & Le soluzioni degli esercizi dell'utente non autenticato verranno salvate \\ 
+		3.3.1 & Non verranno utilizzati modelli alternativi \\ 
+		3.4.1 & Il server rimane in locale\\
+		\hline 
+	\end{tabular}
 	
 \end{document}

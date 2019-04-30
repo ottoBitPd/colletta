@@ -32,7 +32,13 @@ describe('FirebaseClassManager', function() {
 
     describe('FirebaseClassManager.read()', function () {
         it('should return read obj in database', async function() {
-            expect(await test.read(prova.getId())).to.eql(prova);
+            let _class = await test.read(prova.getId());
+
+            expect((<Class> _class).getId()).to.eql(prova.getId()) &&
+            expect((<Class> _class).getName()).to.eql(prova.getName()) &&
+            expect((<Class> _class).getDescription()).to.eql(prova.getDescription()) &&
+            expect((<Class> _class).getTeacherID()).to.eql(prova.getTeacherID()) &&
+            expect((<Class> _class).getExercises()).to.eql(prova.getExercises());
         });
     });
 

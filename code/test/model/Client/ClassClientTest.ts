@@ -119,7 +119,8 @@ describe('ClassClient', function() {
                 "description" : "ciao",
                 "teacherID" : "0",
                 "students" : [],
-                "exercises" : []
+                "exercises" : [],
+                "time" : null
             });
         });
     });

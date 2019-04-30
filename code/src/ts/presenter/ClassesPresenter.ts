@@ -143,9 +143,7 @@ class ClassesPresenter extends PagePresenter {
                 if (await userClient.isTeacher(session.username)) {
                     //console.log("username: "+session.username);
                     let arr = await exerciseClient.getExercisesByAuthor(id);//returns map<idClasse, className>
-                    console.log("arrBEFORE: ", arr);
                     arr=this.translateExercises(arr);
-                    console.log("arrAFTER: ", arr);
                     return arr;
                 }
             }

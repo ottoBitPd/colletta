@@ -45,7 +45,11 @@ class SearchPresenter extends PagePresenter {
         app.get('/exercise/search', async (request: any, response: any) => {
             //console.log("sentence: ",request.body.sentence);
             if(request.query.s === undefined){
-                this.setResults([]);
+                let exerciseClient = this.client.getExerciseClient();
+                if(exerciseClient){
+                    let map= await exerciseClient.searchExercise("");
+                    this.setResults(map);
+                }
             }
             session.invalidLogin = request.query.mess==="invalidLogin";
             let menuList :any;

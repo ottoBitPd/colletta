@@ -85,7 +85,7 @@ class InsertPageView extends PageView_1.PageView {
                 "   <div class=\"input-group col-sm-4 py-2 bg-dark\">" +
                 "       <input type=\"hidden\" name=\"solutionKey\" value='null'>" +
                 "       <input type=\"hidden\" name=\"exerciseKey\" value='null'>" +
-                "       <input type=\"text\" name=\"sentence\" class=\"form-control\">" +
+                "       <input type=\"text\" name=\"sentence\" class=\"form-control\" required>" +
                 "       <button type=\"submit\" class=\"btn btn-primary\">Invia</button>" +
                 "   </div>" +
                 "</form>";

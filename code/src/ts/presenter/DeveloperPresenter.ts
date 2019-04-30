@@ -139,6 +139,7 @@ class DeveloperPresenter extends PagePresenter{
         if (exerciseClient) {
              an = await exerciseClient.searchAllSolution();
         }
+        //console.log("an: ",an);
         return an;
     }
         /*

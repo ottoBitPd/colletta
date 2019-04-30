@@ -2,6 +2,7 @@ import {DatabaseExerciseManager} from "../DatabaseManager/DatabaseExerciseManage
 import {Exercise} from "../Data/Exercise";
 import {Data} from "../Data/Data";
 import {Solution} from "../Data/Solution";
+import * as CryptoJS from "crypto-js";
 /**
  *   Class to create and manage "ExerciseClient" objects
  */
@@ -119,10 +120,12 @@ class ExerciseClient{
                 for (let vals of sol.getValutations().entries()) {
                     val = [vals[0], vals[1]];
                 }
+
                 result.push(
                     {
+                        "id": CryptoJS.MD5((<Exercise>exercise).getKey()),
                         "sentence": phrase,
-                        "solverID": sol.getSolverId(),
+                        "solverID": CryptoJS.MD5(sol.getSolverId()),
                         "tags": sol.getSolutionTags(),
                         "time": sol.getTime(),
                         "difficulty": sol.getDifficulty(),

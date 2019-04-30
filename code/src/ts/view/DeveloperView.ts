@@ -36,7 +36,7 @@ class DeveloperView extends PageView {
         ret += this.getMenu();
         ret += "" +
             "\t<div class='row container mx-auto'>\n"+
-            "\t\t<div class=\"col-sm-8 mx-auto text-center\">";
+            "\t\t<div class=\"col-sm-12 mx-auto text-center\">";
         if(!this.devPresenter.isLoggedIn()) {
             let s = this.devPresenter.getMessage();
             if (s) {
@@ -87,6 +87,7 @@ class DeveloperView extends PageView {
      */
     private async printList() {
         let results = await this.devPresenter.getAnnotations();
+        console.log("Resuts: ",results);
         if(results.length===0){
             return "<h2 class='h5 text-danger text-center'>Nessun risultato</h2>";//resultList is not set yet, cause nobody searched yet
         }
@@ -97,8 +98,10 @@ class DeveloperView extends PageView {
                 "\t\t<ul class=\"list-group\">\n" +
                 "\t\t\t<li class='list-group-item active'>" +
                 "\t\t\t\t<div class='row'>" +
-                "\t\t\t\t\t<div class='col-sm-8'>Esercizi</div>"+
-                "\t\t\t\t\t<div class='col-sm-4'>Data</div>"+
+                "\t\t\t\t\t<div class='col-sm-4'>Esercizi</div>"+
+                "\t\t\t\t\t<div class='col-sm-1'>Data</div>"+
+                "\t\t\t\t\t<div class='col-sm-3'>ID esercizio</div>"+
+                "\t\t\t\t\t<div class='col-sm-3'>Hash utente</div>"+
                 "\t\t\t\t</div>" +
                 "\t\t\t</li>";
 
@@ -106,9 +109,11 @@ class DeveloperView extends PageView {
                 //for (let y in results[i].solutions) {
                     ret += "\t\t\t<li class=\"list-group-item\">" +
                         "\t\t\t\t<div class='row'>" +
-                        "\t\t\t\t\t<div class='col-sm-8'>" + results[i].sentence + "</div>\n";
+                        "\t\t\t\t\t<div class='col-sm-4'>" + results[i].sentence + "</div>\n";
                     let date = new Date(results[i].time);
-                    ret += "\t\t\t\t\t<div class='col-sm-4'>" + date.getDate() + "/" + (date.getMonth()+1) + "/" + date.getFullYear() + "</div>" +
+                    ret += "\t\t\t\t\t<div class='col-sm-1'>" + date.getDate() + "/" + (date.getMonth()+1) + "/" + date.getFullYear() + "</div>" +
+                        "\t\t\t\t\t<div class='col-sm-3'>" + results[i].id + "</div>\n" +
+                        "\t\t\t\t\t<div class='col-sm-3'>" + results[i].solverID + "</div>\n" +
                         "\t\t\t\t</div>\n" +
                         "\t\t\t</li>\n";
                 //}

@@ -65,27 +65,36 @@ class ClassView extends PageView {
      * @return {string} the HTML source
      */
     private async printClassInfo(){
-        let _class = await this.classPresenter.getClass();
+        let _class = await this.classPresenter.getClass()
+        console.log("Classe: ",_class);
         let ret = "" +
         "\t\t <div class=\"col-sm-12\" id=\"esercizio\">\n" +
         "\t\t\t<div class='row'>\n" +
-        "\t\t\t\t<div class='col-sm-4 mx-auto text-center'>\n" +
+        "\t\t\t\t<div class='col-sm-3 mx-auto text-center'>\n" +
         "\t\t\t\t\t<ul class=\"list-group mt-3\">\n" +
-        "\t\t\t\t\t\t<li class=\"list-group-item active p-0 py-1\"><h1 class=\"h4\">Classe</h1></li>\n" +
-        "\t\t\t\t\t\t<li class=\"list-group-item p-0 py-1\"><h1 class=\"h5\">"+_class.name+"</h1></li>\n" +
+        "\t\t\t\t\t\t<li class=\"list-group-item active p-0 py-1\"><h1 class=\"h4\">Classe</h1></li>\n";
+        let date = new Date(_class.time);
+
+        ret+="\t\t\t\t\t\t<li class=\"list-group-item p-0 py-1\"><h1 class=\"h5\">"+_class.name+"</h1></li>\n" +
         "\t\t\t\t\t</ul>\n" +
         "\t\t\t\t</div>  \n" +
-        "\t\t\t\t<div class='col-sm-4 mx-auto text-center'>\n" +
+        "\t\t\t\t<div class='col-sm-3 mx-auto text-center'>\n" +
         "\t\t\t\t\t<ul class=\"list-group mt-3\">\n" +
         "\t\t\t\t\t\t<li class=\"list-group-item active p-0 py-1\"><h1 class=\"h4\">Descrizione</h1></li>\n" +
         "\t\t\t\t\t\t<li class=\"list-group-item p-0 py-1\"><h1 class=\"h5\">"+_class.description+"</h1></li>\n" +
         "\t\t\t\t\t</ul>\n" +
         "\t\t\t\t</div>   \n" +
-        "\t\t\t\t<div class='col-sm-4 mx-auto text-center'>\n" +
+        "\t\t\t\t<div class='col-sm-3 mx-auto text-center'>\n" +
         "\t\t\t\t\t<ul class=\"list-group mt-3\">\n" +
         "\t\t\t\t\t\t<li class=\"list-group-item active p-0 py-1\"><h1 class=\"h4\">Iscrizioni</h1></li>\n";
         ret += "\t\t\t\t\t\t<li class=\"list-group-item p-0 py-1\"><h1 class=\"h5\">" + await this.classPresenter.getStudentNumber() + " iscritti</h1></li>\n";
         ret += "\t\t\t\t\t</ul>\n" +
+        "\t\t\t\t</div>  \n" +
+        "\t\t\t\t<div class='col-sm-3 mx-auto text-center'>\n" +
+        "\t\t\t\t\t<ul class=\"list-group mt-3\">\n" +
+        "\t\t\t\t\t\t<li class=\"list-group-item active p-0 py-1\"><h1 class=\"h4\">Data inserimento</h1></li>\n"+
+        "\t\t\t\t\t\t<li class=\"list-group-item p-0 py-1\"><h1 class=\"h5\">"+date.getDate() + "/" + (date.getMonth()+1) + "/" + date.getFullYear() +"</h1></li>\n"+
+        "\t\t\t\t\t</ul>\n" +
         "\t\t\t\t</div>  \n" +
         "\t\t\t</div>\n" +
         "\t\t</div>";

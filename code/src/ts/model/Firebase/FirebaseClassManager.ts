@@ -27,7 +27,8 @@ class FirebaseClassManager extends FirebaseManager {
                     description: _class.getDescription(),
                     students: _class.getStudents(),
                     teacherID: _class.getTeacherID(),
-                    exercises: _class.getExercises()
+                    exercises: _class.getExercises(),
+                    time: Date.now()
                 });
                 return resolve(true);
             } 
@@ -112,7 +113,7 @@ class FirebaseClassManager extends FirebaseManager {
                     if (snapshot.exists()) {
                         const readData: any = snapshot.val();
                         const _class = new Class(id,readData.name, readData.description, readData.teacherID,
-                            readData.students, readData.exercises);
+                            readData.students, readData.exercises, readData.time);
                         return resolve(_class);
                     }
                     return resolve(undefined);
@@ -165,6 +166,20 @@ class FirebaseClassManager extends FirebaseManager {
             case "students": await this.updateField(path, value); break;
             default : console.log("field doesn't exists"); return;
         }
+        await this.updateTime(path);
+    }
+    /**
+     *   This method sets the exercise time at now
+     *   @param path - the path of the exercise to modify
+     */
+    private async updateTime(path: string)  {
+        // @ts-ignore
+        let ref=FirebaseManager.database.ref(path).parent.child("time");
+        ref.once('value',function (snapshot:any) {
+            if (snapshot.exists()) {
+                ref.set(Date.now());
+            }
+        });
     }
 
     /**

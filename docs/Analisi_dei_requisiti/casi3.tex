@@ -30,7 +30,20 @@
 			\includegraphics[scale=0.7]{images/UC-S1_1.png}
 			\caption{UC-S1.1 Filtraggio dei dati}
 		\end{figure}	
-	
+
+	\subsubsection{UC-S1.2 Visualizzazione dell'annotazione in lista}
+		\begin{itemize}
+			\item \textbf{Attori:} Sviluppatore.
+			\item \textbf{Precondizione:} Lo sviluppatore si trova nell'area dati.
+			\item \textbf{Postcondizione:} Lo sviluppatore visualizza le informazioni di un'annotazione.
+			\item \textbf{Scenario principale:}
+				\begin{enumerate}
+					\item lo sviluppatore visualizza la data dell'annotazione
+					\item lo sviluppatore visualizza l'username dell'utente autore dell'annotazione
+					\item lo sviluppatore visualizza l'ID dell'esercizio
+				\end{enumerate}
+		\end{itemize}
+		
 	\subsubsection{UC-S1.1.1 Filtraggio dei dati su base temporale}	
 		\begin{itemize}
 			\item \textbf{Attori:} Sviluppatore.
@@ -45,31 +58,7 @@
 					\item 1.a Se i parametri inseriti dall'utente non sono coerenti viene mostrato un messaggio di errore (UC-S2).
 				\end{itemize}		
 		\end{itemize}
-			
-\subsubsection{UC-S1.2 Visualizzazione dell'annotazione in lista}
-		\begin{itemize}
-			\item \textbf{Attori:} Sviluppatore.
-			\item \textbf{Precondizione:} Lo sviluppatore si trova nell'area dati.
-			\item \textbf{Postcondizione:} Lo sviluppatore visualizza le informazioni di un'annotazione.
-			\item \textbf{Scenario principale:}
-				\begin{enumerate}
-					\item lo sviluppatore visualizza la data dell'annotazione
-					\item lo sviluppatore visualizza l'username dell'utente autore dell'annotazione
-					\item lo sviluppatore visualizza l'ID dell'esercizio
-				\end{enumerate}
-		\end{itemize}
 
-	\subsubsection{UC-S2 Visualizzazione errore di data non valida}
-		\begin{itemize}					
-			\item \textbf{Attori:} Sviluppatore.
-			\item \textbf{Precondizione:} Lo sviluppatore ha indicato un intervallo di tempo non valido.
-			\item \textbf{Postcondizione:} Lo sviluppatore torna all'area dati.
-			\item \textbf{Scenario principale:}
-				\begin{enumerate}
-					\item lo sviluppatore visualizza un messaggio di errore "L'intervallo di tempo indicato non è valido"
-				\end{enumerate}	
-		\end{itemize}					
-						
 	\subsubsection{UC-S1.1.2 Filtraggio dei dati in base agli utenti}	
 		\begin{itemize}
 			\item \textbf{Attori:} Sviluppatore.
@@ -93,6 +82,43 @@
 				\item lo sviluppatore scrive l'username di un utente, o una sua parte
 			\end{enumerate}
 		\end{itemize}		
+			
+	\subsubsection{UC-S1.1.3 Filtraggio dei dati in base al ruolo}	
+		\begin{itemize}
+			\item \textbf{Attori:} Sviluppatore.
+			\item \textbf{Precondizione:} Lo sviluppatore si trova nell'area dati e ha scritto nella barra di ricerca una sottostringa della frase cercata.
+			\item \textbf{Postcondizione:} Lo sviluppatore ha indicato il filtro in base al ruolo.
+			\item \textbf{Scenario principale:}
+				\begin{enumerate}
+					\item lo sviluppatore indica un ruolo tra "Insegnante" e " Studente"
+				\end{enumerate}
+		\end{itemize}
+
+	\subsubsection{UC-S1.1.4 Filtraggio dei dati in base alla valutazione}	
+		\begin{itemize}
+			\item \textbf{Attori:} Sviluppatore.
+			\item \textbf{Precondizione:} Lo sviluppatore si trova nell'area dati e ha scritto nella barra di ricerca una sottostringa della frase cercata.
+			\item \textbf{Postcondizione:} Lo sviluppatore ha indicato il filtro in base alla valutazione.
+			\item \textbf{Scenario principale:}
+				\begin{enumerate}
+					\item lo sviluppatore indica due numeri (da 0 a 10) che definiscono un intervallo di voti per restringere la ricerca
+				\end{enumerate}
+			\item \textbf{Estensioni:}
+				\begin{itemize}
+					\item 1.a Se i parametri inseriti dall'utente non sono coerenti viene mostrato un messaggio di errore (UC-S18).
+				\end{itemize}
+		\end{itemize}	
+	
+	\subsubsection{UC-S2 Visualizzazione errore di data non valida}
+		\begin{itemize}					
+			\item \textbf{Attori:} Sviluppatore.
+			\item \textbf{Precondizione:} Lo sviluppatore ha indicato un intervallo di tempo non valido.
+			\item \textbf{Postcondizione:} Lo sviluppatore torna all'area dati.
+			\item \textbf{Scenario principale:}
+				\begin{enumerate}
+					\item lo sviluppatore visualizza un messaggio di errore "L'intervallo di tempo indicato non è valido"
+				\end{enumerate}
+		\end{itemize}
 			
 	\subsubsection{UC-S3 Visualizzazione dei dati di una annotazione di una frase}
 		\begin{itemize}
@@ -153,44 +179,44 @@
 		\caption{UC-S6 Download dei dati raccolti}
 	\end{figure}
 	
-\subsubsection{UC-S7 Download dei dati raccolti in .txt}
+\subsubsection{UC-S7 Download dei dati raccolti in \texttt{.txt}}
 		\begin{itemize}
 			\item \textbf{Attori:} Sviluppatore.
 			\item \textbf{Precondizione:} Lo sviluppatore visualizza la lista delle annotazioni ricercate.
-			\item \textbf{Postcondizione:} Lo sviluppatore ottiene un file con i dati dei risultati precedentemente trovati in formato \textit{.txt}.
+			\item \textbf{Postcondizione:} Lo sviluppatore ottiene un file con i dati dei risultati precedentemente trovati in formato \texttt{.txt}.
 			\item \textbf{Scenario principale:}
 				\begin{enumerate}
 					\item lo sviluppatore richiede il download dei dati
 					\item lo sviluppatore decide il path in cui il file viene salvato
-					\item lo sviluppatore sceglie il formato \textit{.txt} per il download dei dati
+					\item lo sviluppatore sceglie il formato \texttt{.txt} per il download dei dati
 					\item lo sviluppatore esegue il salvataggio
 				\end{enumerate}
 		\end{itemize}
 
-\subsubsection{UC-S8 Download dei dati raccolti in .csv}
+\subsubsection{UC-S8 Download dei dati raccolti in \texttt{.csv}}
 		\begin{itemize}
 			\item \textbf{Attori:} Sviluppatore.
 			\item \textbf{Precondizione:} Lo sviluppatore visualizza la lista delle annotazioni ricercate.
-			\item \textbf{Postcondizione:} Lo sviluppatore ottiene un file con i dati dei risultati precedentemente trovati in formato \textit{.csv}.
+			\item \textbf{Postcondizione:} Lo sviluppatore ottiene un file con i dati dei risultati precedentemente trovati in formato \texttt{.csv}.
 			\item \textbf{Scenario principale:}
 				\begin{enumerate}
 					\item lo sviluppatore richiede il download dei dati
 					\item lo sviluppatore decide il path in cui il file viene salvato
-					\item lo sviluppatore sceglie il formato \textit{.csv} per il download dei dati
+					\item lo sviluppatore sceglie il formato \texttt{.csv} per il download dei dati
 					\item lo sviluppatore esegue il salvataggio
 				\end{enumerate}
 		\end{itemize}
 
-\subsubsection{UC-S9 Download dei dati raccolti in .json}
+\subsubsection{UC-S9 Download dei dati raccolti in \texttt{.json}}
 		\begin{itemize}
 			\item \textbf{Attori:} Sviluppatore.
 			\item \textbf{Precondizione:} Lo sviluppatore visualizza la lista delle annotazioni ricercate.
-			\item \textbf{Postcondizione:} Lo sviluppatore ottiene un file con i dati dei risultati precedentemente trovati in formato \textit{.json}.
+			\item \textbf{Postcondizione:} Lo sviluppatore ottiene un file con i dati dei risultati precedentemente trovati in formato \texttt{.json}.
 			\item \textbf{Scenario principale:}
 				\begin{enumerate}
 					\item lo sviluppatore richiede il download dei dati
 					\item lo sviluppatore decide il path in cui il file viene salvato
-					\item lo sviluppatore sceglie il formato \textit{.json} per il download dei dati
+					\item lo sviluppatore sceglie il formato \texttt{.json} per il download dei dati
 					\item lo sviluppatore esegue il salvataggio
 				\end{enumerate}
 		\end{itemize}
@@ -336,3 +362,13 @@
 				\end{enumerate}	
 		\end{itemize}		
 	
+	\subsubsection{UC-S18 Visualizzazione errore di valutazioni non valide}
+		\begin{itemize}					
+			\item \textbf{Attori:} Sviluppatore.
+			\item \textbf{Precondizione:} Lo sviluppatore ha indicato un intervallo di voti non valido.
+			\item \textbf{Postcondizione:} Lo sviluppatore torna all'area dati.
+			\item \textbf{Scenario principale:}
+				\begin{enumerate}
+					\item lo sviluppatore visualizza un messaggio di errore "L'intervallo di voti indicato non è valido"
+				\end{enumerate}
+		\end{itemize}

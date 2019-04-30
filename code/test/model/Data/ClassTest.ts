@@ -114,7 +114,8 @@ describe('Class', function() {
                 "description": "description",
                 "teacherID": "1234",
                 "students": ["st1", "st2"],
-                "exercises": ["es1", "es2"]
+                "exercises": ["es1", "es2"],
+                "time": null
             });
         });
     });

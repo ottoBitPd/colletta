@@ -14,7 +14,10 @@ class ProfilePresenter extends PagePresenter{
         super(view);
         this.client = (new Client.builder()).buildUserClient().buildExerciseClient().build();
     }
-
+    /**
+     * This method provides to manage the view urls.
+     * @param app
+     */
     update(app : any){
         app.post('/update', async (request: any, response: any) => {
             let userClient = this.client.getUserClient();

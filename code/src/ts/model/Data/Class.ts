@@ -9,19 +9,21 @@ class Class implements Data {
     private name : string;
     private description : string;
     private teacherID : string;
+    private time : number | null;
     private students : string[];
     private exercises : string[];
 
     /**
      *   Initializes all attributes needed to Class object.
      */
-    constructor(id:string, name : string, description : string, teacherID : string, students : string[], exercises : string[]){
+    constructor(id:string, name : string, description : string, teacherID : string, students : string[], exercises : string[], time? : number){
         this.id = id;
         this.name = name;
         this.description = description;
         this.teacherID = teacherID;
         this.students = students;
         this.exercises = exercises;
+        this.time = time || null;
     }
 
     /**
@@ -81,6 +83,14 @@ class Class implements Data {
     }
 
     /**
+     * This method returns the date of the solution.
+     * @returns { number | null } returns the solution date if exists.
+     */
+    public getTime(): number | null{
+        return this.time;
+    }
+
+    /**
      * This method removes a student from the class student list.
      * @param student - the student to delete
      */
@@ -137,7 +147,8 @@ class Class implements Data {
             "description": this.description,
             "teacherID": this.teacherID,
             "students": this.students,
-            "exercises": this.exercises
+            "exercises": this.exercises,
+            "time": this.time
         };
         return _class;
     }

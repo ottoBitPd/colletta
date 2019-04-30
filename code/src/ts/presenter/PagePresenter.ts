@@ -26,7 +26,10 @@ abstract class PagePresenter{
         return session.invalidLogin;
     }
 
-
+    /**
+     * This method provides to manage the view urls.
+     * @param app
+     */
     abstract update(app : any) : void;
     /*
     //forse è un idea

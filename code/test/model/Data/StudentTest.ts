@@ -66,12 +66,6 @@ describe('Student',function() {
         });
     });
 
-    describe('Student.getID()', function () {
-        it('should return id', function () {
-            expect(student2.getID()).to.equal("st2");
-        });
-    });
-
     describe('Student.setID()', function () {
         it('should set the id', function () {
             let student = new student2.DatabaseUserInfo("15", "gioperry15", "giovanni", "Peron", "Castelfranco"," Unipd","giov.anni@gmail.com");

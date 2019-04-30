@@ -14,7 +14,10 @@ class InsertPresenter extends PagePresenter{
         super(view);
         this.client =(new Client.builder()).buildUserClient().build();
     }
-
+    /**
+     * This method provides to manage the view urls.
+     * @param app
+     */
     update(app : any){
         this.insertExercise(app);
     }

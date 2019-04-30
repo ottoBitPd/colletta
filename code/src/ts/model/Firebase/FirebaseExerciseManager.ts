@@ -90,26 +90,6 @@ class FirebaseExerciseManager extends FirebaseManager {
         });
     }
 
-    public async cerca(sentence: string): Promise<string> {
-        return new Promise(function (resolve) {
-            FirebaseManager.database.ref('data/sentences/'+sentence+'/solutions/')
-                .once("value", function (snapshot: any) {
-                    if (snapshot.exists()) {
-                        snapshot.forEach(function (data: any) {
-                            if (data.val()) {
-                                //console.log("esiste");
-                                return resolve(data.key);
-                            }
-                        });
-                        //console.log("non esiste");
-                        return resolve("false");
-                    }
-                    //console.log("database vuoto");
-                    return resolve("false");
-                });
-        });
-    }
-
     /**
      * This method looks for all the exercises int the database
      * @returns {Map<string, string>} a map key-sentence containing all the exercises saved into the database

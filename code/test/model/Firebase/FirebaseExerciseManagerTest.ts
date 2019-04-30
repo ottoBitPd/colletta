@@ -43,8 +43,8 @@ describe('FirebaseExerciseManager', function() {
 
     describe('FirebaseExerciseManager.update()', function () {
         it('should return update database', async function() {
-            let _now=await test.cerca(prova.getKey());
-            await test.update("/data/sentences/"+prova.getKey()+"/solutions/"+_now+"/tags",["Agv","PEm"]);
+            const exercise = await test.read(prova.getKey());
+            await test.update("/data/sentences/"+prova.getKey()+"/solutions/"+(exercise.getSolutions()[0]).getKey()+"/tags",["Agv","PEm"]);
             expect(prova).to.be.not.undefined;
         });
     });

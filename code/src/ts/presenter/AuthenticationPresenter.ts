@@ -16,7 +16,7 @@ class AuthenticationPresenter extends PagePresenter {
     }
 
     /**
-     * This method provides to manage the authentication on every page.
+     * This method provides to manage the view urls.
      * @param app
      */
     update(app: any) {

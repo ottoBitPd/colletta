@@ -21,7 +21,10 @@ class DeveloperPresenter extends PagePresenter{
     async initializeAnnotations() : Promise<void>{
         this.annotations = await this.getAllAnnotation();
     }
-
+    /**
+     * This method provides to manage the view urls.
+     * @param app
+     */
     update(app: any) {
         this.listenDeveloper(app);
         this.checkDeveloper(app);
@@ -29,7 +32,7 @@ class DeveloperPresenter extends PagePresenter{
     }
 
     /**
-     *
+     * This method manages developer page url
      * @param app
      */
     private listenDeveloper(app : any) {

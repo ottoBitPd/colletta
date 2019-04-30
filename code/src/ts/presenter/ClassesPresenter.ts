@@ -18,7 +18,7 @@ class ClassesPresenter extends PagePresenter {
     }
 
     /**
-     * This method provides to
+     * This method provides to manage the view urls.
      * @param app
      */
     update(app: any) {
@@ -29,7 +29,7 @@ class ClassesPresenter extends PagePresenter {
     }
 
     /**
-     *  This method provides to manage classes
+     *  This method manages the classes page url
      * @param app
      */
     private classes(app : any){
@@ -51,7 +51,7 @@ class ClassesPresenter extends PagePresenter {
     }
 
     /**
-     *  This method provides to manage exercises
+     *  This method manages exercises page url
      * @param app
      */
     private exercises(app : any){
@@ -73,7 +73,7 @@ class ClassesPresenter extends PagePresenter {
     }
 
     /**
-     * This method provides to insert a new class on database
+     * This method inserts a new class
      * @param app
      */
     private insertClass(app: any) {
@@ -91,7 +91,7 @@ class ClassesPresenter extends PagePresenter {
     }
 
     /**
-     * This method provides to delete a class
+     * This method deletes a class
      * @param app
      */
     private deleteClass(app: any) {

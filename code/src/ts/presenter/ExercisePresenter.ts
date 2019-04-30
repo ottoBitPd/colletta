@@ -35,7 +35,10 @@ class ExercisePresenter extends PagePresenter{
     getCorrection() : any | null {
         return this.correction;
     }
-
+    /**
+     * This method provides to manage the view urls.
+     * @param app
+     */
     update(app : any){
         this.listenExercise(app);
         this.saveExercise(app);

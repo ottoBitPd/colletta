@@ -221,7 +221,7 @@ class ProfileView extends PageView{
         ret +=
             "<form method='post' action='/exercise/insert' id='insertExerciseForm' class='d-none'>" +
             "   <div class=\"input-group col-sm-4 py-2 bg-dark\">" +
-            "       <input type=\"text\" name=\"sentence\" class=\"form-control\">" +
+            "       <input type=\"text\" name=\"sentence\" class=\"form-control\" required>" +
             "       <button type=\"submit\" class=\"btn btn-primary\">Invia</button>" +
             "   </div>" +
             "</form>";

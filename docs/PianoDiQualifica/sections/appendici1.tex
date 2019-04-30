@@ -5,55 +5,44 @@ Per ogni test viene specificato il suo codice univoco, la descrizione e lo stato
 	\begin{longtable}{|>{\centering\arraybackslash}m{1.6cm}|>{\centering\arraybackslash}m{6.41cm}|>{\centering\arraybackslash}m{3.1cm}|}		
 		\rowcolor{LightBlue}
 		\textbf{\textcolor{white}{Test}}
-		& \multicolumn{1}{|c|}{\textbf{\textcolor{white}{ Descrizione}}}
-		& \textbf{\textcolor{white}{Esito}}\\
+		& \multicolumn{1}{|c|}{\textbf{\textcolor{white}{ Descrizione}}}\\
 		\hline
 		TI1
 		& Test d’integrazione front-end e back-end per la corretta visualizzazione del front-end.
-		& Non implementato
 		\\ \hline
 		\rowcolor{LightGray}
 		TI2
 		& Test d’integrazione front-end e back-end per l'invio dei dati al front-end.
-		& Non implementato
 		\\ \hline
 		TI3
 		& Test d’integrazione front-end e back-end per la ricezione di dati dal front-end tramite POST.
-		& Non implementato
 		\\ \hline
 		\rowcolor{LightGray}
 		TI4
 		& Test d’integrazione front-end e back-end per la ricezione di dati dal front-end tramite GET.
-		& Non implementato
 		\\ \hline
 		TI5
 		& Test d’integrazione tra back-end e Hunpos per il POS-Tagging$^*$.
-		& Non implementato
 		\\ \hline
 		\rowcolor{LightGray}
 		TI6
 		& Test d’integrazione tra back-end e Hunpos per il training.
-		& Non implementato
 		\\ \hline	
 		TI7
 		& Test d’integrazione tra back-end e Google Firebase Realtime Database per la lettura dalla base di dati.
-		& Implementato
 		\\ \hline	
 		\rowcolor{LightGray}
 		TI8
 		& Test d’integrazione tra back-end e Google Firebase Realtime Database per la scrittura sulla base di dati.
-		& Implementato
 		\\ \hline	
 		TI9
 		& Test d’integrazione tra back-end e Google Firebase Realtime Database per la modifica della base di dati.
-		& Implementato
 		\\ \hline	
 		\rowcolor{LightGray}
 		TI10
 		& Test d’integrazione tra back-end e Google Firebase Realtime Database per l'eliminazione dalla base di dati.
-		& Implementato
 		\\ \hline	
-		\caption{Test di integrazione}
+		\caption{Test di integrazione - descrizione}
 \end{longtable}
 
 
@@ -61,59 +50,57 @@ Per ogni test viene specificato il suo codice univoco, la descrizione e lo stato
 \begin{longtable}{|>{\centering\arraybackslash}m{1.6cm}|>{\centering\arraybackslash}m{6.41cm}|>{\centering\arraybackslash}m{3.1cm}| c |}		
 		\rowcolor{LightBlue}
 		\textbf{\textcolor{white}{Test}}
-		& \multicolumn{1}{|c|}{\textbf{\textcolor{white}{ Descrizione}}}
-		& \textbf{\textcolor{white}{Stato}}
-		& \textbf{\textcolor{white}{Esito}}\\
+		& \multicolumn{1}{|c|}{\textbf{\textcolor{white}{ Descrizione}}}\\
 		\hline
-		TU1 & Verifica che il metodo ritorni il nome corretto della classe su cui è richiamato. & Implementato & Superato \\ \hline
-		TU2 & Verifica che il metodo ritorni la descrizione corretta della classe su cui è richiamato. & Implementato & Superato  \\ \hline
-		TU3 & Verifica che venga ritornato l'id corretto dell'insegnante creatore della classe su cui il metodo è richiamato. & Implementato & Superato  \\ \hline
-		TU4 & Verifica che venga ritornata la corretta lista di studenti appartenenti alla classe su cui il metodo è richiamato. & Implementato & Superato  \\ \hline
-		TU5 & Verifica che venga ritornata la corretta lista di esercizi assegnati alla classe su cui il metodo è richiamato. & Implementato & Superato  \\ \hline
-		TU6 & Verifica che ritorni il giusto numero di studenti studenti appartenenti alla classe su cui il metodo è richiamato. & Implementato & Superato  \\ \hline
-		TU7 & Verifica che il metodo elimini correttamente uno studente dalla lista di quelli appartenenti alla classe su cui è  richiamato. & Implementato & Superato  \\ \hline
-		TU8 & Verifica che il metodo elimini correttamente un esercizio dalla lista di quelli assegnati alla classe su cui è  richiamato. & Implementato & Superato  \\ \hline
-		TU9 & Verifica che il metodo aggiunga correttamente uno studente dalla lista di quelli appartenenti alla classe su cui è  richiamato. & Implementato & Superato  \\ \hline
-		TU10 & Verifica che il metodo aggiunga correttamente un esercizio dalla lista di quelli assegnati alla classe su cui è  richiamato. & Implementato & Superato  \\ \hline
-		TU11 & Verifica che venga ritornato "true" se uno studente appartiene alla classe su cui il metodo viene richiamato; "false" altrimenti. & Implementato & Superato  \\ \hline		
-		TU12 & Verifica che il metodo ritorni il valore della chiave dell'esercizio su cui è richiamato. & Implementato & Superato  \\ \hline
-		TU13 & Verifica che venga ritornata la corretta frase dell'esercizio su cui il metodo è richiamato. & Implementato & Superato  \\ \hline
-		TU14 & Verifica che il metodo ritorni un nuovo riferimento a POSManager. & Implementato & Superato \\ \hline
-		TU15 & Verifica che venga ritornato il corretto id dell'autore dell'esercizio su cui il metodo è richiamato. & Implementato & Superato  \\ \hline
-		TU16 & Verifica che venga modificata correttamente la chiave dell'esercizio su cui il metodo è stato richiamato. & Implementato & Superato \\ \hline
-		TU17 & Verifica che venga modificata correttamente la frase dell'esercizio su cui il metodo è stato richiamato. & Implementato & Superato \\ \hline
-		TU18 & Verifica che venga modificata correttamente la soluzione dell'esercizio su cui il metodo è stato richiamato. & Implementato & Superato \\ \hline
-		TU19 & Verifica che venga aggiunta correttamente la soluzione alla lista delle soluzioni dell'esercizio su cui il metodo è stato richiamato. & Implementato & Superato \\ \hline
-		TU20 & Verifica che venga ritornata la corretta lista di soluzioni dell'esercizio su cui il metodo è richiamato. & Implementato & Superato \\ \hline
-		TU21 & Verifica che venga aggiunta correttamente una valutazione all'esercizio su cui il metodo è stato richiamato. & Implementato & Superato \\ \hline
-		TU22 & Verifica che venga ritornata la soluzione corrente dell'esercizio su cui il metodo è richiamato. & Implementato & Superato \\ \hline
-		TU23 & Verifica che venga ritornata la corretta soluzione automatica dell'esercizio su cui il metodo è richiamato. & Implementato & Superato \\ \hline
-		TU24 & Verifica che venga ritornata la frase splittata dell'esercizio su cui il metodo viene richiamato. & Implementato & Superato \\ \hline
-		TU25 & Verifica che venga inserita correttamente una valutazione alla soluzione corrente dell'esercizio su cui il metodo è richiamato. & Implementato & Superato \\ \hline		
-		TU26 & Verifica che il metodo ritorni lo username corretto dell'utente su cui è richiamato. & Implementato & Superato \\ \hline
-		TU27 & Verifica che il metodo ritorni il nome corretto dell'utente su cui è richiamato. & Implementato & Superato  \\ \hline
-		TU28 & Verifica che il metodo ritorni il cognome corretto dell'utente su cui è richiamato. & Implementato & Superato  \\ \hline
-		TU29 & Verifica che il metodo ritorni la città corretta dell'utente su cui è richiamato. & Implementato & Superato  \\ \hline
-		TU30 & Verifica che il metodo ritorni la scuola corretta dell'utente su cui è richiamato. & Implementato & Superato  \\ \hline
-		TU31 & Verifica che il metodo ritorni la password corretta dell'utente su cui è richiamato. & Implementato & Superato  \\ \hline
-		TU32 & Verifica che il metodo ritorni "true" se vi è corrispondenza tra la prima e seconda password inserita dallo studente in fase di registrazione; "false" altrimenti. & Implementato & Superato  \\ \hline
-		TU33 & Verifica che il metodo ritorni l'id corretto dell'utente su cui è richiamato. & Implementato & Superato  \\ \hline
-		TU34 & Verifica che il metodo modifichi correttamente l'id dello studente su cui è richiamato. & Implementato & Superato  \\ \hline
-		TU35 & Verifica che il metodo ritorni "false" se l'utente su cui è richiamato è uno studente, "true" se è un insegnante. & Implementato & Superato \\ \hline
-		TU36 & Verifica che venga ritornata la corretta lista delle classi a cui appartiene lo studente o create dall'insegnante su cui il metodo è richiamato. & Implementato & Superato \\ \hline
-		TU37 & Verifica che il metodo ritorni la corretta media dello studente su cui è richiamato. & Implementato & Superato  \\ \hline
-		TU38 & Verifica che il metodo ritorni il codice INPS corretto dell'insegnante su cui è richiamato. & Implementato & Superato  \\ \hline
-		TU39 & Verifica che il metodo ritorni il valore della chiave della soluzione su cui è richiamato. & Non implementato & Non superato \\ \hline
-		TU40 & Verifica che il metodo ritorni l'id dell'autore della soluzione su cui è richiamato.& Non implementato & Non superato \\ \hline
-		TU41 & Verifica che il metodo ritorni gli argomenti della soluzione su cui è richiamato. & Non implementato & Non superato \\ \hline
-		TU42 & Verifica che il metodo ritorni la difficoltà della soluzione su cui è richiamato. & Non implementato & Non superato \\ \hline
-		TU43 & Verifica che il metodo ritorni i tag della soluzione su cui è richiamato. & Non implementato & Non superato \\ \hline
-		TU44 & Verifica che il metodo ritorni le valutazioni della soluzione su cui è richiamato. & Non implementato & Non superato \\ \hline
-		TU45 & Verifica che il metodo ritorni le valutazioni della soluzione su cui è richiamato in formato JSON. & Non implementato & Non superato \\ \hline
-		TU46 & Verifica che il metodo ritorni la data della soluzione su cui è richiamato & Non implementato & Non superato \\ \hline
-		TU47 & Verifica che il metodo aggiunga correttamente una valutazione alla soluzione su cui è richiamato & Non implementato & Non superato \\ \hline
-		TU48 & Verifica che il metodo ritorni una valutazione tra 0 e 10 della soluzione su cui è richiamato & Non implementato & Non superato \\ \hline
-		\caption{Test di unità}
+		TU1 & Verifica che il metodo ritorni il nome corretto della classe su cui è richiamato. \\ \hline
+		TU2 & Verifica che il metodo ritorni la descrizione corretta della classe su cui è richiamato.\\ \hline
+		TU3 & Verifica che venga ritornato l'id corretto dell'insegnante creatore della classe su cui il metodo è richiamato. \\ \hline
+		TU4 & Verifica che venga ritornata la corretta lista di studenti appartenenti alla classe su cui il metodo è richiamato.  \\ \hline
+		TU5 & Verifica che venga ritornata la corretta lista di esercizi assegnati alla classe su cui il metodo è richiamato.\\ \hline
+		TU6 & Verifica che ritorni il giusto numero di studenti studenti appartenenti alla classe su cui il metodo è richiamato.  \\ \hline
+		TU7 & Verifica che il metodo elimini correttamente uno studente dalla lista di quelli appartenenti alla classe su cui è  richiamato.  \\ \hline
+		TU8 & Verifica che il metodo elimini correttamente un esercizio dalla lista di quelli assegnati alla classe su cui è  richiamato.\\ \hline
+		TU9 & Verifica che il metodo aggiunga correttamente uno studente dalla lista di quelli appartenenti alla classe su cui è  richiamato.\\ \hline
+		TU10 & Verifica che il metodo aggiunga correttamente un esercizio dalla lista di quelli assegnati alla classe su cui è  richiamato. \\ \hline
+		TU11 & Verifica che venga ritornato "true" se uno studente appartiene alla classe su cui il metodo viene richiamato; "false" altrimenti.  \\ \hline		
+		TU12 & Verifica che il metodo ritorni il valore della chiave dell'esercizio su cui è richiamato. \\ \hline
+		TU13 & Verifica che venga ritornata la corretta frase dell'esercizio su cui il metodo è richiamato. \\ \hline
+		TU14 & Verifica che il metodo ritorni un nuovo riferimento a POSManager.\\ \hline
+		TU15 & Verifica che venga ritornato il corretto id dell'autore dell'esercizio su cui il metodo è richiamato.\\ \hline
+		TU16 & Verifica che venga modificata correttamente la chiave dell'esercizio su cui il metodo è stato richiamato.\\ \hline
+		TU17 & Verifica che venga modificata correttamente la frase dell'esercizio su cui il metodo è stato richiamato.\\ \hline
+		TU18 & Verifica che venga modificata correttamente la soluzione dell'esercizio su cui il metodo è stato richiamato.\\ \hline
+		TU19 & Verifica che venga aggiunta correttamente la soluzione alla lista delle soluzioni dell'esercizio su cui il metodo è stato richiamato.\\ \hline
+		TU20 & Verifica che venga ritornata la corretta lista di soluzioni dell'esercizio su cui il metodo è richiamato.\\ \hline
+		TU21 & Verifica che venga aggiunta correttamente una valutazione all'esercizio su cui il metodo è stato richiamato.\\ \hline
+		TU22 & Verifica che venga ritornata la soluzione corrente dell'esercizio su cui il metodo è richiamato.\\ \hline
+		TU23 & Verifica che venga ritornata la corretta soluzione automatica dell'esercizio su cui il metodo è richiamato. \\ \hline
+		TU24 & Verifica che venga ritornata la frase splittata dell'esercizio su cui il metodo viene richiamato.\\ \hline
+		TU25 & Verifica che venga inserita correttamente una valutazione alla soluzione corrente dell'esercizio su cui il metodo è richiamato.\\ \hline		
+		TU26 & Verifica che il metodo ritorni lo username corretto dell'utente su cui è richiamato.\\ \hline
+		TU27 & Verifica che il metodo ritorni il nome corretto dell'utente su cui è richiamato.  \\ \hline
+		TU28 & Verifica che il metodo ritorni il cognome corretto dell'utente su cui è richiamato. \\ \hline
+		TU29 & Verifica che il metodo ritorni la città corretta dell'utente su cui è richiamato.\\ \hline
+		TU30 & Verifica che il metodo ritorni la scuola corretta dell'utente su cui è richiamato. \\ \hline
+		TU31 & Verifica che il metodo ritorni la password corretta dell'utente su cui è richiamato. \\ \hline
+		TU32 & Verifica che il metodo ritorni "true" se vi è corrispondenza tra la prima e seconda password inserita dallo studente in fase di registrazione; "false" altrimenti.  \\ \hline
+		TU33 & Verifica che il metodo ritorni l'id corretto dell'utente su cui è richiamato.\\ \hline
+		TU34 & Verifica che il metodo modifichi correttamente l'id dello studente su cui è richiamato.o  \\ \hline
+		TU35 & Verifica che il metodo ritorni "false" se l'utente su cui è richiamato è uno studente, "true" se è un insegnante. \\ \hline
+		TU36 & Verifica che venga ritornata la corretta lista delle classi a cui appartiene lo studente o create dall'insegnante su cui il metodo è richiamato.  \\ \hline
+		TU37 & Verifica che il metodo ritorni la corretta media dello studente su cui è richiamato. \\ \hline
+		TU38 & Verifica che il metodo ritorni il codice INPS corretto dell'insegnante su cui è richiamato. \\ \hline
+		TU39 & Verifica che il metodo ritorni il valore della chiave della soluzione su cui è richiamato.  \\ \hline
+		TU40 & Verifica che il metodo ritorni l'id dell'autore della soluzione su cui è richiamato. \\ \hline
+		TU41 & Verifica che il metodo ritorni gli argomenti della soluzione su cui è richiamato. \\ \hline
+		TU42 & Verifica che il metodo ritorni la difficoltà della soluzione su cui è richiamato. \\ \hline
+		TU43 & Verifica che il metodo ritorni i tag della soluzione su cui è richiamato. \\ \hline
+		TU44 & Verifica che il metodo ritorni le valutazioni della soluzione su cui è richiamato. \\ \hline
+		TU45 & Verifica che il metodo ritorni le valutazioni della soluzione su cui è richiamato in formato JSON.\\ \hline
+		TU46 & Verifica che il metodo ritorni la data della soluzione su cui è richiamato \\ \hline
+		TU47 & Verifica che il metodo aggiunga correttamente una valutazione alla soluzione su cui è richiamato\\ \hline
+		TU48 & Verifica che il metodo ritorni una valutazione tra 0 e 10 della soluzione su cui è richiamato \\ \hline
+		\caption{Test di unità - descrizione}
 \end{longtable}
 
 \subsubsection{Tracciamento test di unità}
@@ -526,7 +513,53 @@ metrica, questo risultato è ritenuto sufficiente a questo punto del progetto po
 \subparagraph{Codifica al 2019-04-12}
 In questo periodo dell'attività di codifica, sono stati implementati 3 test di integrazione per un totale di 4 coprendo il 40\% dei test di integrazione preventivati.
 Nonostante non raggiunga il livello di accettazione della
-metrica, questo risultato è ritenuto sufficiente a questo punto del progetto poiché sono previsti altri incrementi alla codifica che porteranno all'implementazione di altri test.
+metrica, questo risultato è ritenuto sufficiente a questo punto del progetto poiché sono previsti altri incrementi alla codifica che porteranno all'implementazione di altri test. \\
+\\
+Riportiamo di seguito una tabella rappresentativa dello stato di avanzamento dei test. La tabella verrà aggiornata alla fine di ogni periodo dell'attività di codifica.
+
+	\begin{longtable}{|>{\centering\arraybackslash}m{1.6cm}|>{\centering\arraybackslash}m{6.41cm}|>{\centering\arraybackslash}m{3.1cm}|}		
+	\rowcolor{LightBlue}
+	\textbf{\textcolor{white}{Test}}
+	& \textbf{\textcolor{white}{Stato}}\\
+	\hline
+	TI1
+	& Non implementato
+	\\ \hline
+	\rowcolor{LightGray}
+	TI2
+	& Non implementato
+	\\ \hline
+	TI3
+	& Non implementato
+	\\ \hline
+	\rowcolor{LightGray}
+	TI4
+	& Non implementato
+	\\ \hline
+	TI5
+	& Non implementato
+	\\ \hline
+	\rowcolor{LightGray}
+	TI6
+	& Non implementato
+	\\ \hline	
+	TI7
+	& Implementato
+	\\ \hline	
+	\rowcolor{LightGray}
+	TI8
+	& Implementato
+	\\ \hline	
+	TI9
+	& Implementato
+	\\ \hline	
+	\rowcolor{LightGray}
+	TI10
+	& Implementato
+	\\ \hline	
+	\caption{Test di integrazione - stato di avanzamento}
+\end{longtable}
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.6]{images/resoconto/MPC4Chart.pdf}
@@ -546,7 +579,66 @@ metrica, questo risultato è ritenuto sufficiente a questo punto del progetto po
 \subparagraph{Codifica al 2019-04-12}
 In questo periodo dell'attività di codifica, sono stati implementati 18 test di unità per un totale di 38 coprendo il 79.20\% dei test di integrazione preventivati.
 Nonostante non raggiunga il livello di accettazione della
-metrica, questo risultato è ritenuto sufficiente a questo punto del progetto poiché sono previsti altri incrementi alla codifica che porteranno all'implementazione di altri test.
+metrica, questo risultato è ritenuto sufficiente a questo punto del progetto poiché sono previsti altri incrementi alla codifica che porteranno all'implementazione di altri test.\\
+\\
+Riportiamo di seguito una tabella rappresentativa dello stato di avanzamento dei test. La tabella verrà aggiornata alla fine di ogni periodo dell'attività di codifica.
+
+\begin{longtable}{|>{\centering\arraybackslash}m{1.6cm}|>{\centering\arraybackslash}m{6.41cm}|>{\centering\arraybackslash}m{3.1cm}| c |}		
+	\rowcolor{LightBlue}
+	\textbf{\textcolor{white}{Test}}
+	& \textbf{\textcolor{white}{Stato}}
+	& \textbf{\textcolor{white}{Esito}}\\
+	\hline
+	TU1 & Implementato & Superato \\ \hline
+	TU2 & Implementato & Superato  \\ \hline
+	TU3 & Implementato & Superato  \\ \hline
+	TU4 & Implementato & Superato  \\ \hline
+	TU5 & Implementato & Superato  \\ \hline
+	TU6 & Implementato & Superato  \\ \hline
+	TU7 & Implementato & Superato  \\ \hline
+	TU8 & Implementato & Superato  \\ \hline
+	TU9 & Implementato & Superato  \\ \hline
+	TU10 & Implementato & Superato  \\ \hline
+	TU11 & Implementato & Superato  \\ \hline		
+	TU12 & Implementato & Superato  \\ \hline
+	TU13 & Implementato & Superato  \\ \hline
+	TU14 & Implementato & Superato \\ \hline
+	TU15 & Implementato & Superato  \\ \hline
+	TU16 & Implementato & Superato \\ \hline
+	TU17 & Implementato & Superato \\ \hline
+	TU18 & Implementato & Superato \\ \hline
+	TU19 & Implementato & Superato \\ \hline
+	TU20 & Implementato & Superato \\ \hline
+	TU21 & Implementato & Superato \\ \hline
+	TU22 & Implementato & Superato \\ \hline
+	TU23 & Implementato & Superato \\ \hline
+	TU24 & Implementato & Superato \\ \hline
+	TU25 & Implementato & Superato \\ \hline		
+	TU26 & Implementato & Superato \\ \hline
+	TU27 & Implementato & Superato  \\ \hline
+	TU28 & Implementato & Superato  \\ \hline
+	TU29 & Implementato & Superato  \\ \hline
+	TU30 & Implementato & Superato  \\ \hline
+	TU31 & Implementato & Superato  \\ \hline
+	TU32 & Implementato & Superato  \\ \hline
+	TU33 & Implementato & Superato  \\ \hline
+	TU34 & Implementato & Superato  \\ \hline
+	TU35 & Implementato & Superato \\ \hline
+	TU36 & Implementato & Superato \\ \hline
+	TU37 & Implementato & Superato  \\ \hline
+	TU38 & Implementato & Superato  \\ \hline
+	TU39 & Non implementato & Non superato \\ \hline
+	TU40 & Non implementato & Non superato \\ \hline
+	TU41 & Non implementato & Non superato \\ \hline
+	TU42 & Non implementato & Non superato \\ \hline
+	TU43 & Non implementato & Non superato \\ \hline
+	TU44 & Non implementato & Non superato \\ \hline
+	TU45 & Non implementato & Non superato \\ \hline
+	TU46 & Non implementato & Non superato \\ \hline
+	TU47 & Non implementato & Non superato \\ \hline
+	TU48 & Non implementato & Non superato \\ \hline
+	\caption{Test di unità - stato di avanzamento}
+\end{longtable}
 
 \begin{figure}[H]
 	\centering
@@ -612,14 +704,14 @@ I requisiti sono indicati con il loro codice identificativo definito nel documen
 	ROF27 & Soddisfatto \\ \hline
 	ROF28 & Soddisfatto \\ \hline
 	ROF29 & Soddisfatto \\ \hline
-	ROF30 & Non soddisfatto \\ \hline
-	ROF31 & Non soddisfatto \\ \hline
-	ROF32 & Non soddisfatto \\ \hline
+	ROF30 & Soddisfatto \\ \hline
+	ROF31 & Soddisfatto \\ \hline
+	ROF32 & Soddisfatto \\ \hline
 	ROF33 & Soddisfatto \\ \hline
-	ROF34 & Non soddisfatto \\ \hline
-	ROF35 & Non soddisfatto \\ \hline
-	ROF36 & Non soddisfatto \\ \hline
-	ROF37 & Non soddisfatto \\ \hline
+	ROF34 & Soddisfatto \\ \hline
+	ROF35 & Soddisfatto \\ \hline
+	ROF36 & Soddisfatto \\ \hline
+	ROF37 & Soddisfatto \\ \hline
 	ROF38 & Non soddisfatto \\ \hline
 	ROF39 & Non soddisfatto \\ \hline
 	RDF1 & Soddisfatto \\ \hline
@@ -643,24 +735,24 @@ I requisiti sono indicati con il loro codice identificativo definito nel documen
 	RDF19 & Non soddisfatto \\ \hline
 	RDF20 & Non soddisfatto \\ \hline
 	RDF21 & Non soddisfatto \\ \hline
-	RDF22 & Non soddisfatto \\ \hline
+	RDF22 & Soddisfatto \\ \hline
 	RDF23 & Non soddisfatto \\ \hline
 	RDF24 & Non soddisfatto \\ \hline
-	RDF25 & Non soddisfatto \\ \hline
-	RDF26 & Non soddisfatto \\ \hline
-	RDF27 & Non soddisfatto \\ \hline
-	RDF28 & Non soddisfatto \\ \hline
+	RDF25 & Soddisfatto \\ \hline
+	RDF26 & Soddisfatto \\ \hline
+	RDF27 & Soddisfatto \\ \hline
+	RDF28 & Soddisfatto \\ \hline
 	RDF29 & Non soddisfatto \\ \hline
 	RDF30 & Non soddisfatto \\ \hline
 	RDF31 & Non soddisfatto \\ \hline
-	RDF32 & Non soddisfatto \\ \hline
-	RDF33 & Non soddisfatto \\ \hline
+	RDF32 & Soddisfatto \\ \hline
+	RDF33 & Soddisfatto \\ \hline
 	RDF34 & Non soddisfatto \\ \hline
-	RDF35 & Non soddisfatto \\ \hline
-	RDF36 & Non soddisfatto \\ \hline
+	RDF35 & Soddisfatto \\ \hline
+	RDF36 & Soddisfatto \\ \hline
 	RDF37 & Non soddisfatto \\ \hline
 	RDF38 & Non soddisfatto \\ \hline
-	RDF39 & Non soddisfatto \\ \hline
+	RDF39 & Soddisfatto \\ \hline
 	RDF40 & Non soddisfatto \\ \hline
 	RDF41 & Non soddisfatto \\ \hline
 	RDF42 & Non soddisfatto \\ \hline
@@ -678,16 +770,16 @@ I requisiti sono indicati con il loro codice identificativo definito nel documen
 	RPF10 & Non soddisfatto \\ \hline
 	RPF11 & Non soddisfatto \\ \hline
 	RPF12 & Non soddisfatto \\ \hline
-	RPF13 & Non soddisfatto \\ \hline
+	RPF13 & Soddisfatto \\ \hline
 	RPF14 & Non soddisfatto \\ \hline
 	RPF15 & Soddisfatto \\ \hline
 	RPF16 & Soddisfatto \\ \hline
 	RPF17 & Non soddisfatto \\ \hline
 	RPF18 & Non soddisfatto \\ \hline
-	RPF19 & Non soddisfatto \\ \hline
-	RPF20 & Non soddisfatto \\ \hline
+	RPF19 & Soddisfatto \\ \hline
+	RPF20 & Soddisfatto \\ \hline
 	RPF21 & Non soddisfatto \\ \hline
-	RPF22 & Non soddisfatto \\ \hline
+	RPF22 & Soddisfatto \\ \hline
 	RPF23 & Non soddisfatto \\ \hline
 	RPF24 & Non soddisfatto \\ \hline
 	RPF25 & Non soddisfatto \\ \hline

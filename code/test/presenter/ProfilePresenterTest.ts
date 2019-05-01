@@ -1,7 +1,7 @@
 import * as chai from 'chai';
 import 'mocha';
-import {InsertPresenter} from "../../src/ts/presenter/InsertPresenter";
-import {InsertPageView} from "../../src/ts/view/InsertPageView";
+//import {InsertPresenter} from "../../src/ts/presenter/InsertPresenter";
+//import {InsertPageView} from "../../src/ts/view/InsertPageView";
 import * as express from "express";
 var session = require('express-session');
 

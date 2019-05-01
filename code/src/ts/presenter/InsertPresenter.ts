@@ -29,7 +29,7 @@ class InsertPresenter extends PagePresenter{
     private insertExercise(app : any) : void{
         app.get('/', async (request: any, response: any) => {
             session.invalidLogin = request.query.mess==="invalidLogin";
-
+            this.view.setTitle("Homepage");
             let userClient = this.client.getUserClient();
             if (userClient && session.username && session.username !== "developer"){
                 if (await userClient.isTeacher(session.username)){

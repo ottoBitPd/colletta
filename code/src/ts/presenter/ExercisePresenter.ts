@@ -67,7 +67,7 @@ class ExercisePresenter extends PagePresenter{
                 this.view.setPosTags(posTags);
                 this.view.setUserKind(UserKind.teacher);
                 if (request.body.solutionKey !== "null") {
-                    //update di una vecchia soluzione
+                    //update of an inserted solution
                     this.updateState = true;
                     this.view.setSentenceKey(request.body.exerciseKey);
                     this.view.setSolutionKey(request.body.solutionKey);
@@ -86,6 +86,7 @@ class ExercisePresenter extends PagePresenter{
             }
         });
     }
+
     private updateExercise(app : any) : void {
         app.post('/exercise/update', async (request: any, response: any) => {
             let exerciseClient = this.client.getExerciseClient();
@@ -119,6 +120,7 @@ class ExercisePresenter extends PagePresenter{
             let exerciseClient = this.client.getExerciseClient();
             if(exerciseClient){
                 // console.log("key arrivata: ",request.body.sentence);
+                this.view.setTitle("Esercizio");
                 this.view.setSentence(request.body.sentence);
                 this.view.setPosTranslation(null);
                 this.view.setCorrections(await this.teacherSolutions(request.body.sentence));
@@ -239,6 +241,8 @@ class ExercisePresenter extends PagePresenter{
                             2: [],
                             3: -1
                         };
+                        //console.log("POST: ",request.body);
+                        console.log("tag assemblati da tendine: ",solution[1]);
                         valutation = {
                             0: null,
                             1: await exerciseClient.evaluate(solution["1"],"",[],request.body.sentence,-1)
@@ -274,7 +278,7 @@ class ExercisePresenter extends PagePresenter{
      * @param tags - array of tag coming from hunpos solution
      * @returns {Array} an array containing the italian translation for every tag
      */
-    private translateTags(tags : string []) : string[]{
+    public translateTags(tags : string []) : string[]{//rimettere private
         var hunposTranslation = [];
         for(var i=0;i<tags.length;i++){
             hunposTranslation[i]=this.translateTag(tags[i]);
@@ -288,7 +292,7 @@ class ExercisePresenter extends PagePresenter{
      * @returns {string} a string containing the italian translation of the tag
      */
     public translateTag(tag : string){
-        console.log("arriva: "+tag);
+        //console.log("arriva: "+tag);
         const content = fileSystem.readFileSync("./src/ts/presenter/vocabolario.json");
         const jsonContent = JSON.parse(content.toString());
 
@@ -351,7 +355,7 @@ class ExercisePresenter extends PagePresenter{
      * @returns {Array} an array containing the tags of the solution suggested by the user
      */
     private correctionToTags(wordsnumber : number, dataCorrection : any) : string []{
-        //console.log("dataCorrection: "+require('util').inspect(dataCorrection));
+        console.log("dataCorrection: ",dataCorrection);
         let optionsIndex=0, wordIndex=0;//optionsIndex counter for options of the first select input field
         let tagsCorrection = [];
         tagsCorrection.length = wordsnumber;
@@ -376,7 +380,8 @@ class ExercisePresenter extends PagePresenter{
                     */
 
                     //if (dataCorrection[i] !== 'A') {
-                        if (['B', 'E', 'P', 'S', 'V','A'].indexOf(dataCorrection[i]) !== -1) {
+                        if (['P', 'V', 'A'].indexOf(dataCorrection[i]) !== -1) {
+                            console.log("è");
                             if (i !== ('general' + wordIndex))
                                 actualTag += dataCorrection[i];
                         } else {

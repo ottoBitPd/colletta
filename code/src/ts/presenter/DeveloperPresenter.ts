@@ -227,5 +227,14 @@ class DeveloperPresenter extends PagePresenter{
         csv = csv.join('\r\n');
         return csv;
     }
+
+    async isTeacher(solverID: string) : Promise<boolean>{
+        let userClient = this.client.getUserClient();
+        if(userClient){
+            let json = await userClient.getUserData(solverID);
+            return json.inps !== undefined;
+        }
+        return false;
+    }
 }
 export {DeveloperPresenter}

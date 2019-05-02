@@ -24,7 +24,12 @@ describe('ClassClient', function() {
                 },
 
                 async read(id:string) : Promise<Data> {
-                    return new Class(id,"ciao","ciao","0",[],[]);
+                    if (id==="")
+                    {return new Class(id,"ciao","ciao","0",[],[]);}
+                    else
+                        if (id!=="n") {return new Class(id,"ciao","ciao","0",["st1"],["es1"]);}
+                        else
+                        {return new Class(id,"ciao","ciao","0",["n"],["n"]);}
                 },
 
                 async search(name:string) : Promise<string> {
@@ -67,17 +72,26 @@ describe('ClassClient', function() {
         it('should remove a student from a class', async function () {
             expect(await test.deleteStudent("","")).to.be.undefined;
         });
+        it('should remove the last student from a class', async function () {
+            expect(await test.deleteStudent("st1","st1"));
+        });
     });
 
     describe('ClassClientTest.deleteExercise()', function () {
         it('should remove an exercise from a class', async function () {
             expect(await test.deleteExercise("","")).to.be.undefined;
         });
+        it('should remove the last exercise from a class', async function () {
+            expect(await test.deleteExercise("es1","es1"));
+        });
     });
 
     describe('ClassClientTest.addStudent()', function () {
         it('should add a student to a class', async function () {
             expect(await test.addStudent("","")).to.be.undefined;
+        });
+        it('should add the first student to a class', async function () {
+            expect(await test.addStudent("n","n"));
         });
     });
 
@@ -90,7 +104,12 @@ describe('ClassClient', function() {
     describe('ClassClientTest.addExercise()', function () {
         it('should add an exercise to a class', async function () {
             expect(await test.addExercise("","")).to.be.undefined;
+
         });
+        it('should add first exercise to a class', async function () {
+            expect(await test.addExercise("n","n"));
+        });
+
     });
 
     describe('ClassClientTest.getStudents()', function () {
@@ -122,6 +141,12 @@ describe('ClassClient', function() {
                 "exercises" : [],
                 "time" : null
             });
+        });
+    });
+
+    describe('ClassClientTest.getClassesByStudent()', function () {
+        it('should get the classes with a specific student', async function () {
+            expect((await test.getClassesByStudent("st1")).length).to.be.equal(2);
         });
     });
 });

@@ -14,6 +14,8 @@ describe('Solution',function () {
                 undefined,false,new Map<string,number>(),10);
         solutionTeacher = new Solution("1","t0",["a","c","b","d"],["t1","t2"],
             1,false,new Map<string,number>(),40);
+        solution_1 = new Solution("0","s0",["a","b","c"],["t1","t2"],
+            5,false,new Map<string,number>(),24);
         solution.addNewMark("teacher1",10);
         solution.addNewMark("teacher2",5);
     });
@@ -149,10 +151,10 @@ describe('Solution',function () {
 
     describe('Solution.getTime()',function () {
         context('when the time exist', function () {
-            beforeEach(function () {
+           /* beforeEach(function () {
                 solution_1 = new Solution("0","s0",["a","b","c"],["t1","t2"],
                     5,false,new Map<string,number>(),24);
-            });
+            });*/
             it('should return the time', function () {
                 expect(solution_1.getTime()).to.eql(24);
             });
@@ -162,6 +164,22 @@ describe('Solution',function () {
             it('should return the time null',function () {
                 expect(solution.getTime()).to.eql(null);
             })
+        });
+    });
+
+    describe('Teacher.toJSON()', function () {
+        it('should return a JSON representing the teacher', function () {
+            let val = {
+                "key" : "0",
+                "solverId": "s0",
+                "solutionTags" : ["a","b","c"],
+                "topics" : ["t1","t2"],
+                "difficulty" : 5,
+                "valutations" : new Map<string,number>(),
+                "time" : 24,
+                "_public" : false
+            };
+            expect(solution_1.toJSON()).eql(val);
         });
     });
 

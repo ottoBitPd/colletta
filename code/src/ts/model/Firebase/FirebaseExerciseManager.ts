@@ -26,7 +26,6 @@ class FirebaseExerciseManager extends FirebaseManager {
         return new Promise(async function (resolve) {
             //scrivo esercizio
             if (exists === "false" && wrsolution !== null) {//exercise does not exist in the db
-                console.log("inserting sentence");
                 //key = this.writeSentence(exercise.getSentence(), exercise.getAuthorId());
                 let ref = FirebaseManager.database.ref('data/sentences/').push({
                     sentence: exercise.getSentence(),

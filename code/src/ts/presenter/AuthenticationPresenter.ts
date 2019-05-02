@@ -21,7 +21,6 @@ class AuthenticationPresenter extends PagePresenter {
      */
     update(app: any) {
         app.get('/logout', (request: any, response: any) => {
-            console.log("LOGOUT");
             //TODO trovarle e cancellarle tutte
             delete session.invalidLogin;
             delete session.errUsername;
@@ -65,20 +64,16 @@ class AuthenticationPresenter extends PagePresenter {
             const hashedPassword = this.passwordHash.hashSync(req.body.username,10);
             //console.log("hashedPassword:" + hashedPassword);
             let userClient = this.client.getUserClient();
-            console.log("username :"+req.body.username+" role: "+ req.body.role+" user : "+userClient );
             if(userClient !== undefined){
                 const exist = await userClient.search(req.body.username);
                 if (req.body.username !== "admin" && req.body.role === "student" && exist === "false") {
                     userClient.insertStudent(req.body.username, hashedPassword, req.body.name, req.body.surname, req.body.city, req.body.school, req.body.email);
-                    console.log("studente registrato con successo");
                     res.redirect("/");
 
                 } else if (req.body.username !== "admin" && req.body.role === "teacher" && userClient !== undefined) {
                     userClient.insertTeacher(req.body.username, hashedPassword, req.body.name, req.body.surname, req.body.city, req.body.school, req.body.inps, req.body.email);
-                    console.log("teacher registrato con successo");
                     res.redirect("/");
                 } else {
-                    console.log("username già utilizzato");
                     res.redirect("/registration?mess=errUsername");
                 }
             }

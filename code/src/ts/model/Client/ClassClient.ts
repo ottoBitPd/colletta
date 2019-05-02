@@ -107,11 +107,9 @@ class ClassClient{
         var _class : Data = await this.dbClassManager.read(classId);
         var exercises:string [] = (<Class>_class).getExercises();
         if(exercises[0]!=="n") {//if the class already has some exercises
-            console.log("aggiungo esercizio");
             exercises.push(exerciseId);
         }
         else {//if there are no exercises
-            console.log("primo esercizio");
             exercises[0]=exerciseId;
         }
         await this.dbClassManager.update("data/classes/"+ classId + "/exercises", exercises);

@@ -26,33 +26,27 @@ class ProfilePresenter extends PagePresenter{
                 const userData = await userClient.getUserData(id);
                 let check : boolean =false;
                 if(request.body.oldpassword==="" && request.body.password==="") {
-                    console.log("pwd non cambia");
                     check = true;
                 }
                 if(request.body.oldpassword!=="" && request.body.password!=="") {
                     if (userClient.checkPassword(request.body.oldpassword,userData.password)) {
-                        console.log("nuova password: "+request.body.password);
                         request.body.password = userClient.hashPassword(request.body.password);
                         check = true;
                         this.view.setError("Password modificata");
                     }
                     else {
-                        console.log("pwd errata");
                         check = false;
                         this.view.setError("Modifica abortita username esistente o password errata");
                     }
                 }
                 if(check===true && request.body.username==="") {
-                    console.log("username non cambia");
                     check = true;
                 }
                 else {
                     if(check===true && await userClient.search(request.body.username)==="false") {
-                        console.log("username cambia e ok");
                         check=true;
                     }
                     else {
-                        console.log("username esistente o password errata");
                         check=false;
                         this.view.setError("Modifica abortita username esistente o password errata");
                     }
@@ -60,18 +54,15 @@ class ProfilePresenter extends PagePresenter{
                 if(check) {
                     this.view.setError("");
                     let userUpdateData: any = {};
-                    console.log("POST: ",request.body);
                     for (let i in request.body) {
                         if (i !== "oldpassword" && i!=="inps"){
                             if (request.body[i]!=="") {
-                                console.log('cambio');
                                 userUpdateData[i] = request.body[i];
                             }
                             else
                                 userUpdateData[i] = userData[i];
                         }
                     }
-                    console.log("POST: ",userUpdateData);
                     if (await userClient.isTeacher(session.username)) {
                         //console.log("teacher");
                         if (/^[^\s]$/.test(request.body.inps))
@@ -98,10 +89,8 @@ class ProfilePresenter extends PagePresenter{
                 //console.log("userData: ",userData);
                 this.view.setUserData(userData);
                 if (await userClient.isTeacher(session.username)){
-                    console.log("teacher");
                     this.view.setUserKind(UserKind.teacher);
                 } else {
-                    console.log("student");
                     this.view.setUserKind(UserKind.student);
                 }
             }
@@ -118,7 +107,6 @@ class ProfilePresenter extends PagePresenter{
         if(userClient){
             const id = await userClient.search(session.username);
             const userData = await userClient.getUserData(id);
-            console.log("userData: ",userData.classId);
             return userData.classId;
         }
     }

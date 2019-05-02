@@ -77,9 +77,6 @@ class ExercisePresenter extends PagePresenter{
                     this.updateState = false;//maybe it is not need
 
                     this.view.setTitle("Esercizio");
-                    console.log("hunpos: ", posSolution);
-                    console.log("tags extracted: ", posTags);
-                    console.log("tags translated: ", posTranslation);
 
                     response.send(await this.view.getPage());
                 }
@@ -91,16 +88,13 @@ class ExercisePresenter extends PagePresenter{
         app.post('/exercise/update', async (request: any, response: any) => {
             let exerciseClient = this.client.getExerciseClient();
             if(exerciseClient && request.body.solutionKey!=="null" && request.body.sentenceKey!=="null"){
-                console.log("aggiorno esercizio: ",request.body.sentenceKey," soluzione: ",request.body.solutionKey);
                 let words = exerciseClient.getSplitSentence(request.body.sentence);
                 let wordsnumber = words.length;
-                console.log("frase: ",words);
                 //update di una vecchia soluzione
                 let hunposTags = JSON.parse(request.body.hunposTags);
                 let tagsCorrection = this.correctionToTags(wordsnumber, request.body);
                 //building a array merging tags coming from user corrections and hunpos solution
                 let finalTags = this.correctsPOS(hunposTags, tagsCorrection);
-                console.log("nuova sol: ",finalTags);
                 let solution = {
                     tags :finalTags,
                     _public: request.body.public,
@@ -141,127 +135,104 @@ class ExercisePresenter extends PagePresenter{
      * This method provides to save a new exercise
      * @param app
      */
-    private saveExercise(app : any) : any{
+    private saveExercise(app : any){
         app.post('/exercise/save', async (request : any, response : any) => {
             let exerciseClient = this.client.getExerciseClient();
             let userClient = this.client.getUserClient();
-            if(exerciseClient && userClient){
+            if (exerciseClient && userClient) {
                 let words = exerciseClient.getSplitSentence(request.body.sentence);
-                let wordsnumber = words.length;
-                if(session.username!== undefined){//if somebody is logged in
-                    let ID = await userClient.search(session.username);
-                    if(this.view.getUserKind() === UserKind.teacher) {
-                        console.log("salvo es di un teacher");
-                        //console.log("post: ",request.body);
-                        let hunposTags = JSON.parse(request.body.hunposTags);
-                        let tagsCorrection = this.correctionToTags(wordsnumber, request.body);
-                        //building a array merging tags coming from user corrections and hunpos solution
-                        let finalTags = this.correctsPOS(hunposTags, tagsCorrection);
-                        //console.log("finalTags: "+finalTags);
-                        //const solverId = userClient.getUserId(session.username)
-                        let solution = {
-                            0: ID,
-                            1: finalTags,
-                            2: this.splitTopics(request.body.topics),
-                            3: request.body.difficulty
-                        };
-                        let valutation = {
-                            0: ID,
-                            1: 10
-                        };
 
-                        this.userSolution = solution[1];
-                        this.correction = null;
-                        exerciseClient.insertExercise(request.body.sentence, ID, solution, valutation,request.body.public);
-                        //exerciseClient.addValutation(request.body.sentence, "sessionauthorId","teacherIdValue", 10);//valori di prova
-                        //await exerciseClient.insertExercise(request.body.sentence, "authorIdValue",);
+                let ID : string = "-1";
+                if (session.username)
+                    ID = await userClient.search(session.username);
 
-                        //saving in the database the final solution for the exercise
-                        //this.model.writeSolution(sentence.split(" "), finalTags, sentence, key);
-                        response.redirect('/');
-                    } else {
-                        console.log("salvo es di un studente");
-                        let solution : any;
-                        let valutation : any;
-                        if (request.body.correction !== 'auto'){
-                            console.log("salvo es di studente con correzione auto");
-                            let corrections = await this.teacherSolutions(request.body.sentence);
-                            corrections = corrections.filter((value) => value.id === request.body.correction);
-                            solution = {
-                                0: ID,
-                                1: this.correctionToTags(wordsnumber,request.body),
-                                2: corrections[0].tags,
-                                3: corrections[0].difficulty
-                            };
-                            valutation = {
-                                0: corrections[0].userID,
-                                1: await exerciseClient.evaluate(solution["1"],ID,corrections[0].topics,request.body.sentence,corrections[0].difficulty,corrections[0].userID)
-                            };
-                            if ((await exerciseClient.searchExercise(request.body.sentence)).size > 0){
-                                await exerciseClient.insertExercise(request.body.sentence, ID, solution, valutation);
-                                this.userSolution = solution[1];
-                                this.correction = {"mark" : valutation[1], "tags" : corrections[0].tags};
-                            }
-                        } else {
-                            console.log("salvo es di studente con correzione teacher");
-                            solution = {
-                                0: ID,
-                                1: this.correctionToTags(wordsnumber,request.body),
-                                2: [],
-                                3: -1
-                            };
-                            valutation = {
-                                0: null,
-                                1: await exerciseClient.evaluate(solution["1"],"",[],request.body.sentence,-1)
-                            };
-                            await exerciseClient.insertExercise(request.body.sentence, ID, solution, {});
-                            this.userSolution = solution[1];
-                            this.correction = {"mark" : valutation[1], "tags" : await exerciseClient.autosolve(request.body.sentence,ID)};
-                        }
-                    }
-                } else {//if is a no logged in user
-                    let solution : any;
-                    let valutation : any;
-                    if (request.body.correction !== 'auto'){
-                        let corrections = await this.teacherSolutions(request.body.sentence);
-                        corrections = corrections.filter((value) => value.id === request.body.correction);
-                        solution = {
-                            0: "-1",
-                            1: this.correctionToTags(wordsnumber,request.body),
-                            2: corrections[0].tags,
-                            3: corrections[0].difficulty
-                        };
-                        valutation = {
-                            0: corrections[0].userID,
-                            1: await exerciseClient.evaluate(solution["1"],"",[],request.body.sentence,corrections[0].difficulty,corrections[0].userID)
-                        };
-                        await exerciseClient.insertExercise(request.body.sentence, "-1", solution, valutation);
-                    } else {//if he has chosen autocorrection
-                        solution = {
-                            0: "-1",
-                            1: this.correctionToTags(wordsnumber,request.body),
-                            2: [],
-                            3: -1
-                        };
-                        //console.log("POST: ",request.body);
-                        console.log("tag assemblati da tendine: ",solution[1]);
-                        valutation = {
-                            0: null,
-                            1: await exerciseClient.evaluate(solution["1"],"",[],request.body.sentence,-1)
-                        };
-                        await exerciseClient.insertExercise(request.body.sentence, "-1", solution, {});
-                    }
-
-                    this.userSolution = solution[1];
-                    console.log("secondo autosolve");
-                    this.correction = {"mark" : valutation[1], "tags" : await exerciseClient.autosolve(request.body.sentence,"")};
-                    console.log("userSolution: ",this.userSolution);
-                    console.log("correction : ",this.correction );
+                if (this.view.getUserKind() === UserKind.teacher){
+                    this.teacherInsert(request, words, ID);
+                    response.redirect('/');
+                } else {
+                    await this.userInsert(request, ID, words);
+                    response.send(await this.view.getPage());
                 }
-                this.view.setTitle("Risultati");
-                response.send(await this.view.getPage());
             }
         });
+    }
+
+    /**
+     * This method provides to save a new exercise when the user is a student or unknown
+     * @param request HTTP request received
+     * @param ID the user's ID
+     * @param words the array of words composing the sentence
+     */
+    private async userInsert(request: any, ID: string, words:string[]) {
+        let corrections: any[] = [{tags: [], difficulty: -1}];
+        let exerciseClient = this.client.getExerciseClient();
+
+        if (exerciseClient){
+            if (request.body.correction !== "auto") {
+                corrections = await this.teacherSolutions(request.body.sentence);
+                corrections = corrections.filter((value) => value.id === request.body.correction);
+            }
+
+            let solution: any = {
+                0: ID,
+                1: this.correctionToTags(words.length, request.body),
+                2: corrections[0].tags,
+                3: corrections[0].difficulty
+            };
+
+            let valutation: any = {
+                0: null,
+                1: await exerciseClient.evaluate(solution["1"], "", [], request.body.sentence, -1)
+            };
+
+            this.userSolution = solution[1];
+
+            if (request.body.correction === "auto") {
+                this.correction = {
+                    "mark": valutation[1],
+                    "tags": await exerciseClient.autosolve(request.body.sentence, ID)
+                };
+                valutation = {};
+            } else {
+                valutation[0] = corrections[0].userID;
+                valutation[1] = await exerciseClient.evaluate(solution["1"], "", [],
+                    request.body.sentence, corrections[0].difficulty, corrections[0].userID);
+                this.correction = {"mark": valutation[1], "tags": corrections[0].tags};
+            }
+
+            exerciseClient.insertExercise(request.body.sentence, ID, solution, valutation);
+        }
+    }
+
+    /**
+     * This method provides to save a new exercise when the user is a teacher who wants to insert a new correction
+     * @param request HTTP request received
+     * @param ID the user's ID
+     * @param words the array of words composing the sentence
+     */
+    private teacherInsert(request: any, words : string[], ID: string) {
+        let hunposTags = JSON.parse(request.body.hunposTags);
+        let tagsCorrection = this.correctionToTags(words.length, request.body);
+        //building a array merging tags coming from user corrections and hunpos solution
+        let finalTags = this.correctsPOS(hunposTags, tagsCorrection);
+
+        let solution = {
+            0: ID,
+            1: finalTags,
+            2: this.splitTopics(request.body.topics),
+            3: request.body.difficulty
+        };
+
+        let valutation = {
+            0: ID,
+            1: 10
+        };
+
+        this.userSolution = solution[1];
+        this.correction = null;
+        let exerciseClient = this.client.getExerciseClient();
+        if (exerciseClient)
+            exerciseClient.insertExercise(request.body.sentence, ID, solution, valutation, request.body.public);
     }
 
     /**
@@ -358,7 +329,6 @@ class ExercisePresenter extends PagePresenter{
      * @returns {Array} an array containing the tags of the solution suggested by the user
      */
     private correctionToTags(wordsnumber : number, dataCorrection : any) : string []{
-        console.log("dataCorrection: ",dataCorrection);
         let optionsIndex=0, wordIndex=0;//optionsIndex counter for options of the first select input field
         let tagsCorrection = [];
         tagsCorrection.length = wordsnumber;
@@ -384,7 +354,6 @@ class ExercisePresenter extends PagePresenter{
 
                     //if (dataCorrection[i] !== 'A') {
                         if (['P', 'V', 'A'].indexOf(dataCorrection[i]) !== -1) {
-                            console.log("è");
                             if (i !== ('general' + wordIndex))
                                 actualTag += dataCorrection[i];
                         } else {
@@ -452,8 +421,6 @@ class ExercisePresenter extends PagePresenter{
                 if (exerciseClient){
                     let solutions = await exerciseClient.searchSolution(sentence,teacher);
                     for (let sol of solutions){
-                        console.log("solution: ",sol);
-                        console.log("_public: ",sol._public);
                         if(sol._public==='true') {//only if the teacher set solution as public
                             sol = {
                                 "id": sol.id,

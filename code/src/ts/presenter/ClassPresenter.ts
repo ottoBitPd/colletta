@@ -76,9 +76,7 @@ class ClassPresenter extends PagePresenter {
         let userClient = this.client.getUserClient();
         if(classClient && userClient) {
             let studentsId = await classClient.getStudents(this.classId);
-            for (let i in studentsId) {
-                console.log("students: ", studentsId[i]);
-            }
+
             if (studentsId.length > 0 && studentsId[0]!=="n") {//it there are students in the class
                 let students = new Array();//array di json student
                 for (let i in studentsId) {
@@ -193,7 +191,6 @@ class ClassPresenter extends PagePresenter {
             let classClient = this.client.getClassClient();
             let userClient = this.client.getUserClient();
             if(classClient && userClient) {
-                console.log("studentId: "+request.body.studentId+" classId: "+this.classId);
                 await classClient.addStudent(request.body.studentId,this.classId);
                 //ritorna boolean per gestione errore
                 //await userClient.addClassToStudent(request.body.studentId,this.classId);
@@ -209,7 +206,6 @@ class ClassPresenter extends PagePresenter {
         app.post('/addexercise', async (request: any, response: any) => {
             let classClient = this.client.getClassClient();
             if(classClient) {
-                console.log("presenter: aggiungo esercizio");
                 await classClient.addExercise(request.body.exerciseId,this.classId);
                 //ritorna boolean per gestione errore
             }

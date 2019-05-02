@@ -114,7 +114,6 @@ class ClassesView extends PageView {
      */
     private async printList() {
         let elements =[];
-        console.log("listType: ",this.classPresenter.getListType());
         let header;
         if(this.classPresenter.getListType()==="classes") {
             elements = await this.classPresenter.getClasses();
@@ -130,7 +129,6 @@ class ClassesView extends PageView {
                 "<div class='col-sm-12 mx-auto'>ESERCIZIO</div>\n" +
                 "</div>\n";
         }
-        console.log("elements: ",elements);
         if(elements === null){
             return "";//resultList is not set yet, cause nobody searched yet
         }
@@ -158,7 +156,6 @@ class ClassesView extends PageView {
                         elements[i].description +
                         "</div>\n" +
                         "<div class='col-sm-4 mx-auto text-center'>\n";
-                    console.log("this.userKind: ", this.userKind);
                     if (this.userKind === UserKind.teacher) {
                         ret += "<form method='post' action='/deleteclass'>\n" +
                             "<button class='btn btn-danger btn-sm' name='key' value='" + elements[i].id + "' type='submit'>Elimina</button>\n" +

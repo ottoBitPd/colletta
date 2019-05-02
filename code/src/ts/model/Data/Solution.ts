@@ -108,9 +108,11 @@ class Solution {
         let result = "{";
         if (this.valutations){
             this.valutations.forEach((value, key) => {
-                result += '"' + key +'" : '+value+",";
+                if (key !== undefined && value != undefined)
+                    result += '"' + key +'" : '+value+",";
             });
-         }
+        }
+
         if (result !== "{")
             result = result.substr(0,result.length-1);
         result += "}";

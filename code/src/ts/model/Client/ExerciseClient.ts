@@ -51,7 +51,7 @@ class ExerciseClient{
     public insertExercise(sentence: string , authorId :string, solution : any, valutation :any, _public? : boolean) : void {
         let exercise = new Exercise(sentence, authorId);
         exercise.setSolution(solution[0],solution[1],solution[2],solution[3],_public||false);
-        if (valutation!=={})
+        if (valutation !== {})
             exercise.addValutation(valutation[0], valutation[1]);
         this.dbExerciseManager.insert(exercise);
     }
@@ -102,7 +102,6 @@ class ExerciseClient{
                 }
             }
         }
-        console.log("res: ", result);
         return result;
     }
 
@@ -265,6 +264,7 @@ class ExerciseClient{
         });
         return averageMap;
     }
+
     public async updateSolution(exerciseId : string, solutionId : string, solution : any){
 
         await this.dbExerciseManager.update('data/sentences/'+exerciseId+'/solutions/'+solutionId+'/tags', solution.tags);

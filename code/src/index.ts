@@ -23,29 +23,11 @@ new SearchView(app);
 new ClassesView(app);
 new ClassView(app);
 new DeveloperView(app);
-/*
-//OLD STYLE
-const exercisePage = new ExercisePresenter(exerciseView, savePageView);
-exercisePage.update(app);
-
-const loginView  = new LoginView();
-const registrationView : any= new RegistrationView();
-const LoginPage = new AuthenticationPresenter(loginView,registrationView);
-LoginPage.update(app);
-*/
-
 
 
 app.listen(8080, async function () {
     const host = "127.0.0.1";
     const port = "8080";
-    console.log("Example app listening at http://%s:%s", host, port);
-
-    /*let exerciseClient =(new Client.builder()).buildExerciseClient().build().getExerciseClient();
-    if(exerciseClient){
-        let exercise = await exerciseClient.getExerciseData("-LdJfwbWT_e7V-xjLJse");
-        console.log("exercise: ",exercise);
-    }*/
-
+    console.log("Application listening at http://%s:%s", host, port);
 });
 

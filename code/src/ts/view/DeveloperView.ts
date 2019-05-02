@@ -90,7 +90,6 @@ class DeveloperView extends PageView {
     //@ts-ignore
     private async printList() {
         let results = await this.devPresenter.getAnnotations();
-        console.log("Resuts: ",results);
         if(results.length===0){
             return "<h2 class='h5 text-danger text-center'>Nessun risultato</h2>";//resultList is not set yet, cause nobody searched yet
         }

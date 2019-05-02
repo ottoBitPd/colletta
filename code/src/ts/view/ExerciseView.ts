@@ -100,7 +100,7 @@ class ExerciseView extends PageView{
         "\t\t\t\t<form method=\"POST\" action=\""+page+"\">\n";
 
         ret+=this.buildTable(words);
-        //si esegue un passaggio alla OttoBit (^o^)
+
         ret+="" +
             "\t\t\t\t\t<input type=\"hidden\" name=\"wordsnumber\" value=\""+this.splitSentence().length+"\"/>\n" +
             "\t\t\t\t\t<input type=\"hidden\" name=\"sentenceKey\" value=\""+this.sentenceKey+"\"/>\n" +

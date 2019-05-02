@@ -174,7 +174,6 @@ class FirebaseUserManager extends FirebaseManager {
         let splittedPath =path.split("/");
         let position : number = splittedPath.length-1;
         let field : string = splittedPath[position];
-        console.log("update user - field: "+field, " value: "+value);
         switch (field) {
             case "password": await this.updateField(path, value); break;
             case "name": await this.updateField(path, value); break;

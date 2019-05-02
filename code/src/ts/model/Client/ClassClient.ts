@@ -171,7 +171,7 @@ class ClassClient{
         for (let entry of Array.from(elements.entries())) {
             let key = entry[0];
             let _class = await this.dbClassManager.read(key);
-            let students = (<Class> _class).getStudents()
+            let students = (<Class> _class).getStudents();
             for(let i in students){
                 if(students[i]===studentId){
                     ret.push((<Class>_class).toJSON());

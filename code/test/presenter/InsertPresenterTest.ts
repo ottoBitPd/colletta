@@ -17,19 +17,10 @@ describe('InsertPresenter', function() {
     let test:InsertPresenter;
     const app=express();
 
-   /* class Response {
-        send(s : string){return s;}
-    }
-*/
     beforeEach(function () {
 
         session.username=undefined;
        test = new InsertPresenter(new InsertPageView(app));
-
-       //@ts-ignored
-  /*     app={
-           get(route : string, callback : (name : string) => any) :any {}
-       };*/
 
        //@ts-ignored
        test.view = {

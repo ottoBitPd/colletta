@@ -26,8 +26,8 @@ class DeveloperView extends PageView {
             "\t\t<title>"+this.title+"</title>\n" +
             "\t\t<link rel=\"stylesheet\" type=\"text/css\" href=\"/style.css\">\n" +
             "\t\t<!--bootstrap-->" +
-            "\t\t<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css\">" +
-            "\t\t<link rel=\"stylesheet\" href=\"https://use.fontawesome.com/releases/v5.7.0/css/all.css\" integrity=\"sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ\" crossorigin=\"anonymous\">" +
+            "\t\t<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css\">\n" +
+            "\t\t<link rel=\"stylesheet\" href=\"https://use.fontawesome.com/releases/v5.7.0/css/all.css\" integrity=\"sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ\" crossorigin=\"anonymous\">\n" +
             "\t\t<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\"></script>\n" +
             "\t\t<script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js\"></script>\n" +
             "\t\t<script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js\"></script>\n" +
@@ -36,7 +36,8 @@ class DeveloperView extends PageView {
         ret += this.getMenu();
         ret += "" +
             "\t<div class='row container mx-auto'>\n"+
-            "\t\t<div class=\"col-sm-12 mx-auto text-center\">";
+            "\t\t\t<div class=\"col-sm-2 mx-auto text-center\"></div>\n"+
+            "\t\t\t<div class=\"col-sm-8 mx-auto text-center\">\n";
         if(!this.devPresenter.isLoggedIn()) {
             let s = this.devPresenter.getMessage();
             if (s) {
@@ -46,7 +47,7 @@ class DeveloperView extends PageView {
                 "\t\t\t\t<input type=\"password\" class='form-control my-2' name=\"password\" placeholder=\"Inserisci la password dello sviluppatore\" required/>\n" +
                 "\t\t\t\t<button type=\"submit\" class=\"btn btn-primary my-2 my-sm-0 w-25\">Invia</button>\n" +
                 "\t\t\t</form>" +
-                "\t\t</div>\n\t</div>\n";
+                "\t\t\t</div>\t\t\t<div class=\"col-sm-2 mx-auto text-center\"></div>\n\n\t</div>\n";
         }
         else{//developer is loggedIn
             ret += "\t\t\t<form action='/developer' method='get'>" +
@@ -59,23 +60,23 @@ class DeveloperView extends PageView {
             "  <div class=\"col-10\">\n" +
             "    <input class=\"form-control\" type=\"date\" name=\"dateFrom\" id=\"date\">\n" +
             "  </div>" +
-
+            "</div>" +
             "<div class=\"form-group row\">\n" +
             "  <label for=\"example-date-input\" class=\"col-2 col-form-label\">Data fine</label>\n" +
             "  <div class=\"col-10\">\n" +
             "    <input class=\"form-control\" type=\"date\" name=\"dateTo\" id=\"date\">\n" +
             "  </div>" +
+            "</div>" +
+            "\t\t\t\t<input type=\"text\" class='form-control' name=\"user\" placeholder=\"Inserisci un user\"/>\n" +
+            "\t\t\t\t<button type=\"submit\" class=\"btn btn-primary my-2 w-25\">Filtra</button>\n" +
+            "\t\t\t</form>\n\t\t\t</div>\n\t\t\t<div class=\"col-sm-2 mx-auto text-center\"></div>\n";
 
-            "\t\t\t\t<input type=\"text\" class='form-control my-2' name=\"user\" placeholder=\"Inserisci un user\"/>\n" +
-
-                "\t\t\t\t<button type=\"submit\" class=\"btn btn-primary my-2 my-sm-0 w-25\">Filtra</button>\n" +
-            "\t\t\t</form>";
             ret+= await this.printList();
 
             let csv = await this.devPresenter.createCsvFromAnnotations();
             let s=escape(csv);
-            ret+="<button onclick='download_csv(\""+s+"\")' class=\"btn btn-primary my-2 my-sm-0 w-25\">Download</button>";
-            ret+="<a href='/download%model'>Scarica il modello</a>";
+            ret+="<button onclick='download_csv(\""+s+"\")' class=\"btn btn-primary my-2 mx-3 w-25\">Download</button>";
+            ret+="<a href='/download%model' class='btn btn-primary my-2 mx-3 w-25'>Scarica il modello</a></div></div>";
         }
 
         ret+=this.getFoot(this.getScript());
@@ -86,6 +87,7 @@ class DeveloperView extends PageView {
      * This method is used to display the list of search results
      * @return {string} the HTML source
      */
+    //@ts-ignore
     private async printList() {
         let results = await this.devPresenter.getAnnotations();
         console.log("Resuts: ",results);
@@ -95,7 +97,7 @@ class DeveloperView extends PageView {
         let ret="";
 
         if(results.length>0) {
-            ret += "\t<div class=\"col-sm-12\">" +
+            ret += "\t<div class=\"col-sm-12 mx-auto text-center\">" +
                 "\t\t<ul class=\"col-sm-12 list-group\">\n" +
                 "\t\t\t<li class='list-group-item active'>" +
                 "\t\t\t\t<div class='row'>" +
@@ -116,14 +118,18 @@ class DeveloperView extends PageView {
                     ret += "\t\t\t\t\t<div class='col-sm-2'>" + date.getDate() + "/" + (date.getMonth()+1) + "/" + date.getFullYear() + "</div>" +
                         "\t\t\t\t\t<div class='col-sm-2 overflow-tip'><p class='text-truncate'>" + CryptoJS.MD5(results[i].id) + "</p></div>\n" +
                         "\t\t\t\t\t<div class='col-sm-2 overflow-tip'><p class='text-truncate'>" + CryptoJS.MD5(results[i].solverID) + "</p></div>\n" +
-                        "\t\t\t\t\t<div class='col-sm-1 overflow-tip'>" + results[i].valutations[1] + "</div>\n" +
-                        "\t\t\t\t\t<div class='col-sm-1 overflow-tip'>" + results[i].valutations[1] + "</div>\n" +
+                        "\t\t\t\t\t<div class='col-sm-1 overflow-tip'>" + results[i].valutations[1] + "</div>\n";
+                    let role="A";
+                    if(await this.devPresenter.isTeacher(results[i].solverID)){
+                        role="I";
+                    }
+                    ret+="\t\t\t\t\t<div class='col-sm-1 overflow-tip'>" + role + "</div>\n" +
                         "\t\t\t\t</div>\n" +
                         "\t\t\t</li>\n";
                 //}
             }
         }
-        return "\t\t</ul>\n"+ret;
+        return ret+"\t\t</ul>\n";
     }
 
     /**
@@ -133,6 +139,7 @@ class DeveloperView extends PageView {
         return"" +
             "function syncFunc() {" +
             "var val = document.getElementById('valutationFrom').value;" +
+            "document.getElementById('valutationTo').value= val;"+
             "document.getElementById('valutationTo').min= val;"+
             "}" +
 

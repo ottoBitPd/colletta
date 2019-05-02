@@ -29,6 +29,7 @@ class DeveloperPresenter extends PagePresenter{
         this.listenDeveloper(app);
         this.checkDeveloper(app);
         this.download(app);
+        this.downloadModel(app);
     }
 
     /**
@@ -79,6 +80,12 @@ class DeveloperPresenter extends PagePresenter{
             response.send(await this.view.getPage());
 
 
+        });
+    }
+
+    private downloadModel(app : any) {
+        app.get('/download%model', (request : any, response : any) => {
+            response.download('src/ts/presenter/hunpos/italian_model', "italian_model")
         });
     }
 

@@ -214,6 +214,7 @@ class ExercisePresenter extends PagePresenter{
                                 0: null,
                                 1: await exerciseClient.evaluate(solution["1"],"",[],request.body.sentence,-1)
                             };
+                            await exerciseClient.insertExercise(request.body.sentence, ID, solution, {});
                             this.userSolution = solution[1];
                             this.correction = {"mark" : valutation[1], "tags" : await exerciseClient.autosolve(request.body.sentence,ID)};
                         }
@@ -225,7 +226,7 @@ class ExercisePresenter extends PagePresenter{
                         let corrections = await this.teacherSolutions(request.body.sentence);
                         corrections = corrections.filter((value) => value.id === request.body.correction);
                         solution = {
-                            0: undefined,
+                            0: "-1",
                             1: this.correctionToTags(wordsnumber,request.body),
                             2: corrections[0].tags,
                             3: corrections[0].difficulty
@@ -234,9 +235,10 @@ class ExercisePresenter extends PagePresenter{
                             0: corrections[0].userID,
                             1: await exerciseClient.evaluate(solution["1"],"",[],request.body.sentence,corrections[0].difficulty,corrections[0].userID)
                         };
+                        await exerciseClient.insertExercise(request.body.sentence, "-1", solution, valutation);
                     } else {//if he has chosen autocorrection
                         solution = {
-                            0: undefined,
+                            0: "-1",
                             1: this.correctionToTags(wordsnumber,request.body),
                             2: [],
                             3: -1
@@ -247,6 +249,7 @@ class ExercisePresenter extends PagePresenter{
                             0: null,
                             1: await exerciseClient.evaluate(solution["1"],"",[],request.body.sentence,-1)
                         };
+                        await exerciseClient.insertExercise(request.body.sentence, "-1", solution, {});
                     }
 
                     this.userSolution = solution[1];

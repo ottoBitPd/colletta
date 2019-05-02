@@ -18,16 +18,25 @@ describe('FirebaseClassManager', function() {
         it('should return the insert user in database', async function() {
 
             expect(await test.insert(prova)).to.equal(true);
+        });
+        it('doesn\'t should return the insert user in database', async function() {
 
+            expect(await test.insert(prova)).to.equal(false);
         });
     });
 
     describe('FirebaseClassManager.search()', function () {
+        it('doesn\'t should return search obj in database', async function() {
+            //@ts-ignored
+            prova.id=await test.search('Benedettolone');
+            expect(prova.getId()).to.be.equal("false");
+        });
         it('should return search obj in database', async function() {
             //@ts-ignored
             prova.id=await test.search('Benedetto');
             expect(prova.getId()).to.be.not.equal("false");
         });
+
     });
 
     describe('FirebaseClassManager.read()', function () {

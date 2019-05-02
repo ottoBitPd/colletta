@@ -1,6 +1,6 @@
 import {PageView} from "./PageView";
 import {DeveloperPresenter} from "../presenter/DeveloperPresenter";
-
+import * as CryptoJS from "crypto-js";
 /**
  *   Class to display the developer page
  *   @extends PageView
@@ -112,8 +112,8 @@ class DeveloperView extends PageView {
                         "\t\t\t\t\t<div class='col-sm-4'>" + results[i].sentence + "</div>\n";
                     let date = new Date(results[i].time);
                     ret += "\t\t\t\t\t<div class='col-sm-1'>" + date.getDate() + "/" + (date.getMonth()+1) + "/" + date.getFullYear() + "</div>" +
-                        "\t\t\t\t\t<div class='col-sm-3'>" + results[i].id + "</div>\n" +
-                        "\t\t\t\t\t<div class='col-sm-3'>" + results[i].solverID + "</div>\n" +
+                        "\t\t\t\t\t<div class='col-sm-3'>" + CryptoJS.MD5(results[i].id) + "</div>\n" +
+                        "\t\t\t\t\t<div class='col-sm-3'>" + CryptoJS.MD5(results[i].solverID) + "</div>\n" +
                         "\t\t\t\t</div>\n" +
                         "\t\t\t</li>\n";
                 //}

@@ -137,8 +137,8 @@ describe('ClassClient', function() {
                 "name" : "ciao",
                 "description" : "ciao",
                 "teacherID" : "0",
-                "students" : [],
-                "exercises" : [],
+                "students" : ["st1"],
+                "exercises" : ["es1"],
                 "time" : null
             });
         });

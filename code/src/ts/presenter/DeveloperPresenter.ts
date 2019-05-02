@@ -1,6 +1,8 @@
 import {Client} from "../model/Client/Client";
 import {PageView} from "../view/PageView";
 import {PagePresenter} from "./PagePresenter";
+import * as CryptoJS from "crypto-js";
+
 //import { ExportToCsv } from 'export-to-csv';
 var session = require('express-session');
 
@@ -192,7 +194,7 @@ class DeveloperPresenter extends PagePresenter{
     }
 
     filterByUser(id : string) {
-        this.annotations=this.annotations.filter((sol:any)=>sol.solverID !==id);
+        this.annotations=this.annotations.filter((sol:any)=>CryptoJS.MD5(sol.solverID).toString()===id);
     }
 
 

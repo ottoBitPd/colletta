@@ -75,6 +75,7 @@ class DeveloperView extends PageView {
             let csv = await this.devPresenter.createCsvFromAnnotations();
             let s=escape(csv);
             ret+="<button onclick='download_csv(\""+s+"\")' class=\"btn btn-primary my-2 my-sm-0 w-25\">Download</button>";
+            ret+="<a href='/download%model'>Scarica il modello</a>";
         }
 
         ret+=this.getFoot(this.getScript());

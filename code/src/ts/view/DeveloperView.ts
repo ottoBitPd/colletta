@@ -95,25 +95,24 @@ class DeveloperView extends PageView {
 
         if(results.length>0) {
             ret += "\t<div class=\"col-sm-12\">" +
-                "\t\t<ul class=\"list-group\">\n" +
+                "\t\t<ul class=\"col-sm-10 list-group\">\n" +
                 "\t\t\t<li class='list-group-item active'>" +
                 "\t\t\t\t<div class='row'>" +
-                "\t\t\t\t\t<div class='col-sm-4'>Esercizi</div>"+
-                "\t\t\t\t\t<div class='col-sm-1'>Data</div>"+
-                "\t\t\t\t\t<div class='col-sm-3'>ID esercizio</div>"+
-                "\t\t\t\t\t<div class='col-sm-3'>Hash utente</div>"+
+                "\t\t\t\t\t<div class='col-sm-6'>Esercizi</div>"+
+                "\t\t\t\t\t<div class='col-sm-2'>Data</div>"+
+                "\t\t\t\t\t<div class='col-sm-2'>ID esercizio</div>"+
+                "\t\t\t\t\t<div class='col-sm-2'>Hash utente</div>"+
                 "\t\t\t\t</div>" +
                 "\t\t\t</li>";
 
             for (let i in results) {
-                //for (let y in results[i].solutions) {
                     ret += "\t\t\t<li class=\"list-group-item\">" +
                         "\t\t\t\t<div class='row'>" +
-                        "\t\t\t\t\t<div class='col-sm-4'>" + results[i].sentence + "</div>\n";
+                        "\t\t\t\t\t<div class='col-sm-6'>" + results[i].sentence + "</div>\n";
                     let date = new Date(results[i].time);
-                    ret += "\t\t\t\t\t<div class='col-sm-1'>" + date.getDate() + "/" + (date.getMonth()+1) + "/" + date.getFullYear() + "</div>" +
-                        "\t\t\t\t\t<div class='col-sm-3'>" + CryptoJS.MD5(results[i].id) + "</div>\n" +
-                        "\t\t\t\t\t<div class='col-sm-3'>" + CryptoJS.MD5(results[i].solverID) + "</div>\n" +
+                    ret += "\t\t\t\t\t<div class='col-sm-2'>" + date.getDate() + "/" + (date.getMonth()+1) + "/" + date.getFullYear() + "</div>" +
+                        "\t\t\t\t\t<div class='col-sm-2 overflow-tip'><p class='text-truncate'>" + CryptoJS.MD5(results[i].id) + "</p></div>\n" +
+                        "\t\t\t\t\t<div class='col-sm-2 overflow-tip'><p class='text-truncate'>" + CryptoJS.MD5(results[i].solverID) + "</p></div>\n" +
                         "\t\t\t\t</div>\n" +
                         "\t\t\t</li>\n";
                 //}
@@ -135,7 +134,6 @@ class DeveloperView extends PageView {
 
 
             "function download_csv(csvContent){" +
-            "alert(csvContent);"+
             "csvContent=unescape(csvContent);"+
             "var downloadLink = document.createElement(\"a\");\n" +
             "var blob = new Blob([\"\ufeff\", csvContent]);\n" +

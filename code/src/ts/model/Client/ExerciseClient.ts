@@ -51,7 +51,8 @@ class ExerciseClient{
     public insertExercise(sentence: string , authorId :string, solution : any, valutation :any, _public? : boolean) : void {
         let exercise = new Exercise(sentence, authorId);
         exercise.setSolution(solution[0],solution[1],solution[2],solution[3],_public||false);
-        exercise.addValutation(valutation[0], valutation[1]);
+        if (valutation!=={})
+            exercise.addValutation(valutation[0], valutation[1]);
         this.dbExerciseManager.insert(exercise);
     }
 
@@ -239,7 +240,8 @@ class ExerciseClient{
         let solutions: Solution[] = [];
         let exercises = await this.getExercisesByStudent(studentId);
         exercises.forEach((currentValue: Exercise, index: number) => {
-            solutions=solutions.concat(currentValue.getSolutions().filter((sol) => sol.getSolverId() === studentId));
+            solutions=solutions.concat(currentValue.getSolutions().filter((sol) => sol.getSolverId() === studentId
+                && sol.getValutations() && sol.getValutations()!.size > 0));
         });
         let  sumTotal = 0; var i = 0;
         //sort solutions

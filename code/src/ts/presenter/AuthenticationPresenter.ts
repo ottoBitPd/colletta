@@ -21,8 +21,6 @@ class AuthenticationPresenter extends PagePresenter {
      */
     update(app: any) {
         app.get('/logout', (request: any, response: any) => {
-            console.log("LOGOUT");
-            //TODO trovarle e cancellarle tutte
             delete session.invalidLogin;
             delete session.errUsername;
             delete session.username;

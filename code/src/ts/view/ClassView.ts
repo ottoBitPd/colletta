@@ -105,7 +105,7 @@ class ClassView extends PageView {
      * This method is used to display the page menù
      * @return {string} the HTML source
      */
-    private getMenu() : string {
+    /*private getMenu() : string {
         let ret =""+
             "\t<nav class=\"navbar navbar-expand-sm bg-dark navbar-dark\">" +
             "\t\t<div class=\"navbar-brand\">Colletta</div>" +
@@ -126,13 +126,13 @@ class ClassView extends PageView {
         ret+="\t\t</div>" +
             "\t</nav>";
         return ret;
-    }
+    }*/
 
     /**
      * This method is used to display the page login area
      * @return {string} the HTML source
      */
-    private getLoginArea() : string {
+    /*private getLoginArea() : string {
 
         if(this.classPresenter.isLoggedIn()){
             return "" +
@@ -163,7 +163,7 @@ class ClassView extends PageView {
                 "\t\t\t</form>\n";
             return ret;
         }
-    }
+    }*/
 
     /**
      * This method is used to display the class student list

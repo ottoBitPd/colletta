@@ -47,7 +47,7 @@ class SearchView extends PageView{
      * This method is used to display the page menù
      * @return {string} the HTML source
      */
-    private getMenu() : string {
+    /*private getMenu() : string {
         let ret ="<nav class=\"navbar navbar-expand-sm bg-dark navbar-dark\">" +
             "    <div class=\"navbar-brand\">Colletta</div>" +
             "    <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#collapsibleNavbar\">" +
@@ -67,13 +67,13 @@ class SearchView extends PageView{
         ret+="    </div>" +
             "</nav>";
         return ret;
-    }
+    }*/
 
     /**
      * This method is used to display the page login area
      * @return {string} the HTML source
      */
-    private getLoginArea() : string {
+    /*private getLoginArea() : string {
 
         if(this.searchPresenter.isLoggedIn()){
             return "" +
@@ -104,7 +104,7 @@ class SearchView extends PageView{
                 "\t\t</form>\n";
             return ret;
         }
-    }
+    }*/
 
     /**
      * This method is used to display the list of search results

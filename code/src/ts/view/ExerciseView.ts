@@ -695,7 +695,7 @@ class ExerciseView extends PageView{
      * This method is used to display the page menù
      * @return {string} the HTML source
      */
-    private getMenu() : string {
+    /*private getMenu() : string {
         let ret ="\t\t<nav class=\"navbar navbar-expand-sm bg-dark navbar-dark\">\n" +
             "\t\t\t<div class=\"navbar-brand\">Colletta</div>\n" +
             "\t\t\t<button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#collapsibleNavbar\">\n" +
@@ -715,13 +715,13 @@ class ExerciseView extends PageView{
         ret+="\t\t\t</div>\n" +
             "\t\t</nav>\n";
         return ret;
-    }
+    }*/
 
     /**
      * This method is used to display the page login area
      * @return {string} the HTML source
      */
-    private getLoginArea() : string {
+    /*private getLoginArea() : string {
         if(this.exercisePresenter.isLoggedIn()){
             return "" +
                 "\t\t\t\t<form class='form-inline my-2 my-lg-0' action='/logout'>\n" +
@@ -748,7 +748,7 @@ class ExerciseView extends PageView{
                 "\t\t\t\t</form>\n";
             return ret;
         }
-    }
+    }*/
     /**
      * This method splits a sentence on spaces and punctuation
      * @returns string [] - an array containing the split sentence

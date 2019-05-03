@@ -175,20 +175,14 @@ class DeveloperView extends PageView {
      * This method is used to display the page menù
      * @return {string} the HTML source
      */
-    private getMenu() : string {
+    public getMenu() : string {
         let ret ="<nav class=\"navbar navbar-expand-sm bg-dark navbar-dark\">" +
-            "    <div class=\"navbar-brand\">Colletta</div>" +
+            "    <a class=\"navbar-brand\" href='/developer'>Colletta</a>" +
             "    <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#collapsibleNavbar\">" +
             "        <span class=\"navbar-toggler-icon\"></span>" +
             "    </button>" +
             "    <div class=\"collapse navbar-collapse\" id=\"collapsibleNavbar\">"+
             "<ul class=\"navbar-nav mr-auto\">";
-        for(let i in this.menuList) {
-            ret += ""+
-                "<li class=\"nav-item\">" +
-                "   <a class=\"nav-link\" href=\""+this.menuList[i].link+"\">"+this.menuList[i].name+"</a>" +
-                "</li>";
-        }
         ret+="</ul>";
         //aggiungo login o logout
         ret+=this.getLoginArea();
@@ -201,7 +195,7 @@ class DeveloperView extends PageView {
      * This method is used to display the page login area
      * @return {string} the HTML source
      */
-    private getLoginArea() : string {
+    public getLoginArea() : string {
         if(this.devPresenter.isLoggedIn()){
             return "" +
                 "        <form class='form-inline my-2 my-lg-0' action='/logout'>\n" +

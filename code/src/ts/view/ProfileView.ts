@@ -39,7 +39,7 @@ class ProfileView extends PageView{
      */
     public async getPage() {
         let ret = this.getHead();
-        ret += await this.getMenu();
+        ret += this.getMenu();
         ret += "\t\t<div class=\"container\">" +
             "\t\t\t<h1 class ='text-center mb-5'>Informazioni profilo:</h1>\n";
             if (this.error !== undefined){
@@ -176,7 +176,7 @@ class ProfileView extends PageView{
      * This method is used to display the page menù
      * @return {string} the HTML source
      */
-    private async getMenu() : Promise<string> {
+    /*private getMenu() : string {
         let ret =""+
             "<nav class=\"navbar navbar-expand-sm bg-dark navbar-dark\">" +
             "\t<div class=\"navbar-brand\">Colletta</div>" +
@@ -221,18 +221,18 @@ class ProfileView extends PageView{
         ret +=
             "<form method='post' action='/exercise/insert' id='insertExerciseForm' class='d-none'>" +
             "   <div class=\"input-group col-sm-4 py-2 bg-dark\">" +
-            "       <input type=\"text\" name=\"sentence\" class=\"form-control\" required>" +
+            "       <input type=\"text\" name=\"sentence\" class=\"form-control\" require='required'>" +
             "       <button type=\"submit\" class=\"btn btn-primary\">Invia</button>" +
             "   </div>" +
             "</form>";
         return ret;
-    }
+    }*/
 
     /**
      * This method is used to display the page login area
      * @return {string} the HTML source
      */
-    private getLoginArea() : string {
+    /*private getLoginArea() : string {
 
         if(this.profileController.isLoggedIn()){
             return "" +
@@ -262,7 +262,7 @@ class ProfileView extends PageView{
                 "\t\t</form>\n";
             return ret;
         }
-    }
+    }*/
 
     /**
      * This method returns the javascript code to show the average chart

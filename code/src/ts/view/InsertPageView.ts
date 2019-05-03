@@ -1,4 +1,4 @@
-import {PageView, UserKind} from "./PageView";
+import {PageView} from "./PageView";
 import {InsertPresenter} from "../presenter/InsertPresenter";
 
 /**
@@ -40,7 +40,7 @@ class InsertPageView extends PageView {
      * This method is used to display the page menù
      * @return {string} the HTML source
      */
-    private getMenu() : string {
+    /*private getMenu() : string {
         let ret ="\t\t<nav class=\"navbar navbar-expand-sm bg-dark navbar-dark\">\n" +
             "\t\t\t<div class=\"navbar-brand\">Colletta</div>\n" +
             "\t\t\t<button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#collapsibleNavbar\">\n" +
@@ -79,18 +79,18 @@ class InsertPageView extends PageView {
             "\t\t\t<div class=\"input-group col-sm-4 py-2 bg-dark\">\n" +
             "\t\t\t\t<input type=\"hidden\" name=\"solutionKey\" value='null'>\n" +
             "\t\t\t\t<input type=\"hidden\" name=\"exerciseKey\" value='null'>\n" +
-            "\t\t\t\t<input type=\"text\" name=\"sentence\" class=\"form-control\" required>\n" +
+            "\t\t\t\t<input type=\"text\" name=\"sentence\" class=\"form-control\" required='required'>\n" +
             "\t\t\t\t<button type=\"submit\" class=\"btn btn-primary\">Invia</button>\n" +
             "\t\t\t</div>\n" +
             "\t\t</form>\n";
         return ret;
-    }
+    }*/
 
     /**
      * This method is used to display the page login area
      * @return {string} the HTML source
      */
-    private getLoginArea() : string {
+    /*private getLoginArea() : string {
 
         if(this.exercisePresenter.isLoggedIn()){
             return "" +
@@ -122,6 +122,6 @@ class InsertPageView extends PageView {
             "\t\t\t\t</form>\n";
             return ret;
         }
-    }
+    }*/
 }
 export {InsertPageView};

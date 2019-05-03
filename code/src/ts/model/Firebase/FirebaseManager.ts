@@ -20,14 +20,17 @@ abstract class FirebaseManager {
     private static initDB() {
         const admin = require("firebase-admin");
 
-        //altro modo che funziona meno
-        var serviceAccount = require('../../../../src/ts/model/Firebase/colletta-3e789-firebase-adminsdk-e5uh6-1be19838f7.json');
-
-        admin.initializeApp({
-            credential: admin.credential.cert(serviceAccount),
-            databaseURL: "https://colletta-3e789.firebaseio.com"
-        });
-        return admin.database();
+        let serviceAccount : any;
+        try {
+            serviceAccount = require('../../../../src/ts/model/Firebase/colletta-3e789-firebase-adminsdk-e5uh6-1be19838f7.json');
+            admin.initializeApp({
+                credential: admin.credential.cert(serviceAccount),
+                databaseURL: "https://colletta-3e789.firebaseio.com"
+            });
+            return admin.database();
+        } catch (e) {
+            console.log(e.message);
+        }
     }
 
     /**

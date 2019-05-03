@@ -4,6 +4,7 @@ import {Data} from "../../../src/ts/model/Data/Data";
 import {ExerciseClient} from "../../../src/ts/model/Client/ExerciseClient";
 import {Exercise} from "../../../src/ts/model/Data/Exercise";
 
+
 describe('ExerciseClient', function() {
 
     let test: ExerciseClient;
@@ -78,7 +79,7 @@ describe('ExerciseClient', function() {
                 exercise.getSolutions()[1].addNewMark("",4);
                 exercise.getSolutions()[2].addNewMark("",3);
                 return exercise;
-            };
+        };
 
             expect(await test.searchSolution("This is an example","0")).to.be.eql(
                 [
@@ -112,6 +113,23 @@ describe('ExerciseClient', function() {
                     }
                 ]
             );
+        });
+    });
+
+    describe('ExerciseClient.searchAllSolution()',function () {
+        it('should search all solution in the database', async function() {
+
+            //@ts-ignore
+            test.dbExerciseManager.read = (id : string) => {
+                let exercise = new Exercise("This is an example","0");
+                exercise.addSolution("1","0",[],[],3,new Map<string,number>(),1);
+                exercise.addSolution("2","0",[],[],3,new Map<string,number>(),2);
+                exercise.getSolutions()[0].addNewMark("0",2);
+                exercise.getSolutions()[1].addNewMark("0",4);
+                return exercise;
+            };
+            console.log(await test.searchAllSolution());
+            expect(await test.searchAllSolution()).to.be.not.undefined;
         });
     });
 

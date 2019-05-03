@@ -51,7 +51,7 @@ class ClassesView extends PageView {
      * This method is used to display the page menù
      * @return {string} the HTML source
      */
-    private getMenu() : string {
+    /*private getMenu() : string {
         let ret =""+
             "<nav class=\"navbar navbar-expand-sm bg-dark navbar-dark\">" +
             "\t<div class=\"navbar-brand\">Colletta</div>" +
@@ -69,13 +69,13 @@ class ClassesView extends PageView {
         ret+="\t\t</div>" +
             "\t</nav>";
         return ret;
-    }
+    }*/
 
     /**
      * This method is used to display the page login area
      * @return {string} the HTML source
      */
-    private getLoginArea() : string {
+    /*private getLoginArea() : string {
 
         if(this.classPresenter.isLoggedIn()){
             return "" +
@@ -106,7 +106,7 @@ class ClassesView extends PageView {
                 "\t\t\t</form>\n";
             return ret;
         }
-    }
+    }*/
 
     /**
      * This method is used to display the class list
@@ -119,8 +119,10 @@ class ClassesView extends PageView {
             elements = await this.classPresenter.getClasses();
             header = "<div class='row'>\n" +
                 "<div class='col-sm-2 mx-auto'>CLASSE</div>\n" +
-                "<div class='col-sm-6 mx-auto'>DESCRIZIONE</div>\n" +
-                "<div class='col-sm-4 mx-auto'></div>\n" +
+                "<div class='col-sm-3 mx-auto'>DESCRIZIONE</div>\n" +
+                "<div class='col-sm-3 mx-auto'>DATA CREAZIONE</div>\n" +
+                "<div class='col-sm-2 mx-auto'>ISCRITTI</div>\n" +
+                "<div class='col-sm-2 mx-auto'></div>\n" +
                 "</div>\n";
         }
         if(this.classPresenter.getListType()==="exercises") {
@@ -129,6 +131,7 @@ class ClassesView extends PageView {
                 "<div class='col-sm-12 mx-auto'>ESERCIZIO</div>\n" +
                 "</div>\n";
         }
+
         if(elements === null){
             return "";//resultList is not set yet, cause nobody searched yet
         }
@@ -149,13 +152,21 @@ class ClassesView extends PageView {
                 ret+="<li class='list-group-item'>\n" +
                 "<div class='row'>\n";
                 if(this.classPresenter.getListType()==="classes") {
-                    ret += "<div class='col-sm-2 mx-auto'>\n" +
+                    console.log("classe: ",elements[i]);
+                    ret += "<div class='col-sm-2 mx-auto text-center'>\n" +
                         "<a class='btn btn-link btn-sm' href='/class?classId=" + elements[i].id + "'>" + elements[i].name + "</a>\n" +
                         "</div>\n" +
-                        "<div class='col-sm-6 mx-auto'>\n" +
+                        "<div class='col-sm-3 mx-auto text-center'>\n" +
                         elements[i].description +
+                        "</div>\n";
+                    let date = new Date(elements[i].time);
+                        ret+="<div class='col-sm-3 mx-auto text-center'>\n" +
+                            date.getDate() + "/" + (date.getMonth()+1) + "/" + date.getFullYear()+
                         "</div>\n" +
-                        "<div class='col-sm-4 mx-auto text-center'>\n";
+                        "<div class='col-sm-2 mx-auto text-center'>\n" +
+                        await this.classPresenter.getStudentNumber(elements[i].id) +
+                        "</div>\n" +
+                        "<div class='col-sm-2 mx-auto text-center'>\n";
                     if (this.userKind === UserKind.teacher) {
                         ret += "<form method='post' action='/deleteclass'>\n" +
                             "<button class='btn btn-danger btn-sm' name='key' value='" + elements[i].id + "' type='submit'>Elimina</button>\n" +

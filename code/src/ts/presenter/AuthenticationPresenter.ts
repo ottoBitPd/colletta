@@ -21,11 +21,12 @@ class AuthenticationPresenter extends PagePresenter {
      */
     update(app: any) {
         app.get('/logout', (request: any, response: any) => {
-            //TODO trovarle e cancellarle tutte
+
             delete session.invalidLogin;
             delete session.errUsername;
             delete session.username;
             delete session.password;
+
             response.redirect('/');
         });
         app.get('/profile', (request: any, response: any) => {

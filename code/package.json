@@ -3,7 +3,8 @@
   "scripts": {
     "lint": "tslint --project tsconfig.json",
     "build": "tsc --outDir public",
-    "test": "nyc --reporter=html --reporter=text mocha -r ts-node/register test/**/*.ts test/**/**/*.ts --exit",
+    "test": "nyc --reporter=html --reporter=text mocha -r ts-node/register test/**/*.ts \"test/model/{,!(Firebase)}/*.ts\" --exit",
+    "firebasetest" : "nyc --reporter=html --reporter=text mocha -r ts-node/register test/model/Firebase/*.ts --exit",
     "start": "npm run shell",
     "cyclomatic": "cr public/ -o cyclomatic-report.txt"
   },

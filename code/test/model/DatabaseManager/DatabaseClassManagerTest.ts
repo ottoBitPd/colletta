@@ -2,17 +2,13 @@ import {expect} from 'chai';
 import 'mocha';
 
 import {Class} from "../../../src/ts/model/Data/Class";
-
 import {DatabaseClassManager} from "../../../src/ts/model/DatabaseManager/DatabaseClassManager";
-
-
 
 describe('DatabaseClassManager', function() {
 
     let prova :any;
 
-    let test1=new DatabaseClassManager();
-
+    let test1 = new DatabaseClassManager();
 
     beforeEach(function () {
          prova= new Class("1","Benedetto","Ciao","111",["st1"],["es1"]);

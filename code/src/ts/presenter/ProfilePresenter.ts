@@ -83,7 +83,7 @@ class ProfilePresenter extends PagePresenter{
 
         app.get('/profile', async (request: any, response: any) => {
             let userClient = this.client.getUserClient();
-            if (userClient && session.username !== "developer"){
+            if (userClient && session.username){
                 const id = await userClient.search(session.username);
                 const userData = await userClient.getUserData(id);
                 //console.log("userData: ",userData);
@@ -94,14 +94,15 @@ class ProfilePresenter extends PagePresenter{
                     this.view.setUserKind(UserKind.student);
                 }
             }
-            else {
-                //console.log("developer");
-                this.view.setUserKind(UserKind.developer);
-            }
+
+            if (session.username === undefined)
+                response.redirect('/');
+
             this.view.setTitle("Profilo");
             response.send(await this.view.getPage());
         });
     }
+
     public async getStudentClass () {
         let userClient= this.client.getUserClient();
         if(userClient){

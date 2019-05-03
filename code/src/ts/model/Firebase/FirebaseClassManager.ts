@@ -57,7 +57,7 @@ class FirebaseClassManager extends FirebaseManager {
                         //console.log("non esiste");
                         return resolve("false");
                     }
-                    //console.log("database vuoto");
+                   // console.log("database vuoto");
                     return resolve("false");
                 });
         });
@@ -83,7 +83,7 @@ class FirebaseClassManager extends FirebaseManager {
                         return resolve(container);
                     }
                     //console.log("database vuoto");
-                    else {
+                    else {//console.log("database vuoto");
                         return resolve(container);
                     }
                 });
@@ -116,7 +116,8 @@ class FirebaseClassManager extends FirebaseManager {
                             readData.students, readData.exercises, readData.time);
                         return resolve(_class);
                     }
-                    return resolve(undefined);
+                    else {//console.log("database");
+                    return resolve(undefined);}
                 });
         });
     }

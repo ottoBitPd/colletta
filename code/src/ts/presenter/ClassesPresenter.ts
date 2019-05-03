@@ -218,6 +218,22 @@ class ClassesPresenter extends PagePresenter {
         }
         return result;
     }
+    /**
+     * This method provides to return number of students belong to a class
+     * @param - classId the Id of the chosen class
+     */
+    public async getStudentNumber(classId: string) {
+        let classClient = this.client.getClassClient();
+        let userClient = this.client.getUserClient();
+        if(classClient && userClient) {
+            let studentsId = await classClient.getStudents(classId);
+            if (studentsId[0]==="n") {//it there are students in the class
+                return 0;
+            }
+            return studentsId.length;
+        }
+        return -1;
+    }
 }
 export {ClassesPresenter}
 

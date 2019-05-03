@@ -47,13 +47,8 @@ class ClassPresenter extends PagePresenter {
 
     private class(app : any){
         app.get('/class', async (request: any, response: any) => {
-            let menuList :any;
-            menuList= {
-                0 :{"link":"/","name":"Homepage"}
-            }
             this.setClassId(request.query.classId);
             this.view.setTitle("Classe");
-            this.view.setMenuList(menuList);
             let userClient= this.client.getUserClient();
             if(userClient){
                 if(await userClient.isTeacher(session.username))

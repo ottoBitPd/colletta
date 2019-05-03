@@ -1,5 +1,6 @@
 import {PagePresenter} from "./PagePresenter"
 import {Client} from "../model/Client/Client";
+import {UserKind} from "../view/PageView";
 
 var session = require('express-session');
 
@@ -44,6 +45,16 @@ class SearchPresenter extends PagePresenter {
     private exerciseSearchPage(app : any){
         app.get('/exercise/search', async (request: any, response: any) => {
             //console.log("sentence: ",request.body.sentence);
+            let userClient = this.client.getUserClient();
+            if (session.username !== undefined)
+                if (userClient && await userClient.isTeacher(session.username)){
+                    this.view.setUserKind(UserKind.teacher);
+                } else {
+                    this.view.setUserKind(UserKind.student);
+                }
+            else
+                this.view.setUserKind(UserKind.user);
+
             if(request.query.s === undefined){
                 let exerciseClient = this.client.getExerciseClient();
                 if(exerciseClient){
@@ -52,14 +63,9 @@ class SearchPresenter extends PagePresenter {
                 }
             }
             session.invalidLogin = request.query.mess==="invalidLogin";
-            let menuList :any;
-            menuList= {
-                0 :{"link":"/","name":"Homepage"}
-            };
 
             this.setSearchType("exercise");
             this.view.setTitle("Ricerca esercizio");
-            this.view.setMenuList(menuList);
             //this.viewProfile.setMainList(["class1","class2","class3","class4","class5","class6","class7","class8"]);
             response.send(await this.view.getPage());
         });
@@ -72,7 +78,18 @@ class SearchPresenter extends PagePresenter {
     private searchExercise(app : any) {
         app.post('/searchexercise', async (request: any, response: any) => {
             //console.log("frase da cercare : "+request.body.sentence);
+            let userClient = this.client.getUserClient();
+            if (session.username !== undefined)
+                if (userClient && await userClient.isTeacher(session.username)){
+                    this.view.setUserKind(UserKind.teacher);
+                } else {
+                    this.view.setUserKind(UserKind.student);
+                }
+            else
+                this.view.setUserKind(UserKind.user);
+
             let exerciseClient = this.client.getExerciseClient();
+
             if(exerciseClient) {
                 let map = await exerciseClient.searchExercise(request.body.sentence);//returns map<idEsercizio, sentence>
                 this.setResults(map);
@@ -97,17 +114,21 @@ class SearchPresenter extends PagePresenter {
      */
     private studentSearchPage(app: any) {
         app.post('/student/insert', async (request: any, response: any) => {
+            let userClient = this.client.getUserClient();
+            if (session.username !== undefined)
+                if (userClient && await userClient.isTeacher(session.username)){
+                    this.view.setUserKind(UserKind.teacher);
+                } else {
+                    this.view.setUserKind(UserKind.student);
+                }
+            else
+                this.view.setUserKind(UserKind.user);
+
             if(request.query.s === undefined){
                 this.setResults([]);
             }
-            let menuList :any;
-            menuList= {
-                0 :{"link":"/","name":"Homepage"}
-            };
-
             this.setSearchType("student");
             this.view.setTitle("Ricerca studente");
-            this.view.setMenuList(menuList);
             response.send(await this.view.getPage());
         });
     }
@@ -118,8 +139,18 @@ class SearchPresenter extends PagePresenter {
      */
     private searchStudent(app: any) {
         app.post('/searchstudent', async (request: any, response: any) => {
-            //console.log("frase da cercare : "+request.body.sentence);
             let userClient = this.client.getUserClient();
+            if (session.username !== undefined)
+                if (userClient && await userClient.isTeacher(session.username)){
+                    this.view.setUserKind(UserKind.teacher);
+                } else {
+                    this.view.setUserKind(UserKind.student);
+                }
+            else
+                this.view.setUserKind(UserKind.user);
+
+            //console.log("frase da cercare : "+request.body.sentence);
+
             if(userClient) {
                 let map = await userClient.searchUser(request.body.sentence, false);//returns map<idEsercizio, sentence>
                 this.setResults(map);
@@ -157,13 +188,7 @@ class SearchPresenter extends PagePresenter {
             if(request.query.s === undefined){
                 this.setResults([]);
             }
-            let menuList :any;
-            menuList= {
-                0 :{"link":"/","name":"Homepage"}
-            }
             this.setSearchType("classExercise");
-            /* this.view.setTitle("Ricerca studente");*/
-            this.view.setMenuList(menuList);
             response.send(await this.view.getPage());
         });
     }

@@ -109,7 +109,7 @@ class RegistrationView extends PageView {
      * This method is used to display the page menù
      * @return {string} the HTML source
      */
-    private getMenu() : string {
+    /*private getMenu() : string {
         let ret = "" +
             "<nav class=\"navbar navbar-expand-sm bg-dark navbar-dark\">" +
             "    <div class=\"navbar-brand\">Colletta</div>" +
@@ -125,7 +125,7 @@ class RegistrationView extends PageView {
             "    </div>" +
             "</nav>";
         return ret;
-    }
+    }*/
 }
 
 export {RegistrationView};

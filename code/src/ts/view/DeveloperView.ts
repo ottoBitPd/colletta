@@ -47,7 +47,10 @@ class DeveloperView extends PageView {
                 "\t\t\t\t<input type=\"password\" class='form-control my-2' name=\"password\" placeholder=\"Inserisci la password dello sviluppatore\" required/>\n" +
                 "\t\t\t\t<button type=\"submit\" class=\"btn btn-primary my-2 my-sm-0 w-25\">Invia</button>\n" +
                 "\t\t\t</form>" +
-                "\t\t\t</div>\t\t\t<div class=\"col-sm-2 mx-auto text-center\"></div>\n\n\t</div>\n";
+                "\t\t\t</div>" +
+                "\t\t\t<div class=\"col-sm-2 mx-auto text-center\">" +
+                "</div>\n\n\t" +
+                "</div>\n";
         }
         else{//developer is loggedIn
             ret += "\t\t\t<form action='/developer' method='get'>" +
@@ -74,9 +77,19 @@ class DeveloperView extends PageView {
             ret+= await this.printList();
 
             let csv = await this.devPresenter.createCsvFromAnnotations();
-            let s=escape(csv);
-            ret+="<button onclick='download_csv(\""+s+"\")' class=\"btn btn-primary my-2 mx-3 w-25\">Download</button>";
-            ret+="<a href='/download%model' class='btn btn-primary my-2 mx-3 w-25'>Scarica il modello</a></div></div>";
+            let txt = await  this.devPresenter.createTxtFromAnnotations();
+
+
+            ret+="<div class='row'> " +
+                "<div class='col-sm-8 row'>" +
+                    "<p class='col-sm-2 my-3'>Download</p>"+
+                    "<button class='col-sm-4 btn btn-primary my-2 mx-3 w-25' onclick='download(\""+escape(csv)+"\",\"csv\")' >CSV</button>" +
+                    "<button class='col-sm-4 btn btn-primary my-2 mx-3 w-25' onclick='download(\""+escape(txt)+"\",\"txt\")' >TXT</button>" +
+                "</div>"+
+                "<a href='/download%model' class='btn btn-primary my-2 mx-3 w-25'>Scarica il modello</a>" +
+                "</div>" +
+                "</div>" +
+                "</div>";
         }
 
         ret+=this.getFoot(this.getScript());
@@ -135,28 +148,26 @@ class DeveloperView extends PageView {
     /**
      * This method invokes all the scripts necessary to create the view
      */
-    private getScript(){
-        return"" +
+    private getScript() {
+        return "" +
             "function syncFunc() {" +
             "var val = document.getElementById('valutationFrom').value;" +
-            "document.getElementById('valutationTo').value= val;"+
-            "document.getElementById('valutationTo').min= val;"+
+            "document.getElementById('valutationTo').value= val;" +
+            "document.getElementById('valutationTo').min= val;" +
             "}" +
 
 
-
-            "function download_csv(csvContent){" +
-            "csvContent=unescape(csvContent);"+
+            "function download(content,ext){" +
+            "content=unescape(content);" +
             "var downloadLink = document.createElement(\"a\");\n" +
-            "var blob = new Blob([\"\ufeff\", csvContent]);\n" +
+            "var blob = new Blob([\"\ufeff\", content]);\n" +
             "var url = URL.createObjectURL(blob);\n" +
             "downloadLink.href = url;\n" +
-            "downloadLink.download = \"annotations.csv\";\n" +
+            "downloadLink.download = \"annotations.\"+ext;\n" +
             "\n" +
             "document.body.appendChild(downloadLink);\n" +
             "downloadLink.click();\n" +
-            "document.body.removeChild(downloadLink);"+
-
+            "document.body.removeChild(downloadLink);" +
 
 
             /*
@@ -169,6 +180,7 @@ class DeveloperView extends PageView {
                 "link.click();"+
                 */
             "}";
+
     }
 
     /**

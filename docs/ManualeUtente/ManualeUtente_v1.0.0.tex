@@ -211,29 +211,30 @@
 	\subsection{Inserimento frase}
 	Inserire una frase permette di eseguire un esercizio non presente nella piattaforma e ricevere la valutazione automatica quindi non inserita da un insegnante.	
 	\begin{enumerate}
-		\item Nell'homepage inserire la frase desiderata nella barra;
+		\item Accedere all'homepage;
+		\item Inserire la frase desiderata nella barra;
 		\item Cliccare su "Invia";
-		
 	\end{enumerate}
 
 	\subsection{Ricerca esercizio}
-	Per svolgere esercizi inseriti da insegnanti è necessario accedere alla pagina di ricerca (vedi Figura 2). In questa pagina è presente un elenco con tutti gli esercizi disponibili, inoltre è possibile filtrarli tramite una barra di ricerca.
+	La ricerca avviene tra esercizi aggiunti precedentemente da insegnanti. 
+	
+	\begin{enumerate}
+		\item Accedere all'homepage e cliccare su "Ricerca esercizio";
+		\item Nell'elenco di tutti gli esercizi è possibile selezionare quale svolgere cliccando su "Esegui esercizio";
+		\item Per filtrare gli esercizi, inserire la frase desiderata nella barra;
+		\item Cliccare su "Cerca";
+	\end{enumerate}
 	
 	\begin{figure}[h]
 		\centering
 		\includegraphics[scale=0.65]{images/ricerca.jpg}
 		\caption{Ricerca esercizio}
 	\end{figure}
-
-	\begin{enumerate}
-		\item Nella homepage cliccare su "Ricerca esercizio" nella navbar in alto;
-		\item Filtrare la frase tramite l'apposita barra;
-		\item Nella lista cliccare sul bottone "Esegui esercizio" corrispondente alla frase che si desidera svolgere.
-	\end{enumerate}
 	
 	\subsection{Svolgimento esercizio}
 	\begin{enumerate}
-		\item Nella homepage ricercare o inserire una frase poi cliccare su "Esegui esercizio";
+		\item Accedere all'homepage e svolgere Inserimento frase(3.4) oppure Ricerca esercizio(3.5);
 		\item Compilare i campi opportunamente;
 		\item Scegliere nel menu a tendina l'autore della correzione;
 		\item Cliccare su "Invia".
@@ -255,11 +256,12 @@
 		\caption{Valutazione}
 	\end{figure}
 	
-	\subsection{Visualizzare il proprio profilo}
-	Sia gli allievi che gli insegnanti hanno la possibilità di:
+	\subsection{Visualizzare e modificare la informazioni del profilo}
+	Sia gli allievi che gli insegnanti hanno la possibilità di visualizzare e modificare le proprie informazioni personali:
 	\begin{enumerate}
-		\item Cliccare sull'icona del profilo in alto a destra;
-		\item Visualizzare le informazioni del proprio profilo con la possibilità di modificarne i campi.
+		\item Autenticarsi e cliccare sull'icona del profilo nella navbar;
+		\item modificare se necessario compilando i campi;
+		\item Clicca su "Modifica".
 	\end{enumerate}
 \newpage
 	\begin{figure}[h]
@@ -274,11 +276,12 @@
 	In questa pagina sono rappresentati i progressi dell'alunno ricavati dagli esercizi svolti suddivisi per settimana.
 	
 	\begin{enumerate}
-		\item Accedere al proprio profilo;
-		\item Cliccare su "I tuoi progressi";
+		\item Autenticarsi e cliccare sull'icona del profilo nella navbar;
+		\item Cliccare su "I tuoi progressi" nella navbar;
 	\end{enumerate}
+
 	\newpage
-\begin{figure}[h]
+	\begin{figure}[h]
 		\centering
 		\includegraphics[scale=0.65]{images/progressi.jpg}
 		\caption{Progressi alunno}
@@ -287,48 +290,67 @@
 	\subsection{Svolgere esercizi assegnati}
 	Questa funzionalità è riservata all'utente di tipo \textbf{Allievo}.
 	
-	Questa sezione verrà implementata successivamente.
+	Un insegnante assegna esercizi ad una classe, gli alunni appartenenti ad essa possono svolgerli seguendo i seguenti passi:
+	
+	\begin{enumerate}
+		\item Autenticarsi e cliccare su "Le tue classi" nella navbar;
+		\item Cliccare sulla classe desiderata;
+		\item Nell'elenco degli esercizi assegnati alla classe cliccare su "Esegui esercizio" per selezionare l'esercizio da svolgere.
+	\end{enumerate}
 		
 	\subsection{Inserire una frase e fornire una soluzione}
-			Questa funzionalità è riservata all'utente di tipo \textbf{Insegnante}.
-			\begin{enumerate}
-				\item Effettuare l'accesso alla piattaforma;
-				\item Cliccare su "Inserisci esercizio con correzione" sulla navbar in alto a sinistra.
-				\item Completa la barra con la frase da inserire, poi clicca su "Inserisici";
-				\item Modifica i campi che non ritieni giusti della correzione effettuata dal sistema, poi clicca su "Invia". 
-			\end{enumerate}
+		Questa funzionalità è riservata all'utente di tipo \textbf{Insegnante}.
+		
+		Un insegnante per inserire un esercizio nella piattaforma deve inserire una frase e la corrispondente soluzione.
+		
+		\begin{enumerate}
+			\item Autenticarsi e cliccare su "Crea esercizio" nella navbar;
+			\item Completa la barra con la frase da inserire, poi clicca su "Invia";
+			\item Nella soluzione proposta dall'apprendimento automatico, modifica i campi che non ritieni giusti corretti
+			\item Cliccare su "Invia". 
+		\end{enumerate}
 
-			
 	\subsection{Creare una classe}
-			Questa funzionalità è riservata all'utente di tipo \textbf{Insegnante}.\\
-			Una classe permette ad un insegnante di interagire direttamente con i propri allievi.
-				\begin{figure}[h!]
+		Questa funzionalità è riservata all'utente di tipo \textbf{Insegnante}.\\
+		Una classe permette ad un insegnante di interagire direttamente con i propri allievi.
+		
+			\begin{figure}[h!]
 				\centering
 				\includegraphics[scale=0.65]{images/classi.jpg}
 				\caption{Gestione delle classi}
 			\end{figure}
-					\begin{enumerate}
-			\item Accedere dal proprio profilo personale all'area dedicata alla gestione delle classi (vedi Figura 7);
+	
+		\begin{enumerate}
+			\item Autenticarsi e cliccare su "Area classi" nella navbar;
 			\item Cliccare su "Aggiungi una nuova classe";
 			\item Compilare i campi dati richiesti;
-			\item Clicca su aggiungi;
+			\item Clicca su "Crea classe";
 		\end{enumerate}
-	\subsection{Assegnare esercizi ad una classe}
-			Questa funzionalità è riservata all'utente di tipo \textbf{Insegnante}.\\
-			Assegnando esercizi ad una classe si permette agli allievi appartenti alla stessa di svolgere tali esercizi.
-			\begin{enumerate}
-				\item Accedere dal proprio profilo personale all'area dedicata alla gestione delle classi(vedi Figura 7);
-				\item Dall'elenco delle proprie classi (vedi Figura 7), cliccare sulla classe desiderata;
-				\item Cliccare su "Aggiungi esercizio".
-			\end{enumerate}
+	
+	\subsection{Assegnare esercizio ad una classe}
+		Questa funzionalità è riservata all'utente di tipo \textbf{Insegnante}.\\
+		Assegnando esercizi ad una classe si permette agli allievi appartenti alla stessa di svolgere tali esercizi.
+		
+		Attenzione: l'esercizio che verrà assegnato deve essere già esistente.
+		
+		\begin{enumerate}
+			\item Autenticarsi e cliccare su "Area classi" nella navbar;
+			\item Cliccare sulla classe desiderata;
+			\item Cliccare su "Assegna un nuovo esercizio".
+			\item Ricercare un esercizio già esistente;
+			\item Cliccare su "Aggiungi esercizio alla classe";
+		\end{enumerate}
 		
 		\subsection{Assegnare allievo ad una classe}
 		Questa funzionalità è riservata all'utente di tipo \textbf{Insegnante}.\\
 		Assegnando un allievo ad una classe si permette all'allievo di essere valutato negli esercizi assegnati alla stessa classe.
+		
 		\begin{enumerate}
-			\item Accedere dal proprio profilo personale all'area dedicata alla gestione delle classi(vedi Figura);
-			\item Dall'elenco delle proprie classi (vedi Figura), cliccare sulla classe desiderata;
-			\item Cliccare su "Aggiungi allievo".
+			\item Autenticarsi e cliccare su "Area classi" nella navbar;
+			\item Cliccare sulla classe desiderata;
+			\item Cliccare su "Aggiungi uno studente".
+			\item Ricercare lo studente desiderato;
+			\item Cliccare su "Aggiungi alla classe".
 		\end{enumerate}
 	
 		\begin{figure}[h!]
@@ -340,17 +362,17 @@
 	\subsection{Segnalazione abuso}
 	Nel caso in cui sia necessario segnalare un contenuto che ritieni non debba essere presente nella piattaforma.
 	\begin{enumerate}
-		\item Ricerca frase da segnalare appartenente ad un esercizio;
+		\item Svolgere Ricerca esercizio(3.5) con la frase da segnalare;
 		\item clicca su "Segnala".
 	\end{enumerate}
 		
 	\subsection{Verificare la richiesta di insegnante}
-			Questa funzionalità è riservata all'utente di tipo \textbf{Moderatore}.\\
-			Questa sezione verrà implementata successivamente.
+		Questa funzionalità è riservata all'utente di tipo \textbf{Moderatore}.\\
+		Questa sezione verrà implementata successivamente.
 			
 	\subsection{Eliminare esercizi e utenti}
-			Questa funzionalità è riservata all'utente di tipo \textbf{Moderatore}.\\
-			Questa sezione verrà implementata successivamente.
+		Questa funzionalità è riservata all'utente di tipo \textbf{Moderatore}.\\
+		Questa sezione verrà implementata successivamente.
 	
 	\subsection{Creare modello}
 				Questa funzionalità è riservata all'utente di tipo \textbf{Sviluppatore}.\\

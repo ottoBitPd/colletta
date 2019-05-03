@@ -16,14 +16,14 @@ class UserClient {
         this.passwordHash = require('bcryptjs');
         this.dbUserManager = new DatabaseUserManager_1.DatabaseUserManager();
     }
-    insertStudent(username, password, name, surname, city, school) {
+    insertStudent(username, password, name, surname, city, school, email) {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield this.dbUserManager.insert(new Student_1.Student("0", username, password, name, surname, city, school));
+            return yield this.dbUserManager.insert(new Student_1.Student("0", username, password, name, surname, city, school, email));
         });
     }
-    insertTeacher(username, password, name, surname, city, school, inps) {
+    insertTeacher(username, password, name, surname, city, school, inps, email) {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield this.dbUserManager.insert(new Teacher_1.Teacher("0", username, password, name, surname, city, school, inps));
+            return yield this.dbUserManager.insert(new Teacher_1.Teacher("0", username, password, name, surname, city, school, inps, email));
         });
     }
     verifyUser(username, insertedPassword) {
@@ -33,14 +33,7 @@ class UserClient {
                 const user = yield this.dbUserManager.read(idUser);
                 if (user !== null) {
                     const password = user.getPassword();
-                    if (this.passwordHash.compareSync(insertedPassword, password)) {
-                        //console.log("password match");
-                        return true;
-                    }
-                    else {
-                        //console.log("password dont match")
-                        return false;
-                    }
+                    return this.checkPassword(insertedPassword, password);
                 }
                 else {
                     //console.log("password dont match")
@@ -52,14 +45,101 @@ class UserClient {
             }
         });
     }
+    checkPassword(insertedPassword, password) {
+        if (this.passwordHash.compareSync(insertedPassword, password)) {
+            //console.log("password match");
+            return true;
+        }
+        else {
+            //console.log("password dont match")
+            return false;
+        }
+    }
     isTeacher(username) {
         return __awaiter(this, void 0, void 0, function* () {
             const id = yield this.dbUserManager.search(username);
             const user = yield this.dbUserManager.read(id);
-            console.log(user);
-            console.log(user.getUsername());
-            return user.isTeacher();
+            //console.log((<User>user));
+            //console.log((<User>user).getUsername());
+            if (user !== undefined)
+                return user.isTeacher();
+            else
+                return false;
         });
+    }
+    teacherList() {
+        return __awaiter(this, void 0, void 0, function* () {
+            let teacherMap = yield this.dbUserManager.elements();
+            let list = [];
+            for (let teacher of teacherMap) {
+                let condition = yield this.isTeacher(teacher[1]);
+                if (condition)
+                    list.push(teacher[0]);
+            }
+            return list;
+        });
+    }
+    search(username) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this.dbUserManager.search(username);
+        });
+    }
+    getUserData(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const user = yield this.dbUserManager.read(id);
+            let userData = user.toJSON();
+            if (user.isTeacher()) {
+                userData.inps = user.getINPS();
+            }
+            return userData;
+        });
+    }
+    updateUser(username, userUpdateData) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const id = yield this.dbUserManager.search(username);
+            this.dbUserManager.update('data/users/' + id + '/name', userUpdateData.name);
+            this.dbUserManager.update('data/users/' + id + '/lastname', userUpdateData.lastname);
+            this.dbUserManager.update('data/users/' + id + '/city', userUpdateData.city);
+            this.dbUserManager.update('data/users/' + id + '/school', userUpdateData.school);
+            this.dbUserManager.update('data/users/' + id + '/email', userUpdateData.email);
+            this.dbUserManager.update('data/users/' + id + '/username', userUpdateData.username);
+            this.dbUserManager.update('data/users/' + id + '/password', userUpdateData.password);
+            if (userUpdateData.inps !== undefined) {
+                this.dbUserManager.update('data/users/' + id + '/INPScode', userUpdateData.inps);
+            }
+        });
+    }
+    /**
+     *
+     * @param substring
+     * @param teacher - false if you want to search student only, true if you want to search teacher only
+     */
+    searchUser(substring, teacher) {
+        return __awaiter(this, void 0, void 0, function* () {
+            var regex = new RegExp(substring, "i");
+            var elements = yield this.dbUserManager.elements(); //returns a map<id,sentence> of all exercises in the db
+            var mapToReturn = new Map();
+            console.log("User: ", elements);
+            for (let entry of Array.from(elements.entries())) {
+                let key = entry[0];
+                let value = entry[1];
+                let user = yield this.dbUserManager.read(key);
+                if (teacher && user.isTeacher()) {
+                    if (value.search(regex) >= 0) {
+                        mapToReturn.set(key, value);
+                    }
+                }
+                else if (!teacher && !user.isTeacher()) {
+                    if (value.search(regex) >= 0) {
+                        mapToReturn.set(key, value);
+                    }
+                }
+            }
+            return mapToReturn;
+        });
+    }
+    hashPassword(plain) {
+        return this.passwordHash.hashSync(plain, 10);
     }
 }
 exports.UserClient = UserClient;

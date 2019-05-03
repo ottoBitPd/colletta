@@ -10,82 +10,104 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const PagePresenter_1 = require("./PagePresenter");
 const Client_1 = require("../model/Client/Client");
+const PageView_1 = require("../view/PageView");
 var session = require('express-session');
 class ProfilePresenter extends PagePresenter_1.PagePresenter {
+    //private classClient : ClassClient | undefined;
     constructor(view) {
         super(view);
-        //private classClient : ClassClient | undefined;
-        this.passwordHash = require('bcryptjs');
         this.client = (new Client_1.Client.builder()).buildUserClient().build();
     }
     update(app) {
-        //autenticazione
-        app.get('/logout', (request, response) => {
-            console.log("LOGOUT");
-            //TODO trovarle e cancellarle tutte
-            delete session.invalidLogin;
-            delete session.errUsername;
-            delete session.username;
-            delete session.password;
-            response.redirect('/home');
-        });
-        app.get('/profile', (request, response) => {
-            //session.invalidLogin = request.query.mess==="invalidLogin";
-            //this.view.setMainList("Login avvenuto con successo sei nel tuo profilo"+session.username);
-            let menuList;
-            menuList = {
-                0: { "link": "link1", "name": "name1" },
-                1: { "link": "link2", "name": "name2" }
-            };
-            this.view.setMenuList(menuList);
-            //this.viewProfile.setMainList(["class1","class2","class3","class4","class5","class6","class7","class8"]);
-            response.send(this.view.getPage());
-        });
-        app.post('/checklogin', (request, response) => __awaiter(this, void 0, void 0, function* () {
+        app.post('/update', (request, response) => __awaiter(this, void 0, void 0, function* () {
             let userClient = this.client.getUserClient();
-            if (userClient && request.body.username !== "admin") { //if is not undefined
-                if (yield userClient.verifyUser(request.body.username, request.body.password)) {
-                    app.use(session({ secret: 'colletta', resave: false, saveUninitialized: true }));
-                    session.username = request.body.username;
-                    session.password = request.body.password;
-                    response.redirect("/profile");
+            if (userClient) {
+                const id = yield userClient.search(session.username);
+                const userData = yield userClient.getUserData(id);
+                let check = false;
+                if (request.body.oldpassword === "" && request.body.password === "") {
+                    console.log("pwd non cambia");
+                    check = true;
+                }
+                if (request.body.oldpassword !== "" && request.body.password !== "") {
+                    if (userClient.checkPassword(request.body.oldpassword, userData.password)) {
+                        console.log("nuova password: " + request.body.password);
+                        request.body.password = userClient.hashPassword(request.body.password);
+                        check = true;
+                        this.view.setError("Password modificata");
+                    }
+                    else {
+                        console.log("pwd errata");
+                        check = false;
+                        this.view.setError("Modifica abortita username esistente o password errata");
+                    }
+                }
+                if (check === true && request.body.username === "") {
+                    console.log("username non cambia");
+                    check = true;
                 }
                 else {
-                    response.redirect("/home?mess=invalidLogin");
+                    if (check === true && (yield userClient.search(request.body.username)) === "false") {
+                        console.log("username cambia e ok");
+                        check = true;
+                    }
+                    else {
+                        console.log("username esistente o password errata");
+                        check = false;
+                        this.view.setError("Modifica abortita username esistente o password errata");
+                    }
+                }
+                if (check) {
+                    this.view.setError("");
+                    let userUpdateData = {};
+                    console.log("POST: ", request.body);
+                    for (let i in request.body) {
+                        if (i !== "oldpassword" && i !== "inps") {
+                            if (request.body[i] !== "") {
+                                console.log('cambio');
+                                userUpdateData[i] = request.body[i];
+                            }
+                            else
+                                userUpdateData[i] = userData[i];
+                        }
+                    }
+                    console.log("POST: ", userUpdateData);
+                    if (yield userClient.isTeacher(session.username)) {
+                        //console.log("teacher");
+                        if (/^[^\s]$/.test(request.body.inps))
+                            userUpdateData.inps = request.body.inps;
+                        else
+                            userUpdateData.inps = userData.inps;
+                        this.view.setUserKind(PageView_1.UserKind.teacher);
+                    }
+                    else {
+                        //console.log("student");
+                        this.view.setUserKind(PageView_1.UserKind.student);
+                    }
+                    yield userClient.updateUser(session.username, userUpdateData);
+                    session.username = userUpdateData.username;
                 }
             }
+            response.redirect('/profile');
         }));
-        app.get('/registration', (request, response) => {
-            session.errUsername = request.query.mess === "invalidLogin";
-            response.send(this.view.getPage());
-        });
-        app.post("/saveuser", (req, res) => {
-            const hashedPassword = this.passwordHash.hashSync(req.body.username, 10);
-            //console.log("hashedPassword:" + hashedPassword);
+        app.get('/profile', (request, response) => __awaiter(this, void 0, void 0, function* () {
             let userClient = this.client.getUserClient();
-            console.log("username :" + req.body.username + " role: " + req.body.role + " user : " + userClient);
-            if (req.body.username !== "admin" && req.body.role === "student" && userClient !== undefined) {
-                userClient.insertStudent(req.body.username, hashedPassword, req.body.name, req.body.surname, "Città", "Scuola");
-                console.log("studente registrato con successo");
-                res.redirect("/profile");
+            if (userClient) {
+                const id = yield userClient.search(session.username);
+                const userData = yield userClient.getUserData(id);
+                //console.log("userData: ",userData);
+                this.view.setUserData(userData);
+                if (yield userClient.isTeacher(session.username)) {
+                    //console.log("teacher");
+                    this.view.setUserKind(PageView_1.UserKind.teacher);
+                }
+                else {
+                    //console.log("student");
+                    this.view.setUserKind(PageView_1.UserKind.student);
+                }
             }
-            else if (req.body.username !== "admin" && req.body.role === "teacher" && userClient !== undefined) {
-                userClient.insertTeacher(req.body.username, hashedPassword, req.body.name, req.body.surname, "Città", "Scuola", "0002");
-                console.log("teacher registrato con successo");
-                res.redirect("/profile");
-            }
-            else {
-                console.log("tutto a puttane");
-                res.redirect("/registration?mess=errUsername");
-            }
-        });
-        app.post('/deleteClass', (request, response) => __awaiter(this, void 0, void 0, function* () {
-            console.log("post: ", request.body);
-            response.send("elimino la classe " + request.body.classToDelete);
+            response.send(yield this.view.getPage());
         }));
-    }
-    isUsernameInvalid() {
-        return session.errUsername;
     }
 }
 exports.ProfilePresenter = ProfilePresenter;

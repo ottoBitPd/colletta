@@ -17,7 +17,12 @@ class ExerciseClient {
     autosolve(sentence, authorId) {
         return __awaiter(this, void 0, void 0, function* () {
             let exercise = new Exercise_1.Exercise(sentence, authorId);
-            return exercise.autosolve();
+            let autosolution = exercise.autosolve();
+            let result = [];
+            for (let value of autosolution.sentence) {
+                result.push(value.label);
+            }
+            return result;
         });
     }
     getSplitSentence(sentence) {
@@ -39,9 +44,6 @@ class ExerciseClient {
                     mapToReturn.set(key, value);
                 }
             });
-            if (mapToReturn.size === 0) { //if no exercise corresponds with the substring
-                mapToReturn.set("false", "false");
-            }
             return mapToReturn;
             /*
             //old version bisogna ritornare una mappa
@@ -63,33 +65,63 @@ class ExerciseClient {
     private async getExercise(id:string):Promise<Data>{
         return await this.dbExerciseManager.read(id);
     }*/
-    searchSolution(sentence) {
+    /**
+     * @param sentence
+     * @param solverID
+     * @return a JSON of this form
+     *          {
+     *              "id" : solverID,
+     *              "tags" : solutionTags,
+     *              "time" : solutionTime
+     *          }
+     */
+    searchSolution(sentence, solverID) {
         return __awaiter(this, void 0, void 0, function* () {
-            var mapToReturn = new Map();
-            var exerciseKey = yield this.dbExerciseManager.search(sentence);
+            let result = [];
+            let exerciseKey = yield this.dbExerciseManager.search(sentence);
             //console.log("exerciseKey: ",exerciseKey);
             if (exerciseKey !== "false") {
-                var exercise = yield this.dbExerciseManager.read(exerciseKey);
+                let exercise = yield this.dbExerciseManager.read(exerciseKey);
                 //console.log("Exercise: ",exercise);
-                var solutions = exercise.getSolutions();
-                for (let i in solutions) {
-                    let key = solutions[i].getKey();
-                    if (key !== null) {
-                        mapToReturn.set(key, solutions[i].getSolverId());
-                    }
+                let solutions = exercise.getSolutions();
+                for (let value of solutions) {
+                    if (value.getSolverId() === solverID)
+                        result.push({
+                            "id": value.getKey(),
+                            "userID": value.getSolverId(),
+                            "tags": value.getSolutionTags(),
+                            "time": value.getTime(),
+                            "difficulty": value.getDifficulty(),
+                            "topics": value.getTopics()
+                        });
                 }
-                //console.log("mapToReturn: ",mapToReturn);
-                return mapToReturn;
             }
-            //console.log("nessun esercizio trovato");
-            mapToReturn.set("false", "false"); //nessun esercizio trovato
-            return mapToReturn;
+            return result;
         });
     }
     getSentence(id) {
         return __awaiter(this, void 0, void 0, function* () {
             var exercise = yield this.dbExerciseManager.read(id);
+            //console.log(exercise);
             return exercise.getSentence();
+        });
+    }
+    evaluate(newSolution, solverID, topics, sentence, difficulty, teacherID) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let exercise;
+            if (teacherID !== undefined)
+                exercise = (yield this.dbExerciseManager.read(yield this.dbExerciseManager.search(sentence)));
+            else
+                exercise = new Exercise_1.Exercise(sentence, solverID);
+            exercise.setSolution(solverID, newSolution, topics, difficulty);
+            return exercise.evaluate(teacherID);
+        });
+    }
+    getExerciseData(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const exercise = yield this.dbExerciseManager.read(id);
+            let exerciseData = exercise.toJSON();
+            return exerciseData;
         });
     }
 }

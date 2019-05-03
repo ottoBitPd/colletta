@@ -27,14 +27,16 @@ class FirebaseUserManager extends FirebaseManager_1.FirebaseManager {
                             const teacher = obj;
                             FirebaseManager_1.FirebaseManager.database.ref('data/users').push({ name: teacher.getName(),
                                 password: teacher.getPassword(), lastname: teacher.getLastName(), username: teacher.getUsername(),
-                                city: teacher.getCity(), school: teacher.getSchool(), INPScode: teacher.getINPS()
+                                city: teacher.getCity(), school: teacher.getSchool(), INPScode: teacher.getINPS(),
+                                email: teacher.getEmail()
                             });
                         }
                         else {
                             FirebaseManager_1.FirebaseManager.database.ref('data/users').push({
                                 //let student= <Student>obj;
                                 name: user.getName(), password: user.getPassword(), lastname: user.getLastName(),
-                                username: user.getUsername(), city: user.getCity(), school: user.getSchool()
+                                username: user.getUsername(), city: user.getCity(), school: user.getSchool(),
+                                email: user.getEmail()
                             });
                         }
                         return resolve(true);
@@ -103,12 +105,11 @@ class FirebaseUserManager extends FirebaseManager_1.FirebaseManager {
                     if (snapshot.exists()) {
                         let readData = snapshot.val();
                         let user;
-                        console.log(readData.INPScode);
-                        if (readData.INPScode !== undefined) {
-                            user = new Teacher_1.Teacher(id, readData.username, readData.password, readData.name, readData.lastname, readData.city, readData.school, readData.INPScode);
+                        if (readData.INPScode) {
+                            user = new Teacher_1.Teacher(id, readData.username, readData.password, readData.name, readData.lastname, readData.city, readData.school, readData.INPScode, readData.email);
                         }
                         else {
-                            user = new Student_1.Student(id, readData.username, readData.password, readData.name, readData.lastname, readData.city, readData.school);
+                            user = new Student_1.Student(id, readData.username, readData.password, readData.name, readData.lastname, readData.city, readData.school, readData.email);
                         }
                         resolve(user);
                     }
@@ -165,6 +166,9 @@ class FirebaseUserManager extends FirebaseManager_1.FirebaseManager {
                     yield this.updateField(path, value);
                     break;
                 case "INPScode":
+                    yield this.updateField(path, value);
+                    break;
+                case "email":
                     yield this.updateField(path, value);
                     break;
                 default:

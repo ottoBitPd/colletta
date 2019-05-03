@@ -17,52 +17,119 @@ class ClassClient {
     getDbClassManager() {
         return this.dbClassManager;
     }
-    deleteClass(classID) {
+    deleteClass(classId) {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield this.dbClassManager.remove(classID);
+            return yield this.dbClassManager.remove(classId);
         });
     }
-    deleteStudent(classID, studentID) {
+    deleteStudent(classId, studentId) {
         return __awaiter(this, void 0, void 0, function* () {
-            var _class = yield this.dbClassManager.read(classID);
+            var _class = yield this.dbClassManager.read(classId);
             var students = _class.getStudents();
-            var indexToRemove = students.indexOf(studentID);
-            students.splice(indexToRemove, 1);
-            yield this.dbClassManager.update("data/classes/" + classID + "/students", students);
+            if (students[0] !== "n") { //if there are students to remove
+                if (students.length === 1) { //if it is the last exercise
+                    students = ["n"];
+                }
+                else {
+                    var indexToRemove = students.indexOf(studentId);
+                    students.splice(indexToRemove, 1);
+                }
+                yield this.dbClassManager.update("data/classes/" + classId + "/students", students);
+            }
         });
     }
-    addStudent(studentID, classID) {
+    deleteExercise(classId, exerciseId) {
         return __awaiter(this, void 0, void 0, function* () {
-            var _class = yield this.dbClassManager.read(classID);
+            var _class = yield this.dbClassManager.read(classId);
+            var exercises = _class.getExercises();
+            if (exercises[0] !== "n") { //if there are exercises to remove
+                if (exercises.length === 1) { //if it is the last exercise
+                    exercises = ["n"];
+                }
+                else {
+                    var indexToRemove = exercises.indexOf(exerciseId);
+                    exercises.splice(indexToRemove, 1);
+                }
+                yield this.dbClassManager.update("data/classes/" + classId + "/exercises", exercises);
+            }
+        });
+    }
+    addStudent(studentId, classId) {
+        return __awaiter(this, void 0, void 0, function* () {
+            var _class = yield this.dbClassManager.read(classId);
             var students = _class.getStudents();
-            students.push(studentID);
-            yield this.dbClassManager.update("data/classes/" + classID + "/students", students);
+            if (students[0] !== "n") { //if the class already has some students
+                console.log("aggiungo studente");
+                students.push(studentId);
+            }
+            else { //if there are no students
+                console.log("primo studente");
+                students[0] = studentId;
+            }
+            yield this.dbClassManager.update("data/classes/" + classId + "/students", students);
         });
     }
-    addClass(name, description, teacherID) {
+    addClass(name, description, teacherId) {
         return __awaiter(this, void 0, void 0, function* () {
-            var _class = new Class_1.Class(name, description, teacherID, [], []);
+            var _class = new Class_1.Class("0", name, description, teacherId, ["n"], ["n"]);
             return yield this.dbClassManager.insert(_class);
         });
     }
-    addExercize(exerciseID, classID) {
+    addExercise(exerciseId, classId) {
         return __awaiter(this, void 0, void 0, function* () {
-            var _class = yield this.dbClassManager.read(classID);
-            var exercises = _class.getStudents();
-            exercises.push(exerciseID);
-            yield this.dbClassManager.update("data/classes/" + classID + "/exercises", exercises);
+            var _class = yield this.dbClassManager.read(classId);
+            var exercises = _class.getExercises();
+            if (exercises[0] !== "n") { //if the class already has some exercises
+                console.log("aggiungo studente");
+                exercises.push(exerciseId);
+            }
+            else { //if there are no exercises
+                console.log("primo studente");
+                exercises[0] = exerciseId;
+            }
+            yield this.dbClassManager.update("data/classes/" + classId + "/exercises", exercises);
         });
     }
-    getStudents(classID) {
+    getStudents(classId) {
         return __awaiter(this, void 0, void 0, function* () {
-            var _class = yield this.dbClassManager.read(classID);
+            var _class = yield this.dbClassManager.read(classId);
             return _class.getStudents();
         });
     }
-    getExercises(classID) {
+    getExercises(classId) {
         return __awaiter(this, void 0, void 0, function* () {
-            var _class = yield this.dbClassManager.read(classID);
-            return _class.getStudents();
+            var _class = yield this.dbClassManager.read(classId);
+            return _class.getExercises();
+        });
+    }
+    /**
+    This method returns a amp of entries string, string where the first string is the Id of the class and the second
+     is the name of th class
+     @param teacherId - the id of the teacher
+     @returns Map<string,string>
+     */
+    getClassesByTeacher(teacherId) {
+        return __awaiter(this, void 0, void 0, function* () {
+            var elements = yield this.dbClassManager.elements();
+            var mapToReturn = new Map();
+            //N.B. forEach(async (...)) doesn't work
+            for (let entry of Array.from(elements.entries())) {
+                let key = entry[0];
+                let value = entry[1];
+                if (value === teacherId) {
+                    let _class = yield this.dbClassManager.read(key);
+                    mapToReturn.set(key, _class.getName());
+                }
+            }
+            //console.log("mapToReturn: ",mapToReturn);
+            return mapToReturn;
+        });
+    }
+    getClassData(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const _class = yield this.dbClassManager.read(id);
+            let _classData = _class.toJSON();
+            return _classData;
         });
     }
 }

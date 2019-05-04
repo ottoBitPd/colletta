@@ -229,7 +229,11 @@ class Exercise implements Data{
 
     /**
      * This method returns a JSON file containing all the exercise informations
-     * @return {any} the JSON file
+     * @return {any} the JSON file made like:
+     *                  sentence    [the exercise sentence]
+     *                  authorId    [the Id of the author of the exercise creator]
+     *                  key         [the exercise key]
+     *                  solutions   [the list of exercise solutions]
      */
     toJSON() : any{
         let exercise : any = {};

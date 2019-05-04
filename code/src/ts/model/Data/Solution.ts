@@ -156,7 +156,15 @@ class Solution {
 
     /**
      * This method returns a JSON file containing all the solution informations
-     * @return {any} the JSON file
+     * @return {any} the JSON file made like:
+     *                  key             [the solution key]
+     *                  solverId        [the author of the solution]
+     *                  solutionTags    [the list of the solution tags]
+     *                  topics          [the list of topics of the exercise]
+     *                  difficulty      [the grade of difficulty of the solution]
+     *                  valutations     [the list of valutations]
+     *                  time            [the date of the solution]
+     *                  public          [the state of the solution]
      */
     toJSON() : any {
         let solution : any = {};

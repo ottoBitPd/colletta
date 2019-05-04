@@ -138,7 +138,13 @@ class Class implements Data {
 
     /**
      * This method returns a JSON file containing all the class informations
-     * @return {any} the JSON file
+     * @return {any} the JSON file made like:
+     *                  id          [the class Id]
+     *                  name        [the class name]
+     *                  description [the class description]
+     *                  students    [the class student list]
+     *                  exercises   [the class exercise list]
+     *                  time        [the class creation date]
      */
     public toJSON() : any {
         let _class: any = {

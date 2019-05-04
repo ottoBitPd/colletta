@@ -152,7 +152,15 @@ abstract class User implements Data{
 
     /**
      * This method returns a JSON file containing all the user informations
-     * @return {any} the JSON file
+     * @return {any} the JSON file made like:
+     *                  username    [the user username]
+     *                  id          [the user id]
+     *                  password    [the user password]
+     *                  name        [the user first name]
+     *                  lastname    [the user surname]
+     *                  city        [the user cisty]
+     *                  school      [the user school]
+     *                  email       [the user email]
      */
     public toJSON() : any{
         let user: any = {

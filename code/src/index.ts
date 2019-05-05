@@ -25,12 +25,15 @@ new ClassView(app);
 new DeveloperView(app);
 
 app.use(function(req, res, next) {
-    res.status(404).send('Sorry cant find that!');
+    res.status(404).sendFile("404.html",{root:"public"});
 });
 
-app.listen(8080, async function () {
-    const host = "127.0.0.1";
-    const port = "8080";
+let port = process.argv[2];
+if (!port)
+    port = "8080";
+
+app.listen(port.toString(), async function () {
+    const host = "localhost";
     console.log("Application listening at http://%s:%s", host, port);
 });
 

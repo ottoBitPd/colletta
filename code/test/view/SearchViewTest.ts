@@ -27,18 +27,13 @@ describe('SearchViewTest', function() {
         it('should return the html page', async function () {
             //console.log("getPage(): ",test.getPage());
             let str=await test.getPage();
-            console.log("str: ",str);
             var regex = new RegExp("<head>","i");
-            console.log("<head>: ",regex.test(str));
             let r3 = regex.test(str);
             regex = new RegExp("</head>","i");
-            console.log("</head>: ",regex.test(str));
             r3 = r3 && regex.test(str);
             regex = new RegExp("<html lang=\"it\">","i");
-            console.log("<html lang=\"it\">: ",regex.test(str));
             r3 = r3 && regex.test(str);
             regex = new RegExp("</html>","i");
-            console.log("</html>: ",regex.test(str));
             r3 = r3 && regex.test(str);
             expect(r3).to.be.true;
         });

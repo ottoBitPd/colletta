@@ -344,6 +344,13 @@ Gli identificatori numerici assegnati a casi d'uso saranno organizzati gerarchic
 	\end{enumerate}
 \end{itemize}
 
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[scale=0.7]{images/UC-N2sub.png}
+	\caption{Sottocasi di UC-N2}
+\end{figure}
+
+
 \subsubsection{UC-N5 Visualizzazione errore di registrazione}
 \begin{itemize}
 	\item \textbf{Attori:} Utente non riconosciuto.
@@ -371,7 +378,7 @@ Gli identificatori numerici assegnati a casi d'uso saranno organizzati gerarchic
 					\item 2.a Nel caso in cui l'utente tenti l'inserimento di campi non validi vedrà comparire un messaggio d'errore (UC-N7).
 				\end{itemize}
 		\end{itemize}
-	\begin{figure}[htbp]
+		\begin{figure}[htbp]
 			\centering
 			\includegraphics[scale=0.7]{images/UC-N6.png}
 			\caption{UC-N6 Autenticazione}
@@ -938,50 +945,9 @@ Gli identificatori numerici assegnati a casi d'uso saranno organizzati gerarchic
 	\item \textbf{Postcondizione:} l'insegnante ha indicato gli alunni da inserire nella classe
 	\item \textbf{Scenario principale:}
 	\begin{enumerate}
-		\item l'insegnante visualizza la lista di tutti gli alunni presenti sulla piattaforma (UC-I10.1.1)
-		\item l'insegnante ricerca gli alunni da inserire (UC-I10.1.2)	
+		\item l'insegnante visualizza la lista di tutti gli alunni presenti sulla piattaforma
+		\item l'insegnante ricerca gli alunni da inserire
 		\item l'insegnante seleziona gli alunni da inserire
-	\end{enumerate}
-\end{itemize}
-
-\begin{figure}[h]
-		\centering
-		\includegraphics[scale=0.7]{images/UC-I10_1.png}
-		\caption{UC-I10.1 Selezione alunni per l'inserimento}
-	\end{figure}
-
-\subsubsection{UC-I10.1.1 Visualizzazione lista alunni da aggiungere alla classe}
-\begin{itemize}
-	\item \textbf{Attori:} Insegnante.
-	\item \textbf{Precondizione:} l'insegnante si trova nella vista di aggiunta degli alunni a una classe
-	\item \textbf{Postcondizione:} l'insegnante visualizza la lista di tutti gli alunni presenti sulla piattaforma.
-	\item \textbf{Scenario principale:}
-	\begin{enumerate}
-		\item l'insegnante visualizza gli alunni iscritti alla piattaforma (UC-I10.1.1.1)
-	\end{enumerate}
-\end{itemize}
-
-\subsubsection{UC-I10.1.1.1 Visualizzazione alunno da aggiungere alla classe}
-\begin{itemize}
-	\item \textbf{Attori:} Insegnante.
-	\item \textbf{Precondizione:} l'insegnante si trova nella vista di aggiunta degli alunni a una classe
-	\item \textbf{Precondizione:} l'insegnante visualizza le credenziali di un alunno da aggiungere in una classe.
-	\item \textbf{Scenario principale:}
-	\begin{enumerate}
-		\item l'insegnante visualizza il nome dell'alunno
-		\item l'insegnante visualizza il cognome dell'alunno
-		\item l'insegnante visualizza l'username dell'alunno
-	\end{enumerate}
-\end{itemize}
-
-\subsubsection{UC-I10.1.2 Ricerca alunno}
-\begin{itemize}
-	\item \textbf{Attori:} Insegnante.
-	\item \textbf{Precondizione:} L'insegnante visualizza la lista di tutti gli alunni presenti sulla piattaforma.
-	\item \textbf{Postcondizione:} L'insegnante visualizza una lista di username contenenti la stringa inserita.
-	\item \textbf{Scenario principale:}
-	\begin{enumerate}
-		\item l'insegnante scrive l'username di un alunno, o una sua parte
 	\end{enumerate}
 \end{itemize}
 
@@ -1093,6 +1059,41 @@ Gli identificatori numerici assegnati a casi d'uso saranno organizzati gerarchic
 	\begin{enumerate}
 		\item l'insegnante seleziona l'opzione "Area esercizi inseriti"
 	\end{enumerate}	
+\end{itemize}
+
+\subsubsection{UC-I18 Visualizzazione lista alunni da aggiungere alla classe}
+\begin{itemize}
+	\item \textbf{Attori:} Insegnante.
+	\item \textbf{Precondizione:} l'insegnante si trova nella vista di aggiunta degli alunni a una classe
+	\item \textbf{Postcondizione:} l'insegnante visualizza la lista di tutti gli alunni presenti sulla piattaforma.
+	\item \textbf{Scenario principale:}
+	\begin{enumerate}
+		\item l'insegnante visualizza gli alunni iscritti alla piattaforma (UC-I18.1)
+	\end{enumerate}
+\end{itemize}
+
+\subsubsection{UC-I18.1 Visualizzazione alunno da aggiungere alla classe}
+\begin{itemize}
+	\item \textbf{Attori:} Insegnante.
+	\item \textbf{Precondizione:} l'insegnante si trova nella vista di aggiunta degli alunni a una classe
+	\item \textbf{Precondizione:} l'insegnante visualizza le credenziali di un alunno da aggiungere in una classe.
+	\item \textbf{Scenario principale:}
+	\begin{enumerate}
+		\item l'insegnante visualizza il nome dell'alunno
+		\item l'insegnante visualizza il cognome dell'alunno
+		\item l'insegnante visualizza l'username dell'alunno
+	\end{enumerate}
+\end{itemize}
+
+\subsubsection{UC-I19 Ricerca alunno}
+\begin{itemize}
+	\item \textbf{Attori:} Insegnante.
+	\item \textbf{Precondizione:} L'insegnante visualizza la lista di tutti gli alunni presenti sulla piattaforma.
+	\item \textbf{Postcondizione:} L'insegnante visualizza una lista di username contenenti la stringa inserita.
+	\item \textbf{Scenario principale:}
+	\begin{enumerate}
+		\item l'insegnante scrive l'username di un alunno, o una sua parte
+	\end{enumerate}
 \end{itemize}
 
 \subsection{Elenco dei casi d'uso - Utente: allievo}

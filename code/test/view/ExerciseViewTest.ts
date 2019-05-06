@@ -36,7 +36,7 @@ describe('ExerciseView', function() {
                 test.setPosTags(['I', 'I']);
 
             });
-            it("should return teacher profile page", async function () {
+            it("should return valutation page", async function () {
                 test.getPage();
                 let str = await test.getPage();
                 //console.log("str: ", str);
@@ -86,7 +86,7 @@ describe('ExerciseView', function() {
                 test.setPosTranslation(['G','G']);
 
             });
-            it("should return teacher profile page", async function () {
+            it("should return teacher exercise page", async function () {
                 test.getPage();
                 //@ts-ignore
                 console.log("sentence: ",test.sentence);

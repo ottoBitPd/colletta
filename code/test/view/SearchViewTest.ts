@@ -49,6 +49,7 @@ describe('SearchViewTest', function() {
             });
         });
     });
+
     context("classExercise", function() {
         describe('SearchViewTest.getPage()', function () {
             before(function () {

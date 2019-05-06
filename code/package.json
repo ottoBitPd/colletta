@@ -5,7 +5,7 @@
     "build": "tsc --outDir public",
     "test": "nyc --reporter=html --reporter=text mocha -r ts-node/register test/**/*.ts \"test/model/{,!(Firebase)}/*.ts\" --exit",
     "firebasetest": "nyc --reporter=html --reporter=text mocha -r ts-node/register test/model/Firebase/*.ts --exit",
-    "systemtest" : "testcafe chrome systemTest/*.ts --app \"node public/index.js\"",
+    "systemtest": "testcafe chrome systemTest/*.ts --app \"node public/index.js\"",
     "start": "npm run shell",
     "cyclomatic": "cr public/ -o cyclomatic-report.txt"
   },

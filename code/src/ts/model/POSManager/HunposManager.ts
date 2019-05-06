@@ -1,7 +1,7 @@
 //<reference path="POSManager.ts"/>
-
 import {POSManager} from "./POSManager";
-import {spawn} from 'child_process';
+import {ChildProcess, spawn} from 'child_process';
+import {platform} from 'os';
 
 /**
  * Class to manage sentences with Hunpos
@@ -10,12 +10,7 @@ class HunposManager implements POSManager{
     private modelFilePath:string;
 
     constructor() {
-        //this.train();
-
-        //scommentare per mac/linux
         this.modelFilePath='src/ts/presenter/hunpos/italian_model';
-        //scommentare per windows
-        //this.modelFilePath='src\\ts\\presenter\\hunpos\\italian_model';
     }
 
     /**
@@ -78,10 +73,12 @@ class HunposManager implements POSManager{
      */
     train():void{
         const shell = require('shelljs');
-        //scommentare per windows
-        //shell.exec('src\\ts\\presenter\\hunpos\\hunpos-train ' + this.modelFilePath + '< src\\ts\\presenter\\hunpos\\train');
-        //scommentare per mac/linux
-        shell.exec('./src/ts/presenter/hunpos/hunpos-train ' + this.modelFilePath + '< ./src/ts/presenter/hunpos/train');
+        let command = 'src/ts/presenter/hunpos/hunpos-train ' + this.modelFilePath + '< ./src/ts/presenter/hunpos/train'
+
+        if (platform() === "win32")
+            command = command.replace("/","\\");
+
+        shell.exec(command);
     };
 
     /**
@@ -90,10 +87,13 @@ class HunposManager implements POSManager{
      * @return {string} the reworked sentence with the Hunpos tags
      */
     public async tag(input : string): Promise<string>{
-        //scommentare per windows
-        //const hunpos = spawn('src\\ts\\presenter\\hunpos\\hunpos-tag', [this.modelFilePath]);
-        //scommentare per mac/linux
-        const hunpos = spawn('./src/ts/presenter/hunpos/hunpos-tag', [this.modelFilePath]);
+        let hunpos : ChildProcess;
+
+        let command = "src/ts/presenter/hunpos/hunpos-tag";
+        if (platform() === "win32")
+            command = command.replace("/","\\");
+
+        hunpos = spawn(command, [this.modelFilePath]);
 
         process.stdin.pipe(hunpos.stdin);
 

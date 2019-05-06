@@ -94,7 +94,6 @@ class ExerciseView extends PageView_1.PageView {
         let ret = "\t\t\t<div class='text-center col-sm-12' id=\"esercizio\">\n" +
             "\t\t\t\t<form method=\"POST\" action=\"" + page + "\">\n";
         ret += this.buildTable(words);
-        //si esegue un passaggio alla OttoBit (^o^)
         ret += "" +
             "\t\t\t\t\t<input type=\"hidden\" name=\"wordsnumber\" value=\"" + this.splitSentence().length + "\"/>\n" +
             "\t\t\t\t\t<input type=\"hidden\" name=\"sentenceKey\" value=\"" + this.sentenceKey + "\"/>\n" +
@@ -679,33 +678,33 @@ class ExerciseView extends PageView_1.PageView {
      * This method is used to display the page menù
      * @return {string} the HTML source
      */
-    getMenu() {
-        let ret = "\t\t<nav class=\"navbar navbar-expand-sm bg-dark navbar-dark\">\n" +
+    /*private getMenu() : string {
+        let ret ="\t\t<nav class=\"navbar navbar-expand-sm bg-dark navbar-dark\">\n" +
             "\t\t\t<div class=\"navbar-brand\">Colletta</div>\n" +
             "\t\t\t<button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#collapsibleNavbar\">\n" +
             "\t\t\t\t<span class=\"navbar-toggler-icon\"></span>\n" +
             "\t\t\t</button>\n" +
-            "\t\t\t<div class=\"collapse navbar-collapse\" id=\"collapsibleNavbar\">\n" +
+            "\t\t\t<div class=\"collapse navbar-collapse\" id=\"collapsibleNavbar\">\n"+
             "\t\t\t\t<ul class=\"navbar-nav mr-auto\">\n";
-        for (let i in this.menuList) {
-            ret += "" +
+        for(let i in this.menuList) {
+            ret += ""+
                 "\t\t\t\t\t<li class=\"nav-item\">\n" +
-                "\t\t\t\t\t\t<a class=\"nav-link\" href=\"" + this.menuList[i].link + "\">" + this.menuList[i].name + "</a>\n" +
+                "\t\t\t\t\t\t<a class=\"nav-link\" href=\""+this.menuList[i].link+"\">"+this.menuList[i].name+"</a>\n" +
                 "\t\t\t\t\t</li>\n";
         }
-        ret += "\t\t\t\t</ul>\n";
+        ret+="\t\t\t\t</ul>\n";
         //aggiungo login o logout
-        ret += this.getLoginArea();
-        ret += "\t\t\t</div>\n" +
+        ret+=this.getLoginArea();
+        ret+="\t\t\t</div>\n" +
             "\t\t</nav>\n";
         return ret;
-    }
+    }*/
     /**
      * This method is used to display the page login area
      * @return {string} the HTML source
      */
-    getLoginArea() {
-        if (this.exercisePresenter.isLoggedIn()) {
+    /*private getLoginArea() : string {
+        if(this.exercisePresenter.isLoggedIn()){
             return "" +
                 "\t\t\t\t<form class='form-inline my-2 my-lg-0' action='/logout'>\n" +
                 "\t\t\t\t\t<div class=\"form-group\">" +
@@ -714,10 +713,10 @@ class ExerciseView extends PageView_1.PageView {
                 "\t\t\t\t\t</div>\n" +
                 "\t\t\t\t</form>\n";
         }
-        else {
-            let ret = "";
+        else{
+            let ret ="";
             ret += "" +
-                "\t\t\t\t<form class='form-inline my-2 my-lg-0' method ='post' action='/checklogin'>\n" +
+                "\t\t\t\t<form class='form-inline my-2 my-lg-0' method ='post' action='/checklogin'>\n"+
                 "\t\t\t\t\t<div class=\"form-group\">\n" +
                 "\t\t\t\t\t\t<input type=\"text\" class=\"form-control mr-sm-2\" name='username' placeholder=\"Username\" required=\"required\">\n" +
                 "\t\t\t\t\t</div>\n" +
@@ -726,12 +725,12 @@ class ExerciseView extends PageView_1.PageView {
                 "\t\t\t\t\t</div>\n" +
                 "\t\t\t\t\t<div class=\"form-group\">\n" +
                 "\t\t\t\t\t\t<button type=\"submit\" class=\"btn-sm btn btn-primary my-2 my-sm-0 mr-2\">Accedi</button>\n" +
-                "\t\t\t\t\t\t<a class=\"btn-sm btn btn-primary my-2 my-sm-0\" href=\"/registration\" role=\"button\">Registrati</a>\n" +
+                "\t\t\t\t\t\t<a class=\"btn-sm btn btn-primary my-2 my-sm-0\" href=\"/registration\" role=\"button\">Registrati</a>\n"+
                 "\t\t\t\t\t</div>\n" +
                 "\t\t\t\t</form>\n";
             return ret;
         }
-    }
+    }*/
     /**
      * This method splits a sentence on spaces and punctuation
      * @returns string [] - an array containing the split sentence

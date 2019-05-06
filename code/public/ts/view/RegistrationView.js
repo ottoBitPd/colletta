@@ -111,27 +111,6 @@ class RegistrationView extends PageView_1.PageView {
             "   }\n" +
             "}\n";
     }
-    /**
-     * This method is used to display the page menù
-     * @return {string} the HTML source
-     */
-    getMenu() {
-        let ret = "" +
-            "<nav class=\"navbar navbar-expand-sm bg-dark navbar-dark\">" +
-            "    <div class=\"navbar-brand\">Colletta</div>" +
-            "    <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#collapsibleNavbar\">" +
-            "        <span class=\"navbar-toggler-icon\"></span>" +
-            "    </button>" +
-            "    <div class=\"collapse navbar-collapse\" id=\"collapsibleNavbar\">" +
-            "       <ul class=\"navbar-nav mr-auto\">" +
-            "           <li class=\"nav-item\">" +
-            "               <a class=\"nav-link\" href=\"/\">Torna alla home</a>" +
-            "           </li>" +
-            "       </ul>" +
-            "    </div>" +
-            "</nav>";
-        return ret;
-    }
 }
 exports.RegistrationView = RegistrationView;
 //# sourceMappingURL=RegistrationView.js.map

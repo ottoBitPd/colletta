@@ -158,8 +158,10 @@ class ExerciseView extends PageView{
             "            </li>\n";
 
         let solution = this.exercisePresenter.getUserSolution();
+        //console.log("solution: ",solution);
         let correction = this.exercisePresenter.getCorrection();
-       // console.log("tag soluzione user: ",solution);
+        //console.log("correction: ",correction);
+        //console.log("tag soluzione user: ",solution);
         //console.log("TRADUZIONE tag soluzione user: ",this.exercisePresenter.translateTags(solution));
         if (correction){
             for (let i = 0; i < words.length; ++i){

@@ -152,7 +152,7 @@ class ClassesView extends PageView {
                 ret+="<li class='list-group-item'>\n" +
                 "<div class='row'>\n";
                 if(this.classPresenter.getListType()==="classes") {
-                    console.log("classe: ",elements[i]);
+                    //console.log("classe: ",elements[i]);
                     ret += "<div class='col-sm-2 mx-auto text-center'>\n" +
                         "<a class='btn btn-link btn-sm' href='/class?classId=" + elements[i].id + "'>" + elements[i].name + "</a>\n" +
                         "</div>\n" +

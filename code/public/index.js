@@ -29,26 +29,16 @@ new SearchView_1.SearchView(app);
 new ClassesView_1.ClassesView(app);
 new ClassView_1.ClassView(app);
 new DeveloperView_1.DeveloperView(app);
-/*
-//OLD STYLE
-const exercisePage = new ExercisePresenter(exerciseView, savePageView);
-exercisePage.update(app);
-
-const loginView  = new LoginView();
-const registrationView : any= new RegistrationView();
-const LoginPage = new AuthenticationPresenter(loginView,registrationView);
-LoginPage.update(app);
-*/
-app.listen(8080, function () {
+app.use(function (req, res, next) {
+    res.status(404).sendFile("404.html", { root: "public" });
+});
+let port = process.argv[2];
+if (!port)
+    port = "8080";
+app.listen(port.toString(), function () {
     return __awaiter(this, void 0, void 0, function* () {
-        const host = "127.0.0.1";
-        const port = "8080";
-        console.log("Example app listening at http://%s:%s", host, port);
-        /*let exerciseClient =(new Client.builder()).buildExerciseClient().build().getExerciseClient();
-        if(exerciseClient){
-            let exercise = await exerciseClient.getExerciseData("-LdJfwbWT_e7V-xjLJse");
-            console.log("exercise: ",exercise);
-        }*/
+        const host = "localhost";
+        console.log("Application listening at http://%s:%s", host, port);
     });
 });
 //# sourceMappingURL=index.js.map

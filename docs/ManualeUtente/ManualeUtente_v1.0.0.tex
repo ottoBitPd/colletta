@@ -260,7 +260,7 @@
 	Sia gli allievi che gli insegnanti hanno la possibilità di visualizzare e modificare le proprie informazioni personali:
 	\begin{enumerate}
 		\item Autenticarsi e cliccare sull'icona del profilo nella navbar;
-		\item modificare se necessario compilando i campi;
+		\item Modificare se necessario compilando i campi;
 		\item Clicca su "Modifica".
 	\end{enumerate}
 \newpage
@@ -365,30 +365,50 @@
 		\item Svolgere Ricerca esercizio(3.5) con la frase da segnalare;
 		\item clicca su "Segnala".
 	\end{enumerate}
-		
-	\subsection{Verificare la richiesta di insegnante}
-		Questa funzionalità è riservata all'utente di tipo \textbf{Moderatore}.\\
-		Questa sezione verrà implementata successivamente.
-			
-	\subsection{Eliminare esercizi e utenti}
-		Questa funzionalità è riservata all'utente di tipo \textbf{Moderatore}.\\
-		Questa sezione verrà implementata successivamente.
 	
-	\subsection{Creare modello}
-				Questa funzionalità è riservata all'utente di tipo \textbf{Sviluppatore}.\\
-				Questa sezione verrà implementata successivamente.
-	\subsection{Cambiare modello}
-				Questa funzionalità è riservata all'utente di tipo \textbf{Sviluppatore}.\\
-				Questa sezione verrà implementata successivamente.
+	\subsection{Autenticazione riservata allo sviluppatore}
+		Questa funzionalità è riservata all'utente di tipo \textbf{Sviluppatore}.\\
+		
+		Lo sviluppatore ha accesso alla visione dei dati presenti nella piattaforma con inoltre la possibilità di filtrarli e scaricarli in diversi formati.\\ Per accedere a questa area seguire i seguenti passi:\\
+		
+		\textbf{Attenzione:} Lo sviluppatore deve essere in possesso della password consegnata dai possessori della piattaforma.
+		
+		\begin{enumerate}
+			\item Accedere alla homepage della piattaforma;
+			\item Aggiungere "/developer" all'url e premere invio;
+			\item Inserire la password;
+			\item Premere "Invia".
+		\end{enumerate}
+	
+	\subsection{Filtraggio dati}
+		Questa funzionalità è riservata all'utente di tipo \textbf{Sviluppatore}.\\
+		Lo sviluppatore può filtrare i dati riguardanti un esercizio inserendo una valutazione minima e/o massima con le date riguardanti un ristretto periodo di tempo . Ogni utente registrato per questioni relative alla privacy è riconoscibile dallo sviluppatore solamente tramite un hash. Se lo sviluppatore individua personalmente un utente che ritiene affidabile, inserendo il suo codice hash può filtrare gli esercizi da lui eseguiti.
+		
+		\begin{enumerate}
+			\item Accedere alla piattaforma e autenticarsi;
+			\item Compilare i campi necessari per la ricerca dei dati;
+			\item Cliccare su "Filtra".
+		\end{enumerate}
+		
 	\subsection{Scaricare modello}
-				Questa funzionalità è riservata all'utente di tipo \textbf{Sviluppatore}.\\
-				Questa sezione verrà implementata successivamente.
+		Questa funzionalità è riservata all'utente di tipo \textbf{Sviluppatore}.\\
+		
+		\begin{enumerate}
+			\item Accedere alla piattaforma e autenticarsi;
+			\item Cliccare su "Scarica modello".
+		\end{enumerate}
+				
 	\subsection{Scaricare dati}
-				Questa funzionalità è riservata all'utente di tipo \textbf{Sviluppatore}.\\
-				Questa sezione verrà implementata successivamente.
-	\subsection{Scaricare dataset}
-				Questa funzionalità è riservata all'utente di tipo \textbf{Sviluppatore}.\\
-				Questa sezione verrà implementata successivamente.
+		Questa funzionalità è riservata all'utente di tipo \textbf{Sviluppatore}.\\
+			Questa sezione verrà implementata successivamente.
+			
+		I dati sono disponibili al download in formato csv e txt.
+		\begin{enumerate}
+			\item Accedere alla piattaforma e autenticarsi;
+			\item Se necessario filtrare i dati di interesse;
+			\item Cliccare su "CSV" o "TXT".
+		\end{enumerate}
+
 \newpage
 
 \appendix

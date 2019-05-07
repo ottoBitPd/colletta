@@ -117,7 +117,7 @@ class ClassesView extends PageView {
         let header;
         if(this.classPresenter.getListType()==="classes") {
             elements = await this.classPresenter.getClasses();
-            console.log("elements: ",elements);
+            //console.log("elements: ",elements);
             header = "<div class='row'>\n" +
                 "<div class='col-sm-2 mx-auto'>CLASSE</div>\n" +
                 "<div class='col-sm-3 mx-auto'>DESCRIZIONE</div>\n" +
@@ -180,7 +180,7 @@ class ClassesView extends PageView {
                     "<p class='h5 font-weight-bold mb-2'>"+elements[i].sentence +"</p>\n" +
                     "<div class='row'>\n";
                     let n=1;
-                    console.log( JSON.stringify(elements[0],null,4));
+                    //console.log( JSON.stringify(elements[0],null,4));
                     for(let y in elements[i].solutions) {
                         ret += "<div class='col-sm-8 mx-auto font-weight-bold py-2'>Soluzione "+n+"</div>\n";
                         if(elements[i].solutions[y]._public==="true"){

@@ -89,7 +89,7 @@ describe('ExerciseView', function() {
             it("should return teacher exercise page", async function () {
                 test.getPage();
                 //@ts-ignore
-                console.log("sentence: ",test.sentence);
+                //console.log("sentence: ",test.sentence);
                 let str = await test.getPage();
                 //console.log("str: ", str);
                 var regex = new RegExp("<head>", "i");

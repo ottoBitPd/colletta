@@ -40,7 +40,7 @@ describe('PageView', function() {
 
             test.getMenu();
             let str = await test.getPage();
-            console.log("str: ", str);
+            //console.log("str: ", str);
             var regex = new RegExp("<head>", "i");
             let res = regex.test(str);
             regex = new RegExp("</head>", "i");
@@ -67,10 +67,9 @@ describe('PageView', function() {
     describe('SearchViewTest.getFoot()', function () {
         it("should return html footer", async function () {
             //@ts-ignore
-            test.userKind=UserKind.student
+            test.userKind=UserKind.student;
             test.getFoot("ciccio");
             let str = await test.getPage();
-            //console.log("str: ", str);
             var regex = new RegExp("<script>", "i");
             let res = regex.test(str);
             regex = new RegExp("</script>", "i");

@@ -38,18 +38,13 @@ describe('ProfileView', function() {
                 }
                 test.setUserData(data);
                 let str = await test.getPage();
-                //console.log("str: ", str);
                 var regex = new RegExp("<head>", "i");
-                //console.log("<head>: ", regex.test(str));
                 let res = regex.test(str);
                 regex = new RegExp("</head>", "i");
-                //console.log("</head>: ", regex.test(str));
                 res = res && regex.test(str);
                 regex = new RegExp("<html lang=\"it\">", "i");
-                //console.log("<html lang=\"it\">: ", regex.test(str));
                 res = res && regex.test(str);
                 regex = new RegExp("</html>", "i");
-                //console.log("</html>: ", regex.test(str));
                 res = res && regex.test(str);
                 regex = new RegExp("<p class= \"font-weight-bold\"> Nome: Giovanni</p> ", "i");
                 res = res && regex.test(str);
@@ -93,18 +88,13 @@ describe('ProfileView', function() {
 
                 test.setUserData(data);
                 let str = await test.getPage();
-                //console.log("str: ", str);
                 var regex = new RegExp("<head>", "i");
-                //console.log("<head>: ", regex.test(str));
                 let res = regex.test(str);
                 regex = new RegExp("</head>", "i");
-                //console.log("</head>: ", regex.test(str));
                 res = res && regex.test(str);
                 regex = new RegExp("<html lang=\"it\">", "i");
-                //console.log("<html lang=\"it\">: ", regex.test(str));
                 res = res && regex.test(str);
                 regex = new RegExp("</html>", "i");
-                //console.log("</html>: ", regex.test(str));
                 res = res && regex.test(str);
                 regex = new RegExp("<p class= \"font-weight-bold\"> Nome: Pino</p> ", "i");
                 res = res && regex.test(str);

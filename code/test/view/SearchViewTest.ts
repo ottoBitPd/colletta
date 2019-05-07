@@ -27,23 +27,16 @@ describe('SearchViewTest', function() {
                 }
             });
             it('should return the html page for exercise Search', async function () {
-                //console.log("getPage(): ",test.getPage());
                 let str = await test.getPage();
-                //console.log("str: ", str);
                 var regex = new RegExp("<head>", "i");
-                //console.log("<head>: ", regex.test(str));
                 let res = regex.test(str);
                 regex = new RegExp("</head>", "i");
-                //console.log("</head>: ", regex.test(str));
                 res = res && regex.test(str);
                 regex = new RegExp("<html lang=\"it\">", "i");
-                //console.log("<html lang=\"it\">: ", regex.test(str));
                 res = res && regex.test(str);
                 regex = new RegExp("</html>", "i");
-                //console.log("</html>: ", regex.test(str));
                 res = res && regex.test(str);
                 regex = new RegExp("<form method='post' action='/exercise'>", "i");
-                //console.log("<form method='post' action='/exercise'>: ", regex.test(str));
                 res = res && regex.test(str);
                 expect(res).to.be.true;
             });
@@ -72,23 +65,16 @@ describe('SearchViewTest', function() {
                 }
             });
             it('should return the html page for classExercise Search', async function () {
-                //console.log("getPage(): ",test.getPage());
                 let str = await test.getPage();
-                //console.log("str: ", str);
                 var regex = new RegExp("<head>", "i");
-                //console.log("<head>: ", regex.test(str));
                 let res = regex.test(str);
                 regex = new RegExp("</head>", "i");
-                //console.log("</head>: ", regex.test(str));
                 res = res && regex.test(str);
                 regex = new RegExp("<html lang=\"it\">", "i");
-                //console.log("<html lang=\"it\">: ", regex.test(str));
                 res = res && regex.test(str);
                 regex = new RegExp("</html>", "i");
-                //console.log("</html>: ", regex.test(str));
                 res = res && regex.test(str);
                 regex = new RegExp("<form method='post' action='/addexercise'>", "i");
-                //console.log("<form method='post' action='/addexercise'>: ", regex.test(str));
                 res = res && regex.test(str);
                 expect(res).to.be.true;
             });
@@ -115,24 +101,17 @@ describe('SearchViewTest', function() {
                     }
                 }
             });
-            it('should return the html page for classExercise student', async function () {
-                //console.log("getPage(): ",test.getPage());
+            it('should return the html page for student Search', async function () {
                 let str = await test.getPage();
-                //console.log("str: ", str);
                 var regex = new RegExp("<head>", "i");
-                //console.log("<head>: ", regex.test(str));
                 let res = regex.test(str);
                 regex = new RegExp("</head>", "i");
-                //console.log("</head>: ", regex.test(str));
                 res = res && regex.test(str);
                 regex = new RegExp("<html lang=\"it\">", "i");
-                //console.log("<html lang=\"it\">: ", regex.test(str));
                 res = res && regex.test(str);
                 regex = new RegExp("</html>", "i");
-                //console.log("</html>: ", regex.test(str));
                 res = res && regex.test(str);
                 regex = new RegExp("<form method='post' action='/addstudent'>", "i");
-                //console.log("<form method='post' action='/addstudent'>: ", regex.test(str));
                 res = res && regex.test(str);
                 expect(res).to.be.true;
             });

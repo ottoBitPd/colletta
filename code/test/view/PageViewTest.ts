@@ -40,7 +40,6 @@ describe('PageView', function() {
 
             test.getMenu();
             let str = await test.getPage();
-            //console.log("str: ", str);
             var regex = new RegExp("<head>", "i");
             let res = regex.test(str);
             regex = new RegExp("</head>", "i");
@@ -54,7 +53,6 @@ describe('PageView', function() {
             test.userKind=UserKind.student;
             test.getMenu();
             let str = await test.getPage();
-            //console.log("str: ", str);
             var regex = new RegExp("<nav class=\"navbar navbar-expand-sm bg-dark navbar-dark\">", "i");
             let res = regex.test(str);
             regex = new RegExp("<a href= \"/classes\" class=\"nav-link\" >Le tue classi</a>", "i");

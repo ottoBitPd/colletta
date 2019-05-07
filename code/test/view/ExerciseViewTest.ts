@@ -37,20 +37,14 @@ describe('ExerciseView', function() {
 
             });
             it("should return valutation page", async function () {
-                test.getPage();
                 let str = await test.getPage();
-                //console.log("str: ", str);
                 var regex = new RegExp("<head>", "i");
-                //console.log("<head>: ", regex.test(str));
                 let res = regex.test(str);
                 regex = new RegExp("</head>", "i");
-                //console.log("</head>: ", regex.test(str));
                 res = res && regex.test(str);
                 regex = new RegExp("<html lang=\"it\">", "i");
-                //console.log("<html lang=\"it\">: ", regex.test(str));
                 res = res && regex.test(str);
                 regex = new RegExp("</html>", "i");
-                //console.log("</html>: ", regex.test(str));
                 res = res && regex.test(str);
                 expect(res).to.be.true;
             });
@@ -87,22 +81,14 @@ describe('ExerciseView', function() {
 
             });
             it("should return teacher exercise page", async function () {
-                test.getPage();
-                //@ts-ignore
-                //console.log("sentence: ",test.sentence);
                 let str = await test.getPage();
-                //console.log("str: ", str);
                 var regex = new RegExp("<head>", "i");
-                //console.log("<head>: ", regex.test(str));
                 let res = regex.test(str);
                 regex = new RegExp("</head>", "i");
-                //console.log("</head>: ", regex.test(str));
                 res = res && regex.test(str);
                 regex = new RegExp("<html lang=\"it\">", "i");
-                //console.log("<html lang=\"it\">: ", regex.test(str));
                 res = res && regex.test(str);
                 regex = new RegExp("</html>", "i");
-                //console.log("</html>: ", regex.test(str));
                 res = res && regex.test(str);
                 expect(res).to.be.true;
             });

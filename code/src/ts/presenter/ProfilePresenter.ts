@@ -23,18 +23,23 @@ class ProfilePresenter extends PagePresenter{
             let userClient = this.client.getUserClient();
             if (userClient){
                 const id = await userClient.search(session.username);
+
                 const userData = await userClient.getUserData(id);
                 let check : boolean =false;
+
                 if(request.body.oldpassword==="" && request.body.password==="") {
                     check = true;
                 }
                 if(request.body.oldpassword!=="" && request.body.password!=="") {
+
                     if (userClient.checkPassword(request.body.oldpassword,userData.password)) {
+
                         request.body.password = userClient.hashPassword(request.body.password);
                         check = true;
                         this.view.setError("Password modificata");
                     }
                     else {
+
                         check = false;
                         this.view.setError("Modifica abortita username esistente o password errata");
                     }
@@ -84,7 +89,9 @@ class ProfilePresenter extends PagePresenter{
         app.get('/profile', async (request: any, response: any) => {
             let userClient = this.client.getUserClient();
             if (userClient && session.username){
+
                 const id = await userClient.search(session.username);
+
                 const userData = await userClient.getUserData(id);
                 //console.log("userData: ",userData);
                 this.view.setUserData(userData);

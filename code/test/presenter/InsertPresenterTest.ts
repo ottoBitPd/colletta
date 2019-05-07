@@ -70,7 +70,7 @@ describe('InsertPresenter', function() {
 
         it('should return update insertExercise student', async function () {
             test.update(app);
-            session.username = "Pino";
+            session.username = "Gian";
             chai.request(app)
                 .get('/')
                 .end((err:any, res:any) => {

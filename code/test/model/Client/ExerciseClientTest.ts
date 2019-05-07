@@ -3,6 +3,7 @@ import 'mocha';
 import {Data} from "../../../src/ts/model/Data/Data";
 import {ExerciseClient} from "../../../src/ts/model/Client/ExerciseClient";
 import {Exercise} from "../../../src/ts/model/Data/Exercise";
+import {Solution} from "../../../src/ts/model/Data/Solution";
 
 
 describe('ExerciseClient', function() {
@@ -193,4 +194,13 @@ describe('ExerciseClient', function() {
         });
     });
 
+    describe('ExerciseClient.updateSolution()',function () {
+        it('should return an update solution', async function () {
+            let exercise = new Exercise("This is an example","0");
+           let solution = new Solution("0","s0",["a","b","c"],["t1","t2"],
+                5,false,new Map<string,number>(),0);
+            expect(await test.updateSolution(exercise.getKey(),"0",solution)).to.be.undefined;
+
+        });
+    });
 });

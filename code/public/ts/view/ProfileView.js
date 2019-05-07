@@ -43,7 +43,7 @@ class ProfileView extends PageView_1.PageView {
     getPage() {
         return __awaiter(this, void 0, void 0, function* () {
             let ret = this.getHead();
-            ret += yield this.getMenu();
+            ret += this.getMenu();
             ret += "\t\t<div class=\"container\">" +
                 "\t\t\t<h1 class ='text-center mb-5'>Informazioni profilo:</h1>\n";
             if (this.error !== undefined) {
@@ -136,6 +136,7 @@ class ProfileView extends PageView_1.PageView {
                     "\t\t\t</ul>\n";
                 if (this.userKind === PageView_1.UserKind.student) {
                     let result = yield this.profileController.getAverageInfo();
+                    //console.log("resultAverage: ",result);
                     if (result.size > 0) {
                         let n = result.size;
                         ret += "\t\t\t<div class=\"row\" style=\"margin-top: 15%; margin-bottom:10%\">\n" +
@@ -178,64 +179,64 @@ class ProfileView extends PageView_1.PageView {
      * This method is used to display the page menù
      * @return {string} the HTML source
      */
-    getMenu() {
-        return __awaiter(this, void 0, void 0, function* () {
-            let ret = "" +
-                "<nav class=\"navbar navbar-expand-sm bg-dark navbar-dark\">" +
-                "\t<div class=\"navbar-brand\">Colletta</div>" +
-                "\t<button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#collapsibleNavbar\">" +
-                "\t\t<span class=\"navbar-toggler-icon\"></span>" +
-                "\t</button>" +
-                "\t<div class=\"collapse navbar-collapse\" id=\"collapsibleNavbar\">" +
-                "\t\t<ul class=\"navbar-nav mr-auto\">" +
-                "\t\t\t<li class=\"nav-item\">\n" +
-                "\t\t\t\t<a id=\"toProgress\" href= \"/\" class=\"nav-link\" >Homepage</a>\n" +
-                "\t\t\t</li>\n" +
-                "\t\t\t<li class=\"nav-item\">\n" +
-                "\t\t\t\t<a id=\"toProgress\" href= \"/exercise/search\" class=\"nav-link\" >Ricerca esercizio</a>\n" +
-                "\t\t\t</li>\n";
-            if (this.userKind === PageView_1.UserKind.student) {
-                ret += "" +
+    /*private getMenu() : string {
+        let ret =""+
+            "<nav class=\"navbar navbar-expand-sm bg-dark navbar-dark\">" +
+            "\t<div class=\"navbar-brand\">Colletta</div>" +
+            "\t<button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#collapsibleNavbar\">" +
+            "\t\t<span class=\"navbar-toggler-icon\"></span>" +
+            "\t</button>" +
+            "\t<div class=\"collapse navbar-collapse\" id=\"collapsibleNavbar\">"+
+            "\t\t<ul class=\"navbar-nav mr-auto\">"+
+            "\t\t\t<li class=\"nav-item\">\n" +
+            "\t\t\t\t<a id=\"toProgress\" href= \"/\" class=\"nav-link\" >Homepage</a>\n" +
+            "\t\t\t</li>\n"+
+            "\t\t\t<li class=\"nav-item\">\n" +
+            "\t\t\t\t<a id=\"toProgress\" href= \"/exercise/search\" class=\"nav-link\" >Ricerca esercizio</a>\n" +
+            "\t\t\t</li>\n";
+            if(this.userKind===UserKind.student) {
+                ret += ""+
                     "\t\t\t<li class=\"nav-item\">\n" +
                     "\t\t\t\t<a id=\"toProgress\" href= \"#progress\" class=\"nav-link\" >I tuoi progressi</a>\n" +
                     "\t\t\t</li>\n";
-                ret += "\t\t\t<li class=\"nav-item\">\n" +
+                    ret += "\t\t\t<li class=\"nav-item\">\n" +
                     "\t\t\t\t<a href= \"/classes\" class=\"nav-link\" >Le tue classi</a>\n" +
                     "\t\t\t</li>\n";
             }
-            else { //teacher
-                ret += "" +
+            else{//teacher
+                ret += ""+
                     "\t\t\t<li class=\"nav-item\">\n" +
                     "\t\t\t\t<a href= \"/classes\" class=\"nav-link\" >Area classi</a>\n" +
-                    "\t\t\t</li>\n" +
+                    "\t\t\t</li>\n"+
                     "<li class=\"nav-item\">\n" +
                     "\t\t\t\t<a href= \"#\" class=\"nav-link\" onclick='document.getElementById(\"insertExerciseForm\").classList.toggle(\"d-none\")'>Crea esercizio</a>\n" +
-                    "\t\t\t</li>\n" +
+                    "\t\t\t</li>\n"+
                     "\t\t\t<li class=\"nav-item\">\n" +
                     "\t\t\t\t<a href= \"/exercises\" class=\"nav-link\" >I tuoi esercizi</a>\n" +
                     "\t\t\t</li>\n";
+
             }
-            ret += "\t\t</ul>";
-            //aggiungo login o logout
-            ret += this.getLoginArea();
-            ret += "\t</div>" +
-                "</nav>";
-            ret +=
-                "<form method='post' action='/exercise/insert' id='insertExerciseForm' class='d-none'>" +
-                    "   <div class=\"input-group col-sm-4 py-2 bg-dark\">" +
-                    "       <input type=\"text\" name=\"sentence\" class=\"form-control\" required>" +
-                    "       <button type=\"submit\" class=\"btn btn-primary\">Invia</button>" +
-                    "   </div>" +
-                    "</form>";
-            return ret;
-        });
-    }
+        ret+="\t\t</ul>";
+        //aggiungo login o logout
+        ret+=this.getLoginArea();
+        ret+="\t</div>" +
+            "</nav>";
+        ret +=
+            "<form method='post' action='/exercise/insert' id='insertExerciseForm' class='d-none'>" +
+            "   <div class=\"input-group col-sm-4 py-2 bg-dark\">" +
+            "       <input type=\"text\" name=\"sentence\" class=\"form-control\" require='required'>" +
+            "       <button type=\"submit\" class=\"btn btn-primary\">Invia</button>" +
+            "   </div>" +
+            "</form>";
+        return ret;
+    }*/
     /**
      * This method is used to display the page login area
      * @return {string} the HTML source
      */
-    getLoginArea() {
-        if (this.profileController.isLoggedIn()) {
+    /*private getLoginArea() : string {
+
+        if(this.profileController.isLoggedIn()){
             return "" +
                 "        <form class='form-inline' action='/logout'>" +
                 "           <div class=\"form-group\">" +
@@ -243,14 +244,14 @@ class ProfileView extends PageView_1.PageView {
                 "           </div>" +
                 "        </form>";
         }
-        else {
-            let ret = "";
+        else{
+            let ret ="";
             ret += "" +
                 "\t\t<form class='form-inline my-2 my-lg-0' method ='post' action='/checklogin'>\n";
-            if (this.profileController.isLoginInvalid()) {
-                ret += "\t\t\t<p class='text-danger m-1 p-1'>username o password invalidi</p>\n";
+            if(this.profileController.isLoginInvalid()){
+                ret+="\t\t\t<p class='text-danger m-1 p-1'>username o password invalidi</p>\n";
             }
-            ret += "\t\t\t<div class=\"form-group\">\n" +
+            ret+="\t\t\t<div class=\"form-group\">\n" +
                 "\t\t\t\t<input type=\"text\" class=\"form-control mr-sm-2\" name='username' placeholder=\"Username\" required=\"required\">\n" +
                 "\t\t\t</div>\n" +
                 "\t\t\t<div class=\"form-group\">\n" +
@@ -258,12 +259,12 @@ class ProfileView extends PageView_1.PageView {
                 "\t\t\t</div>\n" +
                 "\t\t\t<div class=\"form-group\">\n" +
                 "\t\t\t\t<button type=\"submit\" class=\"btn-sm btn btn-primary my-2 my-sm-0 mr-2\">Accedi</button>\n" +
-                "\t\t\t\t<a class=\"btn-sm btn btn-primary my-2 my-sm-0\" href=\"/registration\" role=\"button\">Registrati</a>\n" +
+                "\t\t\t\t<a class=\"btn-sm btn btn-primary my-2 my-sm-0\" href=\"/registration\" role=\"button\">Registrati</a>\n"+
                 "\t\t\t</div>\n" +
                 "\t\t</form>\n";
             return ret;
         }
-    }
+    }*/
     /**
      * This method returns the javascript code to show the average chart
      */

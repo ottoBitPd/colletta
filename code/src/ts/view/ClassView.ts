@@ -65,7 +65,7 @@ class ClassView extends PageView {
      * @return {string} the HTML source
      */
     private async printClassInfo(){
-        let _class = await this.classPresenter.getClass()
+        let _class = await this.classPresenter.getClass();
         let ret = "" +
         "\t\t <div class=\"col-sm-12\" id=\"esercizio\">\n" +
         "\t\t\t<div class='row'>\n" +

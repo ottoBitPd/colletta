@@ -53,33 +53,34 @@ class SearchView extends PageView_1.PageView {
      * This method is used to display the page menù
      * @return {string} the HTML source
      */
-    getMenu() {
-        let ret = "<nav class=\"navbar navbar-expand-sm bg-dark navbar-dark\">" +
+    /*private getMenu() : string {
+        let ret ="<nav class=\"navbar navbar-expand-sm bg-dark navbar-dark\">" +
             "    <div class=\"navbar-brand\">Colletta</div>" +
             "    <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#collapsibleNavbar\">" +
             "        <span class=\"navbar-toggler-icon\"></span>" +
             "    </button>" +
-            "    <div class=\"collapse navbar-collapse\" id=\"collapsibleNavbar\">" +
+            "    <div class=\"collapse navbar-collapse\" id=\"collapsibleNavbar\">"+
             "<ul class=\"navbar-nav mr-auto\">";
-        for (let i in this.menuList) {
-            ret += "" +
+        for(let i in this.menuList) {
+            ret += ""+
                 "<li class=\"nav-item\">" +
-                "   <a class=\"nav-link\" href=\"" + this.menuList[i].link + "\">" + this.menuList[i].name + "</a>" +
+                "   <a class=\"nav-link\" href=\""+this.menuList[i].link+"\">"+this.menuList[i].name+"</a>" +
                 "</li>";
         }
-        ret += "</ul>";
+        ret+="</ul>";
         //aggiungo login o logout
-        ret += this.getLoginArea();
-        ret += "    </div>" +
+        ret+=this.getLoginArea();
+        ret+="    </div>" +
             "</nav>";
         return ret;
-    }
+    }*/
     /**
      * This method is used to display the page login area
      * @return {string} the HTML source
      */
-    getLoginArea() {
-        if (this.searchPresenter.isLoggedIn()) {
+    /*private getLoginArea() : string {
+
+        if(this.searchPresenter.isLoggedIn()){
             return "" +
                 "        <form class='form-inline my-2 my-lg-0' action='/logout'>\n" +
                 "           <div class=\"form-group\">" +
@@ -88,14 +89,14 @@ class SearchView extends PageView_1.PageView {
                 "           </div>\n" +
                 "        </form>\n";
         }
-        else {
-            let ret = "";
+        else{
+            let ret ="";
             ret += "" +
                 "\t\t<form class='form-inline my-2 my-lg-0' method ='post' action='/checklogin'>\n";
-            if (this.searchPresenter.isLoginInvalid()) {
-                ret += "\t\t\t<p class='text-danger m-1 p-1'>username o password invalidi</p>\n";
+            if(this.searchPresenter.isLoginInvalid()){
+                ret+="\t\t\t<p class='text-danger m-1 p-1'>username o password invalidi</p>\n";
             }
-            ret += "\t\t\t<div class=\"form-group\">\n" +
+            ret+="\t\t\t<div class=\"form-group\">\n" +
                 "\t\t\t\t<input type=\"text\" class=\"form-control mr-sm-2\" name='username' placeholder=\"Username\" required=\"required\">\n" +
                 "\t\t\t</div>\n" +
                 "\t\t\t<div class=\"form-group\">\n" +
@@ -103,18 +104,19 @@ class SearchView extends PageView_1.PageView {
                 "\t\t\t</div>\n" +
                 "\t\t\t<div class=\"form-group\">\n" +
                 "\t\t\t\t<button type=\"submit\" class=\"btn-sm btn btn-primary my-2 my-sm-0 mr-2\">Accedi</button>\n" +
-                "\t\t\t\t<a class=\"btn-sm btn btn-primary my-2 my-sm-0\" href=\"/registration\" role=\"button\">Registrati</a>\n" +
+                "\t\t\t\t<a class=\"btn-sm btn btn-primary my-2 my-sm-0\" href=\"/registration\" role=\"button\">Registrati</a>\n"+
                 "\t\t\t</div>\n" +
                 "\t\t</form>\n";
             return ret;
         }
-    }
+    }*/
     /**
      * This method is used to display the list of search results
      * @return {string} the HTML source
      */
     printList() {
         let results = this.searchPresenter.getResults();
+        //console.log("result: ",results);
         if (results === undefined) {
             return ""; //resultList is not set yet, cause nobody searched yet
         }

@@ -92,8 +92,6 @@ describe('Student',function() {
             const _class1 = new Class("1","name", "description","1111",["st1","st3"],["es5"]);
             const _class2 = new Class("2","name", "description","0000",["st4","st3"],["es7"]);
 
-            console.log(student1.getClasses([_class,_class1,_class2]));
-
             expect(student1.getClasses([_class,_class1,_class2])).contains(_class) &&
             expect(student1.getClasses([_class,_class1,_class2])).contains(_class1) &&
             expect(student1.getClasses([_class,_class1,_class2])).not.contains(_class2);

@@ -128,7 +128,6 @@ describe('ExerciseClient', function() {
                 exercise.getSolutions()[1].addNewMark("0",4);
                 return exercise;
             };
-            console.log(await test.searchAllSolution());
             expect(await test.searchAllSolution()).to.be.not.undefined;
         });
     });

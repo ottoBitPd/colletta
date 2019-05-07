@@ -133,6 +133,7 @@ class ProfileView extends PageView{
                 "\t\t\t</ul>\n";
             if (this.userKind === UserKind.student) {
                 let result = await this.profileController.getAverageInfo();
+                //console.log("resultAverage: ",result);
                 if (result.size > 0) {
                     let n = result.size;
                     ret += "\t\t\t<div class=\"row\" style=\"margin-top: 15%; margin-bottom:10%\">\n" +

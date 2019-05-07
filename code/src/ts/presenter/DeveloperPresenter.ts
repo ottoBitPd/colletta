@@ -218,14 +218,19 @@ class DeveloperPresenter extends PagePresenter{
     }
 
     async createTxtFromAnnotations() {
-        // @ts-ignore
-        const replacer = (key, value) => value === null ? '' : value;
-        const header = Object.keys(this.annotations[0]);
-        let csv : any = this.annotations.map((row:any) => header.map(fieldName =>
-            JSON.stringify(row[fieldName], replacer)).join('\t'));
-        //csv.unshift(header.join(''));
-        csv = csv.join('\r\n');
-        return csv;
+        if ((this.annotations.length) !== 0) {
+            // @ts-ignore
+            const replacer = (key, value) => value === null ? '' : value;
+            const header = Object.keys(this.annotations[0]);
+            let txt: any = this.annotations.map((row: any) => header.map(fieldName =>
+                JSON.stringify(row[fieldName], replacer)).join('\t'));
+            //csv.unshift(header.join(''));
+            txt = txt.join('\r\n');
+            return txt;
+        }
+        else {
+            return [];
+        }
     }
 
     async isTeacher(solverID: string) : Promise<boolean>{

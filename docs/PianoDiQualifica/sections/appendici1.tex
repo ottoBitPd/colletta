@@ -173,7 +173,23 @@ Per ogni test viene specificato il suo codice univoco, la descrizione e lo stato
 		TU & Verifica che il metodo crei correttamente un modello sulla base dei dati attuali.  \\ \hline
 		TU & Verifica che il metodo assegni correttamente i tag alle parole della frase attualmente in analisi.  \\ \hline
 		TU & Verifica che il metodo dichiari correttamente se un utente è autenticato o meno.  \\ \hline
-		TU & VErifica che il metodo cambi correttamente i dati della sessione attiva.  \\ \hline
+		TU & Verifica che il metodo cambi correttamente i dati della sessione attiva.  \\ \hline
+		%TODO: aggiungere test per presenter%
+		
+		%view%
+		TU & Verifica che il metodo ritorni la corretta pagina HTML per visualizzare la lista delle classi o degli esercizi. \\ \hline
+		TU & Verifica che il metodo ritorni la corretta pagina HTML per visualizzare i dettagli della classe. \\ \hline
+		TU & Verifica che il metodo ritorni la corretta pagina HTML per visualizzare l'area di gestione developer. \\ \hline
+		TU & Verifica che il metodo ritorni la corretta pagina HTML per visualizzare lo svolgimento e la valutazione di un esercizio. \\ \hline
+		TU & Verifica che il metodo ritorni la corretta pagina HTML per visualizzare la pagina di inserimento di un esercizio. \\ \hline
+		TU & Verifica che il metodo ritorni la corretta pagina HTML per visualizzare l'header delle pagine. \\ \hline
+		TU & Verifica che il metodo ritorni la corretta pagina HTML per visualizzare il menù delle pagine. \\ \hline
+		TU & Verifica che il metodo ritorni la corretta pagina HTML per visualizzare il footer delle pagine. \\ \hline
+		TU & Verifica che il metodo ritorni il corretto tipo di utente. \\ \hline
+		TU & Verifica che il metodo ritorni la corretta pagina HTML per visualizzare le informazioni del proprio profilo. \\ \hline
+		TU & Verifica che il metodo ritorni la corretta pagina HTML per visualizzare il form di registrazione alla piattaform. \\ \hline
+		TU & Verifica che il metodo ritorni la corretta pagina HTML per visualizzare la pagina di ricerca esercizi, classi o studenti. \\ \hline
+		
 		\caption{Test di unità - descrizione}
 \end{longtable}
 
@@ -208,7 +224,7 @@ Per ogni test viene specificato il suo codice univoco, la descrizione e lo stato
 		TU & ExerciseTest.getNewSolution()\\ \hline
 		TU & ExerciseTest.autosolve()\\ \hline
 		TU & ExerciseTest.getSplitSentence()\\ \hline
-		TU & ExerciseTest.evaluate(teacherID : string)\\ \hline
+		TU & ExerciseTest.evaluate()\\ \hline
 		TU & ExerciseTest.toJSON()\\ \hline
 		TU & StudentTest.getUsername() \\ \hline
 		TU & StudentTest.getName()\\ \hline
@@ -244,8 +260,8 @@ Per ogni test viene specificato il suo codice univoco, la descrizione e lo stato
 		TU & SolutionTest.getValutations()\\ \hline
 		TU & SolutionTest.JSONValutations()\\ \hline
 		TU & SolutionTest.getTime()\\ \hline
-		TU & SolutionTest.addNewMark(teacherID : string, mark : number)\\ \hline
-		TU & SolutionTest.evaluateSolution(tags: string [])\\ \hline
+		TU & SolutionTest.addNewMark()\\ \hline
+		TU & SolutionTest.evaluateSolution()\\ \hline
 		TU & ClassClientTest.getDbClassManager()  \\ \hline
 		TU & ClassClientTest.deleteClass()  \\ \hline
 		TU & ClassClientTest.deleteStudent()  \\ \hline
@@ -257,11 +273,13 @@ Per ogni test viene specificato il suo codice univoco, la descrizione e lo stato
 		TU & ClassClientTest.getExercises()  \\ \hline
 		TU & ClassClientTest.getClassesByTeacher()  \\ \hline
 		TU & ClassClientTest.getClassData()  \\ \hline
-		TU & Client.ClientBuilder() QUESTO  \\ \hline
+		%TODO: QUESTO sotto
+		TU & Client.ClientBuilder()   \\ \hline
 		TU & Client.ClientBuilder.buildClassClient()  \\ \hline
 		TU & Client.ClientBuilder.buildUserClient()  \\ \hline
 		TU & Client.ClientBuilder.buildExerciseClient()  \\ \hline
-		TU & Client.ClientBuilder.build() QUESTO \\ \hline	
+		%TODO: QUESTO sotto
+		TU & Client.ClientBuilder.build() \\ \hline	
 		TU & Client.getUserClient()  \\ \hline
 		TU & Client.getClassClient()  \\ \hline
 		TU & Client.getExerciseClient()  \\ \hline
@@ -306,6 +324,22 @@ Per ogni test viene specificato il suo codice univoco, la descrizione e lo stato
 		TU & HunposManager.train()  \\ \hline
 		TU & InsertPresenter.isLoggedIn()  \\ \hline
 		TU & InsertPresenter.update()  \\ \hline
+		%TODO mettere test presenter%
+		
+		%vista%
+		TU & ClassesView.getPage()\\ \hline
+		TU & ClassView.getPage()\\ \hline
+		TU & DeveloperView.getPage()\\ \hline
+		TU & ExerciseView.getPage()\\ \hline
+		TU & InsertPage.getPage()\\ \hline
+		TU & PageView.getHead()\\ \hline
+		TU & PageView.getMenu() \\ \hline
+		TU & PageView.getFoot()\\ \hline
+		TU & PageView.getUserKind()\\ \hline
+		TU & ProfileView.getPage()\\ \hline
+		TU & RegistrationView.getPage()\\ \hline
+		TU & SearchView.getPage()\\ \hline
+		
 		\caption{Tracciamento test di unità}
 \end{longtable}
 
@@ -379,6 +413,30 @@ Nella tabella seguente vengono riportati i risultati delle verifiche eseguite su
 		\hline
 		\caption{Resoconto attività di verifica per la revisione di qualifica}
 	\end{longtable}
+	
+	\begin{longtable}{>{\centering\arraybackslash}m{5cm} >{\centering\arraybackslash}m{4cm} >{\centering\arraybackslash}m{5cm} >{\centering\arraybackslash}m{2cm}}
+		\rowcolor{LightBlue}
+		\textbf{\textcolor{white}{Documento}}
+		& \textbf{\textcolor{white}{Indice Gulpease}}
+		& \textbf{\textcolor{white}{Esito}}\\
+		\textit{StudioDiFattibilità\_v1.0.0} & 60 & Accettato\\
+		\hline
+		\rowcolor{LightGray}
+		\textit{AnalisiDeiRequisiti\_v4.0.0} & 78 & Accettato\\
+		\hline
+		\textit{NormeDiProgetto\_v4.0.0} & 72 & Accettato\\
+		\hline
+		\rowcolor{LightGray}
+		\textit{PianoDiQualifica\_v4.0.0} & 78 & Accettato\\
+		\hline
+		\textit{PianoDiProgetto\_v4	.0.0} & 62 & Accettato\\
+		\hline
+		\textit{ManualeSviluppatore\_v1.0.0} & 80 & Accettato\\
+		\hline
+		\textit{ManualeUtente\_v4.0.0} & 69 & Accettato\\
+		\hline
+		\caption{Resoconto attività di verifica per la revisione di accettazione}
+	\end{longtable}
 
 
 \subsubsection{Software}
@@ -390,13 +448,14 @@ In questo periodo dell'attività di codifica, sono stati implementati 16 test di
 In questo periodo dell'attività di codifica, sono stati implementati 22 test di unità e 4 test di integrazione. Tutti questi test vengono superati, quindi la percentuale di superamento test rispetto a quelli implementati è pari al 100\%.
 
 \subparagraph{Codifica al 2019-04-19}
-
+In questo periodo dell'attività di codifica, sono stati implementati 30 test di unità e 2 test di integrazione. Tutti questi test vengono superati, quindi la percentuale di superamento test rispetto a quelli implementati è pari al 100\%.
 
 \subparagraph{Codifica al 2019-04-26}
+In questo periodo dell'attività di codifica, sono stati implementati 38 test di unità e 2 test di integrazione. Tutti questi test vengono superati, quindi la percentuale di superamento test rispetto a quelli implementati è pari al 100\%.
 
 
 \subparagraph{Codifica al 2019-05-03}
-
+In questo periodo dell'attività di codifica, sono stati implementati 28 test di unità e 3 test di integrazione. Tutti questi test vengono superati, quindi la percentuale di superamento test rispetto a quelli implementati è pari al 100\%.
 
 \subparagraph{Codifica al 2019-05-10}
 
@@ -416,13 +475,18 @@ In questo periodo dell'attività di codifica, la media di parametri per metodo e
 In questo periodo dell'attività di codifica, la media di parametri per metodo è inferiore a 1. Infatti sono stati implementati 74 metodi con un totale di 44 parametri per un totale di 149 metodi e 139 parametri.
 
 \subparagraph{Codifica al 2019-04-19}
+In questo periodo dell'attività di codifica, la media di parametri per metodo è superiore a 1. Infatti sono stati implementati 9 metodi con un totale di 10 parametri per un totale di 158 metodi e 148 parametri.
 
 \subparagraph{Codifica al 2019-04-26}
+In questo periodo dell'attività di codifica, la media di parametri per metodo è 1. Infatti sono stati implementati 9 metodi con un totale di 9 parametri per un totale di 167 metodi e 157 parametri.
 
 \subparagraph{Codifica al 2019-05-03}
+In questo periodo dell'attività di codifica, la media di parametri per metodo è 0. Infatti sono stati implementati 5 metodi con un totale di 0 parametri per un totale di 172 metodi e 157 parametri. 
+A seguito di questa attività di codifica, il prodotto si ritiene concluso all'implementazione.
 
 \subparagraph{Codifica al 2019-05-10}
-
+In questo periodo non si è verificata l'attività di codifica in quanto il prodotto è stato ritenuto concluso precedentemente.
+\\
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.6]{images/resoconto/MPS2Chart.pdf}
@@ -437,12 +501,17 @@ In questo periodo dell'attività di codifica, la media di attributi per classe e
 In questo periodo dell'attività di codifica, la media di attributi per classe equivale a 1. Infatti sono stati implementate 10 classi con un totale di 7 attributi per un totale di 33 classi e 43 attributi.
 
 \subparagraph{Codifica al 2019-04-19}
+In questo periodo dell'attività di codifica, la media di attributi per classe equivale a 0. Infatti non è stata implementata completamente una classe.
 
 \subparagraph{Codifica al 2019-04-26}
+In questo periodo dell'attività di codifica, la media di attributi per classe è 3. Infatti è stata implementata 1 classe con 3 attributi per un totale di 34 classi e 46 attributi.
 
 \subparagraph{Codifica al 2019-05-03}
+In questo periodo dell'attività di codifica, la media di attributi per classe è 3. Infatti è stata implementata 1 classe con 3 attributi per un totale di 35 classi e 46 attributi.
+A seguito di questa attività di codifica, il prodotto si ritiene concluso all'implementazione.
 
 \subparagraph{Codifica al 2019-05-10}
+In questo periodo non si è verificata l'attività di codifica in quanto il prodotto è stato ritenuto concluso precedentemente.
 
 \begin{figure}[H]
 	\centering
@@ -452,19 +521,22 @@ In questo periodo dell'attività di codifica, la media di attributi per classe e
 
 \paragraph{Numero di metodi per classe - MPS4}
 \subparagraph{Codifica al 2019-04-05}
-In questo periodo dell'attività di codifica, la media di attributi per classe equivale a 3. Infatti sono stati implementate 23 classi con un totale di 75 metodi.
+In questo periodo dell'attività di codifica, la media di metodi per classe equivale a 3. Infatti sono stati implementate 23 classi con un totale di 75 metodi.
 
 \subparagraph{Codifica al 2019-04-12}
-In questo periodo dell'attività di codifica, la media di attributi per classe equivale a 4.5. Infatti sono stati implementate 10 classi con un totale di 74 metodi per un totale di 33 classi e 149 metodi.
+In questo periodo dell'attività di codifica, la media di metodi per classe equivale a 4.5. Infatti sono state implementate 10 classi con un totale di 74 metodi per un totale di 33 classi e 149 metodi.
 
 \subparagraph{Codifica al 2019-04-19}
-
+In questo periodo dell'attività di codifica, la media di metodi per classe equivale a 0. Infatti non è stata implementata completamente una classe.
 
 \subparagraph{Codifica al 2019-04-26}
+In questo periodo dell'attività di codifica, la media di metodi per classe equivale a 18. Infatti è stata implementata 1 classe con un totale di 18 metodi per un totale di 34 classi e 167 metodi.
 
 \subparagraph{Codifica al 2019-05-03}
+In questo periodo dell'attività di codifica, la media di metodi per classe equivale a 5. Infatti è stata implementata 1 classe con un totale di 5 metodi per un totale di 35 classi e 172 metodi.
 
 \subparagraph{Codifica al 2019-05-10}
+In questo periodo non si è verificata l'attività di codifica in quanto il prodotto è stato ritenuto concluso precedentemente.
 
 \begin{figure}[H]
 	\centering
@@ -480,12 +552,16 @@ In questo periodo dell'attività di codifica, la complessità ciclomatica media 
 In questo periodo dell'attività di codifica, son stati sviluppati 75 metodi, con un totale di 149 e un indice di complessità ciclomatica media di circa 1.20.
 
 \subparagraph{Codifica al 2019-04-19}
+In questo periodo dell'attività di codifica, la complessità ciclomatica media di 149 metodi sviluppati è di circa 1.22. 
 
 \subparagraph{Codifica al 2019-04-26}
+In questo periodo dell'attività di codifica, la complessità ciclomatica media di 167 metodi sviluppati è di circa 1.35. 
 
 \subparagraph{Codifica al 2019-05-03}
+In questo periodo dell'attività di codifica, la complessità ciclomatica media di 172 metodi sviluppati è di circa 1.28. 
 
 \subparagraph{Codifica al 2019-05-10}
+In questo periodo non si è verificata l'attività di codifica in quanto il prodotto è stato ritenuto concluso precedentemente.
 
 \begin{figure}[H]
 	\centering
@@ -506,12 +582,21 @@ Nonostante non raggiunga il livello di accettazione della
 metrica, questo risultato è ritenuto sufficiente a questo punto del progetto poiché sono previsti altri incrementi alla codifica che porteranno al soddisfacimento di altri requisiti.
 
 \subparagraph{Codifica al 2019-04-19}
+In questo periodo dell'attività di codifica, sono stati soddisfatti 12 requisiti obbligatori, per un totale di 40, ovvero l'86.95\% dei requisiti obbligatori totali.
+Nonostante non raggiunga il livello di accettazione della
+metrica, questo risultato è ritenuto sufficiente a questo punto del progetto poiché sono previsti altri incrementi alla codifica che porteranno al soddisfacimento di altri requisiti.
 
 \subparagraph{Codifica al 2019-04-26}
+In questo periodo dell'attività di codifica, sono stati soddisfatti 12 requisiti obbligatori, per un totale di 43, ovvero il 93.48\% dei requisiti obbligatori totali.
+Nonostante non raggiunga il livello di accettazione della
+metrica, questo risultato è ritenuto sufficiente a questo punto del progetto poiché sono previsti altri incrementi alla codifica che porteranno al soddisfacimento di altri requisiti.
 
 \subparagraph{Codifica al 2019-05-03}
+In questo periodo dell'attività di codifica, sono stati soddisfatti 12 requisiti obbligatori, per un totale di 46, ovvero il 100\% dei requisiti obbligatori totali.
+A seguito di questo periodo di codifica la soglia di accettabilità della metrica è stata raggiunta.
 
 \subparagraph{Codifica al 2019-05-10}
+In questo periodo non si è verificata l'attività di codifica in quanto il prodotto è stato ritenuto concluso precedentemente.
 
 \begin{figure}[H]
 	\centering
@@ -531,12 +616,18 @@ Nonostante non raggiunga il livello di accettazione della
 metrica, questo risultato è ritenuto sufficiente a questo punto del progetto poiché sono previsti altri incrementi alla codifica che porteranno al soddisfacimento di altri requisiti.
 
 \subparagraph{Codifica al 2019-04-19}
+In questo periodo dell'attività di codifica, sono stati soddisfatti 5 requisiti desiderabili, per un totale di 15, ovvero il 30,61\% dei requisiti desiderabili totali.
+A seguito di questo periodo di codifica la soglia di accettabilità della metrica è stata raggiunta.
+Il gruppo si impegnerà ad incrementare ulteriormente la copertura di altri requisiti desiderabili.
 
 \subparagraph{Codifica al 2019-04-26}
+In questo periodo dell'attività di codifica, sono stati soddisfatti 4 requisiti desiderabili, per un totale di 19, ovvero il 38,77\% dei requisiti desiderabili totali.
 
 \subparagraph{Codifica al 2019-05-03}
+In questo periodo dell'attività di codifica, sono stati soddisfatti 6 requisiti desiderabili, per un totale di 25, ovvero il 51,02\% dei requisiti desiderabili totali.
 
 \subparagraph{Codifica al 2019-05-10}
+In questo periodo non si è verificata l'attività di codifica in quanto il prodotto è stato ritenuto concluso precedentemente.
 
 \begin{figure}[H]
 	\centering
@@ -576,12 +667,18 @@ Nonostante non raggiunga il livello di accettazione della
 metrica, questo risultato è ritenuto sufficiente a questo punto del progetto poiché sono previsti altri incrementi alla codifica che porteranno al soddisfacimento di altri requisiti.
 
 \subparagraph{Codifica al 2019-04-19}
+In questo periodo dell'attività di codifica, sono stati soddisfatti 2 requisiti opzionali, con un totale di 4 requisiti totali implementati, ovvero il 12.50\% dei requisiti opzionali totali.
+A seguito di questo periodo di codifica la soglia di accettabilità della metrica è stata raggiunta.
+Il gruppo si impegnerà ad incrementare ulteriormente la copertura di altri requisiti opzionali.
 
 \subparagraph{Codifica al 2019-04-26}
+In questo periodo dell'attività di codifica, sono stato soddisfatto 1 requisito opzionale, con un totale di 5 requisiti totali implementati, ovvero il 15.63\% dei requisiti opzionali totali.
 
 \subparagraph{Codifica al 2019-05-03}
+In questo periodo dell'attività di codifica, sono stato soddisfatto 1 requisito opzionale, con un totale di 6 requisiti totali implementati, ovvero il 18.75\% dei requisiti opzionali totali.
 
 \subparagraph{Codifica al 2019-05-10}
+In questo periodo non si è verificata l'attività di codifica in quanto il prodotto è stato ritenuto concluso precedentemente.
 
 \begin{figure}[H]
 	\centering
@@ -594,15 +691,19 @@ metrica, questo risultato è ritenuto sufficiente a questo punto del progetto po
 In questo periodo dell'attività di codifica, la media di linee di codice per procedura equivale a 20. Infatti sono stati implementati 75 metodi con un totale di circa 1500 linee di codice.
 
 \subparagraph{Codifica al 2019-04-12}
-In questo periodo dell'attività di codifica, la media di linee di codice per procedura equivale a 16. Infatti sono stati implementati 74 metodi con un totale di circa 1000 linee di codice, per un totale di 149 metodi e 2500 linee di codice.
+In questo periodo dell'attività di codifica, la media di linee di codice per procedura equivale a 16.77. Infatti sono stati implementati 74 metodi con un totale di circa 1000 linee di codice, per un totale di 149 metodi e 2500 linee di codice.
 
 \subparagraph{Codifica al 2019-04-19}
+In questo periodo dell'attività di codifica, la media di linee di codice per procedura equivale a 16.50. Infatti sono stati implementati 9 metodi con un totale di circa 130 linee di codice, per un totale di 158 metodi e 2630 linee di codice.
 
 \subparagraph{Codifica al 2019-04-26}
+In questo periodo dell'attività di codifica, la media di linee di codice per procedura equivale a 16.35. Infatti sono stati implementati 9 metodi con un totale di circa 100 linee di codice, per un totale di 167 metodi e 2730 linee di codice.
 
 \subparagraph{Codifica al 2019-05-03}
+In questo periodo dell'attività di codifica, la media di linee di codice per procedura equivale a 16.31. Infatti sono stati implementati 5 metodi con un totale di circa 75 linee di codice, per un totale di 172 metodi e 2805 linee di codice.
 
 \subparagraph{Codifica al 2019-05-10}
+In questo periodo non si è verificata l'attività di codifica in quanto il prodotto è stato ritenuto concluso precedentemente.
 
 \begin{figure}[H]
 	\centering
@@ -713,6 +814,18 @@ Riportiamo di seguito i calcoli e le varie rilevazioni effettuate.
 	\caption{Rilevazioni indice stabilità requisiti (RSI) - Revisione di qualifica}
 \end{longtable}
 
+\begin{longtable}{>{\centering\arraybackslash}m{3cm} >{\centering\arraybackslash}m{4cm} >{\centering\arraybackslash}m{5cm} >{\centering\arraybackslash}m{2cm}}
+	\rowcolor{LightBlue}
+	\textbf{\textcolor{white}{Data rilevazioni}}
+	& \textbf{\textcolor{white}{Requirement Stability Index (RSI)}}
+	& \textbf{\textcolor{white}{Esito}}\\
+	2019-04-30 & \[1-\frac{2+3+0}{128}=0.960\] & Accettato\\
+	\hline
+	2019-05-07 & \[1-\frac{0+2+0}{127}=0.984\] & Accettato\\
+	\hline
+	\caption{Rilevazioni indice stabilità requisiti (RSI) - Revisione di accettazione}
+\end{longtable}
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.6]{images/resoconto/MPC2Chart.pdf}
@@ -745,12 +858,40 @@ In questo periodo dell'attività di codifica, sono state commesse 7 violazioni d
 Lo stile di codifica è migliorato rispetto alla precedente rilevazione. Tuttavia l'obbiettivo di avere un numero inferiore alle 10 violazioni è rispettato ma ancora migliorabile.
 
 \subparagraph{Codifica al 2019-04-19}
+In questo periodo dell'attività di codifica, sono state commesse 7 violazioni dello stile di codifica, così distribuite:
+ \begin{itemize}
+ 	\item \textbf{Utilizzo lingua inglese}: 0 violazioni.
+ 	\item \textbf{Utilizzo TSLint}: 0 violazioni.
+ 	\item \textbf{Lunghezza linee di codice}: 3 violazioni.
+ 	\item \textbf{Nomenclatura}: 0 violazioni.
+ 	\item \textbf{Commenti al codice}: 0 violazioni.
+ \end{itemize}
+Lo stile di codifica è migliorato rispetto alla precedente rilevazione. Tuttavia l'obbiettivo di avere un numero inferiore alle 10 violazioni è rispettato ma ancora migliorabile.
 
 \subparagraph{Codifica al 2019-04-26}
+In questo periodo dell'attività di codifica, sono state commesse 7 violazioni dello stile di codifica, così distribuite:
+ \begin{itemize}
+ 	\item \textbf{Utilizzo lingua inglese}: 0 violazioni.
+ 	\item \textbf{Utilizzo TSLint}: 0 violazioni.
+ 	\item \textbf{Lunghezza linee di codice}: 6 violazioni.
+ 	\item \textbf{Nomenclatura}: 0 violazioni.
+ 	\item \textbf{Commenti al codice}: 0 violazioni.
+ \end{itemize}
+Lo stile di codifica è migliorato rispetto alla precedente rilevazione. Tuttavia l'obbiettivo di avere un numero inferiore alle 10 violazioni è rispettato ma ancora migliorabile.
 
 \subparagraph{Codifica al 2019-05-03}
+In questo periodo dell'attività di codifica, sono state commesse 7 violazioni dello stile di codifica, così distribuite:
+ \begin{itemize}
+ 	\item \textbf{Utilizzo lingua inglese}: 0 violazioni.
+ 	\item \textbf{Utilizzo TSLint}: 3 violazioni.
+ 	\item \textbf{Lunghezza linee di codice}: 5 violazioni.
+ 	\item \textbf{Nomenclatura}: 0 violazioni.
+ 	\item \textbf{Commenti al codice}: 0 violazioni.
+ \end{itemize}
+Lo stile di codifica è migliorato rispetto alla precedente rilevazione. Tuttavia l'obbiettivo di avere un numero inferiore alle 10 violazioni è rispettato.
 
 \subparagraph{Codifica al 2019-05-10}
+In questo periodo non si è verificata l'attività di codifica in quanto il prodotto è stato ritenuto concluso precedentemente.
 
 \begin{figure}[H]
 	\centering
@@ -770,12 +911,24 @@ Nonostante non raggiunga il livello di accettazione della
 metrica, questo risultato è ritenuto sufficiente a questo punto del progetto poiché sono previsti altri incrementi alla codifica che porteranno all'implementazione di altri test. 
 
 \subparagraph{Codifica al 2019-04-19}
+In questo periodo dell'attività di codifica, sono stati implementati 2 test di integrazione per un totale di 6 coprendo il 60\% dei test di integrazione preventivati.
+Nonostante non raggiunga il livello di accettazione della
+metrica, questo risultato è ritenuto sufficiente a questo punto del progetto poiché sono previsti altri incrementi alla codifica che porteranno all'implementazione di altri test. 
 
 \subparagraph{Codifica al 2019-04-26}
+In questo periodo dell'attività di codifica, sono stati implementati 2 test di integrazione per un totale di 8 coprendo il 80\% dei test di integrazione preventivati.
+Nonostante non raggiunga il livello di accettazione della
+metrica, questo risultato è ritenuto sufficiente a questo punto del progetto poiché sono previsti altri incrementi alla codifica che porteranno all'implementazione di altri test. 
 
 \subparagraph{Codifica al 2019-05-03}
+In questo periodo dell'attività di codifica, sono stati implementati 3 test di integrazione per un totale di 9 coprendo il 90\% dei test di integrazione preventivati.
+A seguito di questo periodo di codifica la soglia di accettabilità della metrica è stata raggiunta.
+Il gruppo si impegnerà ad implementare ulteriori test di integrazione.
+
 
 \subparagraph{Codifica al 2019-05-10}
+In questo periodo dell'attività di codifica, sono stati implementati 1 test di integrazione per un totale di 10 coprendo il 100\% dei test di integrazione preventivati.
+
 sakdjhaskjdhskjdh
 \\
 \\
@@ -831,29 +984,51 @@ Riportiamo di seguito una tabella rappresentativa dello stato di avanzamento dei
 \end{figure}
 
 \subsubsection{Test di sistema implementati - MPC5}
-In questa fase non sono stati implementati test di sistema.
-Il gruppo si impegnerà all'implementazione degli stessi nella prossima fase.
+\subparagraph{Codifica al 2019-04-19}
 
+
+\subparagraph{Codifica al 2019-04-26}
+
+
+\subparagraph{Codifica al 2019-05-03}
+
+
+\subparagraph{Codifica al 2019-05-10}
+
+
+
+
+%TODO
 \subsubsection{Test di unità implementati - MPC6}
 \subparagraph{Codifica al 2019-04-05}
-In questo periodo dell'attività di codifica, è stato implementato 20 test di unità su un totale di 48 test di unità preventivati.
+In questo periodo dell'attività di codifica, è stato implementato 20 test di unità su un totale di 134 test di unità preventivati.
 Nonostante non raggiunga il livello di accettazione della
 metrica, questo risultato è ritenuto sufficiente a questo punto del progetto poiché sono previsti altri incrementi alla codifica che porteranno all'implementazione di altri test.
 
 \subparagraph{Codifica al 2019-04-12}
-In questo periodo dell'attività di codifica, sono stati implementati 18 test di unità per un totale di 38 coprendo il 79.20\% dei test di integrazione preventivati.
+In questo periodo dell'attività di codifica, sono stati implementati 18 test di unità per un totale di 38 coprendo il \% dei test di integrazione preventivati.
 Nonostante non raggiunga il livello di accettazione della
 metrica, questo risultato è ritenuto sufficiente a questo punto del progetto poiché sono previsti altri incrementi alla codifica che porteranno all'implementazione di altri test.
 
 \subparagraph{Codifica al 2019-04-19}
+In questo periodo dell'attività di codifica, sono stati implementati 30 test di unità per un totale di 68 coprendo il \% dei test di integrazione preventivati.
+Nonostante non raggiunga il livello di accettazione della
+metrica, questo risultato è ritenuto sufficiente a questo punto del progetto poiché sono previsti altri incrementi alla codifica che porteranno all'implementazione di altri test.
 
 \subparagraph{Codifica al 2019-04-26}
+In questo periodo dell'attività di codifica, sono stati implementati 38 test di unità per un totale di 106 coprendo il \% dei test di integrazione preventivati.
+Nonostante non raggiunga il livello di accettazione della
+metrica, questo risultato è ritenuto sufficiente a questo punto del progetto poiché sono previsti altri incrementi alla codifica che porteranno all'implementazione di altri test.
 
 \subparagraph{Codifica al 2019-05-03}
+In questo periodo dell'attività di codifica, sono stati implementati 28 test di unità per un totale di 134 coprendo il \% dei test di integrazione preventivati.
+Nonostante non raggiunga il livello di accettazione della
+metrica, questo risultato è ritenuto sufficiente a questo punto del progetto poiché sono previsti altri incrementi alla codifica che porteranno all'implementazione di altri test.
 
 \subparagraph{Codifica al 2019-05-10}
-dasdasdasdasd\\
-\\
+In questo periodo dell'attività di codifica, sono stati implementati  test di unità per un totale di  coprendo il \% dei test di integrazione preventivati.
+Nonostante non raggiunga il livello di accettazione della
+metrica, questo risultato è ritenuto sufficiente a questo punto del progetto poiché sono previsti altri incrementi alla codifica che porteranno all'implementazione di altri test.
 \\Riportiamo di seguito una tabella rappresentativa dello stato di avanzamento dei test. La tabella verrà aggiornata alla fine di ogni periodo dell'attività di codifica.
 
 \begin{longtable}{|>{\centering\arraybackslash}m{1.6cm}|>{\centering\arraybackslash}m{6.41cm}|>{\centering\arraybackslash}m{3.1cm}| c |}		
@@ -995,14 +1170,14 @@ I requisiti sono indicati con il loro codice identificativo definito nel documen
 	ROF35 & Soddisfatto \\ \hline
 	ROF36 & Soddisfatto \\ \hline
 	ROF37 & Soddisfatto \\ \hline
-	ROF38 & Non soddisfatto \\ \hline
-	ROF39 & Non soddisfatto \\ \hline
+	ROF38 & Soddisfatto \\ \hline
+	ROF39 & Soddisfatto \\ \hline
 	RDF1 & Soddisfatto \\ \hline
 	RDF2 & Soddisfatto \\ \hline
 	RDF3 & Soddisfatto \\ \hline
 	RDF4 & Soddisfatto \\ \hline
-	RDF5 & Non soddisfatto \\ \hline
-	RDF6 & Non soddisfatto \\ \hline
+	RDF5 & Soddisfatto \\ \hline
+	RDF6 & Soddisfatto \\ \hline
 	RDF7 & Soddisfatto \\ \hline
 	RDF8 & Soddisfatto \\ \hline
 	RDF9 & Soddisfatto \\ \hline
@@ -1015,32 +1190,31 @@ I requisiti sono indicati con il loro codice identificativo definito nel documen
 	RDF16 & Non soddisfatto \\ \hline
 	RDF17 & Non soddisfatto \\ \hline
 	RDF18 & Non soddisfatto \\ \hline
-	RDF19 & Non soddisfatto \\ \hline
+	RDF19 & Soddisfatto \\ \hline
 	RDF20 & Non soddisfatto \\ \hline
 	RDF21 & Non soddisfatto \\ \hline
-	RDF22 & Soddisfatto \\ \hline
-	RDF23 & Non soddisfatto \\ \hline
-	RDF24 & Non soddisfatto \\ \hline
-	RDF25 & Soddisfatto \\ \hline
-	RDF26 & Soddisfatto \\ \hline
-	RDF27 & Soddisfatto \\ \hline
+	RDF22 & Soddisfatto\\ \hline
+	RDF23 & Soddisfatto \\ \hline
+	RDF24 & Soddisfatto \\ \hline
+	RDF25 & Soddisfatto\\ \hline
+	RDF26 & Non soddisfatto\\ \hline
+	RDF27 & Non soddisfatto\\ \hline
 	RDF28 & Soddisfatto \\ \hline
-	RDF29 & Non soddisfatto \\ \hline
-	RDF30 & Non soddisfatto \\ \hline
-	RDF31 & Non soddisfatto \\ \hline
+	RDF29 & Soddisfatto \\ \hline
+	RDF30 & Soddisfatto \\ \hline
+	RDF31 & Soddisfatto \\ \hline
 	RDF32 & Soddisfatto \\ \hline
-	RDF33 & Soddisfatto \\ \hline
+	RDF33 & Non soddisfatto\\ \hline
 	RDF34 & Non soddisfatto \\ \hline
 	RDF35 & Soddisfatto \\ \hline
-	RDF36 & Soddisfatto \\ \hline
+	RDF36 & Non soddisfatto \\ \hline
 	RDF37 & Non soddisfatto \\ \hline
-	RDF38 & Non soddisfatto \\ \hline
-	RDF39 & Soddisfatto \\ \hline
+	RDF38 & Soddisfatto \\ \hline
+	RDF39 & Non soddisfatto \\ \hline
 	RDF40 & Non soddisfatto \\ \hline
 	RDF41 & Non soddisfatto \\ \hline
 	RDF42 & Non soddisfatto \\ \hline
 	RDF43 & Non soddisfatto \\ \hline
-	RDF44 & Non soddisfatto \\ \hline
 	RPF1 & Non soddisfatto \\ \hline
 	RPF2 & Non soddisfatto \\ \hline
 	RPF3 & Non soddisfatto \\ \hline
@@ -1059,7 +1233,7 @@ I requisiti sono indicati con il loro codice identificativo definito nel documen
 	RPF16 & Soddisfatto \\ \hline
 	RPF17 & Non soddisfatto \\ \hline
 	RPF18 & Non soddisfatto \\ \hline
-	RPF19 & Soddisfatto \\ \hline
+	RPF19 & Non soddisfatto \\ \hline
 	RPF20 & Soddisfatto \\ \hline
 	RPF21 & Non soddisfatto \\ \hline
 	RPF22 & Soddisfatto \\ \hline
@@ -1067,7 +1241,7 @@ I requisiti sono indicati con il loro codice identificativo definito nel documen
 	RPF24 & Non soddisfatto \\ \hline
 	RPF25 & Non soddisfatto \\ \hline
 	RPF26 & Non soddisfatto \\ \hline
-	RPF27 & Non soddisfatto \\ \hline
+	RPF27 & Soddisfatto \\ \hline
 	RPF28 & Non soddisfatto \\ \hline
 	RPF29 & Non soddisfatto \\ \hline
 	RPF30 & Non soddisfatto \\ \hline
@@ -1084,7 +1258,7 @@ I requisiti sono indicati con il loro codice identificativo definito nel documen
 	RDQ2 & Non soddisfatto \\ \hline
 	RDQ3 & Soddisfatto \\ \hline
 	RDQ4 & Non soddisfatto \\ \hline
-	RDQ5 & Non soddisfatto \\ \hline
+	RDQ5 & Soddisfatto \\ \hline
 	RPQ1 & Non soddisfatto \\ \hline
 	\caption{Riassunto copertura requisiti}
 \end{longtable}

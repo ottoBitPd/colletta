@@ -214,59 +214,6 @@ Gli identificatori numerici assegnati a casi d'uso saranno organizzati gerarchic
 	\caption{UC-N2 Registrazione utente}
 \end{figure}
 
-\subsubsection{UC-N3 Registrazione Allievo}
-\begin{itemize}
-	\item \textbf{Attori: }Utente non riconosciuto.
-	\item \textbf{Precondizione: }L'utente si trova nella vista di registrazione dell'applicazione.
-	\item \textbf{Postcondizione: }L'utente è registrato nel database locale come allievo.
-	\item \textbf{Scenario principale: }
-		\begin{enumerate}
-		\item l'utente ha scelto di registrarsi al sistema, quindi di creare un nuovo profilo
-		\item l'utente inserisce il proprio nome (UC-N2.1)
-		\item l'utente inserisce il proprio cognome (UC-1.2)
-		\item l'utente inserisce l'username (UC-N2.3)
-		\item l'utente inserisce la propria email (UC-N2.4)
-		\item l'utente inserisce la password (UC-N2.5)
-		\item l'utente fornirà il nome della scuola a cui appartiene (UC-N2.6)
-		\item l'utente fornirà la città in cui si trova la scuola (UC-N2.7)
-		\item l'utente indica come ruolo "Allievo"
-		\item l'utente conferma la registrazione
-		\end{enumerate}
-\end{itemize}
-
-\subsubsection{UC-N4 Registrazione Insegnante}
-\begin{itemize}
-	\item \textbf{Attori: }Utente non riconosciuto.
-	\item \textbf{Precondizione: }L'utente si trova nella vista di registrazione dell'applicazione.
-	\item \textbf{Postcondizione: }L'utente è registrato nel database locale ed in attesa di conferma.
-	\item \textbf{Scenario principale: }
-		\begin{enumerate}
-		\item l'utente ha scelto di registrarsi al sistema, quindi di creare un nuovo profilo
-		\item l'utente inserisce il proprio nome (UC-N2.1)
-		\item l'utente inserisce il proprio cognome (UC-N2.2)
-		\item l'utente inserisce l'username (UC-N2.3)
-		\item l'utente inserisce la propria email (UC-N2.4)
-		\item l'utente inserisce la password (UC-N2.5)
-		\item l'utente fornirà il nome della scuola a cui appartiene (UC-N2.6)
-		\item l'utente fornirà la città in cui si trova la scuola (UC-N2.7)
-		\item l'utente indica come ruolo "Insegnante"
-		\item l'utente inserisce il proprio codice INPS (UC-N4.1)
-		\item l'utente conferma la registrazione
-		\end{enumerate}
-\end{itemize}
-
-\subsubsection{UC-N4.1 Inserimento codice INPS}
-\begin{itemize}
-	\item \textbf{Attori: }Utente non riconosciuto.
-	\item \textbf{Precondizione: }L'utente si trova nella vista di registrazione dell'applicazione e ha indicato l'iscrizione come insegnante.
-	\item \textbf{Postcondizione: }
-		L'utente ha inserito il codice INPS durante la procedura di registrazione come insegnante.
-		\item \textbf{Scenario principale:}
-		\begin{enumerate}
-			\item l'utente inserisce il codice INPS nella cella dedicata
-		\end{enumerate}
-\end{itemize}
-
 \subsubsection{UC-N2.1 Inserimento nome: registrazione}
 \begin{itemize}
 	\item \textbf{Attori: }Utente non riconosciuto.
@@ -350,6 +297,59 @@ Gli identificatori numerici assegnati a casi d'uso saranno organizzati gerarchic
 	\caption{Sottocasi di UC-N2}
 \end{figure}
 
+
+\subsubsection{UC-N3 Registrazione Allievo}
+\begin{itemize}
+	\item \textbf{Attori: }Utente non riconosciuto.
+	\item \textbf{Precondizione: }L'utente si trova nella vista di registrazione dell'applicazione.
+	\item \textbf{Postcondizione: }L'utente è registrato nel database locale come allievo.
+	\item \textbf{Scenario principale: }
+		\begin{enumerate}
+		\item l'utente ha scelto di registrarsi al sistema, quindi di creare un nuovo profilo
+		\item l'utente inserisce il proprio nome (UC-N2.1)
+		\item l'utente inserisce il proprio cognome (UC-1.2)
+		\item l'utente inserisce l'username (UC-N2.3)
+		\item l'utente inserisce la propria email (UC-N2.4)
+		\item l'utente inserisce la password (UC-N2.5)
+		\item l'utente fornirà il nome della scuola a cui appartiene (UC-N2.6)
+		\item l'utente fornirà la città in cui si trova la scuola (UC-N2.7)
+		\item l'utente indica come ruolo "Allievo"
+		\item l'utente conferma la registrazione
+		\end{enumerate}
+\end{itemize}
+
+\subsubsection{UC-N4 Registrazione Insegnante}
+\begin{itemize}
+	\item \textbf{Attori: }Utente non riconosciuto.
+	\item \textbf{Precondizione: }L'utente si trova nella vista di registrazione dell'applicazione.
+	\item \textbf{Postcondizione: }L'utente è registrato nel database locale ed in attesa di conferma.
+	\item \textbf{Scenario principale: }
+		\begin{enumerate}
+		\item l'utente ha scelto di registrarsi al sistema, quindi di creare un nuovo profilo
+		\item l'utente inserisce il proprio nome (UC-N2.1)
+		\item l'utente inserisce il proprio cognome (UC-N2.2)
+		\item l'utente inserisce l'username (UC-N2.3)
+		\item l'utente inserisce la propria email (UC-N2.4)
+		\item l'utente inserisce la password (UC-N2.5)
+		\item l'utente fornirà il nome della scuola a cui appartiene (UC-N2.6)
+		\item l'utente fornirà la città in cui si trova la scuola (UC-N2.7)
+		\item l'utente indica come ruolo "Insegnante"
+		\item l'utente inserisce il proprio codice INPS (UC-N4.1)
+		\item l'utente conferma la registrazione
+		\end{enumerate}
+\end{itemize}
+
+\subsubsection{UC-N4.1 Inserimento codice INPS}
+\begin{itemize}
+	\item \textbf{Attori: }Utente non riconosciuto.
+	\item \textbf{Precondizione: }L'utente si trova nella vista di registrazione dell'applicazione e ha indicato l'iscrizione come insegnante.
+	\item \textbf{Postcondizione: }
+		L'utente ha inserito il codice INPS durante la procedura di registrazione come insegnante.
+		\item \textbf{Scenario principale:}
+		\begin{enumerate}
+			\item l'utente inserisce il codice INPS nella cella dedicata
+		\end{enumerate}
+\end{itemize}
 
 \subsubsection{UC-N5 Visualizzazione errore di registrazione}
 \begin{itemize}

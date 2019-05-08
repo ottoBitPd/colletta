@@ -92,6 +92,7 @@
 		\rowcolor{LightBlue}
 		\color{white}\bfseries Versione & \color{white}\bfseries Data & \multicolumn{1}{c}{\color{white}\bfseries Autore}
 		& \color{white}\bfseries Ruolo & \multicolumn{1}{c}{\color{white}\bfseries Descrizione}\\[0.25cm]
+		3.0.1 & 2019-05-07 & Michele Bortone & Amministratore & Aggiornamento  \S2.2.4 e \S3.1.4\\ \hline
 		3.0.0 & 2019-04-11 & Giovanni Bergo & Responsabile & Approvazione per il rilascio \\ \hline
 		2.1.0 & 2019-04-11 & Michele Bortone & Verificatore & Documento \newline verificato \\ \hline
 		2.0.3 & 2019-04-10 & Eleonora Peagno & Amministratore & Aggiornamento \S2.2.4.4 e \S2.2.5.2 \\ \hline
@@ -330,7 +331,7 @@ In caso di necessità verrà fornito supporto alla proponente MIVOQ S.r.l. e l'a
 	\end{itemize}
 	\paragraph{Design Patterns\\}
 	Compito dei Progettisti è adottare un design pattern opportuno per un problema ricorrente che si presenta. Ciò consente ai Programmatori di seguire delle linee guida consolidate nell'implementazione delle componenti previste dal Progettista. I vantaggi di tali soluzioni dovranno essere motivati spiegandone la struttura e il funzionamento.
-	\subsubsection{Strumenti}
+	\subsubsection{Strumenti per la progettazione}
 	\paragraph{Astah\\}
 	È un programma per la modellazione di diagrammi UML che verrà utilizzato dal gruppo per la creazione di tutti i diagrammi necessari.
 	
@@ -364,7 +365,8 @@ In caso di necessità verrà fornito supporto alla proponente MIVOQ S.r.l. e l'a
 	Per fare in modo che TSLint funzioni correttamente è necessario configurarlo utilizzando il file tsconfig.json presente all'interno della cartella principale del sorgente dell'applicazione. È possibile quindi settare l'impostazione ``Configuration file'' su Automated search* o specificare manualmente il percorso del file appena citato.
 	
 	\paragraph{Lunghezza delle linee di codice} Le linee di codice non dovranno superare i 79 caratteri. In ogni caso l'IDE che abbiamo scelto mette a disposizione una linea limite da non superare.
-	
+	\paragraph{Nomenclatura file} 
+	Ogni file deve avere un nome breve e descrittivo. L'unico carattere speciale che può esser contenuto è underscore.
 	\paragraph{Nomenclatura codice}
 	I nomi di classi, variabili e metodi dovranno avere un nome esplicativo per evitare il più possibile ambiguità di comprensione.
 	\begin{itemize}
@@ -408,8 +410,8 @@ In caso di necessità verrà fornito supporto alla proponente MIVOQ S.r.l. e l'a
 	I commenti devono permettere la comprensione del codice, non
 	devono quindi descrivere la sintassi del linguaggio di programmazione in uso, ma piuttosto descrivere lo scopo di tutti quei blocchi di codice la cui comprensione non sia già resa immediata da una corretta scelta della nomenclatura.
 	
-	\paragraph{Uso di JSDoc}
-	Al fine di generare in modo automatico una documentazione del prodotto in stile JavaDoc, sarà usato JSDoc.
+	\paragraph{Uso di TypeDoc}
+	Al fine di generare in modo automatico una documentazione del prodotto in stile JavaDoc, sarà usato TypeDoc.
 	Prevediamo di utilizzare questo strumento per documentare principalmente classi e metodi dell'applicazione, nel seguente modo:
 	\begin{itemize}
 		\item \textbf{Commento alle classi}: Tutte le classi dovranno essere precedute da un commento che indichi se la classe è astratta o se estende qualche altra classe. Di seguito vengono riportati degli esempi alcuni più esplicativi:
@@ -464,7 +466,7 @@ In caso di necessità verrà fornito supporto alla proponente MIVOQ S.r.l. e l'a
 		\end{lstlisting}
 	\end{itemize}
 	
-	\subsubsection{Strumenti}
+	\subsubsection{Strumenti per la codifica}
 
 	\paragraph{WebStorm} \noindent \\
 	È un IDE di JetBrains per lo sviluppo di Web application, che supporta JavaScript, Node.js, HTML e CSS.
@@ -516,7 +518,7 @@ In caso di necessità verrà fornito supporto alla proponente MIVOQ S.r.l. e l'a
 		\item \textbf{Verifica:} una volta terminato il lavoro di elaborazione, il documento verrà assegnato ai Verificatori che procederanno al controllo di correttezza. Se il documento sarà valutato non corretto, verrà riassegnato ai Redattori.
 		\item \textbf{Approvazione:} una volta che il documento sarà giudicato corretto nella fase di verifica, sarà assegnato al Responsabile di progetto che procederà l'approvazione e il rilascio del documento.
 	\end{enumerate}
-	
+
 	\subsubsection{Struttura}
 	
 	\paragraph{Frontespizio} 
@@ -638,10 +640,14 @@ In caso di necessità verrà fornito supporto alla proponente MIVOQ S.r.l. e l'a
 		\item \textbf{Numero:} indice progressivo a partire da 1 che individui la figura univocamente;
 		\item \textbf{Didascalia:} breve descrizione che riassuma il contenuto della figura.
 	\end{itemize}
-	
+	\subsubsection{Uso dei documenti}
+	\paragraph{Interno}
+	Sono documenti legati all'organizzazione ed al metodo di lavoro del team. Il loro uso è limitato ai membri del gruppo.
+	\paragraph{Esterno}
+	Sono documenti che prevedono la loro consultazione anche da elementi esterni al team, come la proponente.
 	\subsubsection{Suddivisione dei documenti}
 	\paragraph{Documenti formali\\}
-	Un documento è definito formale dopo l’approvazione da parte del Responsabile di progetto e quindi deve aver superato con esito positivo la fase di verifica. Questi documenti sono destinati alla distribuzione esterna al gruppo.
+	Un documento è definito formale dopo l’approvazione da parte del Responsabile di progetto e quindi deve aver superato con esito positivo la fase di verifica.
 	
 	\paragraph{Documenti informali\\}
 	Tutti i documenti sono da considerarsi informali finché non vengono approvati dal Responsabile di progetto. L’utilizzo di tali documenti è da considerarsi interno e quindi esclusivo del team.
@@ -748,7 +754,7 @@ Ogni commit deve essere accompagnato da una sensata descrizione, che permetta fa
 	
 	
 	\subsubsection{Metriche}
-	Al fine di garantire un determinato livello di qualità, i verificatori hanno stabilito delle metriche finalizzate ad ottenere gli obiettivi descritti  nel documento \textit{PianoDiQualifica\_v2.0.0}. Tali metriche devono rispettare la seguente notazione: 
+	Al fine di garantire un determinato livello di qualità, i verificatori hanno stabilito delle metriche finalizzate ad ottenere gli obiettivi descritti  nel documento \textit{PianoDiQualifica\_v4.0.0}. Tali metriche devono rispettare la seguente notazione: 
 	\begin{center}
 		M[Ambito][Codice identificativo]
 	\end{center}
@@ -802,7 +808,7 @@ Ogni commit deve essere accompagnato da una sensata descrizione, che permetta fa
 	\begin{itemize}
 		\item \textbf{MPD1 - Correttezza ortografica}: su ogni documento sarà possibile individuare gli errori ortografici tramite l'editor Texmaker. Il numero di errori rilevati accettabili è pari a zero.
 	
-		\item \textbf{MPD2 - Indice di Gullpease}: l'indice Gullpease$^*$ è un indice di leggibilità di un testo tarato sulla lingua italiana. Rispetto ad altri ha il vantaggio di utilizzare la lunghezza delle parole in lettere anziché in sillabe, semplificandone il calcolo automatico. Permette di misurare la complessità dello stile di un documento. L'indice di Gullpease considera due variabili linguistiche: la lunghezza della parola e la lunghezza della frase rispetto al numero delle lettere. La formula per il suo calcolo è:
+		\item \textbf{MPD2 - Indice di Gulpease}: l'indice Gulpease$^*$ è un indice di leggibilità di un testo tarato sulla lingua italiana. Rispetto ad altri ha il vantaggio di utilizzare la lunghezza delle parole in lettere anziché in sillabe, semplificandone il calcolo automatico. Permette di misurare la complessità dello stile di un documento. L'indice di Gulpease considera due variabili linguistiche: la lunghezza della parola e la lunghezza della frase rispetto al numero delle lettere. La formula per il suo calcolo è:
 	\begin{center}
 		$89\ +\ \frac{300\ *\ (numero\ delle\ frasi)\ -\ 10\ *\ (numero\ delle\ lettere)}{numero\ delle\ parole}$
 	\end{center}

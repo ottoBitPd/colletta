@@ -95,61 +95,7 @@ describe('ProfilePresenter', function() {
 
 
     });//end beforeEach
-
-    describe('ProfilePresenter.update()', function () {
-        it('should return update profile same password', async function () {
-            test.update(app);
-           session.username = "Perry15";
-              chai.request(app)
-                .post('/update')
-                .set('Content-Type', "application/json")
-                .type('json')
-                .send({
-                    password:"123",
-                    oldpassword:"123",
-                    userData:"123"
-
-                }).end((err:any,res:any)=>{
-                    res.should.have.status(200);
-               res.body.should.be.a('object');
-              console.log( res.body);
-               return;
-           });
-
-           });
-
-        it('should return update profile', async function () {
-            test.update(app);
-            session.username = "teacher";
-            chai.request(app)
-                .get('/profile')
-                .end((err:any,res:any)=>{
-                res.should.have.status(200);
-                res.body.should.be.a('object');
-                //console.log( res.body);
-                return ;
-            });
-
-        });
-    });
-        /*it('should return update profile different password', async function () {
-                    test.update(app);
-                    session.username = "Perry15";
-                    chai.request(app)
-                        .post('/update')
-                        .type("json")
-                        .send({
-                            password:"",
-                            oldpassword:""
-                        })
-                        .end((err:any, res:any) => {
-                            res.should.have.status(200);
-                            res.body.should.be.a('object');
-
-                        });
-                               */
-
-
+    
     describe('ProfilePresenter.getStudentClass()', function () {
         it('should return student class', async function () {
             test.getStudentClass();

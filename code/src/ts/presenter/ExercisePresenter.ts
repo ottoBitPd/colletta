@@ -87,7 +87,9 @@ class ExercisePresenter extends PagePresenter{
     private updateExercise(app : any) : void {
         app.post('/exercise/update', async (request: any, response: any) => {
             let exerciseClient = this.client.getExerciseClient();
+            console.log("uno");
             if(exerciseClient && request.body.solutionKey!=="null" && request.body.sentenceKey!=="null"){
+                console.log("uno3");
                 let words = exerciseClient.getSplitSentence(request.body.sentence);
                 let wordsnumber = words.length;
                 //update di una vecchia soluzione
@@ -103,6 +105,7 @@ class ExercisePresenter extends PagePresenter{
                 };
                 await exerciseClient.updateSolution(request.body.sentenceKey,request.body.solutionKey,solution);
             }
+            console.log("uno1");
             response.redirect('/exercises');
 
         });

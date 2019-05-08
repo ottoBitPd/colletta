@@ -23,49 +23,50 @@ class HunposManager implements POSManager{
 
     /**
      * This method create an input for Hunpos based on a sentence
-     * @param sentence - the sentence to solve
-     * @return {string} the reworked input sentence
+     * @param sentence - the sentence to solve (WORD1 WORD2 WORD3 ...)
+     * @return {string} the input sentence having the following format:
+     *                  WORD1\nWORD2\nWORD3\n...\n\n
      */
     private buildInput(sentence:string):string{
-        //console.log(`sentence: ${sentence}`);
         let words = this.splitSentence(sentence);
         let result = "";
         for (let word of words)
             result += word + "\n";
-        //console.log(`hunposInput: ${result}`);
         return result + "\n";
     };
 
     /**
      * This method create a solution for Hunpos based on a sentence
-     * @param sentence - the sentence to solve
-     * @return {string} the reworked solution for the sentence
+     * @param posOutput - the Hunpos output (WORD1\tTAG1\t\nWORD2\tTAG2\t\nWORD3\tTAG3\t\n...\t\n\n)
+     * @return {any} a JSON having with a property "sentence" which is an array containing JSON object
+     *               having the following format:
+     *                  {word: WORD1, label: TAG1}
      */
     private buildSolution(posOutput : string):any{
         var wordSolArray = posOutput.split("\n");
-        //console.log("hunposOutput: " + wordSolArray);
+
         let obj : any= {
             sentence: []
         };
+
         let i=0;
         while(wordSolArray[i]!==""){
             var wordLab = wordSolArray[i].split("\t");
             obj.sentence.push({word: wordLab[0], label: wordLab[1]});
             i++;
         }
-        //console.log("obj: ",obj);
+
         return obj;
     };
 
     /**
      * This method returns the solution for a sentence
-     * @param sentence - the sentence to solve
+     * @param sentence - the sentence to solve (WORD1 WORD2 WORD3 ...)
+     * @return {any} an array containing JSON object having the following format:
+     *                  {word: WORDn, label: TAGn}
      */
     async getSolution(sentence:string):Promise<any>{
-        //console.log("sentenceHunpos: ",sentence);
-        //this.train();
         return this.buildSolution(await this.tag(this.buildInput(sentence)));
-
     };
 
     /**
@@ -83,8 +84,11 @@ class HunposManager implements POSManager{
 
     /**
      * This method assigns tags to the sentence words
-     * @param input - the sentence to tag
-     * @return {string} the reworked sentence with the Hunpos tags
+     * @param input - the sentence to tag in the following format:
+     *                  WORD1\nWORD2\nWORD3\n...\n\n
+     * @return {string} the input sentence with each word associated to the relative Hunpos tag
+     *                  with the following format:
+     *                  WORD1\tTAG1\t\nWORD2\tTAG2\t\nWORD3\tTAG3\t\n...\t\n\n
      */
     public async tag(input : string): Promise<string>{
         let hunpos : ChildProcess;

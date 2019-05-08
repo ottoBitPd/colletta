@@ -145,6 +145,13 @@ describe('DeveloperPresenter', function() {
         });
     });
 
+    describe('DeveloperPresenter.applyFilters()', function () {
+        it('should return filter', async function () {
+            //@ts-ignored
+            test.applyFilters("come va",undefined,undefined,"Perry15",0,10);
+        });
+    });
+
     describe('DeveloperPresenter.filterByValutation()', function () {
         it('should return filter by valutation', async function () {
             test.filterByValutation(2,6);

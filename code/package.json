@@ -3,7 +3,7 @@
   "scripts": {
     "lint": "tslint --project tsconfig.json",
     "build": "tsc --outDir public",
-    "test": "nyc --reporter=html --reporter=text mocha -r ts-node/register test/**/*.ts \"test/model/{,!(Firebase)}/*.ts\" --exit",
+    "test": "nyc --reporter=html --reporter=text mocha -r ts-node/register test/**/*.ts \"test/model/{,!(Firebase)}/*.ts\" test/model/Firebase/*.ts --exit",
     "firebasetest": "nyc --reporter=html --reporter=text mocha -r ts-node/register test/model/Firebase/*.ts --exit",
     "systemtest": "testcafe chrome systemTest/*.ts --app \"node public/index.js\"",
     "start": "npm run shell",

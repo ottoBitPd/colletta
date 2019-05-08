@@ -176,7 +176,7 @@ describe('ClassesPresenter', function() {
 
     describe('ClassesPresenter.translateTag()', function () {
         it('should return a string containing the italian translation of the tag', async function () {
-           test.translateTag("ciao");
+            test.translateTag("ciao");
         })
     });
 

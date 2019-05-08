@@ -90,8 +90,7 @@ class UserClient{
     public async isTeacher(username:string) : Promise<boolean> {
         const id = await this.dbUserManager.search(username);
         const user = await this.dbUserManager.read(id);
-        //console.log((<User>user));
-        //console.log((<User>user).getUsername());
+
         if (user !== undefined)
             return (<User>user).isTeacher();
         else

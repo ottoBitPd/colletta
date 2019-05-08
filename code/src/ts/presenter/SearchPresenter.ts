@@ -86,6 +86,7 @@ class SearchPresenter extends PagePresenter {
                     this.view.setUserKind(UserKind.student);
                 }
             else
+                console.log("user");
                 this.view.setUserKind(UserKind.user);
 
             let exerciseClient = this.client.getExerciseClient();
@@ -157,6 +158,7 @@ class SearchPresenter extends PagePresenter {
                 response.redirect(307,"/student/insert?s="+encodeURIComponent(request.body.sentence));
             }
             else{
+
                 this.setResults(new Map());
                 response.redirect(307,"/student/insert?s="+encodeURIComponent(request.body.sentence));
             }

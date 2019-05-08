@@ -162,7 +162,7 @@ describe('ExercisePresenter', function() {
                    })
            });*/
 
-        /*   it('should return exercise insert', async function () {
+          it('should return exercise insert solution', async function () {
                test.update(app);
                session.username="ciao";
                chai.request(app)
@@ -171,11 +171,71 @@ describe('ExercisePresenter', function() {
                    .type("json")
                    .send({
                        sentence:"ciaoo",
+                       solutionKey:"ciao",
+                       exerciseKey:"1"
                    })
                    .end((err:any, res:any) => {
                        res.should.have.status(200);
                        res.body.should.be.a('object');
                        res.redirect;
+                       return;
+                   })
+           });
+
+           it('should return exercise not insert solution', async function () {
+               test.update(app);
+               session.username="ciao";
+               chai.request(app)
+                   .post('/exercise/insert')
+                   .set('Content-Type', "application/json")
+                   .type("json")
+                   .send({
+                       sentence:"ciaoo",
+                       solutionKey:"null",
+                   })
+                   .end((err:any, res:any) => {
+                       res.should.have.status(200);
+                       res.body.should.be.a('object');
+                       res.redirect;
+                       return;
+                   })
+           });
+
+           it('should return exercise not update', async function () {
+               test.update(app);
+               session.username="ciao";
+               chai.request(app)
+                   .post('/exercise/update').redirects(0)
+                   .set('Content-Type', "application/json")
+                   .type("json")
+                   .send({
+                       sentenceKey:"null",
+                       solutionKey:"null",
+                   })
+                   .end((err:any, res:any) => {
+                       res.should.have.status(302);
+                       res.body.should.be.a('object');
+                       return;
+                   })
+           });
+
+        /*   it('should return exercise update', async function () {
+               test.update(app);
+               session.username="ciao";
+               chai.request(app)
+                   .post('/exercise/update').redirects(0)
+                   .set('Content-Type', "application/json")
+                   .type("json")
+                   .send({
+                       sentenceKey:"ciao",
+                       solutionKey:"ciao",
+                       _public:true,
+                       topics:["Adp"],
+                       difficulty:3
+                   })
+                   .end((err:any, res:any) => {
+                       res.should.have.status(302);
+                       res.body.should.be.a('object');
                        return;
                    })
            });*/
@@ -184,6 +244,34 @@ describe('ExercisePresenter', function() {
     describe('ExercisePresenter.getUserSolution()', function () {
         it('should return user\'s solution', async function () {
             test.getUserSolution();
+        });
+    });
+
+    describe('ExercisePresenter.extractTags()', function () {
+        it('should return tags', async function () {
+            //@ts-ignored
+            test.extractTags(["ciao"]);
+        });
+    });
+
+    describe('ExercisePresenter.correctionToTags()', function () {
+        it('should return tags correction', async function () {
+            //@ts-ignored
+            test.correctionToTags(5,"2019-05-10");
+        });
+    });
+
+    describe('ExercisePresenter.splitTopics()', function () {
+        it('should return an array containing the topics splitted by space', async function () {
+            //@ts-ignored
+            test.splitTopics("come va");
+        });
+    });
+
+    describe('ExercisePresenter.correctsPOS()', function () {
+        it('should return a string array containing the tags of the final solution', async function () {
+            //@ts-ignored
+            test.correctsPOS(["Adp"],["Ndp"]);
         });
     });
 

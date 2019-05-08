@@ -23,9 +23,9 @@ describe('UserClient', function() {
                 },
 
                 async read(id: string): Promise<Data> {
-                    if (id == "0")
+                    if (id === "0")
                         return new Teacher("0","0",passwordHash.hashSync("password"),"","","","","","");
-                    if (id == "1")
+                    if (id === "1")
                         return new Student("1","1",passwordHash.hashSync("password"),"","","","","");
                     return new Promise((resolve) => resolve(undefined));
                 },

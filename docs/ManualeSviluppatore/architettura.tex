@@ -1,4 +1,11 @@
-La nostra architettura utilizza il framework$^{*}$ Express ed il servizio di database fornito da Firebase (Firestore). L'architettura dell'applicazione è client-server$^{*}$ ed è costituita da tre principali parti: model (che gestisce le operazioni sul database), presenter (che gestisce la logica dell'applicazione) e view (che gestisce la visualizzazione delle pagine web). Il sistema permette:
+La nostra architettura utilizza il framework$^{*}$ Express ed il servizio di database fornito da Firebase (Firestore). Il funzionamento della nostra applicazione si basa su un'architettura three-tier$^{*}$ costituita da:
+\begin{itemize}
+	\item Client: tramite il Web Browser$^*$, effettua le richieste HTTP all'applicazione;
+	\item Server: avvia il framework Express che ``smista" le richieste tra i Presenter di Colletta in ascolto;
+	\item Firebase: contiene e mantiene il database in cloud.
+\end{itemize}
+
+Colletta è suddivisa in tre parti: model (che gestisce le operazioni sul database), presenter (che gestisce la logica dell'applicazione) e view (che gestisce la visualizzazione delle pagine web). Il sistema permette:
 \begin{itemize}
 	\item lo svolgimento di esercizi di analisi grammaticale (e ottenimento di una valutazione automatica) e la scrittura dei dati, come ad esempio la soluzione, su un database Firestore messo a disposizione da Firebase;
 	\item la visualizzazione e l'utilizzo di un software di apprendimento automatico per il riconoscimento delle classi grammaticali delle parole di una frase.

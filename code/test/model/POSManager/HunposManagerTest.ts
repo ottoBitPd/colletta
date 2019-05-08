@@ -16,9 +16,9 @@ describe('HunposManager', function () {
             chai.expect(hunposManager).have.property("modelFilePath","src/ts/presenter/hunpos/other_model");
         });
     });
-    //Da usare solo in locale (sulla repo mancano i file di hunpos)
+    /*Da usare solo in locale (sulla repo mancano i file di hunpos)
     describe('HunposManager.getSolution()', function () {
-        it('should set the model', async function () {
+        it('should return the solution after postagging', async function () {
             let solution = await hunposManager.getSolution("ciao a tutti");
 
             chai.expect(solution.sentence[0].word).to.be.equals("ciao") &&
@@ -32,7 +32,7 @@ describe('HunposManager', function () {
     describe('HunposManager.train()', function () {
         it('should train the ML software', function () {
             let file = fileSystem.readFileSync("src/ts/presenter/hunpos/italian_model");
-            hunposManager.train();
+            hunposManager.tragin();
             chai.expect(file).to.be.eql(fileSystem.readFileSync("src/ts/presenter/hunpos/italian_model"));
         });
     });
@@ -42,5 +42,5 @@ describe('HunposManager', function () {
             let result = await hunposManager.tag("this\nis\nan\nexample\n\n");
             chai.expect(result).to.match(/^this\t\w{1,5}\t\nis\t\w{1,5}\t\nan\t\w{1,5}\t\nexample\t\w{1,5}\t\n\n$/);
         });
-    });
+    });*/
 });

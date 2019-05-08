@@ -41,6 +41,84 @@ describe('DeveloperPresenter', function() {
                 return new tryclass();
             }
         };
+
+        //@ts-ignored
+        test.view = {
+
+            setTitle(value: any) {
+                return;
+            }
+        };
+
+    });
+
+    describe('DeveloperPresenter.update()', function () {
+        it('should return manage developer page', async function () {
+            test.update(app);
+            chai.request(app)
+                .get('/developer')
+                .end((err:any, res:any) => {
+                    res.should.have.status(200);
+                    res.body.should.be.a('object');
+                    return;
+                })
+        });
+
+       it('should return check developer with success', async function () {
+            test.update(app);
+            session.username="user";
+            chai.request(app)
+                .post('/checkdeveloper').redirects(0)
+                .set('Content-Type', "application/json")
+                .type("json")
+                .send({
+                    password:"trave",
+                })
+                .end((err:any, res:any) => {
+                    res.should.have.status(302);
+                    res.body.should.be.a('object');
+                    return;
+                })
+        });
+
+        it('should return check developer with unsuccess', async function () {
+            test.update(app);
+            session.username="user";
+            chai.request(app)
+                .post('/checkdeveloper').redirects(0)
+                .set('Content-Type', "application/json")
+                .type("json")
+                .send({
+                    password:"user",
+                })
+                .end((err:any, res:any) => {
+                    res.should.have.status(302);
+                    res.body.should.be.a('object');
+                    return;
+                })
+        });
+
+        it('should return the manage the download of the data', async function () {
+            test.update(app);
+            chai.request(app)
+                .get('/download')
+                .end((err:any, res:any) => {
+                    res.should.have.status(200);
+                    res.body.should.be.a('object');
+                    return;
+                })
+        });
+
+        it('should return model download', async function () {
+            test.update(app);
+            chai.request(app)
+                .get('/download%model')
+                .end((err:any, res:any) => {
+                    res.should.have.status(200);
+                    res.body.should.be.a('object');
+                    return;
+                })
+        });
     });
 
     describe('DeveloperPresenter.getAnnotations()', function () {
@@ -55,11 +133,11 @@ describe('DeveloperPresenter', function() {
         });
     });
 
-    describe('DeveloperPresenter.getAllAnnotation()', function () {
+   /* describe('DeveloperPresenter.getAllAnnotation()', function () {
         it('should return all annotation', async function () {
              test.getAllAnnotation()
         });
-    });
+    });*/
 
     describe('DeveloperPresenter.filterBySentence()', function () {
         it('should return filter by sentence', async function () {

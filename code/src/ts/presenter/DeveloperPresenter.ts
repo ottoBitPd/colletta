@@ -46,6 +46,7 @@ class DeveloperPresenter extends PagePresenter{
             if (request.query)
                 this.applyFilters(request.query.sentence, request.query.dateFrom, request.query.dateTo, request.query.user,
                     request.query.valutationFrom, request.query.valutationTo);
+
             response.send(await this.view.getPage());
         });
     }
@@ -59,11 +60,14 @@ class DeveloperPresenter extends PagePresenter{
             //prendi password dal db e checkif equal to request.body.password
             let userClient = this.client.getUserClient();
             if (userClient) {
+
                 if (request.body.password === this.developer) {
+
                     session.username= "developer";
                     response.redirect('/developer');
                 }
                 else {
+
                     this.setMessage("password non valida");
                     response.redirect('/developer');
                 }

@@ -47,13 +47,18 @@ class ClassPresenter extends PagePresenter {
 
     private class(app : any){
         app.get('/class', async (request: any, response: any) => {
+
             this.setClassId(request.query.classId);
+
             this.view.setTitle("Classe");
+
             let userClient= this.client.getUserClient();
             if(userClient){
+
                 if(await userClient.isTeacher(session.username))
                     this.view.setUserKind(UserKind.teacher);
                 else
+
                     this.view.setUserKind(UserKind.student);
             }
 
@@ -126,6 +131,7 @@ class ClassPresenter extends PagePresenter {
                 await classClient.deleteStudent(request.body.classId, request.body.studentId);
                 //ritorna boolean per gestione errore
             }
+            console.log("no");
             response.redirect('/class?classId='+request.body.classId);
             //response.redirect(307, '/class');
         });
@@ -183,13 +189,18 @@ class ClassPresenter extends PagePresenter {
      */
     private addStudent(app: any) {
         app.post('/addstudent', async (request: any, response: any) => {
+
             let classClient = this.client.getClassClient();
             let userClient = this.client.getUserClient();
+
             if(classClient && userClient) {
+
+
                 await classClient.addStudent(request.body.studentId,this.classId);
                 //ritorna boolean per gestione errore
                 //await userClient.addClassToStudent(request.body.studentId,this.classId);
             }
+
             response.redirect('/class?classId='+this.classId);
             //response.redirect(307, '/class');
         });

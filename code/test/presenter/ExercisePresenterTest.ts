@@ -85,6 +85,100 @@ describe('ExercisePresenter', function() {
                 return new tryclass();
             }
         };
+
+        //@ts-ignored
+        test.view = {
+
+            setError(error : string){
+                return;
+            },
+            setSentence(sentence: string): void {
+
+            },
+            setPosTranslation(value : string[]): void {
+
+            },
+            setCorrections(value : any[]): void{
+
+            },
+            setUserKind(usr : any) {
+            }
+        };
+
+    });
+
+       describe('ExercisePresenter.update()', function () {
+        it('should return exercise of user', async function () {
+        test.update(app);
+        session.username=undefined;
+            chai.request(app)
+                .post('/exercise')
+                .set('Content-Type', "application/json")
+                .type("json")
+                .send({
+                    sentence:"ciaoo",
+                })
+                .end((err:any, res:any) => {
+                    res.should.have.status(200);
+                    res.body.should.be.a('object');
+                    res.redirect;
+                    return;
+                })
+        });
+
+           it('should return exercise of student', async function () {
+               test.update(app);
+               session.username="ciao";
+               chai.request(app)
+                   .post('/exercise')
+                   .set('Content-Type', "application/json")
+                   .type("json")
+                   .send({
+                       sentence:"ciaoo",
+                   })
+                   .end((err:any, res:any) => {
+                       res.should.have.status(200);
+                       res.body.should.be.a('object');
+                       res.redirect;
+                       return;
+                   })
+           });
+
+       /*    it('should return exercise save', async function () {
+               test.update(app);
+               session.username="ciao";
+               chai.request(app)
+                   .post('/exercise/save')
+                   .set('Content-Type', "application/json")
+                   .type("json")
+                   .send({
+                       sentence:"ciaoo",
+                   })
+                   .end((err:any, res:any) => {
+                       res.should.have.status(200);
+                       res.body.should.be.a('object');
+                       res.redirect;
+                       return;
+                   })
+           });*/
+
+        /*   it('should return exercise insert', async function () {
+               test.update(app);
+               session.username="ciao";
+               chai.request(app)
+                   .post('/exercise/insert')
+                   .set('Content-Type', "application/json")
+                   .type("json")
+                   .send({
+                       sentence:"ciaoo",
+                   })
+                   .end((err:any, res:any) => {
+                       res.should.have.status(200);
+                       res.body.should.be.a('object');
+                       res.redirect;
+                       return;
+                   })
+           });*/
     });
 
     describe('ExercisePresenter.getUserSolution()', function () {
@@ -144,12 +238,6 @@ describe('ExercisePresenter', function() {
             test.getUpdate();
         });
     });
-
- /*   describe('ExercisePresenter.update()', function () {
-        it('should return update', async function () {
-        test.update(app);
-        });
-    });*/
 
 
 });

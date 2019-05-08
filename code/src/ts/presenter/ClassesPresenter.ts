@@ -36,14 +36,16 @@ class ClassesPresenter extends PagePresenter {
         app.get('/classes', async (request: any, response: any) => {
             let userClient = this.client.getUserClient();
             if (userClient && session.username && session.username !== "developer"){
+
                 if (await userClient.isTeacher(session.username)){
-                    //console.log("teacher");
+                  //  console.log("teacher");
                     this.view.setUserKind(UserKind.teacher);
                 } else {
                     //console.log("student");
                     this.view.setUserKind(UserKind.student);
                 }
             }
+
             this.listType = "classes";
             this.view.setTitle("Le tue classi");
             response.send(await this.view.getPage());
@@ -96,9 +98,11 @@ class ClassesPresenter extends PagePresenter {
         app.post('/deleteclass', async (request: any, response: any) => {
             let classClient = this.client.getClassClient();
             if(classClient) {
+
                 await classClient.deleteClass(request.body.key);
                 //ritorna boolean per gestione errore
             }
+
             response.redirect('/classes');
         });
     }

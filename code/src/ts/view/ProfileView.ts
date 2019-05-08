@@ -163,8 +163,7 @@ class ProfileView extends PageView{
                         "\t\t\t\t</div>\n";
                 }
             }
-        }
-        else {//if he is developer
+        } else {//if he is developer
             ret+="\t\t\t\t<a class=\"btn-sm btn btn-primary my-2 my-sm-0\" href=\"/download\" role=\"button\">Registrati</a>\n";
         }
         ret+="\t\t\t</div>\n\t\t</div>\n";

@@ -11,7 +11,8 @@ import {ClassesView} from "../../src/ts/view/ClassesView";
 import {ClassClient} from "../../src/ts/model/Client/ClassClient";
 import {UserClient} from "../../src/ts/model/Client/UserClient";
 import {ExerciseClient} from "../../src/ts/model/Client/ExerciseClient";
-
+import {UserKind} from "../../src/ts/view/PageView";
+var bodyParser = require('body-parser');
 
 // Configure chai
 chai.use(chaiHttp);
@@ -23,13 +24,25 @@ describe('ClassesPresenter', function() {
 
     let test: ClassesPresenter;
     const app = express();
-    app.use(require('body-parser').json());
+    app.use(bodyParser.json());
+    app.use(bodyParser.urlencoded({ extended: false }));
 
     beforeEach(function () {
 
         test = new ClassesPresenter(new ClassesView(app));
 
         session.username = undefined;
+
+        //@ts-ignored
+        test.view = {
+
+            setTitle(value: any) {
+                return;
+            },
+            setUserKind(usr : UserKind) {
+               return;
+            }
+        };
 
         //@ts-ignored
         test.client = {
@@ -55,11 +68,12 @@ describe('ClassesPresenter', function() {
                 const tryclass = class extends UserClient {
 
                     async search(username: string): Promise<any> {
-                        return true;
+                        if (username!=="admin")
+                            return true;
                     }
 
                     async isTeacher(username: string): Promise<boolean> {
-                        return true;
+                        return (username==="teacher");
                     }
 
                 };
@@ -83,20 +97,74 @@ describe('ClassesPresenter', function() {
     });
 
     describe('ClassesPresenter.update()', function () {
-        it('should return update classes', async function () {
-           await test.update(app);
+        it('should return null class because username is the developer', async function () {
+            test.update(app);
+            session.username="developer";
+            chai.request(app)
+                .get('/classes')
+                .end((err:any, res:any) => {
+                    res.should.have.status(200);
+                    res.body.should.be.a('object');
+                    return;
+                })
+        });
+
+     /*   it('should return null exercise because username is the developer', async function () {
+            test.update(app);
+            session.username="developer";
+            chai.request(app)
+                .get('/exercises')
+                .end((err:any, res:any) => {
+                    res.should.have.status(200);
+                    res.body.should.be.a('object');
+                    return;
+                })
+        });*/
+
+  /*    it('should return nobody insert class', async function () {
+            test.update(app);
+           session.username="ciaooo";
+            chai.request(app)
+                .post('/insertclass')
+                .set('Content-Type', "application/json")
+                .type("json")
+                .send({
+                    username:"ciaooo",
+                })
+                .end((err:any, res:any) => {
+                    res.should.have.status(200);
+                    res.body.should.be.a('object');
+                    return;
+                })
+        });*/
+
+        it('should return nobody delete class', async function () {
+            test.update(app);
+            session.username="admin";
+            chai.request(app)
+                .post('/deleteclass').redirects(0)
+                .set('Content-Type', "application/json")
+                .type("json")
+                .send({
+                    key:"1111"
+                })
+                .end((err:any, res:any) => {
+                    res.should.have.status(302);
+                    res.body.should.be.a('object');
+                    return;
+                })
         });
     });
 
     describe('ClassesPresenter.getClasses()', function () {
         it('should return classes', async function () {
-          await  test.getClasses();
+            test.getClasses();
         });
     });
 
     describe('ClassesPresenter.getExercises()', function () {
         it('should return exercises', async function () {
-            await  test.getExercises();
+              test.getExercises();
         });
     });
 
@@ -114,7 +182,7 @@ describe('ClassesPresenter', function() {
 
     describe('ClassesPresenter.getStudentNumber()', function () {
         it('should return number of student', async function () {
-            await test.getStudentNumber("11");
+             test.getStudentNumber("11");
         })
     });
 

@@ -55,11 +55,13 @@ class FirebaseUserManager extends FirebaseManager {
      *   @returns (string) - the user's username if exists
      */
     public async search(username : string) : Promise<string>{
+
         return new Promise(function (resolve) {
             FirebaseManager.database.ref('data/users/').orderByChild('username')
                 .once("value", function (snapshot: any) {
                     if (snapshot.exists()) {
                         snapshot.forEach(function (data: any) {
+
                             if (data.val().username.toLowerCase() === username.toLowerCase()) {
                                 //console.log("esiste");
                                 return resolve(data.key);

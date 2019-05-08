@@ -1,7 +1,8 @@
-import {HunposManager} from "../../../src/ts/model/POSManager/HunposManager";
+/*import {HunposManager} from "../../../src/ts/model/POSManager/HunposManager";
 //import * as fileSystem from 'fs';
-import {expect} from 'chai';
+//import {expect} from 'chai';
 import 'mocha';
+
 
 describe('HunposManager', function () {
 
@@ -16,7 +17,7 @@ describe('HunposManager', function () {
             expect(hunposManager).have.property("modelFilePath","src/ts/presenter/hunpos/other_model");
         });
     });
-    /* Da usare solo in locale (sulla repo mancano i file di hunpos)
+   //  Da usare solo in locale (sulla repo mancano i file di hunpos)
     describe('HunposManager.getSolution()', function () {
         it('should set the model', function () {
             let solution = hunposManager.getSolution("ciao a tutti");
@@ -43,5 +44,5 @@ describe('HunposManager', function () {
             hunposManager.tag();
             expect(file).not.to.be.eql(fileSystem.readFileSync("src/ts/presenter/hunpos/output.txt"));
         });
-    });*/
+    });
 });

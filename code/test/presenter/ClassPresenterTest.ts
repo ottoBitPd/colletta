@@ -11,6 +11,7 @@ import {ClassView} from "../../src/ts/view/ClassView";
 import {ExerciseClient} from "../../src/ts/model/Client/ExerciseClient";
 import {ClassClient} from "../../src/ts/model/Client/ClassClient";
 import {UserClient} from "../../src/ts/model/Client/UserClient";
+var bodyParser = require('body-parser');
 
 
 // Configure chai
@@ -22,13 +23,28 @@ describe('ClassPresenter', function() {
 
     let test: ClassPresenter;
     const app = express();
-    app.use(require('body-parser').json());
+    app.use(bodyParser.json());
+    app.use(bodyParser.urlencoded({ extended: false }));
 
     beforeEach(function () {
 
         test = new ClassPresenter(new ClassView(app));
 
         session.username = undefined;
+
+        //@ts-ignored
+        test.view = {
+            setUserKind(numero: any) {
+                return;
+            },
+
+            async getPage(): Promise<string> {
+                return "Page";
+            },
+            setTitle(value: any) {
+                return;
+            }
+        };
 
         //@ts-ignored
         test.client = {
@@ -54,6 +70,9 @@ describe('ClassPresenter', function() {
                     async getClassData(id:string) : Promise<any> {
                         return true;
                     }
+                    async deleteStudent(classId:string, studentId:string){
+                        return ;
+                        }
                 };
                 return new tryclass();
             },
@@ -66,7 +85,8 @@ describe('ClassPresenter', function() {
                     }
 
                     async isTeacher(username: string): Promise<boolean> {
-                        return true;
+                        return (username==="teacher");
+
                     }
                     async getUserData(id:string) : Promise<any> {
                         return true;
@@ -92,6 +112,59 @@ describe('ClassPresenter', function() {
                 return new tryclass();
             }
         };
+
+    });
+
+    describe('ClassPresenter.update()', function () {
+  /*      it('should return updata class', async function () {
+            test.update(app);
+            session.username="teacher";
+
+            chai.request(app)
+                .get('/class').redirects(0)
+                .end((err:any, res:any) => {
+                    res.should.have.status(200);
+                    res.body.should.be.a('object');
+
+                    return ;
+                });
+        });*/
+
+     /*   it('should return delete student', async function () {
+            test.update(app);
+            session.username="teacher";
+
+            chai.request(app)
+                .post('/deletestudent').redirects(0)
+                .set('Content-Type', "application/json")
+                .type("json")
+                .send({
+                    classId:"io",
+                    studentId:"ciao"
+                })
+                .end((err:any, res:any) => {
+                    res.should.have.status(200);
+                    res.body.should.be.a('object');
+
+                    return ;
+                });
+        });*/
+
+    /*    it('should return add student', async function () {
+            test.update(app);
+            chai.request(app)
+                .post('/addstudent').redirects(0)
+                .set('Content-Type', "application/json")
+                .type("json")
+                .send({
+                    studentId:"ciao"
+                })
+                .end((err:any, res:any) => {
+                    res.should.have.status(200);
+                    res.body.should.be.a('object');
+                    return ;
+                });
+        });*/
 
     });
 

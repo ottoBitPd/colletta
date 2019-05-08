@@ -4,7 +4,6 @@ import {Data} from "../Data/Data";
 
 /**
  * Class to use the class functionality exposed into the model
->>>>>>> a3792278d854de4310de213ccbe73199c9f1fc8d
  */
 class ClassClient{
     private dbClassManager : DatabaseClassManager;

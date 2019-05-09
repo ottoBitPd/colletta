@@ -160,7 +160,7 @@ describe('ExercisePresenter', function() {
                        res.redirect;
                        return;
                    })
-           });*/
+           });
 
           it('should return exercise insert solution', async function () {
                test.update(app);
@@ -181,7 +181,7 @@ describe('ExercisePresenter', function() {
                        return;
                    })
            });
-
+            */
            it('should return exercise not insert solution', async function () {
                test.update(app);
                session.username="ciao";

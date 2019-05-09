@@ -9,3 +9,6 @@ Firebase rappresenta l'implementazione del database dell'applicazione e permette
 	\includegraphics[scale=0.5]{images/FirebaseManager.png}
 	\caption{Diagramma delle classi del package Firebase}
 \end{figure}
+
+
+Questa gerarchia è stata organizzata come un singleton con supporto per il subclassing. Ogni sottoclasse di \texttt{FirebaseManager} registrerà la propria istanza in \texttt{FirebaseManager.registry}. Tale istanza sarà recuperabile tramite il metodo \texttt{getInstance}. In questo modo, il metodo \texttt{Firebase.initDB}, che deve essere chiamato una sola volta all'interno dell'applicazione, verrà invocato solo alla prima istanza di una sottoclasse di \texttt{FirebaseManager}.

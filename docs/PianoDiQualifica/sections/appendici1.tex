@@ -258,7 +258,52 @@ Per ogni test viene specificato il suo codice univoco, la descrizione e lo stato
 		%presenter% 
 		TU133 & Verifica che il metodo dichiari correttamente se un utente è autenticato o meno.  \\ \hline
 		TU134 & Verifica che il metodo cambi correttamente i dati della sessione attiva.  \\ \hline
-		%TODO: aggiungere test per presenter%
+		
+		TU135 & Verifica che il metodo gestisca correttamente le modifiche alla pagina di autenticazione. \\ \hline
+		TU136 & Verifica che il metodo ritorni "true" se lo username inserito non è valido. \\ \hline
+		TU137 & Verifica che il metodo gestisca correttamente le modifiche alla pagina di visualizzazione delle classi. \\ \hline
+		TU138 & Verifica che il metodo ritorni correttamente la lista delle classi. \\ \hline
+		TU139 & Verifica che il metodo ritorni correttamente la lista degli esercizi. \\ \hline
+		TU140 & ClassesPresenter.getListType()\\ \hline
+		TU141 & Verifica che il metodo ritorni la corretta traduzione in italiano dei tag assegnati alle parole di una frase. \\ \hline
+		TU142 & Verifica che il metodo ritorni correttamente il numero degli studenti di una classe. \\ \hline
+		TU143 & Verifica che il metodo gestisca correttamente le modifiche alla pagina di visualizzazione di una classe. \\ \hline
+		TU144 & Verifica che il metodo ritorni correttamente l'id di una classe. \\ \hline
+		TU145 & Verifica che il metodo ritorni correttamente la lista degli studenti della classe.\\ \hline
+		TU146 & Verifica che il metodo ritorni correttamente la lista degli esercizi della classe. \\ \hline
+		TU147 & ClassPresenter.getClass()\\ \hline
+		TU148 & Verifica che il metodo ritorni correttamente il numero degli studenti di una classe. \\ \hline
+		TU149 & Verifica che il metodo ritorni correttamente il numero delle classi di un insegnante.\\ \hline
+		TU150 & Verifica che il metodo gestisca correttamente le modifiche alla pagina di gestione riservata allo sviluppatore. \\ \hline
+		TU151 & Verifica che il metodo ritorni correttamente le annotazioni di un esercizio.\\ \hline
+		TU152 & DeveloperPresenter.getMessage()\\ \hline
+		TU153 & Verifica che il metodo ritorni la corretta lista di risultati filtrati sulla base della frase inserita. \\ \hline
+		TU154 & Verifica che il metodo applichi correttamente i filtri di ricerca. \\ \hline
+		TU155 & Verifica che il metodo ritorni la corretta lista di risultati filtrati sulla base delle valutazioni.\\ \hline
+		TU156 & Verifica che il metodo ritorni la corretta lista di risultati filtrati sulla base della data inserita.\\ \hline
+		TU157 & Verifica che il metodo ritorni la corretta lista di risultati filtrati sulla base dell'autore.\\ \hline
+		TU158 & DeveloperPresenter.createCsvFromAnnotations()\\ \hline
+		TU159 & Verifica che il metodo ritorni "true" se richiamato su un insegnante, "false" altrimenti. \\ \hline
+		TU160 & Verifica che il metodo gestisca correttamente le modifiche alla pagina di visualizzazione di un esercizio. \\ \hline
+		TU161 & Verifica che il metodo ritorni correttamente la soluzione inserita dall'utente. \\ \hline
+		TU162 & Verifica che il metodo ritorni correttamente i tag di una soluzione. \\ \hline
+		TU163 & Verifica che il metodo ritorni la giusta correzione ai tag. \\ \hline
+		TU164 & Verifica che il metodo ritorni correttamente la lista degli argomenti separati da uno spazio. \\ \hline
+		TU165 & Verifica che il metodo ritorni la lista dei tag corretti separati da uno spazio. \\ \hline
+		TU166 & Verifica che il metodo ritorni la correzione dell'esercizio. \\ \hline
+		TU167 & Verifica che il metodo ritorni la corretta traduzione in italiano dei tag assegnati alle parole di una frase. \\ \hline
+		TU168 & Verifica che il metodo ritorni "true" se l'utente autenticato è un insegnante, "false" altrimenti. \\ \hline
+		TU169 & Verifica che il metodo ritorni "true" se l'utente autenticato è uno studente, "false" altrimenti. \\ \hline
+		TU170 & Verifica che il metodo ritorni tutte le soluzioni pubbliche di un insegnante per un esercizio. \\ \hline
+		TU171 & Verifica che il metodo ritorni una soluzione dell'esercizio. \\ \hline
+		TU172 & ExercisePresenter.getUpdate()\\ \hline
+		TU173 & Verifica che il metodo ritorni la corretta lista delle classi nella pagina del profilo di un utente. \\ \hline
+		TU174 & Verifica che il metodo ritorni i dati sulla media di uno studente nella pagina del profilo personale dello stesso. \\ \hline
+		TU175 & Verifica che il metodo gestisca correttamente le modifiche alla pagina di ricerca. \\ \hline
+		TU176 & Verifica che il metodo imposti correttamente il tipo di ricerca desiderata. \\ \hline
+		TU177 & SearchPresenter.setResults()\\ \hline
+		TU178 & Verifica che il metodo ritorni il tipo di ricerca selezionato. \\ \hline
+		TU179 & Verifica che il metodo ritorni la lista dei risultati di ricerca. \\ \hline
 		
 		\caption{Test di unità - descrizione}
 \end{longtable}
@@ -267,7 +312,7 @@ Per ogni test viene specificato il suo codice univoco, la descrizione e lo stato
 \begin{longtable}{|>{\centering\arraybackslash}m{1.6cm}|c|}		
  	\rowcolor{LightBlue}
 		\textbf{\textcolor{white}{Test}}
-		& \textbf{\textcolor{white}{Metodo}}\\		\hline
+		& \textbf{\textcolor{white}{Metodo}}\\ \hline
 		TU1 & ClassTest.getId()\\ \hline
 		TU2 & ClassTest.getName()\\ \hline
 		TU3 & ClassTest.getDescription()\\ \hline
@@ -363,6 +408,7 @@ Per ogni test viene specificato il suo codice univoco, la descrizione e lo stato
 		TU86 & ExerciseClient.getSentence()  \\ \hline
 		TU87 & ExerciseClient.getExerciseData()  \\ \hline
 		TU88 & ExerciseClient.getStudentAverage()  \\ \hline
+		
 		TU89 & UserClient.insertStudent()  \\ \hline
 		TU90 & UserClient.insertTeacher()  \\ \hline
 		TU91 & UserClient.verifyUser()  \\ \hline
@@ -374,6 +420,7 @@ Per ogni test viene specificato il suo codice univoco, la descrizione e lo stato
 		TU97 & UserClient.updateUser()  \\ \hline
 		TU98 & UserClient.searchUser()  \\ \hline
 		TU99 & UserClient.hashPassword()  \\ \hline
+
 		TU100 & DatabaseClassManager.insert()  \\ \hline
 		TU101 & DatabaseClassManager.remove()  \\ \hline
 		TU102 & DatabaseClassManager.read()  \\ \hline
@@ -392,6 +439,7 @@ Per ogni test viene specificato il suo codice univoco, la descrizione e lo stato
 		TU115 & DatabaseUserManager.search()  \\ \hline
 		TU116 & DatabaseUserManager.update()  \\ \hline
 		TU117 & DatabaseUserManager.elements()  \\ \hline
+
 		TU118 & HunposManager.setModel()  \\ \hline
 		TU119 & HunposManager.train()  \\ \hline
 		TU120 & HunposManager.train()  \\ \hline
@@ -413,7 +461,51 @@ Per ogni test viene specificato il suo codice univoco, la descrizione e lo stato
 		%TODO mettere test presenter%
 		TU133 & InsertPresenter.isLoggedIn()  \\ \hline
 		TU134 & InsertPresenter.update()  \\ \hline
-		
+		TU135 & AuthenticationPresenter.update() \\ \hline
+		TU136 & AuthenticationPresenter.isUsernameInvalid()\\ \hline
+		TU137 & ClassesPresenter.update()\\ \hline
+		TU138 & ClassesPresenter.getClasses()\\ \hline
+		TU139 & ClassesPresenter.getExercises()\\ \hline
+		TU140 & ClassesPresenter.getListType()\\ \hline
+		TU141 & ClassesPresenter.translateTag()\\ \hline
+		TU142 & ClassesPresenter.getStudentNumber()\\ \hline
+		TU143 & ClassPresenter.update()\\ \hline
+		TU144 & ClassPresenter.getClassId()\\ \hline
+		TU145 & ClassPresenter.getStudents()\\ \hline
+		TU146 & ClassPresenter.getExercises()\\ \hline
+		TU147 & ClassPresenter.getClass()\\ \hline
+		TU148 & ClassPresenter.getStudentNumber()\\ \hline
+		TU149 & ClassPresenter.getClasses()\\ \hline
+		TU150 & DeveloperPresenter.update()\\ \hline
+		TU151 & DeveloperPresenter.getAnnotations()\\ \hline
+		TU152 & DeveloperPresenter.getMessage()\\ \hline
+		TU153 & DeveloperPresenter.filterBySentence()\\ \hline
+		TU154 & DeveloperPresenter.applyFilters()\\ \hline
+		TU155 & DeveloperPresenter.filterByValutation()\\ \hline
+		TU156 & DeveloperPresenter.filterByDate()\\ \hline
+		TU157 & DeveloperPresenter.filterByUser()\\ \hline
+		TU158 & DeveloperPresenter.createCsvFromAnnotations()\\ \hline
+		TU159 & DeveloperPresenter.isTeacher()\\ \hline
+		TU160 & ExercisePresenter.update()\\ \hline
+		TU161 & ExercisePresenter.getUserSolution()\\ \hline
+		TU162 & ExercisePresenter.extractTags()\\ \hline
+		TU163 & ExercisePresenter.correctionToTags()\\ \hline
+		TU164 & ExercisePresenter.splitTopics()\\ \hline
+		TU165 & ExercisePresenter.correctsPOS()\\ \hline
+		TU166 & ExercisePresenter.getCorrection()\\ \hline
+		TU167 & ExercisePresenter.translateTag()\\ \hline
+		TU168 & ExercisePresenter.loggedTeacher()\\ \hline
+		TU169 & ExercisePresenter.loggedStudent()\\ \hline
+		TU170 & ExercisePresenter.teacherSolutions()\\ \hline
+		TU171 & ExercisePresenter.findSolution()\\ \hline
+		TU172 & ExercisePresenter.getUpdate()\\ \hline
+		TU173 & ProfilePresenter.getStudentClass()\\ \hline
+		TU174 & ProfilePresenter.getAverageInfo()\\ \hline
+		TU175 & SearchPresenter.update()\\ \hline
+		TU176 & SearchPresenter.setSearchType()\\ \hline
+		TU177 & SearchPresenter.setResults()\\ \hline
+		TU178 & SearchPresenter.getSearchType()\\ \hline
+		TU179 & SearchPresenter.getResults()\\ \hline
 		
 		\caption{Tracciamento test di unità}
 \end{longtable}

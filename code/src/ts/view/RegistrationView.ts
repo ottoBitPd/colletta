@@ -1,15 +1,15 @@
 import {PageView} from "./PageView";
-import {AuthenticationPresenter} from "../presenter/AuthenticationPresenter";
+import {RegistrationPresenter} from "../presenter/RegistrationPresenter";
 
 /**
  *   Class to display the registration page
  *   @extends PageView
  */
 class RegistrationView extends PageView {
-    private authPresenter :AuthenticationPresenter;
+    private authPresenter :RegistrationPresenter;
     constructor(app : any) {
         super();
-        this.authPresenter= new AuthenticationPresenter(this);
+        this.authPresenter= new RegistrationPresenter(this);
         this.authPresenter.update(app);
     }
 

@@ -2,13 +2,13 @@ import {PagePresenter} from "./PagePresenter"
 import {Client} from "../model/Client/Client";
 
 const session = require('express-session');
+const passwordHash = require('bcryptjs');
 
 /**
  *   Class to create and manage the authentication of application
  *   @extends PagePresenter
  */
-class AuthenticationPresenter extends PagePresenter {
-    private passwordHash = require('bcryptjs');
+class RegistrationPresenter extends PagePresenter {
 
     constructor(view : any){
         super(view);
@@ -32,16 +32,7 @@ class AuthenticationPresenter extends PagePresenter {
         app.get('/profile', (request: any, response: any) => {
             response.send("Login avvenuto con successo sei nel tuo profilo"+session.username);
         });
-        /*
-        app.get('/login', async (request: any, response: any) => {
 
-            if(request.query.mess==="invalidLogin") {
-                this.view.setError("Username o password errati");
-            } else {
-                this.view.setError("");
-            }
-            response.send(await this.view.getPage());
-        });*/
         app.post('/checklogin', async (request: any, response: any) => {
             let userClient = this.client.getUserClient();
 
@@ -59,6 +50,7 @@ class AuthenticationPresenter extends PagePresenter {
                 }
             }
         });
+
         app.get('/registration', async (request: any, response: any) => {
             session.errUsername = request.query.mess === "errUsername";
             this.view.setTitle("Registrati");
@@ -67,8 +59,7 @@ class AuthenticationPresenter extends PagePresenter {
 
         app.post("/saveuser", async (req:any,res:any) => {
 
-            const hashedPassword = this.passwordHash.hashSync(req.body.username,10);
-            //console.log("hashedPassword:" + hashedPassword);
+            const hashedPassword = passwordHash.hashSync(req.body.username,10);
             let userClient = this.client.getUserClient();
             console.log(userClient);
             if(userClient !== undefined){
@@ -90,9 +81,9 @@ class AuthenticationPresenter extends PagePresenter {
      * This method returns true if username is invalid.
      * @return boolean
      */
-    isUsernameInvalid() : boolean {
+    public isUsernameInvalid() : boolean {
         return  session.errUsername;
     }
 }
-export {AuthenticationPresenter};
+export {RegistrationPresenter};
 

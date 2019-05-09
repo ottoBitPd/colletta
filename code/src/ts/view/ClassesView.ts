@@ -1,5 +1,5 @@
 import {PageView, UserKind} from "./PageView";
-import {ClassesPresenter} from "../presenter/ClassesPresenter";
+import {ListPresenter} from "../presenter/ListPresenter";
 
 /**
  *   Class to display the classes page
@@ -7,11 +7,11 @@ import {ClassesPresenter} from "../presenter/ClassesPresenter";
  */
 class ClassesView extends PageView {
 
-    private classPresenter : ClassesPresenter;
+    private classPresenter : ListPresenter;
     //private classesList: any;
     constructor(app : any){
         super();
-        this.classPresenter =  new ClassesPresenter(this);
+        this.classPresenter =  new ListPresenter(this);
         this.classPresenter.update(app);
         //this.classesList = null;
     }

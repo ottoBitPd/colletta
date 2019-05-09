@@ -9,9 +9,10 @@ var session = require('express-session');
  *   Class to manage the classes of students
  *   @extends PagePresenter
  */
-class ClassesPresenter extends PagePresenter {
+class ListPresenter extends PagePresenter {
 
     private listType : any;
+
     constructor(view: any) {
         super(view);
         this.client = (new Client.builder()).buildClassClient().buildUserClient().buildExerciseClient().build();
@@ -118,14 +119,9 @@ class ClassesPresenter extends PagePresenter {
             let id = await userClient.search(session.username);
             if (id !== "false") {
                 if (await userClient.isTeacher(session.username)) {
-                    //console.log("username: "+session.username);
-                    let arr = await classClient.getClassesByTeacher(id);//returns map<idClasse, className>
-                    //console.log("arr: ",arr);
-                    return arr;
+                    return await classClient.getClassesByTeacher(id);
                 } else {//is a student
-                    let arr = await classClient.getClassesByStudent(id);//returns map<idClasse, className>
-                    //console.log("arr: ",arr);
-                    return arr;
+                    return await classClient.getClassesByStudent(id);
                 }
             }
         }
@@ -143,16 +139,15 @@ class ClassesPresenter extends PagePresenter {
             let id = await userClient.search(session.username);
             if (id !== "false") {
                 if (await userClient.isTeacher(session.username)) {
-                    //console.log("username: "+session.username);
                     let arr = await exerciseClient.getExercisesByAuthor(id);//returns map<idClasse, className>
-                    arr=this.translateExercises(arr);
-                    return arr;
+                    return this.translateExercises(arr);
                 }
             }
         }
         return [];
 
     }
+
     public getListType() : any{
         return this.listType;
     }
@@ -174,7 +169,7 @@ class ClassesPresenter extends PagePresenter {
                         delete exercises[i].solutions[y];
                     }
                     else{
-                        let itaTags = []
+                        let itaTags = [];
                         for(let z in exercises[i].solutions[y].solutionTags){
                             itaTags.push(this.translateTag(exercises[i].solutions[y].solutionTags[z]));
                         }
@@ -191,15 +186,14 @@ class ClassesPresenter extends PagePresenter {
      * @param tag - a string containg the tag to convert
      * @returns {string} a string containing the italian translation of the tag
      */
-    public translateTag(tag : string){
-        //console.log("arriva: "+tag);
+    public translateTag(tag : string) : string {
         const content = fileSystem.readFileSync("./src/ts/presenter/vocabolario.json");
         const jsonContent = JSON.parse(content.toString());
 
         var lowercase=tag.split(/[A-Z]{1,2}/);
         var uppercase=tag.split(/[a-z0-9]+/);
         var result="";
-        //console.log("uppercase[0]: "+uppercase[0]);
+
         if(uppercase[0]!=='V' && uppercase[0]!=='PE' && uppercase[0]!=='PC' && uppercase[0]!=='VA' && uppercase[0]!='VM'){
             for(var i in jsonContent){
                 if(i===uppercase[0]){
@@ -224,9 +218,9 @@ class ClassesPresenter extends PagePresenter {
     }
     /**
      * This method provides to return number of students belong to a class
-     * @param - classId the Id of the chosen class
+     * @param classId the Id of the chosen class
      */
-    public async getStudentNumber(classId: string) {
+    public async getStudentNumber(classId: string) : Promise<number>{
         let classClient = this.client.getClassClient();
         let userClient = this.client.getUserClient();
         if(classClient && userClient) {
@@ -239,5 +233,5 @@ class ClassesPresenter extends PagePresenter {
         return -1;
     }
 }
-export {ClassesPresenter}
+export {ListPresenter}
 

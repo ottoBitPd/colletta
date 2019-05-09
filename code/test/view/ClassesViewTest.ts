@@ -2,7 +2,7 @@ import {ClassesView} from "../../src/ts/view/ClassesView";
 import {expect} from 'chai';
 import * as express from "express";
 import 'mocha';
-//import {ClassesPresenter} from "../../src/ts/presenter/ClassesPresenter";
+//import {ListPresenter} from "../../src/ts/presenter/ListPresenter";
 
 describe('ClassesView', function() {
     let test : ClassesView;

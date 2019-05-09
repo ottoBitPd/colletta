@@ -6,7 +6,7 @@ var session = require('express-session');
 import * as express from 'express';
 //@ts-ignored
 import * as chaiHttp from 'chai-http';
-import {AuthenticationPresenter} from "../../src/ts/presenter/AuthenticationPresenter";
+import {RegistrationPresenter} from "../../src/ts/presenter/RegistrationPresenter";
 import {RegistrationView} from "../../src/ts/view/RegistrationView";
 import {UserClient} from "../../src/ts/model/Client/UserClient";
 var bodyParser = require('body-parser');
@@ -35,16 +35,16 @@ class tryclass extends UserClient {
     }
 };
 
-describe('AuthenticationPresenter', function() {
+describe('RegistrationPresenter', function() {
 
-    let test: AuthenticationPresenter;
+    let test: RegistrationPresenter;
     const app = express();
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: false }));
 
     beforeEach(function () {
 
-        test=new AuthenticationPresenter(new RegistrationView(app));
+        test=new RegistrationPresenter(new RegistrationView(app));
 
         session.username=undefined;
         session.password=undefined;
@@ -66,7 +66,7 @@ describe('AuthenticationPresenter', function() {
 
     });
 
-    describe('AuthenticationPresenter.update()', function () {
+    describe('RegistrationPresenter.update()', function () {
         it('should return home', async function () {
             test.update(app);
             session.username="P";
@@ -181,7 +181,7 @@ describe('AuthenticationPresenter', function() {
 
     });
 
-    describe('AuthenticationPresenter.isUsernameInvalid()', function () {
+    describe('RegistrationPresenter.isUsernameInvalid()', function () {
         it('should return true is username is invalid', async function () {
             test.isUsernameInvalid();
         });

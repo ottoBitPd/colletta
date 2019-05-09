@@ -8,7 +8,8 @@ var session = require('express-session');
  *   @extends PagePresenter
  */
 class ClassPresenter extends PagePresenter {
-    private classId : any;
+    private classId : string = "";
+
     constructor(view: any) {
         super(view);
         this.client = (new Client.builder()).buildClassClient().buildUserClient().buildExerciseClient().build();
@@ -35,8 +36,9 @@ class ClassPresenter extends PagePresenter {
 
     /**
      * This method provides to return the id
+     * @return {string}
      */
-    public getClassId(){
+    public getClassId() : string{
         return this.classId;
     }
 
@@ -68,8 +70,7 @@ class ClassPresenter extends PagePresenter {
 
     /**
      * This method returns an array of json that represents the students of the class
-     * identified by the id passed as paramater of the method
-     * @param classId
+     * identified by the id passed as parameter of the method
      */
     public async getStudents() : Promise<any>{
         let classClient = this.client.getClassClient();
@@ -87,12 +88,11 @@ class ClassPresenter extends PagePresenter {
             }
         }
     }
+
     /**
      * This method returns an array of json that represents the exercises of the class
-     * identified by the id passed as paramater of the method
-     * @param classId
+     * identified by the id passed as parameter of the method
      */
-    //@ts-ignore
     public async getExercises() : Promise<any>{
         let classClient = this.client.getClassClient();
         let exerciseClient = this.client.getExerciseClient();
@@ -115,8 +115,7 @@ class ClassPresenter extends PagePresenter {
     public async getClass() : Promise<any>{
         let classClient = this.client.getClassClient();
         if(classClient) {
-            let _class = await classClient.getClassData(this.classId);
-            return _class;
+            return await classClient.getClassData(this.classId);
         }
     }
 
@@ -129,11 +128,8 @@ class ClassPresenter extends PagePresenter {
             let classClient = this.client.getClassClient();
             if(classClient) {
                 await classClient.deleteStudent(request.body.classId, request.body.studentId);
-                //ritorna boolean per gestione errore
             }
-            console.log("no");
             response.redirect('/class?classId='+request.body.classId);
-            //response.redirect(307, '/class');
         });
     }
 
@@ -146,17 +142,15 @@ class ClassPresenter extends PagePresenter {
             let classClient = this.client.getClassClient();
             if(classClient) {
                 await classClient.deleteExercise(request.body.classId, request.body.exerciseId);
-                //ritorna boolean per gestione errore
             }
             response.redirect('/class?classId='+request.body.classId);
-            //response.redirect(307, '/class');
         });
     }
 
     /**
      * This method provides to return number of students belong to a class
      */
-    public async getStudentNumber() {
+    public async getStudentNumber() : Promise<number> {
         let classClient = this.client.getClassClient();
         let userClient = this.client.getUserClient();
         if(classClient && userClient) {
@@ -171,7 +165,7 @@ class ClassPresenter extends PagePresenter {
     /**
      * This method provides to return number of classes belong to a teacher
      */
-    public async getClasses(){
+    public async getClasses() : Promise<any[]> {
         let classClient = this.client.getClassClient();
         let userClient = this.client.getUserClient();
         if(classClient && userClient) {
@@ -182,7 +176,7 @@ class ClassPresenter extends PagePresenter {
                 return map;
             }
         }
-        return new Map();
+        return [];
     }
     /**
      * This method provides to add a student to a class
@@ -194,17 +188,12 @@ class ClassPresenter extends PagePresenter {
             let userClient = this.client.getUserClient();
 
             if(classClient && userClient) {
-
-
                 await classClient.addStudent(request.body.studentId,this.classId);
-                //ritorna boolean per gestione errore
-                //await userClient.addClassToStudent(request.body.studentId,this.classId);
             }
-
             response.redirect('/class?classId='+this.classId);
-            //response.redirect(307, '/class');
         });
     }
+
     /**
      * This method provides to add exercise to a class
      */
@@ -216,7 +205,6 @@ class ClassPresenter extends PagePresenter {
                 //ritorna boolean per gestione errore
             }
             response.redirect('/class?classId='+this.classId);
-            //response.redirect(307, '/class');
         });
     }
 }

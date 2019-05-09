@@ -6,7 +6,7 @@ var session = require('express-session');
 import * as express from 'express';
 //@ts-ignored
 import * as chaiHttp from 'chai-http';
-import {ClassesPresenter} from "../../src/ts/presenter/ClassesPresenter";
+import {ListPresenter} from "../../src/ts/presenter/ListPresenter";
 import {ClassesView} from "../../src/ts/view/ClassesView";
 import {ClassClient} from "../../src/ts/model/Client/ClassClient";
 import {UserClient} from "../../src/ts/model/Client/UserClient";
@@ -20,16 +20,16 @@ chai.should();
 
 
 
-describe('ClassesPresenter', function() {
+describe('ListPresenter', function() {
 
-    let test: ClassesPresenter;
+    let test: ListPresenter;
     const app = express();
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: false }));
 
     beforeEach(function () {
 
-        test = new ClassesPresenter(new ClassesView(app));
+        test = new ListPresenter(new ClassesView(app));
 
         session.username = undefined;
 
@@ -96,7 +96,7 @@ describe('ClassesPresenter', function() {
 
     });
 
-    describe('ClassesPresenter.update()', function () {
+    describe('ListPresenter.update()', function () {
         it('should return null class because username is the developer', async function () {
             test.update(app);
             session.username="developer";
@@ -156,31 +156,31 @@ describe('ClassesPresenter', function() {
         });
     });
 
-    describe('ClassesPresenter.getClasses()', function () {
+    describe('ListPresenter.getClasses()', function () {
         it('should return classes', async function () {
             test.getClasses();
         });
     });
 
-    describe('ClassesPresenter.getExercises()', function () {
+    describe('ListPresenter.getExercises()', function () {
         it('should return exercises', async function () {
               test.getExercises();
         });
     });
 
-    describe('ClassesPresenter.getListType()', function () {
+    describe('ListPresenter.getListType()', function () {
         it('should return list type', async function () {
             test.getListType();
         })
     });
 
-    describe('ClassesPresenter.translateTag()', function () {
+    describe('ListPresenter.translateTag()', function () {
         it('should return a string containing the italian translation of the tag', async function () {
             test.translateTag("ciao");
         })
     });
 
-    describe('ClassesPresenter.getStudentNumber()', function () {
+    describe('ListPresenter.getStudentNumber()', function () {
         it('should return number of student', async function () {
              test.getStudentNumber("11");
         })

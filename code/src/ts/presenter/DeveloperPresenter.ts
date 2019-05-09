@@ -10,17 +10,18 @@ var session = require('express-session');
  * Class to manage developer's operations
  */
 class DeveloperPresenter extends PagePresenter{
-    //private client : any
+
     private annotations : any[] = [];
-    private developer = "trave";
-    private message : any;
+    private developer = "developermaster";
+    private message : string = "";
+
     constructor(view : PageView) {
         super(view);
         this.client =(new Client.builder()).buildExerciseClient().buildUserClient().build();
 
     }
 
-    async initializeAnnotations() : Promise<void>{
+    private async initializeAnnotations() : Promise<void>{
         this.annotations = await this.getAllAnnotation();
     }
     /**
@@ -96,7 +97,7 @@ class DeveloperPresenter extends PagePresenter{
     }
 
     private applyFilters(sentence : string | undefined, dateFrom : number | undefined, dateTo : number| undefined,
-                         user : string| undefined, valutationFrom : number| undefined, valutationTo : number | undefined) {
+                         user : string| undefined, valutationFrom : number| undefined, valutationTo : number | undefined) : void {
         if (sentence)
             this.filterBySentence(sentence);
         if (dateFrom) {
@@ -118,21 +119,9 @@ class DeveloperPresenter extends PagePresenter{
                 this.filterByValutation(0, valutationTo);
     }
 
-    getAnnotations() {
+    getAnnotations() : any[]{
         return this.annotations;
     }
-    /*
-    downloadCsv(csv:any) {
-        let link  = document.createElement('a');
-        link.setAttribute('href', 'data:text/csv;charset=utf-8,%EF%BB%BF' + encodeURIComponent(csv));
-        link.setAttribute('download', "annotazioni");
-        link.style.visibility = 'hidden';
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-    }
-    */
-
 
     /**
      *
@@ -145,99 +134,75 @@ class DeveloperPresenter extends PagePresenter{
     /**
      *
      */
-    public getMessage(){
+    public getMessage() : string {
         return this.message;
     }
 
-     async getAllAnnotation() : Promise<any[]> {
+    public async getAllAnnotation() : Promise<any[]> {
         let exerciseClient = this.client.getExerciseClient();
-        let an : any[] = [];
+        let annotations : any[] = [];
         if (exerciseClient) {
-             an = await exerciseClient.searchAllSolution();
+            annotations = await exerciseClient.searchAllSolution();
         }
-        //console.log("an: ",an);
-        return an;
+        return annotations;
     }
-        /*
-        let exerciseClient = this.client.getExerciseClient();
-        let ret = [];
-        if(exerciseClient) {
-            let map = await exerciseClient.searchExercise("");//returns map<idEsercizio, sentence>
-            //console.log("map: ",map);
-            for(let entry of Array.from(map.entries())) {
-                let key = entry[0];
-                let exercise = await exerciseClient.getExerciseData(key);
-                //console.log("exercise: ",exercise);
-                ret.push(exercise);
 
-            }
-            return ret;
-        }
-        return [];
-        */
-
-    filterBySentence(sentence : string) {
+    public filterBySentence(sentence : string) : void {
         var regex= new RegExp(sentence, "i");
         this.annotations =(this.annotations).filter((entry: any)=>entry.sentence.search(regex) >= 0);
     }
 
-    filterByValutation(valutationFrom : number, valutationTo : number) {
+    public filterByValutation(valutationFrom : number, valutationTo : number) : void {
         this.annotations= this.annotations.filter((val : any)=>(val.valutations[1] >= valutationFrom)
             && (val.valutations[1]<= valutationTo));
     }
 
     /**
-     *  This methods provides to return filtered annotations by date
-     * @param annotations
-     * @param date
-     * @returns result
+     *  This method provides to return filtered annotations by date
+     * @param dateFrom
+     * @param dateTo
      */
-    filterByDate(dateFrom : Date, dateTo : Date) {
+    public filterByDate(dateFrom : Date, dateTo : Date) : void {
         this.annotations= this.annotations.filter((sol:any)=>(sol.time>=dateFrom.getTime())
             && (sol.time<=dateTo.getTime()));
     }
 
-    filterByUser(id : string) {
+    /**
+     *  This method provides to return filtered annotations by user id
+     * @param id
+     */
+    public filterByUser(id : string) : void {
         this.annotations=this.annotations.filter((sol:any)=>CryptoJS.MD5(sol.solverID).toString()===id);
     }
 
-
     /**
      * This method provides to convert annotations in csv format
-     * @param annotations
      * @returns csv
      */
-    async createCsvFromAnnotations() {
+    public async createCsvFromAnnotations() : Promise<string>{
         if ((this.annotations.length) !== 0) {
             const replacer = (key: any, value: any) => value === null ? '' : value;
             const header = Object.keys(this.annotations[0]);
-            let csv: any = this.annotations.map((row: any) => header.map(fieldName =>
+            let csv: string[] = this.annotations.map((row: any) => header.map(fieldName =>
                 JSON.stringify(row[fieldName], replacer)).join(';'));
-            //csv.unshift(header.join(''));
-            csv = csv.join('\r\n');
-            return csv;
-        }
-        else
-            return [];
+
+            return csv.join('\r\n');
+        } else
+            return "";
     }
 
-    async createTxtFromAnnotations() {
+    public async createTxtFromAnnotations() : Promise<string>{
         if ((this.annotations.length) !== 0) {
-            // @ts-ignore
-            const replacer = (key, value) => value === null ? '' : value;
+            const replacer = (key :any, value :any) => value === null ? '' : value;
             const header = Object.keys(this.annotations[0]);
             let txt: any = this.annotations.map((row: any) => header.map(fieldName =>
                 JSON.stringify(row[fieldName], replacer)).join('\t'));
-            //csv.unshift(header.join(''));
-            txt = txt.join('\r\n');
-            return txt;
-        }
-        else {
-            return [];
-        }
+            return txt.join('\r\n');
+        } else
+            return "";
     }
 
-    async isTeacher(solverID: string) : Promise<boolean>{
+    public async isTeacher(solverID: string) : Promise<boolean>{
         let userClient = this.client.getUserClient();
         if(userClient){
             let json = await userClient.getUserData(solverID);

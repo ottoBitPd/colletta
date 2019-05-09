@@ -1,0 +1,1499 @@
+Mean per-function logical LOC: 2.8103448275862073
+Mean per-function parameter count: 0.9616858237547894
+Mean per-function cyclomatic complexity: 1.2816091954022988
+Mean per-function Halstead effort: 199.86164426512582
+Mean per-module maintainability index: 139.72967000697315
+First-order density: 0%
+Change cost: 3.4482758620689653%
+Core size: 0%
+
+C:\Users\peron\Desktop\gitSWE\colletta\code\public\index.js
+
+  Physical LOC: 43
+  Logical LOC: 47
+  Mean parameter count: 1.4444444444444444
+  Cyclomatic complexity: 6
+  Cyclomatic complexity density: 12.76595744680851%
+  Maintainability index: 145.20290749274588
+  Dependency count: 10
+
+  Function: <anonymous>
+    Line No.: 2
+    Physical LOC: 8
+    Logical LOC: 1
+    Parameter count: 4
+    Cyclomatic complexity: 2
+    Cyclomatic complexity density: 200%
+    Halstead difficulty: 3.333333333333333
+    Halstead volume: 44.97261104228487
+    Halstead effort: 149.90870347428287
+
+  Function: <anonymous>
+    Line No.: 3
+    Physical LOC: 6
+    Logical LOC: 4
+    Parameter count: 2
+    Cyclomatic complexity: 2
+    Cyclomatic complexity density: 50%
+    Halstead difficulty: 3.545454545454546
+    Halstead volume: 98.09910819000817
+    Halstead effort: 347.8059290373017
+
+  Function: fulfilled
+    Line No.: 4
+    Physical LOC: 1
+    Logical LOC: 2
+    Parameter count: 1
+    Cyclomatic complexity: 1
+    Cyclomatic complexity density: 50%
+    Halstead difficulty: 1.25
+    Halstead volume: 20.67970000576925
+    Halstead effort: 25.84962500721156
+
+  Function: rejected
+    Line No.: 5
+    Physical LOC: 1
+    Logical LOC: 2
+    Parameter count: 1
+    Cyclomatic complexity: 1
+    Cyclomatic complexity density: 50%
+    Halstead difficulty: 1.25
+    Halstead volume: 20.67970000576925
+    Halstead effort: 25.84962500721156
+
+  Function: step
+    Line No.: 6
+    Physical LOC: 1
+    Logical LOC: 1
+    Parameter count: 1
+    Cyclomatic complexity: 2
+    Cyclomatic complexity density: 200%
+    Halstead difficulty: 3.055555555555556
+    Halstead volume: 72.33974351909447
+    Halstead effort: 221.0381051972331
+
+  Function: <anonymous>
+    Line No.: 6
+    Physical LOC: 1
+    Logical LOC: 1
+    Parameter count: 1
+    Cyclomatic complexity: 1
+    Cyclomatic complexity density: 100%
+    Halstead difficulty: 1.3333333333333333
+    Halstead volume: 13.931568569324174
+    Halstead effort: 18.575424759098897
+
+  Function: <anonymous>
+    Line No.: 32
+    Physical LOC: 3
+    Logical LOC: 2
+    Parameter count: 3
+    Cyclomatic complexity: 1
+    Cyclomatic complexity density: 50%
+    Halstead difficulty: 2.2
+    Halstead volume: 64.72503367497926
+    Halstead effort: 142.3950740849544
+
+  Function: <anonymous>
+    Line No.: 38
+    Physical LOC: 6
+    Logical LOC: 1
+    Parameter count: 0
+    Cyclomatic complexity: 1
+    Cyclomatic complexity density: 100%
+    Halstead difficulty: 2.5
+    Halstead volume: 30
+    Halstead effort: 75
+
+  Function: <anonymous>
+    Line No.: 39
+    Physical LOC: 4
+    Logical LOC: 2
+    Parameter count: 0
+    Cyclomatic complexity: 1
+    Cyclomatic complexity density: 50%
+    Halstead difficulty: 2.3333333333333335
+    Halstead volume: 36.541209043760986
+    Halstead effort: 85.26282110210897
+
+C:\Users\peron\Desktop\gitSWE\colletta\code\public\ts\controller\AuthenticationController.js
+
+  Physical LOC: 1
+  Logical LOC: 1
+  Mean parameter count: 0
+  Cyclomatic complexity: 1
+  Cyclomatic complexity density: 100%
+  Maintainability index: 171
+  Dependency count: 0
+
+C:\Users\peron\Desktop\gitSWE\colletta\code\public\ts\controller\Exercise.js
+
+  Physical LOC: 28
+  Logical LOC: 4
+  Mean parameter count: 0
+  Cyclomatic complexity: 1
+  Cyclomatic complexity density: 25%
+  Maintainability index: 130.46011695133748
+  Dependency count: 0
+
+C:\Users\peron\Desktop\gitSWE\colletta\code\public\ts\controller\ExerciseController.js
+
+  Physical LOC: 204
+  Logical LOC: 19
+  Mean parameter count: 1.6666666666666667
+  Cyclomatic complexity: 5
+  Cyclomatic complexity density: 26.31578947368421%
+  Maintainability index: 144.40102075466035
+  Dependency count: 3
+
+  Function: <anonymous>
+    Line No.: 2
+    Physical LOC: 8
+    Logical LOC: 1
+    Parameter count: 4
+    Cyclomatic complexity: 2
+    Cyclomatic complexity density: 200%
+    Halstead difficulty: 3.333333333333333
+    Halstead volume: 44.97261104228487
+    Halstead effort: 149.90870347428287
+
+  Function: <anonymous>
+    Line No.: 3
+    Physical LOC: 6
+    Logical LOC: 4
+    Parameter count: 2
+    Cyclomatic complexity: 2
+    Cyclomatic complexity density: 50%
+    Halstead difficulty: 3.545454545454546
+    Halstead volume: 98.09910819000817
+    Halstead effort: 347.8059290373017
+
+  Function: fulfilled
+    Line No.: 4
+    Physical LOC: 1
+    Logical LOC: 2
+    Parameter count: 1
+    Cyclomatic complexity: 1
+    Cyclomatic complexity density: 50%
+    Halstead difficulty: 1.25
+    Halstead volume: 20.67970000576925
+    Halstead effort: 25.84962500721156
+
+  Function: rejected
+    Line No.: 5
+    Physical LOC: 1
+    Logical LOC: 2
+    Parameter count: 1
+    Cyclomatic complexity: 1
+    Cyclomatic complexity density: 50%
+    Halstead difficulty: 1.25
+    Halstead volume: 20.67970000576925
+    Halstead effort: 25.84962500721156
+
+  Function: step
+    Line No.: 6
+    Physical LOC: 1
+    Logical LOC: 1
+    Parameter count: 1
+    Cyclomatic complexity: 2
+    Cyclomatic complexity density: 200%
+    Halstead difficulty: 3.055555555555556
+    Halstead volume: 72.33974351909447
+    Halstead effort: 221.0381051972331
+
+  Function: <anonymous>
+    Line No.: 6
+    Physical LOC: 1
+    Logical LOC: 1
+    Parameter count: 1
+    Cyclomatic complexity: 1
+    Cyclomatic complexity density: 100%
+    Halstead difficulty: 1.3333333333333333
+    Halstead volume: 13.931568569324174
+    Halstead effort: 18.575424759098897
+
+C:\Users\peron\Desktop\gitSWE\colletta\code\public\ts\controller\ExercisePageController.js
+
+  Physical LOC: 96
+  Logical LOC: 6
+  Mean parameter count: 0
+  Cyclomatic complexity: 1
+  Cyclomatic complexity density: 16.666666666666664%
+  Maintainability index: 121.03021771968133
+  Dependency count: 2
+
+C:\Users\peron\Desktop\gitSWE\colletta\code\public\ts\controller\HunposAdapter.js
+
+  Physical LOC: 51
+  Logical LOC: 4
+  Mean parameter count: 0
+  Cyclomatic complexity: 1
+  Cyclomatic complexity density: 25%
+  Maintainability index: 130.46011695133748
+  Dependency count: 0
+
+C:\Users\peron\Desktop\gitSWE\colletta\code\public\ts\controller\HunposManager.js
+
+  Physical LOC: 63
+  Logical LOC: 44
+  Mean parameter count: 0.4444444444444444
+  Cyclomatic complexity: 4
+  Cyclomatic complexity density: 9.090909090909092%
+  Maintainability index: 124.79506988540041
+  Dependency count: 2
+
+  Function: <anonymous>
+    Line No.: 4
+    Physical LOC: 59
+    Logical LOC: 8
+    Parameter count: 0
+    Cyclomatic complexity: 1
+    Cyclomatic complexity density: 12.5%
+    Halstead difficulty: 5.777777777777778
+    Halstead volume: 192.42286534333678
+    Halstead effort: 1111.776555317057
+
+  Function: HunposManager
+    Line No.: 5
+    Physical LOC: 7
+    Logical LOC: 5
+    Parameter count: 0
+    Cyclomatic complexity: 1
+    Cyclomatic complexity density: 20%
+    Halstead difficulty: 2.1818181818181817
+    Halstead volume: 106.6059378176129
+    Halstead effort: 232.5947734202463
+
+  Function: <anonymous>.setModel
+    Line No.: 12
+    Physical LOC: 3
+    Logical LOC: 1
+    Parameter count: 1
+    Cyclomatic complexity: 1
+    Cyclomatic complexity density: 100%
+    Halstead difficulty: 2
+    Halstead volume: 12
+    Halstead effort: 24
+
+  Function: <anonymous>.buildInputFile
+    Line No.: 16
+    Physical LOC: 15
+    Logical LOC: 4
+    Parameter count: 1
+    Cyclomatic complexity: 2
+    Cyclomatic complexity density: 50%
+    Halstead difficulty: 6.923076923076923
+    Halstead volume: 164.99896988958
+    Halstead effort: 1142.3005607740154
+
+  Function: <anonymous>
+    Line No.: 19
+    Physical LOC: 5
+    Logical LOC: 3
+    Parameter count: 1
+    Cyclomatic complexity: 2
+    Cyclomatic complexity density: 66.66666666666666%
+    Halstead difficulty: 3
+    Halstead volume: 30
+    Halstead effort: 90
+
+  Function: <anonymous>.buildSolution
+    Line No.: 32
+    Physical LOC: 14
+    Logical LOC: 12
+    Parameter count: 0
+    Cyclomatic complexity: 2
+    Cyclomatic complexity density: 16.666666666666664%
+    Halstead difficulty: 10.25
+    Halstead volume: 403.5515295486763
+    Halstead effort: 4136.403177873932
+
+  Function: <anonymous>.getSolution
+    Line No.: 47
+    Physical LOC: 5
+    Logical LOC: 3
+    Parameter count: 1
+    Cyclomatic complexity: 1
+    Cyclomatic complexity density: 33.33333333333333%
+    Halstead difficulty: 2.4000000000000004
+    Halstead volume: 45
+    Halstead effort: 108.00000000000001
+
+  Function: <anonymous>.train
+    Line No.: 53
+    Physical LOC: 3
+    Logical LOC: 1
+    Parameter count: 0
+    Cyclomatic complexity: 1
+    Cyclomatic complexity density: 100%
+    Halstead difficulty: 1.75
+    Halstead volume: 41.20902501875006
+    Halstead effort: 72.1157937828126
+
+  Function: <anonymous>.tag
+    Line No.: 57
+    Physical LOC: 3
+    Logical LOC: 1
+    Parameter count: 0
+    Cyclomatic complexity: 1
+    Cyclomatic complexity density: 100%
+    Halstead difficulty: 2
+    Halstead volume: 82.4541375165866
+    Halstead effort: 164.9082750331732
+
+C:\Users\peron\Desktop\gitSWE\colletta\code\public\ts\controller\InsertPageController.js
+
+  Physical LOC: 24
+  Logical LOC: 5
+  Mean parameter count: 0
+  Cyclomatic complexity: 1
+  Cyclomatic complexity density: 20%
+  Maintainability index: 125.03585491552471
+  Dependency count: 1
+
+C:\Users\peron\Desktop\gitSWE\colletta\code\public\ts\controller\POSManager.js
+
+  Physical LOC: 2
+  Logical LOC: 3
+  Mean parameter count: 0
+  Cyclomatic complexity: 1
+  Cyclomatic complexity density: 33.33333333333333%
+  Maintainability index: 137.96705861608794
+  Dependency count: 0
+
+C:\Users\peron\Desktop\gitSWE\colletta\code\public\ts\controller\PageController.js
+
+  Physical LOC: 11
+  Logical LOC: 5
+  Mean parameter count: 0
+  Cyclomatic complexity: 1
+  Cyclomatic complexity density: 20%
+  Maintainability index: 125.03585491552471
+  Dependency count: 1
+
+C:\Users\peron\Desktop\gitSWE\colletta\code\public\ts\controller\ProfileController.js
+
+  Physical LOC: 107
+  Logical LOC: 19
+  Mean parameter count: 1.6666666666666667
+  Cyclomatic complexity: 5
+  Cyclomatic complexity density: 26.31578947368421%
+  Maintainability index: 144.40102075466035
+  Dependency count: 3
+
+  Function: <anonymous>
+    Line No.: 2
+    Physical LOC: 8
+    Logical LOC: 1
+    Parameter count: 4
+    Cyclomatic complexity: 2
+    Cyclomatic complexity density: 200%
+    Halstead difficulty: 3.333333333333333
+    Halstead volume: 44.97261104228487
+    Halstead effort: 149.90870347428287
+
+  Function: <anonymous>
+    Line No.: 3
+    Physical LOC: 6
+    Logical LOC: 4
+    Parameter count: 2
+    Cyclomatic complexity: 2
+    Cyclomatic complexity density: 50%
+    Halstead difficulty: 3.545454545454546
+    Halstead volume: 98.09910819000817
+    Halstead effort: 347.8059290373017
+
+  Function: fulfilled
+    Line No.: 4
+    Physical LOC: 1
+    Logical LOC: 2
+    Parameter count: 1
+    Cyclomatic complexity: 1
+    Cyclomatic complexity density: 50%
+    Halstead difficulty: 1.25
+    Halstead volume: 20.67970000576925
+    Halstead effort: 25.84962500721156
+
+  Function: rejected
+    Line No.: 5
+    Physical LOC: 1
+    Logical LOC: 2
+    Parameter count: 1
+    Cyclomatic complexity: 1
+    Cyclomatic complexity density: 50%
+    Halstead difficulty: 1.25
+    Halstead volume: 20.67970000576925
+    Halstead effort: 25.84962500721156
+
+  Function: step
+    Line No.: 6
+    Physical LOC: 1
+    Logical LOC: 1
+    Parameter count: 1
+    Cyclomatic complexity: 2
+    Cyclomatic complexity density: 200%
+    Halstead difficulty: 3.055555555555556
+    Halstead volume: 72.33974351909447
+    Halstead effort: 221.0381051972331
+
+  Function: <anonymous>
+    Line No.: 6
+    Physical LOC: 1
+    Logical LOC: 1
+    Parameter count: 1
+    Cyclomatic complexity: 1
+    Cyclomatic complexity density: 100%
+    Halstead difficulty: 1.3333333333333333
+    Halstead volume: 13.931568569324174
+    Halstead effort: 18.575424759098897
+
+C:\Users\peron\Desktop\gitSWE\colletta\code\public\ts\controller\SavePageController.js
+
+  Physical LOC: 1
+  Logical LOC: 1
+  Mean parameter count: 0
+  Cyclomatic complexity: 1
+  Cyclomatic complexity density: 100%
+  Maintainability index: 171
+  Dependency count: 0
+
+C:\Users\peron\Desktop\gitSWE\colletta\code\public\ts\presenter\ClassPresenter.js
+
+  Physical LOC: 219
+  Logical LOC: 20
+  Mean parameter count: 1.6666666666666667
+  Cyclomatic complexity: 5
+  Cyclomatic complexity density: 25%
+  Maintainability index: 144.40102075466035
+  Dependency count: 4
+
+  Function: <anonymous>
+    Line No.: 2
+    Physical LOC: 8
+    Logical LOC: 1
+    Parameter count: 4
+    Cyclomatic complexity: 2
+    Cyclomatic complexity density: 200%
+    Halstead difficulty: 3.333333333333333
+    Halstead volume: 44.97261104228487
+    Halstead effort: 149.90870347428287
+
+  Function: <anonymous>
+    Line No.: 3
+    Physical LOC: 6
+    Logical LOC: 4
+    Parameter count: 2
+    Cyclomatic complexity: 2
+    Cyclomatic complexity density: 50%
+    Halstead difficulty: 3.545454545454546
+    Halstead volume: 98.09910819000817
+    Halstead effort: 347.8059290373017
+
+  Function: fulfilled
+    Line No.: 4
+    Physical LOC: 1
+    Logical LOC: 2
+    Parameter count: 1
+    Cyclomatic complexity: 1
+    Cyclomatic complexity density: 50%
+    Halstead difficulty: 1.25
+    Halstead volume: 20.67970000576925
+    Halstead effort: 25.84962500721156
+
+  Function: rejected
+    Line No.: 5
+    Physical LOC: 1
+    Logical LOC: 2
+    Parameter count: 1
+    Cyclomatic complexity: 1
+    Cyclomatic complexity density: 50%
+    Halstead difficulty: 1.25
+    Halstead volume: 20.67970000576925
+    Halstead effort: 25.84962500721156
+
+  Function: step
+    Line No.: 6
+    Physical LOC: 1
+    Logical LOC: 1
+    Parameter count: 1
+    Cyclomatic complexity: 2
+    Cyclomatic complexity density: 200%
+    Halstead difficulty: 3.055555555555556
+    Halstead volume: 72.33974351909447
+    Halstead effort: 221.0381051972331
+
+  Function: <anonymous>
+    Line No.: 6
+    Physical LOC: 1
+    Logical LOC: 1
+    Parameter count: 1
+    Cyclomatic complexity: 1
+    Cyclomatic complexity density: 100%
+    Halstead difficulty: 1.3333333333333333
+    Halstead volume: 13.931568569324174
+    Halstead effort: 18.575424759098897
+
+C:\Users\peron\Desktop\gitSWE\colletta\code\public\ts\presenter\ClassesPresenter.js
+
+  Physical LOC: 242
+  Logical LOC: 21
+  Mean parameter count: 1.6666666666666667
+  Cyclomatic complexity: 5
+  Cyclomatic complexity density: 23.809523809523807%
+  Maintainability index: 144.40102075466035
+  Dependency count: 5
+
+  Function: <anonymous>
+    Line No.: 2
+    Physical LOC: 8
+    Logical LOC: 1
+    Parameter count: 4
+    Cyclomatic complexity: 2
+    Cyclomatic complexity density: 200%
+    Halstead difficulty: 3.333333333333333
+    Halstead volume: 44.97261104228487
+    Halstead effort: 149.90870347428287
+
+  Function: <anonymous>
+    Line No.: 3
+    Physical LOC: 6
+    Logical LOC: 4
+    Parameter count: 2
+    Cyclomatic complexity: 2
+    Cyclomatic complexity density: 50%
+    Halstead difficulty: 3.545454545454546
+    Halstead volume: 98.09910819000817
+    Halstead effort: 347.8059290373017
+
+  Function: fulfilled
+    Line No.: 4
+    Physical LOC: 1
+    Logical LOC: 2
+    Parameter count: 1
+    Cyclomatic complexity: 1
+    Cyclomatic complexity density: 50%
+    Halstead difficulty: 1.25
+    Halstead volume: 20.67970000576925
+    Halstead effort: 25.84962500721156
+
+  Function: rejected
+    Line No.: 5
+    Physical LOC: 1
+    Logical LOC: 2
+    Parameter count: 1
+    Cyclomatic complexity: 1
+    Cyclomatic complexity density: 50%
+    Halstead difficulty: 1.25
+    Halstead volume: 20.67970000576925
+    Halstead effort: 25.84962500721156
+
+  Function: step
+    Line No.: 6
+    Physical LOC: 1
+    Logical LOC: 1
+    Parameter count: 1
+    Cyclomatic complexity: 2
+    Cyclomatic complexity density: 200%
+    Halstead difficulty: 3.055555555555556
+    Halstead volume: 72.33974351909447
+    Halstead effort: 221.0381051972331
+
+  Function: <anonymous>
+    Line No.: 6
+    Physical LOC: 1
+    Logical LOC: 1
+    Parameter count: 1
+    Cyclomatic complexity: 1
+    Cyclomatic complexity density: 100%
+    Halstead difficulty: 1.3333333333333333
+    Halstead volume: 13.931568569324174
+    Halstead effort: 18.575424759098897
+
+C:\Users\peron\Desktop\gitSWE\colletta\code\public\ts\presenter\DeveloperPresenter.js
+
+  Physical LOC: 231
+  Logical LOC: 20
+  Mean parameter count: 1.6666666666666667
+  Cyclomatic complexity: 5
+  Cyclomatic complexity density: 25%
+  Maintainability index: 144.40102075466035
+  Dependency count: 4
+
+  Function: <anonymous>
+    Line No.: 2
+    Physical LOC: 8
+    Logical LOC: 1
+    Parameter count: 4
+    Cyclomatic complexity: 2
+    Cyclomatic complexity density: 200%
+    Halstead difficulty: 3.333333333333333
+    Halstead volume: 44.97261104228487
+    Halstead effort: 149.90870347428287
+
+  Function: <anonymous>
+    Line No.: 3
+    Physical LOC: 6
+    Logical LOC: 4
+    Parameter count: 2
+    Cyclomatic complexity: 2
+    Cyclomatic complexity density: 50%
+    Halstead difficulty: 3.545454545454546
+    Halstead volume: 98.09910819000817
+    Halstead effort: 347.8059290373017
+
+  Function: fulfilled
+    Line No.: 4
+    Physical LOC: 1
+    Logical LOC: 2
+    Parameter count: 1
+    Cyclomatic complexity: 1
+    Cyclomatic complexity density: 50%
+    Halstead difficulty: 1.25
+    Halstead volume: 20.67970000576925
+    Halstead effort: 25.84962500721156
+
+  Function: rejected
+    Line No.: 5
+    Physical LOC: 1
+    Logical LOC: 2
+    Parameter count: 1
+    Cyclomatic complexity: 1
+    Cyclomatic complexity density: 50%
+    Halstead difficulty: 1.25
+    Halstead volume: 20.67970000576925
+    Halstead effort: 25.84962500721156
+
+  Function: step
+    Line No.: 6
+    Physical LOC: 1
+    Logical LOC: 1
+    Parameter count: 1
+    Cyclomatic complexity: 2
+    Cyclomatic complexity density: 200%
+    Halstead difficulty: 3.055555555555556
+    Halstead volume: 72.33974351909447
+    Halstead effort: 221.0381051972331
+
+  Function: <anonymous>
+    Line No.: 6
+    Physical LOC: 1
+    Logical LOC: 1
+    Parameter count: 1
+    Cyclomatic complexity: 1
+    Cyclomatic complexity density: 100%
+    Halstead difficulty: 1.3333333333333333
+    Halstead volume: 13.931568569324174
+    Halstead effort: 18.575424759098897
+
+C:\Users\peron\Desktop\gitSWE\colletta\code\public\ts\presenter\InsertPresenter.js
+
+  Physical LOC: 55
+  Logical LOC: 20
+  Mean parameter count: 1.6666666666666667
+  Cyclomatic complexity: 5
+  Cyclomatic complexity density: 25%
+  Maintainability index: 144.40102075466035
+  Dependency count: 4
+
+  Function: <anonymous>
+    Line No.: 2
+    Physical LOC: 8
+    Logical LOC: 1
+    Parameter count: 4
+    Cyclomatic complexity: 2
+    Cyclomatic complexity density: 200%
+    Halstead difficulty: 3.333333333333333
+    Halstead volume: 44.97261104228487
+    Halstead effort: 149.90870347428287
+
+  Function: <anonymous>
+    Line No.: 3
+    Physical LOC: 6
+    Logical LOC: 4
+    Parameter count: 2
+    Cyclomatic complexity: 2
+    Cyclomatic complexity density: 50%
+    Halstead difficulty: 3.545454545454546
+    Halstead volume: 98.09910819000817
+    Halstead effort: 347.8059290373017
+
+  Function: fulfilled
+    Line No.: 4
+    Physical LOC: 1
+    Logical LOC: 2
+    Parameter count: 1
+    Cyclomatic complexity: 1
+    Cyclomatic complexity density: 50%
+    Halstead difficulty: 1.25
+    Halstead volume: 20.67970000576925
+    Halstead effort: 25.84962500721156
+
+  Function: rejected
+    Line No.: 5
+    Physical LOC: 1
+    Logical LOC: 2
+    Parameter count: 1
+    Cyclomatic complexity: 1
+    Cyclomatic complexity density: 50%
+    Halstead difficulty: 1.25
+    Halstead volume: 20.67970000576925
+    Halstead effort: 25.84962500721156
+
+  Function: step
+    Line No.: 6
+    Physical LOC: 1
+    Logical LOC: 1
+    Parameter count: 1
+    Cyclomatic complexity: 2
+    Cyclomatic complexity density: 200%
+    Halstead difficulty: 3.055555555555556
+    Halstead volume: 72.33974351909447
+    Halstead effort: 221.0381051972331
+
+  Function: <anonymous>
+    Line No.: 6
+    Physical LOC: 1
+    Logical LOC: 1
+    Parameter count: 1
+    Cyclomatic complexity: 1
+    Cyclomatic complexity density: 100%
+    Halstead difficulty: 1.3333333333333333
+    Halstead volume: 13.931568569324174
+    Halstead effort: 18.575424759098897
+
+C:\Users\peron\Desktop\gitSWE\colletta\code\public\ts\view\ClassView.js
+
+  Physical LOC: 266
+  Logical LOC: 18
+  Mean parameter count: 1.6666666666666667
+  Cyclomatic complexity: 5
+  Cyclomatic complexity density: 27.77777777777778%
+  Maintainability index: 144.40102075466035
+  Dependency count: 2
+
+  Function: <anonymous>
+    Line No.: 2
+    Physical LOC: 8
+    Logical LOC: 1
+    Parameter count: 4
+    Cyclomatic complexity: 2
+    Cyclomatic complexity density: 200%
+    Halstead difficulty: 3.333333333333333
+    Halstead volume: 44.97261104228487
+    Halstead effort: 149.90870347428287
+
+  Function: <anonymous>
+    Line No.: 3
+    Physical LOC: 6
+    Logical LOC: 4
+    Parameter count: 2
+    Cyclomatic complexity: 2
+    Cyclomatic complexity density: 50%
+    Halstead difficulty: 3.545454545454546
+    Halstead volume: 98.09910819000817
+    Halstead effort: 347.8059290373017
+
+  Function: fulfilled
+    Line No.: 4
+    Physical LOC: 1
+    Logical LOC: 2
+    Parameter count: 1
+    Cyclomatic complexity: 1
+    Cyclomatic complexity density: 50%
+    Halstead difficulty: 1.25
+    Halstead volume: 20.67970000576925
+    Halstead effort: 25.84962500721156
+
+  Function: rejected
+    Line No.: 5
+    Physical LOC: 1
+    Logical LOC: 2
+    Parameter count: 1
+    Cyclomatic complexity: 1
+    Cyclomatic complexity density: 50%
+    Halstead difficulty: 1.25
+    Halstead volume: 20.67970000576925
+    Halstead effort: 25.84962500721156
+
+  Function: step
+    Line No.: 6
+    Physical LOC: 1
+    Logical LOC: 1
+    Parameter count: 1
+    Cyclomatic complexity: 2
+    Cyclomatic complexity density: 200%
+    Halstead difficulty: 3.055555555555556
+    Halstead volume: 72.33974351909447
+    Halstead effort: 221.0381051972331
+
+  Function: <anonymous>
+    Line No.: 6
+    Physical LOC: 1
+    Logical LOC: 1
+    Parameter count: 1
+    Cyclomatic complexity: 1
+    Cyclomatic complexity density: 100%
+    Halstead difficulty: 1.3333333333333333
+    Halstead volume: 13.931568569324174
+    Halstead effort: 18.575424759098897
+
+C:\Users\peron\Desktop\gitSWE\colletta\code\public\ts\view\ClassesView.js
+
+  Physical LOC: 258
+  Logical LOC: 18
+  Mean parameter count: 1.6666666666666667
+  Cyclomatic complexity: 5
+  Cyclomatic complexity density: 27.77777777777778%
+  Maintainability index: 144.40102075466035
+  Dependency count: 2
+
+  Function: <anonymous>
+    Line No.: 2
+    Physical LOC: 8
+    Logical LOC: 1
+    Parameter count: 4
+    Cyclomatic complexity: 2
+    Cyclomatic complexity density: 200%
+    Halstead difficulty: 3.333333333333333
+    Halstead volume: 44.97261104228487
+    Halstead effort: 149.90870347428287
+
+  Function: <anonymous>
+    Line No.: 3
+    Physical LOC: 6
+    Logical LOC: 4
+    Parameter count: 2
+    Cyclomatic complexity: 2
+    Cyclomatic complexity density: 50%
+    Halstead difficulty: 3.545454545454546
+    Halstead volume: 98.09910819000817
+    Halstead effort: 347.8059290373017
+
+  Function: fulfilled
+    Line No.: 4
+    Physical LOC: 1
+    Logical LOC: 2
+    Parameter count: 1
+    Cyclomatic complexity: 1
+    Cyclomatic complexity density: 50%
+    Halstead difficulty: 1.25
+    Halstead volume: 20.67970000576925
+    Halstead effort: 25.84962500721156
+
+  Function: rejected
+    Line No.: 5
+    Physical LOC: 1
+    Logical LOC: 2
+    Parameter count: 1
+    Cyclomatic complexity: 1
+    Cyclomatic complexity density: 50%
+    Halstead difficulty: 1.25
+    Halstead volume: 20.67970000576925
+    Halstead effort: 25.84962500721156
+
+  Function: step
+    Line No.: 6
+    Physical LOC: 1
+    Logical LOC: 1
+    Parameter count: 1
+    Cyclomatic complexity: 2
+    Cyclomatic complexity density: 200%
+    Halstead difficulty: 3.055555555555556
+    Halstead volume: 72.33974351909447
+    Halstead effort: 221.0381051972331
+
+  Function: <anonymous>
+    Line No.: 6
+    Physical LOC: 1
+    Logical LOC: 1
+    Parameter count: 1
+    Cyclomatic complexity: 1
+    Cyclomatic complexity density: 100%
+    Halstead difficulty: 1.3333333333333333
+    Halstead volume: 13.931568569324174
+    Halstead effort: 18.575424759098897
+
+C:\Users\peron\Desktop\gitSWE\colletta\code\public\ts\view\DeveloperView.js
+
+  Physical LOC: 217
+  Logical LOC: 19
+  Mean parameter count: 1.6666666666666667
+  Cyclomatic complexity: 5
+  Cyclomatic complexity density: 26.31578947368421%
+  Maintainability index: 144.40102075466035
+  Dependency count: 3
+
+  Function: <anonymous>
+    Line No.: 2
+    Physical LOC: 8
+    Logical LOC: 1
+    Parameter count: 4
+    Cyclomatic complexity: 2
+    Cyclomatic complexity density: 200%
+    Halstead difficulty: 3.333333333333333
+    Halstead volume: 44.97261104228487
+    Halstead effort: 149.90870347428287
+
+  Function: <anonymous>
+    Line No.: 3
+    Physical LOC: 6
+    Logical LOC: 4
+    Parameter count: 2
+    Cyclomatic complexity: 2
+    Cyclomatic complexity density: 50%
+    Halstead difficulty: 3.545454545454546
+    Halstead volume: 98.09910819000817
+    Halstead effort: 347.8059290373017
+
+  Function: fulfilled
+    Line No.: 4
+    Physical LOC: 1
+    Logical LOC: 2
+    Parameter count: 1
+    Cyclomatic complexity: 1
+    Cyclomatic complexity density: 50%
+    Halstead difficulty: 1.25
+    Halstead volume: 20.67970000576925
+    Halstead effort: 25.84962500721156
+
+  Function: rejected
+    Line No.: 5
+    Physical LOC: 1
+    Logical LOC: 2
+    Parameter count: 1
+    Cyclomatic complexity: 1
+    Cyclomatic complexity density: 50%
+    Halstead difficulty: 1.25
+    Halstead volume: 20.67970000576925
+    Halstead effort: 25.84962500721156
+
+  Function: step
+    Line No.: 6
+    Physical LOC: 1
+    Logical LOC: 1
+    Parameter count: 1
+    Cyclomatic complexity: 2
+    Cyclomatic complexity density: 200%
+    Halstead difficulty: 3.055555555555556
+    Halstead volume: 72.33974351909447
+    Halstead effort: 221.0381051972331
+
+  Function: <anonymous>
+    Line No.: 6
+    Physical LOC: 1
+    Logical LOC: 1
+    Parameter count: 1
+    Cyclomatic complexity: 1
+    Cyclomatic complexity density: 100%
+    Halstead difficulty: 1.3333333333333333
+    Halstead volume: 13.931568569324174
+    Halstead effort: 18.575424759098897
+
+C:\Users\peron\Desktop\gitSWE\colletta\code\public\ts\view\ExercisePageView.js
+
+  Physical LOC: 62
+  Logical LOC: 5
+  Mean parameter count: 0
+  Cyclomatic complexity: 1
+  Cyclomatic complexity density: 20%
+  Maintainability index: 125.03585491552471
+  Dependency count: 1
+
+C:\Users\peron\Desktop\gitSWE\colletta\code\public\ts\view\ExerciseView.js
+
+  Physical LOC: 782
+  Logical LOC: 18
+  Mean parameter count: 1.6666666666666667
+  Cyclomatic complexity: 5
+  Cyclomatic complexity density: 27.77777777777778%
+  Maintainability index: 144.40102075466035
+  Dependency count: 2
+
+  Function: <anonymous>
+    Line No.: 2
+    Physical LOC: 8
+    Logical LOC: 1
+    Parameter count: 4
+    Cyclomatic complexity: 2
+    Cyclomatic complexity density: 200%
+    Halstead difficulty: 3.333333333333333
+    Halstead volume: 44.97261104228487
+    Halstead effort: 149.90870347428287
+
+  Function: <anonymous>
+    Line No.: 3
+    Physical LOC: 6
+    Logical LOC: 4
+    Parameter count: 2
+    Cyclomatic complexity: 2
+    Cyclomatic complexity density: 50%
+    Halstead difficulty: 3.545454545454546
+    Halstead volume: 98.09910819000817
+    Halstead effort: 347.8059290373017
+
+  Function: fulfilled
+    Line No.: 4
+    Physical LOC: 1
+    Logical LOC: 2
+    Parameter count: 1
+    Cyclomatic complexity: 1
+    Cyclomatic complexity density: 50%
+    Halstead difficulty: 1.25
+    Halstead volume: 20.67970000576925
+    Halstead effort: 25.84962500721156
+
+  Function: rejected
+    Line No.: 5
+    Physical LOC: 1
+    Logical LOC: 2
+    Parameter count: 1
+    Cyclomatic complexity: 1
+    Cyclomatic complexity density: 50%
+    Halstead difficulty: 1.25
+    Halstead volume: 20.67970000576925
+    Halstead effort: 25.84962500721156
+
+  Function: step
+    Line No.: 6
+    Physical LOC: 1
+    Logical LOC: 1
+    Parameter count: 1
+    Cyclomatic complexity: 2
+    Cyclomatic complexity density: 200%
+    Halstead difficulty: 3.055555555555556
+    Halstead volume: 72.33974351909447
+    Halstead effort: 221.0381051972331
+
+  Function: <anonymous>
+    Line No.: 6
+    Physical LOC: 1
+    Logical LOC: 1
+    Parameter count: 1
+    Cyclomatic complexity: 1
+    Cyclomatic complexity density: 100%
+    Halstead difficulty: 1.3333333333333333
+    Halstead volume: 13.931568569324174
+    Halstead effort: 18.575424759098897
+
+C:\Users\peron\Desktop\gitSWE\colletta\code\public\ts\view\InsertPageView.js
+
+  Physical LOC: 46
+  Logical LOC: 18
+  Mean parameter count: 1.6666666666666667
+  Cyclomatic complexity: 5
+  Cyclomatic complexity density: 27.77777777777778%
+  Maintainability index: 144.40102075466035
+  Dependency count: 2
+
+  Function: <anonymous>
+    Line No.: 2
+    Physical LOC: 8
+    Logical LOC: 1
+    Parameter count: 4
+    Cyclomatic complexity: 2
+    Cyclomatic complexity density: 200%
+    Halstead difficulty: 3.333333333333333
+    Halstead volume: 44.97261104228487
+    Halstead effort: 149.90870347428287
+
+  Function: <anonymous>
+    Line No.: 3
+    Physical LOC: 6
+    Logical LOC: 4
+    Parameter count: 2
+    Cyclomatic complexity: 2
+    Cyclomatic complexity density: 50%
+    Halstead difficulty: 3.545454545454546
+    Halstead volume: 98.09910819000817
+    Halstead effort: 347.8059290373017
+
+  Function: fulfilled
+    Line No.: 4
+    Physical LOC: 1
+    Logical LOC: 2
+    Parameter count: 1
+    Cyclomatic complexity: 1
+    Cyclomatic complexity density: 50%
+    Halstead difficulty: 1.25
+    Halstead volume: 20.67970000576925
+    Halstead effort: 25.84962500721156
+
+  Function: rejected
+    Line No.: 5
+    Physical LOC: 1
+    Logical LOC: 2
+    Parameter count: 1
+    Cyclomatic complexity: 1
+    Cyclomatic complexity density: 50%
+    Halstead difficulty: 1.25
+    Halstead volume: 20.67970000576925
+    Halstead effort: 25.84962500721156
+
+  Function: step
+    Line No.: 6
+    Physical LOC: 1
+    Logical LOC: 1
+    Parameter count: 1
+    Cyclomatic complexity: 2
+    Cyclomatic complexity density: 200%
+    Halstead difficulty: 3.055555555555556
+    Halstead volume: 72.33974351909447
+    Halstead effort: 221.0381051972331
+
+  Function: <anonymous>
+    Line No.: 6
+    Physical LOC: 1
+    Logical LOC: 1
+    Parameter count: 1
+    Cyclomatic complexity: 1
+    Cyclomatic complexity density: 100%
+    Halstead difficulty: 1.3333333333333333
+    Halstead volume: 13.931568569324174
+    Halstead effort: 18.575424759098897
+
+C:\Users\peron\Desktop\gitSWE\colletta\code\public\ts\view\LoginView.js
+
+  Physical LOC: 54
+  Logical LOC: 17
+  Mean parameter count: 1.6666666666666667
+  Cyclomatic complexity: 5
+  Cyclomatic complexity density: 29.411764705882355%
+  Maintainability index: 144.40102075466035
+  Dependency count: 1
+
+  Function: <anonymous>
+    Line No.: 2
+    Physical LOC: 8
+    Logical LOC: 1
+    Parameter count: 4
+    Cyclomatic complexity: 2
+    Cyclomatic complexity density: 200%
+    Halstead difficulty: 3.333333333333333
+    Halstead volume: 44.97261104228487
+    Halstead effort: 149.90870347428287
+
+  Function: <anonymous>
+    Line No.: 3
+    Physical LOC: 6
+    Logical LOC: 4
+    Parameter count: 2
+    Cyclomatic complexity: 2
+    Cyclomatic complexity density: 50%
+    Halstead difficulty: 3.545454545454546
+    Halstead volume: 98.09910819000817
+    Halstead effort: 347.8059290373017
+
+  Function: fulfilled
+    Line No.: 4
+    Physical LOC: 1
+    Logical LOC: 2
+    Parameter count: 1
+    Cyclomatic complexity: 1
+    Cyclomatic complexity density: 50%
+    Halstead difficulty: 1.25
+    Halstead volume: 20.67970000576925
+    Halstead effort: 25.84962500721156
+
+  Function: rejected
+    Line No.: 5
+    Physical LOC: 1
+    Logical LOC: 2
+    Parameter count: 1
+    Cyclomatic complexity: 1
+    Cyclomatic complexity density: 50%
+    Halstead difficulty: 1.25
+    Halstead volume: 20.67970000576925
+    Halstead effort: 25.84962500721156
+
+  Function: step
+    Line No.: 6
+    Physical LOC: 1
+    Logical LOC: 1
+    Parameter count: 1
+    Cyclomatic complexity: 2
+    Cyclomatic complexity density: 200%
+    Halstead difficulty: 3.055555555555556
+    Halstead volume: 72.33974351909447
+    Halstead effort: 221.0381051972331
+
+  Function: <anonymous>
+    Line No.: 6
+    Physical LOC: 1
+    Logical LOC: 1
+    Parameter count: 1
+    Cyclomatic complexity: 1
+    Cyclomatic complexity density: 100%
+    Halstead difficulty: 1.3333333333333333
+    Halstead volume: 13.931568569324174
+    Halstead effort: 18.575424759098897
+
+C:\Users\peron\Desktop\gitSWE\colletta\code\public\ts\view\PageView.js
+
+  Physical LOC: 172
+  Logical LOC: 13
+  Mean parameter count: 1
+  Cyclomatic complexity: 2
+  Cyclomatic complexity density: 15.384615384615385%
+  Maintainability index: 129.050356688102
+  Dependency count: 1
+
+  Function: <anonymous>
+    Line No.: 8
+    Physical LOC: 6
+    Logical LOC: 4
+    Parameter count: 1
+    Cyclomatic complexity: 1
+    Cyclomatic complexity density: 25%
+    Halstead difficulty: 2.3333333333333335
+    Halstead volume: 127.99896988958001
+    Halstead effort: 298.66426307568673
+
+C:\Users\peron\Desktop\gitSWE\colletta\code\public\ts\view\ProfileView.js
+
+  Physical LOC: 376
+  Logical LOC: 18
+  Mean parameter count: 1.6666666666666667
+  Cyclomatic complexity: 5
+  Cyclomatic complexity density: 27.77777777777778%
+  Maintainability index: 144.40102075466035
+  Dependency count: 2
+
+  Function: <anonymous>
+    Line No.: 2
+    Physical LOC: 8
+    Logical LOC: 1
+    Parameter count: 4
+    Cyclomatic complexity: 2
+    Cyclomatic complexity density: 200%
+    Halstead difficulty: 3.333333333333333
+    Halstead volume: 44.97261104228487
+    Halstead effort: 149.90870347428287
+
+  Function: <anonymous>
+    Line No.: 3
+    Physical LOC: 6
+    Logical LOC: 4
+    Parameter count: 2
+    Cyclomatic complexity: 2
+    Cyclomatic complexity density: 50%
+    Halstead difficulty: 3.545454545454546
+    Halstead volume: 98.09910819000817
+    Halstead effort: 347.8059290373017
+
+  Function: fulfilled
+    Line No.: 4
+    Physical LOC: 1
+    Logical LOC: 2
+    Parameter count: 1
+    Cyclomatic complexity: 1
+    Cyclomatic complexity density: 50%
+    Halstead difficulty: 1.25
+    Halstead volume: 20.67970000576925
+    Halstead effort: 25.84962500721156
+
+  Function: rejected
+    Line No.: 5
+    Physical LOC: 1
+    Logical LOC: 2
+    Parameter count: 1
+    Cyclomatic complexity: 1
+    Cyclomatic complexity density: 50%
+    Halstead difficulty: 1.25
+    Halstead volume: 20.67970000576925
+    Halstead effort: 25.84962500721156
+
+  Function: step
+    Line No.: 6
+    Physical LOC: 1
+    Logical LOC: 1
+    Parameter count: 1
+    Cyclomatic complexity: 2
+    Cyclomatic complexity density: 200%
+    Halstead difficulty: 3.055555555555556
+    Halstead volume: 72.33974351909447
+    Halstead effort: 221.0381051972331
+
+  Function: <anonymous>
+    Line No.: 6
+    Physical LOC: 1
+    Logical LOC: 1
+    Parameter count: 1
+    Cyclomatic complexity: 1
+    Cyclomatic complexity density: 100%
+    Halstead difficulty: 1.3333333333333333
+    Halstead volume: 13.931568569324174
+    Halstead effort: 18.575424759098897
+
+C:\Users\peron\Desktop\gitSWE\colletta\code\public\ts\view\RegistrationView.js
+
+  Physical LOC: 115
+  Logical LOC: 18
+  Mean parameter count: 1.6666666666666667
+  Cyclomatic complexity: 5
+  Cyclomatic complexity density: 27.77777777777778%
+  Maintainability index: 144.40102075466035
+  Dependency count: 2
+
+  Function: <anonymous>
+    Line No.: 2
+    Physical LOC: 8
+    Logical LOC: 1
+    Parameter count: 4
+    Cyclomatic complexity: 2
+    Cyclomatic complexity density: 200%
+    Halstead difficulty: 3.333333333333333
+    Halstead volume: 44.97261104228487
+    Halstead effort: 149.90870347428287
+
+  Function: <anonymous>
+    Line No.: 3
+    Physical LOC: 6
+    Logical LOC: 4
+    Parameter count: 2
+    Cyclomatic complexity: 2
+    Cyclomatic complexity density: 50%
+    Halstead difficulty: 3.545454545454546
+    Halstead volume: 98.09910819000817
+    Halstead effort: 347.8059290373017
+
+  Function: fulfilled
+    Line No.: 4
+    Physical LOC: 1
+    Logical LOC: 2
+    Parameter count: 1
+    Cyclomatic complexity: 1
+    Cyclomatic complexity density: 50%
+    Halstead difficulty: 1.25
+    Halstead volume: 20.67970000576925
+    Halstead effort: 25.84962500721156
+
+  Function: rejected
+    Line No.: 5
+    Physical LOC: 1
+    Logical LOC: 2
+    Parameter count: 1
+    Cyclomatic complexity: 1
+    Cyclomatic complexity density: 50%
+    Halstead difficulty: 1.25
+    Halstead volume: 20.67970000576925
+    Halstead effort: 25.84962500721156
+
+  Function: step
+    Line No.: 6
+    Physical LOC: 1
+    Logical LOC: 1
+    Parameter count: 1
+    Cyclomatic complexity: 2
+    Cyclomatic complexity density: 200%
+    Halstead difficulty: 3.055555555555556
+    Halstead volume: 72.33974351909447
+    Halstead effort: 221.0381051972331
+
+  Function: <anonymous>
+    Line No.: 6
+    Physical LOC: 1
+    Logical LOC: 1
+    Parameter count: 1
+    Cyclomatic complexity: 1
+    Cyclomatic complexity density: 100%
+    Halstead difficulty: 1.3333333333333333
+    Halstead volume: 13.931568569324174
+    Halstead effort: 18.575424759098897
+
+C:\Users\peron\Desktop\gitSWE\colletta\code\public\ts\view\SavePageView.js
+
+  Physical LOC: 12
+  Logical LOC: 5
+  Mean parameter count: 0
+  Cyclomatic complexity: 1
+  Cyclomatic complexity density: 20%
+  Maintainability index: 125.03585491552471
+  Dependency count: 1
+
+C:\Users\peron\Desktop\gitSWE\colletta\code\public\ts\view\SaveView.js
+
+  Physical LOC: 21
+  Logical LOC: 5
+  Mean parameter count: 0
+  Cyclomatic complexity: 1
+  Cyclomatic complexity density: 20%
+  Maintainability index: 125.03585491552471
+  Dependency count: 1
+
+C:\Users\peron\Desktop\gitSWE\colletta\code\public\ts\view\SearchView.js
+
+  Physical LOC: 169
+  Logical LOC: 18
+  Mean parameter count: 1.6666666666666667
+  Cyclomatic complexity: 5
+  Cyclomatic complexity density: 27.77777777777778%
+  Maintainability index: 144.40102075466035
+  Dependency count: 2
+
+  Function: <anonymous>
+    Line No.: 2
+    Physical LOC: 8
+    Logical LOC: 1
+    Parameter count: 4
+    Cyclomatic complexity: 2
+    Cyclomatic complexity density: 200%
+    Halstead difficulty: 3.333333333333333
+    Halstead volume: 44.97261104228487
+    Halstead effort: 149.90870347428287
+
+  Function: <anonymous>
+    Line No.: 3
+    Physical LOC: 6
+    Logical LOC: 4
+    Parameter count: 2
+    Cyclomatic complexity: 2
+    Cyclomatic complexity density: 50%
+    Halstead difficulty: 3.545454545454546
+    Halstead volume: 98.09910819000817
+    Halstead effort: 347.8059290373017
+
+  Function: fulfilled
+    Line No.: 4
+    Physical LOC: 1
+    Logical LOC: 2
+    Parameter count: 1
+    Cyclomatic complexity: 1
+    Cyclomatic complexity density: 50%
+    Halstead difficulty: 1.25
+    Halstead volume: 20.67970000576925
+    Halstead effort: 25.84962500721156
+
+  Function: rejected
+    Line No.: 5
+    Physical LOC: 1
+    Logical LOC: 2
+    Parameter count: 1
+    Cyclomatic complexity: 1
+    Cyclomatic complexity density: 50%
+    Halstead difficulty: 1.25
+    Halstead volume: 20.67970000576925
+    Halstead effort: 25.84962500721156
+
+  Function: step
+    Line No.: 6
+    Physical LOC: 1
+    Logical LOC: 1
+    Parameter count: 1
+    Cyclomatic complexity: 2
+    Cyclomatic complexity density: 200%
+    Halstead difficulty: 3.055555555555556
+    Halstead volume: 72.33974351909447
+    Halstead effort: 221.0381051972331
+
+  Function: <anonymous>
+    Line No.: 6
+    Physical LOC: 1
+    Logical LOC: 1
+    Parameter count: 1
+    Cyclomatic complexity: 1
+    Cyclomatic complexity density: 100%
+    Halstead difficulty: 1.3333333333333333
+    Halstead volume: 13.931568569324174
+    Halstead effort: 18.575424759098897
+
+

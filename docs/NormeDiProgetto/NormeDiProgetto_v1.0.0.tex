@@ -21,6 +21,7 @@
 \usepackage{listings}
 \usepackage{multicol}
 \setlength{\columnsep}{1cm}
+\usepackage{float} 
 
 \definecolor{lightgray}{rgb}{.9,.9,.9}
 \definecolor{darkgray}{rgb}{.4,.4,.4}
@@ -92,9 +93,11 @@
 		\rowcolor{LightBlue}
 		\color{white}\bfseries Versione & \color{white}\bfseries Data & \multicolumn{1}{c}{\color{white}\bfseries Autore}
 		& \color{white}\bfseries Ruolo & \multicolumn{1}{c}{\color{white}\bfseries Descrizione}\\[0.25cm]
-		3.0.1 & 2019-05-07 & Michele Bortone & Amministratore & Aggiornamento  \S2.2.4 e \S3.1.4\\ \hline
+		4.0.0 & 2019-05-10 & Eleonora Peagno & Responsabile & Approvazione per il rilascio \\ \hline
+		3.1.0 & 2019-05-08 & Benedetto Cosentino & Verificatore & Verifica documento \\ \hline
+		3.0.1 & 2019-05-07 & Michele Bortone & Amministratore & Aggiornamenti  \S2.2.4 e \S3.1.4\\ \hline
 		3.0.0 & 2019-04-11 & Giovanni Bergo & Responsabile & Approvazione per il rilascio \\ \hline
-		2.1.0 & 2019-04-11 & Michele Bortone & Verificatore & Documento \newline verificato \\ \hline
+		2.1.0 & 2019-04-11 & Michele Bortone & Verificatore & Verifica documento \\ \hline
 		2.0.3 & 2019-04-10 & Eleonora Peagno & Amministratore & Aggiornamento \S2.2.4.4 e \S2.2.5.2 \\ \hline
 		2.0.2 & 2019-03-19 & Giovanni Bergo \newline Giovanni Peron & Amministratore & Correzione errori RP \\ \hline
 		2.0.1 & 2019-03-18 & Giovanni Bergo \newline Giovanni Peron & Amministratore & Correzione errori RP \\ \hline
@@ -356,11 +359,13 @@ In caso di necessità verrà fornito supporto alla proponente MIVOQ S.r.l. e l'a
 	\paragraph{Uso di TSLint}
 	Al fine di evitare errori di stile del codice, in WebStorm dovrà essere abilitato TSLint, nel seguente modo: Settings — Languages \& Frameworks — TypeScript — TSLint. Utilizzare il seguente comando per installare TSLint:
 	
-	\begin{minipage}{.5\textwidth}
+	\begin{center}
+		\begin{minipage}{.5\textwidth}
 		\begin{lstlisting}[caption=Installazione di TSLint,numbers=none]
 			$ npm install tslint typescript
 		\end{lstlisting}
 	\end{minipage}
+	\end{center}
 	
 	Per fare in modo che TSLint funzioni correttamente è necessario configurarlo utilizzando il file tsconfig.json presente all'interno della cartella principale del sorgente dell'applicazione. È possibile quindi settare l'impostazione ``Configuration file'' su Automated search* o specificare manualmente il percorso del file appena citato.
 	
@@ -480,19 +485,23 @@ In caso di necessità verrà fornito supporto alla proponente MIVOQ S.r.l. e l'a
 	\noindent \\
 	Per la generazione automatica della documentazione in stile JavaDoc, è stato utilizzato il software TypeDoc. Per essere utilizzato TypeDoc necessita di essere installato tramite npm nel vostro sistema. Al fine di effettuare tale operazione utilizzare il seguente comando:
 	
-	\begin{minipage}{.5\textwidth}
+	\begin{center}
+		\begin{minipage}{.5\textwidth}
 		\begin{lstlisting}[caption=Installazione di TypeDoc,numbers=none]
 			$ npm install --global typedoc
 		\end{lstlisting}
-	\end{minipage}		
+	\end{minipage}	
+	\end{center}	
 	
 	Per utilizzare TypeDoc e produrre la documentazione automatica basata sui commenti introdotti nel sorgente prodotto, è necessario invocare il seguente comando dalla cartella principale dell’applicazione:
 	
-	\begin{minipage}{.5\textwidth}
+	\begin{center}
+		\begin{minipage}{.5\textwidth}
 		\begin{lstlisting}[caption=Installazione di TSLint,numbers=none]
 			$ typedoc -- out docs ./ src
 		\end{lstlisting}
-	\end{minipage}			
+	\end{minipage}	
+	\end{center}		
 	
 	\section{Processi di Supporto}
 	\subsection{Documentazione}
@@ -1112,7 +1121,7 @@ Infine sulla base delle valutazioni assegnate ad ogni attributo del processo, po
 	\item \textbf{4 - Predictable:} il processo raggiunge i propri obiettivi all'interno di limiti di controllo definiti. La sostanziale differenza con il livello estabilished è che ora il processo è quantitativamente compreso e controllato. A questo livello vengono associati gli attributi process measurement e process control.
 	\item \textbf{5 - Optimizing:} le attività del processo sono ottimizzate per affrontare bisogni progettuali presenti e futuri, il processo viene sottoposto a miglioramento continuo. Gli attributi associati a questo livello sono process innovation e process optimization.
 \end{itemize}
-\begin{figure}[htbp]
+\begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.7]{images/ISOIEC15504.pdf}
 	\caption{Riepilogo modello ISO/IEC 15504}
@@ -1121,12 +1130,6 @@ Infine sulla base delle valutazioni assegnate ad ogni attributo del processo, po
 \textbf{Ciclo di Deming} \\
 Il ciclo di Deming, noto anche come PDCA (dall'inglese \textbf{P}lan-\textbf{D}o-\textbf{C}heck-\textbf{A}ct), è un metodo di gestione iterativo suddiviso in quattro stadi ed utilizzato per il controllo del miglioramento continuo dei processi e dei prodotti. Esso permette, nello specifico, di migliorare gradualmente la qualità dei processi in termini di efficienza ed efficacia, ottimizzando l'uso delle risorse e misurando la loro conformità rispetto le aspettative. \\
 La seguente immagine riporta le attività previste a tale scopo e ne segue una breve descrizione. 
-\begin{figure}[htbp]
-	\centering
-	\includegraphics[scale=0.5]{images/pdca.png}
-	\caption{Principio del miglioramento continuo secondo PDCA}
-	
-\end{figure}
 
 \begin{itemize}
 	\item \textbf{Plan}: prevede la definizione delle attività, scadenze, responsabilità e risorse atti a raggiungere e soddisfare degli obiettivi di miglioramento;
@@ -1134,7 +1137,12 @@ La seguente immagine riporta le attività previste a tale scopo e ne segue una b
 	\item \textbf{Check}: prevede la verifica dell'esito del processo in seguito all'attuazione delle strategie di miglioramento ed il confronto tra i risultati raccolti durante la fase Do e quelli attesi (specificati nella fase Plan) per stimare l'impatto effettivo del o dei miglioramenti apportati;
 	\item \textbf{Act}: prevede l'attuazione delle strategie che hanno portato a dei miglioramenti. Nel caso i risultati attuali si distacchino da quelli previsti, si possono compiere delle azioni di correzione in seguito ad un'approfondita analisi delle cause di tale errore. 
 \end{itemize}
-
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.5]{images/pdca.png}
+	\caption{Principio del miglioramento continuo secondo PDCA}
+	
+\end{figure}
 \subsection{Attività: assicurazione della qualità di prodotto}
 Questa attività ha lo scopo di assicurare che i prodotti rispettino le caratteristiche di qualità concordate con il committente. La qualità di prodotto non deve essere assicurata al solo completamento del prodotto ma anche durante tutto il suo periodo di sviluppo. \\
 Al fine di assicurare la qualità del software, ai verificatori è assegnato il compito di controllare che il sistema di testing e verifica rispettino i parametri descritti nel \textit{PianoDiQualifica\_v2.0.0} e nelle \textit{NormeDiProgetto\_v2.0.0} e di controllare che il versionamento avvenga secondo le specifiche riportate nelle \textit{Norme di progetto} e che i relativi strumenti vengano utilizzati correttamente. Tali controlli vanno eseguiti al rilascio di ogni nova versione dei documenti citati e ogni volta che viene effettuata una modifica nella configurazione del sistema.\\

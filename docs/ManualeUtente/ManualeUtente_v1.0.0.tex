@@ -93,10 +93,10 @@
 		\rowcolor{LightBlue}
 		\color{white}\bfseries Versione & \color{white}\bfseries Data & \multicolumn{1}{c}{\color{white}\bfseries Autore}
 		& \color{white}\bfseries Ruolo & \multicolumn{1}{c}{\color{white}\bfseries Descrizione}\\[0.25cm]
-		0.3.0 & 2019-04-11 & Eleonora Peagno & Responsabile &  \\ \hline
-		0.2.0 & 2019-04-11 & Verifica documento & Verificatore &  \\ \hline
-		0.1.2 & 2019-04-11 & Enrico Marcato & Progettista &  \\ \hline
-		0.1.1 & 2019-04-11 & Enrico Marcato & Progettista &  \\ \hline
+		1.0.0 & 2019-04-11 & Eleonora Peagno & Responsabile & Approvazione per il \newline rilascio \\ \hline
+		0.2.0 & 2019-04-11 & Giovanni Peron & Verificatore & Verifica documento \\ \hline
+		0.1.2 & 2019-04-11 & Enrico Marcato & Progettista & Sistemazione requisiti e immagini \S3 \\ \hline
+		0.1.1 & 2019-04-11 & Enrico Marcato & Progettista & Aggiunte funzionalità \S3  \\ \hline
 		0.1.0 & 2019-04-11 & Giovanni Bergo & Verificatore & Verifica documento \\ \hline
 		0.0.2 & 2019-04-07 & Enrico Marcato & Progettista & Redatto \S2 e \S3 \\ \hline
 		0.0.1 & 2019-04-05 & Enrico Marcato & Progettista & Creazione documento e stesura \S1 \\ 
@@ -115,7 +115,7 @@
 	
 	\section{Introduzione}
 	\subsection{Scopo del documento}
-	Lo scopo di questo documento è quello di illustrare le funzionalità che l'applicazione possiede e spiegarne l'utilizzo. Il documento è incrementale quindi subirà delle modifiche fino a quando lo sviluppo dell'applicazione non sarà completato.
+	Lo scopo di questo documento è quello di illustrare le funzionalità che l'applicazione possiede e spiegarne l'utilizzo. Esso rappresenta una guida per l'utilizzo del prodotto.
 	\subsection{Scopo del prodotto}
 	Lo scopo del prodotto è creare una piattaforma collaborativa di raccolta dati su cui sia possibile predisporre e/o svolgere esercizi di analisi grammaticale. La raccolta vorrebbe avere il fine di fornire a sviluppatori e ricercatori dati sufficienti per applicare metodi di apprendimento automatico$^*$. Nello specifico si vorrebbe poter insegnare ad un elaboratore a svolgere gli stessi esercizi proposti agli utenti, divenendo una sorta di correttore automatico.
 	
@@ -163,10 +163,10 @@
 
 	\subsection{Download}
 	\subsubsection{NodeJS}
-	Scaricare NodeJS per il sistema operativo desiderato da https://nodejs.org/en/download.
+	Scaricare NodeJS per il sistema operativo desiderato da \url{https://nodejs.org/en/download}.
 	\subsubsection{Colletta}		
 	L'applicazione è disponibile alla seguente repository Github:
-	https://github.com/ottoBitPd/colletta-poc.
+	\url{https://github.com/ottoBitPd/colletta-poc}.
 	
 	\subsection{Installazione}
 	La piattaforma è provvisoriamente raggiungibile solo tramite server locale.
@@ -176,9 +176,9 @@
 	 	npm install
 	 	\end{lstlisting}
 	 	\item \textbf{Eseguire il server:}\\ Sempre da terminale e nella cartella principale, utilizzare il seguente comando:\begin{lstlisting}[numbers=none]
-	 	node index.js
+	 	node public/index.js
 	 	\end{lstlisting}
-	 	\item \textbf{Accedere all'applicazione:}\\ Apri il tuo browser e vai all'indirizzo: http://localhost:8080
+	 	\item \textbf{Accedere all'applicazione:}\\ Apri il tuo browser e vai all'indirizzo: \url{http://localhost:8080}
 	 \end{enumerate}
  
  \newpage
@@ -301,7 +301,7 @@
 	\subsection{Svolgere esercizi assegnati}
 	Questa funzionalità è riservata all'utente di tipo \textbf{Allievo}.
 	
-	Un insegnante assegna esercizi ad una classe, gli alunni appartenenti ad essa possono svolgerli seguendo i seguenti passi:
+	\noindent Un insegnante assegna esercizi ad una classe, gli alunni appartenenti ad essa possono svolgerli seguendo i seguenti passi:
 	
 	\begin{enumerate}
 		\item Autenticarsi e cliccare su "Le tue classi" nella navbar;
@@ -319,7 +319,7 @@
 	\subsection{Inserire una frase e fornire una soluzione}
 		Questa funzionalità è riservata all'utente di tipo \textbf{Insegnante}.
 		
-		Un insegnante per inserire un esercizio nella piattaforma deve inserire una frase e la corrispondente soluzione.
+		\noindent Un insegnante per inserire un esercizio nella piattaforma deve inserire una frase e la corrispondente soluzione.
 		
 		\begin{enumerate}
 			\item Autenticarsi e cliccare su "Crea esercizio" nella navbar;
@@ -355,7 +355,7 @@
 		Questa funzionalità è riservata all'utente di tipo \textbf{Insegnante}.\\
 		Assegnando esercizi ad una classe si permette agli allievi appartenti alla stessa di svolgere tali esercizi.
 		
-		Attenzione: l'esercizio che verrà assegnato deve essere già esistente.
+		\noindent \textbf{Attenzione:} l'esercizio che verrà assegnato deve essere già esistente.
 		
 		\begin{enumerate}
 			\item Autenticarsi e cliccare su "Area classi" nella navbar;
@@ -384,19 +384,13 @@
 	\end{figure}
 			
 	\newpage
-	\subsection{Segnalazione abuso}
-	Nel caso in cui sia necessario segnalare un contenuto che ritieni non debba essere presente nella piattaforma.
-	\begin{enumerate}
-		\item Svolgere Ricerca esercizio(3.5) con la frase da segnalare;
-		\item clicca su "Segnala".
-	\end{enumerate}
-	
+
 	\subsection{Autenticazione riservata allo sviluppatore}
 		Questa funzionalità è riservata all'utente di tipo \textbf{Sviluppatore}.\\
 		
-		Lo sviluppatore ha accesso alla visione dei dati presenti nella piattaforma con inoltre la possibilità di filtrarli e scaricarli in diversi formati.\\ Per accedere a questa area seguire i seguenti passi:\\
+	\noindent	Lo sviluppatore ha accesso alla visione dei dati presenti nella piattaforma con inoltre la possibilità di filtrarli e scaricarli in diversi formati.\\ Per accedere a questa area seguire i seguenti passi:\\
 		
-		\textbf{Attenzione:} Lo sviluppatore deve essere in possesso della password consegnata dai possessori della piattaforma.
+	\noindent	\textbf{Attenzione:} Lo sviluppatore deve essere in possesso della password consegnata dai possessori della piattaforma.
 		
 		\begin{enumerate}
 			\item Accedere alla homepage della piattaforma;
@@ -413,7 +407,8 @@
 
 	\newpage
 	\subsection{Filtraggio dati}
-		Questa funzionalità è riservata all'utente di tipo \textbf{Sviluppatore}.\\
+		Questa funzionalità è riservata all'utente di tipo \textbf{Sviluppatore}.
+		\\ \\
 		Lo sviluppatore può filtrare i dati riguardanti un esercizio inserendo una valutazione minima e/o massima con le date riguardanti un ristretto periodo di tempo . Ogni utente registrato per questioni relative alla privacy è riconoscibile dallo sviluppatore solamente tramite un hash. Se lo sviluppatore individua personalmente un utente che ritiene affidabile, inserendo il suo codice hash può filtrare gli esercizi da lui eseguiti.
 		
 		\begin{enumerate}
@@ -422,15 +417,16 @@
 			\item Cliccare su "Filtra".
 		\end{enumerate}
 	
-		\begin{center}
+
 		\begin{figure}[h]
 		\centering
 		\includegraphics[scale=0.65]{images/filtrodati.jpg}
 		\caption{Filtraggio dati}
 		\end{figure}
-		\end{center}
+		
 	
 	\newpage
+	
 	\subsection{Scaricare modello}
 		Questa funzionalità è riservata all'utente di tipo \textbf{Sviluppatore}.\\
 		
@@ -448,8 +444,7 @@
 				
 	\subsection{Scaricare dati}
 		Questa funzionalità è riservata all'utente di tipo \textbf{Sviluppatore}.\\
-			Questa sezione verrà implementata successivamente.
-			
+	
 		I dati sono disponibili al download in formato csv e txt.
 		\begin{enumerate}
 			\item Accedere alla piattaforma e autenticarsi;
@@ -465,7 +460,7 @@
 	\subsection{A}
 		\subsubsection{Apprendimento automatico}
 	L'apprendimento automatico rappresenta un insieme di meccanismi che permettono ad un calcolatore
-	di migliorare nel tempo l'esecuzione di un compito.
+	di migliorare nel tempo l'esecuzione di un esercizio.
 	
 	\subsection{N}
 		\subsubsection{NodeJS}

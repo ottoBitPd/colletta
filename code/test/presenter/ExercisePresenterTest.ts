@@ -181,7 +181,7 @@ describe('ExercisePresenter', function() {
                        return;
                    })
            });
-            */
+
            it('should return exercise not insert solution', async function () {
                test.update(app);
                session.username="ciao";
@@ -200,7 +200,7 @@ describe('ExercisePresenter', function() {
                        return;
                    })
            });
-
+*/
            it('should return exercise not update', async function () {
                test.update(app);
                session.username="ciao";

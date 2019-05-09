@@ -94,7 +94,8 @@
 		\color{white}\bfseries Versione & \color{white}\bfseries Data & \multicolumn{1}{c}{\color{white}\bfseries Autore}
 		& \color{white}\bfseries Ruolo & \multicolumn{1}{c}{\color{white}\bfseries Descrizione}\\[0.25cm]
 		4.0.0 & 2019-05-10 & Eleonora Peagno & Responsabile & Approvazione per il rilascio \\ \hline
-		3.1.0 & 2019-05-08 & Benedetto Cosentino & Verificatore & Verifica documento \\ \hline
+		3.1.0 & 2019-05-09 & Benedetto Cosentino & Verificatore & Verifica documento \\ \hline
+		3.0.2 & 2019-05-08 & Michele Bortone & Amministratore & Ampliamento \S3.4 e \S4 \\ \hline
 		3.0.1 & 2019-05-07 & Michele Bortone & Amministratore & Aggiornamenti  \S2.2.4 e \S3.1.4\\ \hline
 		3.0.0 & 2019-04-11 & Giovanni Bergo & Responsabile & Approvazione per il rilascio \\ \hline
 		2.1.0 & 2019-04-11 & Michele Bortone & Verificatore & Verifica documento \\ \hline
@@ -191,13 +192,13 @@ Capitolato C2 Colletta: Piattaforma per Raccolta dati mediante esercizi di gramm
 	\subsubsection{Documentazione fornita}
 	Elenchiamo nella parte sottostante i documenti che verranno forniti alla proponente MIVOQ S.r.l. e ai committenti Prof. Vardanega, Prof. Cardin: 
 	\begin{itemize}
-	\item \textbf{Pianificazione, consegna e completamento del progetto:} descritte all’interno del \textit{PianoDiProgetto\_v3.0.0};
-	\item \textbf{Analisi}: l’analisi dei casi d’uso e dei requisiti, contenute all’interno del documento \textit{AnalisiDeiRequisiti\_v2.0.0};
+	\item \textbf{Pianificazione, consegna e completamento del progetto:} descritte all’interno del \textit{PianoDiProgetto\_v4.0.0};
+	\item \textbf{Analisi}: l’analisi dei casi d’uso e dei requisiti, contenute all’interno del documento \textit{AnalisiDeiRequisiti\_v4.0.0};
 	\item \textbf{Progettazione dell’architettura}: l’applicazione e le tecnologie
 	adottate e attuate nella Proof of Concept della Technology Baseline;
 	\item\textbf{ Progettazione di Dettaglio}: l’insieme di classi, metodi, presentate durante la Product Baseline;
-	\item \textbf{Verifica e Validazione}: descritte all’interno del \textit{PianoDiQualifica\_v3.0.0};
-	\item \textbf{Garanzia della qualità dei processi e di prodotto}: descritte all’interno del \textit{PianoDiQualifica\_v3.0.0}.
+	\item \textbf{Verifica e Validazione}: descritte all’interno del \textit{PianoDiQualifica\_v4.0.0};
+	\item \textbf{Garanzia della qualità dei processi e di prodotto}: descritte all’interno del \textit{PianoDiQualifica\_v4.0.0}.
 	\end{itemize}
 	
 	\subsubsection{Studio di fattibilità}
@@ -334,9 +335,12 @@ In caso di necessità verrà fornito supporto alla proponente MIVOQ S.r.l. e l'a
 	\end{itemize}
 	\paragraph{Design Patterns\\}
 	Compito dei Progettisti è adottare un design pattern opportuno per un problema ricorrente che si presenta. Ciò consente ai Programmatori di seguire delle linee guida consolidate nell'implementazione delle componenti previste dal Progettista. I vantaggi di tali soluzioni dovranno essere motivati spiegandone la struttura e il funzionamento.
-	\subsubsection{Strumenti per la progettazione}
-	\paragraph{Astah\\}
-	È un programma per la modellazione di diagrammi UML che verrà utilizzato dal gruppo per la creazione di tutti i diagrammi necessari.
+	\paragraph{Strumenti}
+	\begin{itemize}
+		\item{\textbf{Astah}\noindent \\
+		È un programma per la modellazione di diagrammi UML che verrà utilizzato dal gruppo per la creazione di tutti i diagrammi necessari.}
+	\end{itemize}
+	
 	
 	\subsubsection{Codifica}
 	L'attività di codifica inizierà quando la progettazione sarà terminata. Pertanto le norme sottostanti potranno subire variazioni in seguito alla successiva revisione.
@@ -352,8 +356,9 @@ In caso di necessità verrà fornito supporto alla proponente MIVOQ S.r.l. e l'a
 	
 	\paragraph{Linguaggi di codifica utilizzati:}
 	\begin{itemize}
-		\item JavaScript: Node.js per la parte back-end e routing e Javascript per la parte dinamica del front-end
-		\item HTML e CSS: per la struttura e la presentazione del front-end
+		\item \textbf{TypeScript} per la parte back-end e routing tramite Node.js.Questo linguaggio estende la sintassi di javascript permettendo, per esempio, la tipizzazione forte e l'uso delle interfacce;
+		\item \textbf{JavaScript} per l'aggiunta di funzionalità dinamiche al front-end;
+		\item \textbf{HTML e CSS} per la struttura e la presentazione del front-end.
 	\end{itemize}
 	
 	\paragraph{Uso di TSLint}
@@ -471,37 +476,40 @@ In caso di necessità verrà fornito supporto alla proponente MIVOQ S.r.l. e l'a
 		\end{lstlisting}
 	\end{itemize}
 	
-	\subsubsection{Strumenti per la codifica}
-
-	\paragraph{WebStorm} \noindent \\
-	È un IDE di JetBrains per lo sviluppo di Web application, che supporta JavaScript, Node.js, HTML e CSS.
-	L'editor offre varie funzionalità, tra cui:
+	\paragraph{Strumenti}
 	\begin{itemize}
-		\item Node.js Debugger
-		\item TSLint
+		\item{\textbf{WebStorm}} \noindent \\
+		È un IDE di JetBrains per lo sviluppo di Web application, che supporta JavaScript, Node.js, HTML e CSS.
+		L'editor offre varie funzionalità, tra cui:
+		\begin{itemize}
+			\item Node.js Debugger
+			\item TSLint
+		\end{itemize}
+		
+		\item{\textbf{TypeDoc}}
+		\noindent \\
+		Per la generazione automatica della documentazione in stile JavaDoc, è stato utilizzato il software TypeDoc. Per essere utilizzato TypeDoc necessita di essere installato tramite npm nel vostro sistema. Al fine di effettuare tale operazione utilizzare il seguente comando:
+		
+		\begin{center}
+			\begin{minipage}{.5\textwidth}
+				\begin{lstlisting}[caption=Installazione di TypeDoc,numbers=none]
+				$ npm install --global typedoc
+				\end{lstlisting}
+			\end{minipage}	
+		\end{center}	
+		
+		Per utilizzare TypeDoc e produrre la documentazione automatica basata sui commenti introdotti nel sorgente prodotto, è necessario invocare il seguente comando dalla cartella principale dell’applicazione:
+		
+		\begin{center}
+			\begin{minipage}{.5\textwidth}
+				\begin{lstlisting}[caption=Installazione di TSLint,numbers=none]
+				$ typedoc -- out docs ./ src
+				\end{lstlisting}
+			\end{minipage}	
+		\end{center}		
 	\end{itemize}
 
-	\paragraph{TypeDoc}
-	\noindent \\
-	Per la generazione automatica della documentazione in stile JavaDoc, è stato utilizzato il software TypeDoc. Per essere utilizzato TypeDoc necessita di essere installato tramite npm nel vostro sistema. Al fine di effettuare tale operazione utilizzare il seguente comando:
 	
-	\begin{center}
-		\begin{minipage}{.5\textwidth}
-		\begin{lstlisting}[caption=Installazione di TypeDoc,numbers=none]
-			$ npm install --global typedoc
-		\end{lstlisting}
-	\end{minipage}	
-	\end{center}	
-	
-	Per utilizzare TypeDoc e produrre la documentazione automatica basata sui commenti introdotti nel sorgente prodotto, è necessario invocare il seguente comando dalla cartella principale dell’applicazione:
-	
-	\begin{center}
-		\begin{minipage}{.5\textwidth}
-		\begin{lstlisting}[caption=Installazione di TSLint,numbers=none]
-			$ typedoc -- out docs ./ src
-		\end{lstlisting}
-	\end{minipage}	
-	\end{center}		
 	
 	\section{Processi di Supporto}
 	\subsection{Documentazione}
@@ -727,7 +735,7 @@ La gestione della configurazione ha come obbiettivo l'identificazione, la regist
 \paragraph{Repository}
 Si è scelto di utilizzare come strumento di versionamento GitLab. Questo strumento permette la creazione di repository.
 L'Amministratore ha il compito di gestire e organizzare la repository, in modo che siano accessibili a tutti i componenti del gruppo.
-È previsto l'utilizzo di un'unica repository denominata colletta contenente sia tutta la documentazione del progetto che l'applicazione stessa.
+È previsto l'utilizzo di un'unica repository denominata colletta contenente sia tutta la documentazione del progetto che il software.
 \paragraph{Norme sui file consentiti}
 All'interno della repository vengono effettuate delle restrizioni relativi alle estensioni dei file attraverso il file .gitignore.
 Tuttavia rispetto alle restrizioni standard, per quanto riguarda i documenti, abbiamo scelto di consentire i seguenti tipi di file: 
@@ -907,10 +915,25 @@ Ogni commit deve essere accompagnato da una sensata descrizione, che permetta fa
 	
 	\subsection{Validazione}
 	\subsubsection{Test}
-	I test di unità, integrazione, sistema e validazione sono definiti secondo le definizioni date dal professore Vardanega nelle slide: \begin{center}
-		\url{https://www.math.unipd.it/~tullio/IS-1/2018/Dispense/L16.pdf}
-	\end{center}
+	I test di unità, integrazione, sistema e validazione sono definiti secondo le indicazioni fornite durante il corso.
+	\paragraph{Test di unità}
+	I test di unità hanno il compito di verificare che le unità si comportino come previsto.
+	Per unità si intende la più piccola parte di software testabile indipendentemente dal resto del sistema e dal funzionamento autonomo.
+	Lo unit testing semplifica l'integrazione di moduli diversi perché limita i malfunzionamenti a problemi di interazione tra i moduli e non nei moduli stessi.
+	I test case incorporano le caratteristiche critiche per il successo di un'unità di codice. Tali caratteristiche indicano l'uso appropriato dell'unità e i comportamenti errati che devono essere identificati nel suo funzionamento.
+	\paragraph{Test di integrazione}
+	I test di integrazione sono definiti come livello intermedio di testing e abitualmente seguono a quelli di unità e precedono quelli di sistema.
+	Tali test vengono eseguiti quando due o più unità già testate vengono aggregate in una struttura più grande, rappresentando l’estensione logica del test di unità.
+	Il testing delle parti combinate di un'applicazione ha il principale scopo di determinare se esse hanno il comportamento atteso quando si trovano ad operare insieme come un unico componente.
+	\paragraph{Test di sistema}
+	Tali test si basano sulle funzionalità espresse nell'analisi dei requisiti..
+	Il testing a livello di sistema si preoccupa del comportamento di un sistema nel suo complesso.
+	Il superamento dei test di sistema fornisce una prova che i requisiti sono stati effettivamente soddisfatti.
 	
+	
+	\paragraph{Test di validazione}
+	Questo tipo di test viene utilizzato durante l'attività di collaudo del prodotto  finale così da accertare
+	che esso soddisfi le richieste del committente.
 	\subsubsection{Denominazione test}
 	Volendo associare un identificatore univoco per ogni test menzionato, si \`e deciso di utilizzare il seguente formato:
 	\begin{center}
@@ -1029,10 +1052,50 @@ Infine, lo stesso Responsabile di progetto e tenuto ad incaricare un componente 
 	\end{itemize}
 	
 	\subsubsection{Ruoli di progetto}
-	I ruoli di progetto sono definiti secondo le definizioni date dal professore Vardanega nelle slide:
-	\begin{center}
-		\url{https://www.math.unipd.it/~tullio/IS-1/2018/Dispense/L06.pdf}
-	\end{center}
+	I ruoli di progetto sono definiti secondo le definizioni date dal professore Vardanega durante il corso.
+	\paragraph{Responsabile di progetto}
+	Il Responsabile è il rappresentante del team. È colui che deve prendere le decisioni e assumersene la responsabilità.
+	È suo compito:
+	\begin{itemize}
+		\item{approvare i documenti;}
+		\item{redigere l'organigramma ed il Piano di progetto;}
+		\item{gestire le risorse umane;}
+		\item{tenere sotto controllo gli avanzamenti del progetto.}
+	\end{itemize}
+	\paragraph{Amministratore di progetto}
+	L'amministratore è colui che si occupa dell'efficienza del gruppo e dell'operatività delle risorse.\\
+	È suo compito:
+	\begin{itemize}
+		\item{scegliere e amministrare gli strumenti di versionamento;}
+		\item{ricercare strumenti che agevolino e automatizzino il lavoro quanto più possibile;}
+		\item{risolvere eventuali problemi di gestione di processi;}
+		\item{attuare piani  di qualità.}
+	\end{itemize}
+	\paragraph{Progettista}
+	Si occupa di gestire gli aspetti tecnici e tecnlogici del progetto.\\
+	È suo compito:
+	\begin{itemize}
+		\item{scegliere e amministrare gli strumenti di versionamento;}
+		\item{ricercare strumenti che agevolino e automatizzino il lavoro quanto più possibile;}
+		\item{risolvere eventuali problemi di gestione di processi;}
+		\item{attuare piani e procedure di qualità.}
+	\end{itemize}
+	\paragraph{Analista}
+	È colui che ha conoscenza riguardante il domino del problema.\\
+	È suo compito:
+	\begin{itemize}
+		\item{capire al meglio il problema e successivamente esporlo in maniera chiara;}
+		\item{redarre lo Studio di fattibilità e l'Analisi dei requisiti.}
+	\end{itemize}
+	\paragraph{Programmatore}
+	È colui che si occupa della codifica del progetto.\\
+	È suo compito:
+	\begin{itemize}
+		\item{trasformare il lavoro svolto dal Progettista in codice scritto coerentemente con quanto dichiarato nelle norme di codifica in \S2.2.3;}
+		\item{creare una serie di test automatizzati che garantiscano la correttezza del codice prodotto.}
+	\end{itemize}
+	\paragraph{Verificatore}
+	È colui che deve assicurarsi che le Norme di progetto vengano seguite e rispettate dagli altri componenti del team.
 	\subsubsection{Strumenti}
 	
 	\paragraph{Slack (app)\\}
@@ -1091,7 +1154,7 @@ L'assicurazione della qualità riguarda sia i prodotti che i processi. Al fine d
 Le attività riguardanti l'attività di assicurazione della qualità che vengono presentate di seguito, sono descritte in dettaglio nel documento \textit{PianoDiQualifica\_v2.0.0}.
 
 \subsection{Attività: assicurazione della qualità di processo}
-Il gruppo OttoBit ha deciso di utilizzare gli standard ISO/IEC 15504 denominato SPIECE$^*$ e lo standard PDCA$^*$ di cui viene riportata di seguito la descrizione.\\
+Il gruppo OttoBit ha deciso di utilizzare gli standard ISO/IEC 15504 denominato SPICE$^*$ e lo standard PDCA$^*$ di cui viene riportata di seguito la descrizione.\\
 \textbf{ISO/IEC 15504} \\
 Lo standard ISO/IEC 15504, comunemente chiamato SPICE (acronimo di Software Process Improvement and Capability Determination), viene utilizzato per eseguire una valutazione concreta della qualità dei processi, inoltre permette la misurazione della capability dei processi, ovvero l'abilità con cui esso raggiunge l'obiettivo prefissato. Per eseguire queste misurazioni lo standard offre nove attributi da associare ai processi, ognuno dei quali misura un particolare aspetto della maturità del processo:
 \begin{itemize}

@@ -33,7 +33,7 @@ describe('ClassView', function() {
             async getExercises(){
                 return (['1']);
             },
-            async getClassId() {
+            getClassId() : string {
                 return 'classID';
             }
         };

@@ -115,8 +115,7 @@ class ExerciseClient{
             let solutions = (<Exercise>exercise).getSolutions();
             for (let sol of solutions) {
                 let val:any[] = [];
-                // @ts-ignore
-                for (let vals of sol.getValutations().entries()) {
+                for (let vals of sol.getValutations()!.entries()) {
                     val = [vals[0], vals[1]];
                 }
 

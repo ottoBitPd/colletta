@@ -18,11 +18,11 @@ describe('DeveloperView', function() {
                     isLoggedIn(): boolean {
                         return true;
                     },
-                    async createCsvFromAnnotations() {
-                        return [];
+                    async createCsvFromAnnotations() : Promise<string> {
+                        return "";
                     },
-                    async createTxtFromAnnotations() {
-                        return [];
+                    async createTxtFromAnnotations() : Promise<string> {
+                        return "";
                     },
                     getAnnotations() {
                         let annot = {

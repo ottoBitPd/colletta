@@ -3,7 +3,6 @@ import {PageView} from "../view/PageView";
 import {PagePresenter} from "./PagePresenter";
 import * as CryptoJS from "crypto-js";
 
-//import { ExportToCsv } from 'export-to-csv';
 var session = require('express-session');
 
 /**
@@ -23,6 +22,7 @@ class DeveloperPresenter extends PagePresenter{
 
     private async initializeAnnotations() : Promise<void>{
         this.annotations = await this.getAllAnnotation();
+        this.encryptAnnotations();
     }
     /**
      * This method provides to manage the view urls.
@@ -144,6 +144,11 @@ class DeveloperPresenter extends PagePresenter{
         if (exerciseClient) {
             annotations = await exerciseClient.searchAllSolution();
         }
+
+        for (let annotation of annotations){
+            annotation.teacher = (await this.isTeacher(annotation.solverID) ? "I" : "A");
+        }
+
         return annotations;
     }
 
@@ -173,6 +178,14 @@ class DeveloperPresenter extends PagePresenter{
      */
     public filterByUser(id : string) : void {
         this.annotations=this.annotations.filter((sol:any)=>CryptoJS.MD5(sol.solverID).toString()===id);
+    }
+
+    private encryptAnnotations() : void{
+        for (let annotation of this.annotations){
+            annotation.id = CryptoJS.MD5(annotation.id).toString();
+            annotation.solverID = CryptoJS.MD5(annotation.solverID).toString();
+            annotation.valutations = [CryptoJS.MD5(annotation.valutations[0]).toString(),annotation.valutations[1]];
+        }
     }
 
     /**

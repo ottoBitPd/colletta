@@ -37,12 +37,9 @@ class ListPresenter extends PagePresenter {
         app.get('/classes', async (request: any, response: any) => {
             let userClient = this.client.getUserClient();
             if (userClient && session.username && session.username !== "developer"){
-
                 if (await userClient.isTeacher(session.username)){
-                  //  console.log("teacher");
                     this.view.setUserKind(UserKind.teacher);
                 } else {
-                    //console.log("student");
                     this.view.setUserKind(UserKind.student);
                 }
             }

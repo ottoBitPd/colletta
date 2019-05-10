@@ -39,7 +39,6 @@ class InsertPresenter extends PagePresenter{
                 }
             }
             else {
-                //console.log("developer");
                 this.view.setUserKind(UserKind.developer);
             }
 

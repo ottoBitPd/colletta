@@ -50,14 +50,11 @@ class FirebaseClassManager extends FirebaseManager {
                     if (snapshot.exists()) {
                         snapshot.forEach(function (data: any) {
                             if (data.val().name.toLowerCase() === name.toLowerCase()) {
-                                //console.log("esiste");
                                 return resolve(data.key);
                             }
                         });
-                        //console.log("non esiste");
                         return resolve("false");
                     }
-                   // console.log("database vuoto");
                     return resolve("false");
                 });
         });
@@ -74,16 +71,11 @@ class FirebaseClassManager extends FirebaseManager {
                 .once("value", function (snapshot: any) {
                     if (snapshot.exists()) {
                         snapshot.forEach(function (data: any) {
-                            //container.set(data.key, data.val().name);
-                            //siccome mi sembrava un metodo mai utlizzato e a me serviva idClass, idTeacher
-                            //ho cambiato la mappa ritornata dal metodo Perry15
                             container.set(data.key, data.val().teacherID);
                         });
-                        //console.log("non esiste");
                         return resolve(container);
                     }
-                    //console.log("database vuoto");
-                    else {//console.log("database vuoto");
+                    else {
                         return resolve(container);
                     }
                 });
@@ -116,8 +108,9 @@ class FirebaseClassManager extends FirebaseManager {
                             readData.students, readData.exercises, readData.time);
                         return resolve(_class);
                     }
-                    else {//console.log("database");
-                    return resolve(undefined);}
+                    else {
+                        return resolve(undefined);
+                    }
                 });
         });
     }

@@ -63,14 +63,11 @@ class FirebaseUserManager extends FirebaseManager {
                         snapshot.forEach(function (data: any) {
 
                             if (data.val().username.toLowerCase() === username.toLowerCase()) {
-                                //console.log("esiste");
                                 return resolve(data.key);
                             }
                         });
-                        //console.log("non esiste");
                         return resolve("false");
                     }
-                    //console.log("database vuoto");
                     return resolve("false");
                 });
         });
@@ -89,10 +86,8 @@ class FirebaseUserManager extends FirebaseManager {
                         snapshot.forEach(function (data: any) {
                             container.set(data.key, data.val().username);
                         });
-                        //console.log("non esiste");
                         return resolve(container);
                     }
-                    //console.log("database vuoto");
                     else {
                         return resolve(container);
                     }

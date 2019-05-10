@@ -247,13 +247,6 @@ describe('ExercisePresenter', function() {
         });
     });
 
-    describe('ExercisePresenter.extractTags()', function () {
-        it('should return tags', async function () {
-            //@ts-ignored
-            test.extractTags(["ciao"]);
-        });
-    });
-
     describe('ExercisePresenter.correctionToTags()', function () {
         it('should return tags correction', async function () {
             //@ts-ignored

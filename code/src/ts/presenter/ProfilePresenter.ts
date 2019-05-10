@@ -8,8 +8,6 @@ var session = require('express-session');
  *
  */
 class ProfilePresenter extends PagePresenter{
-    //private classClient : ClassClient | undefined;
-
     constructor(view : any){
         super(view);
         this.client = (new Client.builder()).buildUserClient().buildExerciseClient().build();
@@ -69,14 +67,12 @@ class ProfilePresenter extends PagePresenter{
                         }
                     }
                     if (await userClient.isTeacher(session.username)) {
-                        //console.log("teacher");
                         if (/^[^\s]$/.test(request.body.inps))
                             userUpdateData.inps = request.body.inps;
                         else
                             userUpdateData.inps = userData.inps;
                         this.view.setUserKind(UserKind.teacher);
                     } else {
-                        //console.log("student");
                         this.view.setUserKind(UserKind.student);
                     }
                     await userClient.updateUser(session.username, userUpdateData);
@@ -89,11 +85,8 @@ class ProfilePresenter extends PagePresenter{
         app.get('/profile', async (request: any, response: any) => {
             let userClient = this.client.getUserClient();
             if (userClient && session.username){
-
                 const id = await userClient.search(session.username);
-
                 const userData = await userClient.getUserData(id);
-                //console.log("userData: ",userData);
                 this.view.setUserData(userData);
                 if (await userClient.isTeacher(session.username)){
                     this.view.setUserKind(UserKind.teacher);

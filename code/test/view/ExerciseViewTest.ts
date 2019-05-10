@@ -24,7 +24,7 @@ describe('ExerciseView', function() {
                     getUserSolution() {
                         return ['U', 'U'];
                     },
-                    getUpdate() {//it was need to understand if the user was updating a solution or making new another
+                    getUpdateState() {//it was need to understand if the user was updating a solution or making new another
                         return false;
                     },
                     translateTag(s: string) {
@@ -68,7 +68,7 @@ describe('ExerciseView', function() {
                     getUserSolution() {
                         return ['I', 'I'];
                     },
-                    getUpdate() {//it was need to understand if the user was updating a solution or making new another
+                    getUpdateState() {//it was need to understand if the user was updating a solution or making new another
                         return false;
                     }/*,
                     translateTag(s: string) {

@@ -31,7 +31,6 @@ class DeveloperPresenter extends PagePresenter{
     update(app: any) {
         this.listenDeveloper(app);
         this.checkDeveloper(app);
-        this.download(app);
         this.downloadModel(app);
     }
 
@@ -77,21 +76,8 @@ class DeveloperPresenter extends PagePresenter{
         });
     }
 
-    /**
-     *  This method provides to manage the download of the data
-     * @param app
-     */
-    private async download(app : any) {
-        app.get('/download', async (request: any, response: any) => {
-            this.view.setTitle("Download");
-            response.send(await this.view.getPage());
-
-
-        });
-    }
-
     private downloadModel(app : any) {
-        app.get('/download%model', (request : any, response : any) => {
+        app.get('/download', (request : any, response : any) => {
             response.download('src/ts/presenter/hunpos/italian_model', "italian_model")
         });
     }

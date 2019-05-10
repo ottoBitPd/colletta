@@ -98,21 +98,10 @@ describe('DeveloperPresenter', function() {
                 })
         });
 
-        it('should return the manage the download of the data', async function () {
-            test.update(app);
-            chai.request(app)
-                .get('/download')
-                .end((err:any, res:any) => {
-                    res.should.have.status(200);
-                    res.body.should.be.a('object');
-                    return;
-                })
-        });
-
         it('should return model download', async function () {
             test.update(app);
             chai.request(app)
-                .get('/download%model')
+                .get('/download')
                 .end((err:any, res:any) => {
                     res.should.have.status(200);
                     res.body.should.be.a('object');

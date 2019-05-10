@@ -76,14 +76,11 @@ class FirebaseExerciseManager extends FirebaseManager {
                     if (snapshot.exists()) {
                         snapshot.forEach(function (data: any) {
                             if (data.val().sentence.toLowerCase() === sentence.toLowerCase()) {
-                                //console.log("esiste");
                                 return resolve(data.key);
                             }
                         });
-                        //console.log("non esiste");
                         return resolve("false");
                     }
-                    //console.log("database vuoto");
                     return resolve("false");
                 });
         });
@@ -102,10 +99,8 @@ class FirebaseExerciseManager extends FirebaseManager {
                         snapshot.forEach(function (data: any) {
                             container.set(data.key, data.val().sentence);
                         });
-                        //console.log("non esiste");
                         return resolve(container);
                     }
-                    //console.log("database vuoto");
                     else {
                         return resolve(container);
                     }
@@ -143,7 +138,6 @@ class FirebaseExerciseManager extends FirebaseManager {
                         for (let val in readData.solutions[sol].valutations) {
                             vals.set(val, readData.solutions[sol].valutations[val]);
                         }
-                        //console.log("solutionKey: ",sol);
                         exercise.addSolution(
                             sol,readData.solutions[sol].solverId,readData.solutions[sol].tags,
                             readData.solutions[sol].topics,readData.solutions[sol].difficulty,vals,readData.solutions[sol].time,readData.solutions[sol].public);
@@ -215,12 +209,11 @@ class FirebaseExerciseManager extends FirebaseManager {
      *   @param value - the new value to insert
      */
     private async updateField(path : string, value:any) {
-        let refi=FirebaseManager.database.ref(path);
+        let ref=FirebaseManager.database.ref(path);
 
-        refi.once('value',function (snapshot:any) {
-            console.log(snapshot.exists());
+        ref.once('value',function (snapshot:any) {
             if (snapshot.exists()) {
-                refi.set(value);
+                ref.set(value);
             }
         });
     }

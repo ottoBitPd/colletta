@@ -58,7 +58,6 @@ class ExercisePresenter extends PagePresenter{
                 //sending the sentence to hunpos which will provide a solution
                 var posSolution = await exerciseClient.autosolve(request.body.sentence, "authorIdValue");
                 //converting tags to italian
-                console.log(posSolution);
                 var posTranslation = this.translateTags(posSolution);
                 this.view.setSentence(request.body.sentence);
                 this.view.setPosTranslation(posTranslation);
@@ -71,11 +70,10 @@ class ExercisePresenter extends PagePresenter{
                     this.view.setSolutionKey(request.body.solutionKey);
                     this.view.setTitle("Aggiorno Esercizio");
                     response.send(await this.view.getPage());
-                } else {
-                    this.updateState = false;//maybe it is not need
-
+                }
+                else {
+                    this.updateState = false;
                     this.view.setTitle("Esercizio");
-
                     response.send(await this.view.getPage());
                 }
             }
@@ -85,9 +83,7 @@ class ExercisePresenter extends PagePresenter{
     private updateExercise(app : any) : void {
         app.post('/exercise/update', async (request: any, response: any) => {
             let exerciseClient = this.client.getExerciseClient();
-            console.log("uno");
             if(exerciseClient && request.body.solutionKey!=="null" && request.body.sentenceKey!=="null"){
-                console.log("uno3");
                 let words = exerciseClient.getSplitSentence(request.body.sentence);
                 let wordsnumber = words.length;
                 //update di una vecchia soluzione
@@ -103,9 +99,7 @@ class ExercisePresenter extends PagePresenter{
                 };
                 await exerciseClient.updateSolution(request.body.sentenceKey,request.body.solutionKey,solution);
             }
-            console.log("uno1");
             response.redirect('/exercises');
-
         });
     }
 
@@ -356,9 +350,6 @@ class ExercisePresenter extends PagePresenter{
                 }
             }
         }
-
-        console.log("tag corretti", tagsCorrection);
-
         return tagsCorrection;
     }
 

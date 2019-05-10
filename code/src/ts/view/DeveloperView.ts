@@ -36,7 +36,6 @@ class DeveloperView extends PageView {
         ret += this.getMenu();
         ret += "" +
             "\t<div class='row container mx-auto'>\n"+
-            "\t\t\t<div class=\"col-sm-2 mx-auto text-center\"></div>\n"+
             "\t\t\t<div class=\"col-sm-8 mx-auto text-center\">\n";
         if(!this.devPresenter.isLoggedIn()) {
             let s = this.devPresenter.getMessage();
@@ -48,8 +47,6 @@ class DeveloperView extends PageView {
                 "\t\t\t\t<button type=\"submit\" class=\"btn btn-primary my-2 my-sm-0 w-25\">Invia</button>\n" +
                 "\t\t\t</form>" +
                 "\t\t\t</div>" +
-                "\t\t\t<div class=\"col-sm-2 mx-auto text-center\">" +
-                "</div>\n\n\t" +
                 "</div>\n";
         }
         else{//developer is loggedIn
@@ -72,24 +69,23 @@ class DeveloperView extends PageView {
             "</div>" +
             "\t\t\t\t<input type=\"text\" class='form-control' name=\"user\" placeholder=\"Inserisci un user\"/>\n" +
             "\t\t\t\t<button type=\"submit\" class=\"btn btn-primary my-2 w-25\">Filtra</button>\n" +
-            "\t\t\t</form>\n\t\t\t</div>\n\t\t\t<div class=\"col-sm-2 mx-auto text-center\"></div>\n";
+            "\t\t\t</form>\n\t\t\t</div>\n";
 
             ret+= await this.printList();
-
-            let csv = await this.devPresenter.createCsvFromAnnotations();
-            let txt = await  this.devPresenter.createTxtFromAnnotations();
-
-
-            ret+="<div class='row'> " +
-                "<div class='col-sm-8 row'>" +
-                    "<p class='col-sm-2 my-3'>Download</p>"+
-                    "<button class='col-sm-4 btn btn-primary my-2 mx-3 w-25' onclick='download(\""+escape(csv)+"\",\"csv\")' >CSV</button>" +
-                    "<button class='col-sm-4 btn btn-primary my-2 mx-3 w-25' onclick='download(\""+escape(txt)+"\",\"txt\")' >TXT</button>" +
-                "</div>"+
-                "<a href='/download%model' class='btn btn-primary my-2 mx-3 w-25'>Scarica il modello</a>" +
-                "</div>" +
-                "</div>" +
-                "</div>";
+            ret+="<div class='row col-sm-12'> ";
+            if(this.devPresenter.getAnnotations().length>0) {
+                let csv = await this.devPresenter.createCsvFromAnnotations();
+                let txt = await this.devPresenter.createTxtFromAnnotations();
+                ret += "<div class='col-sm-8 row'>" +
+                    "<p class='col-sm-2 my-3'>Download</p>" +
+                    "<button class='col-sm-4 btn btn-primary my-2 mx-3 w-25' onclick='download(\"" + escape(csv) + "\",\"csv\")' >CSV</button>" +
+                    "<button class='col-sm-4 btn btn-primary my-2 mx-3 w-25' onclick='download(\"" + escape(txt) + "\",\"txt\")' >TXT</button>" +
+                    "</div>";
+            }
+            ret+=`<a href='/download' class='btn btn-primary my-2 mx-${this.devPresenter.getAnnotations().length > 0 ? "3" : "auto"} w-25'>Scarica il modello</a>`+
+            "</div>" +
+            "</div>" +
+            "</div>";
         }
 
         ret+=this.getFoot(this.getScript());
@@ -104,7 +100,7 @@ class DeveloperView extends PageView {
     private async printList() {
         let results = await this.devPresenter.getAnnotations();
         if(results.length===0){
-            return "<h2 class='h5 text-danger text-center'>Nessun risultato</h2>";//resultList is not set yet, cause nobody searched yet
+            return "<h2 class='h5 col-sm-12 text-danger text-center'>Nessun risultato</h2>";//resultList is not set yet, cause nobody searched yet
         }
         let ret="";
 

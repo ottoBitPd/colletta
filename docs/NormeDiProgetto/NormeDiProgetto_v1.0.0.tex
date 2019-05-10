@@ -93,8 +93,9 @@
 		\rowcolor{LightBlue}
 		\color{white}\bfseries Versione & \color{white}\bfseries Data & \multicolumn{1}{c}{\color{white}\bfseries Autore}
 		& \color{white}\bfseries Ruolo & \multicolumn{1}{c}{\color{white}\bfseries Descrizione}\\[0.25cm]
-		4.0.0 & 2019-05-10 & Eleonora Peagno & Responsabile & Approvazione per il rilascio \\ \hline
-		3.1.0 & 2019-05-09 & Benedetto Cosentino & Verificatore & Verifica documento \\ \hline
+		4.0.0 & 2019-05-12 & Eleonora Peagno & Responsabile & Approvazione per il rilascio \\ \hline
+		3.1.0 & 2019-05-10 & Benedetto Cosentino & Verificatore & Verifica documento \\ \hline
+		3.0.3 & 2019-05-09 & Michele Bortone & Amministratore & Aggiunta \S3.3 e modifiche \S A \\ \hline
 		3.0.2 & 2019-05-08 & Michele Bortone & Amministratore & Ampliamento \S3.4 e \S4 \\ \hline
 		3.0.1 & 2019-05-07 & Michele Bortone & Amministratore & Aggiornamenti  \S2.2.4 e \S3.1.4\\ \hline
 		3.0.0 & 2019-04-11 & Giovanni Bergo & Responsabile & Approvazione per il rilascio \\ \hline
@@ -316,7 +317,7 @@ In caso di necessità verrà fornito supporto alla proponente MIVOQ S.r.l. e l'a
 	\subsubsection{Progettazione}
 	L'attività di progettazione consiste nel ricercare una soluzione che soddisfi i requisiti concordati con gli stakeholder$^*$. Essa avrà inizio quando obiettivi, vincoli e requisiti del prodotto finale saranno solidi e chiari. Spetta ai Progettisti il compito di definire l'architettura del prodotto, dando così coerenza e consistenza al progetto. Per definirsi una buona architettura dovrà rispettare le seguenti proprietà:
 	\begin{itemize}
-		\item Capacità di \textbf{soddisfare i requisiti} definiti nel documento \textit{AnalisiDeiRequisiti\_v2.0.0}. L'architettura dovrà anche essere in grado di adattarsi facilmente e permettere modifiche a costo contenuto nel caso in cui i requisiti dovessero variare in corso d'opera;
+		\item Capacità di \textbf{soddisfare i requisiti} definiti nel documento \textit{AnalisiDeiRequisiti\_v4.0.0}. L'architettura dovrà anche essere in grado di adattarsi facilmente e permettere modifiche a costo contenuto nel caso in cui i requisiti dovessero variare in corso d'opera;
 		\item Di facile \textbf{comprensibilità}, per gli stakeholders, per il Responsabile e per i Verificatori;
 		\item \textbf{Organizzata e suddivisa in moduli} di complessità trattabile, così da rendere la codifica di ogni parte eseguibile da un singolo individuo;
 		\item \textbf{Rispettare l'information hiding}, fornendo dove possibile interfacce per l'utilizzo del modulo implementato nascondendo i dettagli implementativi;
@@ -348,7 +349,7 @@ In caso di necessità verrà fornito supporto alla proponente MIVOQ S.r.l. e l'a
 
 	\paragraph{Scopo}
 	La codifica è l'attività che permette l'effettiva realizzazione del prodotto.
-	Dovrà rispettare gli obiettivi di qualità definiti all'interno del documento \textit{PianoDiQualifica\_v3.0.0} allo scopo di garantire un prodotto mantenibile e di alta qualità.
+	Dovrà rispettare gli obiettivi di qualità definiti all'interno del documento \textit{PianoDiQualifica\_v4.0.0} allo scopo di garantire un prodotto mantenibile e di alta qualità.
 		
 	\paragraph{Lingua utilizzata}
  
@@ -510,7 +511,7 @@ In caso di necessità verrà fornito supporto alla proponente MIVOQ S.r.l. e l'a
 	\end{itemize}
 
 	
-	
+	\newpage
 	\section{Processi di Supporto}
 	\subsection{Documentazione}
 	In questa sezione esamineremo dettagliatamente i processi utilizzati per stesura, verifica e mantenimento di tutta la documentazione prodotta dal gruppo OttoBit.
@@ -754,8 +755,31 @@ Questo ci consente di avere a disposizione delle funzionalità ad alto livello p
 \paragraph{Norme sui commit}
 Ogni commit deve essere accompagnato da una sensata descrizione, che permetta facilmente di capire a tutti i membri del gruppo che cosa quella modifica riguarda e la coinvolge.
 
+	\subsection{Assicurazione della qualità}
+	\subsubsection{Scopo}
+	Questo processo ha lo scopo di prevenire il presentarsi di problemi, di individuarli quando si presentano, di identificarne le cause e di trovarvi rimedio. In questo modo si potrà garantire la qualità dei processi e dei prodotti durante il ciclo di vita del software.
+	\\
+	Una corretta implementazione di questo processo permette di:
+	\begin{itemize}
+		\item determinare le politiche per la qualità, gli obiettivi e le responsabilità;
+		\item implementare le politiche di qualità stabilite, attraverso pianificazione, controllo e miglioramento della qualità. 
+	\end{itemize}
+	
+	L'assicurazione della qualità riguarda sia i prodotti che i processi. Al fine di ottenere specifici attributi di qualità, i prodotti devono essere conformi ai requisiti definiti nell'\textit{AnalisiDeiRequisiti\_v4.0.0} ed aderire al \textit{PianoDiProgetto\_v4.0.0}. Anche i processi devono essere conformi a quanto specificato in quest'ultimo documento e devono, inoltre, rispettare gli standard utilizzati per la loro implementazione. \\
+	Un approfondimento e una descrizione degli standard di qualità a cui il team si ispira è presente in appendice \S A.
+	Le attività riguardanti l'assicurazione della qualità, sono descritte in dettaglio nel documento \textit{PianoDiQualifica\_v4.0.0}.
 
+	\subsubsection{Assicurazione della qualità di processo} 
+	La qualità di processo è un fattore determinante da tenere in forte considerazione durante l'intera durata del progetto.
+	Il gruppo OttoBit ha deciso di ispirarsi allo standard ISO/IEC 15504, denominato SPICE$^*$, e al metodo di gestione PDCA$^*$ per perseguire questo obiettivo.
+	Grazie all'applicazione del PDCA, noto anche come ciclo di Deming, viene attuata una strategia di miglioramento continuo al fine di aumentare il livello di maturità dei processi descritto nello standard ISO/IEC 15504.\\
+	Le operazioni di Do e Check sono di competenza del Verificatore che ne avrà completa responsabilità e potrà riferire all'Amministratore eventuali modifiche alle norme.
+	Il Responsabile di progetto deve essere presente durante la discussione delle attività  di Plan e Act e può approvare le decisioni rispettando i limiti delle risorse.
 
+	\subsubsection{Assicurazione della qualità di prodotto}
+	Questa attività ha lo scopo di assicurare che i prodotti rispettino le caratteristiche di qualità concordate con il committente. La qualità di prodotto non deve essere assicurata al solo completamento del prodotto ma anche durante tutto il suo periodo di sviluppo. \\
+	Al fine di assicurare la qualità del software, ai verificatori è assegnato il compito di controllare che il sistema di testing e verifica rispetti i parametri descritti nel \textit{PianoDiQualifica\_v4.0.0} e nelle \textit{NormeDiProgetto\_v4.0.0} e di controllare che il versionamento avvenga secondo le specifiche riportate nelle \textit{NormeDiProgetto\_v4.0.0}. Inoltre deve assicurarsi che i relativi strumenti vengano utilizzati correttamente. Tali controlli vanno eseguiti al rilascio di ogni nuova versione dei documenti citati e ogni volta che viene effettuata una modifica nella configurazione del sistema.\\
+	Nel caso in cui uno di questi fattori non venga rispettato, il verificatore è tenuto ad avvisare il Responsabile del progetto, così che si possa porre un tempestivo rimedio ad ogni problematica. Il verificatore non ha le competenze per intervenire in prima persona e non deve farlo, il suo compito è di segnalare i problemi.
 	\subsection{Verifica}
 	
 	\subsubsection{Scopo}
@@ -1137,24 +1161,13 @@ Con la CI è possbile:
 \subsubsection{Strumenti}
 \paragraph{GitLab CI\\}
 GitLab consente la pratica di integrazione codice all'interno della repository, facendo test e build ad ogni cambiamento effettuato, automaticamente, più velocemente possibile e più volte al giorno.
-
+\newpage
 \appendix
-\section{Assicurazione della qualità}
+\section{Standard per la qualità}
 
-\subsection{Scopo}
-Questo processo ha lo scopo di prevenire il presentarsi dei problemi, di individuarli quando si presentano, di identificarne le cause e di trovarvi rimedio. In questo modo si potrà garantire la qualità dei processi e dei prodotti durante il ciclo di vita del software.
-\\
-Una corretta implementazione di questo processo permette di:
-\begin{itemize}
-	\item determinare le politiche per la qualità, gli obiettivi e le responsabilità;
-	\item implementare le politiche di qualità stabilite, attraverso pianificazione, controllo e miglioramento della qualità. 
-\end{itemize}
 
-L'assicurazione della qualità riguarda sia i prodotti che i processi. Al fine di ottenere specifici attributi di qualità, i prodotti devono essere conformi ai requisiti definiti nell'\textit{AnalisiDeiRequisiti\_v2.0.0} ed aderire al \textit{PianoDiProgetto\_v2.0.0}. Anche i processi devono essere conformi a quanto specificato in quest'ultimo documento e devono, inoltre, rispettare gli standard utilizzati per la loro implementazione. \\
-Le attività riguardanti l'attività di assicurazione della qualità che vengono presentate di seguito, sono descritte in dettaglio nel documento \textit{PianoDiQualifica\_v2.0.0}.
+\subsection{Standard per la qualità di processo}
 
-\subsection{Attività: assicurazione della qualità di processo}
-Il gruppo OttoBit ha deciso di utilizzare gli standard ISO/IEC 15504 denominato SPICE$^*$ e lo standard PDCA$^*$ di cui viene riportata di seguito la descrizione.\\
 \textbf{ISO/IEC 15504} \\
 Lo standard ISO/IEC 15504, comunemente chiamato SPICE (acronimo di Software Process Improvement and Capability Determination), viene utilizzato per eseguire una valutazione concreta della qualità dei processi, inoltre permette la misurazione della capability dei processi, ovvero l'abilità con cui esso raggiunge l'obiettivo prefissato. Per eseguire queste misurazioni lo standard offre nove attributi da associare ai processi, ognuno dei quali misura un particolare aspetto della maturità del processo:
 \begin{itemize}
@@ -1206,10 +1219,44 @@ La seguente immagine riporta le attività previste a tale scopo e ne segue una b
 	\caption{Principio del miglioramento continuo secondo PDCA}
 	
 \end{figure}
-\subsection{Attività: assicurazione della qualità di prodotto}
-Questa attività ha lo scopo di assicurare che i prodotti rispettino le caratteristiche di qualità concordate con il committente. La qualità di prodotto non deve essere assicurata al solo completamento del prodotto ma anche durante tutto il suo periodo di sviluppo. \\
-Al fine di assicurare la qualità del software, ai verificatori è assegnato il compito di controllare che il sistema di testing e verifica rispettino i parametri descritti nel \textit{PianoDiQualifica\_v4.0.0} e nelle \textit{NormeDiProgetto\_v4.0.0} e di controllare che il versionamento avvenga secondo le specifiche riportate nelle \textit{Norme di progetto} e che i relativi strumenti vengano utilizzati correttamente. Tali controlli vanno eseguiti al rilascio di ogni nova versione dei documenti citati e ogni volta che viene effettuata una modifica nella configurazione del sistema.\\
-Nel caso uno di questi fattori non venga rispettato, il verificatore è tenuto ad avvisare il Responsabile del progetto, così che si possa porre un tempestivo rimedio ad ogni problematica. Il verificatore non ha le competenze per intervenire in prima persona e non deve farlo, il suo compito è di segnalare i problemi.
+\subsection{Standard per la qualità di prodotto}
+
+\textbf{ISO/IEC 9126} \\
+Lo standard ISO/IEC 9126 definisce un modello dei requisiti qualitativi del Prodotto.
+Il modello descritto si concentra in primo luogo sui tre punti di vista della qualità che esistono sul prodotto:
+\begin{itemize}
+	\item \textbf{Qualità esterna:} esprime il comportamento dinamico del software, in un determinato ambiente d'uso. In sostanza consiste nelle prestazioni e nelle funzionalità che il prodotto offre quando è in esecuzione;
+	\item \textbf{Qualità interna:} esprime le proprietà statiche, cioè
+	indipendenti dal contesto di esecuzione e uso. Sono direttamente misurabili ad esempio sul
+	codice sorgente, pertanto senza la necessità di eseguire il software;
+	\item \textbf{Qualità in uso:} esprime il livello con cui il prodotto si dimostra utile all'utente nel suo contesto d'uso. In altre parole rappresenta la capacità del prodotto di dare efficacia ed efficienza al lavoro dell'utente, a fronte di una sicurezza di utilizzo e di una soddisfazione nel far uso del prodotto.
+\end{itemize}
+\subsubsection{Modello per la qualità esterna ed interna}
+Per la qualità esterna ed interna è definito un modello gerarchico formato da 6 caratteristiche principali e numerose sottocaratteristiche, tutte misurabili direttamente o indirettamente grazie all'utilizzo di metriche.
+Le sei caratteristiche principali sono elencate di seguito:
+\begin{itemize}
+	\item \textbf{Funzionalità:} rappresenta la capacità del prodotto software di fornire funzioni che soddisfano le esigenze stabilite, sia esplicite che implicite, quando il software opera in un determinato contesto di utilizzo. Sottocaratteristiche notevoli sono l'interoperabilità e la Sicurezza, intesa come la capacità di proteggere le informazioni e i dati da accessi non autorizzati;
+	\item \textbf{Affidabilità:} capacità di mantenere uno specificato livello di prestazione quando si opera in specificate condizioni. Sottocaratteristiche importanti sono la maturità e la tolleranza all'errore;
+	\item \textbf{Efficienza:} capacità di fornire le funzioni richieste nel minor tempo possibile, sfruttando al meglio le risorse messe a disposizione;
+	\item \textbf{Usabilità:} capacità del prodotto software di essere capito, appreso, usato e gradito all'utente, quando usato in contesti specificati. Una sottocaratteristica di rilievo è l'attrattiva;
+	\item \textbf{Manutenibilità:} capacità del software di essere modificato e manutenuto. Per modifiche si intendono correzioni o adattamenti del software, negli ambienti, nei requisiti e nelle specifiche funzionali. Una sottocaratteristica importante è la testabilità, cioè la capacità di un software di consentire la verifica e di essere oggetto di test;
+	\item \textbf{Portabilità:} capacità di poter essere trasferito da un ambiente di esecuzione all'altro.
+\end{itemize}
+\subsubsection{Modello per la qualità in uso}
+Per la qualità in uso lo standard definisce una gerarchia separata, per enfatizzare il fatto che qui si considera non solo il prodotto software in sè, ma la relazione stretta tra esso e l'utente, nell'ambiente di utilizzo. Il modello è formato dalle seguenti quattro caratteristiche:
+\begin{itemize}
+	\item \textbf{Efficacia:} rappresenta la capacità di supportare un utente nel raggiungere i suoi obiettivi con accuratezza e completezza in un dato contesto;
+	\item \textbf{Produttività:} la capacità di supportare un utente nello spendere l’appropriata quantità di risorse in relazione all’efficacia dei risultati da raggiungere; 
+	\item \textbf{Soddisfazione:} la capacità di soddisfare un utente in un dato contesto d’uso;
+	\item \textbf{Safety:} la capacità di raggiungere accettabili livelli di rischio di
+	danni a persone, al software, ad apparecchiature, o all’ambiente operativo in un dato contesto d’uso.
+\end{itemize}
+\begin{figure}[htbp]
+	\centering
+	\includegraphics{images/gerarchiaQualitaProdotto.png}
+	\caption{Riepilogo modello ISO 9126}
+\end{figure}
+
 
 \end{document}
 

@@ -249,9 +249,69 @@ describe('ExercisePresenter', function() {
 
     describe('ExercisePresenter.correctionToTags()', function () {
         it('should return tags correction', async function () {
+            const testBody = {
+                general0:"A",
+                grammarclass0:["-","-","-","-","-","-","-","-","-"],
+                tempo0:"-",
+                persona0:"-",
+                genere0:"m",
+                numero0:"s"
+            };
+
             //@ts-ignored
-            test.correctionToTags(5,"2019-05-10");
+            const result = test.correctionToTags(1,testBody);
+
+            chai.expect(result).to.be.eql(["Ams"]);
         });
+
+        it('should return tags correction', async function () {
+            const testBody = {
+                general0:"A",
+                grammarclass0:["AP","-","-","-","-","-","-","-","-"],
+                tempo0:"-",
+                persona0:"-",
+                genere0:"m",
+                numero0:"s"
+            };
+
+            //@ts-ignored
+            const result = test.correctionToTags(1,testBody);
+
+            chai.expect(result).to.be.eql(["APms"]);
+        });
+
+        it('should return tags correction', async function () {
+            const testBody = {
+                general0:"A",
+                grammarclass0:["DD","-","-","-","-","-","-","-","-"],
+                tempo0:"-",
+                persona0:"-",
+                genere0:"m",
+                numero0:"s"
+            };
+
+            //@ts-ignored
+            const result = test.correctionToTags(1,testBody);
+
+            chai.expect(result).to.be.eql(["DDms"]);
+        });
+
+        it('should return tags correction', async function () {
+            const testBody = {
+                general0:"A",
+                grammarclass0:["DI","-","-","-","-","-","-","-","-"],
+                tempo0:"-",
+                persona0:"-",
+                genere0:"m",
+                numero0:"s"
+            };
+
+            //@ts-ignored
+            const result = test.correctionToTags(1,testBody);
+
+            chai.expect(result).to.be.eql(["DIms"]);
+        });
+
     });
 
     describe('ExercisePresenter.splitTopics()', function () {
@@ -276,12 +336,12 @@ describe('ExercisePresenter', function() {
 
     describe('ExercisePresenter.translateTag()', function () {
         it('should return the italian translation of the tag', async function () {
-            test.translateTag("ciao");
+            chai.expect(test.translateTag("VMif2p")).to.be.equals("Verbo modale indicativo futuro seconda persona plurale");
         });
     });
 
     describe('ExercisePresenter.teacherSolutions()', function () {
-        it('should return all the public teacher solutions avaiable for an exercise', async function () {
+        it('should return all the public teacer solutions avaiable for an exercise', async function () {
             await test.teacherSolutions("ciao");
         });
     });

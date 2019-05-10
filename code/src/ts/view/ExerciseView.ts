@@ -265,9 +265,9 @@ class ExerciseView extends PageView{
             "    <option value=\"X\">Altro</option>\n"+
             "</select>\n" +
             "<!--secondo liv aggettivo-->\n" +
-            "<select class=\"form-control\" name=\"aggettivo"+index+"\" id=\"aggettivo"+index+"\" onchange=\"aggettivo("+index+")\">\n" +
-            "    <option value=\"-\">Scegli un aggettivo specifico *</option>\n" +
-            "    <option value=\"A\">Aggettivo qualificativo</option>\n" +
+            "<select class=\"form-control\" name=\"grammarclass"+index+"\" id=\"aggettivo"+index+"\" onchange=\"aggettivo("+index+")\">\n" +
+            //"    <option value=\"-\">Scegli un aggettivo specifico *</option>\n" +
+            "    <option value=\"-\">Aggettivo qualificativo</option>\n" +
             "    <option value=\"AP\">Aggettivo d. possesivo</option>\n" +
             "    <option value=\"DD\">Aggettivo d. dimostrativo</option>\n" +
             "    <option value=\"DI\">Aggettivo d. indefinito</option>\n" +
@@ -278,32 +278,33 @@ class ExerciseView extends PageView{
             "    <!--DR Determinante Relativo non so cosa sia forse avverbio-->\n" +
             "</select>\n" +
             "<!--secondo liv avverbio-->\n" +
-            "<select class=\"form-control\" name=\"avverbio"+index+"\" id=\"avverbio"+index+"\">\n" +
+            "<select class=\"form-control\" name=\"grammarclass"+index+"\" id=\"avverbio"+index+"\">\n" +
             "    <option value=\"-\">Scegli un avverbio specifico</option>\n" +
-            "    <option value=\"N\">Avverbio di negazione</option>\n" +
+            "    <option value=\"BN\">Avverbio di negazione</option>\n" +
             "</select>\n" +
-            "<select class=\"form-control\" name=\"congiunzione"+index+"\" id=\"congiunzione"+index+"\">\n" +
+            "<!-- secondo liv congiunzione -->\n" +
+            "<select class=\"form-control\" name=\"grammarclass"+index+"\" id=\"congiunzione"+index+"\">\n" +
             "    <option value=\"-\">Scegli una congiunzione specifica *</option>\n" +
-            "    <option value=\"C\">Congiunzione coordinante</option>\n" +
-            "    <option value=\"S\">Congiunzione subordinante</option>\n" +
+            "    <option value=\"CC\">Congiunzione coordinante</option>\n" +
+            "    <option value=\"CS\">Congiunzione subordinante</option>\n" +
             "    <!--non so se queste CS vanno a sostituire gli avverbi-->\n" +
             "</select>\n" +
-            "<select class=\"form-control\" name=\"preposizione"+index+"\" id=\"preposizione"+index+"\">\n" +
+            "<select class=\"form-control\" name=\"grammarclass"+index+"\" id=\"preposizione"+index+"\" onchange=\"preposizione("+index+")\">\n" +
             //"    <option value=\"-\">Scegli una correzione *</option>\n" +
             "    <option value=\"-\">Preposizione semplice</option>\n" +
-            "    <option value=\"A\">Preposizione articolata</option>\n" +
+            "    <option value=\"EA\">Preposizione articolata</option>\n" +
             "\n" +
             "</select>\n" +
-            "<select class=\"form-control\" name=\"punteggiatura"+index+"\" id=\"punteggiatura"+index+"\">\n" +
+            "<select class=\"form-control\" name=\"grammarclass"+index+"\" id=\"punteggiatura"+index+"\">\n" +
             "    <option value=\"-\">Scegli una punteggiatura specifica</option>\n" +
-            "    <option value=\"S\">Punteggiatura generale</option>\n" +
-            "    <option value=\"B\">Punteggiatura bilanciata</option>\n" +
-            "    <option value=\"C\">Punteggiatura fine clausola</option>\n" +
-            "    <option value=\"F\">Punteggiatura di fine frase</option>\n" +
+            "    <option value=\"FS\">Punteggiatura generale</option>\n" +
+            "    <option value=\"FB\">Punteggiatura bilanciata</option>\n" +
+            "    <option value=\"FC\">Punteggiatura fine clausola</option>\n" +
+            "    <option value=\"FF\">Punteggiatura di fine frase</option>\n" +
             "\n" +
             "</select>\n" +
             "<!--secondo liv pronome-->\n" +
-            "<select class=\"form-control\" name=\"pronome"+index+"\" id=\"pronome"+index+"\" onchange=\"pronome("+index+")\">\n" +
+            "<select class=\"form-control\" name=\"grammarclass"+index+"\" id=\"pronome"+index+"\" onchange=\"pronome("+index+")\">\n" +
             "    <option value=\"-\">Scegli una correzione</option>\n" +
             "    <option value=\"PE\">Pronome personale</option>\n" +
             "    <option value=\"PP\">Pronome possessivo</option>\n" +
@@ -319,21 +320,21 @@ class ExerciseView extends PageView{
             "    -->\n" +
             "</select>\n" +
             "<!--secondo liv articolo-->\n" +
-            "<select class=\"form-control\" name=\"articolo"+index+"\" id=\"articolo"+index+"\">\n" +
+            "<select class=\"form-control\" name=\"grammarclass"+index+"\" id=\"articolo"+index+"\">\n" +
             "    <option value=\"-\">Scegli un articolo specifico *</option>\n" +
-            "    <option value=\"D\">Articolo determinativo</option>\n" +
-            "    <option value=\"I\">Articolo indeterminativo</option>\n" +
+            "    <option value=\"RD\">Articolo determinativo</option>\n" +
+            "    <option value=\"RI\">Articolo indeterminativo</option>\n" +
             "</select>\n" +
             "<!--secondo liv nome-->\n" +
-            "<select class=\"form-control\" name=\"nome"+index+"\" id=\"nome"+index+"\" onchange=\"nome("+index+")\">\n" +
-            //"    <option value=\"-\">Scegli una correzione *</option>\n" +
-            "    <option value=\"-\">Nome comune</option>\n" +
-            "    <option value=\"P\">Nome proprio</option>\n" +
-            "    <option value=\"A\">Abbreviazione</option>\n" +
+            "<select class=\"form-control\" name=\"grammarclass"+index+"\" id=\"nome"+index+"\" onchange=\"nome("+index+")\">\n" +
+            "    <option value=\"-\">Scegli una correzione *</option>\n" +
+            "    <option value=\"S\">Nome comune</option>\n" +
+            "    <option value=\"SP\">Nome proprio</option>\n" +
+            "    <option value=\"SA\">Abbreviazione</option>\n" +
             "    <!--ci potrebbe stare qui l'abbreviazione SA-->\n" +
             "</select>\n" +
             "\n" +
-            "<select class=\"form-control\" name=\"verbo"+index+"\" id=\"verbo"+index+"\" onchange=\"verbo("+index+")\">\n" +
+            "<select class=\"form-control\" name=\"grammarclass"+index+"\" id=\"verbo"+index+"\" onchange=\"verbo("+index+")\">\n" +
             "    <option value=\"-\">Scegli tipo verbo *</option>\n" +
             "    <option value=\"V\">principale</option>\n" +
             "    <option value=\"VA\">ausiliario</option>\n" +
@@ -402,8 +403,8 @@ class ExerciseView extends PageView{
             "            hide(\"verbo\"+i);\n" +
             "            hide(\"tempo\"+i);\n" +
             "            hide(\"persona\"+i);\n" +
-            "            hide(\"genere\"+i);\n" +
-            "            hide(\"numero\"+i);\n" +
+            "            show(\"genere\"+i);\n" +
+            "            show(\"numero\"+i);\n" +
             "            break;\n" +
             "        case 'B':\n" +
             "            hide(\"aggettivo\"+i);\n" +
@@ -476,9 +477,9 @@ class ExerciseView extends PageView{
             "            hide(\"nome\"+i);\n" +
             "            hide(\"verbo\"+i);\n" +
             "            hide(\"tempo\"+i);\n" +
-            "            hide(\"persona\"+i);\n" +
-            "            hide(\"genere\"+i);\n" +
-            "            hide(\"numero\"+i);\n" +
+            "            show(\"persona\"+i);\n" +
+            "            show(\"genere\"+i);\n" +
+            "            show(\"numero\"+i);\n" +
             "            break;\n" +
             "        case 'R':\n" +
             "            hide(\"aggettivo\"+i);\n" +
@@ -570,14 +571,14 @@ class ExerciseView extends PageView{
             "            break;\n" +
             "    }\n" +
             "}\n" +
-            "function preposizione(){\n" +
+            "function preposizione(i){\n" +
             "    var x = document.getElementById(\"preposizione\"+i).value;\n" +
             "    switch(x){\n" +
             "        case 'E':\n" +
             "            hide(\"genere\"+i);\n" +
             "            hide(\"numero\"+i);\n" +
             "            break;\n" +
-            "        default:\n" +
+            "        case 'EA':\n" +
             "            show(\"genere\"+i);\n" +
             "            show(\"numero\"+i);\n" +
             "            break;\n" +
@@ -605,17 +606,15 @@ class ExerciseView extends PageView{
             "}\n" +
             "function nome(i){\n" +
             "    var x = document.getElementById(\"nome\"+i).value;\n" +
-            "    switch(x){\n" +
-            "        case '-':\n" +
-            "            show(\"genere\"+i);\n" +
-            "            show(\"numero\"+i);\n" +
-            "            break;\n" +
-            "        default:\n" +
-            "            hide(\"genere\"+i);\n" +
-            "            hide(\"numero\"+i);\n" +
-            "            break;\n" +
+            "    if (x == 'S'){\n" +
+            "        show(\"genere\"+i);\n" +
+            "        show(\"numero\"+i);\n" +
+            "    } else {" +
+            "        hide(\"genere\"+i);\n" +
+            "        hide(\"numero\"+i);\n" +
             "    }\n" +
             "}\n" +
+
             "function verbo(i){\n" +
             "    var x = document.getElementById(\"verbo\"+i).value;\n" +
             "    switch(x){\n" +

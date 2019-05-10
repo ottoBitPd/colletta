@@ -150,7 +150,7 @@ abstract class PageView {
                 "\t\t\t\t<form class='form-inline my-2 my-lg-0' action='/logout'>\n" +
                 "\t\t\t\t\t<div class=\"form-group\">" +
                 "\t\t\t\t\t\t<a class=\"btn btn-default btn-circle btn-sm mr-4 pt-2\" href=\"/profile\" role=\"button\">" +
-                "<i class=\"fas fa-user-circle\" style=\"color: white; font-size:26px\"></i></a>\n" +
+                "<i class=\"fas fa-user-circle\" style=\"color: white; font-size:26px\"></i><p class='text-white d-inline-block p-0 pl-3 m-0 pt-1 align-top'>Il tuo profilo</p></a>\n" +
                 "\t\t\t\t\t\t<button type=\"submit\" class=\"btn-sm btn-primary my-2 my-sm-0\">Logout</button>\n" +
                 "\t\t\t\t\t</div>\n" +
                 "\t\t\t\t</form>\n";

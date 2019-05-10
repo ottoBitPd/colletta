@@ -56,6 +56,7 @@ class UserClient{
         const idUser = await this.dbUserManager.search(username);
         if(idUser!=="false") {
             const user: Data | null = await this.dbUserManager.read(idUser);
+
             if (user !== null) {
                 const password = (<User>user).getPassword();
                 return this.checkPassword(insertedPassword,password);

@@ -61,16 +61,20 @@ class RegistrationPresenter extends PagePresenter {
 
             const hashedPassword = passwordHash.hashSync(req.body.username,10);
             let userClient = this.client.getUserClient();
-            console.log(userClient);
             if(userClient !== undefined){
                 const exist = await userClient.search(req.body.username);
-                if (req.body.username !== "admin" && req.body.role === "student" && exist === "false") {
-                    userClient.insertStudent(req.body.username, hashedPassword, req.body.name, req.body.surname, req.body.city, req.body.school, req.body.email);
-                    res.redirect("/");
-                } else if (req.body.username !== "admin" && req.body.role === "teacher" && userClient !== undefined) {
-                    userClient.insertTeacher(req.body.username, hashedPassword, req.body.name, req.body.surname, req.body.city, req.body.school, req.body.inps, req.body.email);
-                    res.redirect("/");
-                } else {
+                if(exist==="false") {
+                    if (req.body.role === "student") {
+                        userClient.insertStudent(req.body.username, hashedPassword, req.body.name, req.body.surname, req.body.city, req.body.school, req.body.email);
+                        res.redirect("/");
+                    } else if (req.body.role === "teacher") {
+                        userClient.insertTeacher(req.body.username, hashedPassword, req.body.name, req.body.surname, req.body.city, req.body.school, req.body.inps, req.body.email);
+                        res.redirect("/");
+                    }
+                    else {
+                        res.redirect("/registration?mess=errUsername");
+                    }
+                }else {
                     res.redirect("/registration?mess=errUsername");
                 }
             }

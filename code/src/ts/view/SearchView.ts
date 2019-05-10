@@ -44,69 +44,6 @@ class SearchView extends PageView{
     }
 
     /**
-     * This method is used to display the page menù
-     * @return {string} the HTML source
-     */
-    /*private getMenu() : string {
-        let ret ="<nav class=\"navbar navbar-expand-sm bg-dark navbar-dark\">" +
-            "    <div class=\"navbar-brand\">Colletta</div>" +
-            "    <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#collapsibleNavbar\">" +
-            "        <span class=\"navbar-toggler-icon\"></span>" +
-            "    </button>" +
-            "    <div class=\"collapse navbar-collapse\" id=\"collapsibleNavbar\">"+
-            "<ul class=\"navbar-nav mr-auto\">";
-        for(let i in this.menuList) {
-            ret += ""+
-                "<li class=\"nav-item\">" +
-                "   <a class=\"nav-link\" href=\""+this.menuList[i].link+"\">"+this.menuList[i].name+"</a>" +
-                "</li>";
-        }
-        ret+="</ul>";
-        //aggiungo login o logout
-        ret+=this.getLoginArea();
-        ret+="    </div>" +
-            "</nav>";
-        return ret;
-    }*/
-
-    /**
-     * This method is used to display the page login area
-     * @return {string} the HTML source
-     */
-    /*private getLoginArea() : string {
-
-        if(this.searchPresenter.isLoggedIn()){
-            return "" +
-                "        <form class='form-inline my-2 my-lg-0' action='/logout'>\n" +
-                "           <div class=\"form-group\">" +
-                "               <a class=\"btn btn-default btn-circle btn-sm mr-4 pt-2\" href=\"/profile\" role=\"button\"><i class=\"fas fa-user-circle\" style=\"color: white; font-size:26px\"></i></a>\n" +
-                "               <button type=\"submit\" class=\"btn-sm btn btn-primary my-2 my-sm-0\">Logout</button>\n" +
-                "           </div>\n" +
-                "        </form>\n";
-        }
-        else{
-            let ret ="";
-            ret += "" +
-                "\t\t<form class='form-inline my-2 my-lg-0' method ='post' action='/checklogin'>\n";
-            if(this.searchPresenter.isLoginInvalid()){
-                ret+="\t\t\t<p class='text-danger m-1 p-1'>username o password invalidi</p>\n";
-            }
-            ret+="\t\t\t<div class=\"form-group\">\n" +
-                "\t\t\t\t<input type=\"text\" class=\"form-control mr-sm-2\" name='username' placeholder=\"Username\" required=\"required\">\n" +
-                "\t\t\t</div>\n" +
-                "\t\t\t<div class=\"form-group\">\n" +
-                "\t\t\t\t<input type=\"password\" class=\"form-control mr-sm-2\" name='password' placeholder=\"Password\" required=\"required\">\n" +
-                "\t\t\t</div>\n" +
-                "\t\t\t<div class=\"form-group\">\n" +
-                "\t\t\t\t<button type=\"submit\" class=\"btn-sm btn btn-primary my-2 my-sm-0 mr-2\">Accedi</button>\n" +
-                "\t\t\t\t<a class=\"btn-sm btn btn-primary my-2 my-sm-0\" href=\"/registration\" role=\"button\">Registrati</a>\n"+
-                "\t\t\t</div>\n" +
-                "\t\t</form>\n";
-            return ret;
-        }
-    }*/
-
-    /**
      * This method is used to display the list of search results
      * @return {string} the HTML source
      */

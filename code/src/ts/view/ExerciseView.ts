@@ -158,11 +158,7 @@ class ExerciseView extends PageView{
             "            </li>\n";
 
         let solution = this.exercisePresenter.getUserSolution();
-        //console.log("solution: ",solution);
         let correction = this.exercisePresenter.getCorrection();
-        //console.log("correction: ",correction);
-        //console.log("tag soluzione user: ",solution);
-        //console.log("TRADUZIONE tag soluzione user: ",this.exercisePresenter.translateTags(solution));
         if (correction){
             for (let i = 0; i < words.length; ++i){
                 ret +=
@@ -252,8 +248,7 @@ class ExerciseView extends PageView{
      * @param index - the index of the right value
      */
     private getSelect(index : number){
-        //const input =  this.fileSystem.readFileSync('./public/htmlSelect.html').toString();
-        //return input.replace(/\*i\*/g,index);
+
         return "" +
             "<select class=\"form-control\" name=\"general"+index+"\" id=\"general"+index+"\" onchange=\"general("+index+")\">>\n" +
             " <option value=\"-\">Scegli una correzione</option>\n" +

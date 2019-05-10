@@ -61,7 +61,6 @@ class RegistrationPresenter extends PagePresenter {
 
             const hashedPassword = passwordHash.hashSync(req.body.username,10);
             let userClient = this.client.getUserClient();
-            console.log(userClient);
             if(userClient !== undefined){
                 const exist = await userClient.search(req.body.username);
                 if (req.body.username !== "admin" && req.body.role === "student" && exist === "false") {

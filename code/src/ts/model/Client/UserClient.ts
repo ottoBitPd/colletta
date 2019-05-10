@@ -4,12 +4,13 @@ import {Teacher} from "../Data/Teacher";
 import {Student} from "../Data/Student";
 import {User} from "../Data/User";
 
+const passwordHash = require('bcryptjs');
+
 /**
  * Class to use the user functionality exposed into the model
  */
 class UserClient{
     private dbUserManager : DatabaseUserManager;
-    private passwordHash = require('bcryptjs');
     constructor(){
         this.dbUserManager = new DatabaseUserManager();
     }
@@ -37,7 +38,7 @@ class UserClient{
      * @param surname - the surname of the teacher
      * @param city - the city of the teacher
      * @param school - the school of the teacher
-     * @param INPS - the INPS code of the teacher
+     * @param inps - the INPS code of the teacher
      * @param email - the email of the teacher
      * @returns {boolean} returns "true" if the operation is successful
      */
@@ -59,7 +60,6 @@ class UserClient{
                 const password = (<User>user).getPassword();
                 return this.checkPassword(insertedPassword,password);
             } else {
-                //console.log("password dont match")
                 return false;
             }
         } else {
@@ -74,11 +74,9 @@ class UserClient{
      * @returns {boolean} returns "true" if the two passwords are matching
      */
     public checkPassword(insertedPassword:string,password:string) : boolean{
-        if (this.passwordHash.compareSync(insertedPassword, password)) {
-            //console.log("password match");
+        if (passwordHash.compareSync(insertedPassword, password)) {
             return true;
         } else {
-            //console.log("password dont match")
             return false;
         }
     }
@@ -101,7 +99,7 @@ class UserClient{
      * This method returns the list of teachers inserted into the database
      * @returns {string[]} the list of users
      */
-    async teacherList() : Promise<string[]> {
+    public async teacherList() : Promise<string[]> {
         let teacherMap = await this.dbUserManager.elements();
         let list : string[] = [];
 
@@ -118,7 +116,7 @@ class UserClient{
      * @param username - the username of the user we are looking for
      * @returns {string}
      */
-    async search(username:string) : Promise<string> {
+    public async search(username:string) : Promise<string> {
         return await this.dbUserManager.search(username);
     }
 
@@ -165,7 +163,6 @@ class UserClient{
         var regex = new RegExp(substring, "i");
         var elements = await this.dbUserManager.elements();//returns a map<id,username> of all users in the db
         var mapToReturn = new Map<string, string>();
-        // console.log("User: ", elements);
 
         for (let entry of Array.from(elements.entries())) {
             let key = entry[0];
@@ -175,8 +172,7 @@ class UserClient{
                 if (value.search(regex) >= 0) {
                     mapToReturn.set(key, value);
                 }
-            }
-            else if (!teacher && !(<User>user).isTeacher()){
+            } else if (!teacher && !(<User>user).isTeacher()){
                 if (value.search(regex) >= 0) {
                     mapToReturn.set(key, value);
                 }
@@ -188,10 +184,10 @@ class UserClient{
 
     /**
      * This method encrypts the user password
-     * @param plain - the password inserted by the user
+     * @param password - the password inserted by the user
      */
-    public hashPassword(plain :string){
-        return this.passwordHash.hashSync(plain,10);
+    public hashPassword(password :string) : string{
+        return passwordHash.hashSync(password,10);
     }
 }
 export{UserClient}

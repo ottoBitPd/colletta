@@ -2,9 +2,9 @@ interface POSManager {
 
     /**
      * This method sets the model to use
-     * @param modelFilePath - the model path
+     * @param path - the model path
      */
-    setModel(modelFilePath:string):void;
+    setModel(path:string):void;
 
     /**
      * This method create a model based on the actual data

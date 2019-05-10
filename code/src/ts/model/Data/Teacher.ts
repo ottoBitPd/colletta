@@ -33,7 +33,7 @@ class Teacher extends User {
      * This method returns the teacher INPS code.
      * @returns { string } returns the INPS code.
      */
-    public getINPS() {
+    public getINPS() : string {
             return this.INPS;
     }
 

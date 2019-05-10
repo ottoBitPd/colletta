@@ -15,10 +15,10 @@ class HunposManager implements POSManager{
 
     /**
      * This method sets the model to use
-     * @param modelFilePath - the model path
+     * @param path - the model path
      */
-    setModel(modelFilePath:string):void{
-        this.modelFilePath=modelFilePath;
+    setModel(path:string):void{
+        this.modelFilePath=path;
     };
 
     /**
@@ -42,7 +42,7 @@ class HunposManager implements POSManager{
      *               having the following format:
      *                  {word: WORD1, label: TAG1}
      */
-    private buildSolution(posOutput : string):any{
+    private buildSolution(posOutput : string) : any {
         var wordSolArray = posOutput.split("\n");
 
         let obj : any= {
@@ -65,7 +65,7 @@ class HunposManager implements POSManager{
      * @return {any} an array containing JSON object having the following format:
      *                  {word: WORDn, label: TAGn}
      */
-    async getSolution(sentence:string):Promise<any>{
+    public async getSolution(sentence:string) : Promise<any>{
         return this.buildSolution(await this.tag(this.buildInput(sentence)));
     };
 
@@ -116,7 +116,7 @@ class HunposManager implements POSManager{
      * This method splits a sentence on spaces and punctuation
      * @returns string [] - an array containing the split sentence
      */
-    private splitSentence(sentence: string) : string []{
+    private splitSentence(sentence: string) : string[] {
         let ret = sentence;
         ret = ret.replace(/\-/g," - ");
         ret = ret.replace(/\!/g," ! ");

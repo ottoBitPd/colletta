@@ -10,10 +10,9 @@ class Exercise implements Data{
     private sentence: string;
     private authorId: string;
     private newSolution : Solution | null;
-    private solutions : Solution [];
+    private solutions : Solution[];
     private key: string;
-    private hunpos: POSManager;
-
+    private pos: POSManager;
 
     /**
      *   Initializes all attributes needed to Exercise object.
@@ -25,7 +24,7 @@ class Exercise implements Data{
         this.authorId = authorId;
         this.newSolution = null;
         this.solutions = [];
-        this.hunpos = new HunposManager();
+        this.pos = new HunposManager();
     }
 
     /**
@@ -49,7 +48,7 @@ class Exercise implements Data{
      * @returns { POSManager } returns the reference.
      */
     getPOSManager(): POSManager {
-        return this.hunpos;
+        return this.pos;
     }
 
     /**
@@ -96,6 +95,7 @@ class Exercise implements Data{
      * @param difficulty - the grade of difficulty
      * @param valutations - the list of valutations (time and mark)
      * @param time - the date of the solution
+     * @param _public - the
      */
     addSolution(key : string, solverId: string, solutionTags: string[], topics: string[],
                 difficulty: number, valutations : Map<string,number>,time : number, _public? : boolean): void {
@@ -115,9 +115,9 @@ class Exercise implements Data{
      * @param teacherId - the Id of the teacher who evaluates the solution
      * @param mark - the valutation
      */
-    addValutation(teacherID : string, mark : number) {
+    addValutation(teacherId : string, mark : number) {
         if (this.newSolution)
-            this.newSolution.addNewMark(teacherID,mark);
+            this.newSolution.addNewMark(teacherId,mark);
         else
             throw new Error("Nessuna soluzione proposta");
     }
@@ -143,8 +143,8 @@ class Exercise implements Data{
      * @param sentence - a sentence that must to be splitted
      * @returns string [] - an array containing the split sentence
      */
-    getSplitSentence() : string []{
-        this.myReplace();//adding spaces to split punctation
+    public getSplitSentence() : string[]{
+        this.prepareSentence();//adding spaces to split punctation
         let arr = this.sentence.split(new RegExp(" |(?<=')"));
         arr = arr.filter(Boolean);//remove empty string like ''
         return arr;
@@ -152,9 +152,8 @@ class Exercise implements Data{
 
     /**
      * This method adds spaces to the exercise sentence before and after every punctation symbol
-     * @param sentence - a string on which apply replace
      */
-    private myReplace() {
+    private prepareSentence() {
         this.sentence = this.sentence.replace(/\-/g," - ");
         this.sentence = this.sentence.replace(/\!/g," ! ");
         this.sentence = this.sentence.replace(/\?/g," ? ");

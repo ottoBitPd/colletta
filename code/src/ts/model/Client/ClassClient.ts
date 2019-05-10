@@ -53,7 +53,7 @@ class ClassClient{
      * @param classId - the id of the class in which remove the exercise
      * @param exerciseId - the id of the exercise to remove
      */
-    public async deleteExercise(classId:string, exerciseId:string){
+    public async deleteExercise(classId:string, exerciseId:string) : Promise<void>{
         var _class: Data = await this.dbClassManager.read(classId);
         var exercises:string []  = (<Class>_class).getExercises();
         if(exercises[0]!=="n") {//if there are exercises to remove
@@ -99,7 +99,7 @@ class ClassClient{
 
     /**
      * This method adds an exercise of a class into the database
-     * @param studentId - the id of the exercise to add
+     * @param exerciseId - the id of the exercise to add
      * @param classId - the id of the class in which add the exercise
      */
     public async addExercise(exerciseId:string, classId:string){
@@ -136,12 +136,11 @@ class ClassClient{
 
     /**
      * This method returns a list of class of which the selected teacher is the creator
-     * @param studentId - the id of the teacher which we want to know the classes
+     * @param teacherId - the id of the teacher which we want to know the classes
      * @returns {any} the list of classes
      */
-    public async getClassesByTeacher(teacherId : string) : Promise<any[]> {
+    public async findTeacherClasses(teacherId : string) : Promise<any[]> {
         var elements = await this.dbClassManager.elements();
-        //var mapToReturn = new Map<string, string>();
         let ret = [];
         for (let entry of Array.from(elements.entries())) {
             let key = entry[0];
@@ -149,10 +148,8 @@ class ClassClient{
             if(value===teacherId){
                 let _class : Data = await this.dbClassManager.read(key);
                 ret.push((<Class>_class).toJSON());
-                //mapToReturn.set(key,(<Class>_class).getName());
             }
         }
-        //console.log("mapToReturn: ",mapToReturn);
         return ret;
     }
 
@@ -161,9 +158,8 @@ class ClassClient{
      * @param studentId - the id of the student which we want to know the classes
      * @returns {any} the list of classes
      */
-    public async getClassesByStudent(studentId:string) : Promise<any[]>{
+    public async findStudentClasses(studentId:string) : Promise<any[]>{
         var elements = await this.dbClassManager.elements();
-        //var mapToReturn = new Map<string, string>();
         let ret = [];
         for (let entry of Array.from(elements.entries())) {
             let key = entry[0];
@@ -172,11 +168,9 @@ class ClassClient{
             for(let i in students){
                 if(students[i]===studentId){
                     ret.push((<Class>_class).toJSON());
-                    //mapToReturn.set(key,(<Class>_class).getName());
                 }
             }
         }
-        //console.log("mapToReturn: ",mapToReturn);
         return ret;
     }
 
@@ -187,10 +181,7 @@ class ClassClient{
      */
     public async getClassData(id:string) : Promise<any> {
         const _class : Data = await this.dbClassManager.read(id);
-        let _classData = (<Class> _class).toJSON();
-        return _classData;
+        return (<Class> _class).toJSON();
     }
-
-
 }
 export{ClassClient}

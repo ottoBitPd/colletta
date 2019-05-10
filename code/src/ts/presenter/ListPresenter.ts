@@ -119,9 +119,9 @@ class ListPresenter extends PagePresenter {
             let id = await userClient.search(session.username);
             if (id !== "false") {
                 if (await userClient.isTeacher(session.username)) {
-                    return await classClient.getClassesByTeacher(id);
+                    return await classClient.findTeacherClasses(id);
                 } else {//is a student
-                    return await classClient.getClassesByStudent(id);
+                    return await classClient.findStudentClasses(id);
                 }
             }
         }
@@ -139,7 +139,7 @@ class ListPresenter extends PagePresenter {
             let id = await userClient.search(session.username);
             if (id !== "false") {
                 if (await userClient.isTeacher(session.username)) {
-                    let arr = await exerciseClient.getExercisesByAuthor(id);//returns map<idClasse, className>
+                    let arr = await exerciseClient.findExercises(id);//returns map<idClasse, className>
                     return this.translateExercises(arr);
                 }
             }

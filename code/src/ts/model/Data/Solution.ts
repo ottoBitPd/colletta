@@ -12,7 +12,7 @@ enum Difficulty {
 class Solution {
     private key : string | null; // chiave univoca della soluzione
     private solverId : string;//id dell'autore della soluzione
-    private solutionTags: string [];//soluzione proposta
+    private solutionTags: string[];//soluzione proposta
     private topics: string [] | null;//gli argomenti della soluzione
     private difficulty: Difficulty | null;//la difficoltà dell'esercizio
     private valutations : Map<string,number> | null; // coppie di valutazioni con chiave insegnante e valore la valutazione ottenuta
@@ -22,8 +22,7 @@ class Solution {
     /**
      *   Initializes all attributes needed to Solution object.
      */
-    // @ts-ignore
-    constructor(key? : string, solverId: string, solutionTags: string[], topics? : string[], difficulty? : Difficulty, _public? : boolean, valutations? : Map<string,number>, time? : number) {
+    constructor(key : string | undefined, solverId: string, solutionTags: string[], topics? : string[], difficulty? : Difficulty, _public? : boolean, valutations? : Map<string,number>, time? : number) {
         this.key = key || null;
         this.solverId = solverId;
         this.solutionTags = solutionTags;
@@ -33,8 +32,6 @@ class Solution {
         this.time = time || null;
         this._public = _public || false;
     }
-    // @ts-ignore
-    constructor();
 
     /**
      * This method returns the key of a solution.
@@ -132,7 +129,7 @@ class Solution {
      * @param teacherID - the Id of the teacher who assigns the valutation
      * @param mark - the valutation to add
      */
-    addNewMark(teacherID : string, mark : number) {
+    addNewMark(teacherID : string, mark : number) : void {
         if (!this.valutations)
             this.valutations = new Map<string, number>();
         this.valutations.set(teacherID,mark);
@@ -143,7 +140,7 @@ class Solution {
      * @param tags - the tag list of the solution to evaluate
      * @returns { number } returns the valutation.
      */
-    evaluateSolution(tags: string []):number{
+    evaluateSolution(tags: string []): number {
         var rightTagsNumber=0;
         let mySolutionTags=this.getSolutionTags();
         for(let j =0; j<mySolutionTags.length;j++){
@@ -179,4 +176,5 @@ class Solution {
         return solution;
     }
 }
+
 export {Solution};

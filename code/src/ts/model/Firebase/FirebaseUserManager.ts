@@ -51,7 +51,7 @@ class FirebaseUserManager extends FirebaseManager {
 
     /**
      *   This method looks for users into the database
-     *   @param id - the id of the user to search
+     *   @param username - the id of the user to search
      *   @returns (string) - the user's username if exists
      */
     public async search(username : string) : Promise<string>{

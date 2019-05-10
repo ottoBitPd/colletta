@@ -54,7 +54,7 @@ describe('ListPresenter', function() {
                         return true;
                     }
 
-                    async getClassesByTeacher(teacherId: string): Promise<any> {
+                    async findTeacherClasses(teacherId: string): Promise<any> {
                         return true;
                     }
                     public async getStudents(classId:string): Promise<any>{
@@ -82,7 +82,7 @@ describe('ListPresenter', function() {
 
             getExerciseClient(): ExerciseClient | undefined {
                 const tryclass = class extends ExerciseClient {
-                    async getExercisesByAuthor(id :string) :Promise<any>{
+                    async findExercises(id :string) :Promise<any>{
                         return true;
                     }
                     getSplitSentence(sentence:string) : any{

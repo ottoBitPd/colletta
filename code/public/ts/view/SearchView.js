@@ -116,7 +116,6 @@ class SearchView extends PageView_1.PageView {
      */
     printList() {
         let results = this.searchPresenter.getResults();
-        //console.log("result: ",results);
         if (results === undefined) {
             return ""; //resultList is not set yet, cause nobody searched yet
         }

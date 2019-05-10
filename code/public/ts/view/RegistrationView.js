@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const PageView_1 = require("./PageView");
-const AuthenticationPresenter_1 = require("../presenter/AuthenticationPresenter");
+const RegistrationPresenter_1 = require("../presenter/RegistrationPresenter");
 /**
  *   Class to display the registration page
  *   @extends PageView
@@ -17,7 +17,7 @@ const AuthenticationPresenter_1 = require("../presenter/AuthenticationPresenter"
 class RegistrationView extends PageView_1.PageView {
     constructor(app) {
         super();
-        this.authPresenter = new AuthenticationPresenter_1.AuthenticationPresenter(this);
+        this.authPresenter = new RegistrationPresenter_1.RegistrationPresenter(this);
         this.authPresenter.update(app);
     }
     /**

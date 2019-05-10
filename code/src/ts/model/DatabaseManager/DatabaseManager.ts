@@ -55,7 +55,7 @@ abstract class DatabaseManager{
 
     /**
      *   This method looks for data into the database
-     *   @param id - the id of the user to search
+     *   @param dataName - the name of the data to search
      */
     public abstract search(dataName:string) : Promise<string>;
 }

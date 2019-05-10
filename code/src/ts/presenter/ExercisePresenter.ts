@@ -25,7 +25,7 @@ class ExercisePresenter extends PagePresenter{
     /**
      * This method returns user's solution
      */
-    getUserSolution() : any {
+    getUserSolution() : string[]{
         return this.userSolution;
     }
 
@@ -57,14 +57,12 @@ class ExercisePresenter extends PagePresenter{
             if(exerciseClient) {
                 //sending the sentence to hunpos which will provide a solution
                 var posSolution = await exerciseClient.autosolve(request.body.sentence, "authorIdValue");
-                //creation of the array containing tags provided from hunpos solution
-                var posTags = this.extractTags(posSolution);
                 //converting tags to italian
-                var posTranslation = this.translateTags(posTags);
-                //console.log("view: "+JSON.stringify(this.view));
+                console.log(posSolution);
+                var posTranslation = this.translateTags(posSolution);
                 this.view.setSentence(request.body.sentence);
                 this.view.setPosTranslation(posTranslation);
-                this.view.setPosTags(posTags);
+                this.view.setPosTags(posSolution);
                 this.view.setUserKind(UserKind.teacher);
                 if (request.body.solutionKey !== "null") {
                     //update of an inserted solution
@@ -116,14 +114,11 @@ class ExercisePresenter extends PagePresenter{
             this.correction = null;
             let exerciseClient = this.client.getExerciseClient();
             if(exerciseClient){
-                // console.log("key arrivata: ",request.body.sentence);
                 this.view.setTitle("Esercizio");
                 this.view.setSentence(request.body.sentence);
                 this.view.setPosTranslation(null);
                 this.view.setCorrections(await this.teacherSolutions(request.body.sentence));
                 if(session.username !== undefined){
-                    //const sentence = await exerciseClient.getSentence(request.body.sentence);
-                    //console.log("niente hunpos, non sei un insegnante");
                     this.view.setUserKind(UserKind.student);
                 } else {
                     //not logged
@@ -166,7 +161,7 @@ class ExercisePresenter extends PagePresenter{
      * @param ID the user's ID
      * @param words the array of words composing the sentence
      */
-    private async userInsert(request: any, ID: string, words:string[]) {
+    private async userInsert(request: any, ID: string, words:string[]) : Promise<void> {
         let corrections: any[] = [{tags: [], difficulty: -1}];
         let exerciseClient = this.client.getExerciseClient();
 
@@ -213,7 +208,7 @@ class ExercisePresenter extends PagePresenter{
      * @param ID the user's ID
      * @param words the array of words composing the sentence
      */
-    private teacherInsert(request: any, words : string[], ID: string) {
+    private teacherInsert(request: any, words : string[], ID: string) : void {
         let hunposTags = JSON.parse(request.body.hunposTags);
         let tagsCorrection = this.correctionToTags(words.length, request.body);
         //building a array merging tags coming from user corrections and hunpos solution
@@ -239,18 +234,6 @@ class ExercisePresenter extends PagePresenter{
     }
 
     /**
-     * This method return tags used on a exercise
-     * @param objSolution
-     * @returns tags
-     */
-    private extractTags(objSolution: any) {
-        let tags = [];
-        for (let i in objSolution) {
-            tags.push(objSolution[i]);
-        }
-        return tags;
-    }
-    /**
      * Converts solution tags to italian.
      * @param tags - array of tag coming from hunpos solution
      * @returns {Array} an array containing the italian translation for every tag
@@ -269,14 +252,13 @@ class ExercisePresenter extends PagePresenter{
      * @returns {string} a string containing the italian translation of the tag
      */
     public translateTag(tag : string){
-        //console.log("arriva: "+tag);
         const content = fileSystem.readFileSync("./src/ts/presenter/vocabolario.json");
         const jsonContent = JSON.parse(content.toString());
 
         var lowercase=tag.split(/[A-Z]{1,2}/);
         var uppercase=tag.split(/[a-z0-9]+/);
         var result="";
-        //console.log("uppercase[0]: "+uppercase[0]);
+
         if(uppercase[0]!=='V' && uppercase[0]!=='PE' && uppercase[0]!=='PC' && uppercase[0]!=='VA' && uppercase[0]!='VM'){
             for(var i in jsonContent){
                 if(i===uppercase[0]){
@@ -289,9 +271,10 @@ class ExercisePresenter extends PagePresenter{
                     }
                 }
             }
-            return result;
 
+            return result;
         }
+
         for(var x in jsonContent){
             if(x===tag){
                 result+=jsonContent[x];
@@ -304,14 +287,13 @@ class ExercisePresenter extends PagePresenter{
      * This method merges the hunpos's solution and the user's solution.
      * If the user lets some correction field unsetted means that the hunpos solution,
      * for that word, was correct.
-     * @param hunposTags - array that contains the solution tags provided by hunpos
+     * @param posTags - array that contains the solution tags provided by hunpos
      * @param tagsCorrection - array that contains the solution tags provided by user
-     * @returns {Array} a string array containing the tags of the final solution.
+     * @returns {string[]} a string array containing the tags of the final solution.
      */
-    private correctsPOS(posTags : string [] ,tagsCorrection : string []){
+    private correctsPOS(posTags : string [] ,tagsCorrection : string []) : string[] {
         let finalTags : string []=[];
-        //console.log("hunpos: "+hunposTags);
-        //console.log("user: "+tagsCorrection);
+
         for(let i in posTags){
             if(tagsCorrection[i]==="")
                 finalTags[i]=posTags[i];
@@ -320,16 +302,15 @@ class ExercisePresenter extends PagePresenter{
             else
                 finalTags[i]=posTags[i];
         }
-        //console.log("Final: "+finalTags);
         return finalTags;
     }
 
     /**
-     * This method converts the italian solution, set by the user,
+     * This method converts the solution, set by the user,
      * to the tags understandable for hunpos.
      * @param wordsnumber - the number of the words in the sentence
      * @param dataCorrection - a json object containing all the corrections suggested by the user
-     * @returns {Array} an array containing the tags of the solution suggested by the user
+     * @returns {string[]} an array containing the tags of the solution suggested by the user
      */
     private correctionToTags(wordsnumber : number, dataCorrection : any) : string []{
         let optionsIndex=0, wordIndex=0;//optionsIndex counter for options of the first select input field
@@ -375,6 +356,9 @@ class ExercisePresenter extends PagePresenter{
                 }
             }
         }
+
+        console.log("tag corretti", tagsCorrection);
+
         return tagsCorrection;
     }
 
@@ -386,35 +370,13 @@ class ExercisePresenter extends PagePresenter{
     private splitTopics(topics : string) : string[]{
         return topics.split(" ");
     }
-    /**
-     * method used by the View to understand if the login is valid
-     */
-    async loggedTeacher() : Promise<boolean> {
-        let userClient = this.client.getUserClient();
-        if(userClient){
-            if(session.username !== undefined && await userClient.isTeacher(session.username)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    async loggedStudent() : Promise<boolean> {
-        let userClient = this.client.getUserClient();
-        if(userClient){
-            if(session.username !== undefined && !(await userClient.isTeacher(session.username))) {
-                return true;
-            }
-        }
-        return false;
-    }
 
     /**
      * This method returns all the public teacher solutions avaiable for an exercise
      * @param sentence - the sentence of the exercise
-     * @returns any[] - an arry of json containing the public teacher solutions of the exercise
+     * @returns any[] - an array of json containing the public teacher solutions of the exercise
      */
-    async teacherSolutions(sentence : string) : Promise<any[]> {
+    public async teacherSolutions(sentence : string) : Promise<any[]> {
         let result : any[] = [];
         let exerciseClient = this.client.getExerciseClient();
         let userClient = this.client.getUserClient();
@@ -446,22 +408,23 @@ class ExercisePresenter extends PagePresenter{
     /**
      *  This method provides to return the solution of exercise
      * @param sentence
-     * @param solverID
+     * @param solverId
      * @param time
      * @returns Promise<any>
      */
-    async findSolution(sentence : string, solverID : string, time : number) : Promise<any> {
+    public async findSolution(sentence : string, solverId : string, time : number) : Promise<any> {
         let exerciseClient = this.client.getExerciseClient();
         if (exerciseClient){
-            let solutions = await exerciseClient.searchSolution(sentence,solverID);
+            let solutions = await exerciseClient.searchSolution(sentence,solverId);
             return solutions.find((sol) => sol.time === time);
         }
         return null;
     }
 
 
-    getUpdate() {
+    public getUpdateState() : boolean {
         return this.updateState;
     }
 }
+
 export {ExercisePresenter};

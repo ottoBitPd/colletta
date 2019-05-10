@@ -112,26 +112,32 @@ class SearchView extends PageView{
      */
     private printList() {
         let results = this.searchPresenter.getResults();
-        //console.log("result: ",results);
+
         if(results===undefined){
             return "";//resultList is not set yet, cause nobody searched yet
         }
+
         if(results.size===0){
             return "<h2 class='h5 text-danger text-center'>Nessun risultato</h2>";//resultList is not set yet, cause nobody searched yet
         }
+
         let ret="";
         let form :string, title :string;
         title="FRASE";
+
         if(this.searchPresenter.getSearchType()==="exercise") {
             form="\t\t\t\t\t\t<form method='post' action='/exercise'>\n";
         }
+
         if(this.searchPresenter.getSearchType()==="classExercise") {
             form="\t\t\t\t\t\t<form method='post' action='/addexercise'>\n";
         }
+
         if(this.searchPresenter.getSearchType()==="student") {
             form="\t\t\t\t\t\t<form method='post' action='/addstudent'>\n";
             title="USERNAME";
         }
+
         if(results.size>0) {
             ret += "\t<div class=\"col-sm-12\">" +
                 "\t\t<ul class=\"list-group\">\n" +

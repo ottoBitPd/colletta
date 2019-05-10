@@ -8,7 +8,7 @@ class Class implements Data {
     private id : string;
     private name : string;
     private description : string;
-    private teacherID : string;
+    private teacherId : string;
     private time : number | null;
     private students : string[];
     private exercises : string[];
@@ -20,7 +20,7 @@ class Class implements Data {
         this.id = id;
         this.name = name;
         this.description = description;
-        this.teacherID = teacherID;
+        this.teacherId = teacherID;
         this.students = students;
         this.exercises = exercises;
         this.time = time || null;
@@ -55,7 +55,7 @@ class Class implements Data {
      * @returns { string } returns the class teacher Id.
      */
     public getTeacherID() : string {
-        return this.teacherID;
+        return this.teacherId;
     }
 
     /**
@@ -147,16 +147,15 @@ class Class implements Data {
      *                  time        [the class creation date]
      */
     public toJSON() : any {
-        let _class: any = {
+        return {
             "id" : this.id,
             "name": this.name,
             "description": this.description,
-            "teacherID": this.teacherID,
+            "teacherID": this.teacherId,
             "students": this.students,
             "exercises": this.exercises,
             "time": this.time
         };
-        return _class;
     }
 }
 export {Class};

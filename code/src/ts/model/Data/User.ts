@@ -106,14 +106,12 @@ abstract class User implements Data{
      * @returns { boolean } returns "true" if the passwords are the same.
      */
     public samePassword(otherPassword : string) : boolean {
-        if(otherPassword === this.databaseInfo.password)
-            return true;
-        return false;
+        return (otherPassword === this.databaseInfo.password);
     }
 
     /**
      * This method modifies an user Id.
-     * @param Id - the new Id
+     * @param id - the new Id
      */
     public setID(id :string) {
         this.databaseInfo.id= id;
@@ -163,7 +161,7 @@ abstract class User implements Data{
      *                  email       [the user email]
      */
     public toJSON() : any{
-        let user: any = {
+        return {
             "username": this.username,
             "id" : this.databaseInfo.id,
             "password" : this.databaseInfo.password,
@@ -172,10 +170,7 @@ abstract class User implements Data{
             "city" : this.databaseInfo.city,
             "school" : this.databaseInfo.school,
             "email" : this.databaseInfo.email
-
         };
-        return user;
     }
-
 }
 export {User};

@@ -172,7 +172,7 @@ class ClassPresenter extends PagePresenter {
             //console.log("username: "+session.username);
             let id = await userClient.search(session.username);
             if(id !== "false") {
-                let map = await classClient.getClassesByTeacher(id);//returns map<idClasse, className>
+                let map = await classClient.findTeacherClasses(id);//returns map<idClasse, className>
                 return map;
             }
         }

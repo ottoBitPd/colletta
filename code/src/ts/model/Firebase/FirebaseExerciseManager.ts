@@ -164,8 +164,7 @@ class FirebaseExerciseManager extends FirebaseManager {
      */
     public async remove(id: string): Promise<boolean> {
         const ProData: Promise<boolean> = this.removeFromId(id);
-        const removed = await ProData;
-        return removed;
+        return await ProData;
     }
 
     /**
@@ -199,7 +198,6 @@ class FirebaseExerciseManager extends FirebaseManager {
 
         let field : string=splittedPath[position];
 
-      // console.log(field);
         switch (field) {
             case "difficulty": await this.updateField(path, value); break;
             case "tags": await this.updateField(path, value); break;
@@ -217,7 +215,6 @@ class FirebaseExerciseManager extends FirebaseManager {
      *   @param value - the new value to insert
      */
     private async updateField(path : string, value:any) {
-    //    console.log(path);
         let refi=FirebaseManager.database.ref(path);
 
         refi.once('value',function (snapshot:any) {

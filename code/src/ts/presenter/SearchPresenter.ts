@@ -8,8 +8,9 @@ var session = require('express-session');
  * Class provides to manage the search
  */
 class SearchPresenter extends PagePresenter {
-    private searchType : any;
-    private results : any;
+    private searchType : string = "";
+    private results : Map<string,string> = new Map<string,string>();
+
     constructor(view: any) {
         super(view);
         this.client = (new Client.builder()).buildExerciseClient().buildUserClient().build();
@@ -20,7 +21,6 @@ class SearchPresenter extends PagePresenter {
      * @param value
      */
     private setSearchType(value : string){
-        //this.setResults(undefined);
         this.searchType=value;
     }
 
@@ -30,6 +30,7 @@ class SearchPresenter extends PagePresenter {
     public getSearchType(){
         return this.searchType;
     }
+
     update(app: any) {
         this.exerciseSearchPage(app);
         this.searchExercise(app);
@@ -44,7 +45,6 @@ class SearchPresenter extends PagePresenter {
      */
     private exerciseSearchPage(app : any){
         app.get('/exercise/search', async (request: any, response: any) => {
-            //console.log("sentence: ",request.body.sentence);
             let userClient = this.client.getUserClient();
             if (session.username !== undefined)
                 if (userClient && await userClient.isTeacher(session.username)){
@@ -77,7 +77,6 @@ class SearchPresenter extends PagePresenter {
      */
     private searchExercise(app : any) {
         app.post('/searchexercise', async (request: any, response: any) => {
-            //console.log("frase da cercare : "+request.body.sentence);
             let userClient = this.client.getUserClient();
             if (session.username !== undefined)
                 if (userClient && await userClient.isTeacher(session.username)){
@@ -86,7 +85,6 @@ class SearchPresenter extends PagePresenter {
                     this.view.setUserKind(UserKind.student);
                 }
             else
-                console.log("user");
                 this.view.setUserKind(UserKind.user);
 
             let exerciseClient = this.client.getExerciseClient();
@@ -126,7 +124,7 @@ class SearchPresenter extends PagePresenter {
                 this.view.setUserKind(UserKind.user);
 
             if(request.query.s === undefined){
-                this.setResults([]);
+                this.setResults(new Map<string,string>());
             }
             this.setSearchType("student");
             this.view.setTitle("Ricerca studente");
@@ -150,8 +148,6 @@ class SearchPresenter extends PagePresenter {
             else
                 this.view.setUserKind(UserKind.user);
 
-            //console.log("frase da cercare : "+request.body.sentence);
-
             if(userClient) {
                 let map = await userClient.searchUser(request.body.sentence, false);//returns map<idEsercizio, sentence>
                 this.setResults(map);
@@ -169,7 +165,7 @@ class SearchPresenter extends PagePresenter {
      * This method provides to set the results
      * @param map
      */
-    private setResults(map: any) {
+    private setResults(map: Map<string,string>) : void {
         this.results=map;
     }
 
@@ -177,7 +173,7 @@ class SearchPresenter extends PagePresenter {
      * This method returns the results
      * @returns results
      */
-    public getResults() {
+    public getResults() : Map<string,string> {
         return this.results;
     }
 
@@ -188,7 +184,7 @@ class SearchPresenter extends PagePresenter {
     private classExerciseSearchPage(app: any) {
         app.post('/class/exercise/search', async (request: any, response: any) => {
             if(request.query.s === undefined){
-                this.setResults([]);
+                this.setResults(new Map<string,string>());
             }
             this.setSearchType("classExercise");
             response.send(await this.view.getPage());

@@ -59,7 +59,7 @@ describe('ExercisePresenter', function() {
 
             getExerciseClient(): ExerciseClient | undefined {
                 const tryclass = class extends ExerciseClient {
-                    async getExercisesByAuthor(id :string) :Promise<any>{
+                    async findExercises(id :string) :Promise<any>{
                         return true;
                     }
                     getSplitSentence(sentence:string) : any{
@@ -287,28 +287,6 @@ describe('ExercisePresenter', function() {
         });
     });
 
-    describe('ExercisePresenter.loggedTeacher()', function () {
-        it('should return if the teacher is login', async function () {
-            session.username="teacher";
-            await test.loggedTeacher();
-        });
-        it('should return if the teacher doesn\'t login', async function () {
-            session.username="null";
-            await test.loggedTeacher();
-        });
-    });
-
-    describe('ExercisePresenter.loggedStudent()', function () {
-        it('should return if the student is login', async function () {
-            session.username="student";
-            await test.loggedStudent();
-        });
-        it('should doesn\'t return if the student is login', async function () {
-            session.username=undefined;
-            await test.loggedStudent();
-        });
-    });
-
     describe('ExercisePresenter.teacherSolutions()', function () {
         it('should return all the public teacher solutions avaiable for an exercise', async function () {
             await test.teacherSolutions("ciao");
@@ -321,9 +299,9 @@ describe('ExercisePresenter', function() {
         });
     });
 
-    describe('ExercisePresenter.getUpdate()', function () {
+    describe('ExercisePresenter.getUpdateState()', function () {
         it('should return state update', async function () {
-            test.getUpdate();
+            test.getUpdateState();
         });
     });
 

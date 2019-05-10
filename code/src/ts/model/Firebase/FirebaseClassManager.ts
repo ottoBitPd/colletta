@@ -40,7 +40,7 @@ class FirebaseClassManager extends FirebaseManager {
 
     /**
      *   This method looks for classes into the database
-     *   @param id - the id of the class to search
+     *   @param name - the name of the class to search
      *   @returns (string) - returns the class key if exists
      */
     public async search(name:string): Promise<string> {

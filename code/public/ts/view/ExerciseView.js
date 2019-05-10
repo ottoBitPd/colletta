@@ -88,7 +88,7 @@ class ExerciseView extends PageView_1.PageView {
      */
     showExercise(words) {
         let page = "/exercise/save";
-        if (this.exercisePresenter.getUpdate()) {
+        if (this.exercisePresenter.getUpdateState()) {
             page = "/exercise/update";
         }
         let ret = "\t\t\t<div class='text-center col-sm-12' id=\"esercizio\">\n" +

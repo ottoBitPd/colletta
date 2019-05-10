@@ -124,9 +124,9 @@ describe('ClassClient', function() {
         });
     });
 
-    describe('ClassClientTest.getClassesByTeacher()', function () {
+    describe('ClassClientTest.findTeacherClasses()', function () {
         it('should get the classes with a specific teacher', async function () {
-            expect((await test.getClassesByTeacher("0")).length).to.be.equal(2);
+            expect((await test.findTeacherClasses("0")).length).to.be.equal(2);
         });
     });
 
@@ -144,9 +144,9 @@ describe('ClassClient', function() {
         });
     });
 
-    describe('ClassClientTest.getClassesByStudent()', function () {
+    describe('ClassClientTest.findStudentClasses()', function () {
         it('should get the classes with a specific student', async function () {
-            expect((await test.getClassesByStudent("st1")).length).to.be.equal(2);
+            expect((await test.findStudentClasses("st1")).length).to.be.equal(2);
         });
     });
 });

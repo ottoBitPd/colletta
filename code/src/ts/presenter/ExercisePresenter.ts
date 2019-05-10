@@ -4,6 +4,7 @@ import * as fileSystem from "fs";
 import {PageView, UserKind} from "../view/PageView";
 
 var session = require('express-session');
+const content = fileSystem.readFileSync("./src/ts/presenter/vocabolario.json");
 
 /**
  *  Class to manage a single exercise
@@ -246,20 +247,21 @@ class ExercisePresenter extends PagePresenter{
      * @returns {string} a string containing the italian translation of the tag
      */
     public translateTag(tag : string){
-        const content = fileSystem.readFileSync("./src/ts/presenter/vocabolario.json");
         const jsonContent = JSON.parse(content.toString());
 
-        var lowercase=tag.split(/[A-Z]{1,2}/);
-        var uppercase=tag.split(/[a-z0-9]+/);
-        var result="";
+        let lowercase=tag.split(/[A-Z]{1,2}/).join(""); // lowercase part of the tag
+        let uppercase=tag.split(/[a-z0-9]+/).join(""); // uppercase part of the tag
+        let result="";
 
-        if(uppercase[0]!=='V' && uppercase[0]!=='PE' && uppercase[0]!=='PC' && uppercase[0]!=='VA' && uppercase[0]!='VM'){
-            for(var i in jsonContent){
-                if(i===uppercase[0]){
+        console.log(uppercase+lowercase);
+
+        if(uppercase[0] !== 'V' && uppercase!=='PE' && uppercase!=='PC'){
+            for(let i in jsonContent){
+                if(i===uppercase){
                     result+=jsonContent[i];
                 }
-                if(lowercase[1]){
-                    if(i===lowercase[1]){
+                if(lowercase){
+                    if(i===lowercase){
                         result+=" ";
                         result+=jsonContent[i];
                     }
@@ -269,12 +271,9 @@ class ExercisePresenter extends PagePresenter{
             return result;
         }
 
-        for(var x in jsonContent){
-            if(x===tag){
-                result+=jsonContent[x];
-            }
-        }
-        return result;
+
+
+        return jsonContent[tag];
     }
 
     /**
@@ -307,50 +306,24 @@ class ExercisePresenter extends PagePresenter{
      * @returns {string[]} an array containing the tags of the solution suggested by the user
      */
     private correctionToTags(wordsnumber : number, dataCorrection : any) : string []{
-        let optionsIndex=0, wordIndex=0;//optionsIndex counter for options of the first select input field
-        let tagsCorrection = [];
-        tagsCorrection.length = wordsnumber;
-        let actualTag="";
-        for(let i in dataCorrection) {
-            //avoiding the hidden input field received with the others data correction
-            if(i !== 'sentence' && i !== 'wordsnumber' && i!=='key' && i!=='hunposTags'){
-                if (dataCorrection[i] !== '-') {//se è stato settato qualcosa
-                    //invalid tags or tags that must be set in the second input field
-                    /*
-                    if(dataCorrection[i]==='A')  {
-                        actualTag += "";
-                    } else if (['B','E','P','S','V'].indexOf(dataCorrection[i]) !== -1){ //dataCorrection[i] !== 'A' && condition
-                        if (i===('general'+ wordIndex))
-                            actualTag += "";
-                        else
-                            actualTag += dataCorrection[i];
-                    }
-                    else{ //datacorrection[i] !== 'A' && ['B','E','P','S','V'].indexOf(dataCorrection[i]) === -1
-                        actualTag += dataCorrection[i];
-                    }
-                    */
+        let result = [];
+        for (let i = 0; i < wordsnumber; ++i){
+            dataCorrection["grammarclass"+i] = dataCorrection["grammarclass"+i].join("").replace(/\-/g, "");
 
-                    //if (dataCorrection[i] !== 'A') {
-                        if (['P', 'V', 'A'].indexOf(dataCorrection[i]) !== -1) {
-                            if (i !== ('general' + wordIndex))
-                                actualTag += dataCorrection[i];
-                        } else {
-                            actualTag += dataCorrection[i];
-                        }
-                    //}
-
-                }
-
-                optionsIndex++;
-                if (optionsIndex === 14) {
-                    optionsIndex = 0;
-                    tagsCorrection[wordIndex]= actualTag;
-                    wordIndex++;
-                    actualTag = "";
-                }
+            let tag : string;
+            if (dataCorrection["grammarclass"+i] === ""){
+                tag = dataCorrection["general"+i];
+            } else {
+                tag = dataCorrection["grammarclass"+i];
             }
+
+            result.push(tag +
+                dataCorrection["tempo"+i].replace("-","") +
+                dataCorrection["persona"+i].replace("-","")+
+                dataCorrection["genere"+i].replace("-","")+
+                dataCorrection["numero"+i].replace("-",""));
         }
-        return tagsCorrection;
+        return result;
     }
 
     /**

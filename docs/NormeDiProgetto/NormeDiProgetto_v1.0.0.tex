@@ -373,7 +373,7 @@ In caso di necessità verrà fornito supporto alla proponente MIVOQ S.r.l. e l'a
 	\end{minipage}
 	\end{center}
 	
-	Per fare in modo che TSLint funzioni correttamente è necessario configurarlo utilizzando il file tsconfig.json presente all'interno della cartella principale del sorgente dell'applicazione. È possibile quindi settare l'impostazione ``Configuration file'' su Automated search$^*$ o specificare manualmente il percorso del file appena citato.
+	Per fare in modo che TSLint funzioni correttamente è necessario configurarlo utilizzando il file tsconfig.json presente all'interno della cartella principale del sorgente dell'applicazione. È possibile quindi settare l'impostazione ``Configuration file'' su ``Automated search'' o specificare manualmente il percorso del file appena citato.
 	
 	\paragraph{Lunghezza delle linee di codice} Le linee di codice non dovranno superare i 79 caratteri. In ogni caso l'IDE che abbiamo scelto mette a disposizione una linea limite da non superare.
 	\paragraph{Nomenclatura file} 
@@ -848,7 +848,7 @@ Ogni commit deve essere accompagnato da una sensata descrizione, che permetta fa
 	\begin{itemize}
 		\item \textbf{MPD1 - Correttezza ortografica}: su ogni documento sarà possibile individuare gli errori ortografici tramite l'editor Texmaker. Il numero di errori rilevati accettabili è pari a zero.
 	
-		\item \textbf{MPD2 - Indice di Gulpease}: l'indice Gulpease$^*$ è un indice di leggibilità di un testo tarato sulla lingua italiana. Rispetto ad altri ha il vantaggio di utilizzare la lunghezza delle parole in lettere anziché in sillabe, semplificandone il calcolo automatico. Permette di misurare la complessità dello stile di un documento. L'indice di Gulpease considera due variabili linguistiche: la lunghezza della parola e la lunghezza della frase rispetto al numero delle lettere. La formula per il suo calcolo è:
+		\item \textbf{MPD2 - Indice di Gulpease}: l'indice di Gulpease$^*$ è un indice di leggibilità di un testo tarato sulla lingua italiana. Rispetto ad altri ha il vantaggio di utilizzare la lunghezza delle parole in lettere anziché in sillabe, semplificandone il calcolo automatico. Permette di misurare la complessità dello stile di un documento. L'indice di Gulpease considera due variabili linguistiche: la lunghezza della parola e la lunghezza della frase rispetto al numero delle lettere. La formula per il suo calcolo è:
 	\begin{center}
 		$89\ +\ \frac{300\ *\ (numero\ delle\ frasi)\ -\ 10\ *\ (numero\ delle\ lettere)}{numero\ delle\ parole}$
 	\end{center}
@@ -866,7 +866,7 @@ Ogni commit deve essere accompagnato da una sensata descrizione, che permetta fa
 	
 	    \item \textbf{MPS4 - Numero di metodi per classe}: il numero di metodi per classe non deve essere elevato, il suggerimento è di scomporre la classe in più classi per mantenere una manutenibilità del codice discreta.
 	 
-	    \item \textbf{MPS5 - Complessità ciclomatica media$^*$}: per dare una valutazione alla complessità del codice si utilizza questa metrica basata sulla struttura del grafo. Il valore generato dalla seguente formula se dovesse essere troppo elevato indica un'eccessiva complessità del codice.
+	    \item \textbf{MPS5 - Complessità ciclomatica$^*$ media}: per dare una valutazione alla complessità del codice si utilizza questa metrica basata sulla struttura del grafo. Il valore generato dalla seguente formula se dovesse essere troppo elevato indica un'eccessiva complessità del codice.
 		\begin{center}
 		$v(G) = E – N + 2P$
 		\end{center}

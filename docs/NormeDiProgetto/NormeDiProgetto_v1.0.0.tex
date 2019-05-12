@@ -106,7 +106,7 @@
 		2.0.0 & 2019-03-05 & Gianmarco Pettenuzzo & Responsabile & Approvazione per il rilascio \\ \hline
 		1.1.0 & 2019-03-05 & Giovanni Bergo & Verificatore & Verifica documento \\ \hline
 		1.0.6 & 2019-02-28 & Gianmarco Pettenuzzo & Amministratore & Incremento strumenti di verifica, aggiunta sezione 4.5 \\ \hline
-		1.0.5 & 2019-02-22 & Eleonora Peagno & Amministratore & Aggiunta sezione "assicurazione qualità", incremento metriche \\ \hline
+		1.0.5 & 2019-02-22 & Eleonora Peagno & Amministratore & Aggiunta sezione  ``assicurazione qualità'', incremento metriche \\ \hline
 		1.0.4 & 2019-02-22 & Enrico Marcato & Amministratore & Aggiunta metriche software \\ \hline
 		1.0.3 & 2019-02-21 & Eleonora Peagno & Amministratore & Aggiunta normazione di e metriche di processo \\ \hline
 		1.0.2 & 2019-02-18 & Giovanni Bergo & Amministratore & Correzioni al documento \\ \hline
@@ -373,7 +373,7 @@ In caso di necessità verrà fornito supporto alla proponente MIVOQ S.r.l. e l'a
 	\end{minipage}
 	\end{center}
 	
-	Per fare in modo che TSLint funzioni correttamente è necessario configurarlo utilizzando il file tsconfig.json presente all'interno della cartella principale del sorgente dell'applicazione. È possibile quindi settare l'impostazione ``Configuration file'' su Automated search* o specificare manualmente il percorso del file appena citato.
+	Per fare in modo che TSLint funzioni correttamente è necessario configurarlo utilizzando il file tsconfig.json presente all'interno della cartella principale del sorgente dell'applicazione. È possibile quindi settare l'impostazione ``Configuration file'' su Automated search$^*$ o specificare manualmente il percorso del file appena citato.
 	
 	\paragraph{Lunghezza delle linee di codice} Le linee di codice non dovranno superare i 79 caratteri. In ogni caso l'IDE che abbiamo scelto mette a disposizione una linea limite da non superare.
 	\paragraph{Nomenclatura file} 
@@ -381,7 +381,7 @@ In caso di necessità verrà fornito supporto alla proponente MIVOQ S.r.l. e l'a
 	\paragraph{Nomenclatura codice}
 	I nomi di classi, variabili e metodi dovranno avere un nome esplicativo per evitare il più possibile ambiguità di comprensione.
 	\begin{itemize}
-		\item \textbf{Classi}: per i nomi delle classi verrà utilizzata la notazione Upper Camel Case*; cioè inizieranno con la prima lettera maiuscola e, nel caso sia composte da più parole successive, queste cominceranno con la lettera maiuscola.
+		\item \textbf{Classi}: per i nomi delle classi verrà utilizzata la notazione Upper Camel Case$^*$; cioè inizieranno con la prima lettera maiuscola e, nel caso sia composte da più parole successive, queste cominceranno con la lettera maiuscola.
 	
 		\begin{multicols}{2}
 			
@@ -399,7 +399,7 @@ In caso di necessità verrà fornito supporto alla proponente MIVOQ S.r.l. e l'a
 		\end{multicols}
 		
 		
-		\item \textbf{Metodi}: per i nomi dei metodi verrà utilizzata la notazione Lower Camel Case*; cioè inizieranno con la prima lettera minuscola e, nel caso sia composte da più parole successive, queste cominceranno con la lettera maiuscola.
+		\item \textbf{Metodi}: per i nomi dei metodi verrà utilizzata la notazione Lower Camel Case$^*$; cioè inizieranno con la prima lettera minuscola e, nel caso sia composte da più parole successive, queste cominceranno con la lettera maiuscola.
 	
 
 \begin{multicols}{2}
@@ -453,7 +453,7 @@ In caso di necessità verrà fornito supporto alla proponente MIVOQ S.r.l. e l'a
 		}
 		\end{lstlisting}
 		\item \textbf{Commento ai costruttori}:
-		Tutti i costuttori dovranno essere preceduti da un commento che li descriva. 
+		Tutti i costruttori dovranno essere preceduti da un commento che li descriva. 
 		\begin{lstlisting}[caption=Commento ad una classe astratta]
 		/**
 		* Initializes all attributes needed to HunposAdapter object.
@@ -547,11 +547,11 @@ In caso di necessità verrà fornito supporto alla proponente MIVOQ S.r.l. e l'a
 		\item \textbf{Nome Progetto - Gruppo}
 		\item \textbf{Informazioni sul documento} composto da:
 		\begin{itemize}
-			\item  Versione del documento 
+			\item Versione del documento 
 			\item Nome Redattore/i
 			\item Nome Verificatore
-			\item  Nome Responsabile
-			\item  Uso
+			\item Nome Responsabile
+			\item Uso
 			\item Destinatari
 		\end{itemize}
 	\end{itemize}
@@ -599,10 +599,10 @@ In caso di necessità verrà fornito supporto alla proponente MIVOQ S.r.l. e l'a
 	\begin{itemize}
 		\item \textbf{Grassetto:} va utilizzato nei titoli, elenchi puntati ed intestazione tabelle;
 		\item \textbf{Corsivo:} riferimenti a documenti interni o esterni prodotti dal team;
-		\item \textbf{Citazioni:} scritte in corsivo, numerate riferite a piè di pagina (esempio: \textit{"citazione"} \textsuperscript{n} );
+		\item \textbf{Citazioni:} scritte in corsivo, numerate riferite a piè di pagina (esempio: \textit{ ``citazione''} \textsuperscript{n} );
 		\item \textbf{Collegamenti:} scritti in blu;
 		\item \textbf{Maiuscolo:} utilizzato per acronimi;
-		\item \textbf{Codici:} struttura \LaTeX\ $^*$ (package Listings) con carattere Teletype;
+		\item \textbf{Codici:} struttura \LaTeX $^*$ (package Listings) con carattere Teletype;
 		\item \textbf{Ruoli di progetto:} la prima lettera maiuscola;
 		\item \textbf{Nomi propri:} ogni nome proprio di persona deve essere scritto nella forma Nome Cognome;
 		\item \textbf{Riferimenti a documenti:} la prima lettera maiuscola con il riferimento alla versione nel formato vX.X.X (esempio: NormeDiProgetto\_v1.0.0);
@@ -665,7 +665,7 @@ In caso di necessità verrà fornito supporto alla proponente MIVOQ S.r.l. e l'a
 	Sono documenti che prevedono la loro consultazione anche da elementi esterni al team, come la proponente.
 	\subsubsection{Suddivisione dei documenti}
 	\paragraph{Documenti formali\\}
-	Un documento è definito formale dopo l’approvazione da parte del Responsabile di progetto e quindi deve aver superato con esito positivo la fase di verifica.
+	Un documento è definito formale dopo l’approvazione da parte del Responsabile di progetto e quindi deve aver superato con esito positivo la fase di verifica$^*$.
 	
 	\paragraph{Documenti informali\\}
 	Tutti i documenti sono da considerarsi informali finché non vengono approvati dal Responsabile di progetto. L’utilizzo di tali documenti è da considerarsi interno e quindi esclusivo del team.
@@ -680,13 +680,13 @@ In caso di necessità verrà fornito supporto alla proponente MIVOQ S.r.l. e l'a
 	\end{itemize}
 	
 	\paragraph{Glossario\\}
-	Documento unico ad uso esterno, consiste di un elenco di definizioni, in ordine lessicografico, di tutte le parole che possono creare ambiguità o necessitanti descrizione precisa. Tutti i termini presenti nel glossario sono marcati con un "*" ogni prima volta che compaiono in un documento (esempio: Glossario$^*$).
+	Documento unico ad uso esterno, consiste di un elenco di definizioni, in ordine lessicografico, di tutte le parole che possono creare ambiguità o necessitanti descrizione precisa. Tutti i termini presenti nel glossario sono marcati con un  ``*'' ogni prima volta che compaiono in un documento (esempio: Glossario$^*$).
 	
 	\subsubsection{Strumenti}
 	
 	\paragraph{\LaTeX\\}
 	 Per la produzione della documentazione si è fatto uso del formato \LaTeX\ perché permette un migliore stile di codifica.\\
-	Per la produzione di codice \LaTeX\ è stato utilizzato Texmaker$^*$ e TeXstudio.
+	Per la produzione di codice \LaTeX\ è stato utilizzato Texmaker$^*$ e TeXstudio$^*$.
 	
 	\subsubsection{Mantenimento}
 	
@@ -727,7 +727,6 @@ In caso di necessità verrà fornito supporto alla proponente MIVOQ S.r.l. e l'a
 		
 	\end{itemize}
 	
-	\newpage
 
 \subsection{Gestione della configurazione}
 \subsubsection{Scopo}
@@ -967,7 +966,7 @@ Ogni commit deve essere accompagnato da una sensata descrizione, che permetta fa
 	\begin{itemize}
 		\item il campo “\textbf{Tipo}” può assumere uno dei seguenti valori:
 		\begin{itemize}
-			\item \textbf{S}: definisce un test di sistema, ovvero un test per la verifica$^*$ del comportamento dell'intero sistema;
+			\item \textbf{S}: definisce un test di sistema, ovvero un test per la verifica del comportamento dell'intero sistema;
 			\item \textbf{V}: definisce un test di validazione, ovvero un test per la verifica dei casi d'uso e dei requisiti concordati con il cliente;
 			\item \textbf{I}: definisce un test di integrazione, ovvero un test per verificare la corretta integrazione tra più componenti del sistema;
 			\item \textbf{U}: definisce un test di unità, ovvero un test per la verifica del più piccolo componente del sistema;
@@ -981,7 +980,7 @@ Ogni commit deve essere accompagnato da una sensata descrizione, che permetta fa
 			Nel caso il test sia di integrazione o unità, il campo priorità sarà omesso.
 		\item il campo “\textbf{Codice}” assumerà un valore numerico intero positivo, univoco ed incrementale.
 	\end{itemize}
-	
+	\newpage
 	\section{Processi organizzativi}
 	
 	\subsection{Gestione di Progetto}
@@ -1096,7 +1095,7 @@ Infine, lo stesso Responsabile di progetto e tenuto ad incaricare un componente 
 		\item{attuare piani  di qualità.}
 	\end{itemize}
 	\paragraph{Progettista}
-	Si occupa di gestire gli aspetti tecnici e tecnlogici del progetto.\\
+	Si occupa di gestire gli aspetti tecnici e tecnologici del progetto.\\
 	È suo compito:
 	\begin{itemize}
 		\item{scegliere e amministrare gli strumenti di versionamento;}
@@ -1133,13 +1132,13 @@ Infine, lo stesso Responsabile di progetto e tenuto ad incaricare un componente 
 	
 	\paragraph{Telegram\\}
 
-	Telegram è un'applicazione di instant messaging cross platfrom che può essere utilizzata su diversi dispositivi
+	Telegram è un'applicazione di instant messaging cross platform che può essere utilizzata su diversi dispositivi
 	anche contemporaneamente. Telegram, inoltre, permette la creazione di gruppi, lo scambio di file di qualsiasi tipo
 	e anche chiamate vocali tra due persone.
 	
 	\subsection{Gestione della Qualità}
 	\subsubsection{Pianificazione della qualità}
-	Questa attività riguarda la definizione delle strategie di verifica e validazione che il gruppo si impegnerà ad utilizzare per tutto lo svolgimento del progetto, al fine di assicurare un'esecuzione corretta di tutte le attività, individuando e correggendo tempestivamente eventuali errori riscontrati. Gli obbiettivi di qualità sono descritti nel \textit{Piano di Qualifica}.\\
+	Questa attività riguarda la definizione delle strategie di verifica$^*$ e validazione$^*$ che il gruppo si impegnerà ad utilizzare per tutto lo svolgimento del progetto, al fine di assicurare un'esecuzione corretta di tutte le attività, individuando e correggendo tempestivamente eventuali errori riscontrati. Gli obbiettivi di qualità sono descritti nel \textit{Piano di Qualifica}.\\
 	\textbf{Prodotto dell'attività:} \textit{PianoDiQualifica\_v2.0.0}
 	
 	\subsection{Ricerca sulle tecnologie} 
@@ -1178,7 +1177,7 @@ Lo standard ISO/IEC 15504, comunemente chiamato SPICE (acronimo di Software Proc
 	\item \textbf{Process deployment:} è una misura del grado con il quale lo standard di processo viene effettivamente distribuito come un processo definito in grado di raggiungere i propri obiettivi. Le responsabilità e i ruoli per utilizzare lo standard sono assegnati e comunicati, le risorse, le infrastrutture e l'ambiente di lavoro, necessarie per l'applicazione dello standard, sono disponibili allocate e utilizzate. Vengono raccolti e analizzati dati per dimostrare l'adeguatezza e l'efficacia del processo.
 	\item \textbf{Process measurement:} è una misura del grado con il quale i risultati delle misurazioni sono utilizzati per garantire il raggiungimento degli obiettivi del processo. Vengono definiti degli obiettivi di qualità basati sulle misurazioni. I risultati delle misurazioni sono raccolti analizzati e documentati per verificare che gli obiettivi di qualità siano rispettati.
 	\item \textbf{Process control:} è una misura del grado con il quale il processo è quantitativamente gestito per produrre un processo che sia stabile, abile e prevedibile entro limiti definiti. Analisi e tecniche di controllo vengono applicate. Sono stabiliti dei limiti di variazione per i risultati delle misurazioni. Vengono intraprese delle azioni correttive se necessario. 
-	\item \textbf{Process innovation:} è una misura del grado con il quale vengono identificate delle modifiche al processo attraverso l'analisi di cause comuni di variazione delle performance, e dalla ricerca di approcci innovativi alla definizione e all'implementazione del processo. Vengono definiti degli obiettivi di miglioramento. Vengono analizzati dei dati per identificare le cause comuni di variazione delle performance del processo e successivamente per identificare delle best-practice*.
+	\item \textbf{Process innovation:} è una misura del grado con il quale vengono identificate delle modifiche al processo attraverso l'analisi di cause comuni di variazione delle performance, e dalla ricerca di approcci innovativi alla definizione e all'implementazione del processo. Vengono definiti degli obiettivi di miglioramento. Vengono analizzati dei dati per identificare le cause comuni di variazione delle performance del processo e successivamente per identificare delle best-practice$^*$.
 	\item \textbf{Process optimization:} è una misura del grado con il quale delle modifiche alla definizione, gestione e alle prestazioni del processo si traducono in un impatto che porta a raggiungere rilevanti miglioramenti al processo. L'impatto dei cambiamenti proposti viene valutato rispetto agli obiettivi definiti dal processo e dallo standard di processo.
 \end{itemize}
 A questi attributi viene assegnato uno dei seguenti quattro livelli di misura:

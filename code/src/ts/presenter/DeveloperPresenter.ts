@@ -62,7 +62,6 @@ class DeveloperPresenter extends PagePresenter{
             if (userClient) {
 
                 if (request.body.password === this.developer) {
-
                     session.username= "developer";
                     response.redirect('/developer');
                 }
@@ -210,4 +209,5 @@ class DeveloperPresenter extends PagePresenter{
         return false;
     }
 }
+
 export {DeveloperPresenter}

@@ -127,6 +127,9 @@ class UserClient{
      * @returns {any} returns the user informations
      */
     public async getUserData(id:string) : Promise<any> {
+        if (id === "false" || id === "-1")
+            return {id:"-1"};
+
         const user : Data = await this.dbUserManager.read(id);
         let userData = (<User> user).toJSON();
         if((<User> user).isTeacher()){

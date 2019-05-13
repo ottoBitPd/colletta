@@ -253,8 +253,6 @@ class ExercisePresenter extends PagePresenter{
         let uppercase=tag.split(/[a-z0-9]+/).join(""); // uppercase part of the tag
         let result="";
 
-        console.log(uppercase+lowercase);
-
         if(uppercase[0] !== 'V' && uppercase!=='PE' && uppercase!=='PC'){
             for(let i in jsonContent){
                 if(i===uppercase){

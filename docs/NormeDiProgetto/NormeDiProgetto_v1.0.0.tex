@@ -928,14 +928,24 @@ Ogni commit deve essere accompagnato da una sensata descrizione, che permetta fa
 		
 	\subsubsection{Strumenti}	
 	\paragraph{Verifica ortografica\\}
-	la verifica ortografica è effettuata tramite Texmaker e TeXstudio, attraverso il quale gli errori ortografici vengono sottolineati in rosso, permettendo un controllo rapido ed efficiente.
+	La verifica ortografica è effettuata tramite Texmaker e TeXstudio, attraverso il quale gli errori ortografici vengono sottolineati in rosso, permettendo un controllo rapido ed efficiente della lingua italiana.
 	\paragraph{Analisi dinamica locale\\}
-	Son stati scelti per la verifica \textit{Mocha} e la libreria \textit{Chai}. 
+	Per l'analisi dinamica vengono utilizzati i seguenti i seguenti strumenti:
+	\begin{itemize}
+		\item{\textbf{Mocha}}\\
+		Mocha è un framework per l'esecuzione di test JavaScript che permette di testare Node.js. Grazie a questo framework è possibile eseguire dei test in serie, anche asincroni.
+		\item{\textbf{Chai}}\\
+		Chai è una libreria per le asserzioni che, usata insieme a Mocha, permette la creazione e l'esecuzione di test Node.js.
+	\end{itemize}
 	\paragraph{Analisi statica locale\\}
-	Viene utilizzato \textit{Total Validator} per la validazione del codice HTML5 e CSS3. \\
-	Come strumento per la validazione dello stile del codice TypeScript viene utilizzato \textit{TSLint}. \\
-	Inoltre, si utilizzerà \textit{Istanbul} per analizzare staticamente il codice TypeScript da eventuali bug.
 	
+	\begin{itemize}
+		\item{\textbf{Total Validator}}\\
+		Total Validator è uno strumento che permette la validazione di codice scritto in linguaggio HTML5 e CSS3.
+		\item{\textbf{TSLint}}\\
+		TSLint è uno strumento che permette di evitare di identificare errori di pattern nel codice TypeScript, così da mantenere codice di qualità ed evitare la proliferazione di bug.
+	\end{itemize}
+
 	\subsection{Validazione}
 	\subsubsection{Test}
 	I test di unità, integrazione, sistema e validazione sono definiti secondo le indicazioni fornite durante il corso.

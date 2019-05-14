@@ -47,9 +47,9 @@ describe('RegistrationView', function() {
                 res = res && regex.test(str);
                 regex = new RegExp("<option value=\"teacher\">Insegnante</option>", "i");
                 res = res && regex.test(str);
-                regex = new RegExp("<input type=\"text\" class='form-control my-2' style=\"display: none;\" id=\"inps\" name=\"inps\" value=\"\" placeholder=\"Inserisci il tuo codice inps\" required/>", "i");
+                regex = new RegExp("<input type=\"text\" class='form-control my-2' style=\"display: none;\" id=\"inps\" name=\"inps\" value=\"n\" placeholder=\"Inserisci il tuo codice inps\" required/>", "i");
                 res = res && regex.test(str);
-                regex = new RegExp("<input type=\"text\" class='form-control my-2' id=\"email\" name=\"email\" placeholder=\"Inserisci la tua email\" required/>", "i");
+                regex = new RegExp("<input type=\"email\" class='form-control my-2' id=\"email\" name=\"email\" placeholder=\"Inserisci la tua email\" required/>", "i");
                 res = res && regex.test(str);
                 regex = new RegExp("<input type=\"text\" class='form-control my-2' id=\"username\" name=\"username\" placeholder=\"Inserisci la tua username\" required/>", "i");
                 res = res && regex.test(str);

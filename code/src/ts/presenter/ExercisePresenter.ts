@@ -286,7 +286,7 @@ class ExercisePresenter extends PagePresenter{
         let finalTags : string []=[];
 
         for(let i in posTags){
-            if(tagsCorrection[i]==="")
+            if(tagsCorrection[i]==="-")
                 finalTags[i]=posTags[i];
             else if(tagsCorrection[i]!==posTags[i])
                 finalTags[i]=tagsCorrection[i];

@@ -126,7 +126,7 @@ class DeveloperView extends PageView {
                     ret += "\t\t\t\t\t<div class='col-sm-2'>" + date.getDate() + "/" + (date.getMonth()+1) + "/" + date.getFullYear() + "</div>" +
                         "\t\t\t\t\t<div class='col-sm-2 overflow-tip'><p class='text-truncate'>" + results[i].id + "</p></div>\n" +
                         "\t\t\t\t\t<div class='col-sm-2 overflow-tip'><p class='text-truncate'>" + results[i].solverID + "</p></div>\n" +
-                        "\t\t\t\t\t<div class='col-sm-1 overflow-tip'>" + results[i].valutations[1] + "</div>\n";
+                        "\t\t\t\t\t<div class='col-sm-1 overflow-tip'>" + (results[i].valutations ? results[i].valutations[1] : "N.V.")+ "</div>\n";
 
                     ret+="\t\t\t\t\t<div class='col-sm-1 overflow-tip'>" + results[i].teacher + "</div>\n" +
                         "\t\t\t\t</div>\n" +

@@ -23,6 +23,7 @@ class DeveloperPresenter extends PagePresenter{
     private async initializeAnnotations() : Promise<void>{
         this.annotations = await this.getAllAnnotation();
         this.encryptAnnotations();
+        console.log(this.annotations);
     }
     /**
      * This method provides to manage the view urls.
@@ -162,7 +163,7 @@ class DeveloperPresenter extends PagePresenter{
      * @param id
      */
     public filterByUser(id : string) : void {
-        this.annotations=this.annotations.filter((sol:any)=>CryptoJS.MD5(sol.solverID).toString()===id);
+        this.annotations=this.annotations.filter((sol:any)=>sol.solverID.toString()===id);
     }
 
     private encryptAnnotations() : void{

@@ -14,39 +14,101 @@ var session = require('express-session');
 class SearchPresenter extends PagePresenter_1.PagePresenter {
     constructor(view) {
         super(view);
-        this.client = (new Client_1.Client.builder()).buildExerciseClient().build();
+        this.client = (new Client_1.Client.builder()).buildExerciseClient().buildUserClient().build();
+    }
+    setSearchType(value) {
+        //this.setResults(undefined);
+        this.searchType = value;
+    }
+    getSearchType() {
+        return this.searchType;
     }
     update(app) {
-        app.get('/home', (request, response) => {
+        this.exerciseSearchPage(app);
+        this.searchExercise(app);
+        this.studentSearchPage(app);
+        this.searchStudent(app);
+        this.classExerciseSearchPage(app);
+    }
+    exerciseSearchPage(app) {
+        app.get('/exercise/search', (request, response) => __awaiter(this, void 0, void 0, function* () {
             session.invalidLogin = request.query.mess === "invalidLogin";
             let menuList;
             menuList = {
-                0: { "link": "link1", "name": "name1" },
-                1: { "link": "link2", "name": "name2" }
+                0: { "link": "/", "name": "Homepage" }
             };
-            this.view.setTitle("Homepage");
+            this.setSearchType("exercise");
+            /*this.view.setTitle("Ricerca esercizio");*/
             this.view.setMenuList(menuList);
             //this.viewProfile.setMainList(["class1","class2","class3","class4","class5","class6","class7","class8"]);
-            response.send(this.view.getPage());
-        });
-        app.post('/searchExercise', (request, response) => __awaiter(this, void 0, void 0, function* () {
+            response.send(yield this.view.getPage());
+        }));
+    }
+    searchExercise(app) {
+        app.post('/searchexercise', (request, response) => __awaiter(this, void 0, void 0, function* () {
             //console.log("frase da cercare : "+request.body.sentence);
             let exerciseClient = this.client.getExerciseClient();
             if (exerciseClient) {
                 let map = yield exerciseClient.searchExercise(request.body.sentence); //returns map<idEsercizio, sentence>
-                this.view.setResultList(map);
-                response.redirect("/home");
+                this.setResults(map);
+                if (this.searchType === "exercise")
+                    response.redirect("/exercise/search");
+                if (this.searchType === "classExercise")
+                    response.redirect(307, "/class/exercise/search");
+            }
+            else {
+                this.setResults(new Map());
+                if (this.searchType === "exercise")
+                    response.redirect("/exercise/search");
+                if (this.searchType === "classExercise")
+                    response.redirect(307, "/class/exercise/search");
             }
         }));
     }
-    //@ts-ignore
-    searchExercises(sentence) {
-        return __awaiter(this, void 0, void 0, function* () {
-            let exerciseClient = this.client.getExerciseClient();
-            if (exerciseClient) {
-                yield exerciseClient.searchExercise(sentence);
+    studentSearchPage(app) {
+        app.post('/student/insert', (request, response) => __awaiter(this, void 0, void 0, function* () {
+            let menuList;
+            menuList = {
+                0: { "link": "/", "name": "Homepage" }
+            };
+            this.setSearchType("student");
+            /* this.view.setTitle("Ricerca studente");*/
+            this.view.setMenuList(menuList);
+            response.send(yield this.view.getPage());
+        }));
+    }
+    searchStudent(app) {
+        app.post('/searchstudent', (request, response) => __awaiter(this, void 0, void 0, function* () {
+            //console.log("frase da cercare : "+request.body.sentence);
+            let userClient = this.client.getUserClient();
+            if (userClient) {
+                let map = yield userClient.searchUser(request.body.sentence, false); //returns map<idEsercizio, sentence>
+                this.setResults(map);
+                response.redirect(307, "/student/insert");
             }
-        });
+            else {
+                this.setResults(new Map());
+                response.redirect(307, "/student/insert");
+            }
+        }));
+    }
+    setResults(map) {
+        this.results = map;
+    }
+    getResults() {
+        return this.results;
+    }
+    classExerciseSearchPage(app) {
+        app.post('/class/exercise/search', (request, response) => __awaiter(this, void 0, void 0, function* () {
+            let menuList;
+            menuList = {
+                0: { "link": "/", "name": "Homepage" }
+            };
+            this.setSearchType("classExercise");
+            /* this.view.setTitle("Ricerca studente");*/
+            this.view.setMenuList(menuList);
+            response.send(yield this.view.getPage());
+        }));
     }
 }
 exports.SearchPresenter = SearchPresenter;

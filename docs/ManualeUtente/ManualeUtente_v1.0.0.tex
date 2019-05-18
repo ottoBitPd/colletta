@@ -93,6 +93,10 @@
 		\rowcolor{LightBlue}
 		\color{white}\bfseries Versione & \color{white}\bfseries Data & \multicolumn{1}{c}{\color{white}\bfseries Autore}
 		& \color{white}\bfseries Ruolo & \multicolumn{1}{c}{\color{white}\bfseries Descrizione}\\[0.25cm]
+		1.0.0 & 2019-04-11 & Eleonora Peagno & Responsabile & Approvazione per il \newline rilascio \\ \hline
+		0.2.0 & 2019-04-11 & Giovanni Peron & Verificatore & Verifica documento \\ \hline
+		0.1.2 & 2019-04-11 & Enrico Marcato & Progettista & Sistemazione requisiti e immagini \S3 \\ \hline
+		0.1.1 & 2019-04-11 & Enrico Marcato & Progettista & Aggiunte funzionalità \S3  \\ \hline
 		0.1.0 & 2019-04-11 & Giovanni Bergo & Verificatore & Verifica documento \\ \hline
 		0.0.2 & 2019-04-07 & Enrico Marcato & Progettista & Redatto \S2 e \S3 \\ \hline
 		0.0.1 & 2019-04-05 & Enrico Marcato & Progettista & Creazione documento e stesura \S1 \\ 
@@ -111,13 +115,13 @@
 	
 	\section{Introduzione}
 	\subsection{Scopo del documento}
-	Lo scopo di questo documento è quello di illustrare le funzionalità che l'applicazione possiede e spiegarne l'utilizzo. Il documento è incrementale quindi subirà delle modifiche fino a quando lo sviluppo dell'applicazione non sarà completato.
+	Lo scopo di questo documento è quello di illustrare le funzionalità che l'applicazione possiede e spiegarne l'utilizzo. Esso rappresenta una guida per l'utilizzo del prodotto.
 	\subsection{Scopo del prodotto}
 	Lo scopo del prodotto è creare una piattaforma collaborativa di raccolta dati su cui sia possibile predisporre e/o svolgere esercizi di analisi grammaticale. La raccolta vorrebbe avere il fine di fornire a sviluppatori e ricercatori dati sufficienti per applicare metodi di apprendimento automatico$^*$. Nello specifico si vorrebbe poter insegnare ad un elaboratore a svolgere gli stessi esercizi proposti agli utenti, divenendo una sorta di correttore automatico.
 	
 	\subsection{Note esplicative}
 	Tutti i termini marcati con un * ad apice presenti nel seguente documento trovano una definizione
-	all’interno del \textit{Glossario\_v3.0.0}.
+	nell'appendice in fondo al documento.
 	I nomi dei documenti interni/esterni prodotti dal gruppo OttoBit saranno scritti in corsivo.
 	\newpage
 	\section{Download e installazione}
@@ -153,16 +157,16 @@
 	\end{itemize}
 	\subsubsection{Framework:}
 		\begin{itemize}
-		\item NodeJS.
+		\item NodeJS*.
 		\end{itemize}
 	
 
 	\subsection{Download}
 	\subsubsection{NodeJS}
-	Scaricare NodeJS per il sistema operativo desiderato da https://nodejs.org/en/download.
+	Scaricare NodeJS per il sistema operativo desiderato da \url{https://nodejs.org/en/download}.
 	\subsubsection{Colletta}		
 	L'applicazione è disponibile alla seguente repository Github:
-	https://github.com/ottoBitPd/colletta-poc.
+	\url{https://github.com/ottoBitPd/colletta-poc}.
 	
 	\subsection{Installazione}
 	La piattaforma è provvisoriamente raggiungibile solo tramite server locale.
@@ -172,157 +176,205 @@
 	 	npm install
 	 	\end{lstlisting}
 	 	\item \textbf{Eseguire il server:}\\ Sempre da terminale e nella cartella principale, utilizzare il seguente comando:\begin{lstlisting}[numbers=none]
-	 	node index.js
+	 	node public/index.js
 	 	\end{lstlisting}
-	 	\item \textbf{Accedere all'applicazione:}\\ Apri il tuo browser e vai all'indirizzo: http://localhost:8080
+	 	\item \textbf{Accedere all'applicazione:}\\ Apri il tuo browser e vai all'indirizzo: \url{http://localhost:8080}
 	 \end{enumerate}
  
  \newpage
 	\section{Utilizzo}	
 	
+	\subsection{Primo accesso alla piattaforma}
+	La prima schermata che appare una volta entrati nella piattaforma è considerata l'homepage (vedi Figura 1). Nella quale è possibile accedere alle funzionalità di registrazione, autenticazione e di ricerca o aggiunta di un esercizio.
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[scale=0.65]{images/home.jpg}
+		\caption{Homepage}
+	\end{figure}
+	
 	\subsection{Registrazione}
 	Per registrarsi a Colletta seguire i seguenti passi:
 	\begin{enumerate}
-	\item Nella homepage cliccare su "Registrati";
+	\item Accedere all'homepage e cliccare su "Registrati";
 	\item Scegliere se registrarsi come allievo oppure come insegnante;
 	\item Compilare i campi richiesti;
 	\item Se è stata scelta l'opzione allievo cliccare su "Registrati" e la registrazione è conclusa.
 	\item Se è stata scelta la registrazione come insegnante cliccare su "Registrati" e attendere che un moderatore accetti la richiesta.
 	\end{enumerate}
 
-	\subsection{Autenticazione}
-	\begin{enumerate}
-		\item Compilare con le credenziali username e password i campi nella pagina homepage;
-		\item Cliccare su "Accedi".
-	\end{enumerate}
-
 	\begin{figure}[h]
 		\centering
-		\includegraphics[scale=0.65]{images/home.jpg}
-		\caption{Homepage}
+		\includegraphics[scale=0.65]{images/registrazione.jpg}
+		\caption{Registrazione}
 	\end{figure}
+	\newpage
+
+	\subsection{Autenticazione}
+	Per accedere a Colletta come allievo o insegnante seguire i seguenti passi:
+	\begin{enumerate}
+		\item Accedere all'homepage (vedi Figura 1);
+		\item Compilare con le credenziali username e password i campi nella navbar;
+		\item Cliccare su "Accedi".
+	\end{enumerate}
 
 	\subsection{Inserimento frase}
 	Inserire una frase permette di eseguire un esercizio non presente nella piattaforma e ricevere la valutazione automatica quindi non inserita da un insegnante.	
 	\begin{enumerate}
-		\item Nell'homepage inserire la frase desiderata nella barra;
+		\item Accedere all'homepage (vedi Figura 1);
+		\item Inserire la frase desiderata nella barra;
 		\item Cliccare su "Invia";
-		
 	\end{enumerate}
 
+	\newpage
 	\subsection{Ricerca esercizio}
-	Per svolgere esercizi inseriti da insegnanti è necessario accedere alla pagina di ricerca (vedi Figura 2). In questa pagina è presente un elenco con tutti gli esercizi disponibili, inoltre è possibile filtrarli tramite una barra di ricerca.
+	La ricerca avviene tra esercizi aggiunti precedentemente da insegnanti. 
+	
+	\begin{enumerate}
+		\item Accedere all'homepage e cliccare su "Ricerca esercizio" nella navbar;
+		\item Nell'elenco di tutti gli esercizi è possibile selezionare quale svolgere cliccando su "Esegui esercizio";
+		\item Per filtrare gli esercizi, inserire la frase desiderata nella barra;
+		\item Cliccare su "Cerca";
+	\end{enumerate}
 	
 	\begin{figure}[h]
 		\centering
 		\includegraphics[scale=0.65]{images/ricerca.jpg}
 		\caption{Ricerca esercizio}
 	\end{figure}
-
-	\begin{enumerate}
-		\item Nella homepage cliccare su "Ricerca esercizio" nella navbar in alto;
-		\item Filtrare la frase tramite l'apposita barra;
-		\item Nella lista cliccare sul bottone "Esegui esercizio" corrispondente alla frase che si desidera svolgere.
-	\end{enumerate}
 	
 	\subsection{Svolgimento esercizio}
 	\begin{enumerate}
-		\item Nella homepage ricercare o inserire una frase poi cliccare su "Esegui esercizio";
+		\item Accedere all'homepage e svolgere Inserimento frase(\S3.4) oppure Ricerca esercizio(\S3.5);
 		\item Compilare i campi opportunamente;
-		\item Scegliere nel menu a tendina l'autore della correzione;
+		\item Scegliere l'autore della correzione;
 		\item Cliccare su "Invia".
 	\end{enumerate}
-	\newpage
 
-	\begin{figure}[h]
+	\begin{figure}[h!]
 		\centering
 		\includegraphics[scale=0.65]{images/svolgimento.jpg}
 		\caption{Svolgimento esercizio}
 	\end{figure}
 	
+	\newpage
+	
 	\subsection{Valutazione esercizio}
 	Al termine dell'esercizio vengono evidenziati eventuali errori in rosso e in verde le soluzioni esatte.
-	\newpage
 		\begin{figure}[h!]
 		\centering
 		\includegraphics[scale=0.65]{images/valutazione.jpg}
 		\caption{Valutazione}
 	\end{figure}
 	
-	\subsection{Visualizzare il proprio profilo}
-	Sia gli allievi che gli insegnanti hanno la possibilità di:
+	\subsection{Visualizzare e modificare la informazioni del profilo}
+	Sia gli allievi che gli insegnanti hanno la possibilità di visualizzare e modificare le proprie informazioni personali:
 	\begin{enumerate}
-		\item Cliccare sull'icona del profilo in alto a destra;
-		\item Visualizzare le informazioni del proprio profilo con la possibilità di modificarne i campi.
+		\item Autenticarsi e cliccare sull'icona del profilo nella navbar;
+		\item Modificare se necessario compilando i campi;
+		\item Clicca su "Modifica".
 	\end{enumerate}
-\newpage
+
 	\begin{figure}[h]
 		\centering
 		\includegraphics[scale=0.65]{images/profiloinsegnante.jpg}
 		\caption{Profilo insegnante}
 	\end{figure}
 	
-	
+	\newpage
 	\subsection{Visualizzare i progressi}
 	Questa funzionalità è riservata all'utente di tipo \textbf{Allievo}.\\
 	In questa pagina sono rappresentati i progressi dell'alunno ricavati dagli esercizi svolti suddivisi per settimana.
 	
 	\begin{enumerate}
-		\item Accedere al proprio profilo;
-		\item Cliccare su "I tuoi progressi";
+		\item Autenticarsi e cliccare sull'icona del profilo nella navbar;
+		\item Cliccare su "I tuoi progressi" nella navbar;
 	\end{enumerate}
-	\newpage
-\begin{figure}[h]
+
+	\begin{figure}[h]
 		\centering
 		\includegraphics[scale=0.65]{images/progressi.jpg}
 		\caption{Progressi alunno}
 	\end{figure}	
 	
+	\newpage
 	\subsection{Svolgere esercizi assegnati}
 	Questa funzionalità è riservata all'utente di tipo \textbf{Allievo}.
 	
-	Questa sezione verrà implementata successivamente.
-		
-	\subsection{Inserire una frase e fornire una soluzione}
-			Questa funzionalità è riservata all'utente di tipo \textbf{Insegnante}.
-			\begin{enumerate}
-				\item Effettuare l'accesso alla piattaforma;
-				\item Cliccare su "Inserisci esercizio con correzione" sulla navbar in alto a sinistra.
-				\item Completa la barra con la frase da inserire, poi clicca su "Inserisici";
-				\item Modifica i campi che non ritieni giusti della correzione effettuata dal sistema, poi clicca su "Invia". 
-			\end{enumerate}
+	\noindent Un insegnante assegna esercizi ad una classe, gli alunni appartenenti ad essa possono svolgerli seguendo i seguenti passi:
+	
+	\begin{enumerate}
+		\item Autenticarsi e cliccare su "Le tue classi" nella navbar;
+		\item Cliccare sulla classe desiderata;
+		\item Nell'elenco degli esercizi assegnati alla classe cliccare su "Esegui esercizio" per selezionare l'esercizio da svolgere.
+	\end{enumerate}
 
-			
+	\begin{figure}[h]
+		\centering
+		\includegraphics[scale=0.65]{images/esassegnato.jpg}
+		\caption{Svolgimento esercizio assegnato}
+	\end{figure}
+		
+	\newpage
+	\subsection{Inserire una frase e fornire una soluzione}
+		Questa funzionalità è riservata all'utente di tipo \textbf{Insegnante}.
+		
+		\noindent Un insegnante per inserire un esercizio nella piattaforma deve inserire una frase e la corrispondente soluzione.
+		
+		\begin{enumerate}
+			\item Autenticarsi e cliccare su "Crea esercizio" nella navbar;
+			\item Completa la barra con la frase da inserire, poi clicca su "Invia";
+			\item Nella soluzione proposta dall'apprendimento automatico, modifica i campi che non ritieni giusti corretti
+			\item Cliccare su "Invia". 
+		\end{enumerate}
+	
+		\begin{figure}[h]
+			\centering
+			\includegraphics[scale=0.65]{images/creaes.jpg}
+			\caption{Creazione nuovo esercizio}
+		\end{figure}
+
 	\subsection{Creare una classe}
-			Questa funzionalità è riservata all'utente di tipo \textbf{Insegnante}.\\
-			Una classe permette ad un insegnante di interagire direttamente con i propri allievi.
-				\begin{figure}[h!]
+		Questa funzionalità è riservata all'utente di tipo \textbf{Insegnante}.\\
+		Una classe permette ad un insegnante di interagire direttamente con i propri allievi.
+		
+			\begin{figure}[h!]
 				\centering
 				\includegraphics[scale=0.65]{images/classi.jpg}
 				\caption{Gestione delle classi}
 			\end{figure}
-					\begin{enumerate}
-			\item Accedere dal proprio profilo personale all'area dedicata alla gestione delle classi (vedi Figura 7);
+	
+		\begin{enumerate}
+			\item Autenticarsi e cliccare su "Area classi" nella navbar;
 			\item Cliccare su "Aggiungi una nuova classe";
 			\item Compilare i campi dati richiesti;
-			\item Clicca su aggiungi;
+			\item Clicca su "Crea classe";
 		\end{enumerate}
-	\subsection{Assegnare esercizi ad una classe}
-			Questa funzionalità è riservata all'utente di tipo \textbf{Insegnante}.\\
-			Assegnando esercizi ad una classe si permette agli allievi appartenti alla stessa di svolgere tali esercizi.
-			\begin{enumerate}
-				\item Accedere dal proprio profilo personale all'area dedicata alla gestione delle classi(vedi Figura 7);
-				\item Dall'elenco delle proprie classi (vedi Figura 7), cliccare sulla classe desiderata;
-				\item Cliccare su "Aggiungi esercizio".
-			\end{enumerate}
+	
+	\subsection{Assegnare esercizio ad una classe}
+		Questa funzionalità è riservata all'utente di tipo \textbf{Insegnante}.\\
+		Assegnando esercizi ad una classe si permette agli allievi appartenti alla stessa di svolgere tali esercizi.
+		
+		\noindent \textbf{Attenzione:} l'esercizio che verrà assegnato deve essere già esistente.
+		
+		\begin{enumerate}
+			\item Autenticarsi e cliccare su "Area classi" nella navbar;
+			\item Cliccare sulla classe desiderata;
+			\item Cliccare su "Assegna un nuovo esercizio".
+			\item Ricercare un esercizio già esistente;
+			\item Cliccare su "Aggiungi esercizio alla classe";
+		\end{enumerate}
 		
 		\subsection{Assegnare allievo ad una classe}
 		Questa funzionalità è riservata all'utente di tipo \textbf{Insegnante}.\\
 		Assegnando un allievo ad una classe si permette all'allievo di essere valutato negli esercizi assegnati alla stessa classe.
+		
 		\begin{enumerate}
-			\item Accedere dal proprio profilo personale all'area dedicata alla gestione delle classi(vedi Figura);
-			\item Dall'elenco delle proprie classi (vedi Figura), cliccare sulla classe desiderata;
-			\item Cliccare su "Aggiungi allievo".
+			\item Autenticarsi e cliccare su "Area classi" nella navbar;
+			\item Cliccare sulla classe desiderata;
+			\item Cliccare su "Aggiungi uno studente".
+			\item Ricercare lo studente desiderato;
+			\item Cliccare su "Aggiungi alla classe".
 		\end{enumerate}
 	
 		\begin{figure}[h!]
@@ -331,40 +383,88 @@
 		\caption{Gestione della singola classe}
 	\end{figure}
 			
-	\subsection{Segnalazione abuso}
-	Nel caso in cui sia necessario segnalare un contenuto che ritieni non debba essere presente nella piattaforma.
-	\begin{enumerate}
-		\item Ricerca frase da segnalare appartenente ad un esercizio;
-		\item clicca su "Segnala".
-	\end{enumerate}
+	\newpage
+
+	\subsection{Autenticazione riservata allo sviluppatore}
+		Questa funzionalità è riservata all'utente di tipo \textbf{Sviluppatore}.\\
 		
-	\subsection{Verificare la richiesta di insegnante}
-			Questa funzionalità è riservata all'utente di tipo \textbf{Moderatore}.\\
-			Questa sezione verrà implementata successivamente.
-			
-	\subsection{Eliminare esercizi e utenti}
-			Questa funzionalità è riservata all'utente di tipo \textbf{Moderatore}.\\
-			Questa sezione verrà implementata successivamente.
+	\noindent	Lo sviluppatore ha accesso alla visione dei dati presenti nella piattaforma con inoltre la possibilità di filtrarli e scaricarli in diversi formati.\\ Per accedere a questa area seguire i seguenti passi:\\
+		
+	\noindent	\textbf{Attenzione:} Lo sviluppatore deve essere in possesso della password consegnata dai possessori della piattaforma.
+		
+		\begin{enumerate}
+			\item Accedere alla homepage della piattaforma;
+			\item Aggiungere "/developer" all'url e premere invio;
+			\item Inserire la password;
+			\item Premere "Invia".
+		\end{enumerate}
 	
-	\subsection{Creare modello}
-				Questa funzionalità è riservata all'utente di tipo \textbf{Sviluppatore}.\\
-				Questa sezione verrà implementata successivamente.
-	\subsection{Cambiare modello}
-				Questa funzionalità è riservata all'utente di tipo \textbf{Sviluppatore}.\\
-				Questa sezione verrà implementata successivamente.
+	\begin{figure}[h]
+		\centering
+		\includegraphics[scale=0.65]{images/homesviluppatore.jpg}
+		\caption{Autenticazione sviluppatore}
+	\end{figure}
+
+	\newpage
+	\subsection{Filtraggio dati}
+		Questa funzionalità è riservata all'utente di tipo \textbf{Sviluppatore}.
+		\\ \\
+		Lo sviluppatore può filtrare i dati riguardanti un esercizio inserendo una valutazione minima e/o massima con le date riguardanti un ristretto periodo di tempo . Ogni utente registrato per questioni relative alla privacy è riconoscibile dallo sviluppatore solamente tramite un hash. Se lo sviluppatore individua personalmente un utente che ritiene affidabile, inserendo il suo codice hash può filtrare gli esercizi da lui eseguiti.
+		
+		\begin{enumerate}
+			\item Accedere alla piattaforma e autenticarsi;
+			\item Compilare i campi necessari per la ricerca dei dati;
+			\item Cliccare su "Filtra".
+		\end{enumerate}
+	
+
+		\begin{figure}[h]
+		\centering
+		\includegraphics[scale=0.65]{images/filtrodati.jpg}
+		\caption{Filtraggio dati}
+		\end{figure}
+		
+	
+	\newpage
+	
 	\subsection{Scaricare modello}
-				Questa funzionalità è riservata all'utente di tipo \textbf{Sviluppatore}.\\
-				Questa sezione verrà implementata successivamente.
+		Questa funzionalità è riservata all'utente di tipo \textbf{Sviluppatore}.\\
+		
+		\begin{enumerate}
+			\item Accedere alla piattaforma e autenticarsi;
+			\item Cliccare su "Scarica modello".
+		\end{enumerate}
+	
+	\begin{center}
+	\begin{figure}[h]
+		\includegraphics[scale=0.65]{images/scaricamodello.jpg}
+		\caption{Download modello}
+	\end{figure}
+\end{center}
+				
 	\subsection{Scaricare dati}
-				Questa funzionalità è riservata all'utente di tipo \textbf{Sviluppatore}.\\
-				Questa sezione verrà implementata successivamente.
-	\subsection{Scaricare dataset}
-				Questa funzionalità è riservata all'utente di tipo \textbf{Sviluppatore}.\\
-				Questa sezione verrà implementata successivamente.
+		Questa funzionalità è riservata all'utente di tipo \textbf{Sviluppatore}.\\
+	
+		I dati sono disponibili al download in formato csv e txt.
+		\begin{enumerate}
+			\item Accedere alla piattaforma e autenticarsi;
+			\item Se necessario filtrare i dati di interesse (\S3.17);
+			\item Cliccare su "CSV" o "TXT".
+		\end{enumerate}
+
 \newpage
 
 \appendix
+\setcounter{secnumdepth}{0}
 \section{Glossario}
+	\subsection*{A}
+		\subsubsection*{Apprendimento automatico}
+	L'apprendimento automatico rappresenta un insieme di meccanismi che permettono ad un calcolatore
+	di migliorare nel tempo l'esecuzione di un esercizio.
+	
+	\subsection*{N}
+		\subsubsection*{NodeJS}
+	Node.js è una runtime di JavaScript Open source multipiattaforma orientato agli eventi per l'esecuzione di codice JavaScript Server-side.
 	
 
 

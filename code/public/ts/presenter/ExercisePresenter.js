@@ -10,94 +10,174 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const PagePresenter_1 = require("./PagePresenter");
 const Client_1 = require("../model/Client/Client");
-<<<<<<< HEAD
 const fileSystem = require("fs");
-=======
->>>>>>> feature/ManualeSviluppatore
+const PageView_1 = require("../view/PageView");
 var session = require('express-session');
 class ExercisePresenter extends PagePresenter_1.PagePresenter {
     constructor(view) {
         super(view);
         this.client = (new Client_1.Client.builder()).buildExerciseClient().buildUserClient().build();
-<<<<<<< HEAD
-=======
-        this.fileSystem = require('fs');
->>>>>>> feature/ManualeSviluppatore
+        this.userSolution = [];
+        this.correction = null;
+    }
+    getUserSolution() {
+        return this.userSolution;
+    }
+    getCorrection() {
+        return this.correction;
     }
     update(app) {
         this.listenExercise(app);
         this.saveExercise(app);
+        this.insertExercise(app);
+    }
+    insertExercise(app) {
+        app.post('/exercise/insert', (request, response) => __awaiter(this, void 0, void 0, function* () {
+            this.correction = null;
+            let exerciseClient = this.client.getExerciseClient();
+            if (exerciseClient) {
+                //sending the sentence to hunpos which will provide a solution
+                var posSolution = yield exerciseClient.autosolve(request.body.sentence, "authorIdValue");
+                //creation of the array containing tags provided from hunpos solution
+                var posTags = this.extractTags(posSolution);
+                //converting tags to italian
+                var posTranslation = this.translateTags(posTags);
+                //console.log("view: "+JSON.stringify(this.view));
+                this.view.setSentence(request.body.sentence);
+                this.view.setPosTranslation(posTranslation);
+                this.view.setPosTags(posTags);
+                this.view.setUserKind(PageView_1.UserKind.teacher);
+                response.send(yield this.view.getPage());
+            }
+        }));
     }
     listenExercise(app) {
         app.post('/exercise', (request, response) => __awaiter(this, void 0, void 0, function* () {
+            this.correction = null;
             let exerciseClient = this.client.getExerciseClient();
-            let userClient = this.client.getUserClient();
-            if (exerciseClient && userClient) {
-                //console.log("session.username: ", session.username);
-                if (session.username !== undefined && (yield userClient.isTeacher(session.username))) {
-                    console.log("sono passato, sei un insegnante");
-                    //sending the sentence to hunpos which will provide a solution
-                    var posSolution = yield exerciseClient.autosolve(request.body.sentence, "authorIdValue");
-                    //creation of the array containing tags provided from hunpos solution
-                    var posTags = this.extractTags(posSolution);
-                    //converting tags to italian
-                    var posTranslation = this.translateTags(posTags);
-                    //console.log("view: "+JSON.stringify(this.view));
-                    this.view.setSentence(request.body.sentence);
-                    this.view.setPosTranslation(posTranslation);
-                    this.view.setPosTags(posTags);
-                }
-                else { //user is not a teacher, it might be student or user not logged in
+            if (exerciseClient) {
+                // console.log("key arrivata: ",request.body.sentence);
+                this.view.setSentence(request.body.sentence);
+                this.view.setPosTranslation(null);
+                this.view.setCorrections(yield this.teacherSolutions(request.body.sentence));
+                if (session.username !== undefined) {
+                    //const sentence = await exerciseClient.getSentence(request.body.sentence);
                     //console.log("niente hunpos, non sei un insegnante");
-                    console.log("key arrivata: ", request.body.key);
-                    const sentence = yield exerciseClient.getSentence(request.body.key);
-                    this.view.setSentence(sentence);
-                    this.view.setPosTranslation(null);
-                    //console.log("solutions: ", await exerciseClient.searchSolution(sentence));
-                    //let solutions = await exerciseClient.searchSolution(sentence);
-                    //TODO sono arrivato al punto che bisogna mettere apposto ExerciseView in modo che se non è un
-                    // insegnante mostri che soluzione selezionare
+                    this.view.setUserKind(PageView_1.UserKind.student);
                 }
-                response.send(this.view.getPage());
+                else {
+                    //not logged
+                    this.view.setUserKind(PageView_1.UserKind.user);
+                }
+                response.send(yield this.view.getPage());
             }
         }));
     }
     saveExercise(app) {
-        app.post('/saveExercise', (request, response) => __awaiter(this, void 0, void 0, function* () {
+        app.post('/exercise/save', (request, response) => __awaiter(this, void 0, void 0, function* () {
             let exerciseClient = this.client.getExerciseClient();
             let userClient = this.client.getUserClient();
             if (exerciseClient && userClient) {
-                if (session.username !== undefined && (yield userClient.isTeacher(session.username))) {
-                    //console.log("post: ",request.body);
-                    var words = exerciseClient.getSplitSentence(request.body.sentence);
-                    var wordsnumber = words.length;
-                    var hunposTags = JSON.parse(request.body.hunposTags);
-                    var tagsCorrection = this.correctionToTags(wordsnumber, request.body);
-                    //building a array merging tags coming from user corrections and hunpos solution
-                    var finalTags = this.correctsPOS(hunposTags, tagsCorrection);
-                    //console.log("finalTags: "+finalTags);
-                    //TODO recuperare il solverId per salvarlo nel db
-                    //const solverId = userClient.getUserId(session.username)
-                    let solution = {
-                        0: "solverID",
-                        1: finalTags,
-                        2: this.splitTopics(request.body.topics),
-                        3: request.body.difficulty
-                    };
-                    let valutation = {
-                        0: "teacherIdValue",
-                        1: 10
-                    };
-                    exerciseClient.insertExercise(request.body.sentence, "sessionAuthorId", solution, valutation);
-                    //exerciseClient.addValutation(request.body.sentence, "sessionauthorId","teacherIdValue", 10);//valori di prova
-                    //await exerciseClient.insertExercise(request.body.sentence, "authorIdValue",);
-                    //saving in the database the final solution for the exercise
-                    //this.model.writeSolution(sentence.split(" "), finalTags, sentence, key);
+                let words = exerciseClient.getSplitSentence(request.body.sentence);
+                let wordsnumber = words.length;
+                if (session.username !== undefined) {
+                    let ID = yield userClient.search(session.username);
+                    if (this.view.getUserKind() === PageView_1.UserKind.teacher) {
+                        //console.log("post: ",request.body);
+                        let hunposTags = JSON.parse(request.body.hunposTags);
+                        let tagsCorrection = this.correctionToTags(wordsnumber, request.body);
+                        //building a array merging tags coming from user corrections and hunpos solution
+                        let finalTags = this.correctsPOS(hunposTags, tagsCorrection);
+                        //console.log("finalTags: "+finalTags);
+                        //const solverId = userClient.getUserId(session.username)
+                        let solution = {
+                            0: ID,
+                            1: finalTags,
+                            2: this.splitTopics(request.body.topics),
+                            3: request.body.difficulty
+                        };
+                        let valutation = {
+                            0: ID,
+                            1: 10
+                        };
+                        this.userSolution = solution[1];
+                        exerciseClient.insertExercise(request.body.sentence, ID, solution, valutation);
+                        //exerciseClient.addValutation(request.body.sentence, "sessionauthorId","teacherIdValue", 10);//valori di prova
+                        //await exerciseClient.insertExercise(request.body.sentence, "authorIdValue",);
+                        //saving in the database the final solution for the exercise
+                        //this.model.writeSolution(sentence.split(" "), finalTags, sentence, key);
+                    }
+                    else {
+                        let solution;
+                        let valutation;
+                        if (request.body.correction !== 'auto') {
+                            let corrections = yield this.teacherSolutions(request.body.sentence);
+                            corrections = corrections.filter((value) => value.id === request.body.correction);
+                            solution = {
+                                0: ID,
+                                1: this.correctionToTags(wordsnumber, request.body),
+                                2: corrections[0].tags,
+                                3: corrections[0].difficulty
+                            };
+                            valutation = {
+                                0: corrections[0].userID,
+                                1: yield exerciseClient.evaluate(solution["1"], ID, corrections[0].topics, request.body.sentence, corrections[0].difficulty, corrections[0].userID)
+                            };
+                            if ((yield exerciseClient.searchExercise(request.body.sentence)).size > 0) {
+                                yield exerciseClient.insertExercise(request.body.sentence, ID, solution, valutation);
+                                this.userSolution = solution[1];
+                                this.correction = { "mark": valutation[1], "tags": corrections[0].tags };
+                            }
+                        }
+                        else {
+                            solution = {
+                                0: ID,
+                                1: this.correctionToTags(wordsnumber, request.body),
+                                2: [],
+                                3: -1
+                            };
+                            valutation = {
+                                0: null,
+                                1: yield exerciseClient.evaluate(solution["1"], "", [], request.body.sentence, -1)
+                            };
+                            this.userSolution = solution[1];
+                            this.correction = { "mark": valutation[1], "tags": yield exerciseClient.autosolve(request.body.sentence, ID) };
+                        }
+                    }
                 }
                 else {
-                    //it is not teacher
+                    let solution;
+                    let valutation;
+                    if (request.body.correction !== 'auto') {
+                        let corrections = yield this.teacherSolutions(request.body.sentence);
+                        corrections = corrections.filter((value) => value.id === request.body.correction);
+                        solution = {
+                            0: undefined,
+                            1: this.correctionToTags(wordsnumber, request.body),
+                            2: corrections[0].tags,
+                            3: corrections[0].difficulty
+                        };
+                        valutation = {
+                            0: corrections[0].userID,
+                            1: yield exerciseClient.evaluate(solution["1"], "", [], request.body.sentence, corrections[0].difficulty, corrections[0].userID)
+                        };
+                    }
+                    else {
+                        solution = {
+                            0: undefined,
+                            1: this.correctionToTags(wordsnumber, request.body),
+                            2: [],
+                            3: -1
+                        };
+                        valutation = {
+                            0: null,
+                            1: yield exerciseClient.evaluate(solution["1"], "", [], request.body.sentence, -1)
+                        };
+                    }
+                    this.userSolution = solution[1];
+                    this.correction = { "mark": valutation[1], "tags": yield exerciseClient.autosolve(request.body.sentence, "") };
                 }
-                response.send(this.view.getPage());
+                response.send(yield this.view.getPage());
             }
         }));
     }
@@ -126,13 +206,8 @@ class ExercisePresenter extends PagePresenter_1.PagePresenter {
      * @returns {string} a string containing the italian translation of the tag
      */
     translateTag(tag) {
-<<<<<<< HEAD
         const content = fileSystem.readFileSync("./src/ts/presenter/vocabolario.json");
         const jsonContent = JSON.parse(content.toString());
-=======
-        var content = this.fileSystem.readFileSync("./src/ts/presenter/vocabolario.json");
-        var jsonContent = JSON.parse(content);
->>>>>>> feature/ManualeSviluppatore
         var lowercase = tag.split(/[A-Z]{1,2}/);
         var uppercase = tag.split(/[a-z0-9]+/);
         var result = "";
@@ -189,7 +264,7 @@ class ExercisePresenter extends PagePresenter_1.PagePresenter {
      * @returns {Array} an array containing the tags of the solution suggested by the user
      */
     correctionToTags(wordsnumber, dataCorrection) {
-        //console.log("dataCorrection: "+require('util').inspect(dataCorrection));
+        console.log("dataCorrection: " + require('util').inspect(dataCorrection));
         let optionsIndex = 0, wordIndex = 0; //optionsIndex counter for options of the first select input field
         let tagsCorrection = [];
         tagsCorrection.length = wordsnumber;
@@ -199,11 +274,27 @@ class ExercisePresenter extends PagePresenter_1.PagePresenter {
             if (i !== 'sentence' && i !== 'wordsnumber' && i !== 'key' && i !== 'hunposTags') {
                 if (dataCorrection[i] !== '-') { //se è stato settato qualcosa
                     //invalid tags or tags that must be set in the second input field
-                    if (dataCorrection[i] === 'A' || (dataCorrection[i] === 'B' && i === ('general' + wordIndex)) || (dataCorrection[i] === 'E' && i === ('general' + wordIndex)) || (dataCorrection[i] === 'S' && i === ('general' + wordIndex)) || (dataCorrection[i] === 'V' && i === ('general' + wordIndex))) {
+                    /*
+                    if(dataCorrection[i]==='A')  {
                         actualTag += "";
+                    } else if (['B','E','P','S','V'].indexOf(dataCorrection[i]) !== -1){ //dataCorrection[i] !== 'A' && condition
+                        if (i===('general'+ wordIndex))
+                            actualTag += "";
+                        else
+                            actualTag += dataCorrection[i];
                     }
-                    else {
+                    else{ //datacorrection[i] !== 'A' && ['B','E','P','S','V'].indexOf(dataCorrection[i]) === -1
                         actualTag += dataCorrection[i];
+                    }
+                    */
+                    if (dataCorrection[i] !== 'A') {
+                        if (['B', 'E', 'P', 'S', 'V'].indexOf(dataCorrection[i]) !== -1) {
+                            if (i !== ('general' + wordIndex))
+                                actualTag += dataCorrection[i];
+                        }
+                        else {
+                            actualTag += dataCorrection[i];
+                        }
                     }
                 }
                 optionsIndex++;
@@ -224,6 +315,69 @@ class ExercisePresenter extends PagePresenter_1.PagePresenter {
      */
     splitTopics(topics) {
         return topics.split(" ");
+    }
+    /**
+     * method used by the View to understand if the login is valid
+     */
+    loggedTeacher() {
+        return __awaiter(this, void 0, void 0, function* () {
+            let userClient = this.client.getUserClient();
+            if (userClient) {
+                if (session.username !== undefined && (yield userClient.isTeacher(session.username))) {
+                    return true;
+                }
+            }
+            return false;
+        });
+    }
+    loggedStudent() {
+        return __awaiter(this, void 0, void 0, function* () {
+            let userClient = this.client.getUserClient();
+            if (userClient) {
+                if (session.username !== undefined && !(yield userClient.isTeacher(session.username))) {
+                    return true;
+                }
+            }
+            return false;
+        });
+    }
+    teacherSolutions(sentence) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let result = [];
+            let exerciseClient = this.client.getExerciseClient();
+            let userClient = this.client.getUserClient();
+            if (userClient) {
+                let teacherList = yield userClient.teacherList();
+                for (let teacher of teacherList) {
+                    if (exerciseClient) {
+                        let solutions = yield exerciseClient.searchSolution(sentence, teacher);
+                        for (let sol of solutions) {
+                            sol = {
+                                "id": sol.id,
+                                "userID": sol.userID,
+                                "username": (yield userClient.getUserData(sol.userID)).username,
+                                "tags": sol.tags,
+                                "time": sol.time,
+                                "difficulty": sol.difficulty,
+                                "topics": sol.topics
+                            };
+                            result.push(sol);
+                        }
+                    }
+                }
+            }
+            return result;
+        });
+    }
+    findSolution(sentence, solverID, time) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let exerciseClient = this.client.getExerciseClient();
+            if (exerciseClient) {
+                let solutions = yield exerciseClient.searchSolution(sentence, solverID);
+                return solutions.find((sol) => sol.time === time);
+            }
+            return null;
+        });
     }
 }
 exports.ExercisePresenter = ExercisePresenter;

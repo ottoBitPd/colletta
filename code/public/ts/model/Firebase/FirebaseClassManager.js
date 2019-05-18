@@ -59,6 +59,10 @@ class FirebaseClassManager extends FirebaseManager_1.FirebaseManager {
             });
         });
     }
+    /**
+     * this methos returns a map which has entries containing  the id of a class as key and the id of the class' teacher
+     * as value. the will contains all the classes that are in the db.
+     */
     elements() {
         return __awaiter(this, void 0, void 0, function* () {
             let container = new Map();
@@ -67,7 +71,10 @@ class FirebaseClassManager extends FirebaseManager_1.FirebaseManager {
                     .once("value", function (snapshot) {
                     if (snapshot.exists()) {
                         snapshot.forEach(function (data) {
-                            container.set(data.key, data.val().name);
+                            //container.set(data.key, data.val().name);
+                            //siccome mi sembrava un metodo mai utlizzato e a me serviva idClass, idTeacher
+                            //ho cambiato la mappa ritornata dal metodo Perry15
+                            container.set(data.key, data.val().teacherID);
                         });
                         //console.log("non esiste");
                         return resolve(container);
@@ -94,7 +101,7 @@ class FirebaseClassManager extends FirebaseManager_1.FirebaseManager {
                     .once('value', function (snapshot) {
                     if (snapshot.exists()) {
                         const readData = snapshot.val();
-                        const _class = new Class_1.Class(readData.name, readData.description, readData.teacherID, readData.students, readData.exercises);
+                        const _class = new Class_1.Class(id, readData.name, readData.description, readData.teacherID, readData.students, readData.exercises);
                         return resolve(_class);
                     }
                     return resolve(undefined);
@@ -129,7 +136,7 @@ class FirebaseClassManager extends FirebaseManager_1.FirebaseManager {
             const splittedPath = path.split("/");
             const position = splittedPath.length - 1;
             const field = splittedPath[position];
-            console.log(field);
+            //console.log(field+ "path: " + path +" value: "+value);
             switch (field) {
                 case "exercises":
                     yield this.updateField(path, value);

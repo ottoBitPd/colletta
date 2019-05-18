@@ -21,6 +21,7 @@
 \usepackage{listings}
 \usepackage{multicol}
 \setlength{\columnsep}{1cm}
+\usepackage{float} 
 
 \definecolor{lightgray}{rgb}{.9,.9,.9}
 \definecolor{darkgray}{rgb}{.4,.4,.4}
@@ -92,8 +93,12 @@
 		\rowcolor{LightBlue}
 		\color{white}\bfseries Versione & \color{white}\bfseries Data & \multicolumn{1}{c}{\color{white}\bfseries Autore}
 		& \color{white}\bfseries Ruolo & \multicolumn{1}{c}{\color{white}\bfseries Descrizione}\\[0.25cm]
+		4.0.0 & 2019-05-10 & Eleonora Peagno & Responsabile & Approvazione per il rilascio \\ \hline
+		3.1.0 & 2019-05-09 & Benedetto Cosentino & Verificatore & Verifica documento \\ \hline
+		3.0.2 & 2019-05-08 & Michele Bortone & Amministratore & Ampliamento \S3.4 e \S4 \\ \hline
+		3.0.1 & 2019-05-07 & Michele Bortone & Amministratore & Aggiornamenti  \S2.2.4 e \S3.1.4\\ \hline
 		3.0.0 & 2019-04-11 & Giovanni Bergo & Responsabile & Approvazione per il rilascio \\ \hline
-		2.1.0 & 2019-04-11 & Michele Bortone & Verificatore & Documento \newline verificato \\ \hline
+		2.1.0 & 2019-04-11 & Michele Bortone & Verificatore & Verifica documento \\ \hline
 		2.0.3 & 2019-04-10 & Eleonora Peagno & Amministratore & Aggiornamento \S2.2.4.4 e \S2.2.5.2 \\ \hline
 		2.0.2 & 2019-03-19 & Giovanni Bergo \newline Giovanni Peron & Amministratore & Correzione errori RP \\ \hline
 		2.0.1 & 2019-03-18 & Giovanni Bergo \newline Giovanni Peron & Amministratore & Correzione errori RP \\ \hline
@@ -178,21 +183,22 @@ Capitolato C2 Colletta: Piattaforma per Raccolta dati mediante esercizi di gramm
 	Questo processo$^*$ contiene le attività e i task del fornitore e si propone di gestire i rapporti con il cliente. Le attività principali sono descritte di seguito.
 	
 	\subsubsection{Descrizione}
-	Durante l’intero progetto si vuole instaurare un costante rapporto con MivoQ S.r.l. a fine di:
+	Durante l’intero progetto si vuole instaurare un costante rapporto con MIVOQ S.r.l. a fine di:
 	\begin{itemize}
 		\item Determinare i bisogni del proponente e gli aspetti chiave per soddisfarli;
-		\end{itemize}
+		\item Concordare insieme eventuali opportunità di miglioramento del prodotto rispetto all'idea originale proposta nel capitolato;
+	\end{itemize}
 	
 	\subsubsection{Documentazione fornita}
-	Elenchiamo nella parte sottostante i documenti che verranno forniti alla proponente MivoQ. s.r.l. e ai committenti Prof. Vardanega, Prof. Cardin: 
+	Elenchiamo nella parte sottostante i documenti che verranno forniti alla proponente MIVOQ S.r.l. e ai committenti Prof. Vardanega, Prof. Cardin: 
 	\begin{itemize}
-	\item \textbf{Pianificazione, consegna e completamento del progetto:} descritte all’interno del \textit{PianoDiProgetto\_v3.0.0};
-	\item \textbf{Analisi}: l’analisi dei casi d’uso e dei requisiti, contenute all’interno del documento \textit{AnalisiDeiRequisiti\_v2.0.0};
+	\item \textbf{Pianificazione, consegna e completamento del progetto:} descritte all’interno del \textit{PianoDiProgetto\_v4.0.0};
+	\item \textbf{Analisi}: l’analisi dei casi d’uso e dei requisiti, contenute all’interno del documento \textit{AnalisiDeiRequisiti\_v4.0.0};
 	\item \textbf{Progettazione dell’architettura}: l’applicazione e le tecnologie
 	adottate e attuate nella Proof of Concept della Technology Baseline;
 	\item\textbf{ Progettazione di Dettaglio}: l’insieme di classi, metodi, presentate durante la Product Baseline;
-	\item \textbf{Verifica e Validazione}: descritte all’interno del \textit{PianoDiQualifica\_v3.0.0};
-	\item \textbf{Garanzia della qualità dei processi e di prodotto}: descritte all’interno del \textit{PianoDiQualifica\_v3.0.0}.
+	\item \textbf{Verifica e Validazione}: descritte all’interno del \textit{PianoDiQualifica\_v4.0.0};
+	\item \textbf{Garanzia della qualità dei processi e di prodotto}: descritte all’interno del \textit{PianoDiQualifica\_v4.0.0}.
 	\end{itemize}
 	
 	\subsubsection{Studio di fattibilità}
@@ -225,20 +231,20 @@ Questo documento dovrà contenere:
 \end{itemize}
 
 \subsubsection{Consegna del prodotto}
-Con l’avvicinarsi della data di collaudo, si cercherà di instaurare un rapporto con il Referente Dr. Giulio Paci della Proponente Mivoq S.R.L. al quale verranno sottoposti dei prototipi dell’applicazione al fine di ricevere un feedback volto al perfezionamento della stessa.
+Con l’avvicinarsi della data di collaudo, si cercherà di mantenere un contatto costante con il Referente Dr. Giulio Paci della Proponente MIVOQ S.r.l. al quale verranno sottoposti dei prototipi dell’applicazione al fine di ricevere un feedback volto al perfezionamento della stessa.
 La consegna avverrà in luogo e data da destinarsi.
-Verranno forniti alla proponente MivoQ. s.r.l. e ai committenti Prof. Vardanega, Prof. Cardin i seguenti prodotti:
+Verranno forniti alla proponente MIVOQ S.r.l. e ai committenti Prof. Vardanega, Prof. Cardin i seguenti prodotti:
 \begin{itemize}
 	\item Codice sorgente
 	\item Documentazione relativa al prodotto.
-	\item \textit{Glossario\_v3.0.0} per una maggiore comprensione dei documenti
-	\item \textit{ManualeUtente\_v1.0.0}: per l'illustrazione del processo di installazione e delle funzionalità del prodotto.
-		\item \textit{ManualeSviluppatore\_v1.0.0}: specifica come contribuire al progetto.
+	\item \textit{Glossario\_v4.0.0} per una maggiore comprensione dei documenti
+	\item \textit{ManualeUtente\_v2.0.0}: per l'illustrazione del processo di installazione e delle funzionalità del prodotto.
+		\item \textit{ManualeSviluppatore\_v2.0.0}: specifica come contribuire al progetto.
 \end{itemize}
 
 \subsubsection{Completamento del progetto}
 Dopo la consegna del prodotto ed aver effettuato il relativo collaudo, il progetto si considera concluso.
-In caso di necessità verrà fornito supporto alla proponente MivoQ s.r.l. e l'applicazione continuerà ad essere sviluppata in accordo con la proponente.
+In caso di necessità verrà fornito supporto alla proponente MIVOQ S.r.l. e l'applicazione continuerà ad essere sviluppata in accordo con la proponente.
 
 %	\subsection{Normazione}
 %	Uno dei compiti dell'Amministratore di progetto, è quello di stilare la lista delle regole che tutti i componenti del gruppo dovranno seguire nella stesura dei documenti e nello svolgimento delle attività assegnate a ciascuno. Con l'avanzamento dello sviluppo del progetto, tali regole potrebbero subire delle variazioni e/o delle aggiunte poiché, durante lo sviluppo stesso, si potranno acquisire nuove conoscenze o incontrare difficoltà tali da portare alla rielaborazione delle succitate regole. Si potrebbe anche decidere di utilizzare uno strumento diverso da quelli preventivati e, anche per questo, andranno stabilite regole specifiche.\\
@@ -246,17 +252,24 @@ In caso di necessità verrà fornito supporto alla proponente MivoQ s.r.l. e l'a
 	
 	\subsection{Sviluppo}
 	\subsubsection{Analisi dei requisiti}
-	Gli Analisti dovranno definire l'insieme delle funzionalità che il prodotto finale dovrà presentare basandosi sulle informazioni rinvenute nei documenti relativi al capitolato d'appalto scelto. L'obbiettivo è quello di ottenere una versione condivisa con il cliente del prodotto atteso.\\
+	Gli Analisti dovranno definire l'insieme delle funzionalità che il prodotto finale dovrà presentare basandosi sulle informazioni rinvenute nei documenti relativi al capitolato d'appalto scelto. Gli obiettivi sono:
+	\begin{itemize}
+		\item Elencare, con sufficiente dettaglio, le funzionalità ed i requisiti concordati con l'azienda proponente;
+		\item Ottenere una visione condivisa con il cliente del prodotto atteso;
+		\item Fornire delle linee guida precise che i Progettisti devono seguire.
+	\end{itemize}
 	Lo sviluppo del documento prevede i seguenti punti:	
 	\begin{itemize}
-		\item \textbf{Introduzione;}
-		\item \textbf{Descrizione prodotto;}
-		\item \textbf{Casi d'uso$^*$;}
-		\item \textbf{Requisiti;}
-		\item \textbf{Tracciamento.}
+		\item \textbf{Introduzione:} Contiene una breve introduzione del documento ed i riferimenti;
+		\item \textbf{Descrizione generale:} Descrive ad alto livello le principali funzionalità del prodotto e le tipologie di utenti;
+		\item \textbf{Casi d'uso$^*$:} Elenco dei casi d'uso individuati dal team;
+		\item \textbf{Requisiti:} Elenco dei requisiti da soddisfare;
+		\item \textbf{Tracciamento:} Indicazione sulla fonte e la provenienza di ogni requisito.
 	\end{itemize}
 	
-	\textbf{Prodotto dell'attività:} \textit{AnalisiDeiRequisiti\_v2.0.0}
+	\textbf{Prodotto dell'attività:} \textit{AnalisiDeiRequisiti\_v4.0.0}
+	\newline
+	Il prodotto di quest'attività è un accordo vincolante tra il team e MIVOQ S.r.l. e descrive nel documento le funzionalità del prodotto finale ed i requisiti che il gruppo che si impegna a soddisfare.
 	
 	\paragraph{Diagrammi UML dei casi d'uso\\}
 	 I casi d'uso verranno rappresentati tramite diagrammi seguendo le regole di UML 2.0, al fine di individuare i requisiti.
@@ -315,16 +328,19 @@ In caso di necessità verrà fornito supporto alla proponente MivoQ s.r.l. e l'a
 	\paragraph{Diagrammi UML\\} 
 	Saranno implementati, secondo lo standard UML 2.0, i diagrammi per rendere chiare le scelte progettuali adottate. Saranno forniti:
 	\begin{itemize}
-		\item Diagrammi delle classi;
-		\item Diagrammi di sequenza;
-		\item Diagrammi di attività;
-		\item Diagrammi di package.
+		\item \textbf{Diagrammi delle classi:} Definiscono relazioni, classi, attributi, tipi e metodi; indipendentemente dal linguaggio di programmazione.
+		\item \textbf{Diagrammi di sequenza:} Descrivono uno scenario, ovvero una determinata sequenza di azioni in cui tutte le scelte sono già state effettuate.
+		\item \textbf{Diagrammi di attività:} Servono a descrivere interazioni fra oggetti che implementano collettivamente un comportamento, mostrando sequenze di azioni attraverso scelte definite.
+		\item \textbf{Diagrammi di package:} Servono a descrivere interazioni fra oggetti che implementano collettivamente un comportamento, mostrando sequenze di azioni attraverso scelte definite.
 	\end{itemize}
-	\paragraph{Design Patterns\\} 
-	Compito dei Progettisti è adottare un design pattern opportuno al problema posto dal progetto. Ciò consente ai Programmatori di seguire delle linee guida consolidate nell'implementazione delle componenti previste dal progettista. I vantaggi di tali soluzioni dovranno essere motivati spiegandone la struttura e il funzionamento.
-	\subsubsection{Strumenti}
-	\paragraph{Astah\\}
-	È un programma per la modellazione di diagrammi UML che verrà utilizzato dal gruppo per la creazione di tutti i diagrammi necessari.
+	\paragraph{Design Patterns\\}
+	Compito dei Progettisti è adottare un design pattern opportuno per un problema ricorrente che si presenta. Ciò consente ai Programmatori di seguire delle linee guida consolidate nell'implementazione delle componenti previste dal Progettista. I vantaggi di tali soluzioni dovranno essere motivati spiegandone la struttura e il funzionamento.
+	\paragraph{Strumenti}
+	\begin{itemize}
+		\item{\textbf{Astah}\noindent \\
+		È un programma per la modellazione di diagrammi UML che verrà utilizzato dal gruppo per la creazione di tutti i diagrammi necessari.}
+	\end{itemize}
+	
 	
 	\subsubsection{Codifica}
 	L'attività di codifica inizierà quando la progettazione sarà terminata. Pertanto le norme sottostanti potranno subire variazioni in seguito alla successiva revisione.
@@ -340,23 +356,27 @@ In caso di necessità verrà fornito supporto alla proponente MivoQ s.r.l. e l'a
 	
 	\paragraph{Linguaggi di codifica utilizzati:}
 	\begin{itemize}
-		\item JavaScript: Node.js per la parte back-end e routing e Javascript per la parte dinamica del front-end
-		\item HTML e CSS: per la struttura e la presentazione del front-end
+		\item \textbf{TypeScript} per la parte back-end e routing tramite Node.js.Questo linguaggio estende la sintassi di javascript permettendo, per esempio, la tipizzazione forte e l'uso delle interfacce;
+		\item \textbf{JavaScript} per l'aggiunta di funzionalità dinamiche al front-end;
+		\item \textbf{HTML e CSS} per la struttura e la presentazione del front-end.
 	\end{itemize}
 	
 	\paragraph{Uso di TSLint}
 	Al fine di evitare errori di stile del codice, in WebStorm dovrà essere abilitato TSLint, nel seguente modo: Settings — Languages \& Frameworks — TypeScript — TSLint. Utilizzare il seguente comando per installare TSLint:
 	
-	\begin{minipage}{.5\textwidth}
+	\begin{center}
+		\begin{minipage}{.5\textwidth}
 		\begin{lstlisting}[caption=Installazione di TSLint,numbers=none]
 			$ npm install tslint typescript
 		\end{lstlisting}
 	\end{minipage}
+	\end{center}
 	
 	Per fare in modo che TSLint funzioni correttamente è necessario configurarlo utilizzando il file tsconfig.json presente all'interno della cartella principale del sorgente dell'applicazione. È possibile quindi settare l'impostazione ``Configuration file'' su Automated search* o specificare manualmente il percorso del file appena citato.
 	
 	\paragraph{Lunghezza delle linee di codice} Le linee di codice non dovranno superare i 79 caratteri. In ogni caso l'IDE che abbiamo scelto mette a disposizione una linea limite da non superare.
-	
+	\paragraph{Nomenclatura file} 
+	Ogni file deve avere un nome breve e descrittivo. L'unico carattere speciale che può esser contenuto è underscore.
 	\paragraph{Nomenclatura codice}
 	I nomi di classi, variabili e metodi dovranno avere un nome esplicativo per evitare il più possibile ambiguità di comprensione.
 	\begin{itemize}
@@ -400,8 +420,8 @@ In caso di necessità verrà fornito supporto alla proponente MivoQ s.r.l. e l'a
 	I commenti devono permettere la comprensione del codice, non
 	devono quindi descrivere la sintassi del linguaggio di programmazione in uso, ma piuttosto descrivere lo scopo di tutti quei blocchi di codice la cui comprensione non sia già resa immediata da una corretta scelta della nomenclatura.
 	
-	\paragraph{Uso di JSDoc}
-	Al fine di generare in modo automatico una documentazione del prodotto in stile JavaDoc, sarà usato JSDoc.
+	\paragraph{Uso di TypeDoc}
+	Al fine di generare in modo automatico una documentazione del prodotto in stile JavaDoc, sarà usato TypeDoc.
 	Prevediamo di utilizzare questo strumento per documentare principalmente classi e metodi dell'applicazione, nel seguente modo:
 	\begin{itemize}
 		\item \textbf{Commento alle classi}: Tutte le classi dovranno essere precedute da un commento che indichi se la classe è astratta o se estende qualche altra classe. Di seguito vengono riportati degli esempi alcuni più esplicativi:
@@ -456,33 +476,40 @@ In caso di necessità verrà fornito supporto alla proponente MivoQ s.r.l. e l'a
 		\end{lstlisting}
 	\end{itemize}
 	
-	\subsubsection{Strumenti}
-
-	\paragraph{WebStorm} \noindent \\
-	È un IDE di JetBrains per lo sviluppo di Web application, che supporta JavaScript, Node.js, HTML e CSS.
-	L'editor offre varie funzionalità, tra cui:
+	\paragraph{Strumenti}
 	\begin{itemize}
-		\item Node.js Debugger
-		\item TSLint
+		\item{\textbf{WebStorm}} \noindent \\
+		È un IDE di JetBrains per lo sviluppo di Web application, che supporta JavaScript, Node.js, HTML e CSS.
+		L'editor offre varie funzionalità, tra cui:
+		\begin{itemize}
+			\item Node.js Debugger
+			\item TSLint
+		\end{itemize}
+		
+		\item{\textbf{TypeDoc}}
+		\noindent \\
+		Per la generazione automatica della documentazione in stile JavaDoc, è stato utilizzato il software TypeDoc. Per essere utilizzato TypeDoc necessita di essere installato tramite npm nel vostro sistema. Al fine di effettuare tale operazione utilizzare il seguente comando:
+		
+		\begin{center}
+			\begin{minipage}{.5\textwidth}
+				\begin{lstlisting}[caption=Installazione di TypeDoc,numbers=none]
+				$ npm install --global typedoc
+				\end{lstlisting}
+			\end{minipage}	
+		\end{center}	
+		
+		Per utilizzare TypeDoc e produrre la documentazione automatica basata sui commenti introdotti nel sorgente prodotto, è necessario invocare il seguente comando dalla cartella principale dell’applicazione:
+		
+		\begin{center}
+			\begin{minipage}{.5\textwidth}
+				\begin{lstlisting}[caption=Installazione di TSLint,numbers=none]
+				$ typedoc -- out docs ./ src
+				\end{lstlisting}
+			\end{minipage}	
+		\end{center}		
 	\end{itemize}
 
-	\paragraph{TypeDoc}
-	\noindent \\
-	Per la generazione automatica della documentazione in stile JavaDoc, è stato utilizzato il software TypeDoc. Per essere utilizzato TypeDoc necessita di essere installato tramite npm nel vostro sistema. Al fine di effettuare tale operazione utilizzare il seguente comando:
 	
-	\begin{minipage}{.5\textwidth}
-		\begin{lstlisting}[caption=Installazione di TypeDoc,numbers=none]
-			$ npm install --global typedoc
-		\end{lstlisting}
-	\end{minipage}		
-	
-	Per utilizzare TypeDoc e produrre la documentazione automatica basata sui commenti introdotti nel sorgente prodotto, è necessario invocare il seguente comando dalla cartella principale dell’applicazione:
-	
-	\begin{minipage}{.5\textwidth}
-		\begin{lstlisting}[caption=Installazione di TSLint,numbers=none]
-			$ typedoc -- out docs ./ src
-		\end{lstlisting}
-	\end{minipage}			
 	
 	\section{Processi di Supporto}
 	\subsection{Documentazione}
@@ -508,7 +535,7 @@ In caso di necessità verrà fornito supporto alla proponente MivoQ s.r.l. e l'a
 		\item \textbf{Verifica:} una volta terminato il lavoro di elaborazione, il documento verrà assegnato ai Verificatori che procederanno al controllo di correttezza. Se il documento sarà valutato non corretto, verrà riassegnato ai Redattori.
 		\item \textbf{Approvazione:} una volta che il documento sarà giudicato corretto nella fase di verifica, sarà assegnato al Responsabile di progetto che procederà l'approvazione e il rilascio del documento.
 	\end{enumerate}
-	
+
 	\subsubsection{Struttura}
 	
 	\paragraph{Frontespizio} 
@@ -630,10 +657,14 @@ In caso di necessità verrà fornito supporto alla proponente MivoQ s.r.l. e l'a
 		\item \textbf{Numero:} indice progressivo a partire da 1 che individui la figura univocamente;
 		\item \textbf{Didascalia:} breve descrizione che riassuma il contenuto della figura.
 	\end{itemize}
-	
+	\subsubsection{Uso dei documenti}
+	\paragraph{Interno}
+	Sono documenti legati all'organizzazione ed al metodo di lavoro del team. Il loro uso è limitato ai membri del gruppo.
+	\paragraph{Esterno}
+	Sono documenti che prevedono la loro consultazione anche da elementi esterni al team, come la proponente.
 	\subsubsection{Suddivisione dei documenti}
 	\paragraph{Documenti formali\\}
-	Un documento è definito formale dopo l’approvazione da parte del Responsabile di progetto e quindi deve aver superato con esito positivo la fase di verifica. Questi documenti sono destinati alla distribuzione esterna al gruppo.
+	Un documento è definito formale dopo l’approvazione da parte del Responsabile di progetto e quindi deve aver superato con esito positivo la fase di verifica.
 	
 	\paragraph{Documenti informali\\}
 	Tutti i documenti sono da considerarsi informali finché non vengono approvati dal Responsabile di progetto. L’utilizzo di tali documenti è da considerarsi interno e quindi esclusivo del team.
@@ -704,7 +735,7 @@ La gestione della configurazione ha come obbiettivo l'identificazione, la regist
 \paragraph{Repository}
 Si è scelto di utilizzare come strumento di versionamento GitLab. Questo strumento permette la creazione di repository.
 L'Amministratore ha il compito di gestire e organizzare la repository, in modo che siano accessibili a tutti i componenti del gruppo.
-È previsto l'utilizzo di un'unica repository denominata colletta contenente sia tutta la documentazione del progetto che l'applicazione stessa.
+È previsto l'utilizzo di un'unica repository denominata colletta contenente sia tutta la documentazione del progetto che il software.
 \paragraph{Norme sui file consentiti}
 All'interno della repository vengono effettuate delle restrizioni relativi alle estensioni dei file attraverso il file .gitignore.
 Tuttavia rispetto alle restrizioni standard, per quanto riguarda i documenti, abbiamo scelto di consentire i seguenti tipi di file: 
@@ -740,7 +771,7 @@ Ogni commit deve essere accompagnato da una sensata descrizione, che permetta fa
 	
 	
 	\subsubsection{Metriche}
-	Al fine di garantire un determinato livello di qualità, i verificatori hanno stabilito delle metriche finalizzate ad ottenere gli obiettivi descritti  nel documento \textit{PianoDiQualifica\_v2.0.0}. Tali metriche devono rispettare la seguente notazione: 
+	Al fine di garantire un determinato livello di qualità, i verificatori hanno stabilito delle metriche finalizzate ad ottenere gli obiettivi descritti  nel documento \textit{PianoDiQualifica\_v4.0.0}. Tali metriche devono rispettare la seguente notazione: 
 	\begin{center}
 		M[Ambito][Codice identificativo]
 	\end{center}
@@ -794,7 +825,7 @@ Ogni commit deve essere accompagnato da una sensata descrizione, che permetta fa
 	\begin{itemize}
 		\item \textbf{MPD1 - Correttezza ortografica}: su ogni documento sarà possibile individuare gli errori ortografici tramite l'editor Texmaker. Il numero di errori rilevati accettabili è pari a zero.
 	
-		\item \textbf{MPD2 - Indice di Gullpease}: l'indice Gullpease$^*$ è un indice di leggibilità di un testo tarato sulla lingua italiana. Rispetto ad altri ha il vantaggio di utilizzare la lunghezza delle parole in lettere anziché in sillabe, semplificandone il calcolo automatico. Permette di misurare la complessità dello stile di un documento. L'indice di Gullpease considera due variabili linguistiche: la lunghezza della parola e la lunghezza della frase rispetto al numero delle lettere. La formula per il suo calcolo è:
+		\item \textbf{MPD2 - Indice di Gulpease}: l'indice Gulpease$^*$ è un indice di leggibilità di un testo tarato sulla lingua italiana. Rispetto ad altri ha il vantaggio di utilizzare la lunghezza delle parole in lettere anziché in sillabe, semplificandone il calcolo automatico. Permette di misurare la complessità dello stile di un documento. L'indice di Gulpease considera due variabili linguistiche: la lunghezza della parola e la lunghezza della frase rispetto al numero delle lettere. La formula per il suo calcolo è:
 	\begin{center}
 		$89\ +\ \frac{300\ *\ (numero\ delle\ frasi)\ -\ 10\ *\ (numero\ delle\ lettere)}{numero\ delle\ parole}$
 	\end{center}
@@ -884,10 +915,25 @@ Ogni commit deve essere accompagnato da una sensata descrizione, che permetta fa
 	
 	\subsection{Validazione}
 	\subsubsection{Test}
-	I test di unità, integrazione, sistema e validazione sono definiti secondo le definizioni date dal professore Vardanega nelle slide: \begin{center}
-		\url{https://www.math.unipd.it/~tullio/IS-1/2018/Dispense/L16.pdf}
-	\end{center}
+	I test di unità, integrazione, sistema e validazione sono definiti secondo le indicazioni fornite durante il corso.
+	\paragraph{Test di unità}
+	I test di unità hanno il compito di verificare che le unità si comportino come previsto.
+	Per unità si intende la più piccola parte di software testabile indipendentemente dal resto del sistema e dal funzionamento autonomo.
+	Lo unit testing semplifica l'integrazione di moduli diversi perché limita i malfunzionamenti a problemi di interazione tra i moduli e non nei moduli stessi.
+	I test case incorporano le caratteristiche critiche per il successo di un'unità di codice. Tali caratteristiche indicano l'uso appropriato dell'unità e i comportamenti errati che devono essere identificati nel suo funzionamento.
+	\paragraph{Test di integrazione}
+	I test di integrazione sono definiti come livello intermedio di testing e abitualmente seguono a quelli di unità e precedono quelli di sistema.
+	Tali test vengono eseguiti quando due o più unità già testate vengono aggregate in una struttura più grande, rappresentando l’estensione logica del test di unità.
+	Il testing delle parti combinate di un'applicazione ha il principale scopo di determinare se esse hanno il comportamento atteso quando si trovano ad operare insieme come un unico componente.
+	\paragraph{Test di sistema}
+	Tali test si basano sulle funzionalità espresse nell'analisi dei requisiti..
+	Il testing a livello di sistema si preoccupa del comportamento di un sistema nel suo complesso.
+	Il superamento dei test di sistema fornisce una prova che i requisiti sono stati effettivamente soddisfatti.
 	
+	
+	\paragraph{Test di validazione}
+	Questo tipo di test viene utilizzato durante l'attività di collaudo del prodotto  finale così da accertare
+	che esso soddisfi le richieste del committente.
 	\subsubsection{Denominazione test}
 	Volendo associare un identificatore univoco per ogni test menzionato, si \`e deciso di utilizzare il seguente formato:
 	\begin{center}
@@ -1006,10 +1052,50 @@ Infine, lo stesso Responsabile di progetto e tenuto ad incaricare un componente 
 	\end{itemize}
 	
 	\subsubsection{Ruoli di progetto}
-	I ruoli di progetto sono definiti secondo le definizioni date dal professore Vardanega nelle slide:
-	\begin{center}
-		\url{https://www.math.unipd.it/~tullio/IS-1/2018/Dispense/L06.pdf}
-	\end{center}
+	I ruoli di progetto sono definiti secondo le definizioni date dal professore Vardanega durante il corso.
+	\paragraph{Responsabile di progetto}
+	Il Responsabile è il rappresentante del team. È colui che deve prendere le decisioni e assumersene la responsabilità.
+	È suo compito:
+	\begin{itemize}
+		\item{approvare i documenti;}
+		\item{redigere l'organigramma ed il Piano di progetto;}
+		\item{gestire le risorse umane;}
+		\item{tenere sotto controllo gli avanzamenti del progetto.}
+	\end{itemize}
+	\paragraph{Amministratore di progetto}
+	L'amministratore è colui che si occupa dell'efficienza del gruppo e dell'operatività delle risorse.\\
+	È suo compito:
+	\begin{itemize}
+		\item{scegliere e amministrare gli strumenti di versionamento;}
+		\item{ricercare strumenti che agevolino e automatizzino il lavoro quanto più possibile;}
+		\item{risolvere eventuali problemi di gestione di processi;}
+		\item{attuare piani  di qualità.}
+	\end{itemize}
+	\paragraph{Progettista}
+	Si occupa di gestire gli aspetti tecnici e tecnlogici del progetto.\\
+	È suo compito:
+	\begin{itemize}
+		\item{scegliere e amministrare gli strumenti di versionamento;}
+		\item{ricercare strumenti che agevolino e automatizzino il lavoro quanto più possibile;}
+		\item{risolvere eventuali problemi di gestione di processi;}
+		\item{attuare piani e procedure di qualità.}
+	\end{itemize}
+	\paragraph{Analista}
+	È colui che ha conoscenza riguardante il domino del problema.\\
+	È suo compito:
+	\begin{itemize}
+		\item{capire al meglio il problema e successivamente esporlo in maniera chiara;}
+		\item{redarre lo Studio di fattibilità e l'Analisi dei requisiti.}
+	\end{itemize}
+	\paragraph{Programmatore}
+	È colui che si occupa della codifica del progetto.\\
+	È suo compito:
+	\begin{itemize}
+		\item{trasformare il lavoro svolto dal Progettista in codice scritto coerentemente con quanto dichiarato nelle norme di codifica in \S2.2.3;}
+		\item{creare una serie di test automatizzati che garantiscano la correttezza del codice prodotto.}
+	\end{itemize}
+	\paragraph{Verificatore}
+	È colui che deve assicurarsi che le Norme di progetto vengano seguite e rispettate dagli altri componenti del team.
 	\subsubsection{Strumenti}
 	
 	\paragraph{Slack (app)\\}
@@ -1068,7 +1154,7 @@ L'assicurazione della qualità riguarda sia i prodotti che i processi. Al fine d
 Le attività riguardanti l'attività di assicurazione della qualità che vengono presentate di seguito, sono descritte in dettaglio nel documento \textit{PianoDiQualifica\_v2.0.0}.
 
 \subsection{Attività: assicurazione della qualità di processo}
-Il gruppo OttoBit ha deciso di utilizzare gli standard ISO/IEC 15504 denominato SPIECE$^*$ e lo standard PDCA$^*$ di cui viene riportata di seguito la descrizione.\\
+Il gruppo OttoBit ha deciso di utilizzare gli standard ISO/IEC 15504 denominato SPICE$^*$ e lo standard PDCA$^*$ di cui viene riportata di seguito la descrizione.\\
 \textbf{ISO/IEC 15504} \\
 Lo standard ISO/IEC 15504, comunemente chiamato SPICE (acronimo di Software Process Improvement and Capability Determination), viene utilizzato per eseguire una valutazione concreta della qualità dei processi, inoltre permette la misurazione della capability dei processi, ovvero l'abilità con cui esso raggiunge l'obiettivo prefissato. Per eseguire queste misurazioni lo standard offre nove attributi da associare ai processi, ognuno dei quali misura un particolare aspetto della maturità del processo:
 \begin{itemize}
@@ -1098,7 +1184,7 @@ Infine sulla base delle valutazioni assegnate ad ogni attributo del processo, po
 	\item \textbf{4 - Predictable:} il processo raggiunge i propri obiettivi all'interno di limiti di controllo definiti. La sostanziale differenza con il livello estabilished è che ora il processo è quantitativamente compreso e controllato. A questo livello vengono associati gli attributi process measurement e process control.
 	\item \textbf{5 - Optimizing:} le attività del processo sono ottimizzate per affrontare bisogni progettuali presenti e futuri, il processo viene sottoposto a miglioramento continuo. Gli attributi associati a questo livello sono process innovation e process optimization.
 \end{itemize}
-\begin{figure}[htbp]
+\begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.7]{images/ISOIEC15504.pdf}
 	\caption{Riepilogo modello ISO/IEC 15504}
@@ -1107,12 +1193,6 @@ Infine sulla base delle valutazioni assegnate ad ogni attributo del processo, po
 \textbf{Ciclo di Deming} \\
 Il ciclo di Deming, noto anche come PDCA (dall'inglese \textbf{P}lan-\textbf{D}o-\textbf{C}heck-\textbf{A}ct), è un metodo di gestione iterativo suddiviso in quattro stadi ed utilizzato per il controllo del miglioramento continuo dei processi e dei prodotti. Esso permette, nello specifico, di migliorare gradualmente la qualità dei processi in termini di efficienza ed efficacia, ottimizzando l'uso delle risorse e misurando la loro conformità rispetto le aspettative. \\
 La seguente immagine riporta le attività previste a tale scopo e ne segue una breve descrizione. 
-\begin{figure}[htbp]
-	\centering
-	\includegraphics[scale=0.5]{images/pdca.png}
-	\caption{Principio del miglioramento continuo secondo PDCA}
-	
-\end{figure}
 
 \begin{itemize}
 	\item \textbf{Plan}: prevede la definizione delle attività, scadenze, responsabilità e risorse atti a raggiungere e soddisfare degli obiettivi di miglioramento;
@@ -1120,10 +1200,15 @@ La seguente immagine riporta le attività previste a tale scopo e ne segue una b
 	\item \textbf{Check}: prevede la verifica dell'esito del processo in seguito all'attuazione delle strategie di miglioramento ed il confronto tra i risultati raccolti durante la fase Do e quelli attesi (specificati nella fase Plan) per stimare l'impatto effettivo del o dei miglioramenti apportati;
 	\item \textbf{Act}: prevede l'attuazione delle strategie che hanno portato a dei miglioramenti. Nel caso i risultati attuali si distacchino da quelli previsti, si possono compiere delle azioni di correzione in seguito ad un'approfondita analisi delle cause di tale errore. 
 \end{itemize}
-
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.5]{images/pdca.png}
+	\caption{Principio del miglioramento continuo secondo PDCA}
+	
+\end{figure}
 \subsection{Attività: assicurazione della qualità di prodotto}
 Questa attività ha lo scopo di assicurare che i prodotti rispettino le caratteristiche di qualità concordate con il committente. La qualità di prodotto non deve essere assicurata al solo completamento del prodotto ma anche durante tutto il suo periodo di sviluppo. \\
-Al fine di assicurare la qualità del software, ai verificatori è assegnato il compito di controllare che il sistema di testing e verifica rispettino i parametri descritti nel \textit{PianoDiQualifica\_v2.0.0} e nelle \textit{NormeDiProgetto\_v2.0.0} e di controllare che il versionamento avvenga secondo le specifiche riportate nelle \textit{Norme di progetto} e che i relativi strumenti vengano utilizzati correttamente. Tali controlli vanno eseguiti al rilascio di ogni nova versione dei documenti citati e ogni volta che viene effettuata una modifica nella configurazione del sistema.\\
+Al fine di assicurare la qualità del software, ai verificatori è assegnato il compito di controllare che il sistema di testing e verifica rispettino i parametri descritti nel \textit{PianoDiQualifica\_v4.0.0} e nelle \textit{NormeDiProgetto\_v4.0.0} e di controllare che il versionamento avvenga secondo le specifiche riportate nelle \textit{Norme di progetto\_v4.0.0} e che i relativi strumenti vengano utilizzati correttamente. Tali controlli vanno eseguiti al rilascio di ogni nova versione dei documenti citati e ogni volta che viene effettuata una modifica nella configurazione del sistema.\\
 Nel caso uno di questi fattori non venga rispettato, il verificatore è tenuto ad avvisare il Responsabile del progetto, così che si possa porre un tempestivo rimedio ad ogni problematica. Il verificatore non ha le competenze per intervenire in prima persona e non deve farlo, il suo compito è di segnalare i problemi.
 
 \end{document}

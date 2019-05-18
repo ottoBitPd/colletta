@@ -724,8 +724,4 @@ fabric.properties
 # SonarLint working directories, configuration files (including credentials)
 .sonarlint/
 
-#ignore .js files
-code/public/ts/
-code/public/index.js
-
 # End of https://www.gitignore.io/api/sonar,sonarqube

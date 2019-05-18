@@ -9,6 +9,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const PageView_1 = require("./PageView");
+/**
+ *   Class to display the login page
+ *   @extends PageView
+ */
 class LoginView extends PageView_1.PageView {
     constructor(app) {
         super();
@@ -17,6 +21,10 @@ class LoginView extends PageView_1.PageView {
     setError(error) {
         this.error = error;
     }
+    /**
+     * This method is used to display the page body structure
+     * @return {string} the HTML source
+     */
     getPage() {
         return __awaiter(this, void 0, void 0, function* () {
             return "<!DOCTYPE html> " +

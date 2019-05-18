@@ -97,11 +97,11 @@ describe('Class', function() {
 
     describe('Class.findStudent()', function() {
         it('should return true', function() {
-            expect(student.findStudent("st2")).to.equal(true);
+            expect(student.findStudent("st2")).to.be.true;
         });
 
         it('should return false',function () {
-           expect(student.findStudent("cccc")).to.be.equal(false);
+           expect(student.findStudent("cccc")).to.be.false;
         });
     });
 
@@ -114,7 +114,8 @@ describe('Class', function() {
                 "description": "description",
                 "teacherID": "1234",
                 "students": ["st1", "st2"],
-                "exercises": ["es1", "es2"]
+                "exercises": ["es1", "es2"],
+                "time": null
             });
         });
     });

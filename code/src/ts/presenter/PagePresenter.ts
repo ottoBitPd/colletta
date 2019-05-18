@@ -2,6 +2,9 @@ import {Client} from "../model/Client/Client";
 
 var session = require('express-session');
 
+/**
+ *
+ */
 abstract class PagePresenter{
     protected view: any;
     protected client : Client;
@@ -23,7 +26,10 @@ abstract class PagePresenter{
         return session.invalidLogin;
     }
 
-
+    /**
+     * This method provides to manage the view urls.
+     * @param app
+     */
     abstract update(app : any) : void;
     /*
     //forse è un idea

@@ -2,6 +2,9 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const Client_1 = require("../model/Client/Client");
 var session = require('express-session');
+/**
+ *
+ */
 class PagePresenter {
     constructor(view) {
         this.view = view;

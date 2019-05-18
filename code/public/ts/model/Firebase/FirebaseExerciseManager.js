@@ -10,11 +10,20 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const FirebaseManager_1 = require("./FirebaseManager");
 const Exercise_1 = require("../Data/Exercise");
+/**
+ *   Class to manage exercises into the database
+ *   @extends FirebaseManager
+ */
 class FirebaseExerciseManager extends FirebaseManager_1.FirebaseManager {
     constructor() {
         super();
         FirebaseManager_1.FirebaseManager.registerInstance("FirebaseExerciseManager", this);
     }
+    /**
+     *   This method adds a new exercise into the database
+     *   @param obj - the object to insert
+     *   @returns { boolean } returns "true" if the operation is successful
+     */
     insert(obj) {
         return __awaiter(this, void 0, void 0, function* () {
             let exercise = obj;
@@ -24,7 +33,6 @@ class FirebaseExerciseManager extends FirebaseManager_1.FirebaseManager {
                 return __awaiter(this, void 0, void 0, function* () {
                     //scrivo esercizio
                     if (exists === "false" && wrsolution !== null) { //exercise does not exist in the db
-                        console.log("inserting sentence");
                         //key = this.writeSentence(exercise.getSentence(), exercise.getAuthorId());
                         let ref = FirebaseManager_1.FirebaseManager.database.ref('data/sentences/').push({
                             sentence: exercise.getSentence(),
@@ -39,7 +47,8 @@ class FirebaseExerciseManager extends FirebaseManager_1.FirebaseManager {
                             "topics": wrsolution.getTopics(),
                             "difficulty": wrsolution.getDifficulty(),
                             "valutations": wrsolution.JSONValutations(),
-                            "time": Date.now()
+                            "time": Date.now(),
+                            "public": wrsolution.getPublic()
                         });
                         resolve(true);
                     }
@@ -50,7 +59,8 @@ class FirebaseExerciseManager extends FirebaseManager_1.FirebaseManager {
                             "topics": wrsolution.getTopics(),
                             "difficulty": wrsolution.getDifficulty(),
                             "valutations": wrsolution.JSONValutations(),
-                            "time": Date.now()
+                            "time": Date.now(),
+                            "public": wrsolution.getPublic()
                         });
                         resolve(true);
                     }
@@ -74,19 +84,20 @@ class FirebaseExerciseManager extends FirebaseManager_1.FirebaseManager {
                     if (snapshot.exists()) {
                         snapshot.forEach(function (data) {
                             if (data.val().sentence.toLowerCase() === sentence.toLowerCase()) {
-                                //console.log("esiste");
                                 return resolve(data.key);
                             }
                         });
-                        //console.log("non esiste");
                         return resolve("false");
                     }
-                    //console.log("database vuoto");
                     return resolve("false");
                 });
             });
         });
     }
+    /**
+     * This method looks for all the exercises int the database
+     * @returns {Map<string, string>} a map key-sentence containing all the exercises saved into the database
+     */
     elements() {
         return __awaiter(this, void 0, void 0, function* () {
             let container = new Map();
@@ -97,10 +108,8 @@ class FirebaseExerciseManager extends FirebaseManager_1.FirebaseManager {
                         snapshot.forEach(function (data) {
                             container.set(data.key, data.val().sentence);
                         });
-                        //console.log("non esiste");
                         return resolve(container);
                     }
-                    //console.log("database vuoto");
                     else {
                         return resolve(container);
                     }
@@ -108,6 +117,10 @@ class FirebaseExerciseManager extends FirebaseManager_1.FirebaseManager {
             });
         });
     }
+    /**
+     *   This method reads exercises informations from the database
+     *   @param id - the id of the exercise to read
+     */
     read(id) {
         return __awaiter(this, void 0, void 0, function* () {
             const ProData = this.getExerciseById(id);
@@ -115,6 +128,11 @@ class FirebaseExerciseManager extends FirebaseManager_1.FirebaseManager {
             return read;
         });
     }
+    /**
+     *   This method returns an exercise from the database
+     *   @param id - the id of the exercise to return
+     *   @returns { Exercise } the Exercise object
+     */
     getExerciseById(id) {
         return __awaiter(this, void 0, void 0, function* () {
             return new Promise(function (resolve) {
@@ -122,15 +140,14 @@ class FirebaseExerciseManager extends FirebaseManager_1.FirebaseManager {
                     .once('value', function (snapshot) {
                     if (snapshot.exists()) {
                         let readData = snapshot.val();
-                        let exercise = new Exercise_1.Exercise(readData.sentence, readData.authorID);
+                        let exercise = new Exercise_1.Exercise(readData.sentence, readData.authorId);
                         exercise.setKey(id);
                         for (let sol in readData.solutions) {
                             let vals = new Map();
                             for (let val in readData.solutions[sol].valutations) {
                                 vals.set(val, readData.solutions[sol].valutations[val]);
                             }
-                            //console.log("solutionKey: ",sol);
-                            exercise.addSolution(sol, readData.solutions[sol].solverId, readData.solutions[sol].tags, readData.solutions[sol].topics, readData.solutions[sol].difficulty, vals, readData.solutions[sol].time);
+                            exercise.addSolution(sol, readData.solutions[sol].solverId, readData.solutions[sol].tags, readData.solutions[sol].topics, readData.solutions[sol].difficulty, vals, readData.solutions[sol].time, readData.solutions[sol].public);
                         }
                         return resolve(exercise);
                     }
@@ -139,13 +156,22 @@ class FirebaseExerciseManager extends FirebaseManager_1.FirebaseManager {
             });
         });
     }
+    /**
+     *   This method removes an exercise from the database
+     *   @param id - the id of the exercise to remove
+     *   @returns { boolean } returns "true" if the operation is successful
+     */
     remove(id) {
         return __awaiter(this, void 0, void 0, function* () {
             const ProData = this.removeFromId(id);
-            const removed = yield ProData;
-            return removed;
+            return yield ProData;
         });
     }
+    /**
+     *   This method removes an exercise from the database
+     *   @param id - the id of the exercise to remove
+     *   @returns { boolean } returns "true" if the operation is successful
+     */
     removeFromId(id) {
         return __awaiter(this, void 0, void 0, function* () {
             const ref = FirebaseManager_1.FirebaseManager.database.ref("data/sentences/" + id);
@@ -162,12 +188,16 @@ class FirebaseExerciseManager extends FirebaseManager_1.FirebaseManager {
             });
         });
     }
+    /**
+     *   This method modifies exercises into the database
+     *   @param path - the path of the exercise to modify
+     *   @param value - the new value to insert
+     */
     update(path, value) {
         return __awaiter(this, void 0, void 0, function* () {
             let splittedPath = path.split("/");
             let position = splittedPath.length - 1;
             let field = splittedPath[position];
-            console.log(field);
             switch (field) {
                 case "difficulty":
                     yield this.updateField(path, value);
@@ -178,6 +208,9 @@ class FirebaseExerciseManager extends FirebaseManager_1.FirebaseManager {
                 case "topics":
                     yield this.updateField(path, value);
                     break;
+                case "public":
+                    yield this.updateField(path, value);
+                    break;
                 default:
                     yield console.log("field doesn't exists");
                     return;
@@ -185,9 +218,14 @@ class FirebaseExerciseManager extends FirebaseManager_1.FirebaseManager {
             yield this.updateTime(path);
         });
     }
+    /**
+     *   This method modifies exercises into the database
+     *   @param path - the path of the exercise to modify
+     *   @param value - the new value to insert
+     */
     updateField(path, value) {
         return __awaiter(this, void 0, void 0, function* () {
-            const ref = FirebaseManager_1.FirebaseManager.database.ref(path);
+            let ref = FirebaseManager_1.FirebaseManager.database.ref(path);
             ref.once('value', function (snapshot) {
                 if (snapshot.exists()) {
                     ref.set(value);
@@ -195,6 +233,10 @@ class FirebaseExerciseManager extends FirebaseManager_1.FirebaseManager {
             });
         });
     }
+    /**
+     *   This method sets the exercise time at now
+     *   @param path - the path of the exercise to modify
+     */
     updateTime(path) {
         return __awaiter(this, void 0, void 0, function* () {
             // @ts-ignore

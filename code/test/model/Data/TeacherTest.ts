@@ -8,7 +8,10 @@ import {Class} from "../../../src/ts/model/Data/Class";
 
 describe('Teacher', function() {
 
-    let learn = new Teacher("1","Bortolone", "ciao", "Michele", "Bortone", "Scorze", "Venezia", "A110", "borto.lone@gmail.com");
+    let learn:Teacher;
+    beforeEach(function() {
+        learn = new Teacher("1","Bortolone", "ciao", "Michele", "Bortone", "Scorze", "Venezia", "A110", "borto.lone@gmail.com");
+    });
 
     describe('Teacher.getUsername()', function () {
         it('should return the username', function () {
@@ -63,6 +66,23 @@ describe('Teacher', function() {
 
             expect(learn.isTeacher()).to.equal(true);
         });
+    });
+
+    describe('Teacher.setID()', function () {
+        it('should set the id', function () {
+            learn.setID("15");
+            expect(learn.getID()).to.equal("15");
+        });
+    });
+
+    describe('Teacher.samePassword()', function () {
+        it('should return true if passwords match', function () {
+            expect(learn.samePassword("ciao")).to.equal(true);
+        });
+
+        it('should return false if passwords don\'t match',function () {
+            expect(learn.samePassword("ciaone")).to.equal(false);
+        })
     });
 
     describe('Teacher.getClasses()', function () {

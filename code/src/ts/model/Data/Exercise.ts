@@ -4,158 +4,201 @@ import {Data} from "./Data";
 import {Solution} from "./Solution";
 
 /**
-*   Class to create and manage "Exercise" objects
-*/
-
+ *   Class to create and manage "Exercise" objects
+ */
 class Exercise implements Data{
     private sentence: string;
     private authorId: string;
     private newSolution : Solution | null;
-    private solutions : Solution [];
+    private solutions : Solution[];
     private key: string;
-    private hunpos: POSManager;
+    private pos: POSManager;
 
     /**
-    *   Initializes all attributes needed to Exercise object.
-    */
-
+     *   Initializes all attributes needed to Exercise object.
+     */
     constructor( sentence : string, authorId :string) {
         this.sentence = sentence;
         this.key = "-1";
         this.authorId = authorId;
         this.newSolution = null;
         this.solutions = [];
-        this.hunpos = new HunposManager();
+        this.pos = new HunposManager();
     }
 
     /**
-    * This method returns the key of an exercise.
-    * @returns { string } returns the exercise key.
-    */
+     * This method returns the key of an exercise.
+     * @returns { string } returns the exercise key.
+     */
     getKey(): string {
         return this.key;
     }
 
     /**
-    * This method returns the sentence of an exercise.
-    * @returns { string } returns the exercise sentence.
-    */
+     * This method returns the sentence of an exercise.
+     * @returns { string } returns the exercise sentence.
+     */
     getSentence(): string {
         return this.sentence;
     }
 
     /**
-    * This method returns a new POSManager reference.
-    * @returns { POSManager } returns the reference.
-    */
+     * This method returns a new POSManager reference.
+     * @returns { POSManager } returns the reference.
+     */
     getPOSManager(): POSManager {
-        return this.hunpos;
+        return this.pos;
     }
 
     /**
-    * This method returns the Id of the exercise author.
-    * @returns { string } returns the author Id.
-    */
+     * This method returns the Id of the exercise author.
+     * @returns { string } returns the author Id.
+     */
     getAuthorId(): string {
         return this.authorId;
     }
 
     /**
-    * This method modifies a new exercise key.
-    * @param key - the new key
-    */
+     * This method modifies a new exercise key.
+     * @param key - the new key
+     */
     setKey(key: string): void {
         this.key=key;
     }
 
     /**
-    * This method modifies a new exercise sentence.
-    * @param sentence - the new sentence
-    */
+     * This method modifies a new exercise sentence.
+     * @param sentence - the new sentence
+     */
     setSentence(sentence: string): void {
         this.sentence=sentence;
     }
 
     /**
-    * This method modifies an exercise solution.
-    * @param solverId - the Id of the user who writes the solution
-    * @param solutionTags - the list of solution tags
-    * @param topics - the list of solution topics
-    * @param difficulty - the grade of difficulty
-    */
-    setSolution(solverId: string, solutionTags: string[],topics : string[], difficulty : number) : void {
-        this.newSolution = new Solution(undefined,solverId,solutionTags,topics,difficulty);
+     * This method modifies an exercise solution.
+     * @param solverId - the Id of the user who writes the solution
+     * @param solutionTags - the list of solution tags
+     * @param topics - the list of solution topics
+     * @param difficulty - the grade of difficulty
+     */
+    setSolution(solverId: string, solutionTags: string[],topics : string[], difficulty : number, _public?: boolean) : void {
+        this.newSolution = new Solution(undefined,solverId,solutionTags,topics,difficulty,_public||false);
     }
 
     /**
-    * This method add an exercise solution.
-    * @param key - the solution key
-    * @param solverId - the Id of the user who writes the solution
-    * @param solutionTags - the list of solution tags
-    * @param topics - the list of solution topics
-    * @param difficulty - the grade of difficulty
-    * @param valutations - the list of valutations (time and mark)
-    * @param time - the date of the solution
-    */
+     * This method add an exercise solution.
+     * @param key - the solution key
+     * @param solverId - the Id of the user who writes the solution
+     * @param solutionTags - the list of solution tags
+     * @param topics - the list of solution topics
+     * @param difficulty - the grade of difficulty
+     * @param valutations - the list of valutations (time and mark)
+     * @param time - the date of the solution
+     * @param _public - the
+     */
     addSolution(key : string, solverId: string, solutionTags: string[], topics: string[],
-                difficulty: number, valutations : Map<string,number>,time : number): void {
-        this.solutions.push(new Solution(key,solverId, solutionTags, topics, difficulty, valutations, time));
+                difficulty: number, valutations : Map<string,number>,time : number, _public? : boolean): void {
+        this.solutions.push(new Solution(key,solverId, solutionTags, topics, difficulty, _public, valutations, time ));
     }
 
     /**
-    * This method returns the solution of the exercise.
-    * @returns { Solution[] } returns the list of solution.
-    */
+     * This method returns the solution of the exercise.
+     * @returns { Solution[] } returns the list of solution.
+     */
     getSolutions() : Solution []{
         return this.solutions;
     }
 
     /**
-    * This method adds a new valutation to an exercise.
-    * @param teacherId - the Id of the teacher who evaluates the solution
-    * @param mark - the valutation
-    */
-    addValutation(teacherID : string, mark : number) {
+     * This method adds a new valutation to an exercise.
+     * @param teacherId - the Id of the teacher who evaluates the solution
+     * @param mark - the valutation
+     */
+    addValutation(teacherId : string, mark : number) {
         if (this.newSolution)
-            this.newSolution.addNewMark(teacherID,mark);
+            this.newSolution.addNewMark(teacherId,mark);
         else
             throw new Error("Nessuna soluzione proposta");
     }
 
     /**
-    * This method returns the actual solution of the exercise.
-    * @returns { Solution | null } returns the actual solution of the exercise if exists.
-    */
+     * This method returns the actual solution of the exercise.
+     * @returns { Solution | null } returns the actual solution of the exercise if exists.
+     */
     getNewSolution() : Solution | null{
         return this.newSolution;
     }
 
     /**
-    * This method returns the automatic solution of the exercise.
-    * @returns { any } returns the automatic (Hunpos) solution of the exercise.
-    */
-    autosolve(): any{
-        return this.getPOSManager().getSolution(this.getSentence());
+     * This method returns the automatic solution of the exercise.
+     * @returns { any } returns the automatic (Hunpos) solution of the exercise.
+     */
+    async autosolve(): Promise<any>{
+        return await this.getPOSManager().getSolution(this.getSentence());
     };
 
     /**
-    * This method returns the splitted sentence of the exercise.
-    * @returns { string[] } returns the sentence of the exercise splitted.
-    */
-    getSplitSentence() : string []{
-        //TODO splittare anche punteggiatura ma no apostrofo
-        //creare un espressione regolare ed usarla per inserire uno spazio prima dei simboli e di punteggiatura dopo
-        //gli apostrofi,
-        //poi splittare in base allo spazio.
-        return this.sentence.split(" ");
+     * This method splits a sentence on spaces and punctuation
+     * @param sentence - a sentence that must to be splitted
+     * @returns string [] - an array containing the split sentence
+     */
+    public getSplitSentence() : string[]{
+        this.prepareSentence();//adding spaces to split punctation
+        let arr = this.sentence.split(new RegExp(" |(?<=')"));
+        arr = arr.filter(Boolean);//remove empty string like ''
+        return arr;
     }
 
     /**
-    * This method evaluates the actual solution of the exercise comparing it to the one given by the teacher with that Id.
-    * @returns { Snumber } returns the valutation.
-    */
-    //da un voto alla soluzione corrente(newSolution) rispetto a solution con quel teacherID
-    evaluate(teacherID?: string) : number {
+     * This method adds spaces to the exercise sentence before and after every punctation symbol
+     */
+    private prepareSentence() {
+        this.sentence = this.sentence.replace(/\-/g," - ");
+        this.sentence = this.sentence.replace(/\!/g," ! ");
+        this.sentence = this.sentence.replace(/\?/g," ? ");
+        this.sentence = this.sentence.replace(/,/g," , ");
+        this.sentence = this.sentence.replace(/:/g," : ");
+        this.sentence = this.sentence.replace(/;/g," ; ");
+        this.sentence = this.sentence.replace(/\//g," / ");
+        this.sentence = this.sentence.replace(/\*/g," * ");
+        this.sentence = this.sentence.replace(/\(/g," ( ");
+        this.sentence = this.sentence.replace(/\)/g," ) ");
+        this.sentence = this.sentence.replace(/\[/g," [ ");
+        this.sentence = this.sentence.replace(/\]/g," ] ");
+        this.sentence = this.sentence.replace(/{/g," { ");
+        this.sentence = this.sentence.replace(/}/g," } ");
+        this.sentence = this.sentence.replace(/_/g," _ ");
+        this.sentence = this.sentence.replace(/`/g," ` ");
+        this.sentence = this.sentence.replace(/‘/g," ‘ ");
+        this.sentence = this.sentence.replace(/’/g," ’ ");
+        this.sentence = this.sentence.replace(/\"/g," \" ");
+        this.sentence = this.sentence.replace(/“/g," “ ");
+        this.sentence = this.sentence.replace(/”/g," ” ");
+        this.sentence = this.sentence.replace(/«/g," « ");
+        this.sentence = this.sentence.replace(/»/g," » ");
+        this.sentence  = this.sentence.replace(/\s+/g, ' ');//if there are multiple spaces
+        this.sentence  = this.sentence.replace(/\s+'/g, '\'');//if there are spaces before '
+        let arr = this.sentence.split("");
+        for( let i=0; i<arr.length; i++){
+            if(i <= arr.length-3 && arr[i]==="." && arr[i+1]==="." && arr[i+2]==="."){
+                arr[i]=" ... ";
+                arr[i+1]=arr[i+2]=" ";
+
+            }
+            else if(arr[i]==="."){
+                arr[i] = " . ";
+            }
+        }
+        this.sentence = arr.join("");
+    }
+
+    /**
+     * This method provides a valutation to the current solution (newSolution) comparing the latter with
+     * the solution of the teacherId passed
+     * @param teacherID - the id of the teacher who provide the solution which will be compared the current solution
+     * @returns number - the grade calculated
+     */
+    async evaluate(teacherID?: string) : Promise<number> {
         if(this.newSolution===null){
             return -1;
         }
@@ -173,7 +216,7 @@ class Exercise implements Data{
                 }
             }
             else{
-                const hunposSolution=this.autosolve();
+                const hunposSolution=await this.autosolve();
                 for (let i in hunposSolution.sentence) {
                     tags.push(hunposSolution.sentence[i].label);
                 }
@@ -182,13 +225,23 @@ class Exercise implements Data{
         }
     }
 
+    /**
+     * This method returns a JSON file containing all the exercise informations
+     * @return {any} the JSON file made like:
+     *                  sentence    [the exercise sentence]
+     *                  authorId    [the Id of the author of the exercise creator]
+     *                  key         [the exercise key]
+     *                  solutions   [the list of exercise solutions]
+     */
     toJSON() : any{
-        //Do I have to add solutions too? - Perry15
-        let exercise: any = {
-            "sentence": this.sentence,
-            "authorId" : this.authorId,
-            "key" : this.key
-        };
+        let exercise : any = {};
+        exercise.sentence=this.sentence;
+        exercise.authorId=this.authorId;
+        exercise.key=this.key;
+        exercise.solutions=[];
+        for(let i in this.solutions){
+            exercise.solutions.push(this.solutions[i].toJSON());
+        }
         return exercise;
     }
 

@@ -11,11 +11,20 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const FirebaseManager_1 = require("./FirebaseManager");
 const Student_1 = require("../Data/Student");
 const Teacher_1 = require("../Data/Teacher");
+/**
+ *   Class to manage users into the database
+ *   @extends FirebaseManager
+ */
 class FirebaseUserManager extends FirebaseManager_1.FirebaseManager {
     constructor() {
         super();
         FirebaseManager_1.FirebaseManager.registerInstance("FirebaseUserManager", this);
     }
+    /**
+     *   This method adds a new user into the database
+     *   @param obj - the object to insert
+     *   @returns { boolean } returns "true" if the operation is successful
+     */
     insert(obj) {
         return __awaiter(this, void 0, void 0, function* () {
             const user = obj;
@@ -31,12 +40,13 @@ class FirebaseUserManager extends FirebaseManager_1.FirebaseManager {
                                 email: teacher.getEmail()
                             });
                         }
-                        else {
+                        else if (user.isStudent() === true) {
+                            const student = obj;
                             FirebaseManager_1.FirebaseManager.database.ref('data/users').push({
                                 //let student= <Student>obj;
-                                name: user.getName(), password: user.getPassword(), lastname: user.getLastName(),
-                                username: user.getUsername(), city: user.getCity(), school: user.getSchool(),
-                                email: user.getEmail()
+                                name: student.getName(), password: student.getPassword(), lastname: student.getLastName(),
+                                username: student.getUsername(), city: student.getCity(), school: student.getSchool(),
+                                email: student.getEmail()
                             });
                         }
                         return resolve(true);
@@ -48,6 +58,11 @@ class FirebaseUserManager extends FirebaseManager_1.FirebaseManager {
             });
         });
     }
+    /**
+     *   This method looks for users into the database
+     *   @param username - the id of the user to search
+     *   @returns (string) - the user's username if exists
+     */
     search(username) {
         return __awaiter(this, void 0, void 0, function* () {
             return new Promise(function (resolve) {
@@ -56,19 +71,20 @@ class FirebaseUserManager extends FirebaseManager_1.FirebaseManager {
                     if (snapshot.exists()) {
                         snapshot.forEach(function (data) {
                             if (data.val().username.toLowerCase() === username.toLowerCase()) {
-                                //console.log("esiste");
                                 return resolve(data.key);
                             }
                         });
-                        //console.log("non esiste");
                         return resolve("false");
                     }
-                    //console.log("database vuoto");
                     return resolve("false");
                 });
             });
         });
     }
+    /**
+     * This method looks for all the users into the database
+     * @returns {Map<string, string>} a map key-username of all the users
+     */
     elements() {
         return __awaiter(this, void 0, void 0, function* () {
             let container = new Map();
@@ -79,10 +95,8 @@ class FirebaseUserManager extends FirebaseManager_1.FirebaseManager {
                         snapshot.forEach(function (data) {
                             container.set(data.key, data.val().username);
                         });
-                        //console.log("non esiste");
                         return resolve(container);
                     }
-                    //console.log("database vuoto");
                     else {
                         return resolve(container);
                     }
@@ -90,6 +104,10 @@ class FirebaseUserManager extends FirebaseManager_1.FirebaseManager {
             });
         });
     }
+    /**
+     *   This method reads user informations from the database
+     *   @param id - the id of the user to read
+     */
     read(id) {
         return __awaiter(this, void 0, void 0, function* () {
             const ProData = this.getUserById(id);
@@ -97,6 +115,11 @@ class FirebaseUserManager extends FirebaseManager_1.FirebaseManager {
             return read;
         });
     }
+    /**
+     *   This method returns an user from the database
+     *   @param id - the id of the user to return
+     *   @returns { User } the User object
+     */
     getUserById(id) {
         return __awaiter(this, void 0, void 0, function* () {
             return new Promise(function (resolve) {
@@ -109,7 +132,7 @@ class FirebaseUserManager extends FirebaseManager_1.FirebaseManager {
                             user = new Teacher_1.Teacher(id, readData.username, readData.password, readData.name, readData.lastname, readData.city, readData.school, readData.INPScode, readData.email);
                         }
                         else {
-                            user = new Student_1.Student(id, readData.username, readData.password, readData.name, readData.lastname, readData.city, readData.school, readData.email);
+                            user = new Student_1.Student(id, readData.username, readData.password, readData.name, readData.lastname, readData.city, readData.school, readData.email, readData.classId);
                         }
                         resolve(user);
                     }
@@ -118,6 +141,11 @@ class FirebaseUserManager extends FirebaseManager_1.FirebaseManager {
             });
         });
     }
+    /**
+     *   This method removes an user from the database
+     *   @param id - the id of the user to remove
+     *   @returns { boolean } returns "true" if the operation is successful
+     */
     remove(id) {
         return __awaiter(this, void 0, void 0, function* () {
             const ProData = this.removeFromId(id);
@@ -125,6 +153,11 @@ class FirebaseUserManager extends FirebaseManager_1.FirebaseManager {
             return removed;
         });
     }
+    /**
+     *   This method removes an user from the database
+     *   @param id - the id of the user to remove
+     *   @returns { boolean } returns "true" if the operation is successful
+     */
     removeFromId(id) {
         return __awaiter(this, void 0, void 0, function* () {
             const ref = FirebaseManager_1.FirebaseManager.database.ref("data/users/" + id);
@@ -140,12 +173,16 @@ class FirebaseUserManager extends FirebaseManager_1.FirebaseManager {
             });
         });
     }
+    /**
+     *   This method modifies user informations into the database
+     *   @param path - the path of the user to modify
+     *   @param value - the new value
+     */
     update(path, value) {
         return __awaiter(this, void 0, void 0, function* () {
             let splittedPath = path.split("/");
             let position = splittedPath.length - 1;
             let field = splittedPath[position];
-            console.log(field);
             switch (field) {
                 case "password":
                     yield this.updateField(path, value);
@@ -177,6 +214,11 @@ class FirebaseUserManager extends FirebaseManager_1.FirebaseManager {
             }
         });
     }
+    /**
+     *   This method modifies user informations into the database
+     *   @param path - the path of the user to modify
+     *   @param value - the new value
+     */
     updateField(path, value) {
         return __awaiter(this, void 0, void 0, function* () {
             const ref = FirebaseManager_1.FirebaseManager.database.ref(path);

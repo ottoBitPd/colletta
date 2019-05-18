@@ -27,7 +27,8 @@ class FirebaseClassManager extends FirebaseManager {
                     description: _class.getDescription(),
                     students: _class.getStudents(),
                     teacherID: _class.getTeacherID(),
-                    exercises: _class.getExercises()
+                    exercises: _class.getExercises(),
+                    time: Date.now()
                 });
                 return resolve(true);
             } 
@@ -39,7 +40,7 @@ class FirebaseClassManager extends FirebaseManager {
 
     /**
      *   This method looks for classes into the database
-     *   @param id - the id of the class to search
+     *   @param name - the name of the class to search
      *   @returns (string) - returns the class key if exists
      */
     public async search(name:string): Promise<string> {
@@ -49,22 +50,19 @@ class FirebaseClassManager extends FirebaseManager {
                     if (snapshot.exists()) {
                         snapshot.forEach(function (data: any) {
                             if (data.val().name.toLowerCase() === name.toLowerCase()) {
-                                //console.log("esiste");
                                 return resolve(data.key);
                             }
                         });
-                        //console.log("non esiste");
                         return resolve("false");
                     }
-                    //console.log("database vuoto");
                     return resolve("false");
                 });
         });
     }
 
     /**
-     * this methos returns a map which has entries containing  the id of a class as key and the id of the class' teacher
-     * as value. the will contains all the classes that are in the db.
+     * This method looks for all the classes into the database
+     * @returns {Map<string, string>} a map class key-teacher id containing all the classes saved into the database
      */
     public async elements () : Promise<Map<string, string>> {
         let container = new Map<string, string>();
@@ -73,15 +71,10 @@ class FirebaseClassManager extends FirebaseManager {
                 .once("value", function (snapshot: any) {
                     if (snapshot.exists()) {
                         snapshot.forEach(function (data: any) {
-                            //container.set(data.key, data.val().name);
-                            //siccome mi sembrava un metodo mai utlizzato e a me serviva idClass, idTeacher
-                            //ho cambiato la mappa ritornata dal metodo Perry15
                             container.set(data.key, data.val().teacherID);
                         });
-                        //console.log("non esiste");
                         return resolve(container);
                     }
-                    //console.log("database vuoto");
                     else {
                         return resolve(container);
                     }
@@ -112,10 +105,12 @@ class FirebaseClassManager extends FirebaseManager {
                     if (snapshot.exists()) {
                         const readData: any = snapshot.val();
                         const _class = new Class(id,readData.name, readData.description, readData.teacherID,
-                            readData.students, readData.exercises);
+                            readData.students, readData.exercises, readData.time);
                         return resolve(_class);
                     }
-                    return resolve(undefined);
+                    else {
+                        return resolve(undefined);
+                    }
                 });
         });
     }
@@ -131,6 +126,11 @@ class FirebaseClassManager extends FirebaseManager {
         return removed;
     }
 
+    /**
+     *   This method removes a class from the database
+     *   @param id - the id of the class to remove
+     *   @returns { boolean } returns "true" if the operation is successful
+     */
     private async removeFromId(id : string) {
         const ref=FirebaseManager.database.ref("data/classes/" + id);
         return new Promise<boolean>(function (resolve) {
@@ -154,15 +154,32 @@ class FirebaseClassManager extends FirebaseManager {
         const splittedPath =path.split("/");
         const position : number = splittedPath.length -1;
         const field : string=splittedPath[position];
-        //console.log(field+ "path: " + path +" value: "+value);
         switch (field) {
             case "exercises": await this.updateField(path, value); break;
             case "students": await this.updateField(path, value); break;
             default : console.log("field doesn't exists"); return;
         }
+        await this.updateTime(path);
+    }
+    /**
+     *   This method sets the exercise time at now
+     *   @param path - the path of the exercise to modify
+     */
+    private async updateTime(path: string)  {
+        // @ts-ignore
+        let ref=FirebaseManager.database.ref(path).parent.child("time");
+        ref.once('value',function (snapshot:any) {
+            if (snapshot.exists()) {
+                ref.set(Date.now());
+            }
+        });
     }
 
-
+    /**
+     *   This method modifies class informations into the database
+     *   @param path - the path of the class to modify
+     *   @param value - the new value
+     */
     private async updateField(path : string, value:any) {
         const ref=FirebaseManager.database.ref(path);
         ref.once('value',function (snapshot:any) {

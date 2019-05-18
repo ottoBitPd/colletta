@@ -1,7 +1,7 @@
 import {Data} from "./Data";
 import {Class} from "./Class";
 
-/*
+/**
 *   Class to create and manage "User" objects
 */
 abstract class User implements Data{
@@ -9,7 +9,7 @@ abstract class User implements Data{
     private username : string;
     public databaseInfo : any;
 
-    /*
+    /**
     *   Initializes all attributes needed to User object.
     */
     constructor(id : string, username : string, password: string, name : string, lastname:string, city:string, school : string, email : string) {
@@ -17,7 +17,7 @@ abstract class User implements Data{
         this.databaseInfo= new this.DatabaseUserInfo(id, password, name, lastname, city, school, email);
     }
 
-    /*
+    /**
     *   Class to create and manage a database user instance
     */
     public DatabaseUserInfo = class {
@@ -29,7 +29,7 @@ abstract class User implements Data{
         public school : string;
         public email : string;
 
-        /*
+        /**
         *   Initializes all attributes needed to DatabaseUserInfo object.
         */
         constructor(id : string, psw : string, name : string, lN : string, city : string, sc : string, email : string){
@@ -43,7 +43,7 @@ abstract class User implements Data{
         }
     };
 
-    /*
+    /**
     * This method returns the username of the user.
     * @returns { string } returns the user username.
     */
@@ -51,7 +51,7 @@ abstract class User implements Data{
         return this.username;
     }
 
-    /*
+    /**
     * This method returns the name of the user.
     * @returns { string } returns the user name.
     */
@@ -59,7 +59,7 @@ abstract class User implements Data{
         return this.databaseInfo.name;
     }
 
-    /*
+    /**
     * This method returns the last name of the user.
     * @returns { string } returns the user last name.
     */
@@ -67,7 +67,7 @@ abstract class User implements Data{
         return this.databaseInfo.lastName;
     }
 
-    /*
+    /**
     * This method returns the city of the user.
     * @returns { string } returns the user city.
     */
@@ -75,7 +75,7 @@ abstract class User implements Data{
         return this.databaseInfo.city;
     }
 
-    /*
+    /**
     * This method returns the school of the user.
     * @returns { string } returns the user school.
     */
@@ -83,7 +83,7 @@ abstract class User implements Data{
         return this.databaseInfo.school;
     }
 
-    /*
+    /**
     * This method returns the password of the user.
     * @returns { string } returns the user password.
     */
@@ -91,7 +91,7 @@ abstract class User implements Data{
         return this.databaseInfo.password;
     }
 
-    /*
+    /**
     * This method returns the email of the user.
     * @returns { string } returns the user email.
     */
@@ -99,7 +99,7 @@ abstract class User implements Data{
         return this.databaseInfo.email;
     }
 
-    /*
+    /**
     * This method checks if the two passwords entered by the user are the same (in registration).
     * @param otherPassword - the password to check
     * @returns { boolean } returns "true" if the passwords are the same.
@@ -110,7 +110,7 @@ abstract class User implements Data{
         return false;
     }
 
-    /*
+    /**
     * This method modifies an user Id.
     * @param Id - the new Id
     */
@@ -118,7 +118,7 @@ abstract class User implements Data{
         this.databaseInfo.id= id;
     }
 
-    /*
+    /**
     * This method returns checks if a user is a teacher.
     * @returns { boolean } returns "true" if the user is a teacher.
     */
@@ -126,14 +126,14 @@ abstract class User implements Data{
         return false;
     }
 
-    /*
+    /**
     * This method returns the iist of classes of a user.
     * @param classList - the list of all the available classes
     * @returns { Class[]} returns the list of classes.
     */
     public abstract getClasses(classList : Class[]) : Class[];
 
-    /*
+    /**
     * This method returns the Id of the user.
     * @returns { string } returns the user iD.
     */

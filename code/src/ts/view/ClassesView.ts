@@ -1,12 +1,10 @@
 import {PageView} from "./PageView";
 import {ClassesPresenter} from "../presenter/ClassesPresenter";
 
-/*
-*   Class to display
+/**
+*   Class to display the classes page
 *   @extends PageView
 */
-
-
 class ClassesView extends PageView {
 
     private classPresenter : ClassesPresenter;
@@ -22,6 +20,10 @@ class ClassesView extends PageView {
         this.classesList = value;
     }*/
 
+    /**
+     * This method is used to display the page body structure
+     * @return {string} the HTML source
+     */
     async getPage() {
         let ret = this.getHead();
         ret +=this.getMenu();
@@ -38,6 +40,11 @@ class ClassesView extends PageView {
         ret+=this.getFoot(this.getScript());
         return ret;
     }
+
+    /**
+     * This method is used to display the page menù
+     * @return {string} the HTML source
+     */
     private getMenu() : string {
         let ret =""+
             "\t<nav class=\"navbar navbar-expand-sm bg-dark navbar-dark\">" +
@@ -61,6 +68,10 @@ class ClassesView extends PageView {
         return ret;
     }
 
+    /**
+     * This method is used to display the page login area
+     * @return {string} the HTML source
+     */
     private getLoginArea() : string {
 
         if(this.classPresenter.isLoggedIn()){
@@ -93,6 +104,11 @@ class ClassesView extends PageView {
             return ret;
         }
     }
+
+    /**
+     * This method is used to display the class list
+     * @return {string} the HTML source
+     */
     private async printList() {
         let classes = await this.classPresenter.getClasses();
         if(classes === null){
@@ -133,6 +149,11 @@ class ClassesView extends PageView {
             return ret;
         }
     }
+
+    /**
+     *
+     *
+     */
     private getScript() {
         return "" +
         "function showInsertClassForm(){\n" +
@@ -143,6 +164,10 @@ class ClassesView extends PageView {
         "}\n";
     }
 
+    /**
+     * This method is used to display the form used to create new classes
+     * @return {string} the HTML source
+     */
     private insertClass() {
         let ret=""+
         "\t\t\t<form method='post' id='insertClassForm' action='/insertclass' style='display:none'>\n" +

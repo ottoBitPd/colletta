@@ -1,6 +1,10 @@
 import {PageView} from "./PageView";
 import {AuthenticationPresenter} from "../presenter/AuthenticationPresenter";
 
+/**
+ *   Class to display the registration page
+ *   @extends PageView
+ */
 class RegistrationView extends PageView {
     private authPresenter :AuthenticationPresenter;
     constructor(app : any) {
@@ -9,6 +13,10 @@ class RegistrationView extends PageView {
         this.authPresenter.update(app);
     }
 
+    /**
+     * This method is used to display the page body structure
+     * @return {string} the HTML source
+     */
     async getPage() {
         let ret = "" +
             "<!DOCTYPE html>\n" +
@@ -90,6 +98,11 @@ class RegistrationView extends PageView {
             "   }\n"+
             "}\n";
     }
+
+    /**
+     * This method is used to display the page menù
+     * @return {string} the HTML source
+     */
     private getMenu() : string {
         let ret = "" +
             "<nav class=\"navbar navbar-expand-sm bg-dark navbar-dark\">" +

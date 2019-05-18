@@ -6,7 +6,7 @@ enum Difficulty {
     veryhard = 5,
 }
 
-/*
+/**
 *   Class to create and manage "Solution" objects
 */
 class Solution {
@@ -18,7 +18,7 @@ class Solution {
     private valutations : Map<string,number> | null; // coppie di valutazioni con chiave insegnante e valore la valutazione ottenuta
     private time : number | null;
 
-    /*
+    /**
     *   Initializes all attributes needed to Solution object.
     */
     // @ts-ignore
@@ -42,7 +42,7 @@ class Solution {
         this.difficulty = 1;
     }*/
 
-    /*
+    /**
     * This method returns the key of a solution.
     * @returns { string | null } returns the solution key if exists.
     */
@@ -50,7 +50,7 @@ class Solution {
         return this.key;
     }
 
-    /*
+    /**
     * This method returns the Id of the solution author.
     * @returns { string } returns the solver Id.
     */
@@ -58,7 +58,7 @@ class Solution {
         return this.solverId;
     }
 
-    /*
+    /**
     * This method returns the topics of the solution.
     * @returns { string[] } returns the solution topics list.
     */
@@ -66,7 +66,7 @@ class Solution {
         return this.topics;
     }
 
-    /*
+    /**
     * This method returns the difficulty grade of the solution.
     * @returns { number | null } returns the solution grade of difficulty if exists.
     */
@@ -74,7 +74,7 @@ class Solution {
         return this.difficulty;
     }
 
-    /*
+    /**
     * This method returns the tags of the solution.
     * @returns { string[] } returns the solution tags list.
     */
@@ -82,7 +82,7 @@ class Solution {
         return this.solutionTags;
     }
 
-    /*
+    /**
     * This method returns the valutations of the solution.
     * @returns { Map<string, number> | null } returns the solution valutations if exist.
     */
@@ -103,7 +103,7 @@ class Solution {
         return JSON.parse(result);
     }
 
-    /*
+    /**
     * This method returns the date of the solution.
     * @returns { number | null } returns the solution date if exists.
     */
@@ -111,7 +111,7 @@ class Solution {
         return this.time;
     }
 
-    /*
+    /**
     * This method returns adds a new mark to solution.
     * @param teacherID - the Id of the teacher who assigns the valutation
     * @param mark - the valutation to add
@@ -122,7 +122,7 @@ class Solution {
         this.valutations.set(teacherID,mark);
     }
 
-    /*
+    /**
     * This method returns a numeric valutation of the solution.
     * @param tags - the tag list of the solution to evaluate
     * @returns { number } returns the valutation.

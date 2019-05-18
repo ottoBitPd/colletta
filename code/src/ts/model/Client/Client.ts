@@ -33,22 +33,38 @@ class Client {
         private dbExerciseManager: ExerciseClient | undefined;
         private dbUserManager: UserClient | undefined;
 
+        /**
+         * This method create a new instance of ClassClient
+         * @returns {ClassBuilder} a new instance of CLassBuilder
+         */
         buildClassClient(): ClientBuilder {
             this.dbClassManager = new ClassClient();
             return this;
         }
 
+        /**
+         * This method create a new instance of ExerciseClient
+         * @returns {ClassBuilder} a new instance of CLassBuilder
+         */
         buildExerciseClient(): ClientBuilder {
             this.dbExerciseManager = new ExerciseClient();
             return this;
 
         }
 
+        /**
+         * This method create a new instance of UserClient
+         * @returns {ClassBuilder} a new instance of CLassBuilder
+         */
         buildUserClient(): ClientBuilder {
             this.dbUserManager = new UserClient();
             return this;
         }
 
+        /**
+         * This method create a new instance of Client
+         * @returns {ClassBuilder} a new instance of CLassBuilder
+         */
         build() : Client {
             return new Client(this.dbUserManager, this.dbExerciseManager, this.dbClassManager);
         }

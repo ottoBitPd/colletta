@@ -3,7 +3,7 @@ import {HunposManager} from "../POSManager/HunposManager";
 import {Data} from "./Data";
 import {Solution} from "./Solution";
 
-/*
+/**
 *   Class to create and manage "Exercise" objects
 */
 
@@ -15,7 +15,7 @@ class Exercise implements Data{
     private key: string;
     private hunpos: POSManager;
 
-    /*
+    /**
     *   Initializes all attributes needed to Exercise object.
     */
 
@@ -28,7 +28,7 @@ class Exercise implements Data{
         this.hunpos = new HunposManager();
     }
 
-    /*
+    /**
     * This method returns the key of an exercise.
     * @returns { string } returns the exercise key.
     */
@@ -36,7 +36,7 @@ class Exercise implements Data{
         return this.key;
     }
 
-    /*
+    /**
     * This method returns the sentence of an exercise.
     * @returns { string } returns the exercise sentence.
     */
@@ -44,7 +44,7 @@ class Exercise implements Data{
         return this.sentence;
     }
 
-    /*
+    /**
     * This method returns a new POSManager reference.
     * @returns { POSManager } returns the reference.
     */
@@ -52,7 +52,7 @@ class Exercise implements Data{
         return this.hunpos;
     }
 
-    /*
+    /**
     * This method returns the Id of the exercise author.
     * @returns { string } returns the author Id.
     */
@@ -60,7 +60,7 @@ class Exercise implements Data{
         return this.authorId;
     }
 
-    /*
+    /**
     * This method modifies a new exercise key.
     * @param key - the new key
     */
@@ -68,7 +68,7 @@ class Exercise implements Data{
         this.key=key;
     }
 
-    /*
+    /**
     * This method modifies a new exercise sentence.
     * @param sentence - the new sentence
     */
@@ -76,7 +76,7 @@ class Exercise implements Data{
         this.sentence=sentence;
     }
 
-    /*
+    /**
     * This method modifies an exercise solution.
     * @param solverId - the Id of the user who writes the solution
     * @param solutionTags - the list of solution tags
@@ -87,7 +87,7 @@ class Exercise implements Data{
         this.newSolution = new Solution(undefined,solverId,solutionTags,topics,difficulty);
     }
 
-    /*
+    /**
     * This method add an exercise solution.
     * @param key - the solution key
     * @param solverId - the Id of the user who writes the solution
@@ -102,7 +102,7 @@ class Exercise implements Data{
         this.solutions.push(new Solution(key,solverId, solutionTags, topics, difficulty, valutations, time));
     }
 
-    /*
+    /**
     * This method returns the solution of the exercise.
     * @returns { Solution[] } returns the list of solution.
     */
@@ -110,7 +110,7 @@ class Exercise implements Data{
         return this.solutions;
     }
 
-    /*
+    /**
     * This method adds a new valutation to an exercise.
     * @param teacherId - the Id of the teacher who evaluates the solution
     * @param mark - the valutation
@@ -122,7 +122,7 @@ class Exercise implements Data{
             throw new Error("Nessuna soluzione proposta");
     }
 
-    /*
+    /**
     * This method returns the actual solution of the exercise.
     * @returns { Solution | null } returns the actual solution of the exercise if exists.
     */
@@ -130,7 +130,7 @@ class Exercise implements Data{
         return this.newSolution;
     }
 
-    /*
+    /**
     * This method returns the automatic solution of the exercise.
     * @returns { any } returns the automatic (Hunpos) solution of the exercise.
     */
@@ -138,7 +138,7 @@ class Exercise implements Data{
         return this.getPOSManager().getSolution(this.getSentence());
     };
 
-    /*
+    /**
     * This method returns the splitted sentence of the exercise.
     * @returns { string[] } returns the sentence of the exercise splitted.
     */
@@ -150,7 +150,7 @@ class Exercise implements Data{
         return this.sentence.split(" ");
     }
 
-    /*
+    /**
     * This method evaluates the actual solution of the exercise comparing it to the one given by the teacher with that Id.
     * @returns { Snumber } returns the valutation.
     */

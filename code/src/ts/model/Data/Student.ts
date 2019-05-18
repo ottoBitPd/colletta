@@ -3,19 +3,19 @@ import {Class} from "./Class";
 import {Exercise} from "./Exercise";
 import {Solution} from "./Solution";
 
-/*
+/**
 *   Class to create and manage "Student" objects
 *   @extends User
 */
 class Student extends User {
-    /*
+    /**
     *   Initializes all attributes needed to Student object.
     */
     constructor (id : string, username : string, password: string, name : string, lastname:string, city:string, school : string, email : string){
         super(id, username, password, name, lastname, city, school, email);
     }
 
-    /*
+    /**
     * This method returns the iist of classes in which the student is signed up.
     * @param classList - the list of all the available classes
     * @returns { Class[]} returns the list of classes.
@@ -32,7 +32,7 @@ class Student extends User {
     }
 
 
-    /*
+    /**
     * This method returns the valutations map of a student.
     * @param exercises - the list of all the exercises available
     * @returns { Map<number, number> } returns the valutations map.

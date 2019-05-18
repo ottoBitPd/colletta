@@ -19,13 +19,12 @@ Per aggiungere una vista, bisognerà aggiungere anche il relativo presenter. La 
 \end{figure}
 \newpage
 
-\subsection{Sostituzione o aggiunta della base informativa}
-Per sostituire la base informativa o il modo di interagire con il database, basterà creare delle classi per l'inserimento degli esercizi, delle classi e degli utenti che estendano la classe astratta \texttt{FirebaseManager}.\\
-Lo stesso procedimento è valido anche nel caso in cui venga aggiunto un nuovo tipo di informazione nella base di dati.\\
+\subsection{Aggiunta di un nuovo tipo di informazione nella base informativa}
+Per aggiungere un nuovo tipo di informazione nella base di dati, basterà creare delle classi per l'inserimento degli esercizi, delle classi e degli utenti che estendano la classe astratta \texttt{FirebaseManager} e la rispettiva classe che estenda \texttt{DatabaseManager}.\\
 \vspace*{3em}
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[scale=0.75]{images/newfirebasemanager.png}
-	\caption{Aggiunta di una vista all'applicazione}
+	\includegraphics[scale=0.5]{images/newfirebasemanager.png}
+	\caption{Aggiunta di un nuovo gestore della base di dati}
 \end{figure}

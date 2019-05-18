@@ -1,8 +1,27 @@
 interface POSManager {
 
-    setModel(modelFilePath:string):void;
+    /**
+     * This method sets the model to use
+     * @param path - the model path
+     */
+    setModel(path:string):void;
+
+    /**
+     * This method create a model based on the actual data
+     */
     train():void;
-    tag():void;
+
+    /**
+     * This method assigns tags to the sentence words
+     * @param input - the sentence to tag
+     * @return {string} the reworked sentence with the Hunpos tags
+     */
+    tag(input : string): Promise<string>;
+
+    /**
+     * This method returns the solution for a sentence
+     * @param sentence - the sentence to solve
+     */
     getSolution(sentence: string): any;
 
 }

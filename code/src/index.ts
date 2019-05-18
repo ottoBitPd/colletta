@@ -7,6 +7,7 @@ import {RegistrationView} from "./ts/view/RegistrationView";
 import {SearchView} from "./ts/view/SearchView";
 import {ClassesView} from "./ts/view/ClassesView";
 import {ClassView} from "./ts/view/ClassView";
+import {DeveloperView} from "./ts/view/DeveloperView";
 
 
 const app = express();
@@ -21,36 +22,18 @@ new ExerciseView(app);
 new SearchView(app);
 new ClassesView(app);
 new ClassView(app);
-/*
-//OLD STYLE
-const exercisePage = new ExercisePresenter(exerciseView, savePageView);
-exercisePage.update(app);
+new DeveloperView(app);
 
-const loginView  = new LoginView();
-const registrationView : any= new RegistrationView();
-const LoginPage = new AuthenticationPresenter(loginView,registrationView);
-LoginPage.update(app);
-*/
+app.use(function(req, res, next) {
+    res.status(404).sendFile("404.html",{root:"public"});
+});
 
-//import {Client} from "./ts/model/Client/Client";
+let port = process.argv[2];
+if (!port)
+    port = "8080";
 
-app.listen(8080, async function () {
-    const host = "127.0.0.1";
-    const port = "8080";
-    console.log("Example app listening at http://%s:%s", host, port);
-/*
-    //let students : any = ["-Lc7XAI7V9aosgn3mjV3","-Lc7XDQssWq0tULL7BPc"];//a e b
-    //let exercises : any = ["-LbqtnBcdB6IPyvIcfMf","-LbqttUcndjqToqpXmRL"];//ciao mario e ciao minerva
-    let classClient = (new Client.builder()).buildClassClient().build().getClassClient();
-    if(classClient) {
-        //await classClient.addClass("Classe2", "descrizione della classe", "-Lc7WiFeQaE_h74z_Dib");
-        //await classClient.addStudent("-Lc7XDQssWq0tULL7BPc","-LcMIUZDuNItK4gFppoh");
-    }*/
-    /*
-    let userClient = (new Client.builder()).buildUserClient().build().getUserClient();
-    if(userClient) {
-        let students = await userClient.searchUser("b",true);
-        console.log("arriva: ",students);
-    }*/
+app.listen(port.toString(), async function () {
+    const host = "localhost";
+    console.log("Application listening at http://%s:%s", host, port);
 });
 
